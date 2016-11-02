@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Brick Spreedsheet Designer</title>
+    <link rel="stylesheet" media="screen" href="bower_components/handsontable-pro/dist/handsontable.full.css">
+</head>
+<body>
+<div id="designer"></div>
+<input type="button" value="Test" onclick="test();">
+
+<script src="bower_components/handsontable-pro/dist/handsontable.full.min.js"></script>
+<script>
+    var container = document.getElementById('designer');
+
+    var hot = new Handsontable(container, {
+        width: 700,
+        height: 300,
+
+        startRows: 200,
+        startCols: 50,
+        minSpareRows: 5,
+        minSpareCols: 2,
+
+        outsideClickDeselects: false,
+
+        rowHeaders: true,
+        colHeaders: true,
+
+        manualColumnResize: true,
+        manualRowResize: true,
+        className: 'ssd-handsontable',
+
+        formulas: true,
+
+        mergeCells: [
+            {
+                "row": 0,
+                "col": 0,
+                "rowspan": 2,
+                "colspan": 2
+            },
+            {
+                "row": 3,
+                "col": 3,
+                "rowspan": 2,
+                "colspan": 2
+            }
+        ],
+
+        data: [
+            ['=$B$2', "Maserati", "Mazda", "Mercedes", "Mini", "=A$1"],
+            [2009, 0, 2941, 4303, 354, 5814],
+            [2010, 5, 2905, 2867, '=SUM(A4,2,3)', '=$B1'],
+            [2011, 4, 2517, 4822, 552, 6127],
+            [2012, '=SUM(A2:A5)', '=SUM(B5,E3)', '=A2/B2', 12, 4151]
+        ]
+    });
+
+
+    function test() {
+
+    }
+
+
+</script>
+</body>
+</html>
