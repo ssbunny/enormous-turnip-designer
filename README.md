@@ -1,18 +1,40 @@
-# enormous-turnip-designer
+# Anormous Turnip Designer
 
-A JavaScript spreedsheet designer based on Handsontable.
-
-
+一个基于 Handsontable 实现的 JavaScript 版本的 Excel 。
 
 ## 功能列表
 
-__1) 工作薄 Workbook__
+1. 工作薄 Workbook
+* [x] 支持多工作表
 
-__2) 工作表 Worksheet__
+2. 工作表 Sheet
+* [x] 重命名工作表
+* [ ] 增加工作表
+* [ ] 删除工作表
+* [ ] ~~隐藏工作表~~
+* [x] 插入行
+* [x] 插入列
 
-[+] 多工作表
-
-__3) 单元格__
-
+3. 单元格
 * [x] 单元格合并
-* [ ] 单元格合并
+* [ ] 设置单元格格式
+
+4. 样式相关
+* [ ] 字体大小
+* [ ] 字体加粗
+* [ ] 字体颜色
+* [ ] 字体样式
+* [ ] 单元格填充色
+* [ ] 边框
+
+5. 公式
+* [ ] ~~跨文件的公式引用~~
+* [x] 跨工作表的公式引用
+* [x] 本工作表中单元格引用
+    + [x] 相对引用
+    + [ ] 绝对引用
+    + [ ] 混合引用
+* [x] 函数
+    + [x] SUM
+
+## 导入导出
