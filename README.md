@@ -2,6 +2,15 @@
 
 一个基于 Handsontable 实现的 JavaScript 版本的 Excel 。
 
+## 兼容性
+
+* Firefox 34
+* Chrome 51
+* Internet Explorer 10
+* Edge 20
+* Safari 9
+* Opera 26
+
 ## 功能列表
 
 1. 工作薄 Workbook
