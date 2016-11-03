@@ -206,8 +206,8 @@ class Sheet extends Emitter {
             data: data,
             rowHeights: heights,
             colWidths: widths,
-            mergeCells: mergeCells
-            //cells: cells
+            mergeCells: mergeCells,
+            cellMetas: cells
         }
     }
 
@@ -240,24 +240,26 @@ class Sheet extends Emitter {
 
         for (let i = 0; i < rows; ++i) {
             let rowResult = [];
+            let rowCellMeta = [];
 
             for (let j = 0; j < cols; ++j) {
                 let _sourceData = hot.getSourceDataAtCell(i, j);
                 let _meta = hot.getCellMeta(i, j); // TODO meta
                 let _data = hot.getDataAtCell(i, j);
-                let cellMata = {};
+                let _cellMata = {};
 
-                cellMata.row = i;
-                cellMata.col = j;
-                cellMata.isFormula = !!(_sourceData && (_sourceData + '').charAt(0) === '=');
-                cellMata.sourceValue = _sourceData;
-                cellMata.value = _data;
+                _cellMata.row = i;
+                _cellMata.col = j;
+                _cellMata.isFormula = !!(_sourceData && (_sourceData + '').charAt(0) === '=');
+                _cellMata.sourceValue = _sourceData;
+                _cellMata.value = _data;
 
                 // TODO dataType, styles
                 rowResult.push(_sourceData);
-                cells.push(cellMata);
+                rowCellMeta.push(_cellMata);
             }
             data.push(rowResult);
+            cells.push(rowCellMeta);
         }
         return {data, cells};
     }

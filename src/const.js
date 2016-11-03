@@ -1,5 +1,19 @@
 
 export const REGEXPS =  {
+
+    /*
+     * Note that sheet name in Excel must not exceed 31 characters
+     * and must not contain any of the any of the following characters:
+     *    - 0x0000
+     *    - 0x0003
+     *    - colon (:)
+     *    - backslash (\)
+     *    - asterisk (*)
+     *    - question mark (?)
+     *    - forward slash (/)
+     *    - opening square bracket ([)
+     *    - closing square bracket (])
+     */
     sheetName: /[\\/\?\*\[\]'"]/  // sheet name 不包含
 };
 

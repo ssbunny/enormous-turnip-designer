@@ -6,7 +6,7 @@
  * @author zhangq
  * @license MIT
  * 
- * Build on: Tue Nov 01 2016 17:08:17 GMT+0800 (CST)
+ * Build on: Thu Nov 03 2016 16:02:09 GMT+0800 (CST)
  * - handsontable version: 0.28.3
  * - formulajs version: 1.0.8
  */
@@ -16134,6 +16134,20 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 var REGEXPS = exports.REGEXPS = {
+
+    /*
+     * Note that sheet name in Excel must not exceed 31 characters
+     * and must not contain any of the any of the following characters:
+     *    - 0x0000
+     *    - 0x0003
+     *    - colon (:)
+     *    - backslash (\)
+     *    - asterisk (*)
+     *    - question mark (?)
+     *    - forward slash (/)
+     *    - opening square bracket ([)
+     *    - closing square bracket (])
+     */
     sheetName: /[\\/\?\*\[\]'"]/ // sheet name 不包含
 };
 
@@ -16332,10 +16346,42 @@ var ConfigTranslator = function () {
         // ------------------------ translate ------------------------------
 
     }, {
+        key: '_transCell',
+        value: function _transCell(settings) {
+            var m = this.initialConfig.cellMetas;
+            if (m) {
+                settings.cell = [];
+                for (var i = 0; i < m.length; ++i) {
+                    var row = m[i];
+                    for (var j = 0; j < row.length; ++j) {
+                        var cellMeta = row[j];
+                        if (cellMeta) {
+                            var cell = {};
+                            cell.row = cellMeta.row;
+                            cell.col = cellMeta.col;
+
+                            if (cellMeta.dataType) {
+                                for (var dt in cellMeta.dataType) {
+                                    if (cellMeta.dataType.hasOwnProperty(dt)) {
+                                        cell[dt] = cellMeta.dataType[dt];
+                                    }
+                                }
+                                cell.type = cellMeta.dataType.typeName;
+                                delete cell.typeName;
+                            }
+                            settings.cell.push(cell);
+                        }
+                    }
+                }
+            }
+        }
+    }, {
         key: '_transData',
         value: function _transData(settings) {
             var s = this.initialConfig.data;
             if (s) {
+                // hotTable 在有 data 的情况下只能显示有数据的行列，这对于设计器来说并不方便使用，
+                // 故填充空数据以撑起表格至 initRows * initCols 的大小。
                 if (s.length < this.sheet.initRows) {
                     var formerCol = s.length;
                     s.length = this.sheet.initRows;
@@ -16395,11 +16441,6 @@ var ConfigTranslator = function () {
             if (s) {
                 settings.mergeCells = s;
             }
-        }
-    }, {
-        key: '_transCells',
-        value: function _transCells(settings) {
-            console.log('--- _transCells ->', settings);
         }
 
         // ------------------------ initState ------------------------------
@@ -16839,8 +16880,8 @@ var Sheet = function (_Emitter) {
                 data: data,
                 rowHeights: heights,
                 colWidths: widths,
-                mergeCells: mergeCells
-                //cells: cells
+                mergeCells: mergeCells,
+                cellMetas: cells
             };
         }
     }, {
@@ -16876,24 +16917,26 @@ var Sheet = function (_Emitter) {
 
             for (var i = 0; i < rows; ++i) {
                 var rowResult = [];
+                var rowCellMeta = [];
 
                 for (var j = 0; j < cols; ++j) {
                     var _sourceData = hot.getSourceDataAtCell(i, j);
                     var _meta = hot.getCellMeta(i, j); // TODO meta
                     var _data = hot.getDataAtCell(i, j);
-                    var cellMata = {};
+                    var _cellMata = {};
 
-                    cellMata.row = i;
-                    cellMata.col = j;
-                    cellMata.isFormula = !!(_sourceData && (_sourceData + '').charAt(0) === '=');
-                    cellMata.sourceValue = _sourceData;
-                    cellMata.value = _data;
+                    _cellMata.row = i;
+                    _cellMata.col = j;
+                    _cellMata.isFormula = !!(_sourceData && (_sourceData + '').charAt(0) === '=');
+                    _cellMata.sourceValue = _sourceData;
+                    _cellMata.value = _data;
 
                     // TODO dataType, styles
                     rowResult.push(_sourceData);
-                    cells.push(cellMata);
+                    rowCellMeta.push(_cellMata);
                 }
                 data.push(rowResult);
+                cells.push(rowCellMeta);
             }
             return { data: data, cells: cells };
         }
