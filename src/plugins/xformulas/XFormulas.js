@@ -23,7 +23,6 @@ import {
     toUpperCaseFormula,
     isFormulaExpressionEscaped,
     unescapeFormulaExpression} from './utils';
-import {XPluginError} from '../XPluginError'
 import {Sheet} from './Sheet';
 import {DataProvider} from './DataProvider';
 import {UndoRedoSnapshot} from './UndoRedoSnapshot';
@@ -71,7 +70,7 @@ XFormulas.prototype.enablePlugin = function () {
 
     const settings = this.hot.getSettings();
     if (!settings._isHotTableAdaptor) {
-        throw new XPluginError('XFormulas 插件启用失败');
+        throw('XFormulas 插件启用失败');
     }
 
     const formulasSettings = settings.formulas;
@@ -214,7 +213,7 @@ XFormulas.prototype.onAfterCreateRow = function (row, amount, source) {
 };
 
 XFormulas.prototype.onBeforeRemoveRow = function (row, amount) {
-    this.undoRedoSnapshot.save('row', row, amount);
+    Storage.save('row', row, amount);
 };
 
 XFormulas.prototype.onAfterRemoveRow = function (row, amount) {
@@ -232,7 +231,7 @@ XFormulas.prototype.onAfterCreateCol = function (column, amount, source) {
 };
 
 XFormulas.prototype.onBeforeRemoveCol = function (column, amount) {
-    this.undoRedoSnapshot.save('column', column, amount);
+    Storage.save('column', column, amount);
 };
 
 XFormulas.prototype.onAfterRemoveCol = function (column, amount) {

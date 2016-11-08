@@ -1,4 +1,4 @@
-import {innerHTML, outerHeight, outerWidth, empty} from '../../utils/domHelper.js';
+import {innerHTML, outerHeight, outerWidth, empty, insertAfter} from '../../utils/domHelper.js';
 import {isEmptyValue, upperCase} from '../../utils/common.js';
 import {CaseInsensitiveMap} from '../../utils/dataStructure.js';
 import {stopImmediatePropagation} from '../../utils/eventHelper.js';
@@ -87,7 +87,12 @@ Tabs.prototype.appendTab = function (sheetName) {
     li.classList.add(CLASS_LI);
     li.setAttribute('data-sheet', sheetName);
 
-    this.UL.appendChild(li);
+    var activeTab = this.TABS.querySelector(`.${CLASS_CURRENT}.${CLASS_LI}`);
+    if (activeTab) {
+        insertAfter(activeTab, li);
+    } else {
+        this.UL.appendChild(li);
+    }
     this.liItems.set(sheetName, li);
 
     li.addEventListener('click', function (event) {
@@ -103,6 +108,22 @@ Tabs.prototype.appendTab = function (sheetName) {
     });
 
     this.appendContent(sheetName);
+};
+
+
+Tabs.prototype.appendAddButton = function () {
+    var that = this;
+    var li = document.createElement('li');
+
+    li.innerHTML = `<a href="javascript:;"><span>+</span></a>`;
+    li.classList.add(CLASS_LI);
+    li.classList.add('add-tab');
+
+    this.UL.appendChild(li);
+
+    li.addEventListener('click', function (event) {
+        that.workbook.createSheet();
+    });
 };
 
 /**
@@ -260,7 +281,7 @@ Tabs.prototype.activeTab = function (sheetName) {
  */
 Tabs.prototype.activeContent = function (sheetName) {
     var section = this.sectionItems.get(sheetName);
-    var former = Tabs.prototype.activeContent.former;
+    var former = this._formerActiveContent;
     if (former) {
         animated && former.classList.remove('fadeIn');
         former.style.display = 'none';
@@ -268,7 +289,7 @@ Tabs.prototype.activeContent = function (sheetName) {
     section.style.display = 'block';
     animated && section.classList.add('fadeIn');
 
-    Tabs.prototype.activeContent.former = section;
+    this._formerActiveContent = section;
 };
 
 

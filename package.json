@@ -1,33 +1,38 @@
 {
   "name": "spreadsheet",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "A JavaScript spreedsheet designer based on Handsontable.",
   "main": "gulpfile.js",
   "scripts": {
     "test": "gulp test"
   },
   "keywords": [
+    "excel",
     "spreedsheet",
     "handsontable"
   ],
-  "author": "zhangq",
+  "author": "zhangqiang",
   "license": "MIT",
   "devDependencies": {
-    "babel-cli": "^6.14.0",
     "babel-preset-es2015": "^6.14.0",
-    "babel-preset-es2016": "^6.16.0",
     "babelify": "^7.3.0",
     "browserify": "^13.1.0",
     "gulp": "^3.9.1",
-    "gulp-babel": "^6.1.2",
+    "gulp-concat": "^2.6.0",
     "gulp-header": "^1.8.8",
+    "gulp-rename": "^1.2.2",
     "gulp-replace": "^0.5.4",
     "gulp-uglify": "^2.0.0",
-    "gulp-util": "^3.0.7",
     "vinyl-source-stream": "^1.1.0"
   },
   "dependencies": {
-    "formulajs": "1.0.8",
-    "handsontable": "0.28.3"
+    "formulajs": "1.0.8"
+  },
+  "vendors": {
+    "handsontable": "0.28.3",
+    "moment": "2.13.0",
+    "numbro": "1.8.0",
+    "pikaday": "1.4.0",
+    "zeroclipboard": "2.2.0"
   }
 }

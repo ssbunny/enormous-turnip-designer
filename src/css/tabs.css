@@ -38,6 +38,20 @@
     display: block;
     float: left;
     position: relative;
+
+}
+
+.ssd-tabs .ssd-tabs-nav .ssd-tabs-ul .ssd-tabs-li span {
+    max-width: 200px;
+    display: inline-block;
+    text-overflow: ellipsis;
+    overflow: hidden
+}
+
+.ssd-tabs .ssd-tabs-nav .add-tab a span {
+    font-weight: bolder;
+    font-size: 14px;
+    cursor: pointer;
 }
 
 .ssd-tabs .ssd-tabs-nav .ssd-tabs-li.current {

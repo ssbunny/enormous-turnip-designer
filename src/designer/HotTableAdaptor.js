@@ -61,6 +61,7 @@ HotTableAdaptor._preference = {
     className: 'ssd-handsontable',
 
     xFormulas: true,
+    XPersistent: true,
 
     contextMenu: {}
 };

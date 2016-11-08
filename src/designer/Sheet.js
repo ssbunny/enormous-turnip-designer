@@ -203,7 +203,7 @@ class Sheet extends Emitter {
         return {
             name: this.getName(),
             selection: this.getSelection(),
-            data: data,
+            data: data.length ? data : []._,
             rowHeights: heights,
             colWidths: widths,
             mergeCells: mergeCells,

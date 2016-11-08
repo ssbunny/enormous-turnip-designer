@@ -47,6 +47,20 @@ export function upperCase(str) {
 }
 
 
+/**
+ * 生成一个长度为 16 的随机字符串
+ * @returns {*}
+ */
+export function randomString() {
+    function s4() {
+        return Math.floor((1 + Math.random()) * 0x10000)
+            .toString(16)
+            .substring(1);
+    }
+    return s4() + s4() + s4() + s4();
+}
+
+
 // ------------------------------------- mixed
 
 /**

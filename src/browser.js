@@ -1,16 +1,27 @@
-import {xPlugins} from './plugins/package.js';
-import {globalSettings, defaultSettings} from './settings.js';
-import SpreadSheet from './core.js';
+import {globalSettings, defaultSettings} from './settings';
+import SpreadSheet from './core';
+import polyfill from './polyfill';
+import {Plugin, registerPlugin} from './plugins/Plugin';
+import Persistent from './plugins/persistent/Persistent';
+
 
 SpreadSheet.globalSettings = globalSettings;
 SpreadSheet.defaultSettings = defaultSettings;
-SpreadSheet.xPlugins = xPlugins;
 SpreadSheet.version = '@@_version_@@';
 
 
-// 浏览器环境下的全局变量名。
-window.SpreadSheet = SpreadSheet;
+SpreadSheet.plugins = {
+    Plugin: Plugin,
+    registerPlugin: registerPlugin
+};
 
+// 内置插件
+registerPlugin('persistent', Persistent);
+
+
+// 浏览器环境下的全局变量名。
+window.BrickSpreadSheet = SpreadSheet;
+polyfill(window);
 
 // TODO 提供更改全局变量名的方法，以防止全局变量冲突。
 

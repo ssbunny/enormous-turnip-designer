@@ -1,108 +1,22 @@
 {
   "workbook": {
-    "activeSheet": "工作ee表1",
+    "activeSheet": "工作表1",
     "sheets": [
       {
-        "name": "工作ee表1",
+        "name": "工作表1",
         "selection": {
-          "row": 1,
-          "col": 2,
-          "endRow": 1,
-          "endCol": 2
+          "row": 0,
+          "col": 0,
+          "endRow": 0,
+          "endCol": 0
         },
-        "data": [
-          [
-            "",
-            null,
-            "=B2+B3",
-            null,
-            null,
-            null
-          ],
-          [
-            "",
-            "1",
-            null,
-            "se",
-            null,
-            null
-          ],
-          [
-            null,
-            "2",
-            null,
-            null,
-            "ef",
-            null
-          ],
-          [
-            null,
-            "3",
-            null,
-            null,
-            null,
-            null
-          ],
-          [
-            null,
-            null,
-            null,
-            "3",
-            null,
-            "ef"
-          ],
-          [
-            null,
-            null,
-            null,
-            null,
-            null,
-            null
-          ],
-          [
-            null,
-            null,
-            null,
-            null,
-            null,
-            null
-          ],
-          [
-            null,
-            null,
-            null,
-            null,
-            null,
-            "sdf"
-          ]
-        ],
-        "rowHeights": [
-          24,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ],
-        "colWidths": [
-          50,
-          50,
-          50,
-          50,
-          50,
-          50
-        ],
-        "mergeCells": [
-          {
-            "row": 1,
-            "col": 4,
-            "rowspan": 2,
-            "colspan": 3
-          }
-        ]
+        "data": [],
+        "rowHeights": [],
+        "colWidths": [],
+        "mergeCells": false,
+        "cellMetas": []
       }
     ]
-  }
+  },
+  "id": "brick-ssd-1-7df1cc9e1f243056"
 }

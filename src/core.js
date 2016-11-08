@@ -1,6 +1,7 @@
-import Frame from './designer/Frame.js';
-import Workbook from './designer/Workbook.js';
-import {extend, emptyFunction} from './utils/common.js';
+import Frame from './designer/Frame';
+import Workbook from './designer/Workbook';
+import {extend, emptyFunction, randomString} from './utils/common';
+import {getAllPlugins, validatePlugin} from './plugins/Plugin';
 
 var AUTO_ID = 1;
 
@@ -17,13 +18,16 @@ function SpreadSheet(rootElement, userSettings) {
     this.rootElement = rootElement;
     this.getUserSettings(userSettings);
 
-    var settings = this.settings = {};
-    extend(settings, SpreadSheet.defaultSettings);
-    extend(settings, this.userSettings);
+    this.settings = {};
+    extend(this.settings, SpreadSheet.defaultSettings);
+    extend(this.settings, this.userSettings);
 
-    this.id = settings.id || this.getId();
-    this.frame = new Frame(this);
-    this.workbook = new Workbook(this, settings.workbook);
+    this.id = this.settings.id || this.getId();
+
+    this._initPlugin();
+    this.frame = new Frame(this, this.settings.frame);
+    this.workbook = new Workbook(this, this.settings.workbook);
+    this._enablePlugin();
 }
 
 export default SpreadSheet;
@@ -60,19 +64,26 @@ SpreadSheet.prototype.getSettings = function () {
 };
 
 SpreadSheet.prototype.getId = function () {
-    return this.id || SpreadSheet.globalSettings.idPrefix + AUTO_ID++;
+    // 不指定 id 时，尽量生成不可重复的 id（使用当前 iframe 自增变量配合随机字符串的方式）
+    return this.id || SpreadSheet.globalSettings.idPrefix + (AUTO_ID++) + '-' + randomString();
 };
 
 
 /**
  * 获取可交换的中间数据，用于数据提交、解析转换等。
- * @param {boolean} [oragin=false] - 为 `true` 时 获取原始 JavaScript 对象
+ * @param {boolean} [oragin=false] - 为 `true` 时获取原始 JavaScript 对象
  * @returns
  */
-SpreadSheet.prototype.getExchange = function (oragin = false) {
+SpreadSheet.prototype.getExchangeData = function (oragin = false) {
     var w = this.workbook._getExchange();
     var f = this.frame._getExchange(); // TODO frame
-    return oragin ? {workbook: w} : JSON.stringify({workbook: w});
+    var o = {
+        workbook: w,
+        frame: f,
+        id: this.getId()
+    };
+
+    return oragin ? o : JSON.stringify(o);
 };
 
 
@@ -91,4 +102,22 @@ SpreadSheet.prototype.getWorkbookInstance = function () {
  */
 SpreadSheet.prototype.getFrameInstance = function () {
     return this.frame;
+};
+
+
+SpreadSheet.prototype._initPlugin = function () {
+    this.plugins = new Map();
+    getAllPlugins().forEach(P => {
+        var p = new P(this);
+        validatePlugin(p);
+        this.plugins.set(p.__name__, p);
+    });
+};
+
+SpreadSheet.prototype._enablePlugin = function () {
+    this.plugins.forEach(p => {
+        if (p.isEnable()) {
+            p.enable();
+        }
+    });
 };

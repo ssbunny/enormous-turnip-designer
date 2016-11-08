@@ -27,6 +27,27 @@ export function innerHTML(element, content) {
 }
 
 /**
+ * 在指定节点后插入节点
+ * @param element
+ * @param content
+ */
+export function insertAfter(element, content) {
+    if (REG_HTML_CHARACTERS.test(content)) {
+        element.insertAdjacentHTML('afterend', content);
+    } else {
+        if (content.nodeType === 1) {
+            if (element.nextSibling) {
+                element.parentNode.insertBefore(content, element.nextSibling);
+            } else {
+                element.parentNode.appendChild(content);
+            }
+        } else {
+            // TODO
+        }
+    }
+}
+
+/**
  * 清空指定元素的所有子节点。
  *
  * @param element

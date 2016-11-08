@@ -31,6 +31,7 @@ class Workbook {
 
         this._initSettings(config);
         this.$$view = new Tabs(this);
+        this.$$view.appendAddButton();
 
         config.sheets.forEach(v => this.createSheet(v));
 
@@ -121,7 +122,7 @@ class Workbook {
         if (!this.$$autoSheetIndex) {
             this.$$autoSheetIndex = 0;
         }
-        return this.$$autoSheetIndex++; // 从 1 开始
+        return ++this.$$autoSheetIndex; // 从 1 开始
     }
 
     /**
@@ -131,9 +132,9 @@ class Workbook {
      */
     _getAutoSheetName() {
         const prefix = globalSettings.sheet.autoPrefix + ''; // 防止出现数字相加
-        var name = prefix + this.getAutoSheetIndex();
+        var name = prefix + this._getAutoSheetIndex();
         if (this.isSheetExist(name)) {
-            this._getAutoSheetName();
+            return this._getAutoSheetName();
         }
         return name;
     }
@@ -153,7 +154,7 @@ class Workbook {
     createSheet(config) {
         if (config) {  // 根据初始配置创建，name 不能为空
             this._validateSheetName(config.name);
-        } else { // TODO 用户操作创建，动态生成 name
+        } else { // 用户操作创建，动态生成 name
             config = {};
             config.name = this._getAutoSheetName();
         }

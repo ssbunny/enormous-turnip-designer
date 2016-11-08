@@ -70,14 +70,22 @@ class ConfigTranslator {
                         cell.col = cellMeta.col;
 
                         if (cellMeta.dataType) {
-                            for(var dt in cellMeta.dataType) {
-                                if(cellMeta.dataType.hasOwnProperty(dt)) {
+                            for (var dt in cellMeta.dataType) {
+                                if (cellMeta.dataType.hasOwnProperty(dt)) {
                                     cell[dt] = cellMeta.dataType[dt];
                                 }
                             }
                             cell.type = cellMeta.dataType.typeName;
                             delete cell.typeName;
                         }
+
+                        if (cellMeta.styles) {
+                            if (cellMeta.styles.alignments) {
+                                let c = cellMeta.styles.alignments.join(' ht');
+                                cell.className = cell.className ? (cell.className += ' ht' + c) : 'ht' + c;
+                            }
+                        }
+
                         settings.cell.push(cell);
                     }
                 }
@@ -90,19 +98,22 @@ class ConfigTranslator {
         if (s) {
             // hotTable 在有 data 的情况下只能显示有数据的行列，这对于设计器来说并不方便使用，
             // 故填充空数据以撑起表格至 initRows * initCols 的大小。
-            if (s.length < this.sheet.initRows) {
-                let formerCol = s.length;
-                s.length = this.sheet.initRows;
-                s.fill([], formerCol);
-            }
-            for (let i = 0; i < s.length; ++i) {
-                let row = s[i];
-                if (row.length < this.sheet.initCols) {
-                    let formerRow = row.length;
-                    row.length = this.sheet.initCols;
-                    row.fill('', formerRow);
-                }
-            }
+            //    if (s.length < this.sheet.initRows) {
+            //        let formerCol = s.length;
+            //        s.length = this.sheet.initRows;
+            //        s.fill([], formerCol);
+            //    }
+            //    for (let i = 0; i < s.length; ++i) {
+            //        let row = s[i];
+            //        if (row.length < this.sheet.initCols) {
+            //            let formerRow = row.length;
+            //            row.length = this.sheet.initCols;
+            //            row.fill('', formerRow);
+            //        }
+            //    }
+            settings.minRows = this.sheet.initRows;
+            settings.minCols = this.sheet.initCols;
+
             settings.data = s;
         }
     }

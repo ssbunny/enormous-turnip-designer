@@ -37,7 +37,9 @@ var defaultSettings = {
         sheets: [{
             name: '工作表1'
         }]
-    }
+    },
+
+    persistent: true
 
 };
 
