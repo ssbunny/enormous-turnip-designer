@@ -120,8 +120,23 @@ export var Coordinate = {
      * @returns {boolean}
      */
     isEqual: c_isEqual,
+
+    /**
+     * 判断坐标范围 r1 是否与 r2 存在交集。
+     * @returns {boolean}
+     */
     intersection: c_intersection,
+
+    /**
+     * 判断坐标范围 r1 是否是 r2 的子集。
+     * @returns {boolean}
+     */
     isSubset: c_set('sub'),
+
+    /**
+     * 判断坐标范围 r1 是否是 r2 的超集。
+     * @returns {boolean}
+     */
     isSuperset: c_set('sup')
 };
 

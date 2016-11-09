@@ -3,7 +3,7 @@ import {isEmptyValue, upperCase} from '../../utils/common.js';
 import {CaseInsensitiveMap} from '../../utils/dataStructure.js';
 import {stopImmediatePropagation} from '../../utils/eventHelper.js';
 import {globalSettings} from '../../settings.js';
-import {REGEXPS as regExp, WARNS} from '../../const';
+import {WARNS} from '../../i18n';
 
 const CLASS_CURRENT = 'current';
 const CLASS_TABS = 'ssd-tabs';
@@ -13,9 +13,9 @@ const CLASS_NAV = 'ssd-tabs-nav';
 const CLASS_UL = 'ssd-tabs-ul';
 const CLASS_LI = 'ssd-tabs-li';
 const CLASS_FX = 'ssd-tabs-fx';
-const NAV_HEIGHT = globalSettings.styles.navHeight;
 
-const animated = false; // TODO 做成配置项
+const animated = globalSettings.sheet.animated;
+const regExp = globalSettings.sheet.sheetName;
 
 /**
  * workbook 对应的视图，实际的 DOM 构成。
@@ -58,8 +58,8 @@ Tabs.prototype.initDOM = function () {
     this.TABS.appendChild(this.NAV);
     this.NAV.appendChild(this.UL);
 
-    // TODO 增加 sheet 页的 button
-    //innerHTML(this.UL, `<li><span></span></li>`);
+    // 增加 sheet 页的 button
+    this.appendAddButton();
 };
 
 /**
@@ -122,7 +122,9 @@ Tabs.prototype.appendAddButton = function () {
     this.UL.appendChild(li);
 
     li.addEventListener('click', function (event) {
-        that.workbook.createSheet();
+        // TODO 可增加的sheet数上限限制
+        var newSheet = that.workbook.createSheet();
+        newSheet.active();
     });
 };
 
@@ -165,7 +167,7 @@ Tabs.prototype._checkTabName = function (name1, name2) {
     if (isEmptyValue(name2)) {
         return WARNS.S1;
     }
-    if (regExp.sheetName.test(name2)) {
+    if (regExp.test(name2)) {
         return WARNS.S2;
     }
     // 改成其它已有的sheet名
@@ -258,7 +260,7 @@ Tabs.prototype.appendTable = function (hot, sheetName) {
     this._hotTables.set(sheetName, {
         container: hot,
         width: this.width,
-        height: () => this.height - NAV_HEIGHT
+        height: () => this.height - outerHeight(this.NAV)
     });
 };
 

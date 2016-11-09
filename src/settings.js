@@ -10,21 +10,30 @@ var globalSettings = {
         /**
          * 自动生成工作表名称时的前缀(工作表1, 工作表2...)
          */
-        autoPrefix: '工作表'
-    },
+        autoPrefix: '工作表',
 
-    styles: { // 定制主题时需要修改相应配置
         /**
-         * Sheet 页标签栏的高度
+         * sheet 名称中的非法字符。微软没有相关文档，以下是 Apache POI 的说明：
+         *
+         * Note that sheet name in Excel must not exceed 31 characters
+         * and must not contain any of the any of the following characters:
+         *    - 0x0000
+         *    - 0x0003
+         *    - colon (:)
+         *    - backslash (\)
+         *    - asterisk (*)
+         *    - question mark (?)
+         *    - forward slash (/)
+         *    - opening square bracket ([)
+         *    - closing square bracket (])
+         *
          */
-        // 为了提升渲染性能，无法根据实际高度计算获得此值，固预设。
-        navHeight: 30
+        sheetName: /[\\/\?\*:\[\]'"]/,
+
+        animated: false
     }
 
 };
-
-// TODO
-var lang = {};
 
 
 /**
@@ -43,4 +52,4 @@ var defaultSettings = {
 
 };
 
-export {globalSettings, defaultSettings, lang};
+export {globalSettings, defaultSettings};

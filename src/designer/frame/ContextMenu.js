@@ -1,3 +1,5 @@
+import {Coordinate} from '../../utils/common'
+
 /**
  * 电子表格右键菜单。
  */
@@ -89,10 +91,48 @@ ContextMenu.prototype._init = function () {
 
     this.register('hsep3', '---------');
 
+
+    let mergeCompare = function (type) {
+        var merged = this.getSettings().mergeCells;
+        if (merged && merged.length) {
+            for (let i = 0; i < merged.length; ++i) {
+                let {row, col, rowspan, colspan} = merged[i];
+                if (Coordinate[type](
+                        [row, col, row + rowspan - 1, col + colspan - 1],
+                        this.getSelected())) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    };
+
     this.register('q_merge_cells', {
-        name: '合并单元格'
+        name: '单元格合并',
+        disabled: function () {
+            var [r1, c1, r2, c2] = this.getSelected();
+            if (r1 === r2 && c1 === c2) {
+                return true;
+            }
+            return !mergeCompare.call(this, 'isEqual');
+        }
     }, function (sheet, start, end) {
         sheet.mergeCells(
+            start.row,
+            start.col,
+            end.row - start.row + 1,
+            end.col - start.col + 1
+        );
+    });
+
+
+    this.register('q_cancel_merge_cells', {
+        name: '取消单元格合并',
+        disabled: function () {
+            return mergeCompare.call(this, 'isSubset');
+        }
+    }, function (sheet, start, end) {
+        sheet.unMergeCells(
             start.row,
             start.col,
             end.row - start.row + 1,

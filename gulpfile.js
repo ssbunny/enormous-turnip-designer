@@ -39,12 +39,20 @@ var uglifyMangle = [
 // ------------------------------------------
 
 gulp.task('scripts', ['scripts-libs', 'scripts-core', 'scripts-optimized'], function () {
-    gulp.src(['dist/spreadsheet-libs.js', 'dist/spreadsheet-core.js'])
+    gulp.src(
+        [
+            'dist/separate/spreadsheet-libs.js',
+            'dist/separate/spreadsheet-core.js'
+        ])
         .pipe(concat('spreadsheet-all.js'))
-        .pipe(gulp.dest('dist'));
-    gulp.src(['dist/spreadsheet-libs-debug.js', 'dist/spreadsheet-core-debug.js'])
+        .pipe(gulp.dest('dist/separate'));
+    gulp.src(
+        [
+            'dist/separate/spreadsheet-libs-debug.js',
+            'dist/separate/spreadsheet-core-debug.js'
+        ])
         .pipe(concat('spreadsheet-all-debug.js'))
-        .pipe(gulp.dest('dist'));
+        .pipe(gulp.dest('dist/separate'));
 });
 
 
@@ -58,12 +66,13 @@ gulp.task('scripts-optimized', ['scripts-core-debug'], function () {
             'libs/numbro/languages/zh-CN.min.js',
             'libs/zeroclipboard/ZeroClipboard.js',
             'libs/handsontable.js',
-            'dist/spreadsheet-core-debug.js'
+            'dist/separate/spreadsheet-core-debug.js'
         ])
-        .pipe(concat('spreadsheet-optimized.js'))
+        .pipe(concat(`spreadsheet-${pkg.version}.js`))
         .pipe(uglify({
             mangle: {except: uglifyMangle}
         }))
+        .pipe(replace('@@_version_@@', pkg.version))
         .pipe(header(jsfileHeader, {pkg: pkg, date: buildDate}))
         .pipe(gulp.dest('dist'));
 });
@@ -72,37 +81,38 @@ gulp.task('scripts-optimized', ['scripts-core-debug'], function () {
 gulp.task('scripts-libs', function () {
     return gulp.src('libs/handsontable.full.js')
         .pipe(rename('spreadsheet-libs-debug.js'))
-        .pipe(gulp.dest('dist'))
+        .pipe(gulp.dest('dist/separate'))
         .pipe(rename('spreadsheet-libs.js'))
         .pipe(uglify({
             mangle: {except: uglifyMangle},
             preserveComments: 'license'
         }))
-        .pipe(gulp.dest('dist'));
+        .pipe(gulp.dest('dist/separate'));
 });
 
 
 gulp.task('scripts-core', ['scripts-core-debug'], function () {
-    return gulp.src('dist/spreadsheet-core-debug.js')
+    return gulp.src('dist/separate/spreadsheet-core-debug.js')
         .pipe(rename('spreadsheet-core.js'))
         .pipe(uglify({
             mangle: {except: uglifyMangle},
             preserveComments: 'license'
         }))
-        .pipe(gulp.dest('dist'));
+        .pipe(gulp.dest('dist/separate'));
 });
-
 
 gulp.task('scripts-core-debug', function () {
     return browserify({
         entries: 'src/browser.js',
-        debug: false
+        debug: true
     }).transform(babelify, {presets: ['es2015']})
         .bundle()
         .pipe(source('spreadsheet-core-debug.js'))
+        .pipe(replace('@@_version_@@', pkg.version))
         .pipe(header(jsfileHeader, {pkg: pkg, date: buildDate}))
-        .pipe(gulp.dest('dist'));
+        .pipe(gulp.dest('dist/separate'));
 });
 
 
-gulp.task('default', ['scripts-optimized']);
+
+gulp.task('default', ['scripts']);

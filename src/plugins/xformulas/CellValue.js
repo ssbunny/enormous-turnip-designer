@@ -1,6 +1,5 @@
 import BaseCell from './BaseCell';
 import {ERROR_REF} from './parser/error';
-import {XPluginError} from '../XPluginError';
 
 const STATE_OUT_OFF_DATE = 1;
 const STATE_COMPUTING = 2;
@@ -54,7 +53,7 @@ class CellValue extends BaseCell {
 
     setState(state) {
         if (states.indexOf(state) === -1) {
-            throw new XPluginError(`未知状态: ${state}`);
+            throw(`未知状态: ${state}`);
         }
         this.state = state;
     }

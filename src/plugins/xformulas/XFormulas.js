@@ -18,6 +18,8 @@
  *
  */
 
+// TODO 禁止公式循环引用 A1=B1, B1=A1
+
 import {
     isFormulaExpression,
     toUpperCaseFormula,
@@ -151,8 +153,12 @@ XFormulas.prototype.onSheetAfterRecalculate = function (cells) {
     const hot = this.hot;
 
     arrayEach(cells, ({row, column}) => {
-        hot.validateCell(hot.getDataAtCell(row, column), hot.getCellMeta(row, column), () => {
-        });
+        hot.validateCell(
+            hot.getDataAtCell(row, column),
+            hot.getCellMeta(row, column),
+            () => {
+            }
+        );
     });
     hot.render();
 };
@@ -247,7 +253,6 @@ XFormulas.prototype.onAfterLoadData = function () {
 
 XFormulas.prototype.getCellValue = function (row, column) {
     const cell = this.sheet.getCellAt(row, column);
-
     return cell ? (cell.getError() || cell.getValue()) : void 0;
 };
 

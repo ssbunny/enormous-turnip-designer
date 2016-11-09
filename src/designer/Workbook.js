@@ -4,8 +4,9 @@ import {SheetError} from './SheetError'
 import {CaseInsensitiveMap} from '../utils/dataStructure'
 import {upperCase} from '../utils/common'
 import {globalSettings} from '../settings'
-import {REGEXPS as regExp} from '../const'
 
+
+const regExp = globalSettings.sheet.sheetName;
 
 /**
  * 工作簿。一个 Workbook 包含一个或多个 Sheet .
@@ -31,7 +32,6 @@ class Workbook {
 
         this._initSettings(config);
         this.$$view = new Tabs(this);
-        this.$$view.appendAddButton();
 
         config.sheets.forEach(v => this.createSheet(v));
 
@@ -150,6 +150,7 @@ class Workbook {
     /**
      * 创建新的 sheet 页
      * @param {object} [config] - sheet 页的配置信息
+     * @returns {Sheet} 新创建的工作表
      */
     createSheet(config) {
         if (config) {  // 根据初始配置创建，name 不能为空
@@ -213,7 +214,7 @@ class Workbook {
             throw new SheetError('工作表的名称不能为空');
         }
         //  禁止一些特殊字符
-        if (regExp.sheetName.test(name)) {
+        if (regExp.test(name)) {
             throw new SheetError(`工作表 "${name}" 包含非法字符`);
         }
         if (this.isSheetExist(name, exactly)) {

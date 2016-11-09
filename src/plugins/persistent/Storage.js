@@ -31,6 +31,6 @@ class Storage {
 
 }
 
-Storage.PREFIX = '$$storage-';
+Storage.PREFIX = '$$brick!storage-';
 
 export {Storage};

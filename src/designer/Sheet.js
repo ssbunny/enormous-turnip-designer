@@ -195,6 +195,35 @@ class Sheet extends Emitter {
     }
 
 
+    /**
+     * 取消单元格合并
+     * @param {int} row - 起始行
+     * @param {int} col - 起始列
+     * @param {int} rowspan - 待合并的行数
+     * @param {int} colspan - 待合并的列数
+     */
+    unMergeCells(row, col, rowspan, colspan) {
+        var merged = this.handsontable.getSettings().mergeCells;
+        var mergeCells = [];
+        if (merged && merged.length) {
+            for (let i = 0; i < merged.length; ++i) {
+                if (Coordinate.isSubset([
+                        merged[i].row,
+                        merged[i].col,
+                        merged[i].row + merged[i].rowspan - 1,
+                        merged[i].col + merged[i].colspan - 1
+                    ], [row, col, row + rowspan - 1, col + colspan - 1])) {
+                    continue;
+                }
+                mergeCells.push(merged[i]);
+            }
+        }
+        this.handsontable.updateSettings({
+            mergeCells: mergeCells.length === 0 ? false : mergeCells
+        });
+    }
+
+
     _getExchange() {
         var {data, cells} = this._getDataMeta();
         var {heights, widths} = this._getSize();
@@ -213,8 +242,8 @@ class Sheet extends Emitter {
 
     _getSize() {
         var hot = this.handsontable;
-        var cols = hot.countCols() - hot.countEmptyCols(true);
-        var rows = hot.countRows() - hot.countEmptyRows(true);
+        var cols = Math.max(hot.countCols() - hot.countEmptyCols(true), 20);
+        var rows = Math.max(hot.countRows() - hot.countEmptyRows(true), 50);
         var heights = [];
         var widths = [];
 
@@ -223,10 +252,10 @@ class Sheet extends Emitter {
             if (i === 0 && !h) { // handsontable bug
                 h = 24;
             }
-            heights.push(h)
+            heights.push(h);
         }
         for (let i = 0; i < cols; ++i) {
-            widths.push(hot.getColWidth(i))
+            widths.push(hot.getColWidth(i));
         }
         return {heights, widths};
     }

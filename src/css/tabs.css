@@ -5,7 +5,8 @@
 .ssd-tabs {
     position: relative;
     overflow: hidden;
-    border: 1px solid #d3d3d3;
+    border-right: 1px solid #d3d3d3;
+    border-bottom: 1px solid #d3d3d3;
     font-size: 13px;
 }
 
@@ -15,6 +16,18 @@
     bottom: 0;
     right: 0;
     background-color: #EEE;
+}
+
+.ssd-tabs .ssd-tabs-nav:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: calc(100% + 40px);
+    height: -webkit-calc(100% + 40px);
+    height: -moz-calc(100% + 40px);
+    background-color: #d3d3d3;
+    width: 1px;
 }
 
 .ssd-tabs .ssd-tabs-content {

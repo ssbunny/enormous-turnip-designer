@@ -82,7 +82,6 @@ SpreadSheet.prototype.getExchangeData = function (oragin = false) {
         frame: f,
         id: this.getId()
     };
-
     return oragin ? o : JSON.stringify(o);
 };
 

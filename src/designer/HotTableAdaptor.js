@@ -28,7 +28,7 @@ class HotTableAdaptor extends Handsontable {
                 if (menuItems.has(key)) {
                     let item = menuItems.get(key);
                     if (item.handler) {
-                        item.handler.call(this, sheet, options.start, options.end);
+                        item.handler.call(this, sheet, options.start, options.end, options);
                     }
                 }
             };
@@ -61,7 +61,6 @@ HotTableAdaptor._preference = {
     className: 'ssd-handsontable',
 
     xFormulas: true,
-    XPersistent: true,
 
     contextMenu: {}
 };

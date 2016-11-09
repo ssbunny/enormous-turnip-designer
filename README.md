@@ -1,6 +1,6 @@
 # Anormous Turnip Designer
 
-一个基于 Handsontable 实现的 JavaScript 版本的 Excel 。
+一个 JavaScript 实现的类似 Excel 的电子表格。
 
 ## 兼容性
 
