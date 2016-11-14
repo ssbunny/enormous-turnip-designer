@@ -2,9 +2,8 @@ import {globalSettings, defaultSettings} from './settings';
 import SpreadSheet from './core';
 
 import polyfill from './polyfill';
-/*
-    import {XFormulas} from './plugins/xformulas/XFormulas';
-*/
+
+import {XFormulas} from './plugins/xformulas/XFormulas';
 
 import {Plugin, registerPlugin} from './plugins/Plugin';
 import Persistent from './plugins/persistent/Persistent';

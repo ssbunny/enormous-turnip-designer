@@ -4,6 +4,7 @@ var header = require('gulp-header');
 var replace = require('gulp-replace');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
+var minifyCss = require('gulp-minify-css');
 var babelify = require('babelify');
 var browserify = require('browserify');
 var source = require('vinyl-source-stream');
@@ -22,11 +23,11 @@ var jsfileHeader = ['/*!',
     ' * @license <%= pkg.license %>',
     ' * ',
     ' * Build on: <%= date %>',
-    ' * - handsontable version: <%= pkg.vendors.handsontable %>',
-    ' * - formulajs version: <%= pkg.dependencies.formulajs %>',
-    ' * - moment version: <%= pkg.vendors.moment %>',
-    ' * - numbro version: <%= pkg.vendors.numbro %>',
-    ' * - pikaday version: <%= pkg.vendors.pikaday %>',
+    ' * -  handsontable version: <%= pkg.vendors.handsontable %>',
+    ' * -     formulajs version: <%= pkg.dependencies.formulajs %>',
+    ' * -        moment version: <%= pkg.vendors.moment %>',
+    ' * -        numbro version: <%= pkg.vendors.numbro %>',
+    ' * -       pikaday version: <%= pkg.vendors.pikaday %>',
     ' * - zeroclipboard version: <%= pkg.vendors.zeroclipboard %>',
     ' */',
     ''].join('\n');
@@ -104,7 +105,7 @@ gulp.task('scripts-core', ['scripts-core-debug'], function () {
 gulp.task('scripts-core-debug', function () {
     return browserify({
         entries: 'src/browser.js',
-        debug: true
+        debug: false
     }).transform(babelify, {presets: ['es2015']})
         .bundle()
         .pipe(source('spreadsheet-core-debug.js'))
@@ -114,5 +115,16 @@ gulp.task('scripts-core-debug', function () {
 });
 
 
+gulp.task('styles', function () {
+    gulp.src(
+        [
+            'libs/handsontable.full.css',
+            'src/css/common.css',
+            'src/css/tabs.css'
+        ])
+        .pipe(concat(`spreadsheet-${pkg.version}.css`))
+        .pipe(minifyCss())
+        .pipe(gulp.dest('dist'));
+});
 
-gulp.task('default', ['scripts']);
+gulp.task('default', ['styles', 'scripts']);

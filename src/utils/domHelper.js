@@ -47,6 +47,19 @@ export function insertAfter(element, content) {
     }
 }
 
+
+export function closest(element, selector) {
+    var ret;
+    do {
+        element = element.parentNode;
+        if (!element || !element.ownerDocument || (ret = element.querySelector(selector))) {
+            break;
+        }
+    } while (element);
+
+    return ret;
+}
+
 /**
  * 清空指定元素的所有子节点。
  *

@@ -34783,7 +34783,7 @@ if (typeof exports !== "undefined") {
  * @author zhangqiang
  * @license MIT
  * 
- * Build on: "2016-11-09T08:34:24.737Z"
+ * Build on: "2016-11-14T08:44:08.929Z"
  * - handsontable version: 0.28.3
  * - formulajs version: 1.0.8
  * - moment version: 2.13.0
@@ -34792,6 +34792,16081 @@ if (typeof exports !== "undefined") {
  * - zeroclipboard version: 2.2.0
  */
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory(require("numeric"), require("numeral"), require("jStat"));
+	else if(typeof define === 'function' && define.amd)
+		define(["numeric", "numeral", "jStat"], factory);
+	else if(typeof exports === 'object')
+		exports["formulajs"] = factory(require("numeric"), require("numeral"), require("jStat"));
+	else
+		root["formulajs"] = factory(root["numeric"], root["numeral"], root["jStat"]);
+})(this, function(__WEBPACK_EXTERNAL_MODULE_3__, __WEBPACK_EXTERNAL_MODULE_8__, __WEBPACK_EXTERNAL_MODULE_9__) {
+return /******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId])
+/******/ 			return installedModules[moduleId].exports;
+
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			exports: {},
+/******/ 			id: moduleId,
+/******/ 			loaded: false
+/******/ 		};
+
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+
+/******/ 		// Flag the module as loaded
+/******/ 		module.loaded = true;
+
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+
+
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(0);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var categories = [
+	  __webpack_require__(1),
+	  __webpack_require__(15),
+	  __webpack_require__(12),
+	  __webpack_require__(16),
+	  __webpack_require__(2),
+	  __webpack_require__(7),
+	  __webpack_require__(14),
+	  __webpack_require__(17),
+	  __webpack_require__(11),
+	  __webpack_require__(18),
+	  __webpack_require__(6),
+	  __webpack_require__(10)
+	];
+
+	for (var c in categories) {
+	  var category = categories[c];
+	  for (var f in category) {
+	    exports[f] = exports[f] || category[f];
+	  }
+	}
+
+
+/***/ },
+/* 1 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var mathTrig = __webpack_require__(2);
+	var statistical = __webpack_require__(6);
+	var engineering = __webpack_require__(12);
+	var dateTime = __webpack_require__(14);
+
+	function set(fn, root) {
+	  if (root) {
+	    for (var i in root) {
+	      fn[i] = root[i];
+	    }
+	  }
+	  return fn;
+	}
+
+	exports.BETADIST = statistical.BETA.DIST;
+	exports.BETAINV = statistical.BETA.INV;
+	exports.BINOMDIST = statistical.BINOM.DIST;
+	exports.CEILING = exports.ISOCEILING = set(mathTrig.CEILING.MATH, mathTrig.CEILING);
+	exports.CEILINGMATH = mathTrig.CEILING.MATH;
+	exports.CEILINGPRECISE = mathTrig.CEILING.PRECISE;
+	exports.CHIDIST = statistical.CHISQ.DIST;
+	exports.CHIDISTRT = statistical.CHISQ.DIST.RT;
+	exports.CHIINV = statistical.CHISQ.INV;
+	exports.CHIINVRT = statistical.CHISQ.INV.RT;
+	exports.CHITEST = statistical.CHISQ.TEST;
+	exports.CONFIDENCE = set(statistical.CONFIDENCE.NORM, statistical.CONFIDENCE);
+	exports.COVAR = statistical.COVARIANCE.P;
+	exports.COVARIANCEP = statistical.COVARIANCE.P;
+	exports.COVARIANCES = statistical.COVARIANCE.S;
+	exports.CRITBINOM = statistical.BINOM.INV;
+	exports.EXPONDIST = statistical.EXPON.DIST;
+	exports.ERFCPRECISE = engineering.ERFC.PRECISE;
+	exports.ERFPRECISE = engineering.ERF.PRECISE;
+	exports.FDIST = statistical.F.DIST;
+	exports.FDISTRT = statistical.F.DIST.RT;
+	exports.FINVRT = statistical.F.INV.RT;
+	exports.FINV = statistical.F.INV;
+	exports.FLOOR = set(mathTrig.FLOOR.MATH, mathTrig.FLOOR);
+	exports.FLOORMATH = mathTrig.FLOOR.MATH;
+	exports.FLOORPRECISE = mathTrig.FLOOR.PRECISE;
+	exports.FTEST = statistical.F.TEST;
+	exports.GAMMADIST = statistical.GAMMA.DIST;
+	exports.GAMMAINV = statistical.GAMMA.INV;
+	exports.GAMMALNPRECISE = statistical.GAMMALN.PRECISE;
+	exports.HYPGEOMDIST = statistical.HYPGEOM.DIST;
+	exports.LOGINV = statistical.LOGNORM.INV;
+	exports.LOGNORMINV = statistical.LOGNORM.INV;
+	exports.LOGNORMDIST = statistical.LOGNORM.DIST;
+	exports.MODE = set(statistical.MODE.SNGL, statistical.MODE);
+	exports.MODEMULT = statistical.MODE.MULT;
+	exports.MODESNGL = statistical.MODE.SNGL;
+	exports.NEGBINOMDIST = statistical.NEGBINOM.DIST;
+	exports.NETWORKDAYSINTL = dateTime.NETWORKDAYS.INTL;
+	exports.NORMDIST = statistical.NORM.DIST;
+	exports.NORMINV = statistical.NORM.INV;
+	exports.NORMSDIST = statistical.NORM.S.DIST;
+	exports.NORMSINV = statistical.NORM.S.INV;
+	exports.PERCENTILE = set(statistical.PERCENTILE.EXC, statistical.PERCENTILE);
+	exports.PERCENTILEEXC = statistical.PERCENTILE.EXC;
+	exports.PERCENTILEINC = statistical.PERCENTILE.INC;
+	exports.PERCENTRANK = set(statistical.PERCENTRANK.INC, statistical.PERCENTRANK);
+	exports.PERCENTRANKEXC = statistical.PERCENTRANK.EXC;
+	exports.PERCENTRANKINC = statistical.PERCENTRANK.INC;
+	exports.POISSON = set(statistical.POISSON.DIST, statistical.POISSON);
+	exports.POISSONDIST = statistical.POISSON.DIST;
+	exports.QUARTILE = set(statistical.QUARTILE.INC, statistical.QUARTILE);
+	exports.QUARTILEEXC = statistical.QUARTILE.EXC;
+	exports.QUARTILEINC = statistical.QUARTILE.INC;
+	exports.RANK = set(statistical.RANK.EQ, statistical.RANK);
+	exports.RANKAVG = statistical.RANK.AVG;
+	exports.RANKEQ = statistical.RANK.EQ;
+	exports.SKEWP = statistical.SKEW.P;
+	exports.STDEV = set(statistical.STDEV.S, statistical.STDEV);
+	exports.STDEVP = statistical.STDEV.P;
+	exports.STDEVS = statistical.STDEV.S;
+	exports.TDIST = statistical.T.DIST;
+	exports.TDISTRT = statistical.T.DIST.RT;
+	exports.TINV = statistical.T.INV;
+	exports.TTEST = statistical.T.TEST;
+	exports.VAR = set(statistical.VAR.S, statistical.VAR);
+	exports.VARP = statistical.VAR.P;
+	exports.VARS = statistical.VAR.S;
+	exports.WEIBULL = set(statistical.WEIBULL.DIST, statistical.WEIBULL);
+	exports.WEIBULLDIST = statistical.WEIBULL.DIST;
+	exports.WORKDAYINTL = dateTime.WORKDAY.INTL;
+	exports.ZTEST = statistical.Z.TEST;
+
+
+/***/ },
+/* 2 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var numeric = __webpack_require__(3);
+	var utils = __webpack_require__(4);
+	var error = __webpack_require__(5);
+	var statistical = __webpack_require__(6);
+	var information = __webpack_require__(11);
+
+	exports.ABS = function(number) {
+	  number = utils.parseNumber(number);
+	  if (number instanceof Error) {
+	    return number;
+	  }
+	  return Math.abs(utils.parseNumber(number));
+	};
+
+	exports.ACOS = function(number) {
+	  number = utils.parseNumber(number);
+	  if (number instanceof Error) {
+	    return number;
+	  }
+	  return Math.acos(number);
+	};
+
+	exports.ACOSH = function(number) {
+	  number = utils.parseNumber(number);
+	  if (number instanceof Error) {
+	    return number;
+	  }
+	  return Math.log(number + Math.sqrt(number * number - 1));
+	};
+
+	exports.ACOT = function(number) {
+	  number = utils.parseNumber(number);
+	  if (number instanceof Error) {
+	    return number;
+	  }
+	  return Math.atan(1 / number);
+	};
+
+	exports.ACOTH = function(number) {
+	  number = utils.parseNumber(number);
+	  if (number instanceof Error) {
+	    return number;
+	  }
+	  return 0.5 * Math.log((number + 1) / (number - 1));
+	};
+
+	//TODO: use options
+	exports.AGGREGATE = function(function_num, options, ref1, ref2) {
+	  function_num = utils.parseNumber(function_num);
+	  options = utils.parseNumber(function_num);
+	  if (utils.anyIsError(function_num, options)) {
+	    return error.value;
+	  }
+	  switch (function_num) {
+	    case 1:
+	      return statistical.AVERAGE(ref1);
+	    case 2:
+	      return statistical.COUNT(ref1);
+	    case 3:
+	      return statistical.COUNTA(ref1);
+	    case 4:
+	      return statistical.MAX(ref1);
+	    case 5:
+	      return statistical.MIN(ref1);
+	    case 6:
+	      return exports.PRODUCT(ref1);
+	    case 7:
+	      return statistical.STDEV.S(ref1);
+	    case 8:
+	      return statistical.STDEV.P(ref1);
+	    case 9:
+	      return exports.SUM(ref1);
+	    case 10:
+	      return statistical.VAR.S(ref1);
+	    case 11:
+	      return statistical.VAR.P(ref1);
+	    case 12:
+	      return statistical.MEDIAN(ref1);
+	    case 13:
+	      return statistical.MODE.SNGL(ref1);
+	    case 14:
+	      return statistical.LARGE(ref1, ref2);
+	    case 15:
+	      return statistical.SMALL(ref1, ref2);
+	    case 16:
+	      return statistical.PERCENTILE.INC(ref1, ref2);
+	    case 17:
+	      return statistical.QUARTILE.INC(ref1, ref2);
+	    case 18:
+	      return statistical.PERCENTILE.EXC(ref1, ref2);
+	    case 19:
+	      return statistical.QUARTILE.EXC(ref1, ref2);
+	  }
+	};
+
+	exports.ARABIC = function(text) {
+	  // Credits: Rafa? Kukawski
+	  if (!/^M*(?:D?C{0,3}|C[MD])(?:L?X{0,3}|X[CL])(?:V?I{0,3}|I[XV])$/.test(text)) {
+	    return error.value;
+	  }
+	  var r = 0;
+	  text.replace(/[MDLV]|C[MD]?|X[CL]?|I[XV]?/g, function(i) {
+	    r += {
+	      M: 1000,
+	      CM: 900,
+	      D: 500,
+	      CD: 400,
+	      C: 100,
+	      XC: 90,
+	      L: 50,
+	      XL: 40,
+	      X: 10,
+	      IX: 9,
+	      V: 5,
+	      IV: 4,
+	      I: 1
+	    }[i];
+	  });
+	  return r;
+	};
+
+	exports.ASIN = function(number) {
+	  number = utils.parseNumber(number);
+	  if (number instanceof Error) {
+	    return number;
+	  }
+	  return Math.asin(number);
+	};
+
+	exports.ASINH = function(number) {
+	  number = utils.parseNumber(number);
+	  if (number instanceof Error) {
+	    return number;
+	  }
+	  return Math.log(number + Math.sqrt(number * number + 1));
+	};
+
+	exports.ATAN = function(number) {
+	  number = utils.parseNumber(number);
+	  if (number instanceof Error) {
+	    return number;
+	  }
+	  return Math.atan(number);
+	};
+
+	exports.ATAN2 = function(number_x, number_y) {
+	  number_x = utils.parseNumber(number_x);
+	  number_y = utils.parseNumber(number_y);
+	  if (utils.anyIsError(number_x, number_y)) {
+	    return error.value;
+	  }
+	  return Math.atan2(number_x, number_y);
+	};
+
+	exports.ATANH = function(number) {
+	  number = utils.parseNumber(number);
+	  if (number instanceof Error) {
+	    return number;
+	  }
+	  return Math.log((1 + number) / (1 - number)) / 2;
+	};
+
+	exports.BASE = function(number, radix, min_length) {
+	  min_length = min_length || 0;
+
+	  number = utils.parseNumber(number);
+	  radix = utils.parseNumber(radix);
+	  min_length = utils.parseNumber(min_length);
+	  if (utils.anyIsError(number, radix, min_length)) {
+	    return error.value;
+	  }
+	  min_length = (min_length === undefined) ? 0 : min_length;
+	  var result = number.toString(radix);
+	  return new Array(Math.max(min_length + 1 - result.length, 0)).join('0') + result;
+	};
+
+	exports.CEILING = function(number, significance, mode) {
+	  significance = (significance === undefined) ? 1 : Math.abs(significance);
+	  mode = mode || 0;
+
+	  number = utils.parseNumber(number);
+	  significance = utils.parseNumber(significance);
+	  mode = utils.parseNumber(mode);
+	  if (utils.anyIsError(number, significance, mode)) {
+	    return error.value;
+	  }
+	  if (significance === 0) {
+	    return 0;
+	  }
+	  var precision = -Math.floor(Math.log(significance) / Math.log(10));
+	  if (number >= 0) {
+	    return exports.ROUND(Math.ceil(number / significance) * significance, precision);
+	  } else {
+	    if (mode === 0) {
+	      return -exports.ROUND(Math.floor(Math.abs(number) / significance) * significance, precision);
+	    } else {
+	      return -exports.ROUND(Math.ceil(Math.abs(number) / significance) * significance, precision);
+	    }
+	  }
+	};
+
+	exports.CEILING.MATH = exports.CEILING;
+
+	exports.CEILING.PRECISE = exports.CEILING;
+
+	exports.COMBIN = function(number, number_chosen) {
+	  number = utils.parseNumber(number);
+	  number_chosen = utils.parseNumber(number_chosen);
+	  if (utils.anyIsError(number, number_chosen)) {
+	    return error.value;
+	  }
+	  return exports.FACT(number) / (exports.FACT(number_chosen) * exports.FACT(number - number_chosen));
+	};
+
+	exports.COMBINA = function(number, number_chosen) {
+	  number = utils.parseNumber(number);
+	  number_chosen = utils.parseNumber(number_chosen);
+	  if (utils.anyIsError(number, number_chosen)) {
+	    return error.value;
+	  }
+	  return (number === 0 && number_chosen === 0) ? 1 : exports.COMBIN(number + number_chosen - 1, number - 1);
+	};
+
+	exports.COS = function(number) {
+	  number = utils.parseNumber(number);
+	  if (number instanceof Error) {
+	    return number;
+	  }
+	  return Math.cos(number);
+	};
+
+	exports.COSH = function(number) {
+	  number = utils.parseNumber(number);
+	  if (number instanceof Error) {
+	    return number;
+	  }
+	  return (Math.exp(number) + Math.exp(-number)) / 2;
+	};
+
+	exports.COT = function(number) {
+	  number = utils.parseNumber(number);
+	  if (number instanceof Error) {
+	    return number;
+	  }
+	  return 1 / Math.tan(number);
+	};
+
+	exports.COTH = function(number) {
+	  number = utils.parseNumber(number);
+	  if (number instanceof Error) {
+	    return number;
+	  }
+	  var e2 = Math.exp(2 * number);
+	  return (e2 + 1) / (e2 - 1);
+	};
+
+	exports.CSC = function(number) {
+	  number = utils.parseNumber(number);
+	  if (number instanceof Error) {
+	    return number;
+	  }
+	  return 1 / Math.sin(number);
+	};
+
+	exports.CSCH = function(number) {
+	  number = utils.parseNumber(number);
+	  if (number instanceof Error) {
+	    return number;
+	  }
+	  return 2 / (Math.exp(number) - Math.exp(-number));
+	};
+
+	exports.DECIMAL = function(number, radix) {
+	  if (arguments.length < 1) {
+	    return error.value;
+	  }
+
+
+	  return parseInt(number, radix);
+	};
+
+	exports.DEGREES = function(number) {
+	  number = utils.parseNumber(number);
+	  if (number instanceof Error) {
+	    return number;
+	  }
+	  return number * 180 / Math.PI;
+	};
+
+	exports.EVEN = function(number) {
+	  number = utils.parseNumber(number);
+	  if (number instanceof Error) {
+	    return number;
+	  }
+	  return exports.CEILING(number, -2, -1);
+	};
+
+	exports.EXP = Math.exp;
+
+	var MEMOIZED_FACT = [];
+	exports.FACT = function(number) {
+	  number = utils.parseNumber(number);
+	  if (number instanceof Error) {
+	    return number;
+	  }
+	  var n = Math.floor(number);
+	  if (n === 0 || n === 1) {
+	    return 1;
+	  } else if (MEMOIZED_FACT[n] > 0) {
+	    return MEMOIZED_FACT[n];
+	  } else {
+	    MEMOIZED_FACT[n] = exports.FACT(n - 1) * n;
+	    return MEMOIZED_FACT[n];
+	  }
+	};
+
+	exports.FACTDOUBLE = function(number) {
+	  number = utils.parseNumber(number);
+	  if (number instanceof Error) {
+	    return number;
+	  }
+	  var n = Math.floor(number);
+	  if (n <= 0) {
+	    return 1;
+	  } else {
+	    return n * exports.FACTDOUBLE(n - 2);
+	  }
+	};
+
+	exports.FLOOR = function(number, significance) {
+	  number = utils.parseNumber(number);
+	  significance = utils.parseNumber(significance);
+	  if (utils.anyIsError(number, significance)) {
+	    return error.value;
+	  }
+	  if (significance === 0) {
+	    return 0;
+	  }
+
+	  if (!(number > 0 && significance > 0) && !(number < 0 && significance < 0)) {
+	    return error.num;
+	  }
+
+	  significance = Math.abs(significance);
+	  var precision = -Math.floor(Math.log(significance) / Math.log(10));
+	  if (number >= 0) {
+	    return exports.ROUND(Math.floor(number / significance) * significance, precision);
+	  } else {
+	    return -exports.ROUND(Math.ceil(Math.abs(number) / significance), precision);
+	  }
+	};
+
+	//TODO: Verify
+	exports.FLOOR.MATH = function(number, significance, mode) {
+	  significance = (significance === undefined) ? 1 : significance;
+	  mode = (mode === undefined) ? 0 : mode;
+
+	  number = utils.parseNumber(number);
+	  significance = utils.parseNumber(significance);
+	  mode = utils.parseNumber(mode);
+	  if (utils.anyIsError(number, significance, mode)) {
+	    return error.value;
+	  }
+	  if (significance === 0) {
+	    return 0;
+	  }
+
+	  significance = significance ? Math.abs(significance) : 1;
+	  var precision = -Math.floor(Math.log(significance) / Math.log(10));
+	  if (number >= 0) {
+	    return exports.ROUND(Math.floor(number / significance) * significance, precision);
+	  } else if (mode === 0 || mode === undefined) {
+	    return -exports.ROUND(Math.ceil(Math.abs(number) / significance) * significance, precision);
+	  }
+	  return -exports.ROUND(Math.floor(Math.abs(number) / significance) * significance, precision);
+	};
+
+	// Deprecated
+	exports.FLOOR.PRECISE = exports.FLOOR.MATH;
+
+	// adapted http://rosettacode.org/wiki/Greatest_common_divisor#JavaScript
+	exports.GCD = function() {
+	  var range = utils.parseNumberArray(utils.flatten(arguments));
+	  if (range instanceof Error) {
+	    return range;
+	  }
+	  var n = range.length;
+	  var r0 = range[0];
+	  var x = r0 < 0 ? -r0 : r0;
+	  for (var i = 1; i < n; i++) {
+	    var ri = range[i];
+	    var y = ri < 0 ? -ri : ri;
+	    while (x && y) {
+	      if (x > y) {
+	        x %= y;
+	      } else {
+	        y %= x;
+	      }
+	    }
+	    x += y;
+	  }
+	  return x;
+	};
+
+
+	exports.INT = function(number) {
+	  number = utils.parseNumber(number);
+	  if (number instanceof Error) {
+	    return number;
+	  }
+	  return Math.floor(number);
+	};
+
+	//TODO: verify
+	exports.ISO = {
+	  CEILING: exports.CEILING
+	};
+
+	exports.LCM = function() {
+	  // Credits: Jonas Raoni Soares Silva
+	  var o = utils.parseNumberArray(utils.flatten(arguments));
+	  if (o instanceof Error) {
+	    return o;
+	  }
+	  for (var i, j, n, d, r = 1;
+	    (n = o.pop()) !== undefined;) {
+	    while (n > 1) {
+	      if (n % 2) {
+	        for (i = 3, j = Math.floor(Math.sqrt(n)); i <= j && n % i; i += 2) {
+	          //empty
+	        }
+	        d = (i <= j) ? i : n;
+	      } else {
+	        d = 2;
+	      }
+	      for (n /= d, r *= d, i = o.length; i;
+	        (o[--i] % d) === 0 && (o[i] /= d) === 1 && o.splice(i, 1)) {
+	        //empty
+	      }
+	    }
+	  }
+	  return r;
+	};
+
+	exports.LN = function(number) {
+	  number = utils.parseNumber(number);
+	  if (number instanceof Error) {
+	    return number;
+	  }
+	  return Math.log(number);
+	};
+
+	exports.LOG = function(number, base) {
+	  number = utils.parseNumber(number);
+	  base = utils.parseNumber(base);
+	  if (utils.anyIsError(number, base)) {
+	    return error.value;
+	  }
+	  base = (base === undefined) ? 10 : base;
+	  return Math.log(number) / Math.log(base);
+	};
+
+	exports.LOG10 = function(number) {
+	  number = utils.parseNumber(number);
+	  if (number instanceof Error) {
+	    return number;
+	  }
+	  return Math.log(number) / Math.log(10);
+	};
+
+	exports.MDETERM = function(matrix) {
+	  matrix = utils.parseMatrix(matrix);
+	  if (matrix instanceof Error) {
+	    return matrix;
+	  }
+	  return numeric.det(matrix);
+	};
+
+	exports.MINVERSE = function(matrix) {
+	  matrix = utils.parseMatrix(matrix);
+	  if (matrix instanceof Error) {
+	    return matrix;
+	  }
+	  return numeric.inv(matrix);
+	};
+
+	exports.MMULT = function(matrix1, matrix2) {
+	  matrix1 = utils.parseMatrix(matrix1);
+	  matrix2 = utils.parseMatrix(matrix2);
+	  if (utils.anyIsError(matrix1, matrix2)) {
+	    return error.value;
+	  }
+	  return numeric.dot(matrix1, matrix2);
+	};
+
+	exports.MOD = function(dividend, divisor) {
+	  dividend = utils.parseNumber(dividend);
+	  divisor = utils.parseNumber(divisor);
+	  if (utils.anyIsError(dividend, divisor)) {
+	    return error.value;
+	  }
+	  if (divisor === 0) {
+	    return error.div0;
+	  }
+	  var modulus = Math.abs(dividend % divisor);
+	  return (divisor > 0) ? modulus : -modulus;
+	};
+
+	  exports.MROUND = function(number, multiple) {
+	  number = utils.parseNumber(number);
+	  multiple = utils.parseNumber(multiple);
+	  if (utils.anyIsError(number, multiple)) {
+	    return error.value;
+	  }
+	  if (number * multiple < 0) {
+	    return error.num;
+	  }
+
+	  return Math.round(number / multiple) * multiple;
+	};
+
+	exports.MULTINOMIAL = function() {
+	  var args = utils.parseNumberArray(utils.flatten(arguments));
+	  if (args instanceof Error) {
+	    return args;
+	  }
+	  var sum = 0;
+	  var divisor = 1;
+	  for (var i = 0; i < args.length; i++) {
+	    sum += args[i];
+	    divisor *= exports.FACT(args[i]);
+	  }
+	  return exports.FACT(sum) / divisor;
+	};
+
+	exports.MUNIT = function(dimension) {
+	  dimension = utils.parseNumber(dimension);
+	  if (dimension instanceof Error) {
+	    return dimension;
+	  }
+	  return numeric.identity(dimension);
+	};
+
+	exports.ODD = function(number) {
+	  number = utils.parseNumber(number);
+	  if (number instanceof Error) {
+	    return number;
+	  }
+	  var temp = Math.ceil(Math.abs(number));
+	  temp = (temp & 1) ? temp : temp + 1;
+	  return (number > 0) ? temp : -temp;
+	};
+
+	exports.PI = function() {
+	  return Math.PI;
+	};
+
+	exports.POWER = function(number, power) {
+	  number = utils.parseNumber(number);
+	  power = utils.parseNumber(power);
+	  if (utils.anyIsError(number, power)) {
+	    return error.value;
+	  }
+	  var result = Math.pow(number, power);
+	  if (isNaN(result)) {
+	    return error.num;
+	  }
+
+	  return result;
+	};
+
+	exports.PRODUCT = function() {
+	  var args = utils.parseNumberArray(utils.flatten(arguments));
+	  if (args instanceof Error) {
+	    return args;
+	  }
+	  var result = 1;
+	  for (var i = 0; i < args.length; i++) {
+	    result *= args[i];
+	  }
+	  return result;
+	};
+
+	exports.QUOTIENT = function(numerator, denominator) {
+	  numerator = utils.parseNumber(numerator);
+	  denominator = utils.parseNumber(denominator);
+	  if (utils.anyIsError(numerator, denominator)) {
+	    return error.value;
+	  }
+	  return parseInt(numerator / denominator, 10);
+	};
+
+	exports.RADIANS = function(number) {
+	  number = utils.parseNumber(number);
+	  if (number instanceof Error) {
+	    return number;
+	  }
+	  return number * Math.PI / 180;
+	};
+
+	exports.RAND = function() {
+	  return Math.random();
+	};
+
+	exports.RANDBETWEEN = function(bottom, top) {
+	  bottom = utils.parseNumber(bottom);
+	  top = utils.parseNumber(top);
+	  if (utils.anyIsError(bottom, top)) {
+	    return error.value;
+	  }
+	  // Creative Commons Attribution 3.0 License
+	  // Copyright (c) 2012 eqcode
+	  return bottom + Math.ceil((top - bottom + 1) * Math.random()) - 1;
+	};
+
+	// TODO
+	exports.ROMAN = function(number) {
+	  number = utils.parseNumber(number);
+	  if (number instanceof Error) {
+	    return number;
+	  }
+	  // The MIT License
+	  // Copyright (c) 2008 Steven Levithan
+	  var digits = String(number).split('');
+	  var key = ['', 'C', 'CC', 'CCC', 'CD', 'D', 'DC', 'DCC', 'DCCC', 'CM', '', 'X', 'XX', 'XXX', 'XL', 'L', 'LX', 'LXX', 'LXXX', 'XC', '', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
+	  var roman = '';
+	  var i = 3;
+	  while (i--) {
+	    roman = (key[+digits.pop() + (i * 10)] || '') + roman;
+	  }
+	  return new Array(+digits.join('') + 1).join('M') + roman;
+	};
+
+	exports.ROUND = function(number, digits) {
+	  number = utils.parseNumber(number);
+	  digits = utils.parseNumber(digits);
+	  if (utils.anyIsError(number, digits)) {
+	    return error.value;
+	  }
+	  return Math.round(number * Math.pow(10, digits)) / Math.pow(10, digits);
+	};
+
+	exports.ROUNDDOWN = function(number, digits) {
+	  number = utils.parseNumber(number);
+	  digits = utils.parseNumber(digits);
+	  if (utils.anyIsError(number, digits)) {
+	    return error.value;
+	  }
+	  var sign = (number > 0) ? 1 : -1;
+	  return sign * (Math.floor(Math.abs(number) * Math.pow(10, digits))) / Math.pow(10, digits);
+	};
+
+	exports.ROUNDUP = function(number, digits) {
+	  number = utils.parseNumber(number);
+	  digits = utils.parseNumber(digits);
+	  if (utils.anyIsError(number, digits)) {
+	    return error.value;
+	  }
+	  var sign = (number > 0) ? 1 : -1;
+	  return sign * (Math.ceil(Math.abs(number) * Math.pow(10, digits))) / Math.pow(10, digits);
+	};
+
+	exports.SEC = function(number) {
+	  number = utils.parseNumber(number);
+	  if (number instanceof Error) {
+	    return number;
+	  }
+	  return 1 / Math.cos(number);
+	};
+
+	exports.SECH = function(number) {
+	  number = utils.parseNumber(number);
+	  if (number instanceof Error) {
+	    return number;
+	  }
+	  return 2 / (Math.exp(number) + Math.exp(-number));
+	};
+
+	exports.SERIESSUM = function(x, n, m, coefficients) {
+	  x = utils.parseNumber(x);
+	  n = utils.parseNumber(n);
+	  m = utils.parseNumber(m);
+	  coefficients = utils.parseNumberArray(coefficients);
+	  if (utils.anyIsError(x, n, m, coefficients)) {
+	    return error.value;
+	  }
+	  var result = coefficients[0] * Math.pow(x, n);
+	  for (var i = 1; i < coefficients.length; i++) {
+	    result += coefficients[i] * Math.pow(x, n + i * m);
+	  }
+	  return result;
+	};
+
+	exports.SIGN = function(number) {
+	  number = utils.parseNumber(number);
+	  if (number instanceof Error) {
+	    return number;
+	  }
+	  if (number < 0) {
+	    return -1;
+	  } else if (number === 0) {
+	    return 0;
+	  } else {
+	    return 1;
+	  }
+	};
+
+	exports.SIN = function(number) {
+	  number = utils.parseNumber(number);
+	  if (number instanceof Error) {
+	    return number;
+	  }
+	  return Math.sin(number);
+	};
+
+	  exports.SINH = function(number) {
+	    number = utils.parseNumber(number);
+	    if (number instanceof Error) {
+	      return number;
+	    }
+	    return (Math.exp(number) - Math.exp(-number)) / 2;
+	  };
+
+	  exports.SQRT = function(number) {
+	    number = utils.parseNumber(number);
+	    if (number instanceof Error) {
+	      return number;
+	    }
+	    if (number < 0) {
+	      return error.num;
+	    }
+	    return Math.sqrt(number);
+	  };
+
+	  exports.SQRTPI = function(number) {
+	    number = utils.parseNumber(number);
+	    if (number instanceof Error) {
+	      return number;
+	    }
+	    return Math.sqrt(number * Math.PI);
+	  };
+
+	exports.SUBTOTAL = function(function_code, ref1) {
+	  function_code = utils.parseNumber(function_code);
+	  if (function_code instanceof Error) {
+	    return function_code;
+	  }
+	  switch (function_code) {
+	    case 1:
+	      return statistical.AVERAGE(ref1);
+	    case 2:
+	      return statistical.COUNT(ref1);
+	    case 3:
+	      return statistical.COUNTA(ref1);
+	    case 4:
+	      return statistical.MAX(ref1);
+	    case 5:
+	      return statistical.MIN(ref1);
+	    case 6:
+	      return exports.PRODUCT(ref1);
+	    case 7:
+	      return statistical.STDEV.S(ref1);
+	    case 8:
+	      return statistical.STDEV.P(ref1);
+	    case 9:
+	      return exports.SUM(ref1);
+	    case 10:
+	      return statistical.VAR.S(ref1);
+	    case 11:
+	      return statistical.VAR.P(ref1);
+	      // no hidden values for us
+	    case 101:
+	      return statistical.AVERAGE(ref1);
+	    case 102:
+	      return statistical.COUNT(ref1);
+	    case 103:
+	      return statistical.COUNTA(ref1);
+	    case 104:
+	      return statistical.MAX(ref1);
+	    case 105:
+	      return statistical.MIN(ref1);
+	    case 106:
+	      return exports.PRODUCT(ref1);
+	    case 107:
+	      return statistical.STDEV.S(ref1);
+	    case 108:
+	      return statistical.STDEV.P(ref1);
+	    case 109:
+	      return exports.SUM(ref1);
+	    case 110:
+	      return statistical.VAR.S(ref1);
+	    case 111:
+	      return statistical.VAR.P(ref1);
+
+	  }
+	};
+
+	exports.ADD = function (num1, num2) {
+	  if (arguments.length !== 2) {
+	    return error.na;
+	  }
+
+	  num1 = utils.parseNumber(num1);
+	  num2 = utils.parseNumber(num2);
+	  if (utils.anyIsError(num1, num2)) {
+	    return error.value;
+	  }
+
+	  return num1 + num2;
+	};
+
+	exports.MINUS = function (num1, num2) {
+	  if (arguments.length !== 2) {
+	    return error.na;
+	  }
+
+	  num1 = utils.parseNumber(num1);
+	  num2 = utils.parseNumber(num2);
+	  if (utils.anyIsError(num1, num2)) {
+	    return error.value;
+	  }
+
+	  return num1 - num2;
+	};
+
+	exports.DIVIDE = function (dividend, divisor) {
+	  if (arguments.length !== 2) {
+	    return error.na;
+	  }
+
+	  dividend = utils.parseNumber(dividend);
+	  divisor = utils.parseNumber(divisor);
+	  if (utils.anyIsError(dividend, divisor)) {
+	    return error.value;
+	  }
+
+	  if (divisor === 0) {
+	    return error.div0;
+	  }
+
+	  return dividend / divisor;
+	};
+
+	exports.MULTIPLY = function (factor1, factor2) {
+	  if (arguments.length !== 2) {
+	    return error.na;
+	  }
+
+	  factor1 = utils.parseNumber(factor1);
+	  factor2 = utils.parseNumber(factor2);
+	  if (utils.anyIsError(factor1, factor2)) {
+	    return error.value;
+	  }
+
+	  return factor1 * factor2;
+	};
+
+	exports.GTE = function (num1, num2) {
+	  if (arguments.length !== 2) {
+	    return error.na;
+	  }
+
+	  num1 = utils.parseNumber(num1);
+	  num2 = utils.parseNumber(num2);
+	  if (utils.anyIsError(num1, num2)) {
+	    return error.error;
+	  }
+
+	  return num1 >= num2;
+	};
+
+	exports.LT = function (num1, num2) {
+	  if (arguments.length !== 2) {
+	    return error.na;
+	  }
+
+	  num1 = utils.parseNumber(num1);
+	  num2 = utils.parseNumber(num2);
+	  if (utils.anyIsError(num1, num2)) {
+	    return error.error;
+	  }
+
+	  return num1 < num2;
+	};
+
+
+	exports.LTE = function (num1, num2) {
+	  if (arguments.length !== 2) {
+	    return error.na;
+	  }
+
+	  num1 = utils.parseNumber(num1);
+	  num2 = utils.parseNumber(num2);
+	  if (utils.anyIsError(num1, num2)) {
+	    return error.error;
+	  }
+
+	  return num1 <= num2;
+	};
+
+	exports.EQ = function (value1, value2) {
+	  if (arguments.length !== 2) {
+	    return error.na;
+	  }
+
+	  return value1 === value2;
+	};
+
+	exports.NE = function (value1, value2) {
+	  if (arguments.length !== 2) {
+	    return error.na;
+	  }
+
+	  return value1 !== value2;
+	};
+
+	exports.POW = function (base, exponent) {
+	  if (arguments.length !== 2) {
+	    return error.na;
+	  }
+
+	  base = utils.parseNumber(base);
+	  exponent = utils.parseNumber(exponent);
+	  if (utils.anyIsError(base, exponent)) {
+	    return error.error;
+	  }
+
+	  return exports.POWER(base, exponent);
+	};
+
+	exports.SUM = function() {
+	  var result = 0;
+	  var argsKeys = Object.keys(arguments);
+	  for (var i = 0; i < argsKeys.length; ++i) {
+	    var elt = arguments[argsKeys[i]];
+	    if (typeof elt === 'number') {
+	      result += elt;
+	    } else if (typeof elt === 'string') {
+	      var parsed = parseFloat(elt);
+	      !isNaN(parsed) && (result += parsed);
+	    } else if (Array.isArray(elt)) {
+	      result += exports.SUM.apply(null, elt);
+	    }
+	  }
+	  return result;
+	};
+
+	exports.SUMIF = function(range, criteria) {
+	  range = utils.parseNumberArray(utils.flatten(range));
+	  if (range instanceof Error) {
+	    return range;
+	  }
+	  var result = 0;
+	  for (var i = 0; i < range.length; i++) {
+	    result += (eval(range[i] + criteria)) ? range[i] : 0; // jshint ignore:line
+	  }
+	  return result;
+	};
+
+	exports.SUMIFS = function() {
+	  var args = utils.argsToArray(arguments);
+	  var range = utils.parseNumberArray(utils.flatten(args.shift()));
+	  if (range instanceof Error) {
+	    return range;
+	  }
+	  var criteria = args;
+
+	  var n_range_elements = range.length;
+	  var n_criterias = criteria.length;
+
+	  var result = 0;
+	  for (var i = 0; i < n_range_elements; i++) {
+	    var el = range[i];
+	    var condition = '';
+	    for (var c = 0; c < n_criterias; c++) {
+	      condition += el + criteria[c];
+	      if (c !== n_criterias - 1) {
+	        condition += '&&';
+	      }
+	    }
+	    if (eval(condition)) { // jshint ignore:line
+	      result += el;
+	    }
+	  }
+	  return result;
+	};
+
+	exports.SUMPRODUCT = function() {
+	  if (!arguments || arguments.length === 0) {
+	    return error.value;
+	  }
+	  var arrays = arguments.length + 1;
+	  var result = 0;
+	  var product;
+	  var k;
+	  var _i;
+	  var _ij;
+	  for (var i = 0; i < arguments[0].length; i++) {
+	    if (!(arguments[0][i] instanceof Array)) {
+	      product = 1;
+	      for (k = 1; k < arrays; k++) {
+	        _i = utils.parseNumber(arguments[k - 1][i]);
+	        if (_i instanceof Error) {
+	          return _i;
+	        }
+	        product *= _i;
+	      }
+	      result += product;
+	    } else {
+	      for (var j = 0; j < arguments[0][i].length; j++) {
+	        product = 1;
+	        for (k = 1; k < arrays; k++) {
+	          _ij = utils.parseNumber(arguments[k - 1][i][j]);
+	          if (_ij instanceof Error) {
+	            return _ij;
+	          }
+	          product *= _ij;
+	        }
+	        result += product;
+	      }
+	    }
+	  }
+	  return result;
+	};
+
+	exports.SUMSQ = function() {
+	  var numbers = utils.parseNumberArray(utils.flatten(arguments));
+	  if (numbers instanceof Error) {
+	    return numbers;
+	  }
+	  var result = 0;
+	  var length = numbers.length;
+	  for (var i = 0; i < length; i++) {
+	    result += (information.ISNUMBER(numbers[i])) ? numbers[i] * numbers[i] : 0;
+	  }
+	  return result;
+	};
+
+	exports.SUMX2MY2 = function(array_x, array_y) {
+	  array_x = utils.parseNumberArray(utils.flatten(array_x));
+	  array_y = utils.parseNumberArray(utils.flatten(array_y));
+	  if (utils.anyIsError(array_x, array_y)) {
+	    return error.value;
+	  }
+	  var result = 0;
+	  for (var i = 0; i < array_x.length; i++) {
+	    result += array_x[i] * array_x[i] - array_y[i] * array_y[i];
+	  }
+	  return result;
+	};
+
+	exports.SUMX2PY2 = function(array_x, array_y) {
+	  array_x = utils.parseNumberArray(utils.flatten(array_x));
+	  array_y = utils.parseNumberArray(utils.flatten(array_y));
+	  if (utils.anyIsError(array_x, array_y)) {
+	    return error.value;
+	  }
+	  var result = 0;
+	  array_x = utils.parseNumberArray(utils.flatten(array_x));
+	  array_y = utils.parseNumberArray(utils.flatten(array_y));
+	  for (var i = 0; i < array_x.length; i++) {
+	    result += array_x[i] * array_x[i] + array_y[i] * array_y[i];
+	  }
+	  return result;
+	};
+
+	exports.SUMXMY2 = function(array_x, array_y) {
+	  array_x = utils.parseNumberArray(utils.flatten(array_x));
+	  array_y = utils.parseNumberArray(utils.flatten(array_y));
+	  if (utils.anyIsError(array_x, array_y)) {
+	    return error.value;
+	  }
+	  var result = 0;
+	  array_x = utils.flatten(array_x);
+	  array_y = utils.flatten(array_y);
+	  for (var i = 0; i < array_x.length; i++) {
+	    result += Math.pow(array_x[i] - array_y[i], 2);
+	  }
+	  return result;
+	};
+
+	exports.TAN = function(number) {
+	  number = utils.parseNumber(number);
+	  if (number instanceof Error) {
+	    return number;
+	  }
+	  return Math.tan(number);
+	};
+
+	exports.TANH = function(number) {
+	  number = utils.parseNumber(number);
+	  if (number instanceof Error) {
+	    return number;
+	  }
+	  var e2 = Math.exp(2 * number);
+	  return (e2 - 1) / (e2 + 1);
+	};
+
+	exports.TRUNC = function(number, digits) {
+	  digits = (digits === undefined) ? 0 : digits;
+	  number = utils.parseNumber(number);
+	  digits = utils.parseNumber(digits);
+	  if (utils.anyIsError(number, digits)) {
+	    return error.value;
+	  }
+	  var sign = (number > 0) ? 1 : -1;
+	  return sign * (Math.floor(Math.abs(number) * Math.pow(10, digits))) / Math.pow(10, digits);
+	};
+
+/***/ },
+/* 3 */
+/***/ function(module, exports) {
+
+	module.exports = __WEBPACK_EXTERNAL_MODULE_3__;
+
+/***/ },
+/* 4 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var error = __webpack_require__(5);
+
+	function flattenShallow(array) {
+	  if (!array || !array.reduce) { return array; }
+	  return array.reduce(function(a, b) {
+	    var aIsArray = Array.isArray(a);
+	    var bIsArray = Array.isArray(b);
+	    if (aIsArray && bIsArray ) {
+	      return a.concat(b);
+	    }
+	    if (aIsArray) {
+	      a.push(b);
+	      return a;
+	    }
+	    if (bIsArray) {
+	      return [a].concat(b);
+	    }
+	    return [a, b];
+	  });
+	}
+
+	function isFlat(array) {
+	  if (!array) { return false; }
+	  for (var i = 0; i < array.length; ++i) {
+	    if (Array.isArray(array[i])) {
+	      return false;
+	    }
+	  }
+	  return true;
+	}
+
+	exports.flatten = function() {
+	  var result = exports.argsToArray.apply(null, arguments);
+	  while (!isFlat(result)) {
+	    result = flattenShallow(result);
+	  }
+	  return result;
+	};
+
+	exports.argsToArray = function(args) {
+	  return Array.prototype.slice.call(args, 0);
+	};
+
+	exports.numbers = function() {
+	  var possibleNumbers = this.flatten.apply(null, arguments);
+	  return possibleNumbers.filter(function(el) {
+	    return typeof el === 'number';
+	  });
+	};
+
+	exports.cleanFloat = function(number) {
+	  var power = 1e14;
+	  return Math.round(number * power) / power;
+	};
+
+	exports.parseBool = function(bool) {
+	  if (typeof bool === 'boolean') {
+	    return bool;
+	  }
+
+	  if (bool instanceof Error) {
+	    return bool;
+	  }
+
+	  if (typeof bool === 'number') {
+	    return bool !== 0;
+	  }
+
+	  if (typeof bool === 'string') {
+	    var up = bool.toUpperCase();
+	    if (up === 'TRUE') {
+	      return true;
+	    }
+
+	    if (up === 'FALSE') {
+	      return false;
+	    }
+	  }
+
+	  if (bool instanceof Date && !isNaN(bool)) {
+	    return true;
+	  }
+
+	  return error.value;
+	};
+
+	exports.parseNumber = function(string) {
+	  if (string === undefined || string === '') {
+	    return error.value;
+	  }
+	  if (!isNaN(string)) {
+	    return parseFloat(string);
+	  }
+	  return error.value;
+	};
+
+	exports.parseNumberArray = function(arr) {
+	  var len;
+	  if (!arr || (len = arr.length) === 0) {
+	    return error.value;
+	  }
+	  var parsed;
+	  while (len--) {
+	    parsed = exports.parseNumber(arr[len]);
+	    if (parsed === error.value) {
+	      return parsed;
+	    }
+	    arr[len] = parsed;
+	  }
+	  return arr;
+	};
+
+	exports.parseMatrix = function(matrix) {
+	  var n;
+	  if (!matrix || (n = matrix.length) === 0) {
+	    return error.value;
+	  }
+	  var pnarr;
+	  for (var i = 0; i < matrix.length; i++) {
+	    pnarr = exports.parseNumberArray(matrix[i]);
+	    matrix[i] = pnarr;
+	    if (pnarr instanceof Error) {
+	      return pnarr;
+	    }
+	  }
+	  return matrix;
+	};
+
+	var d1900 = new Date(1900, 0, 1);
+	exports.parseDate = function(date) {
+	  if (!isNaN(date)) {
+	    if (date instanceof Date) {
+	      return new Date(date);
+	    }
+	    var d = parseInt(date, 10);
+	    if (d < 0) {
+	      return error.num;
+	    }
+	    if (d <= 60) {
+	      return new Date(d1900.getTime() + (d - 1) * 86400000);
+	    }
+	    return new Date(d1900.getTime() + (d - 2) * 86400000);
+	  }
+	  if (typeof date === 'string') {
+	    date = new Date(date);
+	    if (!isNaN(date)) {
+	      return date;
+	    }
+	  }
+	  return error.value;
+	};
+
+	exports.parseDateArray = function(arr) {
+	  var len = arr.length;
+	  var parsed;
+	  while (len--) {
+	    parsed = this.parseDate(arr[len]);
+	    if (parsed === error.value) {
+	      return parsed;
+	    }
+	    arr[len] = parsed;
+	  }
+	  return arr;
+	};
+
+	exports.anyIsError = function() {
+	  var n = arguments.length;
+	  while (n--) {
+	    if (arguments[n] instanceof Error) {
+	      return true;
+	    }
+	  }
+	  return false;
+	};
+
+	exports.arrayValuesToNumbers = function(arr) {
+	  var n = arr.length;
+	  var el;
+	  while (n--) {
+	    el = arr[n];
+	    if (typeof el === 'number') {
+	      continue;
+	    }
+	    if (el === true) {
+	      arr[n] = 1;
+	      continue;
+	    }
+	    if (el === false) {
+	      arr[n] = 0;
+	      continue;
+	    }
+	    if (typeof el === 'string') {
+	      var number = this.parseNumber(el);
+	      if (number instanceof Error) {
+	        arr[n] = 0;
+	      } else {
+	        arr[n] = number;
+	      }
+	    }
+	  }
+	  return arr;
+	};
+
+	exports.rest = function(array, idx) {
+	  idx = idx || 1;
+	  if (!array || typeof array.slice !== 'function') {
+	    return array;
+	  }
+	  return array.slice(idx);
+	};
+
+	exports.initial = function(array, idx) {
+	  idx = idx || 1;
+	  if (!array || typeof array.slice !== 'function') {
+	    return array;
+	  }
+	  return array.slice(0, array.length - idx);
+	};
+
+/***/ },
+/* 5 */
+/***/ function(module, exports) {
+
+	exports.nil = new Error('#NULL!');
+	exports.div0 = new Error('#DIV/0!');
+	exports.value = new Error('#VALUE?');
+	exports.ref = new Error('#REF!');
+	exports.name = new Error('#NAME?');
+	exports.num = new Error('#NUM!');
+	exports.na = new Error('#N/A');
+	exports.error = new Error('#ERROR!');
+	exports.data = new Error('#GETTING_DATA');
+
+
+/***/ },
+/* 6 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var mathTrig = __webpack_require__(2);
+	var text = __webpack_require__(7);
+	var jStat = __webpack_require__(9).jStat;
+	var utils = __webpack_require__(4);
+	var error = __webpack_require__(5);
+	var misc = __webpack_require__(10);
+
+	var SQRT2PI = 2.5066282746310002;
+
+	exports.AVEDEV = function() {
+	  var range = utils.parseNumberArray(utils.flatten(arguments));
+	  if (range instanceof Error) {
+	    return range;
+	  }
+	  return jStat.sum(jStat(range).subtract(jStat.mean(range)).abs()[0]) / range.length;
+	};
+
+	exports.AVERAGE = function() {
+	  var range = utils.numbers(utils.flatten(arguments));
+	  var n = range.length;
+	  var sum = 0;
+	  var count = 0;
+	  for (var i = 0; i < n; i++) {
+	    sum += range[i];
+	    count += 1;
+	  }
+	  return sum / count;
+	};
+
+	exports.AVERAGEA = function() {
+	  var range = utils.flatten(arguments);
+	  var n = range.length;
+	  var sum = 0;
+	  var count = 0;
+	  for (var i = 0; i < n; i++) {
+	    var el = range[i];
+	    if (typeof el === 'number') {
+	      sum += el;
+	    }
+	    if (el === true) {
+	      sum++;
+	    }
+	    if (el !== null) {
+	      count++;
+	    }
+	  }
+	  return sum / count;
+	};
+
+	exports.AVERAGEIF = function(range, criteria, average_range) {
+	  average_range = average_range || range;
+	  range = utils.flatten(range);
+	  average_range = utils.parseNumberArray(utils.flatten(average_range));
+	  if (average_range instanceof Error) {
+	    return average_range;
+	  }
+	  var average_count = 0;
+	  var result = 0;
+	  for (var i = 0; i < range.length; i++) {
+	    if (eval(range[i] + criteria)) { // jshint ignore:line
+	      result += average_range[i];
+	      average_count++;
+	    }
+	  }
+	  return result / average_count;
+	};
+
+	exports.AVERAGEIFS = function() {
+	  // Does not work with multi dimensional ranges yet!
+	  //http://office.microsoft.com/en-001/excel-help/averageifs-function-HA010047493.aspx
+	  var args = utils.argsToArray(arguments);
+	  var criteria = (args.length - 1) / 2;
+	  var range = utils.flatten(args[0]);
+	  var count = 0;
+	  var result = 0;
+	  for (var i = 0; i < range.length; i++) {
+	    var condition = '';
+	    for (var j = 0; j < criteria; j++) {
+	      condition += args[2 * j + 1][i] + args[2 * j + 2];
+	      if (j !== criteria - 1) {
+	        condition += '&&';
+	      }
+	    }
+	    if (eval(condition)) { // jshint ignore:line
+	      result += range[i];
+	      count++;
+	    }
+	  }
+
+	  var average = result / count;
+	  if (isNaN(average)) {
+	    return 0;
+	  } else {
+	    return average;
+	  }
+	};
+
+	exports.BETA = {};
+
+	exports.BETA.DIST = function(x, alpha, beta, cumulative, A, B) {
+	  if (arguments.length < 4) {
+	    return error.value;
+	  }
+
+	  A = (A === undefined) ? 0 : A;
+	  B = (B === undefined) ? 1 : B;
+
+	  x = utils.parseNumber(x);
+	  alpha = utils.parseNumber(alpha);
+	  beta = utils.parseNumber(beta);
+	  A = utils.parseNumber(A);
+	  B = utils.parseNumber(B);
+	  if (utils.anyIsError(x, alpha, beta, A, B)) {
+	    return error.value;
+	  }
+
+	  x = (x - A) / (B - A);
+	  return (cumulative) ? jStat.beta.cdf(x, alpha, beta) : jStat.beta.pdf(x, alpha, beta);
+	};
+
+	exports.BETA.INV = function(probability, alpha, beta, A, B) {
+	  A = (A === undefined) ? 0 : A;
+	  B = (B === undefined) ? 1 : B;
+
+	  probability = utils.parseNumber(probability);
+	  alpha = utils.parseNumber(alpha);
+	  beta = utils.parseNumber(beta);
+	  A = utils.parseNumber(A);
+	  B = utils.parseNumber(B);
+	  if (utils.anyIsError(probability, alpha, beta, A, B)) {
+	    return error.value;
+	  }
+
+	  return jStat.beta.inv(probability, alpha, beta) * (B - A) + A;
+	};
+
+	exports.BINOM = {};
+
+	exports.BINOM.DIST = function(successes, trials, probability, cumulative) {
+	  successes = utils.parseNumber(successes);
+	  trials = utils.parseNumber(trials);
+	  probability = utils.parseNumber(probability);
+	  cumulative = utils.parseNumber(cumulative);
+	  if (utils.anyIsError(successes, trials, probability, cumulative)) {
+	    return error.value;
+	  }
+	  return (cumulative) ? jStat.binomial.cdf(successes, trials, probability) : jStat.binomial.pdf(successes, trials, probability);
+	};
+
+	exports.BINOM.DIST.RANGE = function(trials, probability, successes, successes2) {
+	  successes2 = (successes2 === undefined) ? successes : successes2;
+
+	  trials = utils.parseNumber(trials);
+	  probability = utils.parseNumber(probability);
+	  successes = utils.parseNumber(successes);
+	  successes2 = utils.parseNumber(successes2);
+	  if (utils.anyIsError(trials, probability, successes, successes2)) {
+	    return error.value;
+	  }
+
+	  var result = 0;
+	  for (var i = successes; i <= successes2; i++) {
+	    result += mathTrig.COMBIN(trials, i) * Math.pow(probability, i) * Math.pow(1 - probability, trials - i);
+	  }
+	  return result;
+	};
+
+	exports.BINOM.INV = function(trials, probability, alpha) {
+	  trials = utils.parseNumber(trials);
+	  probability = utils.parseNumber(probability);
+	  alpha = utils.parseNumber(alpha);
+	  if (utils.anyIsError(trials, probability, alpha)) {
+	    return error.value;
+	  }
+
+	  var x = 0;
+	  while (x <= trials) {
+	    if (jStat.binomial.cdf(x, trials, probability) >= alpha) {
+	      return x;
+	    }
+	    x++;
+	  }
+	};
+
+	exports.CHISQ = {};
+
+	exports.CHISQ.DIST = function(x, k, cumulative) {
+	  x = utils.parseNumber(x);
+	  k = utils.parseNumber(k);
+	  if (utils.anyIsError(x, k)) {
+	    return error.value;
+	  }
+
+	  return (cumulative) ? jStat.chisquare.cdf(x, k) : jStat.chisquare.pdf(x, k);
+	};
+
+	exports.CHISQ.DIST.RT = function(x, k) {
+	  if (!x | !k) {
+	    return error.na;
+	  }
+
+	  if (x < 1 || k > Math.pow(10, 10)) {
+	    return error.num;
+	  }
+
+	  if ((typeof x !== 'number') || (typeof k !== 'number')) {
+	    return error.value;
+	  }
+
+	  return 1 -  jStat.chisquare.cdf(x, k);
+	};
+
+	exports.CHISQ.INV = function(probability, k) {
+	  probability = utils.parseNumber(probability);
+	  k = utils.parseNumber(k);
+	  if (utils.anyIsError(probability, k)) {
+	    return error.value;
+	  }
+	  return jStat.chisquare.inv(probability, k);
+	};
+
+	exports.CHISQ.INV.RT = function(p, k) {
+	  if (!p | !k) {
+	    return error.na;
+	  }
+
+	  if (p < 0 || p > 1 || k < 1 || k > Math.pow(10, 10)) {
+	    return error.num;
+	  }
+
+	  if ((typeof p !== 'number') || (typeof k !== 'number')) {
+	    return error.value;
+	  }
+
+	  return jStat.chisquare.inv(1.0 - p, k);
+	};
+
+	exports.CHISQ.TEST = function(observed, expected) {
+	  if (arguments.length !== 2) {
+	    return error.na;
+	  }
+
+	  if ((!(observed instanceof Array)) || (!(expected instanceof Array))) {
+	    return error.value;
+	  }
+
+	  if (observed.length !== expected.length) {
+	    return error.value;
+	  }
+
+	  if (observed[0] && expected[0] &&
+	      observed[0].length !== expected[0].length) {
+	    return error.value;
+	  }
+
+	  var row = observed.length;
+	  var tmp, i, j;
+
+	  // Convert single-dimension array into two-dimension array
+	  for (i = 0; i < row; i ++) {
+	    if (!(observed[i] instanceof Array)) {
+	      tmp = observed[i];
+	      observed[i] = [];
+	      observed[i].push(tmp);
+	    }
+	    if (!(expected[i] instanceof Array)) {
+	      tmp = expected[i];
+	      expected[i] = [];
+	      expected[i].push(tmp);
+	    }
+	  }
+
+	  var col = observed[0].length;
+	  var dof = (col === 1) ? row-1 : (row-1)*(col-1);
+	  var xsqr = 0;
+	  var Pi =Math.PI;
+
+	  for (i = 0; i < row; i ++) {
+	    for (j = 0; j < col; j ++) {
+	      xsqr += Math.pow((observed[i][j] - expected[i][j]), 2) / expected[i][j];
+	    }
+	  }
+
+	  // Get independency by X square and its degree of freedom
+	  function ChiSq(xsqr, dof) {
+	    var p = Math.exp(-0.5 * xsqr);
+	    if((dof%2) === 1) {
+	      p = p * Math.sqrt(2 * xsqr/Pi);
+	    }
+	    var k = dof;
+	    while(k >= 2) {
+	      p = p * xsqr/k;
+	      k = k - 2;
+	    }
+	    var t = p;
+	    var a = dof;
+	    while (t > 0.0000000001*p) {
+	      a = a + 2;
+	      t = t * xsqr/a;
+	      p = p + t;
+	    }
+	    return 1-p;
+	  }
+
+	  return Math.round(ChiSq(xsqr, dof) * 1000000) / 1000000;
+	};
+
+	exports.COLUMN = function(matrix, index) {
+	  if (arguments.length !== 2) {
+	    return error.na;
+	  }
+
+	  if (index < 0) {
+	    return error.num;
+	  }
+
+	  if (!(matrix instanceof Array) || (typeof index !== 'number')) {
+	    return error.value;
+	  }
+
+	  if (matrix.length === 0) {
+	    return undefined;
+	  }
+
+	  return jStat.col(matrix, index);
+	};
+
+	exports.COLUMNS = function(matrix) {
+	  if (arguments.length !== 1) {
+	    return error.na;
+	  }
+
+	  if (!(matrix instanceof Array)) {
+	    return error.value;
+	  }
+
+	  if (matrix.length === 0) {
+	    return 0;
+	  }
+
+	  return jStat.cols(matrix);
+	};
+
+	exports.CONFIDENCE = {};
+
+	exports.CONFIDENCE.NORM = function(alpha, sd, n) {
+	  alpha = utils.parseNumber(alpha);
+	  sd = utils.parseNumber(sd);
+	  n = utils.parseNumber(n);
+	  if (utils.anyIsError(alpha, sd, n)) {
+	    return error.value;
+	  }
+	  return jStat.normalci(1, alpha, sd, n)[1] - 1;
+	};
+
+	exports.CONFIDENCE.T = function(alpha, sd, n) {
+	  alpha = utils.parseNumber(alpha);
+	  sd = utils.parseNumber(sd);
+	  n = utils.parseNumber(n);
+	  if (utils.anyIsError(alpha, sd, n)) {
+	    return error.value;
+	  }
+	  return jStat.tci(1, alpha, sd, n)[1] - 1;
+	};
+
+	exports.CORREL = function(array1, array2) {
+	  array1 = utils.parseNumberArray(utils.flatten(array1));
+	  array2 = utils.parseNumberArray(utils.flatten(array2));
+	  if (utils.anyIsError(array1, array2)) {
+	    return error.value;
+	  }
+	  return jStat.corrcoeff(array1, array2);
+	};
+
+	exports.COUNT = function() {
+	  return utils.numbers(utils.flatten(arguments)).length;
+	};
+
+	exports.COUNTA = function() {
+	  var range = utils.flatten(arguments);
+	  return range.length - exports.COUNTBLANK(range);
+	};
+
+	exports.COUNTIN = function (range, value) {
+	  var result = 0;
+	  for (var i = 0; i < range.length; i++) {
+	    if (range[i] === value) {
+	      result++;
+	    }
+	  }
+	  return result;
+	};
+
+
+	exports.COUNTBLANK = function() {
+	  var range = utils.flatten(arguments);
+	  var blanks = 0;
+	  var element;
+	  for (var i = 0; i < range.length; i++) {
+	    element = range[i];
+	    if (element === null || element === '') {
+	      blanks++;
+	    }
+	  }
+	  return blanks;
+	};
+
+	exports.COUNTIF = function(range, criteria) {
+	  range = utils.flatten(range);
+	  if (!/[<>=!]/.test(criteria)) {
+	    criteria = '=="' + criteria + '"';
+	  }
+	  var matches = 0;
+	  for (var i = 0; i < range.length; i++) {
+	    if (typeof range[i] !== 'string') {
+	      if (eval(range[i] + criteria)) { // jshint ignore:line
+	        matches++;
+	      }
+	    } else {
+	      if (eval('"' + range[i] + '"' + criteria)) { // jshint ignore:line
+	        matches++;
+	      }
+	    }
+	  }
+	  return matches;
+	};
+
+	exports.COUNTIFS = function() {
+	  var args = utils.argsToArray(arguments);
+	  var results = new Array(utils.flatten(args[0]).length);
+	  for (var i = 0; i < results.length; i++) {
+	    results[i] = true;
+	  }
+	  for (i = 0; i < args.length; i += 2) {
+	    var range = utils.flatten(args[i]);
+	    var criteria = args[i + 1];
+	    if (!/[<>=!]/.test(criteria)) {
+	      criteria = '=="' + criteria + '"';
+	    }
+	    for (var j = 0; j < range.length; j++) {
+	      if (typeof range[j] !== 'string') {
+	        results[j] = results[j] && eval(range[j] + criteria); // jshint ignore:line
+	      } else {
+	        results[j] = results[j] && eval('"' + range[j] + '"' + criteria); // jshint ignore:line
+	      }
+	    }
+	  }
+	  var result = 0;
+	  for (i = 0; i < results.length; i++) {
+	    if (results[i]) {
+	      result++;
+	    }
+	  }
+	  return result;
+	};
+
+	exports.COUNTUNIQUE = function () {
+	  return misc.UNIQUE.apply(null, utils.flatten(arguments)).length;
+	};
+
+	exports.COVARIANCE = {};
+
+	exports.COVARIANCE.P = function(array1, array2) {
+	  array1 = utils.parseNumberArray(utils.flatten(array1));
+	  array2 = utils.parseNumberArray(utils.flatten(array2));
+	  if (utils.anyIsError(array1, array2)) {
+	    return error.value;
+	  }
+	  var mean1 = jStat.mean(array1);
+	  var mean2 = jStat.mean(array2);
+	  var result = 0;
+	  var n = array1.length;
+	  for (var i = 0; i < n; i++) {
+	    result += (array1[i] - mean1) * (array2[i] - mean2);
+	  }
+	  return result / n;
+	};
+
+	exports.COVARIANCE.S = function(array1, array2) {
+	  array1 = utils.parseNumberArray(utils.flatten(array1));
+	  array2 = utils.parseNumberArray(utils.flatten(array2));
+	  if (utils.anyIsError(array1, array2)) {
+	    return error.value;
+	  }
+	  return jStat.covariance(array1, array2);
+	};
+
+	exports.DEVSQ = function() {
+	  var range = utils.parseNumberArray(utils.flatten(arguments));
+	  if (range instanceof Error) {
+	    return range;
+	  }
+	  var mean = jStat.mean(range);
+	  var result = 0;
+	  for (var i = 0; i < range.length; i++) {
+	    result += Math.pow((range[i] - mean), 2);
+	  }
+	  return result;
+	};
+
+	exports.EXPON = {};
+
+	exports.EXPON.DIST = function(x, lambda, cumulative) {
+	  x = utils.parseNumber(x);
+	  lambda = utils.parseNumber(lambda);
+	  if (utils.anyIsError(x, lambda)) {
+	    return error.value;
+	  }
+	  return (cumulative) ? jStat.exponential.cdf(x, lambda) : jStat.exponential.pdf(x, lambda);
+	};
+
+	exports.F = {};
+
+	exports.F.DIST = function(x, d1, d2, cumulative) {
+	  x = utils.parseNumber(x);
+	  d1 = utils.parseNumber(d1);
+	  d2 = utils.parseNumber(d2);
+	  if (utils.anyIsError(x, d1, d2)) {
+	    return error.value;
+	  }
+	  return (cumulative) ? jStat.centralF.cdf(x, d1, d2) : jStat.centralF.pdf(x, d1, d2);
+	};
+
+	exports.F.DIST.RT = function(x, d1, d2) {
+	  if (arguments.length !== 3) {
+	    return error.na;
+	  }
+
+	  if (x < 0 || d1 < 1 || d2 < 1) {
+	    return error.num;
+	  }
+
+	  if ((typeof x !== 'number') || (typeof d1 !== 'number') || (typeof d2 !== 'number')) {
+	    return error.value;
+	  }
+
+	  return 1 - jStat.centralF.cdf(x, d1, d2);
+	};
+
+	exports.F.INV = function(probability, d1, d2) {
+	  probability = utils.parseNumber(probability);
+	  d1 = utils.parseNumber(d1);
+	  d2 = utils.parseNumber(d2);
+	  if (utils.anyIsError(probability, d1, d2)) {
+	    return error.value;
+	  }
+	  if (probability <= 0.0 || probability > 1.0) {
+	    return error.num;
+	  }
+
+	  return jStat.centralF.inv(probability, d1, d2);
+	};
+
+	exports.F.INV.RT = function(p, d1, d2) {
+	  if (arguments.length !== 3) {
+	    return error.na;
+	  }
+
+	  if (p < 0 || p > 1 || d1 < 1 || d1 > Math.pow(10, 10) || d2 < 1 || d2 > Math.pow(10, 10)) {
+	    return error.num;
+	  }
+
+	  if ((typeof p !== 'number') || (typeof d1 !== 'number') || (typeof d2 !== 'number')) {
+	    return error.value;
+	  }
+
+	  return jStat.centralF.inv(1.0 - p, d1, d2);
+	};
+
+	exports.F.TEST = function(array1, array2) {
+	  if (!array1 || !array2) {
+	    return error.na;
+	  }
+
+	  if (!(array1 instanceof Array) || !(array2 instanceof Array)) {
+	    return error.na;
+	  }
+
+	  if (array1.length < 2 || array2.length < 2) {
+	    return error.div0;
+	  }
+
+	  var sumOfSquares = function(values, x1) {
+	    var sum = 0;
+	    for (var i = 0; i < values.length; i++) {
+	      sum +=Math.pow((values[i] - x1), 2);
+	    }
+	    return sum;
+	  };
+
+	  var x1 = mathTrig.SUM(array1) / array1.length;
+	  var x2 = mathTrig.SUM(array2) / array2.length;
+	  var sum1 = sumOfSquares(array1, x1) / (array1.length - 1);
+	  var sum2 = sumOfSquares(array2, x2) / (array2.length - 1);
+
+	  return sum1 / sum2;
+	};
+
+	exports.FISHER = function(x) {
+	  x = utils.parseNumber(x);
+	  if (x instanceof Error) {
+	    return x;
+	  }
+	  return Math.log((1 + x) / (1 - x)) / 2;
+	};
+
+	exports.FISHERINV = function(y) {
+	  y = utils.parseNumber(y);
+	  if (y instanceof Error) {
+	    return y;
+	  }
+	  var e2y = Math.exp(2 * y);
+	  return (e2y - 1) / (e2y + 1);
+	};
+
+	exports.FORECAST = function(x, data_y, data_x) {
+	  x = utils.parseNumber(x);
+	  data_y = utils.parseNumberArray(utils.flatten(data_y));
+	  data_x = utils.parseNumberArray(utils.flatten(data_x));
+	  if (utils.anyIsError(x, data_y, data_x)) {
+	    return error.value;
+	  }
+	  var xmean = jStat.mean(data_x);
+	  var ymean = jStat.mean(data_y);
+	  var n = data_x.length;
+	  var num = 0;
+	  var den = 0;
+	  for (var i = 0; i < n; i++) {
+	    num += (data_x[i] - xmean) * (data_y[i] - ymean);
+	    den += Math.pow(data_x[i] - xmean, 2);
+	  }
+	  var b = num / den;
+	  var a = ymean - b * xmean;
+	  return a + b * x;
+	};
+
+	exports.FREQUENCY = function(data, bins) {
+	  data = utils.parseNumberArray(utils.flatten(data));
+	  bins = utils.parseNumberArray(utils.flatten(bins));
+	  if (utils.anyIsError(data, bins)) {
+	    return error.value;
+	  }
+	  var n = data.length;
+	  var b = bins.length;
+	  var r = [];
+	  for (var i = 0; i <= b; i++) {
+	    r[i] = 0;
+	    for (var j = 0; j < n; j++) {
+	      if (i === 0) {
+	        if (data[j] <= bins[0]) {
+	          r[0] += 1;
+	        }
+	      } else if (i < b) {
+	        if (data[j] > bins[i - 1] && data[j] <= bins[i]) {
+	          r[i] += 1;
+	        }
+	      } else if (i === b) {
+	        if (data[j] > bins[b - 1]) {
+	          r[b] += 1;
+	        }
+	      }
+	    }
+	  }
+	  return r;
+	};
+
+
+	exports.GAMMA = function(number) {
+	  number = utils.parseNumber(number);
+	  if (number instanceof Error) {
+	    return number;
+	  }
+
+	  if (number === 0) {
+	    return error.num;
+	  }
+
+	  if (parseInt(number, 10) === number && number < 0) {
+	    return error.num;
+	  }
+
+	  return jStat.gammafn(number);
+	};
+
+	exports.GAMMA.DIST = function(value, alpha, beta, cumulative) {
+	  if (arguments.length !== 4) {
+	    return error.na;
+	  }
+
+	  if (value < 0 || alpha <= 0 || beta <= 0) {
+	    return error.value;
+	  }
+
+	  if ((typeof value !== 'number') || (typeof alpha !== 'number') || (typeof beta !== 'number')) {
+	    return error.value;
+	  }
+
+	  return cumulative ? jStat.gamma.cdf(value, alpha, beta, true) : jStat.gamma.pdf(value, alpha, beta, false);
+	};
+
+	exports.GAMMA.INV = function(probability, alpha, beta) {
+	  if (arguments.length !== 3) {
+	    return error.na;
+	  }
+
+	  if (probability < 0 || probability > 1 || alpha <= 0 || beta <= 0) {
+	    return error.num;
+	  }
+
+	  if ((typeof probability !== 'number') || (typeof alpha !== 'number') || (typeof beta !== 'number')) {
+	    return error.value;
+	  }
+
+	  return jStat.gamma.inv(probability, alpha, beta);
+	};
+
+	exports.GAMMALN = function(number) {
+	  number = utils.parseNumber(number);
+	  if (number instanceof Error) {
+	    return number;
+	  }
+	  return jStat.gammaln(number);
+	};
+
+	exports.GAMMALN.PRECISE = function(x) {
+	  if (arguments.length !== 1) {
+	    return error.na;
+	  }
+
+	  if (x <= 0) {
+	    return error.num;
+	  }
+
+	  if (typeof x !== 'number') {
+	    return error.value;
+	  }
+
+	  return jStat.gammaln(x);
+	};
+
+	exports.GAUSS = function(z) {
+	  z = utils.parseNumber(z);
+	  if (z instanceof Error) {
+	    return z;
+	  }
+	  return jStat.normal.cdf(z, 0, 1) - 0.5;
+	};
+
+	exports.GEOMEAN = function() {
+	  var args = utils.parseNumberArray(utils.flatten(arguments));
+	  if (args instanceof Error) {
+	    return args;
+	  }
+	  return jStat.geomean(args);
+	};
+
+	exports.GROWTH = function(known_y, known_x, new_x, use_const) {
+	  // Credits: Ilmari Karonen (http://stackoverflow.com/questions/14161990/how-to-implement-growth-function-in-javascript)
+
+	  known_y = utils.parseNumberArray(known_y);
+	  if (known_y instanceof Error) {
+	    return known_y;
+	  }
+
+	  // Default values for optional parameters:
+	  var i;
+	  if (known_x === undefined) {
+	    known_x = [];
+	    for (i = 1; i <= known_y.length; i++) {
+	      known_x.push(i);
+	    }
+	  }
+	  if (new_x === undefined) {
+	    new_x = [];
+	    for (i = 1; i <= known_y.length; i++) {
+	      new_x.push(i);
+	    }
+	  }
+
+	  known_x = utils.parseNumberArray(known_x);
+	  new_x = utils.parseNumberArray(new_x);
+	  if (utils.anyIsError(known_x, new_x)) {
+	    return error.value;
+	  }
+
+
+	  if (use_const === undefined) {
+	    use_const = true;
+	  }
+
+	  // Calculate sums over the data:
+	  var n = known_y.length;
+	  var avg_x = 0;
+	  var avg_y = 0;
+	  var avg_xy = 0;
+	  var avg_xx = 0;
+	  for (i = 0; i < n; i++) {
+	    var x = known_x[i];
+	    var y = Math.log(known_y[i]);
+	    avg_x += x;
+	    avg_y += y;
+	    avg_xy += x * y;
+	    avg_xx += x * x;
+	  }
+	  avg_x /= n;
+	  avg_y /= n;
+	  avg_xy /= n;
+	  avg_xx /= n;
+
+	  // Compute linear regression coefficients:
+	  var beta;
+	  var alpha;
+	  if (use_const) {
+	    beta = (avg_xy - avg_x * avg_y) / (avg_xx - avg_x * avg_x);
+	    alpha = avg_y - beta * avg_x;
+	  } else {
+	    beta = avg_xy / avg_xx;
+	    alpha = 0;
+	  }
+
+	  // Compute and return result array:
+	  var new_y = [];
+	  for (i = 0; i < new_x.length; i++) {
+	    new_y.push(Math.exp(alpha + beta * new_x[i]));
+	  }
+	  return new_y;
+	};
+
+	exports.HARMEAN = function() {
+	  var range = utils.parseNumberArray(utils.flatten(arguments));
+	  if (range instanceof Error) {
+	    return range;
+	  }
+	  var n = range.length;
+	  var den = 0;
+	  for (var i = 0; i < n; i++) {
+	    den += 1 / range[i];
+	  }
+	  return n / den;
+	};
+
+	exports.HYPGEOM = {};
+
+	exports.HYPGEOM.DIST = function(x, n, M, N, cumulative) {
+	  x = utils.parseNumber(x);
+	  n = utils.parseNumber(n);
+	  M = utils.parseNumber(M);
+	  N = utils.parseNumber(N);
+	  if (utils.anyIsError(x, n, M, N)) {
+	    return error.value;
+	  }
+
+	  function pdf(x, n, M, N) {
+	    return mathTrig.COMBIN(M, x) * mathTrig.COMBIN(N - M, n - x) / mathTrig.COMBIN(N, n);
+	  }
+
+	  function cdf(x, n, M, N) {
+	    var result = 0;
+	    for (var i = 0; i <= x; i++) {
+	      result += pdf(i, n, M, N);
+	    }
+	    return result;
+	  }
+
+	  return (cumulative) ? cdf(x, n, M, N) : pdf(x, n, M, N);
+	};
+
+	exports.INTERCEPT = function(known_y, known_x) {
+	  known_y = utils.parseNumberArray(known_y);
+	  known_x = utils.parseNumberArray(known_x);
+	  if (utils.anyIsError(known_y, known_x)) {
+	    return error.value;
+	  }
+	  if (known_y.length !== known_x.length) {
+	    return error.na;
+	  }
+	  return exports.FORECAST(0, known_y, known_x);
+	};
+
+	exports.KURT = function() {
+	  var range = utils.parseNumberArray(utils.flatten(arguments));
+	  if (range instanceof Error) {
+	    return range;
+	  }
+	  var mean = jStat.mean(range);
+	  var n = range.length;
+	  var sigma = 0;
+	  for (var i = 0; i < n; i++) {
+	    sigma += Math.pow(range[i] - mean, 4);
+	  }
+	  sigma = sigma / Math.pow(jStat.stdev(range, true), 4);
+	  return ((n * (n + 1)) / ((n - 1) * (n - 2) * (n - 3))) * sigma - 3 * (n - 1) * (n - 1) / ((n - 2) * (n - 3));
+	};
+
+	exports.LARGE = function(range, k) {
+	  range = utils.parseNumberArray(utils.flatten(range));
+	  k = utils.parseNumber(k);
+	  if (utils.anyIsError(range, k)) {
+	    return range;
+	  }
+	  return range.sort(function(a, b) {
+	    return b - a;
+	  })[k - 1];
+	};
+
+	exports.LINEST = function(data_y, data_x) {
+	  data_y = utils.parseNumberArray(utils.flatten(data_y));
+	  data_x = utils.parseNumberArray(utils.flatten(data_x));
+	  if (utils.anyIsError(data_y, data_x)) {
+	    return error.value;
+	  }
+	  var ymean = jStat.mean(data_y);
+	  var xmean = jStat.mean(data_x);
+	  var n = data_x.length;
+	  var num = 0;
+	  var den = 0;
+	  for (var i = 0; i < n; i++) {
+	    num += (data_x[i] - xmean) * (data_y[i] - ymean);
+	    den += Math.pow(data_x[i] - xmean, 2);
+	  }
+	  var m = num / den;
+	  var b = ymean - m * xmean;
+	  return [m, b];
+	};
+
+	// According to Microsoft:
+	// http://office.microsoft.com/en-us/starter-help/logest-function-HP010342665.aspx
+	// LOGEST returns are based on the following linear model:
+	// ln y = x1 ln m1 + ... + xn ln mn + ln b
+	exports.LOGEST = function(data_y, data_x) {
+	  data_y = utils.parseNumberArray(utils.flatten(data_y));
+	  data_x = utils.parseNumberArray(utils.flatten(data_x));
+	  if (utils.anyIsError(data_y, data_x)) {
+	    return error.value;
+	  }
+	  for (var i = 0; i < data_y.length; i ++) {
+	    data_y[i] = Math.log(data_y[i]);
+	  }
+
+	  var result = exports.LINEST(data_y, data_x);
+	  result[0] = Math.round(Math.exp(result[0])*1000000)/1000000;
+	  result[1] = Math.round(Math.exp(result[1])*1000000)/1000000;
+	  return result;
+	};
+
+	exports.LOGNORM = {};
+
+	exports.LOGNORM.DIST = function(x, mean, sd, cumulative) {
+	  x = utils.parseNumber(x);
+	  mean = utils.parseNumber(mean);
+	  sd = utils.parseNumber(sd);
+	  if (utils.anyIsError(x, mean, sd)) {
+	    return error.value;
+	  }
+	  return (cumulative) ? jStat.lognormal.cdf(x, mean, sd) : jStat.lognormal.pdf(x, mean, sd);
+	};
+
+	exports.LOGNORM.INV = function(probability, mean, sd) {
+	  probability = utils.parseNumber(probability);
+	  mean = utils.parseNumber(mean);
+	  sd = utils.parseNumber(sd);
+	  if (utils.anyIsError(probability, mean, sd)) {
+	    return error.value;
+	  }
+	  return jStat.lognormal.inv(probability, mean, sd);
+	};
+
+	exports.MAX = function() {
+	  var range = utils.numbers(utils.flatten(arguments));
+	  return (range.length === 0) ? 0 : Math.max.apply(Math, range);
+	};
+
+	exports.MAXA = function() {
+	  var range = utils.arrayValuesToNumbers(utils.flatten(arguments));
+	  return (range.length === 0) ? 0 : Math.max.apply(Math, range);
+	};
+
+	exports.MEDIAN = function() {
+	  var range = utils.arrayValuesToNumbers(utils.flatten(arguments));
+	  return jStat.median(range);
+	};
+
+	exports.MIN = function() {
+	  var range = utils.numbers(utils.flatten(arguments));
+	  return (range.length === 0) ? 0 : Math.min.apply(Math, range);
+	};
+
+	exports.MINA = function() {
+	  var range = utils.arrayValuesToNumbers(utils.flatten(arguments));
+	  return (range.length === 0) ? 0 : Math.min.apply(Math, range);
+	};
+
+	exports.MODE = {};
+
+	exports.MODE.MULT = function() {
+	  // Credits: Roönaän
+	  var range = utils.parseNumberArray(utils.flatten(arguments));
+	  if (range instanceof Error) {
+	    return range;
+	  }
+	  var n = range.length;
+	  var count = {};
+	  var maxItems = [];
+	  var max = 0;
+	  var currentItem;
+
+	  for (var i = 0; i < n; i++) {
+	    currentItem = range[i];
+	    count[currentItem] = count[currentItem] ? count[currentItem] + 1 : 1;
+	    if (count[currentItem] > max) {
+	      max = count[currentItem];
+	      maxItems = [];
+	    }
+	    if (count[currentItem] === max) {
+	      maxItems[maxItems.length] = currentItem;
+	    }
+	  }
+	  return maxItems;
+	};
+
+	exports.MODE.SNGL = function() {
+	  var range = utils.parseNumberArray(utils.flatten(arguments));
+	  if (range instanceof Error) {
+	    return range;
+	  }
+	  return exports.MODE.MULT(range).sort(function(a, b) {
+	    return a - b;
+	  })[0];
+	};
+
+	exports.NEGBINOM = {};
+
+	exports.NEGBINOM.DIST = function(k, r, p, cumulative) {
+	  k = utils.parseNumber(k);
+	  r = utils.parseNumber(r);
+	  p = utils.parseNumber(p);
+	  if (utils.anyIsError(k, r, p)) {
+	    return error.value;
+	  }
+	  return (cumulative) ? jStat.negbin.cdf(k, r, p) : jStat.negbin.pdf(k, r, p);
+	};
+
+	exports.NORM = {};
+
+	exports.NORM.DIST = function(x, mean, sd, cumulative) {
+	  x = utils.parseNumber(x);
+	  mean = utils.parseNumber(mean);
+	  sd = utils.parseNumber(sd);
+	  if (utils.anyIsError(x, mean, sd)) {
+	    return error.value;
+	  }
+	  if (sd <= 0) {
+	    return error.num;
+	  }
+
+	  // Return normal distribution computed by jStat [http://jstat.org]
+	  return (cumulative) ? jStat.normal.cdf(x, mean, sd) : jStat.normal.pdf(x, mean, sd);
+	};
+
+	exports.NORM.INV = function(probability, mean, sd) {
+	  probability = utils.parseNumber(probability);
+	  mean = utils.parseNumber(mean);
+	  sd = utils.parseNumber(sd);
+	  if (utils.anyIsError(probability, mean, sd)) {
+	    return error.value;
+	  }
+	  return jStat.normal.inv(probability, mean, sd);
+	};
+
+	exports.NORM.S = {};
+
+	exports.NORM.S.DIST = function(z, cumulative) {
+	  z = utils.parseNumber(z);
+	  if (z instanceof Error) {
+	    return error.value;
+	  }
+	  return (cumulative) ? jStat.normal.cdf(z, 0, 1) : jStat.normal.pdf(z, 0, 1);
+	};
+
+	exports.NORM.S.INV = function(probability) {
+	  probability = utils.parseNumber(probability);
+	  if (probability instanceof Error) {
+	    return error.value;
+	  }
+	  return jStat.normal.inv(probability, 0, 1);
+	};
+
+	exports.PEARSON = function(data_x, data_y) {
+	  data_y = utils.parseNumberArray(utils.flatten(data_y));
+	  data_x = utils.parseNumberArray(utils.flatten(data_x));
+	  if (utils.anyIsError(data_y, data_x)) {
+	    return error.value;
+	  }
+	  var xmean = jStat.mean(data_x);
+	  var ymean = jStat.mean(data_y);
+	  var n = data_x.length;
+	  var num = 0;
+	  var den1 = 0;
+	  var den2 = 0;
+	  for (var i = 0; i < n; i++) {
+	    num += (data_x[i] - xmean) * (data_y[i] - ymean);
+	    den1 += Math.pow(data_x[i] - xmean, 2);
+	    den2 += Math.pow(data_y[i] - ymean, 2);
+	  }
+	  return num / Math.sqrt(den1 * den2);
+	};
+
+	exports.PERCENTILE = {};
+
+	exports.PERCENTILE.EXC = function(array, k) {
+	  array = utils.parseNumberArray(utils.flatten(array));
+	  k = utils.parseNumber(k);
+	  if (utils.anyIsError(array, k)) {
+	    return error.value;
+	  }
+	  array = array.sort(function(a, b) {
+	    {
+	      return a - b;
+	    }
+	  });
+	  var n = array.length;
+	  if (k < 1 / (n + 1) || k > 1 - 1 / (n + 1)) {
+	    return error.num;
+	  }
+	  var l = k * (n + 1) - 1;
+	  var fl = Math.floor(l);
+	  return utils.cleanFloat((l === fl) ? array[l] : array[fl] + (l - fl) * (array[fl + 1] - array[fl]));
+	};
+
+	exports.PERCENTILE.INC = function(array, k) {
+	  array = utils.parseNumberArray(utils.flatten(array));
+	  k = utils.parseNumber(k);
+	  if (utils.anyIsError(array, k)) {
+	    return error.value;
+	  }
+	  array = array.sort(function(a, b) {
+	    return a - b;
+	  });
+	  var n = array.length;
+	  var l = k * (n - 1);
+	  var fl = Math.floor(l);
+	  return utils.cleanFloat((l === fl) ? array[l] : array[fl] + (l - fl) * (array[fl + 1] - array[fl]));
+	};
+
+	exports.PERCENTRANK = {};
+
+	exports.PERCENTRANK.EXC = function(array, x, significance) {
+	  significance = (significance === undefined) ? 3 : significance;
+	  array = utils.parseNumberArray(utils.flatten(array));
+	  x = utils.parseNumber(x);
+	  significance = utils.parseNumber(significance);
+	  if (utils.anyIsError(array, x, significance)) {
+	    return error.value;
+	  }
+	  array = array.sort(function(a, b) {
+	    return a - b;
+	  });
+	  var uniques = misc.UNIQUE.apply(null, array);
+	  var n = array.length;
+	  var m = uniques.length;
+	  var power = Math.pow(10, significance);
+	  var result = 0;
+	  var match = false;
+	  var i = 0;
+	  while (!match && i < m) {
+	    if (x === uniques[i]) {
+	      result = (array.indexOf(uniques[i]) + 1) / (n + 1);
+	      match = true;
+	    } else if (x >= uniques[i] && (x < uniques[i + 1] || i === m - 1)) {
+	      result = (array.indexOf(uniques[i]) + 1 + (x - uniques[i]) / (uniques[i + 1] - uniques[i])) / (n + 1);
+	      match = true;
+	    }
+	    i++;
+	  }
+	  return Math.floor(result * power) / power;
+	};
+
+	exports.PERCENTRANK.INC = function(array, x, significance) {
+	  significance = (significance === undefined) ? 3 : significance;
+	  array = utils.parseNumberArray(utils.flatten(array));
+	  x = utils.parseNumber(x);
+	  significance = utils.parseNumber(significance);
+	  if (utils.anyIsError(array, x, significance)) {
+	    return error.value;
+	  }
+	  array = array.sort(function(a, b) {
+	    return a - b;
+	  });
+	  var uniques = misc.UNIQUE.apply(null, array);
+	  var n = array.length;
+	  var m = uniques.length;
+	  var power = Math.pow(10, significance);
+	  var result = 0;
+	  var match = false;
+	  var i = 0;
+	  while (!match && i < m) {
+	    if (x === uniques[i]) {
+	      result = array.indexOf(uniques[i]) / (n - 1);
+	      match = true;
+	    } else if (x >= uniques[i] && (x < uniques[i + 1] || i === m - 1)) {
+	      result = (array.indexOf(uniques[i]) + (x - uniques[i]) / (uniques[i + 1] - uniques[i])) / (n - 1);
+	      match = true;
+	    }
+	    i++;
+	  }
+	  return Math.floor(result * power) / power;
+	};
+
+	exports.PERMUT = function(number, number_chosen) {
+	  number = utils.parseNumber(number);
+	  number_chosen = utils.parseNumber(number_chosen);
+	  if (utils.anyIsError(number, number_chosen)) {
+	    return error.value;
+	  }
+	  return mathTrig.FACT(number) / mathTrig.FACT(number - number_chosen);
+	};
+
+	exports.PERMUTATIONA = function(number, number_chosen) {
+	  number = utils.parseNumber(number);
+	  number_chosen = utils.parseNumber(number_chosen);
+	  if (utils.anyIsError(number, number_chosen)) {
+	    return error.value;
+	  }
+	  return Math.pow(number, number_chosen);
+	};
+
+	exports.PHI = function(x) {
+	  x = utils.parseNumber(x);
+	  if (x instanceof Error) {
+	    return error.value;
+	  }
+	  return Math.exp(-0.5 * x * x) / SQRT2PI;
+	};
+
+	exports.POISSON = {};
+
+	exports.POISSON.DIST = function(x, mean, cumulative) {
+	  x = utils.parseNumber(x);
+	  mean = utils.parseNumber(mean);
+	  if (utils.anyIsError(x, mean)) {
+	    return error.value;
+	  }
+	  return (cumulative) ? jStat.poisson.cdf(x, mean) : jStat.poisson.pdf(x, mean);
+	};
+
+	exports.PROB = function(range, probability, lower, upper) {
+	  if (lower === undefined) {
+	    return 0;
+	  }
+	  upper = (upper === undefined) ? lower : upper;
+
+	  range = utils.parseNumberArray(utils.flatten(range));
+	  probability = utils.parseNumberArray(utils.flatten(probability));
+	  lower = utils.parseNumber(lower);
+	  upper = utils.parseNumber(upper);
+	  if (utils.anyIsError(range, probability, lower, upper)) {
+	    return error.value;
+	  }
+
+	  if (lower === upper) {
+	    return (range.indexOf(lower) >= 0) ? probability[range.indexOf(lower)] : 0;
+	  }
+
+	  var sorted = range.sort(function(a, b) {
+	    return a - b;
+	  });
+	  var n = sorted.length;
+	  var result = 0;
+	  for (var i = 0; i < n; i++) {
+	    if (sorted[i] >= lower && sorted[i] <= upper) {
+	      result += probability[range.indexOf(sorted[i])];
+	    }
+	  }
+	  return result;
+	};
+
+	exports.QUARTILE = {};
+
+	exports.QUARTILE.EXC = function(range, quart) {
+	  range = utils.parseNumberArray(utils.flatten(range));
+	  quart = utils.parseNumber(quart);
+	  if (utils.anyIsError(range, quart)) {
+	    return error.value;
+	  }
+	  switch (quart) {
+	    case 1:
+	      return exports.PERCENTILE.EXC(range, 0.25);
+	    case 2:
+	      return exports.PERCENTILE.EXC(range, 0.5);
+	    case 3:
+	      return exports.PERCENTILE.EXC(range, 0.75);
+	    default:
+	      return error.num;
+	  }
+	};
+
+	exports.QUARTILE.INC = function(range, quart) {
+	  range = utils.parseNumberArray(utils.flatten(range));
+	  quart = utils.parseNumber(quart);
+	  if (utils.anyIsError(range, quart)) {
+	    return error.value;
+	  }
+	  switch (quart) {
+	    case 1:
+	      return exports.PERCENTILE.INC(range, 0.25);
+	    case 2:
+	      return exports.PERCENTILE.INC(range, 0.5);
+	    case 3:
+	      return exports.PERCENTILE.INC(range, 0.75);
+	    default:
+	      return error.num;
+	  }
+	};
+
+	exports.RANK = {};
+
+	exports.RANK.AVG = function(number, range, order) {
+	  number = utils.parseNumber(number);
+	  range = utils.parseNumberArray(utils.flatten(range));
+	  if (utils.anyIsError(number, range)) {
+	    return error.value;
+	  }
+	  range = utils.flatten(range);
+	  order = order || false;
+	  var sort = (order) ? function(a, b) {
+	    return a - b;
+	  } : function(a, b) {
+	    return b - a;
+	  };
+	  range = range.sort(sort);
+
+	  var length = range.length;
+	  var count = 0;
+	  for (var i = 0; i < length; i++) {
+	    if (range[i] === number) {
+	      count++;
+	    }
+	  }
+
+	  return (count > 1) ? (2 * range.indexOf(number) + count + 1) / 2 : range.indexOf(number) + 1;
+	};
+
+	exports.RANK.EQ = function(number, range, order) {
+	  number = utils.parseNumber(number);
+	  range = utils.parseNumberArray(utils.flatten(range));
+	  if (utils.anyIsError(number, range)) {
+	    return error.value;
+	  }
+	  order = order || false;
+	  var sort = (order) ? function(a, b) {
+	    return a - b;
+	  } : function(a, b) {
+	    return b - a;
+	  };
+	  range = range.sort(sort);
+	  return range.indexOf(number) + 1;
+	};
+
+	exports.ROW = function(matrix, index) {
+	  if (arguments.length !== 2) {
+	    return error.na;
+	  }
+
+	  if (index < 0) {
+	    return error.num;
+	  }
+
+	  if (!(matrix instanceof Array) || (typeof index !== 'number')) {
+	    return error.value;
+	  }
+
+	  if (matrix.length === 0) {
+	    return undefined;
+	  }
+
+	  return jStat.row(matrix, index);
+	};
+
+	exports.ROWS = function(matrix) {
+	  if (arguments.length !== 1) {
+	    return error.na;
+	  }
+
+	  if (!(matrix instanceof Array)) {
+	    return error.value;
+	  }
+
+	  if (matrix.length === 0) {
+	    return 0;
+	  }
+
+	  return jStat.rows(matrix);
+	};
+
+	exports.RSQ = function(data_x, data_y) { // no need to flatten here, PEARSON will take care of that
+	  data_x = utils.parseNumberArray(utils.flatten(data_x));
+	  data_y = utils.parseNumberArray(utils.flatten(data_y));
+	  if (utils.anyIsError(data_x, data_y)) {
+	    return error.value;
+	  }
+	  return Math.pow(exports.PEARSON(data_x, data_y), 2);
+	};
+
+	exports.SKEW = function() {
+	  var range = utils.parseNumberArray(utils.flatten(arguments));
+	  if (range instanceof Error) {
+	    return range;
+	  }
+	  var mean = jStat.mean(range);
+	  var n = range.length;
+	  var sigma = 0;
+	  for (var i = 0; i < n; i++) {
+	    sigma += Math.pow(range[i] - mean, 3);
+	  }
+	  return n * sigma / ((n - 1) * (n - 2) * Math.pow(jStat.stdev(range, true), 3));
+	};
+
+	exports.SKEW.P = function() {
+	  var range = utils.parseNumberArray(utils.flatten(arguments));
+	  if (range instanceof Error) {
+	    return range;
+	  }
+	  var mean = jStat.mean(range);
+	  var n = range.length;
+	  var m2 = 0;
+	  var m3 = 0;
+	  for (var i = 0; i < n; i++) {
+	    m3 += Math.pow(range[i] - mean, 3);
+	    m2 += Math.pow(range[i] - mean, 2);
+	  }
+	  m3 = m3 / n;
+	  m2 = m2 / n;
+	  return m3 / Math.pow(m2, 3 / 2);
+	};
+
+	exports.SLOPE = function(data_y, data_x) {
+	  data_y = utils.parseNumberArray(utils.flatten(data_y));
+	  data_x = utils.parseNumberArray(utils.flatten(data_x));
+	  if (utils.anyIsError(data_y, data_x)) {
+	    return error.value;
+	  }
+	  var xmean = jStat.mean(data_x);
+	  var ymean = jStat.mean(data_y);
+	  var n = data_x.length;
+	  var num = 0;
+	  var den = 0;
+	  for (var i = 0; i < n; i++) {
+	    num += (data_x[i] - xmean) * (data_y[i] - ymean);
+	    den += Math.pow(data_x[i] - xmean, 2);
+	  }
+	  return num / den;
+	};
+
+	exports.SMALL = function(range, k) {
+	  range = utils.parseNumberArray(utils.flatten(range));
+	  k = utils.parseNumber(k);
+	  if (utils.anyIsError(range, k)) {
+	    return range;
+	  }
+	  return range.sort(function(a, b) {
+	    return a - b;
+	  })[k - 1];
+	};
+
+	exports.STANDARDIZE = function(x, mean, sd) {
+	  x = utils.parseNumber(x);
+	  mean = utils.parseNumber(mean);
+	  sd = utils.parseNumber(sd);
+	  if (utils.anyIsError(x, mean, sd)) {
+	    return error.value;
+	  }
+	  return (x - mean) / sd;
+	};
+
+	exports.STDEV = {};
+
+	exports.STDEV.P = function() {
+	  var v = exports.VAR.P.apply(this, arguments);
+	  return Math.sqrt(v);
+	};
+
+	exports.STDEV.S = function() {
+	  var v = exports.VAR.S.apply(this, arguments);
+	  return Math.sqrt(v);
+	};
+
+	exports.STDEVA = function() {
+	  var v = exports.VARA.apply(this, arguments);
+	  return Math.sqrt(v);
+	};
+
+	exports.STDEVPA = function() {
+	  var v = exports.VARPA.apply(this, arguments);
+	  return Math.sqrt(v);
+	};
+
+
+	exports.STEYX = function(data_y, data_x) {
+	  data_y = utils.parseNumberArray(utils.flatten(data_y));
+	  data_x = utils.parseNumberArray(utils.flatten(data_x));
+	  if (utils.anyIsError(data_y, data_x)) {
+	    return error.value;
+	  }
+	  var xmean = jStat.mean(data_x);
+	  var ymean = jStat.mean(data_y);
+	  var n = data_x.length;
+	  var lft = 0;
+	  var num = 0;
+	  var den = 0;
+	  for (var i = 0; i < n; i++) {
+	    lft += Math.pow(data_y[i] - ymean, 2);
+	    num += (data_x[i] - xmean) * (data_y[i] - ymean);
+	    den += Math.pow(data_x[i] - xmean, 2);
+	  }
+	  return Math.sqrt((lft - num * num / den) / (n - 2));
+	};
+
+	exports.TRANSPOSE = function(matrix) {
+	  if (!matrix) {
+	    return error.na;
+	  }
+	  return jStat.transpose(matrix);
+	};
+
+	exports.T = text.T;
+
+	exports.T.DIST = function(x, df, cumulative) {
+	  x = utils.parseNumber(x);
+	  df = utils.parseNumber(df);
+	  if (utils.anyIsError(x, df)) {
+	    return error.value;
+	  }
+	  return (cumulative) ? jStat.studentt.cdf(x, df) : jStat.studentt.pdf(x, df);
+	};
+
+	exports.T.DIST['2T'] = function(x, df) {
+	  if (arguments.length !== 2) {
+	    return error.na;
+	  }
+
+	  if (x < 0 || df < 1) {
+	    return error.num;
+	  }
+
+	  if ((typeof x !== 'number') || (typeof df !== 'number')) {
+	    return error.value;
+	  }
+
+	  return (1 - jStat.studentt.cdf(x , df)) * 2;
+	};
+
+	exports.T.DIST.RT = function(x, df) {
+	  if (arguments.length !== 2) {
+	    return error.na;
+	  }
+
+	  if (x < 0 || df < 1) {
+	    return error.num;
+	  }
+
+	  if ((typeof x !== 'number') || (typeof df !== 'number')) {
+	    return error.value;
+	  }
+
+	  return 1 - jStat.studentt.cdf(x , df);
+	};
+
+	exports.T.INV = function(probability, df) {
+	  probability = utils.parseNumber(probability);
+	  df = utils.parseNumber(df);
+	  if (utils.anyIsError(probability, df)) {
+	    return error.value;
+	  }
+	  return jStat.studentt.inv(probability, df);
+	};
+
+	exports.T.INV['2T'] = function(probability, df) {
+	  probability = utils.parseNumber(probability);
+	  df = utils.parseNumber(df);
+	  if (probability <= 0 || probability > 1 || df < 1) {
+	    return error.num;
+	  }
+	  if (utils.anyIsError(probability, df)) {
+	    return error.value;
+	  }
+	  return Math.abs(jStat.studentt.inv(probability/2, df));
+	};
+
+	// The algorithm can be found here:
+	// http://www.chem.uoa.gr/applets/AppletTtest/Appl_Ttest2.html
+	exports.T.TEST = function(data_x, data_y) {
+	  data_x = utils.parseNumberArray(utils.flatten(data_x));
+	  data_y = utils.parseNumberArray(utils.flatten(data_y));
+	  if (utils.anyIsError(data_x, data_y)) {
+	    return error.value;
+	  }
+
+	  var mean_x = jStat.mean(data_x);
+	  var mean_y = jStat.mean(data_y);
+	  var s_x = 0;
+	  var s_y = 0;
+	  var i;
+
+	  for (i = 0; i < data_x.length; i++) {
+	    s_x += Math.pow(data_x[i] - mean_x, 2);
+	  }
+	  for (i = 0; i < data_y.length; i++) {
+	    s_y += Math.pow(data_y[i] - mean_y, 2);
+	  }
+
+	  s_x = s_x / (data_x.length-1);
+	  s_y = s_y / (data_y.length-1);
+
+	  var t = Math.abs(mean_x - mean_y) / Math.sqrt(s_x/data_x.length + s_y/data_y.length);
+
+	  return exports.T.DIST['2T'](t, data_x.length+data_y.length-2);
+	};
+
+	exports.TREND = function(data_y, data_x, new_data_x) {
+	  data_y = utils.parseNumberArray(utils.flatten(data_y));
+	  data_x = utils.parseNumberArray(utils.flatten(data_x));
+	  new_data_x = utils.parseNumberArray(utils.flatten(new_data_x));
+	  if (utils.anyIsError(data_y, data_x, new_data_x)) {
+	    return error.value;
+	  }
+	  var linest = exports.LINEST(data_y, data_x);
+	  var m = linest[0];
+	  var b = linest[1];
+	  var result = [];
+
+	  new_data_x.forEach(function(x) {
+	    result.push(m * x + b);
+	  });
+
+	  return result;
+	};
+
+	exports.TRIMMEAN = function(range, percent) {
+	  range = utils.parseNumberArray(utils.flatten(range));
+	  percent = utils.parseNumber(percent);
+	  if (utils.anyIsError(range, percent)) {
+	    return error.value;
+	  }
+	  var trim = mathTrig.FLOOR(range.length * percent, 2) / 2;
+	  return jStat.mean(utils.initial(utils.rest(range.sort(function(a, b) {
+	    return a - b;
+	  }), trim), trim));
+	};
+
+	exports.VAR = {};
+
+	exports.VAR.P = function() {
+	  var range = utils.numbers(utils.flatten(arguments));
+	  var n = range.length;
+	  var sigma = 0;
+	  var mean = exports.AVERAGE(range);
+	  for (var i = 0; i < n; i++) {
+	    sigma += Math.pow(range[i] - mean, 2);
+	  }
+	  return sigma / n;
+	};
+
+	exports.VAR.S = function() {
+	  var range = utils.numbers(utils.flatten(arguments));
+	  var n = range.length;
+	  var sigma = 0;
+	  var mean = exports.AVERAGE(range);
+	  for (var i = 0; i < n; i++) {
+	    sigma += Math.pow(range[i] - mean, 2);
+	  }
+	  return sigma / (n - 1);
+	};
+
+	exports.VARA = function() {
+	  var range = utils.flatten(arguments);
+	  var n = range.length;
+	  var sigma = 0;
+	  var count = 0;
+	  var mean = exports.AVERAGEA(range);
+	  for (var i = 0; i < n; i++) {
+	    var el = range[i];
+	    if (typeof el === 'number') {
+	      sigma += Math.pow(el - mean, 2);
+	    } else if (el === true) {
+	      sigma += Math.pow(1 - mean, 2);
+	    } else {
+	      sigma += Math.pow(0 - mean, 2);
+	    }
+
+	    if (el !== null) {
+	      count++;
+	    }
+	  }
+	  return sigma / (count - 1);
+	};
+
+	exports.VARPA = function() {
+	  var range = utils.flatten(arguments);
+	  var n = range.length;
+	  var sigma = 0;
+	  var count = 0;
+	  var mean = exports.AVERAGEA(range);
+	  for (var i = 0; i < n; i++) {
+	    var el = range[i];
+	    if (typeof el === 'number') {
+	      sigma += Math.pow(el - mean, 2);
+	    } else if (el === true) {
+	      sigma += Math.pow(1 - mean, 2);
+	    } else {
+	      sigma += Math.pow(0 - mean, 2);
+	    }
+
+	    if (el !== null) {
+	      count++;
+	    }
+	  }
+	  return sigma / count;
+	};
+
+	exports.WEIBULL = {};
+
+	exports.WEIBULL.DIST = function(x, alpha, beta, cumulative) {
+	  x = utils.parseNumber(x);
+	  alpha = utils.parseNumber(alpha);
+	  beta = utils.parseNumber(beta);
+	  if (utils.anyIsError(x, alpha, beta)) {
+	    return error.value;
+	  }
+	  return (cumulative) ? 1 - Math.exp(-Math.pow(x / beta, alpha)) : Math.pow(x, alpha - 1) * Math.exp(-Math.pow(x / beta, alpha)) * alpha / Math.pow(beta, alpha);
+	};
+
+	exports.Z = {};
+
+	exports.Z.TEST = function(range, x, sd) {
+	  range = utils.parseNumberArray(utils.flatten(range));
+	  x = utils.parseNumber(x);
+	  if (utils.anyIsError(range, x)) {
+	    return error.value;
+	  }
+
+	  sd = sd || exports.STDEV.S(range);
+	  var n = range.length;
+	  return 1 - exports.NORM.S.DIST((exports.AVERAGE(range) - x) / (sd / Math.sqrt(n)), true);
+	};
+
+
+/***/ },
+/* 7 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var utils = __webpack_require__(4);
+	var error = __webpack_require__(5);
+	var numeral = __webpack_require__(8);
+
+	//TODO
+	exports.ASC = function() {
+	 throw new Error('ASC is not implemented');
+	};
+
+	//TODO
+	exports.BAHTTEXT = function() {
+	 throw new Error('BAHTTEXT is not implemented');
+	};
+
+	exports.CHAR = function(number) {
+	  number = utils.parseNumber(number);
+	  if (number instanceof Error) {
+	    return number;
+	  }
+	  return String.fromCharCode(number);
+	};
+
+	exports.CLEAN = function(text) {
+	  text = text || '';
+	  var re = /[\0-\x1F]/g;
+	  return text.replace(re, "");
+	};
+
+	exports.CODE = function(text) {
+	  text = text || '';
+	  return text.charCodeAt(0);
+	};
+
+	exports.CONCATENATE = function() {
+	  var args = utils.flatten(arguments);
+
+	  var trueFound = 0;
+	  while ((trueFound = args.indexOf(true)) > -1) {
+	    args[trueFound] = 'TRUE';
+	  }
+
+	  var falseFound = 0;
+	  while ((falseFound = args.indexOf(false)) > -1) {
+	    args[falseFound] = 'FALSE';
+	  }
+
+	  return args.join('');
+	};
+
+	//TODO
+	exports.DBCS = function() {
+	 throw new Error('DBCS is not implemented');
+	};
+
+	exports.DOLLAR = function(number, decimals) {
+	  decimals = (decimals === undefined) ? 2 : decimals;
+
+	  number = utils.parseNumber(number);
+	  decimals = utils.parseNumber(decimals);
+	  if (utils.anyIsError(number, decimals)) {
+	    return error.value;
+	  }
+	  var format = '';
+	  if (decimals <= 0) {
+	    number = Math.round(number * Math.pow(10, decimals)) / Math.pow(10, decimals);
+	    format = '($0,0)';
+	  } else if (decimals > 0) {
+	    format = '($0,0.' + new Array(decimals + 1).join('0') + ')';
+	  }
+	  return numeral(number).format(format);
+	};
+
+	exports.EXACT = function(text1, text2) {
+	  return text1 === text2;
+	};
+
+	exports.FIND = function(find_text, within_text, position) {
+	  position = (position === undefined) ? 0 : position;
+	  return within_text ? within_text.indexOf(find_text, position - 1) + 1 : null;
+	};
+
+	exports.FIXED = function(number, decimals, no_commas) {
+	  decimals = (decimals === undefined) ? 2 : decimals;
+	  no_commas = (no_commas === undefined) ? false : no_commas;
+
+	  number = utils.parseNumber(number);
+	  decimals = utils.parseNumber(decimals);
+	  if (utils.anyIsError(number, decimals)) {
+	    return error.value;
+	  }
+
+	  var format = no_commas ? '0' : '0,0';
+	  if (decimals <= 0) {
+	    number = Math.round(number * Math.pow(10, decimals)) / Math.pow(10, decimals);
+	  } else if (decimals > 0) {
+	    format += '.' + new Array(decimals + 1).join('0');
+	  }
+	  return numeral(number).format(format);
+	};
+
+	exports.HTML2TEXT = function (value) {
+	  var result = '';
+
+	  if (value) {
+	    if (value instanceof Array) {
+	      value.forEach(function (line) {
+	        if (result !== '') {
+	          result += '\n';
+	        }
+	        result += (line.replace(/<(?:.|\n)*?>/gm, ''));
+	      });
+	    } else {
+	      result = value.replace(/<(?:.|\n)*?>/gm, '');
+	    }
+	  }
+
+	  return result;
+	};
+
+	exports.LEFT = function(text, number) {
+	  number = (number === undefined) ? 1 : number;
+	  number = utils.parseNumber(number);
+	  if (number instanceof Error || typeof text !== 'string') {
+	    return error.value;
+	  }
+	  return text ? text.substring(0, number) : null;
+	};
+
+	exports.LEN = function(text) {
+	  if (arguments.length === 0) {
+	    return error.error;
+	  }
+
+	  if (typeof text === 'string') {
+	    return text ? text.length : 0;
+	  }
+
+	  if (text.length) {
+	    return text.length;
+	  }
+
+	  return error.value;
+	};
+
+	exports.LOWER = function(text) {
+	  if (typeof text !== 'string') {
+	    return error.value;
+	  }
+	  return text ? text.toLowerCase() : text;
+	};
+
+	exports.MID = function(text, start, number) {
+	  start = utils.parseNumber(start);
+	  number = utils.parseNumber(number);
+	  if (utils.anyIsError(start, number) || typeof text !== 'string') {
+	    return number;
+	  }
+
+	  var begin = start - 1;
+	  var end = begin + number;
+
+	  return text.substring(begin, end);
+	};
+
+	// TODO
+	exports.NUMBERVALUE = function (text, decimal_separator, group_separator)  {
+	  decimal_separator = (typeof decimal_separator === 'undefined') ? '.' : decimal_separator;
+	  group_separator = (typeof group_separator === 'undefined') ? ',' : group_separator;
+	  return Number(text.replace(decimal_separator, '.').replace(group_separator, ''));
+	};
+
+	// TODO
+	exports.PRONETIC = function() {
+	 throw new Error('PRONETIC is not implemented');
+	};
+
+	exports.PROPER = function(text) {
+	  if (text === undefined || text.length === 0) {
+	    return error.value;
+	  }
+	  if (text === true) {
+	    text = 'TRUE';
+	  }
+	  if (text === false) {
+	    text = 'FALSE';
+	  }
+	  if (isNaN(text) && typeof text === 'number') {
+	    return error.value;
+	  }
+	  if (typeof text === 'number') {
+	    text = '' + text;
+	  }
+
+	  return text.replace(/\w\S*/g, function(txt) {
+	    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+	  });
+	};
+
+	exports.REGEXEXTRACT = function (text, regular_expression) {
+	  var match = text.match(new RegExp(regular_expression));
+	  return match ? (match[match.length > 1 ? match.length - 1 : 0]) : null;
+	};
+
+	exports.REGEXMATCH = function (text, regular_expression, full) {
+	  var match = text.match(new RegExp(regular_expression));
+	  return full ? match : !!match;
+	};
+
+	exports.REGEXREPLACE = function (text, regular_expression, replacement) {
+	  return text.replace(new RegExp(regular_expression), replacement);
+	};
+
+	exports.REPLACE = function(text, position, length, new_text) {
+	  position = utils.parseNumber(position);
+	  length = utils.parseNumber(length);
+	  if (utils.anyIsError(position, length) ||
+	    typeof text !== 'string' ||
+	    typeof new_text !== 'string') {
+	    return error.value;
+	  }
+	  return text.substr(0, position - 1) + new_text + text.substr(position - 1 + length);
+	};
+
+	exports.REPT = function(text, number) {
+	  number = utils.parseNumber(number);
+	  if (number instanceof Error) {
+	    return number;
+	  }
+	  return new Array(number + 1).join(text);
+	};
+
+	exports.RIGHT = function(text, number) {
+	  number = (number === undefined) ? 1 : number;
+	  number = utils.parseNumber(number);
+	  if (number instanceof Error) {
+	    return number;
+	  }
+	  return text ? text.substring(text.length - number) : null;
+	};
+
+	exports.SEARCH = function(find_text, within_text, position) {
+	  var foundAt;
+	  if (typeof find_text !== 'string' || typeof within_text !== 'string') {
+	    return error.value;
+	  }
+	  position = (position === undefined) ? 0 : position;
+	  foundAt = within_text.toLowerCase().indexOf(find_text.toLowerCase(), position - 1)+1;
+	  return (foundAt === 0)?error.value:foundAt;
+	};
+
+	exports.SPLIT = function (text, separator) {
+	  return text.split(separator);
+	};
+
+	exports.SUBSTITUTE = function(text, old_text, new_text, occurrence) {
+	  if (!text || !old_text || !new_text) {
+	    return text;
+	  } else if (occurrence === undefined) {
+	    return text.replace(new RegExp(old_text, 'g'), new_text);
+	  } else {
+	    var index = 0;
+	    var i = 0;
+	    while (text.indexOf(old_text, index) > 0) {
+	      index = text.indexOf(old_text, index + 1);
+	      i++;
+	      if (i === occurrence) {
+	        return text.substring(0, index) + new_text + text.substring(index + old_text.length);
+	      }
+	    }
+	  }
+	};
+
+	exports.T = function(value) {
+	  return (typeof value === "string") ? value : '';
+	};
+
+	// TODO incomplete implementation
+	exports.TEXT = function(value, format) {
+	  value = utils.parseNumber(value);
+	  if (utils.anyIsError(value)) {
+	    return error.na;
+	  }
+
+	  return numeral(value).format(format);
+	};
+
+	exports.TRIM = function(text) {
+	  if (typeof text !== 'string') {
+	    return error.value;
+	  }
+	  return text.replace(/ +/g, ' ').trim();
+	};
+
+	exports.UNICHAR = this.CHAR;
+
+	exports.UNICODE = this.CODE;
+
+	exports.UPPER = function(text) {
+	  if (typeof text !== 'string') {
+	    return error.value;
+	  }
+	  return text.toUpperCase();
+	};
+
+	exports.VALUE = function(text) {
+	  if (typeof text !== 'string') {
+	    return error.value;
+	  }
+	  return numeral().unformat(text);
+	};
+
+
+/***/ },
+/* 8 */
+/***/ function(module, exports) {
+
+	module.exports = __WEBPACK_EXTERNAL_MODULE_8__;
+
+/***/ },
+/* 9 */
+/***/ function(module, exports) {
+
+	module.exports = __WEBPACK_EXTERNAL_MODULE_9__;
+
+/***/ },
+/* 10 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var utils   = __webpack_require__(4);
+	var numeral = __webpack_require__(8);
+
+	exports.UNIQUE = function () {
+	  var result = [];
+	  for (var i = 0; i < arguments.length; ++i) {
+	    var hasElement = false;
+	    var element    = arguments[i];
+
+	    // Check if we've already seen this element.
+	    for (var j = 0; j < result.length; ++j) {
+	      hasElement = result[j] === element;
+	      if (hasElement) { break; }
+	    }
+
+	    // If we did not find it, add it to the result.
+	    if (!hasElement) {
+	      result.push(element);
+	    }
+	  }
+	  return result;
+	};
+
+	exports.FLATTEN = utils.flatten;
+
+	exports.ARGS2ARRAY = function () {
+	  return Array.prototype.slice.call(arguments, 0);
+	};
+
+	exports.REFERENCE = function (context, reference) {
+	  try {
+	    var path = reference.split('.');
+	    var result = context;
+	    for (var i = 0; i < path.length; ++i) {
+	      var step = path[i];
+	      if (step[step.length - 1] === ']') {
+	        var opening = step.indexOf('[');
+	        var index = step.substring(opening + 1, step.length - 1);
+	        result = result[step.substring(0, opening)][index];
+	      } else {
+	        result = result[step];
+	      }
+	    }
+	    return result;
+	  } catch (error) {}
+	};
+
+	exports.JOIN = function (array, separator) {
+	  return array.join(separator);
+	};
+
+	exports.NUMBERS = function () {
+	  var possibleNumbers = utils.flatten(arguments);
+	  return possibleNumbers.filter(function (el) {
+	    return typeof el === 'number';
+	  });
+	};
+
+	exports.NUMERAL = function (number, format) {
+	  return numeral(number).format(format);
+	};
+
+/***/ },
+/* 11 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var error = __webpack_require__(5);
+
+	// TODO
+	exports.CELL = function() {
+	 throw new Error('CELL is not implemented');
+	};
+
+	exports.ERROR = {};
+	exports.ERROR.TYPE = function(error_val) {
+	  switch (error_val) {
+	    case error.nil: return 1;
+	    case error.div0: return 2;
+	    case error.value: return 3;
+	    case error.ref: return 4;
+	    case error.name: return 5;
+	    case error.num: return 6;
+	    case error.na: return 7;
+	    case error.data: return 8;
+	  }
+	  return error.na;
+	};
+
+	// TODO
+	exports.INFO = function() {
+	 throw new Error('INFO is not implemented');
+	};
+
+	exports.ISBLANK = function(value) {
+	  return value === null;
+	};
+
+	exports.ISBINARY = function (number) {
+	  return (/^[01]{1,10}$/).test(number);
+	};
+
+	exports.ISERR = function(value) {
+	  return ([error.value, error.ref, error.div0, error.num, error.name, error.nil]).indexOf(value) >= 0 ||
+	    (typeof value === 'number' && (isNaN(value) || !isFinite(value)));
+	};
+
+	exports.ISERROR = function(value) {
+	  return exports.ISERR(value) || value === error.na;
+	};
+
+	exports.ISEVEN = function(number) {
+	  return (Math.floor(Math.abs(number)) & 1) ? false : true;
+	};
+
+	// TODO
+	exports.ISFORMULA = function() {
+	  throw new Error('ISFORMULA is not implemented');
+	};
+
+	exports.ISLOGICAL = function(value) {
+	  return value === true || value === false;
+	};
+
+	exports.ISNA = function(value) {
+	  return value === error.na;
+	};
+
+	exports.ISNONTEXT = function(value) {
+	  return typeof(value) !== 'string';
+	};
+
+	exports.ISNUMBER = function(value) {
+	  return typeof(value) === 'number' && !isNaN(value) && isFinite(value);
+	};
+
+	exports.ISODD = function(number) {
+	  return (Math.floor(Math.abs(number)) & 1) ? true : false;
+	};
+
+	// TODO
+	exports.ISREF = function() {
+	  throw new Error('ISREF is not implemented');
+	};
+
+	exports.ISTEXT = function(value) {
+	  return typeof(value) === 'string';
+	};
+
+	exports.N = function(value) {
+	  if (this.ISNUMBER(value)) {
+	    return value;
+	  }
+	  if (value instanceof Date) {
+	    return value.getTime();
+	  }
+	  if (value === true) {
+	    return 1;
+	  }
+	  if (value === false) {
+	    return 0;
+	  }
+	  if (this.ISERROR(value)) {
+	    return value;
+	  }
+	  return 0;
+	};
+
+	exports.NA = function() {
+	  return error.na;
+	};
+
+
+	// TODO
+	exports.SHEET = function() {
+	  throw new Error('SHEET is not implemented');
+	};
+
+	// TODO
+	exports.SHEETS = function() {
+	  throw new Error('SHEETS is not implemented');
+	};
+
+	exports.TYPE = function(value) {
+	  if (this.ISNUMBER(value)) {
+	    return 1;
+	  }
+	  if (this.ISTEXT(value)) {
+	    return 2;
+	  }
+	  if (this.ISLOGICAL(value)) {
+	    return 4;
+	  }
+	  if (this.ISERROR(value)) {
+	    return 16;
+	  }
+	  if (Array.isArray(value)) {
+	    return 64;
+	  }
+	};
+
+
+/***/ },
+/* 12 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var error = __webpack_require__(5);
+	var jStat = __webpack_require__(9).jStat;
+	var text = __webpack_require__(7);
+	var utils = __webpack_require__(4);
+	var bessel = __webpack_require__(13);
+
+	function isValidBinaryNumber(number) {
+	  return (/^[01]{1,10}$/).test(number);
+	}
+
+	exports.BESSELI = function(x, n) {
+	  x = utils.parseNumber(x);
+	  n = utils.parseNumber(n);
+	  if (utils.anyIsError(x, n)) {
+	    return error.value;
+	  }
+	  return bessel.besseli(x, n);
+	};
+
+	exports.BESSELJ = function(x, n) {
+	  x = utils.parseNumber(x);
+	  n = utils.parseNumber(n);
+	  if (utils.anyIsError(x, n)) {
+	    return error.value;
+	  }
+	  return bessel.besselj(x, n);
+	};
+
+	exports.BESSELK = function(x, n) {
+	  x = utils.parseNumber(x);
+	  n = utils.parseNumber(n);
+	  if (utils.anyIsError(x, n)) {
+	    return error.value;
+	  }
+	  return bessel.besselk(x, n);
+	};
+
+	exports.BESSELY = function(x, n) {
+	  x = utils.parseNumber(x);
+	  n = utils.parseNumber(n);
+	  if (utils.anyIsError(x, n)) {
+	    return error.value;
+	  }
+	  return bessel.bessely(x, n);
+	};
+
+	exports.BIN2DEC = function(number) {
+	  // Return error if number is not binary or contains more than 10 characters (10 digits)
+	  if (!isValidBinaryNumber(number)) {
+	    return error.num;
+	  }
+
+	  // Convert binary number to decimal
+	  var result = parseInt(number, 2);
+
+	  // Handle negative numbers
+	  var stringified = number.toString();
+	  if (stringified.length === 10 && stringified.substring(0, 1) === '1') {
+	    return parseInt(stringified.substring(1), 2) - 512;
+	  } else {
+	    return result;
+	  }
+	};
+
+
+	exports.BIN2HEX = function(number, places) {
+	  // Return error if number is not binary or contains more than 10 characters (10 digits)
+	  if (!isValidBinaryNumber(number)) {
+	    return error.num;
+	  }
+
+	  // Ignore places and return a 10-character hexadecimal number if number is negative
+	  var stringified = number.toString();
+	  if (stringified.length === 10 && stringified.substring(0, 1) === '1') {
+	    return (1099511627264 + parseInt(stringified.substring(1), 2)).toString(16);
+	  }
+
+	  // Convert binary number to hexadecimal
+	  var result = parseInt(number, 2).toString(16);
+
+	  // Return hexadecimal number using the minimum number of characters necessary if places is undefined
+	  if (places === undefined) {
+	    return result;
+	  } else {
+	    // Return error if places is nonnumeric
+	    if (isNaN(places)) {
+	      return error.value;
+	    }
+
+	    // Return error if places is negative
+	    if (places < 0) {
+	      return error.num;
+	    }
+
+	    // Truncate places in case it is not an integer
+	    places = Math.floor(places);
+
+	    // Pad return value with leading 0s (zeros) if necessary (using Underscore.string)
+	    return (places >= result.length) ? text.REPT('0', places - result.length) + result : error.num;
+	  }
+	};
+
+	exports.BIN2OCT = function(number, places) {
+	  // Return error if number is not binary or contains more than 10 characters (10 digits)
+	  if (!isValidBinaryNumber(number)) {
+	    return error.num;
+	  }
+
+	  // Ignore places and return a 10-character octal number if number is negative
+	  var stringified = number.toString();
+	  if (stringified.length === 10 && stringified.substring(0, 1) === '1') {
+	    return (1073741312 + parseInt(stringified.substring(1), 2)).toString(8);
+	  }
+
+	  // Convert binary number to octal
+	  var result = parseInt(number, 2).toString(8);
+
+	  // Return octal number using the minimum number of characters necessary if places is undefined
+	  if (places === undefined) {
+	    return result;
+	  } else {
+	    // Return error if places is nonnumeric
+	    if (isNaN(places)) {
+	      return error.value;
+	    }
+
+	    // Return error if places is negative
+	    if (places < 0) {
+	      return error.num;
+	    }
+
+	    // Truncate places in case it is not an integer
+	    places = Math.floor(places);
+
+	    // Pad return value with leading 0s (zeros) if necessary (using Underscore.string)
+	    return (places >= result.length) ? text.REPT('0', places - result.length) + result : error.num;
+	  }
+	};
+
+	exports.BITAND = function(number1, number2) {
+	  // Return error if either number is a non-numeric value
+	  number1 = utils.parseNumber(number1);
+	  number2 = utils.parseNumber(number2);
+	  if (utils.anyIsError(number1, number2)) {
+	    return error.value;
+	  }
+
+	  // Return error if either number is less than 0
+	  if (number1 < 0 || number2 < 0) {
+	    return error.num;
+	  }
+
+	  // Return error if either number is a non-integer
+	  if (Math.floor(number1) !== number1 || Math.floor(number2) !== number2) {
+	    return error.num;
+	  }
+
+	  // Return error if either number is greater than (2^48)-1
+	  if (number1 > 281474976710655 || number2 > 281474976710655) {
+	    return error.num;
+	  }
+
+	  // Return bitwise AND of two numbers
+	  return number1 & number2;
+	};
+
+	exports.BITLSHIFT = function(number, shift) {
+	  number = utils.parseNumber(number);
+	  shift = utils.parseNumber(shift);
+	  if (utils.anyIsError(number, shift)) {
+	    return error.value;
+	  }
+
+	  // Return error if number is less than 0
+	  if (number < 0) {
+	    return error.num;
+	  }
+
+	  // Return error if number is a non-integer
+	  if (Math.floor(number) !== number) {
+	    return error.num;
+	  }
+
+	  // Return error if number is greater than (2^48)-1
+	  if (number > 281474976710655) {
+	    return error.num;
+	  }
+
+	  // Return error if the absolute value of shift is greater than 53
+	  if (Math.abs(shift) > 53) {
+	    return error.num;
+	  }
+
+	  // Return number shifted by shift bits to the left or to the right if shift is negative
+	  return (shift >= 0) ? number << shift : number >> -shift;
+	};
+
+	exports.BITOR = function(number1, number2) {
+	  number1 = utils.parseNumber(number1);
+	  number2 = utils.parseNumber(number2);
+	  if (utils.anyIsError(number1, number2)) {
+	    return error.value;
+	  }
+
+	  // Return error if either number is less than 0
+	  if (number1 < 0 || number2 < 0) {
+	    return error.num;
+	  }
+
+	  // Return error if either number is a non-integer
+	  if (Math.floor(number1) !== number1 || Math.floor(number2) !== number2) {
+	    return error.num;
+	  }
+
+	  // Return error if either number is greater than (2^48)-1
+	  if (number1 > 281474976710655 || number2 > 281474976710655) {
+	    return error.num;
+	  }
+
+	  // Return bitwise OR of two numbers
+	  return number1 | number2;
+	};
+
+	exports.BITRSHIFT = function(number, shift) {
+	  number = utils.parseNumber(number);
+	  shift = utils.parseNumber(shift);
+	  if (utils.anyIsError(number, shift)) {
+	    return error.value;
+	  }
+
+	  // Return error if number is less than 0
+	  if (number < 0) {
+	    return error.num;
+	  }
+
+	  // Return error if number is a non-integer
+	  if (Math.floor(number) !== number) {
+	    return error.num;
+	  }
+
+	  // Return error if number is greater than (2^48)-1
+	  if (number > 281474976710655) {
+	    return error.num;
+	  }
+
+	  // Return error if the absolute value of shift is greater than 53
+	  if (Math.abs(shift) > 53) {
+	    return error.num;
+	  }
+
+	  // Return number shifted by shift bits to the right or to the left if shift is negative
+	  return (shift >= 0) ? number >> shift : number << -shift;
+	};
+
+	exports.BITXOR = function(number1, number2) {
+	  number1 = utils.parseNumber(number1);
+	  number2 = utils.parseNumber(number2);
+	  if (utils.anyIsError(number1, number2)) {
+	    return error.value;
+	  }
+
+	  // Return error if either number is less than 0
+	  if (number1 < 0 || number2 < 0) {
+	    return error.num;
+	  }
+
+	  // Return error if either number is a non-integer
+	  if (Math.floor(number1) !== number1 || Math.floor(number2) !== number2) {
+	    return error.num;
+	  }
+
+	  // Return error if either number is greater than (2^48)-1
+	  if (number1 > 281474976710655 || number2 > 281474976710655) {
+	    return error.num;
+	  }
+
+	  // Return bitwise XOR of two numbers
+	  return number1 ^ number2;
+	};
+
+	exports.COMPLEX = function(real, imaginary, suffix) {
+	  real = utils.parseNumber(real);
+	  imaginary = utils.parseNumber(imaginary);
+	  if (utils.anyIsError(real, imaginary)) {
+	    return real;
+	  }
+
+	  // Set suffix
+	  suffix = (suffix === undefined) ? 'i' : suffix;
+
+	  // Return error if suffix is neither "i" nor "j"
+	  if (suffix !== 'i' && suffix !== 'j') {
+	    return error.value;
+	  }
+
+	  // Return complex number
+	  if (real === 0 && imaginary === 0) {
+	    return 0;
+	  } else if (real === 0) {
+	    return (imaginary === 1) ? suffix : imaginary.toString() + suffix;
+	  } else if (imaginary === 0) {
+	    return real.toString();
+	  } else {
+	    var sign = (imaginary > 0) ? '+' : '';
+	    return real.toString() + sign + ((imaginary === 1) ? suffix : imaginary.toString() + suffix);
+	  }
+	};
+
+	exports.CONVERT = function(number, from_unit, to_unit) {
+	  number = utils.parseNumber(number);
+	  if (number instanceof Error) {
+	    return number;
+	  }
+
+	  // List of units supported by CONVERT and units defined by the International System of Units
+	  // [Name, Symbol, Alternate symbols, Quantity, ISU, CONVERT, Conversion ratio]
+	  var units = [
+	    ["a.u. of action", "?", null, "action", false, false, 1.05457168181818e-34],
+	    ["a.u. of charge", "e", null, "electric_charge", false, false, 1.60217653141414e-19],
+	    ["a.u. of energy", "Eh", null, "energy", false, false, 4.35974417757576e-18],
+	    ["a.u. of length", "a?", null, "length", false, false, 5.29177210818182e-11],
+	    ["a.u. of mass", "m?", null, "mass", false, false, 9.10938261616162e-31],
+	    ["a.u. of time", "?/Eh", null, "time", false, false, 2.41888432650516e-17],
+	    ["admiralty knot", "admkn", null, "speed", false, true, 0.514773333],
+	    ["ampere", "A", null, "electric_current", true, false, 1],
+	    ["ampere per meter", "A/m", null, "magnetic_field_intensity", true, false, 1],
+	    ["ångström", "Å", ["ang"], "length", false, true, 1e-10],
+	    ["are", "ar", null, "area", false, true, 100],
+	    ["astronomical unit", "ua", null, "length", false, false, 1.49597870691667e-11],
+	    ["bar", "bar", null, "pressure", false, false, 100000],
+	    ["barn", "b", null, "area", false, false, 1e-28],
+	    ["becquerel", "Bq", null, "radioactivity", true, false, 1],
+	    ["bit", "bit", ["b"], "information", false, true, 1],
+	    ["btu", "BTU", ["btu"], "energy", false, true, 1055.05585262],
+	    ["byte", "byte", null, "information", false, true, 8],
+	    ["candela", "cd", null, "luminous_intensity", true, false, 1],
+	    ["candela per square metre", "cd/m?", null, "luminance", true, false, 1],
+	    ["coulomb", "C", null, "electric_charge", true, false, 1],
+	    ["cubic ångström", "ang3", ["ang^3"], "volume", false, true, 1e-30],
+	    ["cubic foot", "ft3", ["ft^3"], "volume", false, true, 0.028316846592],
+	    ["cubic inch", "in3", ["in^3"], "volume", false, true, 0.000016387064],
+	    ["cubic light-year", "ly3", ["ly^3"], "volume", false, true, 8.46786664623715e-47],
+	    ["cubic metre", "m?", null, "volume", true, true, 1],
+	    ["cubic mile", "mi3", ["mi^3"], "volume", false, true, 4168181825.44058],
+	    ["cubic nautical mile", "Nmi3", ["Nmi^3"], "volume", false, true, 6352182208],
+	    ["cubic Pica", "Pica3", ["Picapt3", "Pica^3", "Picapt^3"], "volume", false, true, 7.58660370370369e-8],
+	    ["cubic yard", "yd3", ["yd^3"], "volume", false, true, 0.764554857984],
+	    ["cup", "cup", null, "volume", false, true, 0.0002365882365],
+	    ["dalton", "Da", ["u"], "mass", false, false, 1.66053886282828e-27],
+	    ["day", "d", ["day"], "time", false, true, 86400],
+	    ["degree", "°", null, "angle", false, false, 0.0174532925199433],
+	    ["degrees Rankine", "Rank", null, "temperature", false, true, 0.555555555555556],
+	    ["dyne", "dyn", ["dy"], "force", false, true, 0.00001],
+	    ["electronvolt", "eV", ["ev"], "energy", false, true, 1.60217656514141],
+	    ["ell", "ell", null, "length", false, true, 1.143],
+	    ["erg", "erg", ["e"], "energy", false, true, 1e-7],
+	    ["farad", "F", null, "electric_capacitance", true, false, 1],
+	    ["fluid ounce", "oz", null, "volume", false, true, 0.0000295735295625],
+	    ["foot", "ft", null, "length", false, true, 0.3048],
+	    ["foot-pound", "flb", null, "energy", false, true, 1.3558179483314],
+	    ["gal", "Gal", null, "acceleration", false, false, 0.01],
+	    ["gallon", "gal", null, "volume", false, true, 0.003785411784],
+	    ["gauss", "G", ["ga"], "magnetic_flux_density", false, true, 1],
+	    ["grain", "grain", null, "mass", false, true, 0.0000647989],
+	    ["gram", "g", null, "mass", false, true, 0.001],
+	    ["gray", "Gy", null, "absorbed_dose", true, false, 1],
+	    ["gross registered ton", "GRT", ["regton"], "volume", false, true, 2.8316846592],
+	    ["hectare", "ha", null, "area", false, true, 10000],
+	    ["henry", "H", null, "inductance", true, false, 1],
+	    ["hertz", "Hz", null, "frequency", true, false, 1],
+	    ["horsepower", "HP", ["h"], "power", false, true, 745.69987158227],
+	    ["horsepower-hour", "HPh", ["hh", "hph"], "energy", false, true, 2684519.538],
+	    ["hour", "h", ["hr"], "time", false, true, 3600],
+	    ["imperial gallon (U.K.)", "uk_gal", null, "volume", false, true, 0.00454609],
+	    ["imperial hundredweight", "lcwt", ["uk_cwt", "hweight"], "mass", false, true, 50.802345],
+	    ["imperial quart (U.K)", "uk_qt", null, "volume", false, true, 0.0011365225],
+	    ["imperial ton", "brton", ["uk_ton", "LTON"], "mass", false, true, 1016.046909],
+	    ["inch", "in", null, "length", false, true, 0.0254],
+	    ["international acre", "uk_acre", null, "area", false, true, 4046.8564224],
+	    ["IT calorie", "cal", null, "energy", false, true, 4.1868],
+	    ["joule", "J", null, "energy", true, true, 1],
+	    ["katal", "kat", null, "catalytic_activity", true, false, 1],
+	    ["kelvin", "K", ["kel"], "temperature", true, true, 1],
+	    ["kilogram", "kg", null, "mass", true, true, 1],
+	    ["knot", "kn", null, "speed", false, true, 0.514444444444444],
+	    ["light-year", "ly", null, "length", false, true, 9460730472580800],
+	    ["litre", "L", ["l", "lt"], "volume", false, true, 0.001],
+	    ["lumen", "lm", null, "luminous_flux", true, false, 1],
+	    ["lux", "lx", null, "illuminance", true, false, 1],
+	    ["maxwell", "Mx", null, "magnetic_flux", false, false, 1e-18],
+	    ["measurement ton", "MTON", null, "volume", false, true, 1.13267386368],
+	    ["meter per hour", "m/h", ["m/hr"], "speed", false, true, 0.00027777777777778],
+	    ["meter per second", "m/s", ["m/sec"], "speed", true, true, 1],
+	    ["meter per second squared", "m?s??", null, "acceleration", true, false, 1],
+	    ["parsec", "pc", ["parsec"], "length", false, true, 30856775814671900],
+	    ["meter squared per second", "m?/s", null, "kinematic_viscosity", true, false, 1],
+	    ["metre", "m", null, "length", true, true, 1],
+	    ["miles per hour", "mph", null, "speed", false, true, 0.44704],
+	    ["millimetre of mercury", "mmHg", null, "pressure", false, false, 133.322],
+	    ["minute", "?", null, "angle", false, false, 0.000290888208665722],
+	    ["minute", "min", ["mn"], "time", false, true, 60],
+	    ["modern teaspoon", "tspm", null, "volume", false, true, 0.000005],
+	    ["mole", "mol", null, "amount_of_substance", true, false, 1],
+	    ["morgen", "Morgen", null, "area", false, true, 2500],
+	    ["n.u. of action", "?", null, "action", false, false, 1.05457168181818e-34],
+	    ["n.u. of mass", "m?", null, "mass", false, false, 9.10938261616162e-31],
+	    ["n.u. of speed", "c?", null, "speed", false, false, 299792458],
+	    ["n.u. of time", "?/(me?c??)", null, "time", false, false, 1.28808866778687e-21],
+	    ["nautical mile", "M", ["Nmi"], "length", false, true, 1852],
+	    ["newton", "N", null, "force", true, true, 1],
+	    ["œrsted", "Oe ", null, "magnetic_field_intensity", false, false, 79.5774715459477],
+	    ["ohm", "Ω", null, "electric_resistance", true, false, 1],
+	    ["ounce mass", "ozm", null, "mass", false, true, 0.028349523125],
+	    ["pascal", "Pa", null, "pressure", true, false, 1],
+	    ["pascal second", "Pa?s", null, "dynamic_viscosity", true, false, 1],
+	    ["pferdestärke", "PS", null, "power", false, true, 735.49875],
+	    ["phot", "ph", null, "illuminance", false, false, 0.0001],
+	    ["pica (1/6 inch)", "pica", null, "length", false, true, 0.00035277777777778],
+	    ["pica (1/72 inch)", "Pica", ["Picapt"], "length", false, true, 0.00423333333333333],
+	    ["poise", "P", null, "dynamic_viscosity", false, false, 0.1],
+	    ["pond", "pond", null, "force", false, true, 0.00980665],
+	    ["pound force", "lbf", null, "force", false, true, 4.4482216152605],
+	    ["pound mass", "lbm", null, "mass", false, true, 0.45359237],
+	    ["quart", "qt", null, "volume", false, true, 0.000946352946],
+	    ["radian", "rad", null, "angle", true, false, 1],
+	    ["second", "?", null, "angle", false, false, 0.00000484813681109536],
+	    ["second", "s", ["sec"], "time", true, true, 1],
+	    ["short hundredweight", "cwt", ["shweight"], "mass", false, true, 45.359237],
+	    ["siemens", "S", null, "electrical_conductance", true, false, 1],
+	    ["sievert", "Sv", null, "equivalent_dose", true, false, 1],
+	    ["slug", "sg", null, "mass", false, true, 14.59390294],
+	    ["square ångström", "ang2", ["ang^2"], "area", false, true, 1e-20],
+	    ["square foot", "ft2", ["ft^2"], "area", false, true, 0.09290304],
+	    ["square inch", "in2", ["in^2"], "area", false, true, 0.00064516],
+	    ["square light-year", "ly2", ["ly^2"], "area", false, true, 8.95054210748189e+31],
+	    ["square meter", "m?", null, "area", true, true, 1],
+	    ["square mile", "mi2", ["mi^2"], "area", false, true, 2589988.110336],
+	    ["square nautical mile", "Nmi2", ["Nmi^2"], "area", false, true, 3429904],
+	    ["square Pica", "Pica2", ["Picapt2", "Pica^2", "Picapt^2"], "area", false, true, 0.00001792111111111],
+	    ["square yard", "yd2", ["yd^2"], "area", false, true, 0.83612736],
+	    ["statute mile", "mi", null, "length", false, true, 1609.344],
+	    ["steradian", "sr", null, "solid_angle", true, false, 1],
+	    ["stilb", "sb", null, "luminance", false, false, 0.0001],
+	    ["stokes", "St", null, "kinematic_viscosity", false, false, 0.0001],
+	    ["stone", "stone", null, "mass", false, true, 6.35029318],
+	    ["tablespoon", "tbs", null, "volume", false, true, 0.0000147868],
+	    ["teaspoon", "tsp", null, "volume", false, true, 0.00000492892],
+	    ["tesla", "T", null, "magnetic_flux_density", true, true, 1],
+	    ["thermodynamic calorie", "c", null, "energy", false, true, 4.184],
+	    ["ton", "ton", null, "mass", false, true, 907.18474],
+	    ["tonne", "t", null, "mass", false, false, 1000],
+	    ["U.K. pint", "uk_pt", null, "volume", false, true, 0.00056826125],
+	    ["U.S. bushel", "bushel", null, "volume", false, true, 0.03523907],
+	    ["U.S. oil barrel", "barrel", null, "volume", false, true, 0.158987295],
+	    ["U.S. pint", "pt", ["us_pt"], "volume", false, true, 0.000473176473],
+	    ["U.S. survey mile", "survey_mi", null, "length", false, true, 1609.347219],
+	    ["U.S. survey/statute acre", "us_acre", null, "area", false, true, 4046.87261],
+	    ["volt", "V", null, "voltage", true, false, 1],
+	    ["watt", "W", null, "power", true, true, 1],
+	    ["watt-hour", "Wh", ["wh"], "energy", false, true, 3600],
+	    ["weber", "Wb", null, "magnetic_flux", true, false, 1],
+	    ["yard", "yd", null, "length", false, true, 0.9144],
+	    ["year", "yr", null, "time", false, true, 31557600]
+	  ];
+
+	  // Binary prefixes
+	  // [Name, Prefix power of 2 value, Previx value, Abbreviation, Derived from]
+	  var binary_prefixes = {
+	    Yi: ["yobi", 80, 1208925819614629174706176, "Yi", "yotta"],
+	    Zi: ["zebi", 70, 1180591620717411303424, "Zi", "zetta"],
+	    Ei: ["exbi", 60, 1152921504606846976, "Ei", "exa"],
+	    Pi: ["pebi", 50, 1125899906842624, "Pi", "peta"],
+	    Ti: ["tebi", 40, 1099511627776, "Ti", "tera"],
+	    Gi: ["gibi", 30, 1073741824, "Gi", "giga"],
+	    Mi: ["mebi", 20, 1048576, "Mi", "mega"],
+	    ki: ["kibi", 10, 1024, "ki", "kilo"]
+	  };
+
+	  // Unit prefixes
+	  // [Name, Multiplier, Abbreviation]
+	  var unit_prefixes = {
+	    Y: ["yotta", 1e+24, "Y"],
+	    Z: ["zetta", 1e+21, "Z"],
+	    E: ["exa", 1e+18, "E"],
+	    P: ["peta", 1e+15, "P"],
+	    T: ["tera", 1e+12, "T"],
+	    G: ["giga", 1e+09, "G"],
+	    M: ["mega", 1e+06, "M"],
+	    k: ["kilo", 1e+03, "k"],
+	    h: ["hecto", 1e+02, "h"],
+	    e: ["dekao", 1e+01, "e"],
+	    d: ["deci", 1e-01, "d"],
+	    c: ["centi", 1e-02, "c"],
+	    m: ["milli", 1e-03, "m"],
+	    u: ["micro", 1e-06, "u"],
+	    n: ["nano", 1e-09, "n"],
+	    p: ["pico", 1e-12, "p"],
+	    f: ["femto", 1e-15, "f"],
+	    a: ["atto", 1e-18, "a"],
+	    z: ["zepto", 1e-21, "z"],
+	    y: ["yocto", 1e-24, "y"]
+	  };
+
+	  // Initialize units and multipliers
+	  var from = null;
+	  var to = null;
+	  var base_from_unit = from_unit;
+	  var base_to_unit = to_unit;
+	  var from_multiplier = 1;
+	  var to_multiplier = 1;
+	  var alt;
+
+	  // Lookup from and to units
+	  for (var i = 0; i < units.length; i++) {
+	    alt = (units[i][2] === null) ? [] : units[i][2];
+	    if (units[i][1] === base_from_unit || alt.indexOf(base_from_unit) >= 0) {
+	      from = units[i];
+	    }
+	    if (units[i][1] === base_to_unit || alt.indexOf(base_to_unit) >= 0) {
+	      to = units[i];
+	    }
+	  }
+
+	  // Lookup from prefix
+	  if (from === null) {
+	    var from_binary_prefix = binary_prefixes[from_unit.substring(0, 2)];
+	    var from_unit_prefix = unit_prefixes[from_unit.substring(0, 1)];
+
+	    // Handle dekao unit prefix (only unit prefix with two characters)
+	    if (from_unit.substring(0, 2) === 'da') {
+	      from_unit_prefix = ["dekao", 1e+01, "da"];
+	    }
+
+	    // Handle binary prefixes first (so that 'Yi' is processed before 'Y')
+	    if (from_binary_prefix) {
+	      from_multiplier = from_binary_prefix[2];
+	      base_from_unit = from_unit.substring(2);
+	    } else if (from_unit_prefix) {
+	      from_multiplier = from_unit_prefix[1];
+	      base_from_unit = from_unit.substring(from_unit_prefix[2].length);
+	    }
+
+	    // Lookup from unit
+	    for (var j = 0; j < units.length; j++) {
+	      alt = (units[j][2] === null) ? [] : units[j][2];
+	      if (units[j][1] === base_from_unit || alt.indexOf(base_from_unit) >= 0) {
+	        from = units[j];
+	      }
+	    }
+	  }
+
+	  // Lookup to prefix
+	  if (to === null) {
+	    var to_binary_prefix = binary_prefixes[to_unit.substring(0, 2)];
+	    var to_unit_prefix = unit_prefixes[to_unit.substring(0, 1)];
+
+	    // Handle dekao unit prefix (only unit prefix with two characters)
+	    if (to_unit.substring(0, 2) === 'da') {
+	      to_unit_prefix = ["dekao", 1e+01, "da"];
+	    }
+
+	    // Handle binary prefixes first (so that 'Yi' is processed before 'Y')
+	    if (to_binary_prefix) {
+	      to_multiplier = to_binary_prefix[2];
+	      base_to_unit = to_unit.substring(2);
+	    } else if (to_unit_prefix) {
+	      to_multiplier = to_unit_prefix[1];
+	      base_to_unit = to_unit.substring(to_unit_prefix[2].length);
+	    }
+
+	    // Lookup to unit
+	    for (var k = 0; k < units.length; k++) {
+	      alt = (units[k][2] === null) ? [] : units[k][2];
+	      if (units[k][1] === base_to_unit || alt.indexOf(base_to_unit) >= 0) {
+	        to = units[k];
+	      }
+	    }
+	  }
+
+	  // Return error if a unit does not exist
+	  if (from === null || to === null) {
+	    return error.na;
+	  }
+
+	  // Return error if units represent different quantities
+	  if (from[3] !== to[3]) {
+	    return error.na;
+	  }
+
+	  // Return converted number
+	  return number * from[6] * from_multiplier / (to[6] * to_multiplier);
+	};
+
+	exports.DEC2BIN = function(number, places) {
+	  number = utils.parseNumber(number);
+	  if (number instanceof Error) {
+	    return number;
+	  }
+
+	  // Return error if number is not decimal, is lower than -512, or is greater than 511
+	  if (!/^-?[0-9]{1,3}$/.test(number) || number < -512 || number > 511) {
+	    return error.num;
+	  }
+
+	  // Ignore places and return a 10-character binary number if number is negative
+	  if (number < 0) {
+	    return '1' + text.REPT('0', 9 - (512 + number).toString(2).length) + (512 + number).toString(2);
+	  }
+
+	  // Convert decimal number to binary
+	  var result = parseInt(number, 10).toString(2);
+
+	  // Return binary number using the minimum number of characters necessary if places is undefined
+	  if (typeof places === 'undefined') {
+	    return result;
+	  } else {
+	    // Return error if places is nonnumeric
+	    if (isNaN(places)) {
+	      return error.value;
+	    }
+
+	    // Return error if places is negative
+	    if (places < 0) {
+	      return error.num;
+	    }
+
+	    // Truncate places in case it is not an integer
+	    places = Math.floor(places);
+
+	    // Pad return value with leading 0s (zeros) if necessary (using Underscore.string)
+	    return (places >= result.length) ? text.REPT('0', places - result.length) + result : error.num;
+	  }
+	};
+
+	exports.DEC2HEX = function(number, places) {
+	  number = utils.parseNumber(number);
+	  if (number instanceof Error) {
+	    return number;
+	  }
+
+	  // Return error if number is not decimal, is lower than -549755813888, or is greater than 549755813887
+	  if (!/^-?[0-9]{1,12}$/.test(number) || number < -549755813888 || number > 549755813887) {
+	    return error.num;
+	  }
+
+	  // Ignore places and return a 10-character hexadecimal number if number is negative
+	  if (number < 0) {
+	    return (1099511627776 + number).toString(16);
+	  }
+
+	  // Convert decimal number to hexadecimal
+	  var result = parseInt(number, 10).toString(16);
+
+	  // Return hexadecimal number using the minimum number of characters necessary if places is undefined
+	  if (typeof places === 'undefined') {
+	    return result;
+	  } else {
+	    // Return error if places is nonnumeric
+	    if (isNaN(places)) {
+	      return error.value;
+	    }
+
+	    // Return error if places is negative
+	    if (places < 0) {
+	      return error.num;
+	    }
+
+	    // Truncate places in case it is not an integer
+	    places = Math.floor(places);
+
+	    // Pad return value with leading 0s (zeros) if necessary (using Underscore.string)
+	    return (places >= result.length) ? text.REPT('0', places - result.length) + result : error.num;
+	  }
+	};
+
+	exports.DEC2OCT = function(number, places) {
+	  number = utils.parseNumber(number);
+	  if (number instanceof Error) {
+	    return number;
+	  }
+
+	  // Return error if number is not decimal, is lower than -549755813888, or is greater than 549755813887
+	  if (!/^-?[0-9]{1,9}$/.test(number) || number < -536870912 || number > 536870911) {
+	    return error.num;
+	  }
+
+	  // Ignore places and return a 10-character octal number if number is negative
+	  if (number < 0) {
+	    return (1073741824 + number).toString(8);
+	  }
+
+	  // Convert decimal number to octal
+	  var result = parseInt(number, 10).toString(8);
+
+	  // Return octal number using the minimum number of characters necessary if places is undefined
+	  if (typeof places === 'undefined') {
+	    return result;
+	  } else {
+	    // Return error if places is nonnumeric
+	    if (isNaN(places)) {
+	      return error.value;
+	    }
+
+	    // Return error if places is negative
+	    if (places < 0) {
+	      return error.num;
+	    }
+
+	    // Truncate places in case it is not an integer
+	    places = Math.floor(places);
+
+	    // Pad return value with leading 0s (zeros) if necessary (using Underscore.string)
+	    return (places >= result.length) ? text.REPT('0', places - result.length) + result : error.num;
+	  }
+	};
+
+	exports.DELTA = function(number1, number2) {
+	  // Set number2 to zero if undefined
+	  number2 = (number2 === undefined) ? 0 : number2;
+	  number1 = utils.parseNumber(number1);
+	  number2 = utils.parseNumber(number2);
+	  if (utils.anyIsError(number1, number2)) {
+	    return error.value;
+	  }
+
+	  // Return delta
+	  return (number1 === number2) ? 1 : 0;
+	};
+
+	// TODO: why is upper_bound not used ? The excel documentation has no examples with upper_bound
+	exports.ERF = function(lower_bound, upper_bound) {
+	  // Set number2 to zero if undefined
+	  upper_bound = (upper_bound === undefined) ? 0 : upper_bound;
+
+	  lower_bound = utils.parseNumber(lower_bound);
+	  upper_bound = utils.parseNumber(upper_bound);
+	  if (utils.anyIsError(lower_bound, upper_bound)) {
+	    return error.value;
+	  }
+
+	  return jStat.erf(lower_bound);
+	};
+
+	// TODO
+	exports.ERF.PRECISE = function() {
+	 throw new Error('ERF.PRECISE is not implemented');
+	};
+
+	exports.ERFC = function(x) {
+	  // Return error if x is not a number
+	  if (isNaN(x)) {
+	    return error.value;
+	  }
+
+	  return jStat.erfc(x);
+	};
+
+	// TODO
+	exports.ERFC.PRECISE = function() {
+	 throw new Error('ERFC.PRECISE is not implemented');
+	};
+
+	exports.GESTEP = function(number, step) {
+	  step = step || 0;
+	  number = utils.parseNumber(number);
+	  if (utils.anyIsError(step, number)) {
+	    return number;
+	  }
+
+	  // Return delta
+	  return (number >= step) ? 1 : 0;
+	};
+
+	exports.HEX2BIN = function(number, places) {
+	  // Return error if number is not hexadecimal or contains more than ten characters (10 digits)
+	  if (!/^[0-9A-Fa-f]{1,10}$/.test(number)) {
+	    return error.num;
+	  }
+
+	  // Check if number is negative
+	  var negative = (number.length === 10 && number.substring(0, 1).toLowerCase() === 'f') ? true : false;
+
+	  // Convert hexadecimal number to decimal
+	  var decimal = (negative) ? parseInt(number, 16) - 1099511627776 : parseInt(number, 16);
+
+	  // Return error if number is lower than -512 or greater than 511
+	  if (decimal < -512 || decimal > 511) {
+	    return error.num;
+	  }
+
+	  // Ignore places and return a 10-character binary number if number is negative
+	  if (negative) {
+	    return '1' + text.REPT('0', 9 - (512 + decimal).toString(2).length) + (512 + decimal).toString(2);
+	  }
+
+	  // Convert decimal number to binary
+	  var result = decimal.toString(2);
+
+	  // Return binary number using the minimum number of characters necessary if places is undefined
+	  if (places === undefined) {
+	    return result;
+	  } else {
+	    // Return error if places is nonnumeric
+	    if (isNaN(places)) {
+	      return error.value;
+	    }
+
+	    // Return error if places is negative
+	    if (places < 0) {
+	      return error.num;
+	    }
+
+	    // Truncate places in case it is not an integer
+	    places = Math.floor(places);
+
+	    // Pad return value with leading 0s (zeros) if necessary (using Underscore.string)
+	    return (places >= result.length) ? text.REPT('0', places - result.length) + result : error.num;
+	  }
+	};
+
+	exports.HEX2DEC = function(number) {
+	  // Return error if number is not hexadecimal or contains more than ten characters (10 digits)
+	  if (!/^[0-9A-Fa-f]{1,10}$/.test(number)) {
+	    return error.num;
+	  }
+
+	  // Convert hexadecimal number to decimal
+	  var decimal = parseInt(number, 16);
+
+	  // Return decimal number
+	  return (decimal >= 549755813888) ? decimal - 1099511627776 : decimal;
+	};
+
+	exports.HEX2OCT = function(number, places) {
+	  // Return error if number is not hexadecimal or contains more than ten characters (10 digits)
+	  if (!/^[0-9A-Fa-f]{1,10}$/.test(number)) {
+	    return error.num;
+	  }
+
+	  // Convert hexadecimal number to decimal
+	  var decimal = parseInt(number, 16);
+
+	  // Return error if number is positive and greater than 0x1fffffff (536870911)
+	  if (decimal > 536870911 && decimal < 1098974756864) {
+	    return error.num;
+	  }
+
+	  // Ignore places and return a 10-character octal number if number is negative
+	  if (decimal >= 1098974756864) {
+	    return (decimal - 1098437885952).toString(8);
+	  }
+
+	  // Convert decimal number to octal
+	  var result = decimal.toString(8);
+
+	  // Return octal number using the minimum number of characters necessary if places is undefined
+	  if (places === undefined) {
+	    return result;
+	  } else {
+	    // Return error if places is nonnumeric
+	    if (isNaN(places)) {
+	      return error.value;
+	    }
+
+	    // Return error if places is negative
+	    if (places < 0) {
+	      return error.num;
+	    }
+
+	    // Truncate places in case it is not an integer
+	    places = Math.floor(places);
+
+	    // Pad return value with leading 0s (zeros) if necessary (using Underscore.string)
+	    return (places >= result.length) ? text.REPT('0', places - result.length) + result : error.num;
+	  }
+	};
+
+	exports.IMABS = function(inumber) {
+	  // Lookup real and imaginary coefficients using exports.js [http://formulajs.org]
+	  var x = exports.IMREAL(inumber);
+	  var y = exports.IMAGINARY(inumber);
+
+	  // Return error if either coefficient is not a number
+	  if (utils.anyIsError(x, y)) {
+	    return error.value;
+	  }
+
+	  // Return absolute value of complex number
+	  return Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
+	};
+
+	exports.IMAGINARY = function(inumber) {
+	  if (inumber === undefined || inumber === true || inumber === false) {
+	    return error.value;
+	  }
+
+	  // Return 0 if inumber is equal to 0
+	  if (inumber === 0 || inumber === '0') {
+	    return 0;
+	  }
+
+	  // Handle special cases
+	  if (['i', 'j'].indexOf(inumber) >= 0) {
+	    return 1;
+	  }
+
+	  // Normalize imaginary coefficient
+	  inumber = inumber.replace('+i', '+1i').replace('-i', '-1i').replace('+j', '+1j').replace('-j', '-1j');
+
+	  // Lookup sign
+	  var plus = inumber.indexOf('+');
+	  var minus = inumber.indexOf('-');
+	  if (plus === 0) {
+	    plus = inumber.indexOf('+', 1);
+	  }
+
+	  if (minus === 0) {
+	    minus = inumber.indexOf('-', 1);
+	  }
+
+	  // Lookup imaginary unit
+	  var last = inumber.substring(inumber.length - 1, inumber.length);
+	  var unit = (last === 'i' || last === 'j');
+
+	  if (plus >= 0 || minus >= 0) {
+	    // Return error if imaginary unit is neither i nor j
+	    if (!unit) {
+	      return error.num;
+	    }
+
+	    // Return imaginary coefficient of complex number
+	    if (plus >= 0) {
+	      return (isNaN(inumber.substring(0, plus)) || isNaN(inumber.substring(plus + 1, inumber.length - 1))) ?
+	        error.num :
+	        Number(inumber.substring(plus + 1, inumber.length - 1));
+	    } else {
+	      return (isNaN(inumber.substring(0, minus)) || isNaN(inumber.substring(minus + 1, inumber.length - 1))) ?
+	        error.num :
+	        -Number(inumber.substring(minus + 1, inumber.length - 1));
+	    }
+	  } else {
+	    if (unit) {
+	      return (isNaN(inumber.substring(0, inumber.length - 1))) ? error.num : inumber.substring(0, inumber.length - 1);
+	    } else {
+	      return (isNaN(inumber)) ? error.num : 0;
+	    }
+	  }
+	};
+
+	exports.IMARGUMENT = function(inumber) {
+	  // Lookup real and imaginary coefficients using exports.js [http://formulajs.org]
+	  var x = exports.IMREAL(inumber);
+	  var y = exports.IMAGINARY(inumber);
+
+	  // Return error if either coefficient is not a number
+	  if (utils.anyIsError(x, y)) {
+	    return error.value;
+	  }
+
+	  // Return error if inumber is equal to zero
+	  if (x === 0 && y === 0) {
+	    return error.div0;
+	  }
+
+	  // Return PI/2 if x is equal to zero and y is positive
+	  if (x === 0 && y > 0) {
+	    return Math.PI / 2;
+	  }
+
+	  // Return -PI/2 if x is equal to zero and y is negative
+	  if (x === 0 && y < 0) {
+	    return -Math.PI / 2;
+	  }
+
+	  // Return zero if x is negative and y is equal to zero
+	  if (y === 0 && x > 0) {
+	    return 0;
+	  }
+
+	  // Return zero if x is negative and y is equal to zero
+	  if (y === 0 && x < 0) {
+	    return -Math.PI;
+	  }
+
+	  // Return argument of complex number
+	  if (x > 0) {
+	    return Math.atan(y / x);
+	  } else if (x < 0 && y >= 0) {
+	    return Math.atan(y / x) + Math.PI;
+	  } else {
+	    return Math.atan(y / x) - Math.PI;
+	  }
+	};
+
+	exports.IMCONJUGATE = function(inumber) {
+	  // Lookup real and imaginary coefficients using exports.js [http://formulajs.org]
+	  var x = exports.IMREAL(inumber);
+	  var y = exports.IMAGINARY(inumber);
+
+	  if (utils.anyIsError(x, y)) {
+	    return error.value;
+	  }
+
+	  // Lookup imaginary unit
+	  var unit = inumber.substring(inumber.length - 1);
+	  unit = (unit === 'i' || unit === 'j') ? unit : 'i';
+
+	  // Return conjugate of complex number
+	  return (y !== 0) ? exports.COMPLEX(x, -y, unit) : inumber;
+	};
+
+	exports.IMCOS = function(inumber) {
+	  // Lookup real and imaginary coefficients using exports.js [http://formulajs.org]
+	  var x = exports.IMREAL(inumber);
+	  var y = exports.IMAGINARY(inumber);
+
+	  if (utils.anyIsError(x, y)) {
+	    return error.value;
+	  }
+
+	  // Lookup imaginary unit
+	  var unit = inumber.substring(inumber.length - 1);
+	  unit = (unit === 'i' || unit === 'j') ? unit : 'i';
+
+	  // Return cosine of complex number
+	  return exports.COMPLEX(Math.cos(x) * (Math.exp(y) + Math.exp(-y)) / 2, -Math.sin(x) * (Math.exp(y) - Math.exp(-y)) / 2, unit);
+	};
+
+	exports.IMCOSH = function(inumber) {
+	  // Lookup real and imaginary coefficients using exports.js [http://formulajs.org]
+	  var x = exports.IMREAL(inumber);
+	  var y = exports.IMAGINARY(inumber);
+
+	  if (utils.anyIsError(x, y)) {
+	    return error.value;
+	  }
+
+	  // Lookup imaginary unit
+	  var unit = inumber.substring(inumber.length - 1);
+	  unit = (unit === 'i' || unit === 'j') ? unit : 'i';
+
+	  // Return hyperbolic cosine of complex number
+	  return exports.COMPLEX(Math.cos(y) * (Math.exp(x) + Math.exp(-x)) / 2, Math.sin(y) * (Math.exp(x) - Math.exp(-x)) / 2, unit);
+	};
+
+	exports.IMCOT = function(inumber) {
+	  // Lookup real and imaginary coefficients using Formula.js [http://formulajs.org]
+	  var x = exports.IMREAL(inumber);
+	  var y = exports.IMAGINARY(inumber);
+
+	  if (utils.anyIsError(x, y)) {
+	    return error.value;
+	  }
+
+	  // Return cotangent of complex number
+	  return exports.IMDIV(exports.IMCOS(inumber), exports.IMSIN(inumber));
+	};
+
+	exports.IMDIV = function(inumber1, inumber2) {
+	  // Lookup real and imaginary coefficients using Formula.js [http://formulajs.org]
+	  var a = exports.IMREAL(inumber1);
+	  var b = exports.IMAGINARY(inumber1);
+	  var c = exports.IMREAL(inumber2);
+	  var d = exports.IMAGINARY(inumber2);
+
+	  if (utils.anyIsError(a, b, c, d)) {
+	    return error.value;
+	  }
+
+	  // Lookup imaginary unit
+	  var unit1 = inumber1.substring(inumber1.length - 1);
+	  var unit2 = inumber2.substring(inumber2.length - 1);
+	  var unit = 'i';
+	  if (unit1 === 'j') {
+	    unit = 'j';
+	  } else if (unit2 === 'j') {
+	    unit = 'j';
+	  }
+
+	  // Return error if inumber2 is null
+	  if (c === 0 && d === 0) {
+	    return error.num;
+	  }
+
+	  // Return exponential of complex number
+	  var den = c * c + d * d;
+	  return exports.COMPLEX((a * c + b * d) / den, (b * c - a * d) / den, unit);
+	};
+
+	exports.IMEXP = function(inumber) {
+	  // Lookup real and imaginary coefficients using Formula.js [http://formulajs.org]
+	  var x = exports.IMREAL(inumber);
+	  var y = exports.IMAGINARY(inumber);
+
+	  if (utils.anyIsError(x, y)) {
+	    return error.value;
+	  }
+
+	  // Lookup imaginary unit
+	  var unit = inumber.substring(inumber.length - 1);
+	  unit = (unit === 'i' || unit === 'j') ? unit : 'i';
+
+	  // Return exponential of complex number
+	  var e = Math.exp(x);
+	  return exports.COMPLEX(e * Math.cos(y), e * Math.sin(y), unit);
+	};
+
+	exports.IMLN = function(inumber) {
+	  // Lookup real and imaginary coefficients using Formula.js [http://formulajs.org]
+	  var x = exports.IMREAL(inumber);
+	  var y = exports.IMAGINARY(inumber);
+
+	  if (utils.anyIsError(x, y)) {
+	    return error.value;
+	  }
+
+	  // Lookup imaginary unit
+	  var unit = inumber.substring(inumber.length - 1);
+	  unit = (unit === 'i' || unit === 'j') ? unit : 'i';
+
+	  // Return exponential of complex number
+	  return exports.COMPLEX(Math.log(Math.sqrt(x * x + y * y)), Math.atan(y / x), unit);
+	};
+
+	exports.IMLOG10 = function(inumber) {
+	  // Lookup real and imaginary coefficients using Formula.js [http://formulajs.org]
+	  var x = exports.IMREAL(inumber);
+	  var y = exports.IMAGINARY(inumber);
+
+	  if (utils.anyIsError(x, y)) {
+	    return error.value;
+	  }
+
+	  // Lookup imaginary unit
+	  var unit = inumber.substring(inumber.length - 1);
+	  unit = (unit === 'i' || unit === 'j') ? unit : 'i';
+
+	  // Return exponential of complex number
+	  return exports.COMPLEX(Math.log(Math.sqrt(x * x + y * y)) / Math.log(10), Math.atan(y / x) / Math.log(10), unit);
+	};
+
+	exports.IMLOG2 = function(inumber) {
+	  // Lookup real and imaginary coefficients using Formula.js [http://formulajs.org]
+	  var x = exports.IMREAL(inumber);
+	  var y = exports.IMAGINARY(inumber);
+
+	  if (utils.anyIsError(x, y)) {
+	    return error.value;
+	  }
+
+	  // Lookup imaginary unit
+	  var unit = inumber.substring(inumber.length - 1);
+	  unit = (unit === 'i' || unit === 'j') ? unit : 'i';
+
+	  // Return exponential of complex number
+	  return exports.COMPLEX(Math.log(Math.sqrt(x * x + y * y)) / Math.log(2), Math.atan(y / x) / Math.log(2), unit);
+	};
+
+	exports.IMPOWER = function(inumber, number) {
+	  number = utils.parseNumber(number);
+	  var x = exports.IMREAL(inumber);
+	  var y = exports.IMAGINARY(inumber);
+	  if (utils.anyIsError(number, x, y)) {
+	    return error.value;
+	  }
+
+	  // Lookup imaginary unit
+	  var unit = inumber.substring(inumber.length - 1);
+	  unit = (unit === 'i' || unit === 'j') ? unit : 'i';
+
+	  // Calculate power of modulus
+	  var p = Math.pow(exports.IMABS(inumber), number);
+
+	  // Calculate argument
+	  var t = exports.IMARGUMENT(inumber);
+
+	  // Return exponential of complex number
+	  return exports.COMPLEX(p * Math.cos(number * t), p * Math.sin(number * t), unit);
+	};
+
+	exports.IMPRODUCT = function() {
+	  // Initialize result
+	  var result = arguments[0];
+
+	  // Loop on all numbers
+	  for (var i = 1; i < arguments.length; i++) {
+	    // Lookup coefficients of two complex numbers
+	    var a = exports.IMREAL(result);
+	    var b = exports.IMAGINARY(result);
+	    var c = exports.IMREAL(arguments[i]);
+	    var d = exports.IMAGINARY(arguments[i]);
+
+	    if (utils.anyIsError(a, b, c, d)) {
+	      return error.value;
+	    }
+
+	    // Complute product of two complex numbers
+	    result = exports.COMPLEX(a * c - b * d, a * d + b * c);
+	  }
+
+	  // Return product of complex numbers
+	  return result;
+	};
+
+	exports.IMREAL = function(inumber) {
+	  if (inumber === undefined || inumber === true || inumber === false) {
+	    return error.value;
+	  }
+
+	  // Return 0 if inumber is equal to 0
+	  if (inumber === 0 || inumber === '0') {
+	    return 0;
+	  }
+
+	  // Handle special cases
+	  if (['i', '+i', '1i', '+1i', '-i', '-1i', 'j', '+j', '1j', '+1j', '-j', '-1j'].indexOf(inumber) >= 0) {
+	    return 0;
+	  }
+
+	  // Lookup sign
+	  var plus = inumber.indexOf('+');
+	  var minus = inumber.indexOf('-');
+	  if (plus === 0) {
+	    plus = inumber.indexOf('+', 1);
+	  }
+	  if (minus === 0) {
+	    minus = inumber.indexOf('-', 1);
+	  }
+
+	  // Lookup imaginary unit
+	  var last = inumber.substring(inumber.length - 1, inumber.length);
+	  var unit = (last === 'i' || last === 'j');
+
+	  if (plus >= 0 || minus >= 0) {
+	    // Return error if imaginary unit is neither i nor j
+	    if (!unit) {
+	      return error.num;
+	    }
+
+	    // Return real coefficient of complex number
+	    if (plus >= 0) {
+	      return (isNaN(inumber.substring(0, plus)) || isNaN(inumber.substring(plus + 1, inumber.length - 1))) ?
+	        error.num :
+	        Number(inumber.substring(0, plus));
+	    } else {
+	      return (isNaN(inumber.substring(0, minus)) || isNaN(inumber.substring(minus + 1, inumber.length - 1))) ?
+	        error.num :
+	        Number(inumber.substring(0, minus));
+	    }
+	  } else {
+	    if (unit) {
+	      return (isNaN(inumber.substring(0, inumber.length - 1))) ? error.num : 0;
+	    } else {
+	      return (isNaN(inumber)) ? error.num : inumber;
+	    }
+	  }
+	};
+
+	exports.IMSEC = function(inumber) {
+	  // Return error if inumber is a logical value
+	  if (inumber === true || inumber === false) {
+	    return error.value;
+	  }
+
+	  // Lookup real and imaginary coefficients using Formula.js [http://formulajs.org]
+	  var x = exports.IMREAL(inumber);
+	  var y = exports.IMAGINARY(inumber);
+
+	  if (utils.anyIsError(x, y)) {
+	    return error.value;
+	  }
+
+	  // Return secant of complex number
+	  return exports.IMDIV('1', exports.IMCOS(inumber));
+	};
+
+	exports.IMSECH = function(inumber) {
+	  // Lookup real and imaginary coefficients using Formula.js [http://formulajs.org]
+	  var x = exports.IMREAL(inumber);
+	  var y = exports.IMAGINARY(inumber);
+
+	  if (utils.anyIsError(x, y)) {
+	    return error.value;
+	  }
+
+	  // Return hyperbolic secant of complex number
+	  return exports.IMDIV('1', exports.IMCOSH(inumber));
+	};
+
+	exports.IMSIN = function(inumber) {
+	  // Lookup real and imaginary coefficients using Formula.js [http://formulajs.org]
+	  var x = exports.IMREAL(inumber);
+	  var y = exports.IMAGINARY(inumber);
+
+	  if (utils.anyIsError(x, y)) {
+	    return error.value;
+	  }
+
+	  // Lookup imaginary unit
+	  var unit = inumber.substring(inumber.length - 1);
+	  unit = (unit === 'i' || unit === 'j') ? unit : 'i';
+
+	  // Return sine of complex number
+	  return exports.COMPLEX(Math.sin(x) * (Math.exp(y) + Math.exp(-y)) / 2, Math.cos(x) * (Math.exp(y) - Math.exp(-y)) / 2, unit);
+	};
+
+	exports.IMSINH = function(inumber) {
+	  // Lookup real and imaginary coefficients using Formula.js [http://formulajs.org]
+	  var x = exports.IMREAL(inumber);
+	  var y = exports.IMAGINARY(inumber);
+
+	  if (utils.anyIsError(x, y)) {
+	    return error.value;
+	  }
+
+	  // Lookup imaginary unit
+	  var unit = inumber.substring(inumber.length - 1);
+	  unit = (unit === 'i' || unit === 'j') ? unit : 'i';
+
+	  // Return hyperbolic sine of complex number
+	  return exports.COMPLEX(Math.cos(y) * (Math.exp(x) - Math.exp(-x)) / 2, Math.sin(y) * (Math.exp(x) + Math.exp(-x)) / 2, unit);
+	};
+
+	exports.IMSQRT = function(inumber) {
+	  // Lookup real and imaginary coefficients using Formula.js [http://formulajs.org]
+	  var x = exports.IMREAL(inumber);
+	  var y = exports.IMAGINARY(inumber);
+
+	  if (utils.anyIsError(x, y)) {
+	    return error.value;
+	  }
+
+	  // Lookup imaginary unit
+	  var unit = inumber.substring(inumber.length - 1);
+	  unit = (unit === 'i' || unit === 'j') ? unit : 'i';
+
+	  // Calculate power of modulus
+	  var s = Math.sqrt(exports.IMABS(inumber));
+
+	  // Calculate argument
+	  var t = exports.IMARGUMENT(inumber);
+
+	  // Return exponential of complex number
+	  return exports.COMPLEX(s * Math.cos(t / 2), s * Math.sin(t / 2), unit);
+	};
+
+	exports.IMCSC = function (inumber) {
+	  // Return error if inumber is a logical value
+	  if (inumber === true || inumber === false) {
+	    return error.value;
+	  }
+
+	  // Lookup real and imaginary coefficients using Formula.js [http://formulajs.org]
+	  var x = exports.IMREAL(inumber);
+	  var y = exports.IMAGINARY(inumber);
+
+	  // Return error if either coefficient is not a number
+	  if (utils.anyIsError(x, y)) {
+	    return error.num;
+	  }
+
+	  // Return cosecant of complex number
+	  return exports.IMDIV('1', exports.IMSIN(inumber));
+	};
+
+	exports.IMCSCH = function (inumber) {
+	  // Return error if inumber is a logical value
+	  if (inumber === true || inumber === false) {
+	    return error.value;
+	  }
+
+	  // Lookup real and imaginary coefficients using Formula.js [http://formulajs.org]
+	  var x = exports.IMREAL(inumber);
+	  var y = exports.IMAGINARY(inumber);
+
+	  // Return error if either coefficient is not a number
+	  if (utils.anyIsError(x, y)) {
+	    return error.num;
+	  }
+
+	  // Return hyperbolic cosecant of complex number
+	  return exports.IMDIV('1', exports.IMSINH(inumber));
+	};
+
+	exports.IMSUB = function(inumber1, inumber2) {
+	  // Lookup real and imaginary coefficients using Formula.js [http://formulajs.org]
+	  var a = this.IMREAL(inumber1);
+	  var b = this.IMAGINARY(inumber1);
+	  var c = this.IMREAL(inumber2);
+	  var d = this.IMAGINARY(inumber2);
+
+	  if (utils.anyIsError(a, b, c, d)) {
+	    return error.value;
+	  }
+
+	  // Lookup imaginary unit
+	  var unit1 = inumber1.substring(inumber1.length - 1);
+	  var unit2 = inumber2.substring(inumber2.length - 1);
+	  var unit = 'i';
+	  if (unit1 === 'j') {
+	    unit = 'j';
+	  } else if (unit2 === 'j') {
+	    unit = 'j';
+	  }
+
+	  // Return _ of two complex numbers
+	  return this.COMPLEX(a - c, b - d, unit);
+	};
+
+	exports.IMSUM = function() {
+	  var args = utils.flatten(arguments);
+
+	  // Initialize result
+	  var result = args[0];
+
+	  // Loop on all numbers
+	  for (var i = 1; i < args.length; i++) {
+	    // Lookup coefficients of two complex numbers
+	    var a = this.IMREAL(result);
+	    var b = this.IMAGINARY(result);
+	    var c = this.IMREAL(args[i]);
+	    var d = this.IMAGINARY(args[i]);
+
+	    if (utils.anyIsError(a, b, c, d)) {
+	      return error.value;
+	    }
+
+	    // Complute product of two complex numbers
+	    result = this.COMPLEX(a + c, b + d);
+	  }
+
+	  // Return sum of complex numbers
+	  return result;
+	};
+
+	exports.IMTAN = function(inumber) {
+	  // Return error if inumber is a logical value
+	  if (inumber === true || inumber === false) {
+	    return error.value;
+	  }
+
+	  // Lookup real and imaginary coefficients using Formula.js [http://formulajs.org]
+	  var x = exports.IMREAL(inumber);
+	  var y = exports.IMAGINARY(inumber);
+
+	  if (utils.anyIsError(x, y)) {
+	    return error.value;
+	  }
+
+	  // Return tangent of complex number
+	  return this.IMDIV(this.IMSIN(inumber), this.IMCOS(inumber));
+	};
+
+	exports.OCT2BIN = function(number, places) {
+	  // Return error if number is not hexadecimal or contains more than ten characters (10 digits)
+	  if (!/^[0-7]{1,10}$/.test(number)) {
+	    return error.num;
+	  }
+
+	  // Check if number is negative
+	  var negative = (number.length === 10 && number.substring(0, 1) === '7') ? true : false;
+
+	  // Convert octal number to decimal
+	  var decimal = (negative) ? parseInt(number, 8) - 1073741824 : parseInt(number, 8);
+
+	  // Return error if number is lower than -512 or greater than 511
+	  if (decimal < -512 || decimal > 511) {
+	    return error.num;
+	  }
+
+	  // Ignore places and return a 10-character binary number if number is negative
+	  if (negative) {
+	    return '1' + text.REPT('0', 9 - (512 + decimal).toString(2).length) + (512 + decimal).toString(2);
+	  }
+
+	  // Convert decimal number to binary
+	  var result = decimal.toString(2);
+
+	  // Return binary number using the minimum number of characters necessary if places is undefined
+	  if (typeof places === 'undefined') {
+	    return result;
+	  } else {
+	    // Return error if places is nonnumeric
+	    if (isNaN(places)) {
+	      return error.value;
+	    }
+
+	    // Return error if places is negative
+	    if (places < 0) {
+	      return error.num;
+	    }
+
+	    // Truncate places in case it is not an integer
+	    places = Math.floor(places);
+
+	    // Pad return value with leading 0s (zeros) if necessary (using Underscore.string)
+	    return (places >= result.length) ? text.REPT('0', places - result.length) + result : error.num;
+	  }
+	};
+
+	exports.OCT2DEC = function(number) {
+	  // Return error if number is not octal or contains more than ten characters (10 digits)
+	  if (!/^[0-7]{1,10}$/.test(number)) {
+	    return error.num;
+	  }
+
+	  // Convert octal number to decimal
+	  var decimal = parseInt(number, 8);
+
+	  // Return decimal number
+	  return (decimal >= 536870912) ? decimal - 1073741824 : decimal;
+	};
+
+	exports.OCT2HEX = function(number, places) {
+	  // Return error if number is not octal or contains more than ten characters (10 digits)
+	  if (!/^[0-7]{1,10}$/.test(number)) {
+	    return error.num;
+	  }
+
+	  // Convert octal number to decimal
+	  var decimal = parseInt(number, 8);
+
+	  // Ignore places and return a 10-character octal number if number is negative
+	  if (decimal >= 536870912) {
+	    return 'ff' + (decimal + 3221225472).toString(16);
+	  }
+
+	  // Convert decimal number to hexadecimal
+	  var result = decimal.toString(16);
+
+	  // Return hexadecimal number using the minimum number of characters necessary if places is undefined
+	  if (places === undefined) {
+	    return result;
+	  } else {
+	    // Return error if places is nonnumeric
+	    if (isNaN(places)) {
+	      return error.value;
+	    }
+
+	    // Return error if places is negative
+	    if (places < 0) {
+	      return error.num;
+	    }
+
+	    // Truncate places in case it is not an integer
+	    places = Math.floor(places);
+
+	    // Pad return value with leading 0s (zeros) if necessary (using Underscore.string)
+	    return (places >= result.length) ? text.REPT('0', places - result.length) + result : error.num;
+	  }
+	};
+
+/***/ },
+/* 13 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var M = Math;
+	function _horner(arr, v) { return arr.reduce(function(z,w){return v * z + w;},0); };
+	function _bessel_iter(x, n, f0, f1, sign) {
+	  if(!sign) sign = -1;
+	  var tdx = 2 / x, f2;
+	  if(n === 0) return f0;
+	  if(n === 1) return f1;
+	  for(var o = 1; o != n; ++o) {
+	    f2 = f1 * o * tdx + sign * f0;
+	    f0 = f1; f1 = f2;
+	  }
+	  return f1;
+	}
+	function _bessel_wrap(bessel0, bessel1, name, nonzero, sign) {
+	  return function bessel(x,n) {
+	    if(n === 0) return bessel0(x);
+	    if(n === 1) return bessel1(x);
+	    if(n < 0) throw name + ': Order (' + n + ') must be nonnegative';
+	    if(nonzero == 1 && x === 0) throw name + ': Undefined when x == 0';
+	    if(nonzero == 2 && x <= 0) throw name + ': Undefined when x <= 0';
+	    var b0 = bessel0(x), b1 = bessel1(x);
+	    return _bessel_iter(x, n, b0, b1, sign);
+	  };
+	}
+	var besselj = (function() {
+	  var b0_a1a = [57568490574.0,-13362590354.0,651619640.7,-11214424.18,77392.33017,-184.9052456].reverse();
+	  var b0_a2a = [57568490411.0,1029532985.0,9494680.718,59272.64853,267.8532712,1.0].reverse();
+	  var b0_a1b = [1.0, -0.1098628627e-2, 0.2734510407e-4, -0.2073370639e-5, 0.2093887211e-6].reverse();
+	  var b0_a2b = [-0.1562499995e-1, 0.1430488765e-3, -0.6911147651e-5, 0.7621095161e-6, -0.934935152e-7].reverse();
+	  var W = 0.636619772; // 2 / Math.PI
+
+	  function bessel0(x) {
+	    var a, a1, a2, y = x * x, xx = M.abs(x) - 0.785398164;
+	    if(M.abs(x) < 8) {
+	      a1 = _horner(b0_a1a, y);
+	      a2 = _horner(b0_a2a, y);
+	      a = a1/a2;
+	    }
+	    else {
+	      y = 64 / y;
+	      a1 = _horner(b0_a1b, y);
+	      a2 = _horner(b0_a2b, y);
+	      a = M.sqrt(W/M.abs(x))*(M.cos(xx)*a1-M.sin(xx)*a2*8/M.abs(x));
+	    }
+	    return a;
+	  }
+	  var b1_a1a = [72362614232.0,-7895059235.0,242396853.1,-2972611.439, 15704.48260, -30.16036606].reverse();
+	  var b1_a2a = [144725228442.0, 2300535178.0, 18583304.74, 99447.43394, 376.9991397, 1.0].reverse();
+	  var b1_a1b = [1.0, 0.183105e-2, -0.3516396496e-4, 0.2457520174e-5, -0.240337019e-6].reverse();
+	  var b1_a2b = [0.04687499995, -0.2002690873e-3, 0.8449199096e-5, -0.88228987e-6, 0.105787412e-6].reverse();
+	  function bessel1(x) {
+	    var a, a1, a2, y = x*x, xx = M.abs(x) - 2.356194491;
+	    if(Math.abs(x)< 8) {
+	      a1 = x*_horner(b1_a1a, y);
+	      a2 = _horner(b1_a2a, y);
+	      a = a1 / a2;
+	    } else {
+	      y = 64 / y;
+	      a1=_horner(b1_a1b, y);
+	      a2=_horner(b1_a2b, y);
+	      a=M.sqrt(W/M.abs(x))*(M.cos(xx)*a1-M.sin(xx)*a2*8/M.abs(x));
+	      if(x < 0) a = -a;
+	    }
+	    return a;
+	  }
+	  return function besselj(x, n) {
+	    n = Math.round(n);
+	    if(n === 0) return bessel0(M.abs(x));
+	    if(n === 1) return bessel1(M.abs(x));
+	    if(n < 0) throw 'BESSELJ: Order (' + n + ') must be nonnegative';
+	    if(M.abs(x) === 0) return 0;
+
+	    var ret, j, tox = 2 / M.abs(x), m, jsum, sum, bjp, bj, bjm;
+	    if(M.abs(x) > n) {
+	      ret = _bessel_iter(x, n, bessel0(M.abs(x)), bessel1(M.abs(x)),-1);
+	    } else {
+	      m=2*M.floor((n+M.floor(M.sqrt(40*n)))/2);
+	      jsum=0;
+	      bjp=ret=sum=0.0;
+	      bj=1.0;
+	      for (j=m;j>0;j--) {
+	        bjm=j*tox*bj-bjp;
+	        bjp=bj;
+	        bj=bjm;
+	        if (M.abs(bj) > 1E10) {
+	          bj *= 1E-10;
+	          bjp *= 1E-10;
+	          ret *= 1E-10;
+	          sum *= 1E-10;
+	        }
+	        if (jsum) sum += bj;
+	        jsum=!jsum;
+	        if (j == n) ret=bjp;
+	      }
+	      sum=2.0*sum-bj;
+	      ret /= sum;
+	    }
+	    return x < 0 && (n%2) ? -ret : ret;
+	  };
+	})();
+	var bessely = (function() {
+	  var b0_a1a = [-2957821389.0, 7062834065.0, -512359803.6, 10879881.29, -86327.92757, 228.4622733].reverse();
+	  var b0_a2a = [40076544269.0, 745249964.8, 7189466.438, 47447.26470, 226.1030244, 1.0].reverse();
+	  var b0_a1b = [1.0, -0.1098628627e-2, 0.2734510407e-4, -0.2073370639e-5, 0.2093887211e-6].reverse();
+	  var b0_a2b = [-0.1562499995e-1, 0.1430488765e-3, -0.6911147651e-5, 0.7621095161e-6, -0.934945152e-7].reverse();
+
+	  var W = 0.636619772;
+	  function bessel0(x) {
+	    var a, a1, a2, y = x * x, xx = x - 0.785398164;
+	    if(x < 8) {
+	      a1 = _horner(b0_a1a, y);
+	      a2 = _horner(b0_a2a, y);
+	      a = a1/a2 + W * besselj(x,0) * M.log(x);
+	    } else {
+	      y = 64 / y;
+	      a1 = _horner(b0_a1b, y);
+	      a2 = _horner(b0_a2b, y);
+	      a = M.sqrt(W/x)*(M.sin(xx)*a1+M.cos(xx)*a2*8/x);
+	    }
+	    return a;
+	  }
+
+	  var b1_a1a = [-0.4900604943e13, 0.1275274390e13, -0.5153438139e11, 0.7349264551e9, -0.4237922726e7, 0.8511937935e4].reverse();
+	  var b1_a2a = [0.2499580570e14, 0.4244419664e12, 0.3733650367e10, 0.2245904002e8, 0.1020426050e6, 0.3549632885e3, 1].reverse();
+	  var b1_a1b = [1.0, 0.183105e-2, -0.3516396496e-4, 0.2457520174e-5, -0.240337019e-6].reverse();
+	  var b1_a2b = [0.04687499995, -0.2002690873e-3, 0.8449199096e-5, -0.88228987e-6, 0.105787412e-6].reverse();
+	  function bessel1(x) {
+	    var a, a1, a2, y = x*x, xx = x - 2.356194491;
+	    if(x < 8) {
+	      a1 = x*_horner(b1_a1a, y);
+	      a2 = _horner(b1_a2a, y);
+	      a = a1/a2 + W * (besselj(x,1) * M.log(x) - 1 / x);
+	    } else {
+	      y = 64 / y;
+	      a1=_horner(b1_a1b, y);
+	      a2=_horner(b1_a2b, y);
+	      a=M.sqrt(W/x)*(M.sin(xx)*a1+M.cos(xx)*a2*8/x);
+	    }
+	    return a;
+	  }
+
+	  return _bessel_wrap(bessel0, bessel1, 'BESSELY', 1, -1);
+	})();
+	var besseli = (function() {
+	  var b0_a = [1.0, 3.5156229, 3.0899424, 1.2067492, 0.2659732, 0.360768e-1, 0.45813e-2].reverse();
+	  var b0_b = [0.39894228, 0.1328592e-1, 0.225319e-2, -0.157565e-2, 0.916281e-2, -0.2057706e-1, 0.2635537e-1, -0.1647633e-1, 0.392377e-2].reverse();
+	  function bessel0(x) {
+	    if(x <= 3.75) return _horner(b0_a, x*x/(3.75*3.75));
+	    return M.exp(M.abs(x))/M.sqrt(M.abs(x))*_horner(b0_b, 3.75/M.abs(x));
+	  }
+
+	  var b1_a = [0.5, 0.87890594, 0.51498869, 0.15084934, 0.2658733e-1, 0.301532e-2, 0.32411e-3].reverse();
+	  var b1_b = [0.39894228, -0.3988024e-1, -0.362018e-2, 0.163801e-2, -0.1031555e-1, 0.2282967e-1, -0.2895312e-1, 0.1787654e-1, -0.420059e-2].reverse();
+	  function bessel1(x) {
+	    if(x < 3.75) return x * _horner(b1_a, x*x/(3.75*3.75));
+	    return (x < 0 ? -1 : 1) * M.exp(M.abs(x))/M.sqrt(M.abs(x))*_horner(b1_b, 3.75/M.abs(x));
+	  }
+
+	  return function besseli(x, n) {
+	    n = Math.round(n);
+	    if(n === 0) return bessel0(x);
+	    if(n == 1) return bessel1(x);
+	    if(n < 0) throw 'BESSELI Order (' + n + ') must be nonnegative';
+	    if(M.abs(x) === 0) return 0;
+
+	    var ret, j, tox = 2 / M.abs(x), m, bip, bi, bim;
+	    m=2*M.round((n+M.round(M.sqrt(40*n)))/2);
+	    bip=ret=0.0;
+	    bi=1.0;
+	    for (j=m;j>0;j--) {
+	      bim=j*tox*bi + bip;
+	      bip=bi; bi=bim;
+	      if (M.abs(bi) > 1E10) {
+	        bi *= 1E-10;
+	        bip *= 1E-10;
+	        ret *= 1E-10;
+	      }
+	      if(j == n) ret = bip;
+	    }
+	    ret *= besseli(x, 0) / bi;
+	    return x < 0 && (n%2) ? -ret : ret;
+	  };
+
+	})();
+
+	var besselk = (function() {
+	  var b0_a = [-0.57721566, 0.42278420, 0.23069756, 0.3488590e-1, 0.262698e-2, 0.10750e-3, 0.74e-5].reverse();
+	  var b0_b = [1.25331414, -0.7832358e-1, 0.2189568e-1, -0.1062446e-1, 0.587872e-2, -0.251540e-2, 0.53208e-3].reverse();
+	  function bessel0(x) {
+	    if(x <= 2) return -M.log(x/2)*besseli(x,0) + _horner(b0_a, x*x/4);
+	    return M.exp(-x)/M.sqrt(x)*_horner(b0_b, 2/x);
+	  }
+
+	  var b1_a = [1.0, 0.15443144, -0.67278579, -0.18156897, -0.1919402e-1, -0.110404e-2, -0.4686e-4].reverse();
+	  var b1_b = [1.25331414, 0.23498619, -0.3655620e-1, 0.1504268e-1, -0.780353e-2, 0.325614e-2, -0.68245e-3].reverse();
+	  function bessel1(x) {
+	    if(x <= 2) return M.log(x/2)*besseli(x,1) + (1/x)*_horner(b1_a, x*x/4);
+	    return M.exp(-x)/M.sqrt(x)*_horner(b1_b, 2/x);
+	  }
+
+	  return _bessel_wrap(bessel0, bessel1, 'BESSELK', 2, 1);
+	})();
+	if(true) {
+	  exports.besselj = besselj;
+	  exports.bessely = bessely;
+	  exports.besseli = besseli;
+	  exports.besselk = besselk;
+	}
+
+
+
+/***/ },
+/* 14 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var error = __webpack_require__(5);
+	var utils = __webpack_require__(4);
+
+	var d1900 = new Date(1900, 0, 1);
+	var WEEK_STARTS = [
+	  undefined,
+	  0,
+	  1,
+	  undefined,
+	  undefined,
+	  undefined,
+	  undefined,
+	  undefined,
+	  undefined,
+	  undefined,
+	  undefined,
+	  undefined,
+	  1,
+	  2,
+	  3,
+	  4,
+	  5,
+	  6,
+	  0
+	];
+	var WEEK_TYPES = [
+	  [],
+	  [1, 2, 3, 4, 5, 6, 7],
+	  [7, 1, 2, 3, 4, 5, 6],
+	  [6, 0, 1, 2, 3, 4, 5],
+	  [],
+	  [],
+	  [],
+	  [],
+	  [],
+	  [],
+	  [],
+	  [7, 1, 2, 3, 4, 5, 6],
+	  [6, 7, 1, 2, 3, 4, 5],
+	  [5, 6, 7, 1, 2, 3, 4],
+	  [4, 5, 6, 7, 1, 2, 3],
+	  [3, 4, 5, 6, 7, 1, 2],
+	  [2, 3, 4, 5, 6, 7, 1],
+	  [1, 2, 3, 4, 5, 6, 7]
+	];
+	var WEEKEND_TYPES = [
+	  [],
+	  [6, 0],
+	  [0, 1],
+	  [1, 2],
+	  [2, 3],
+	  [3, 4],
+	  [4, 5],
+	  [5, 6],
+	  undefined,
+	  undefined,
+	  undefined, [0, 0],
+	  [1, 1],
+	  [2, 2],
+	  [3, 3],
+	  [4, 4],
+	  [5, 5],
+	  [6, 6]
+	];
+
+	exports.DATE = function(year, month, day) {
+	  year = utils.parseNumber(year);
+	  month = utils.parseNumber(month);
+	  day = utils.parseNumber(day);
+	  if (utils.anyIsError(year, month, day)) {
+	    return error.value;
+	  }
+	  if (year < 0 || month < 0 || day < 0) {
+	    return error.num;
+	  }
+	  var date = new Date(year, month - 1, day);
+	  return date;
+	};
+
+	exports.DATEVALUE = function(date_text) {
+	  if (typeof date_text !== 'string') {
+	    return error.value;
+	  }
+	  var date = Date.parse(date_text);
+	  if (isNaN(date)) {
+	    return error.value;
+	  }
+	  if (date <= -2203891200000) {
+	    return (date - d1900) / 86400000 + 1;
+	  }
+	  return (date - d1900) / 86400000 + 2;
+	};
+
+	exports.DAY = function(serial_number) {
+	  var date = utils.parseDate(serial_number);
+	  if (date instanceof Error) {
+	    return date;
+	  }
+	  return date.getDate();
+	};
+
+	exports.DAYS = function(end_date, start_date) {
+	  end_date = utils.parseDate(end_date);
+	  start_date = utils.parseDate(start_date);
+	  if (end_date instanceof Error) {
+	    return end_date;
+	  }
+	  if (start_date instanceof Error) {
+	    return start_date;
+	  }
+	  return serial(end_date) - serial(start_date);
+	};
+
+	exports.DAYS360 = function(start_date, end_date, method) {
+	  method = utils.parseBool(method);
+	  start_date = utils.parseDate(start_date);
+	  end_date = utils.parseDate(end_date);
+	  if (start_date instanceof Error) {
+	    return start_date;
+	  }
+	  if (end_date instanceof Error) {
+	    return end_date;
+	  }
+	  if (method instanceof Error) {
+	    return method;
+	  }
+	  var sm = start_date.getMonth();
+	  var em = end_date.getMonth();
+	  var sd, ed;
+	  if (method) {
+	    sd = start_date.getDate() === 31 ? 30 : start_date.getDate();
+	    ed = end_date.getDate() === 31 ? 30 : end_date.getDate();
+	  } else {
+	    var smd = new Date(start_date.getFullYear(), sm + 1, 0).getDate();
+	    var emd = new Date(end_date.getFullYear(), em + 1, 0).getDate();
+	    sd = start_date.getDate() === smd ? 30 : start_date.getDate();
+	    if (end_date.getDate() === emd) {
+	      if (sd < 30) {
+	        em++;
+	        ed = 1;
+	      } else {
+	        ed = 30;
+	      }
+	    } else {
+	      ed = end_date.getDate();
+	    }
+	  }
+	  return 360 * (end_date.getFullYear() - start_date.getFullYear()) +
+	    30 * (em - sm) + (ed - sd);
+	};
+
+	exports.EDATE = function(start_date, months) {
+	  start_date = utils.parseDate(start_date);
+	  if (start_date instanceof Error) {
+	    return start_date;
+	  }
+	  if (isNaN(months)) {
+	    return error.value;
+	  }
+	  months = parseInt(months, 10);
+	  start_date.setMonth(start_date.getMonth() + months);
+	  return serial(start_date);
+	};
+
+	exports.EOMONTH = function(start_date, months) {
+	  start_date = utils.parseDate(start_date);
+	  if (start_date instanceof Error) {
+	    return start_date;
+	  }
+	  if (isNaN(months)) {
+	    return error.value;
+	  }
+	  months = parseInt(months, 10);
+	  return serial(new Date(start_date.getFullYear(), start_date.getMonth() + months + 1, 0));
+	};
+
+	exports.HOUR = function(serial_number) {
+	  serial_number = utils.parseDate(serial_number);
+	  if (serial_number instanceof Error) {
+	    return serial_number;
+	  }
+	  return serial_number.getHours();
+	};
+
+	exports.INTERVAL = function (second) {
+	  if (typeof second !== 'number' && typeof second !== 'string') {
+	    return error.value;
+	  } else {
+	    second = parseInt(second, 10);
+	  }
+
+	  var year  = Math.floor(second/946080000);
+	  second    = second%946080000;
+	  var month = Math.floor(second/2592000);
+	  second    = second%2592000;
+	  var day   = Math.floor(second/86400);
+	  second    = second%86400;
+
+	  var hour  = Math.floor(second/3600);
+	  second    = second%3600;
+	  var min   = Math.floor(second/60);
+	  second    = second%60;
+	  var sec   = second;
+
+	  year  = (year  > 0) ? year  + 'Y' : '';
+	  month = (month > 0) ? month + 'M' : '';
+	  day   = (day   > 0) ? day   + 'D' : '';
+	  hour  = (hour  > 0) ? hour  + 'H' : '';
+	  min   = (min   > 0) ? min   + 'M' : '';
+	  sec   = (sec   > 0) ? sec   + 'S' : '';
+
+	  return 'P' + year + month + day +
+	  'T' + hour + min + sec;
+	};
+
+	exports.ISOWEEKNUM = function(date) {
+	  date = utils.parseDate(date);
+	  if (date instanceof Error) {
+	    return date;
+	  }
+
+	  date.setHours(0, 0, 0);
+	  date.setDate(date.getDate() + 4 - (date.getDay() || 7));
+	  var yearStart = new Date(date.getFullYear(), 0, 1);
+	  return Math.ceil((((date - yearStart) / 86400000) + 1) / 7);
+	};
+
+	exports.MINUTE = function(serial_number) {
+	  serial_number = utils.parseDate(serial_number);
+	  if (serial_number instanceof Error) {
+	    return serial_number;
+	  }
+	  return serial_number.getMinutes();
+	};
+
+	exports.MONTH = function(serial_number) {
+	  serial_number = utils.parseDate(serial_number);
+	  if (serial_number instanceof Error) {
+	    return serial_number;
+	  }
+	  return serial_number.getMonth() + 1;
+	};
+
+	exports.NETWORKDAYS = function(start_date, end_date, holidays) {
+	  return this.NETWORKDAYS.INTL(start_date, end_date, 1, holidays);
+	};
+
+	exports.NETWORKDAYS.INTL = function(start_date, end_date, weekend, holidays) {
+	  start_date = utils.parseDate(start_date);
+	  if (start_date instanceof Error) {
+	    return start_date;
+	  }
+	  end_date = utils.parseDate(end_date);
+	  if (end_date instanceof Error) {
+	    return end_date;
+	  }
+	  if (weekend === undefined) {
+	    weekend = WEEKEND_TYPES[1];
+	  } else {
+	    weekend = WEEKEND_TYPES[weekend];
+	  }
+	  if (!(weekend instanceof Array)) {
+	    return error.value;
+	  }
+	  if (holidays === undefined) {
+	    holidays = [];
+	  } else if (!(holidays instanceof Array)) {
+	    holidays = [holidays];
+	  }
+	  for (var i = 0; i < holidays.length; i++) {
+	    var h = utils.parseDate(holidays[i]);
+	    if (h instanceof Error) {
+	      return h;
+	    }
+	    holidays[i] = h;
+	  }
+	  var days = (end_date - start_date) / (1000 * 60 * 60 * 24) + 1;
+	  var total = days;
+	  var day = start_date;
+	  for (i = 0; i < days; i++) {
+	    var d = (new Date().getTimezoneOffset() > 0) ? day.getUTCDay() : day.getDay();
+	    var dec = false;
+	    if (d === weekend[0] || d === weekend[1]) {
+	      dec = true;
+	    }
+	    for (var j = 0; j < holidays.length; j++) {
+	      var holiday = holidays[j];
+	      if (holiday.getDate() === day.getDate() &&
+	        holiday.getMonth() === day.getMonth() &&
+	        holiday.getFullYear() === day.getFullYear()) {
+	        dec = true;
+	        break;
+	      }
+	    }
+	    if (dec) {
+	      total--;
+	    }
+	    day.setDate(day.getDate() + 1);
+	  }
+	  return total;
+	};
+
+	exports.NOW = function() {
+	  return new Date();
+	};
+
+	exports.SECOND = function(serial_number) {
+	  serial_number = utils.parseDate(serial_number);
+	  if (serial_number instanceof Error) {
+	    return serial_number;
+	  }
+	  return serial_number.getSeconds();
+	};
+
+	exports.TIME = function(hour, minute, second) {
+	  hour = utils.parseNumber(hour);
+	  minute = utils.parseNumber(minute);
+	  second = utils.parseNumber(second);
+	  if (utils.anyIsError(hour, minute, second)) {
+	    return error.value;
+	  }
+	  if (hour < 0 || minute < 0 || second < 0) {
+	    return error.num;
+	  }
+	  return (3600 * hour + 60 * minute + second) / 86400;
+	};
+
+	exports.TIMEVALUE = function(time_text) {
+	  time_text = utils.parseDate(time_text);
+	  if (time_text instanceof Error) {
+	    return time_text;
+	  }
+	  return (3600 * time_text.getHours() +
+	    60 * time_text.getMinutes() +
+	    time_text.getSeconds()) / 86400;
+	};
+
+	exports.TODAY = function() {
+	  return new Date();
+	};
+
+	exports.WEEKDAY = function(serial_number, return_type) {
+	  serial_number = utils.parseDate(serial_number);
+	  if (serial_number instanceof Error) {
+	    return serial_number;
+	  }
+	  if (return_type === undefined) {
+	    return_type = 1;
+	  }
+	  var day = serial_number.getDay();
+	  return WEEK_TYPES[return_type][day];
+	};
+
+	exports.WEEKNUM = function(serial_number, return_type) {
+	  serial_number = utils.parseDate(serial_number);
+	  if (serial_number instanceof Error) {
+	    return serial_number;
+	  }
+	  if (return_type === undefined) {
+	    return_type = 1;
+	  }
+	  if (return_type === 21) {
+	    return this.ISOWEEKNUM(serial_number);
+	  }
+	  var week_start = WEEK_STARTS[return_type];
+	  var jan = new Date(serial_number.getFullYear(), 0, 1);
+	  var inc = jan.getDay() < week_start ? 1 : 0;
+	  jan -= Math.abs(jan.getDay() - week_start) * 24 * 60 * 60 * 1000;
+	  return Math.floor(((serial_number - jan) / (1000 * 60 * 60 * 24)) / 7 + 1) + inc;
+	};
+
+	exports.WORKDAY = function(start_date, days, holidays) {
+	  return this.WORKDAY.INTL(start_date, days, 1, holidays);
+	};
+
+	exports.WORKDAY.INTL = function(start_date, days, weekend, holidays) {
+	  start_date = utils.parseDate(start_date);
+	  if (start_date instanceof Error) {
+	    return start_date;
+	  }
+	  days = utils.parseNumber(days);
+	  if (days instanceof Error) {
+	    return days;
+	  }
+	  if (days < 0) {
+	    return error.num;
+	  }
+	  if (weekend === undefined) {
+	    weekend = WEEKEND_TYPES[1];
+	  } else {
+	    weekend = WEEKEND_TYPES[weekend];
+	  }
+	  if (!(weekend instanceof Array)) {
+	    return error.value;
+	  }
+	  if (holidays === undefined) {
+	    holidays = [];
+	  } else if (!(holidays instanceof Array)) {
+	    holidays = [holidays];
+	  }
+	  for (var i = 0; i < holidays.length; i++) {
+	    var h = utils.parseDate(holidays[i]);
+	    if (h instanceof Error) {
+	      return h;
+	    }
+	    holidays[i] = h;
+	  }
+	  var d = 0;
+	  while (d < days) {
+	    start_date.setDate(start_date.getDate() + 1);
+	    var day = start_date.getDay();
+	    if (day === weekend[0] || day === weekend[1]) {
+	      continue;
+	    }
+	    for (var j = 0; j < holidays.length; j++) {
+	      var holiday = holidays[j];
+	      if (holiday.getDate() === start_date.getDate() &&
+	        holiday.getMonth() === start_date.getMonth() &&
+	        holiday.getFullYear() === start_date.getFullYear()) {
+	        d--;
+	        break;
+	      }
+	    }
+	    d++;
+	  }
+	  return start_date;
+	};
+
+	exports.YEAR = function(serial_number) {
+	  serial_number = utils.parseDate(serial_number);
+	  if (serial_number instanceof Error) {
+	    return serial_number;
+	  }
+	  return serial_number.getFullYear();
+	};
+
+	function isLeapYear(year) {
+	  return new Date(year, 1, 29).getMonth() === 1;
+	}
+
+	// TODO : Use DAYS ?
+	function daysBetween(start_date, end_date) {
+	  return Math.ceil((end_date - start_date) / 1000 / 60 / 60 / 24);
+	}
+
+	exports.YEARFRAC = function(start_date, end_date, basis) {
+	  start_date = utils.parseDate(start_date);
+	  if (start_date instanceof Error) {
+	    return start_date;
+	  }
+	  end_date = utils.parseDate(end_date);
+	  if (end_date instanceof Error) {
+	    return end_date;
+	  }
+
+	  basis = basis || 0;
+	  var sd = start_date.getDate();
+	  var sm = start_date.getMonth() + 1;
+	  var sy = start_date.getFullYear();
+	  var ed = end_date.getDate();
+	  var em = end_date.getMonth() + 1;
+	  var ey = end_date.getFullYear();
+
+	  switch (basis) {
+	    case 0:
+	      // US (NASD) 30/360
+	      if (sd === 31 && ed === 31) {
+	        sd = 30;
+	        ed = 30;
+	      } else if (sd === 31) {
+	        sd = 30;
+	      } else if (sd === 30 && ed === 31) {
+	        ed = 30;
+	      }
+	      return ((ed + em * 30 + ey * 360) - (sd + sm * 30 + sy * 360)) / 360;
+	    case 1:
+	      // Actual/actual
+	      var feb29Between = function(date1, date2) {
+	        var year1 = date1.getFullYear();
+	        var mar1year1 = new Date(year1, 2, 1);
+	        if (isLeapYear(year1) && date1 < mar1year1 && date2 >= mar1year1) {
+	          return true;
+	        }
+	        var year2 = date2.getFullYear();
+	        var mar1year2 = new Date(year2, 2, 1);
+	        return (isLeapYear(year2) && date2 >= mar1year2 && date1 < mar1year2);
+	      };
+	      var ylength = 365;
+	      if (sy === ey || ((sy + 1) === ey) && ((sm > em) || ((sm === em) && (sd >= ed)))) {
+	        if ((sy === ey && isLeapYear(sy)) ||
+	            feb29Between(start_date, end_date) ||
+	            (em === 1 && ed === 29)) {
+	          ylength = 366;
+	        }
+	        return daysBetween(start_date, end_date) / ylength;
+	      }
+	      var years = (ey - sy) + 1;
+	      var days = (new Date(ey + 1, 0, 1) - new Date(sy, 0, 1)) / 1000 / 60 / 60 / 24;
+	      var average = days / years;
+	      return daysBetween(start_date, end_date) / average;
+	    case 2:
+	      // Actual/360
+	      return daysBetween(start_date, end_date) / 360;
+	    case 3:
+	      // Actual/365
+	      return daysBetween(start_date, end_date) / 365;
+	    case 4:
+	      // European 30/360
+	      return ((ed + em * 30 + ey * 360) - (sd + sm * 30 + sy * 360)) / 360;
+	  }
+	};
+
+	function serial(date) {
+	  var addOn = (date > -2203891200000)?2:1;
+	  return (date - d1900) / 86400000 + addOn;
+	}
+
+/***/ },
+/* 15 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var error = __webpack_require__(5);
+	var stats = __webpack_require__(6);
+	var maths = __webpack_require__(2);
+	var utils = __webpack_require__(4);
+
+	function compact(array) {
+	  if (!array) { return array; }
+	  var result = [];
+	  for (var i = 0; i < array.length; ++i) {
+	    if (!array[i]) { continue; }
+	    result.push(array[i]);
+	  }
+	  return result;
+	}
+
+	exports.FINDFIELD = function(database, title) {
+	  var index = null;
+	  for (var i = 0; i < database.length; i++) {
+	    if (database[i][0] === title) {
+	      index = i;
+	      break;
+	    }
+	  }
+
+	  // Return error if the input field title is incorrect
+	  if (index == null) {
+	    return error.value;
+	  }
+	  return index;
+	};
+
+	function findResultIndex(database, criterias) {
+	  var matches = {};
+	  for (var i = 1; i < database[0].length; ++i) {
+	    matches[i] = true;
+	  }
+	  var maxCriteriaLength = criterias[0].length;
+	  for (i = 1; i < criterias.length; ++i) {
+	    if (criterias[i].length > maxCriteriaLength) {
+	      maxCriteriaLength = criterias[i].length;
+	    }
+	  }
+
+	  for (var k = 1; k < database.length; ++k) {
+	    for (var l = 1; l < database[k].length; ++l) {
+	      var currentCriteriaResult = false;
+	      var hasMatchingCriteria   = false;
+	      for (var j = 0; j < criterias.length; ++j) {
+	        var criteria = criterias[j];
+	        if (criteria.length < maxCriteriaLength) {
+	          continue;
+	        }
+
+	        var criteriaField = criteria[0];
+	        if (database[k][0] !== criteriaField) {
+	          continue;
+	        }
+	        hasMatchingCriteria = true;
+	        for (var p = 1; p < criteria.length; ++p) {
+	          currentCriteriaResult = currentCriteriaResult || eval(database[k][l] + criteria[p]);  // jshint ignore:line
+	        }
+	      }
+	      if (hasMatchingCriteria) {
+	        matches[l] = matches[l] && currentCriteriaResult;
+	      }
+	    }
+	  }
+
+	  var result = [];
+	  for (var n = 0; n < database[0].length; ++n) {
+	    if (matches[n]) {
+	      result.push(n - 1);
+	    }
+	  }
+	  return result;
+	}
+
+	// Database functions
+	exports.DAVERAGE = function(database, field, criteria) {
+	  // Return error if field is not a number and not a string
+	  if (isNaN(field) && (typeof field !== "string")) {
+	    return error.value;
+	  }
+	  var resultIndexes = findResultIndex(database, criteria);
+	  var targetFields = [];
+	  if (typeof field === "string") {
+	    var index = exports.FINDFIELD(database, field);
+	    targetFields = utils.rest(database[index]);
+	  } else {
+	    targetFields = utils.rest(database[field]);
+	  }
+	  var sum = 0;
+	  for (var i = 0; i < resultIndexes.length; i++) {
+	    sum += targetFields[resultIndexes[i]];
+	  }
+	  return resultIndexes.length === 0 ? error.div0 : sum / resultIndexes.length;
+	};
+
+	exports.DCOUNT = function(database, field, criteria) {
+	  // Return error if field is not a number and not a string
+	  if (isNaN(field) && (typeof field !== "string")) {
+	    return error.value;
+	  }
+	  var resultIndexes = findResultIndex(database, criteria);
+	  var targetFields = [];
+	  if (typeof field === "string") {
+	    var index = exports.FINDFIELD(database, field);
+	    targetFields = utils.rest(database[index]);
+	  } else {
+	    targetFields = utils.rest(database[field]);
+	  }
+	  var targetValues = [];
+	  for (var i = 0; i < resultIndexes.length; i++) {
+	    targetValues[i] = targetFields[resultIndexes[i]];
+	  }
+	  return stats.COUNT(targetValues);
+	};
+
+	exports.DCOUNTA = function(database, field, criteria) {
+	  // Return error if field is not a number and not a string
+	  if (isNaN(field) && (typeof field !== "string")) {
+	    return error.value;
+	  }
+	  var resultIndexes = findResultIndex(database, criteria);
+	  var targetFields = [];
+	  if (typeof field === "string") {
+	    var index = exports.FINDFIELD(database, field);
+	    targetFields = utils.rest(database[index]);
+	  } else {
+	    targetFields = utils.rest(database[field]);
+	  }
+	  var targetValues = [];
+	  for (var i = 0; i < resultIndexes.length; i++) {
+	    targetValues[i] = targetFields[resultIndexes[i]];
+	  }
+	  return stats.COUNTA(targetValues);
+	};
+
+	exports.DGET = function(database, field, criteria) {
+	  // Return error if field is not a number and not a string
+	  if (isNaN(field) && (typeof field !== "string")) {
+	    return error.value;
+	  }
+	  var resultIndexes = findResultIndex(database, criteria);
+	  var targetFields = [];
+	  if (typeof field === "string") {
+	    var index = exports.FINDFIELD(database, field);
+	    targetFields = utils.rest(database[index]);
+	  } else {
+	    targetFields = utils.rest(database[field]);
+	  }
+	  // Return error if no record meets the criteria
+	  if (resultIndexes.length === 0) {
+	    return error.value;
+	  }
+	  // Returns the #NUM! error value because more than one record meets the
+	  // criteria
+	  if (resultIndexes.length > 1) {
+	    return error.num;
+	  }
+
+	  return targetFields[resultIndexes[0]];
+	};
+
+	exports.DMAX = function(database, field, criteria) {
+	  // Return error if field is not a number and not a string
+	  if (isNaN(field) && (typeof field !== "string")) {
+	    return error.value;
+	  }
+	  var resultIndexes = findResultIndex(database, criteria);
+	  var targetFields = [];
+	  if (typeof field === "string") {
+	    var index = exports.FINDFIELD(database, field);
+	    targetFields = utils.rest(database[index]);
+	  } else {
+	    targetFields = utils.rest(database[field]);
+	  }
+	  var maxValue = targetFields[resultIndexes[0]];
+	  for (var i = 1; i < resultIndexes.length; i++) {
+	    if (maxValue < targetFields[resultIndexes[i]]) {
+	      maxValue = targetFields[resultIndexes[i]];
+	    }
+	  }
+	  return maxValue;
+	};
+
+	exports.DMIN = function(database, field, criteria) {
+	  // Return error if field is not a number and not a string
+	  if (isNaN(field) && (typeof field !== "string")) {
+	    return error.value;
+	  }
+	  var resultIndexes = findResultIndex(database, criteria);
+	  var targetFields = [];
+	  if (typeof field === "string") {
+	    var index = exports.FINDFIELD(database, field);
+	    targetFields = utils.rest(database[index]);
+	  } else {
+	    targetFields = utils.rest(database[field]);
+	  }
+	  var minValue = targetFields[resultIndexes[0]];
+	  for (var i = 1; i < resultIndexes.length; i++) {
+	    if (minValue > targetFields[resultIndexes[i]]) {
+	      minValue = targetFields[resultIndexes[i]];
+	    }
+	  }
+	  return minValue;
+	};
+
+	exports.DPRODUCT = function(database, field, criteria) {
+	  // Return error if field is not a number and not a string
+	  if (isNaN(field) && (typeof field !== "string")) {
+	    return error.value;
+	  }
+	  var resultIndexes = findResultIndex(database, criteria);
+	  var targetFields = [];
+	  if (typeof field === "string") {
+	    var index = exports.FINDFIELD(database, field);
+	    targetFields = utils.rest(database[index]);
+	  } else {
+	    targetFields = utils.rest(database[field]);
+	  }
+	  var targetValues = [];
+	  for (var i = 0; i < resultIndexes.length; i++) {
+	    targetValues[i] = targetFields[resultIndexes[i]];
+	  }
+	  targetValues = compact(targetValues);
+	  var result = 1;
+	  for (i = 0; i < targetValues.length; i++) {
+	    result *= targetValues[i];
+	  }
+	  return result;
+	};
+
+	exports.DSTDEV = function(database, field, criteria) {
+	  // Return error if field is not a number and not a string
+	  if (isNaN(field) && (typeof field !== "string")) {
+	    return error.value;
+	  }
+	  var resultIndexes = findResultIndex(database, criteria);
+	  var targetFields = [];
+	  if (typeof field === "string") {
+	    var index = exports.FINDFIELD(database, field);
+	    targetFields = utils.rest(database[index]);
+	  } else {
+	    targetFields = utils.rest(database[field]);
+	  }
+	  var targetValues = [];
+	  for (var i = 0; i < resultIndexes.length; i++) {
+	    targetValues[i] = targetFields[resultIndexes[i]];
+	  }
+	  targetValues = compact(targetValues);
+	  return stats.STDEV.S(targetValues);
+	};
+
+	exports.DSTDEVP = function(database, field, criteria) {
+	  // Return error if field is not a number and not a string
+	  if (isNaN(field) && (typeof field !== "string")) {
+	    return error.value;
+	  }
+	  var resultIndexes = findResultIndex(database, criteria);
+	  var targetFields = [];
+	  if (typeof field === "string") {
+	    var index = exports.FINDFIELD(database, field);
+	    targetFields = utils.rest(database[index]);
+	  } else {
+	    targetFields = utils.rest(database[field]);
+	  }
+	  var targetValues = [];
+	  for (var i = 0; i < resultIndexes.length; i++) {
+	    targetValues[i] = targetFields[resultIndexes[i]];
+	  }
+	  targetValues = compact(targetValues);
+	  return stats.STDEV.P(targetValues);
+	};
+
+	exports.DSUM = function(database, field, criteria) {
+	  // Return error if field is not a number and not a string
+	  if (isNaN(field) && (typeof field !== "string")) {
+	    return error.value;
+	  }
+	  var resultIndexes = findResultIndex(database, criteria);
+	  var targetFields = [];
+	  if (typeof field === "string") {
+	    var index = exports.FINDFIELD(database, field);
+	    targetFields = utils.rest(database[index]);
+	  } else {
+	    targetFields = utils.rest(database[field]);
+	  }
+	  var targetValues = [];
+	  for (var i = 0; i < resultIndexes.length; i++) {
+	    targetValues[i] = targetFields[resultIndexes[i]];
+	  }
+	  return maths.SUM(targetValues);
+	};
+
+	exports.DVAR = function(database, field, criteria) {
+	  // Return error if field is not a number and not a string
+	  if (isNaN(field) && (typeof field !== "string")) {
+	    return error.value;
+	  }
+	  var resultIndexes = findResultIndex(database, criteria);
+	  var targetFields = [];
+	  if (typeof field === "string") {
+	    var index = exports.FINDFIELD(database, field);
+	    targetFields = utils.rest(database[index]);
+	  } else {
+	    targetFields = utils.rest(database[field]);
+	  }
+	  var targetValues = [];
+	  for (var i = 0; i < resultIndexes.length; i++) {
+	    targetValues[i] = targetFields[resultIndexes[i]];
+	  }
+	  return stats.VAR.S(targetValues);
+	};
+
+	exports.DVARP = function(database, field, criteria) {
+	  // Return error if field is not a number and not a string
+	  if (isNaN(field) && (typeof field !== "string")) {
+	    return error.value;
+	  }
+	  var resultIndexes = findResultIndex(database, criteria);
+	  var targetFields = [];
+	  if (typeof field === "string") {
+	    var index = exports.FINDFIELD(database, field);
+	    targetFields = utils.rest(database[index]);
+	  } else {
+	    targetFields = utils.rest(database[field]);
+	  }
+	  var targetValues = [];
+	  for (var i = 0; i < resultIndexes.length; i++) {
+	    targetValues[i] = targetFields[resultIndexes[i]];
+	  }
+	  return stats.VAR.P(targetValues);
+	};
+
+
+/***/ },
+/* 16 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var error = __webpack_require__(5);
+	var utils = __webpack_require__(4);
+	var information = __webpack_require__(11);
+
+	exports.AND = function() {
+	  var args = utils.flatten(arguments);
+	  var result = true;
+	  for (var i = 0; i < args.length; i++) {
+	    if (!args[i]) {
+	      result = false;
+	    }
+	  }
+	  return result;
+	};
+
+	exports.CHOOSE = function() {
+	  if (arguments.length < 2) {
+	    return error.na;
+	  }
+
+	  var index = arguments[0];
+	  if (index < 1 || index > 254) {
+	    return error.value;
+	  }
+
+	  if (arguments.length < index + 1) {
+	    return error.value;
+	  }
+
+	  return arguments[index];
+	};
+
+	exports.FALSE = function() {
+	  return false;
+	};
+
+	exports.IF = function(test, then_value, otherwise_value) {
+	  return test ? then_value : otherwise_value;
+	};
+
+	exports.IFERROR = function(value, valueIfError) {
+	  if (information.ISERROR(value)) {
+	    return valueIfError;
+	  }
+	  return value;
+	};
+
+	exports.IFNA = function(value, value_if_na) {
+	  return value === error.na ? value_if_na : value;
+	};
+
+	exports.NOT = function(logical) {
+	  return !logical;
+	};
+
+	exports.OR = function() {
+	  var args = utils.flatten(arguments);
+	  var result = false;
+	  for (var i = 0; i < args.length; i++) {
+	    if (args[i]) {
+	      result = true;
+	    }
+	  }
+	  return result;
+	};
+
+	exports.TRUE = function() {
+	  return true;
+	};
+
+	exports.XOR = function() {
+	  var args = utils.flatten(arguments);
+	  var result = 0;
+	  for (var i = 0; i < args.length; i++) {
+	    if (args[i]) {
+	      result++;
+	    }
+	  }
+	  return (Math.floor(Math.abs(result)) & 1) ? true : false;
+	};
+
+	exports.SWITCH = function () {
+	  var result;
+	  if (arguments.length > 0)  {
+	    var targetValue = arguments[0];
+	    var argc = arguments.length - 1;
+	    var switchCount = Math.floor(argc / 2);
+	    var switchSatisfied = false;
+	    var defaultClause = argc % 2 === 0 ? null : arguments[arguments.length - 1];
+
+	    if (switchCount) {
+	      for (var index = 0; index < switchCount; index++) {
+	        if (targetValue === arguments[index * 2 + 1]) {
+	          result = arguments[index * 2 + 2];
+	          switchSatisfied = true;
+	          break;
+	        }
+	      }
+	    }
+
+	    if (!switchSatisfied && defaultClause) {
+	      result = defaultClause;
+	    }
+	  }
+
+	  return result;
+	};
+
+
+/***/ },
+/* 17 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var error = __webpack_require__(5);
+	var dateTime = __webpack_require__(14);
+	var utils = __webpack_require__(4);
+
+	function validDate(d) {
+	  return d && d.getTime && !isNaN(d.getTime());
+	}
+
+	function ensureDate(d) {
+	  return (d instanceof Date)?d:new Date(d);
+	}
+
+	exports.ACCRINT = function(issue, first, settlement, rate, par, frequency, basis) {
+	  // Return error if either date is invalid
+	  issue      = ensureDate(issue);
+	  first      = ensureDate(first);
+	  settlement = ensureDate(settlement);
+	  if (!validDate(issue) || !validDate(first) || !validDate(settlement)) {
+	    return '#VALUE!';
+	  }
+
+	  // Return error if either rate or par are lower than or equal to zero
+	  if (rate <= 0 || par <= 0) {
+	    return '#NUM!';
+	  }
+
+	  // Return error if frequency is neither 1, 2, or 4
+	  if ([1, 2, 4].indexOf(frequency) === -1) {
+	    return '#NUM!';
+	  }
+
+	  // Return error if basis is neither 0, 1, 2, 3, or 4
+	  if ([0, 1, 2, 3, 4].indexOf(basis) === -1) {
+	    return '#NUM!';
+	  }
+
+	  // Return error if settlement is before or equal to issue
+	  if (settlement <= issue) {
+	    return '#NUM!';
+	  }
+
+	  // Set default values
+	  par   = par   || 0;
+	  basis = basis || 0;
+
+	  // Compute accrued interest
+	  return par * rate * dateTime.YEARFRAC(issue, settlement, basis);
+	};
+
+	// TODO
+	exports.ACCRINTM = function() {
+	 throw new Error('ACCRINTM is not implemented');
+	};
+
+	// TODO
+	exports.AMORDEGRC = function() {
+	 throw new Error('AMORDEGRC is not implemented');
+	};
+
+	// TODO
+	exports.AMORLINC = function() {
+	 throw new Error('AMORLINC is not implemented');
+	};
+
+	// TODO
+	exports.COUPDAYBS = function() {
+	 throw new Error('COUPDAYBS is not implemented');
+	};
+
+	// TODO
+	exports.COUPDAYS = function() {
+	 throw new Error('COUPDAYS is not implemented');
+	};
+
+	// TODO
+	exports.COUPDAYSNC = function() {
+	 throw new Error('COUPDAYSNC is not implemented');
+	};
+
+	// TODO
+	exports.COUPNCD = function() {
+	 throw new Error('COUPNCD is not implemented');
+	};
+
+	// TODO
+	exports.COUPNUM = function() {
+	 throw new Error('COUPNUM is not implemented');
+	};
+
+	// TODO
+	exports.COUPPCD = function() {
+	 throw new Error('COUPPCD is not implemented');
+	};
+
+	exports.CUMIPMT = function(rate, periods, value, start, end, type) {
+	  // Credits: algorithm inspired by Apache OpenOffice
+	  // Credits: Hannes Stiebitzhofer for the translations of function and variable names
+	  // Requires exports.FV() and exports.PMT() from exports.js [http://stoic.com/exports/]
+
+	  rate = utils.parseNumber(rate);
+	  periods = utils.parseNumber(periods);
+	  value = utils.parseNumber(value);
+	  if (utils.anyIsError(rate, periods, value)) {
+	    return error.value;
+	  }
+
+	  // Return error if either rate, periods, or value are lower than or equal to zero
+	  if (rate <= 0 || periods <= 0 || value <= 0) {
+	    return error.num;
+	  }
+
+	  // Return error if start < 1, end < 1, or start > end
+	  if (start < 1 || end < 1 || start > end) {
+	    return error.num;
+	  }
+
+	  // Return error if type is neither 0 nor 1
+	  if (type !== 0 && type !== 1) {
+	    return error.num;
+	  }
+
+	  // Compute cumulative interest
+	  var payment = exports.PMT(rate, periods, value, 0, type);
+	  var interest = 0;
+
+	  if (start === 1) {
+	    if (type === 0) {
+	      interest = -value;
+	      start++;
+	    }
+	  }
+
+	  for (var i = start; i <= end; i++) {
+	    if (type === 1) {
+	      interest += exports.FV(rate, i - 2, payment, value, 1) - payment;
+	    } else {
+	      interest += exports.FV(rate, i - 1, payment, value, 0);
+	    }
+	  }
+	  interest *= rate;
+
+	  // Return cumulative interest
+	  return interest;
+	};
+
+	exports.CUMPRINC = function(rate, periods, value, start, end, type) {
+	  // Credits: algorithm inspired by Apache OpenOffice
+	  // Credits: Hannes Stiebitzhofer for the translations of function and variable names
+
+	  rate = utils.parseNumber(rate);
+	  periods = utils.parseNumber(periods);
+	  value = utils.parseNumber(value);
+	  if (utils.anyIsError(rate, periods, value)) {
+	    return error.value;
+	  }
+
+	  // Return error if either rate, periods, or value are lower than or equal to zero
+	  if (rate <= 0 || periods <= 0 || value <= 0) {
+	    return error.num;
+	  }
+
+	  // Return error if start < 1, end < 1, or start > end
+	  if (start < 1 || end < 1 || start > end) {
+	    return error.num;
+	  }
+
+	  // Return error if type is neither 0 nor 1
+	  if (type !== 0 && type !== 1) {
+	    return error.num;
+	  }
+
+	  // Compute cumulative principal
+	  var payment = exports.PMT(rate, periods, value, 0, type);
+	  var principal = 0;
+	  if (start === 1) {
+	    if (type === 0) {
+	      principal = payment + value * rate;
+	    } else {
+	      principal = payment;
+	    }
+	    start++;
+	  }
+	  for (var i = start; i <= end; i++) {
+	    if (type > 0) {
+	      principal += payment - (exports.FV(rate, i - 2, payment, value, 1) - payment) * rate;
+	    } else {
+	      principal += payment - exports.FV(rate, i - 1, payment, value, 0) * rate;
+	    }
+	  }
+
+	  // Return cumulative principal
+	  return principal;
+	};
+
+	exports.DB = function(cost, salvage, life, period, month) {
+	  // Initialize month
+	  month = (month === undefined) ? 12 : month;
+
+	  cost = utils.parseNumber(cost);
+	  salvage = utils.parseNumber(salvage);
+	  life = utils.parseNumber(life);
+	  period = utils.parseNumber(period);
+	  month = utils.parseNumber(month);
+	  if (utils.anyIsError(cost, salvage, life, period, month)) {
+	    return error.value;
+	  }
+
+	  // Return error if any of the parameters is negative
+	  if (cost < 0 || salvage < 0 || life < 0 || period < 0) {
+	    return error.num;
+	  }
+
+	  // Return error if month is not an integer between 1 and 12
+	  if ([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].indexOf(month) === -1) {
+	    return error.num;
+	  }
+
+	  // Return error if period is greater than life
+	  if (period > life) {
+	    return error.num;
+	  }
+
+	  // Return 0 (zero) if salvage is greater than or equal to cost
+	  if (salvage >= cost) {
+	    return 0;
+	  }
+
+	  // Rate is rounded to three decimals places
+	  var rate = (1 - Math.pow(salvage / cost, 1 / life)).toFixed(3);
+
+	  // Compute initial depreciation
+	  var initial = cost * rate * month / 12;
+
+	  // Compute total depreciation
+	  var total = initial;
+	  var current = 0;
+	  var ceiling = (period === life) ? life - 1 : period;
+	  for (var i = 2; i <= ceiling; i++) {
+	    current = (cost - total) * rate;
+	    total += current;
+	  }
+
+	  // Depreciation for the first and last periods are special cases
+	  if (period === 1) {
+	    // First period
+	    return initial;
+	  } else if (period === life) {
+	    // Last period
+	    return (cost - total) * rate;
+	  } else {
+	    return current;
+	  }
+	};
+
+	exports.DDB = function(cost, salvage, life, period, factor) {
+	  // Initialize factor
+	  factor = (factor === undefined) ? 2 : factor;
+
+	  cost = utils.parseNumber(cost);
+	  salvage = utils.parseNumber(salvage);
+	  life = utils.parseNumber(life);
+	  period = utils.parseNumber(period);
+	  factor = utils.parseNumber(factor);
+	  if (utils.anyIsError(cost, salvage, life, period, factor)) {
+	    return error.value;
+	  }
+
+	  // Return error if any of the parameters is negative or if factor is null
+	  if (cost < 0 || salvage < 0 || life < 0 || period < 0 || factor <= 0) {
+	    return error.num;
+	  }
+
+	  // Return error if period is greater than life
+	  if (period > life) {
+	    return error.num;
+	  }
+
+	  // Return 0 (zero) if salvage is greater than or equal to cost
+	  if (salvage >= cost) {
+	    return 0;
+	  }
+
+	  // Compute depreciation
+	  var total = 0;
+	  var current = 0;
+	  for (var i = 1; i <= period; i++) {
+	    current = Math.min((cost - total) * (factor / life), (cost - salvage - total));
+	    total += current;
+	  }
+
+	  // Return depreciation
+	  return current;
+	};
+
+	// TODO
+	exports.DISC = function() {
+	 throw new Error('DISC is not implemented');
+	};
+
+	exports.DOLLARDE = function(dollar, fraction) {
+	  // Credits: algorithm inspired by Apache OpenOffice
+
+	  dollar = utils.parseNumber(dollar);
+	  fraction = utils.parseNumber(fraction);
+	  if (utils.anyIsError(dollar, fraction)) {
+	    return error.value;
+	  }
+
+	  // Return error if fraction is negative
+	  if (fraction < 0) {
+	    return error.num;
+	  }
+
+	  // Return error if fraction is greater than or equal to 0 and less than 1
+	  if (fraction >= 0 && fraction < 1) {
+	    return error.div0;
+	  }
+
+	  // Truncate fraction if it is not an integer
+	  fraction = parseInt(fraction, 10);
+
+	  // Compute integer part
+	  var result = parseInt(dollar, 10);
+
+	  // Add decimal part
+	  result += (dollar % 1) * Math.pow(10, Math.ceil(Math.log(fraction) / Math.LN10)) / fraction;
+
+	  // Round result
+	  var power = Math.pow(10, Math.ceil(Math.log(fraction) / Math.LN2) + 1);
+	  result = Math.round(result * power) / power;
+
+	  // Return converted dollar price
+	  return result;
+	};
+
+	exports.DOLLARFR = function(dollar, fraction) {
+	  // Credits: algorithm inspired by Apache OpenOffice
+
+	  dollar = utils.parseNumber(dollar);
+	  fraction = utils.parseNumber(fraction);
+	  if (utils.anyIsError(dollar, fraction)) {
+	    return error.value;
+	  }
+
+	  // Return error if fraction is negative
+	  if (fraction < 0) {
+	    return error.num;
+	  }
+
+	  // Return error if fraction is greater than or equal to 0 and less than 1
+	  if (fraction >= 0 && fraction < 1) {
+	    return error.div0;
+	  }
+
+	  // Truncate fraction if it is not an integer
+	  fraction = parseInt(fraction, 10);
+
+	  // Compute integer part
+	  var result = parseInt(dollar, 10);
+
+	  // Add decimal part
+	  result += (dollar % 1) * Math.pow(10, -Math.ceil(Math.log(fraction) / Math.LN10)) * fraction;
+
+	  // Return converted dollar price
+	  return result;
+	};
+
+	// TODO
+	exports.DURATION = function() {
+	 throw new Error('DURATION is not implemented');
+	};
+
+	exports.EFFECT = function(rate, periods) {
+	  rate = utils.parseNumber(rate);
+	  periods = utils.parseNumber(periods);
+	  if (utils.anyIsError(rate, periods)) {
+	    return error.value;
+	  }
+
+	  // Return error if rate <=0 or periods < 1
+	  if (rate <= 0 || periods < 1) {
+	    return error.num;
+	  }
+
+	  // Truncate periods if it is not an integer
+	  periods = parseInt(periods, 10);
+
+	  // Return effective annual interest rate
+	  return Math.pow(1 + rate / periods, periods) - 1;
+	};
+
+	exports.FV = function(rate, periods, payment, value, type) {
+	  // Credits: algorithm inspired by Apache OpenOffice
+
+	  value = value || 0;
+	  type = type || 0;
+
+	  rate = utils.parseNumber(rate);
+	  periods = utils.parseNumber(periods);
+	  payment = utils.parseNumber(payment);
+	  value = utils.parseNumber(value);
+	  type = utils.parseNumber(type);
+	  if (utils.anyIsError(rate, periods, payment, value, type)) {
+	    return error.value;
+	  }
+
+	  // Return future value
+	  var result;
+	  if (rate === 0) {
+	    result = value + payment * periods;
+	  } else {
+	    var term = Math.pow(1 + rate, periods);
+	    if (type === 1) {
+	      result = value * term + payment * (1 + rate) * (term - 1) / rate;
+	    } else {
+	      result = value * term + payment * (term - 1) / rate;
+	    }
+	  }
+	  return -result;
+	};
+
+	exports.FVSCHEDULE = function(principal, schedule) {
+	  principal = utils.parseNumber(principal);
+	  schedule = utils.parseNumberArray(utils.flatten(schedule));
+	  if (utils.anyIsError(principal, schedule)) {
+	    return error.value;
+	  }
+
+	  var n = schedule.length;
+	  var future = principal;
+
+	  // Apply all interests in schedule
+	  for (var i = 0; i < n; i++) {
+	    // Apply scheduled interest
+	    future *= 1 + schedule[i];
+	  }
+
+	  // Return future value
+	  return future;
+	};
+
+	// TODO
+	exports.INTRATE = function() {
+	 throw new Error('INTRATE is not implemented');
+	};
+
+	exports.IPMT = function(rate, period, periods, present, future, type) {
+	  // Credits: algorithm inspired by Apache OpenOffice
+
+	  future = future || 0;
+	  type = type || 0;
+
+	  rate = utils.parseNumber(rate);
+	  period = utils.parseNumber(period);
+	  periods = utils.parseNumber(periods);
+	  present = utils.parseNumber(present);
+	  future = utils.parseNumber(future);
+	  type = utils.parseNumber(type);
+	  if (utils.anyIsError(rate, period, periods, present, future, type)) {
+	    return error.value;
+	  }
+
+	  // Compute payment
+	  var payment = exports.PMT(rate, periods, present, future, type);
+
+	  // Compute interest
+	  var interest;
+	  if (period === 1) {
+	    if (type === 1) {
+	      interest = 0;
+	    } else {
+	      interest = -present;
+	    }
+	  } else {
+	    if (type === 1) {
+	      interest = exports.FV(rate, period - 2, payment, present, 1) - payment;
+	    } else {
+	      interest = exports.FV(rate, period - 1, payment, present, 0);
+	    }
+	  }
+
+	  // Return interest
+	  return interest * rate;
+	};
+
+	exports.IRR = function(values, guess) {
+	  // Credits: algorithm inspired by Apache OpenOffice
+
+	  guess = guess || 0;
+
+	  values = utils.parseNumberArray(utils.flatten(values));
+	  guess = utils.parseNumber(guess);
+	  if (utils.anyIsError(values, guess)) {
+	    return error.value;
+	  }
+
+	  // Calculates the resulting amount
+	  var irrResult = function(values, dates, rate) {
+	    var r = rate + 1;
+	    var result = values[0];
+	    for (var i = 1; i < values.length; i++) {
+	      result += values[i] / Math.pow(r, (dates[i] - dates[0]) / 365);
+	    }
+	    return result;
+	  };
+
+	  // Calculates the first derivation
+	  var irrResultDeriv = function(values, dates, rate) {
+	    var r = rate + 1;
+	    var result = 0;
+	    for (var i = 1; i < values.length; i++) {
+	      var frac = (dates[i] - dates[0]) / 365;
+	      result -= frac * values[i] / Math.pow(r, frac + 1);
+	    }
+	    return result;
+	  };
+
+	  // Initialize dates and check that values contains at least one positive value and one negative value
+	  var dates = [];
+	  var positive = false;
+	  var negative = false;
+	  for (var i = 0; i < values.length; i++) {
+	    dates[i] = (i === 0) ? 0 : dates[i - 1] + 365;
+	    if (values[i] > 0) {
+	      positive = true;
+	    }
+	    if (values[i] < 0) {
+	      negative = true;
+	    }
+	  }
+
+	  // Return error if values does not contain at least one positive value and one negative value
+	  if (!positive || !negative) {
+	    return error.num;
+	  }
+
+	  // Initialize guess and resultRate
+	  guess = (guess === undefined) ? 0.1 : guess;
+	  var resultRate = guess;
+
+	  // Set maximum epsilon for end of iteration
+	  var epsMax = 1e-10;
+
+	  // Implement Newton's method
+	  var newRate, epsRate, resultValue;
+	  var contLoop = true;
+	  do {
+	    resultValue = irrResult(values, dates, resultRate);
+	    newRate = resultRate - resultValue / irrResultDeriv(values, dates, resultRate);
+	    epsRate = Math.abs(newRate - resultRate);
+	    resultRate = newRate;
+	    contLoop = (epsRate > epsMax) && (Math.abs(resultValue) > epsMax);
+	  } while (contLoop);
+
+	  // Return internal rate of return
+	  return resultRate;
+	};
+
+	exports.ISPMT = function(rate, period, periods, value) {
+	  rate = utils.parseNumber(rate);
+	  period = utils.parseNumber(period);
+	  periods = utils.parseNumber(periods);
+	  value = utils.parseNumber(value);
+	  if (utils.anyIsError(rate, period, periods, value)) {
+	    return error.value;
+	  }
+
+	  // Return interest
+	  return value * rate * (period / periods - 1);
+	};
+
+	// TODO
+	exports.MDURATION = function() {
+	 throw new Error('MDURATION is not implemented');
+	};
+
+	exports.MIRR = function(values, finance_rate, reinvest_rate) {
+	  values = utils.parseNumberArray(utils.flatten(values));
+	  finance_rate = utils.parseNumber(finance_rate);
+	  reinvest_rate = utils.parseNumber(reinvest_rate);
+	  if (utils.anyIsError(values, finance_rate, reinvest_rate)) {
+	    return error.value;
+	  }
+
+	  // Initialize number of values
+	  var n = values.length;
+
+	  // Lookup payments (negative values) and incomes (positive values)
+	  var payments = [];
+	  var incomes = [];
+	  for (var i = 0; i < n; i++) {
+	    if (values[i] < 0) {
+	      payments.push(values[i]);
+	    } else {
+	      incomes.push(values[i]);
+	    }
+	  }
+
+	  // Return modified internal rate of return
+	  var num = -exports.NPV(reinvest_rate, incomes) * Math.pow(1 + reinvest_rate, n - 1);
+	  var den = exports.NPV(finance_rate, payments) * (1 + finance_rate);
+	  return Math.pow(num / den, 1 / (n - 1)) - 1;
+	};
+
+	exports.NOMINAL = function(rate, periods) {
+	  rate = utils.parseNumber(rate);
+	  periods = utils.parseNumber(periods);
+	  if (utils.anyIsError(rate, periods)) {
+	    return error.value;
+	  }
+
+	  // Return error if rate <=0 or periods < 1
+	  if (rate <= 0 || periods < 1) {
+	    return error.num;
+	  }
+
+	  // Truncate periods if it is not an integer
+	  periods = parseInt(periods, 10);
+
+	  // Return nominal annual interest rate
+	  return (Math.pow(rate + 1, 1 / periods) - 1) * periods;
+	};
+
+	exports.NPER = function(rate, payment, present, future, type) {
+	  type = (type === undefined) ? 0 : type;
+	  future = (future === undefined) ? 0 : future;
+
+	  rate = utils.parseNumber(rate);
+	  payment = utils.parseNumber(payment);
+	  present = utils.parseNumber(present);
+	  future = utils.parseNumber(future);
+	  type = utils.parseNumber(type);
+	  if (utils.anyIsError(rate, payment, present, future, type)) {
+	    return error.value;
+	  }
+
+	  // Return number of periods
+	  var num = payment * (1 + rate * type) - future * rate;
+	  var den = (present * rate + payment * (1 + rate * type));
+	  return Math.log(num / den) / Math.log(1 + rate);
+	};
+
+	exports.NPV = function() {
+	  var args = utils.parseNumberArray(utils.flatten(arguments));
+	  if (args instanceof Error) {
+	    return args;
+	  }
+
+	  // Lookup rate
+	  var rate = args[0];
+
+	  // Initialize net present value
+	  var value = 0;
+
+	  // Loop on all values
+	  for (var j = 1; j < args.length; j++) {
+	    value += args[j] / Math.pow(1 + rate, j);
+	  }
+
+	  // Return net present value
+	  return value;
+	};
+
+	// TODO
+	exports.ODDFPRICE = function() {
+	 throw new Error('ODDFPRICE is not implemented');
+	};
+
+	// TODO
+	exports.ODDFYIELD = function() {
+	 throw new Error('ODDFYIELD is not implemented');
+	};
+
+	// TODO
+	exports.ODDLPRICE = function() {
+	 throw new Error('ODDLPRICE is not implemented');
+	};
+
+	// TODO
+	exports.ODDLYIELD = function() {
+	 throw new Error('ODDLYIELD is not implemented');
+	};
+
+	exports.PDURATION = function(rate, present, future) {
+	  rate = utils.parseNumber(rate);
+	  present = utils.parseNumber(present);
+	  future = utils.parseNumber(future);
+	  if (utils.anyIsError(rate, present, future)) {
+	    return error.value;
+	  }
+
+	  // Return error if rate <=0
+	  if (rate <= 0) {
+	    return error.num;
+	  }
+
+	  // Return number of periods
+	  return (Math.log(future) - Math.log(present)) / Math.log(1 + rate);
+	};
+
+	exports.PMT = function(rate, periods, present, future, type) {
+	  // Credits: algorithm inspired by Apache OpenOffice
+
+	  future = future || 0;
+	  type = type || 0;
+
+	  rate = utils.parseNumber(rate);
+	  periods = utils.parseNumber(periods);
+	  present = utils.parseNumber(present);
+	  future = utils.parseNumber(future);
+	  type = utils.parseNumber(type);
+	  if (utils.anyIsError(rate, periods, present, future, type)) {
+	    return error.value;
+	  }
+
+	  // Return payment
+	  var result;
+	  if (rate === 0) {
+	    result = (present + future) / periods;
+	  } else {
+	    var term = Math.pow(1 + rate, periods);
+	    if (type === 1) {
+	      result = (future * rate / (term - 1) + present * rate / (1 - 1 / term)) / (1 + rate);
+	    } else {
+	      result = future * rate / (term - 1) + present * rate / (1 - 1 / term);
+	    }
+	  }
+	  return -result;
+	};
+
+	exports.PPMT = function(rate, period, periods, present, future, type) {
+	  future = future || 0;
+	  type = type || 0;
+
+	  rate = utils.parseNumber(rate);
+	  periods = utils.parseNumber(periods);
+	  present = utils.parseNumber(present);
+	  future = utils.parseNumber(future);
+	  type = utils.parseNumber(type);
+	  if (utils.anyIsError(rate, periods, present, future, type)) {
+	    return error.value;
+	  }
+
+	  return exports.PMT(rate, periods, present, future, type) - exports.IPMT(rate, period, periods, present, future, type);
+	};
+
+	// TODO
+	exports.PRICE = function() {
+	 throw new Error('PRICE is not implemented');
+	};
+
+	// TODO
+	exports.PRICEDISC = function() {
+	 throw new Error('PRICEDISC is not implemented');
+	};
+
+	// TODO
+	exports.PRICEMAT = function() {
+	 throw new Error('PRICEMAT is not implemented');
+	};
+
+	exports.PV = function(rate, periods, payment, future, type) {
+	  future = future || 0;
+	  type = type || 0;
+
+	  rate = utils.parseNumber(rate);
+	  periods = utils.parseNumber(periods);
+	  payment = utils.parseNumber(payment);
+	  future = utils.parseNumber(future);
+	  type = utils.parseNumber(type);
+	  if (utils.anyIsError(rate, periods, payment, future, type)) {
+	    return error.value;
+	  }
+
+	  // Return present value
+	  if (rate === 0) {
+	    return -payment * periods - future;
+	  } else {
+	    return (((1 - Math.pow(1 + rate, periods)) / rate) * payment * (1 + rate * type) - future) / Math.pow(1 + rate, periods);
+	  }
+	};
+
+	exports.RATE = function(periods, payment, present, future, type, guess) {
+	  // Credits: rabugento
+
+	  guess = (guess === undefined) ? 0.01 : guess;
+	  future = (future === undefined) ? 0 : future;
+	  type = (type === undefined) ? 0 : type;
+
+	  periods = utils.parseNumber(periods);
+	  payment = utils.parseNumber(payment);
+	  present = utils.parseNumber(present);
+	  future = utils.parseNumber(future);
+	  type = utils.parseNumber(type);
+	  guess = utils.parseNumber(guess);
+	  if (utils.anyIsError(periods, payment, present, future, type, guess)) {
+	    return error.value;
+	  }
+
+	  // Set maximum epsilon for end of iteration
+	  var epsMax = 1e-6;
+
+	  // Set maximum number of iterations
+	  var iterMax = 100;
+	  var iter = 0;
+	  var close = false;
+	  var rate = guess;
+
+	  while (iter < iterMax && !close) {
+	    var t1 = Math.pow(rate + 1, periods);
+	    var t2 = Math.pow(rate + 1, periods - 1);
+
+	    var f1 = future + t1 * present + payment * (t1 - 1) * (rate * type + 1) / rate;
+	    var f2 = periods * t2 * present - payment * (t1 - 1) *(rate * type + 1) / Math.pow(rate,2);
+	    var f3 = periods * payment * t2 * (rate * type + 1) / rate + payment * (t1 - 1) * type / rate;
+
+	    var newRate = rate - f1 / (f2 + f3);
+
+	    if (Math.abs(newRate - rate) < epsMax) close = true;
+	    iter++
+	    rate = newRate;
+	  }
+
+	  if (!close) return Number.NaN + rate;
+	  return rate;
+	};
+
+	// TODO
+	exports.RECEIVED = function() {
+	 throw new Error('RECEIVED is not implemented');
+	};
+
+	exports.RRI = function(periods, present, future) {
+	  periods = utils.parseNumber(periods);
+	  present = utils.parseNumber(present);
+	  future = utils.parseNumber(future);
+	  if (utils.anyIsError(periods, present, future)) {
+	    return error.value;
+	  }
+
+	  // Return error if periods or present is equal to 0 (zero)
+	  if (periods === 0 || present === 0) {
+	    return error.num;
+	  }
+
+	  // Return equivalent interest rate
+	  return Math.pow(future / present, 1 / periods) - 1;
+	};
+
+	exports.SLN = function(cost, salvage, life) {
+	  cost = utils.parseNumber(cost);
+	  salvage = utils.parseNumber(salvage);
+	  life = utils.parseNumber(life);
+	  if (utils.anyIsError(cost, salvage, life)) {
+	    return error.value;
+	  }
+
+	  // Return error if life equal to 0 (zero)
+	  if (life === 0) {
+	    return error.num;
+	  }
+
+	  // Return straight-line depreciation
+	  return (cost - salvage) / life;
+	};
+
+	exports.SYD = function(cost, salvage, life, period) {
+	  // Return error if any of the parameters is not a number
+	  cost = utils.parseNumber(cost);
+	  salvage = utils.parseNumber(salvage);
+	  life = utils.parseNumber(life);
+	  period = utils.parseNumber(period);
+	  if (utils.anyIsError(cost, salvage, life, period)) {
+	    return error.value;
+	  }
+
+	  // Return error if life equal to 0 (zero)
+	  if (life === 0) {
+	    return error.num;
+	  }
+
+	  // Return error if period is lower than 1 or greater than life
+	  if (period < 1 || period > life) {
+	    return error.num;
+	  }
+
+	  // Truncate period if it is not an integer
+	  period = parseInt(period, 10);
+
+	  // Return straight-line depreciation
+	  return ((cost - salvage) * (life - period + 1) * 2) / (life * (life + 1));
+	};
+
+	exports.TBILLEQ = function(settlement, maturity, discount) {
+	  settlement = utils.parseDate(settlement);
+	  maturity = utils.parseDate(maturity);
+	  discount = utils.parseNumber(discount);
+	  if (utils.anyIsError(settlement, maturity, discount)) {
+	    return error.value;
+	  }
+
+	  // Return error if discount is lower than or equal to zero
+	  if (discount <= 0) {
+	    return error.num;
+	  }
+
+	  // Return error if settlement is greater than maturity
+	  if (settlement > maturity) {
+	    return error.num;
+	  }
+
+	  // Return error if maturity is more than one year after settlement
+	  if (maturity - settlement > 365 * 24 * 60 * 60 * 1000) {
+	    return error.num;
+	  }
+
+	  // Return bond-equivalent yield
+	  return (365 * discount) / (360 - discount * dateTime.DAYS360(settlement, maturity, false));
+	};
+
+	exports.TBILLPRICE = function(settlement, maturity, discount) {
+	  settlement = utils.parseDate(settlement);
+	  maturity = utils.parseDate(maturity);
+	  discount = utils.parseNumber(discount);
+	  if (utils.anyIsError(settlement, maturity, discount)) {
+	    return error.value;
+	  }
+
+	  // Return error if discount is lower than or equal to zero
+	  if (discount <= 0) {
+	    return error.num;
+	  }
+
+	  // Return error if settlement is greater than maturity
+	  if (settlement > maturity) {
+	    return error.num;
+	  }
+
+	  // Return error if maturity is more than one year after settlement
+	  if (maturity - settlement > 365 * 24 * 60 * 60 * 1000) {
+	    return error.num;
+	  }
+
+	  // Return bond-equivalent yield
+	  return 100 * (1 - discount * dateTime.DAYS360(settlement, maturity, false) / 360);
+	};
+
+	exports.TBILLYIELD = function(settlement, maturity, price) {
+	  settlement = utils.parseDate(settlement);
+	  maturity = utils.parseDate(maturity);
+	  price = utils.parseNumber(price);
+	  if (utils.anyIsError(settlement, maturity, price)) {
+	    return error.value;
+	  }
+
+	  // Return error if price is lower than or equal to zero
+	  if (price <= 0) {
+	    return error.num;
+	  }
+
+	  // Return error if settlement is greater than maturity
+	  if (settlement > maturity) {
+	    return error.num;
+	  }
+
+	  // Return error if maturity is more than one year after settlement
+	  if (maturity - settlement > 365 * 24 * 60 * 60 * 1000) {
+	    return error.num;
+	  }
+
+	  // Return bond-equivalent yield
+	  return (100 - price) * 360 / (price * dateTime.DAYS360(settlement, maturity, false));
+	};
+
+	// TODO
+	exports.VDB = function() {
+	 throw new Error('VDB is not implemented');
+	};
+
+
+	exports.XIRR = function(values, dates, guess) {
+	  // Credits: algorithm inspired by Apache OpenOffice
+
+	  values = utils.parseNumberArray(utils.flatten(values));
+	  dates = utils.parseDateArray(utils.flatten(dates));
+	  guess = utils.parseNumber(guess);
+	  if (utils.anyIsError(values, dates, guess)) {
+	    return error.value;
+	  }
+
+	  // Calculates the resulting amount
+	  var irrResult = function(values, dates, rate) {
+	    var r = rate + 1;
+	    var result = values[0];
+	    for (var i = 1; i < values.length; i++) {
+	      result += values[i] / Math.pow(r, dateTime.DAYS(dates[i], dates[0]) / 365);
+	    }
+	    return result;
+	  };
+
+	  // Calculates the first derivation
+	  var irrResultDeriv = function(values, dates, rate) {
+	    var r = rate + 1;
+	    var result = 0;
+	    for (var i = 1; i < values.length; i++) {
+	      var frac = dateTime.DAYS(dates[i], dates[0]) / 365;
+	      result -= frac * values[i] / Math.pow(r, frac + 1);
+	    }
+	    return result;
+	  };
+
+	  // Check that values contains at least one positive value and one negative value
+	  var positive = false;
+	  var negative = false;
+	  for (var i = 0; i < values.length; i++) {
+	    if (values[i] > 0) {
+	      positive = true;
+	    }
+	    if (values[i] < 0) {
+	      negative = true;
+	    }
+	  }
+
+	  // Return error if values does not contain at least one positive value and one negative value
+	  if (!positive || !negative) {
+	    return error.num;
+	  }
+
+	  // Initialize guess and resultRate
+	  guess = guess || 0.1;
+	  var resultRate = guess;
+
+	  // Set maximum epsilon for end of iteration
+	  var epsMax = 1e-10;
+
+	  // Implement Newton's method
+	  var newRate, epsRate, resultValue;
+	  var contLoop = true;
+	  do {
+	    resultValue = irrResult(values, dates, resultRate);
+	    newRate = resultRate - resultValue / irrResultDeriv(values, dates, resultRate);
+	    epsRate = Math.abs(newRate - resultRate);
+	    resultRate = newRate;
+	    contLoop = (epsRate > epsMax) && (Math.abs(resultValue) > epsMax);
+	  } while (contLoop);
+
+	  // Return internal rate of return
+	  return resultRate;
+	};
+
+	exports.XNPV = function(rate, values, dates) {
+	  rate = utils.parseNumber(rate);
+	  values = utils.parseNumberArray(utils.flatten(values));
+	  dates = utils.parseDateArray(utils.flatten(dates));
+	  if (utils.anyIsError(rate, values, dates)) {
+	    return error.value;
+	  }
+
+	  var result = 0;
+	  for (var i = 0; i < values.length; i++) {
+	    result += values[i] / Math.pow(1 + rate, dateTime.DAYS(dates[i], dates[0]) / 365);
+	  }
+	  return result;
+	};
+
+	// TODO
+	exports.YIELD = function() {
+	 throw new Error('YIELD is not implemented');
+	};
+
+	// TODO
+	exports.YIELDDISC = function() {
+	 throw new Error('YIELDDISC is not implemented');
+	};
+
+	// TODO
+	exports.YIELDMAT = function() {
+	 throw new Error('YIELDMAT is not implemented');
+	};
+
+/***/ },
+/* 18 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var error = __webpack_require__(5);
+
+	exports.MATCH = function(lookupValue, lookupArray, matchType) {
+	  if (!lookupValue && !lookupArray) {
+	    return error.na;
+	  }
+
+	  if (arguments.length === 2) {
+	    matchType = 1;
+	  }
+	  if (!(lookupArray instanceof Array)) {
+	    return error.na;
+	  }
+
+	  if (matchType !== -1 && matchType !== 0 && matchType !== 1) {
+	    return error.na;
+	  }
+	  var index;
+	  var indexValue;
+	  for (var idx = 0; idx < lookupArray.length; idx++) {
+	    if (matchType === 1) {
+	      if (lookupArray[idx] === lookupValue) {
+	        return idx + 1;
+	      } else if (lookupArray[idx] < lookupValue) {
+	        if (!indexValue) {
+	          index = idx + 1;
+	          indexValue = lookupArray[idx];
+	        } else if (lookupArray[idx] > indexValue) {
+	          index = idx + 1;
+	          indexValue = lookupArray[idx];
+	        }
+	      }
+	    } else if (matchType === 0) {
+	      if (typeof lookupValue === 'string') {
+	        lookupValue = lookupValue.replace(/\?/g, '.');
+	        if (lookupArray[idx].toLowerCase().match(lookupValue.toLowerCase())) {
+	          return idx + 1;
+	        }
+	      } else {
+	        if (lookupArray[idx] === lookupValue) {
+	          return idx + 1;
+	        }
+	      }
+	    } else if (matchType === -1) {
+	      if (lookupArray[idx] === lookupValue) {
+	        return idx + 1;
+	      } else if (lookupArray[idx] > lookupValue) {
+	        if (!indexValue) {
+	          index = idx + 1;
+	          indexValue = lookupArray[idx];
+	        } else if (lookupArray[idx] < indexValue) {
+	          index = idx + 1;
+	          indexValue = lookupArray[idx];
+	        }
+	      }
+	    }
+	  }
+
+	  return index ? index : error.na;
+	};
+
+/***/ }
+/******/ ])
+});
+;
+},{"jStat":2,"numeral":3,"numeric":4}],2:[function(require,module,exports){
+this.j$ = this.jStat = (function(Math, undefined) {
+
+// For quick reference.
+var concat = Array.prototype.concat;
+var slice = Array.prototype.slice;
+var toString = Object.prototype.toString;
+
+// Calculate correction for IEEE error
+// TODO: This calculation can be improved.
+function calcRdx(n, m) {
+  var val = n > m ? n : m;
+  return Math.pow(10,
+                  17 - ~~(Math.log(((val > 0) ? val : -val)) * Math.LOG10E));
+}
+
+
+var isArray = Array.isArray || function isArray(arg) {
+  return toString.call(arg) === '[object Array]';
+};
+
+
+function isFunction(arg) {
+  return toString.call(arg) === '[object Function]';
+}
+
+
+function isNumber(arg) {
+  return typeof arg === 'number' && arg === arg;
+}
+
+
+// Converts the jStat matrix to vector.
+function toVector(arr) {
+  return concat.apply([], arr);
+}
+
+
+// The one and only jStat constructor.
+function jStat() {
+  return new jStat._init(arguments);
+}
+
+
+// TODO: Remove after all references in src files have been removed.
+jStat.fn = jStat.prototype;
+
+
+// By separating the initializer from the constructor it's easier to handle
+// always returning a new instance whether "new" was used or not.
+jStat._init = function _init(args) {
+  var i;
+
+  // If first argument is an array, must be vector or matrix.
+  if (isArray(args[0])) {
+    // Check if matrix.
+    if (isArray(args[0][0])) {
+      // See if a mapping function was also passed.
+      if (isFunction(args[1]))
+        args[0] = jStat.map(args[0], args[1]);
+      // Iterate over each is faster than this.push.apply(this, args[0].
+      for (i = 0; i < args[0].length; i++)
+        this[i] = args[0][i];
+      this.length = args[0].length;
+
+    // Otherwise must be a vector.
+    } else {
+      this[0] = isFunction(args[1]) ? jStat.map(args[0], args[1]) : args[0];
+      this.length = 1;
+    }
+
+  // If first argument is number, assume creation of sequence.
+  } else if (isNumber(args[0])) {
+    this[0] = jStat.seq.apply(null, args);
+    this.length = 1;
+
+  // Handle case when jStat object is passed to jStat.
+  } else if (args[0] instanceof jStat) {
+    // Duplicate the object and pass it back.
+    return jStat(args[0].toArray());
+
+  // Unexpected argument value, return empty jStat object.
+  // TODO: This is strange behavior. Shouldn't this throw or some such to let
+  // the user know they had bad arguments?
+  } else {
+    this[0] = [];
+    this.length = 1;
+  }
+
+  return this;
+};
+jStat._init.prototype = jStat.prototype;
+jStat._init.constructor = jStat;
+
+
+// Utility functions.
+// TODO: for internal use only?
+jStat.utils = {
+  calcRdx: calcRdx,
+  isArray: isArray,
+  isFunction: isFunction,
+  isNumber: isNumber,
+  toVector: toVector
+};
+
+
+// Easily extend the jStat object.
+// TODO: is this seriously necessary?
+jStat.extend = function extend(obj) {
+  var i, j;
+
+  if (arguments.length === 1) {
+    for (j in obj)
+      jStat[j] = obj[j];
+    return this;
+  }
+
+  for (i = 1; i < arguments.length; i++) {
+    for (j in arguments[i])
+      obj[j] = arguments[i][j];
+  }
+
+  return obj;
+};
+
+
+// Returns the number of rows in the matrix.
+jStat.rows = function rows(arr) {
+  return arr.length || 1;
+};
+
+
+// Returns the number of columns in the matrix.
+jStat.cols = function cols(arr) {
+  return arr[0].length || 1;
+};
+
+
+// Returns the dimensions of the object { rows: i, cols: j }
+jStat.dimensions = function dimensions(arr) {
+  return {
+    rows: jStat.rows(arr),
+    cols: jStat.cols(arr)
+  };
+};
+
+
+// Returns a specified row as a vector
+jStat.row = function row(arr, index) {
+  return arr[index];
+};
+
+
+// Returns the specified column as a vector
+jStat.col = function cols(arr, index) {
+  var column = new Array(arr.length);
+  for (var i = 0; i < arr.length; i++)
+    column[i] = [arr[i][index]];
+  return column;
+};
+
+
+// Returns the diagonal of the matrix
+jStat.diag = function diag(arr) {
+  var nrow = jStat.rows(arr);
+  var res = new Array(nrow);
+  for (var row = 0; row < nrow; row++)
+    res[row] = [arr[row][row]];
+  return res;
+};
+
+
+// Returns the anti-diagonal of the matrix
+jStat.antidiag = function antidiag(arr) {
+  var nrow = jStat.rows(arr) - 1;
+  var res = new Array(nrow);
+  for (var i = 0; nrow >= 0; nrow--, i++)
+    res[i] = [arr[i][nrow]];
+  return res;
+};
+
+// Transpose a matrix or array.
+jStat.transpose = function transpose(arr) {
+  var obj = [];
+  var objArr, rows, cols, j, i;
+
+  // Make sure arr is in matrix format.
+  if (!isArray(arr[0]))
+    arr = [arr];
+
+  rows = arr.length;
+  cols = arr[0].length;
+
+  for (i = 0; i < cols; i++) {
+    objArr = new Array(rows);
+    for (j = 0; j < rows; j++)
+      objArr[j] = arr[j][i];
+    obj.push(objArr);
+  }
+
+  // If obj is vector, return only single array.
+  return obj.length === 1 ? obj[0] : obj;
+};
+
+
+// Map a function to an array or array of arrays.
+// "toAlter" is an internal variable.
+jStat.map = function map(arr, func, toAlter) {
+  var row, nrow, ncol, res, col;
+
+  if (!isArray(arr[0]))
+    arr = [arr];
+
+  nrow = arr.length;
+  ncol = arr[0].length;
+  res = toAlter ? arr : new Array(nrow);
+
+  for (row = 0; row < nrow; row++) {
+    // if the row doesn't exist, create it
+    if (!res[row])
+      res[row] = new Array(ncol);
+    for (col = 0; col < ncol; col++)
+      res[row][col] = func(arr[row][col], row, col);
+  }
+
+  return res.length === 1 ? res[0] : res;
+};
+
+
+// Destructively alter an array.
+jStat.alter = function alter(arr, func) {
+  return jStat.map(arr, func, true);
+};
+
+
+// Generate a rows x cols matrix according to the supplied function.
+jStat.create = function  create(rows, cols, func) {
+  var res = new Array(rows);
+  var i, j;
+
+  if (isFunction(cols)) {
+    func = cols;
+    cols = rows;
+  }
+
+  for (i = 0; i < rows; i++) {
+    res[i] = new Array(cols);
+    for (j = 0; j < cols; j++)
+      res[i][j] = func(i, j);
+  }
+
+  return res;
+};
+
+
+function retZero() { return 0; }
+
+
+// Generate a rows x cols matrix of zeros.
+jStat.zeros = function zeros(rows, cols) {
+  if (!isNumber(cols))
+    cols = rows;
+  return jStat.create(rows, cols, retZero);
+};
+
+
+function retOne() { return 1; }
+
+
+// Generate a rows x cols matrix of ones.
+jStat.ones = function ones(rows, cols) {
+  if (!isNumber(cols))
+    cols = rows;
+  return jStat.create(rows, cols, retOne);
+};
+
+
+// Generate a rows x cols matrix of uniformly random numbers.
+jStat.rand = function rand(rows, cols) {
+  if (!isNumber(cols))
+    cols = rows;
+  return jStat.create(rows, cols, Math.random);
+};
+
+
+function retIdent(i, j) { return i === j ? 1 : 0; }
+
+
+// Generate an identity matrix of size row x cols.
+jStat.identity = function identity(rows, cols) {
+  if (!isNumber(cols))
+    cols = rows;
+  return jStat.create(rows, cols, retIdent);
+};
+
+
+// Tests whether a matrix is symmetric
+jStat.symmetric = function symmetric(arr) {
+  var issymmetric = true;
+  var size = arr.length;
+  var row, col;
+
+  if (arr.length !== arr[0].length)
+    return false;
+
+  for (row = 0; row < size; row++) {
+    for (col = 0; col < size; col++)
+      if (arr[col][row] !== arr[row][col])
+        return false;
+  }
+
+  return true;
+};
+
+
+// Set all values to zero.
+jStat.clear = function clear(arr) {
+  return jStat.alter(arr, retZero);
+};
+
+
+// Generate sequence.
+jStat.seq = function seq(min, max, length, func) {
+  if (!isFunction(func))
+    func = false;
+
+  var arr = [];
+  var hival = calcRdx(min, max);
+  var step = (max * hival - min * hival) / ((length - 1) * hival);
+  var current = min;
+  var cnt;
+
+  // Current is assigned using a technique to compensate for IEEE error.
+  // TODO: Needs better implementation.
+  for (cnt = 0;
+       current <= max;
+       cnt++, current = (min * hival + step * hival * cnt) / hival) {
+    arr.push((func ? func(current, cnt) : current));
+  }
+
+  return arr;
+};
+
+
+// TODO: Go over this entire implementation. Seems a tragic waste of resources
+// doing all this work. Instead, and while ugly, use new Function() to generate
+// a custom function for each static method.
+
+// Quick reference.
+var jProto = jStat.prototype;
+
+// Default length.
+jProto.length = 0;
+
+// For internal use only.
+// TODO: Check if they're actually used, and if they are then rename them
+// to _*
+jProto.push = Array.prototype.push;
+jProto.sort = Array.prototype.sort;
+jProto.splice = Array.prototype.splice;
+jProto.slice = Array.prototype.slice;
+
+
+// Return a clean array.
+jProto.toArray = function toArray() {
+  return this.length > 1 ? slice.call(this) : slice.call(this)[0];
+};
+
+
+// Map a function to a matrix or vector.
+jProto.map = function map(func, toAlter) {
+  return jStat(jStat.map(this, func, toAlter));
+};
+
+
+// Destructively alter an array.
+jProto.alter = function alter(func) {
+  jStat.alter(this, func);
+  return this;
+};
+
+
+// Extend prototype with methods that have no argument.
+(function(funcs) {
+  for (var i = 0; i < funcs.length; i++) (function(passfunc) {
+    jProto[passfunc] = function(func) {
+      var self = this,
+      results;
+      // Check for callback.
+      if (func) {
+        setTimeout(function() {
+          func.call(self, jProto[passfunc].call(self));
+        });
+        return this;
+      }
+      results = jStat[passfunc](this);
+      return isArray(results) ? jStat(results) : results;
+    };
+  })(funcs[i]);
+})('transpose clear symmetric rows cols dimensions diag antidiag'.split(' '));
+
+
+// Extend prototype with methods that have one argument.
+(function(funcs) {
+  for (var i = 0; i < funcs.length; i++) (function(passfunc) {
+    jProto[passfunc] = function(index, func) {
+      var self = this;
+      // check for callback
+      if (func) {
+        setTimeout(function() {
+          func.call(self, jProto[passfunc].call(self, index));
+        });
+        return this;
+      }
+      return jStat(jStat[passfunc](this, index));
+    };
+  })(funcs[i]);
+})('row col'.split(' '));
+
+
+// Extend prototype with simple shortcut methods.
+(function(funcs) {
+  for (var i = 0; i < funcs.length; i++) (function(passfunc) {
+    jProto[passfunc] = new Function(
+        'return jStat(jStat.' + passfunc + '.apply(null, arguments));');
+  })(funcs[i]);
+})('create zeros ones rand identity'.split(' '));
+
+
+// Exposing jStat.
+return jStat;
+
+}(Math));
+(function(jStat, Math) {
+
+var isFunction = jStat.utils.isFunction;
+
+// Ascending functions for sort
+function ascNum(a, b) { return a - b; }
+
+function clip(arg, min, max) {
+  return Math.max(min, Math.min(arg, max));
+}
+
+
+// sum of an array
+jStat.sum = function sum(arr) {
+  var sum = 0;
+  var i = arr.length;
+  var tmp;
+  while (--i >= 0)
+    sum += arr[i];
+  return sum;
+};
+
+
+// sum squared
+jStat.sumsqrd = function sumsqrd(arr) {
+  var sum = 0;
+  var i = arr.length;
+  while (--i >= 0)
+    sum += arr[i] * arr[i];
+  return sum;
+};
+
+
+// sum of squared errors of prediction (SSE)
+jStat.sumsqerr = function sumsqerr(arr) {
+  var mean = jStat.mean(arr);
+  var sum = 0;
+  var i = arr.length;
+  var tmp;
+  while (--i >= 0) {
+    tmp = arr[i] - mean;
+    sum += tmp * tmp;
+  }
+  return sum;
+};
+
+
+// product of an array
+jStat.product = function product(arr) {
+  var prod = 1;
+  var i = arr.length;
+  while (--i >= 0)
+    prod *= arr[i];
+  return prod;
+};
+
+
+// minimum value of an array
+jStat.min = function min(arr) {
+  var low = arr[0];
+  var i = 0;
+  while (++i < arr.length)
+    if (arr[i] < low)
+      low = arr[i];
+  return low;
+};
+
+
+// maximum value of an array
+jStat.max = function max(arr) {
+  var high = arr[0];
+  var i = 0;
+  while (++i < arr.length)
+    if (arr[i] > high)
+      high = arr[i];
+  return high;
+};
+
+
+// mean value of an array
+jStat.mean = function mean(arr) {
+  return jStat.sum(arr) / arr.length;
+};
+
+
+// mean squared error (MSE)
+jStat.meansqerr = function meansqerr(arr) {
+  return jStat.sumsqerr(arr) / arr.length;
+};
+
+
+// geometric mean of an array
+jStat.geomean = function geomean(arr) {
+  return Math.pow(jStat.product(arr), 1 / arr.length);
+};
+
+
+// median of an array
+jStat.median = function median(arr) {
+  var arrlen = arr.length;
+  var _arr = arr.slice().sort(ascNum);
+  // check if array is even or odd, then return the appropriate
+  return !(arrlen & 1)
+    ? (_arr[(arrlen / 2) - 1 ] + _arr[(arrlen / 2)]) / 2
+    : _arr[(arrlen / 2) | 0 ];
+};
+
+
+// cumulative sum of an array
+jStat.cumsum = function cumsum(arr) {
+  var len = arr.length;
+  var sums = new Array(len);
+  var i;
+  sums[0] = arr[0];
+  for (i = 1; i < len; i++)
+    sums[i] = sums[i - 1] + arr[i];
+  return sums;
+};
+
+
+// successive differences of a sequence
+jStat.diff = function diff(arr) {
+  var diffs = [];
+  var arrLen = arr.length;
+  var i;
+  for (i = 1; i < arrLen; i++)
+    diffs.push(arr[i] - arr[i - 1]);
+  return diffs;
+};
+
+
+// mode of an array
+// if there are multiple modes of an array, return all of them
+// is this the appropriate way of handling it?
+jStat.mode = function mode(arr) {
+  var arrLen = arr.length;
+  var _arr = arr.slice().sort(ascNum);
+  var count = 1;
+  var maxCount = 0;
+  var numMaxCount = 0;
+  var mode_arr = [];
+  var i;
+
+  for (i = 0; i < arrLen; i++) {
+    if (_arr[i] === _arr[i + 1]) {
+      count++;
+    } else {
+      if (count > maxCount) {
+        mode_arr = [_arr[i]];
+        maxCount = count;
+        numMaxCount = 0;
+      }
+      // are there multiple max counts
+      else if (count === maxCount) {
+        mode_arr.push(_arr[i]);
+        numMaxCount++;
+      }
+      // resetting count for new value in array
+      count = 1;
+    }
+  }
+
+  return numMaxCount === 0 ? mode_arr[0] : mode_arr;
+};
+
+
+// range of an array
+jStat.range = function range(arr) {
+  return jStat.max(arr) - jStat.min(arr);
+};
+
+// variance of an array
+// flag indicates population vs sample
+jStat.variance = function variance(arr, flag) {
+  return jStat.sumsqerr(arr) / (arr.length - (flag ? 1 : 0));
+};
+
+
+// standard deviation of an array
+// flag indicates population vs sample
+jStat.stdev = function stdev(arr, flag) {
+  return Math.sqrt(jStat.variance(arr, flag));
+};
+
+
+// mean deviation (mean absolute deviation) of an array
+jStat.meandev = function meandev(arr) {
+  var devSum = 0;
+  var mean = jStat.mean(arr);
+  var i;
+  for (i = arr.length - 1; i >= 0; i--)
+    devSum += Math.abs(arr[i] - mean);
+  return devSum / arr.length;
+};
+
+
+// median deviation (median absolute deviation) of an array
+jStat.meddev = function meddev(arr) {
+  var devSum = 0;
+  var median = jStat.median(arr);
+  var i;
+  for (i = arr.length - 1; i >= 0; i--)
+    devSum += Math.abs(arr[i] - median);
+  return devSum / arr.length;
+};
+
+
+// coefficient of variation
+jStat.coeffvar = function coeffvar(arr) {
+  return jStat.stdev(arr) / jStat.mean(arr);
+};
+
+
+// quartiles of an array
+jStat.quartiles = function quartiles(arr) {
+  var arrlen = arr.length;
+  var _arr = arr.slice().sort(ascNum);
+  return [
+    _arr[ Math.round((arrlen) / 4) - 1 ],
+    _arr[ Math.round((arrlen) / 2) - 1 ],
+    _arr[ Math.round((arrlen) * 3 / 4) - 1 ]
+  ];
+};
+
+
+// Arbitary quantiles of an array. Direct port of the scipy.stats
+// implementation by Pierre GF Gerard-Marchant.
+jStat.quantiles = function quantiles(arr, quantilesArray, alphap, betap) {
+  var sortedArray = arr.slice().sort(ascNum);
+  var quantileVals = [quantilesArray.length];
+  var n = arr.length;
+  var i, p, m, aleph, k, gamma;
+
+  if (typeof alphap === 'undefined')
+    alphap = 3 / 8;
+  if (typeof betap === 'undefined')
+    betap = 3 / 8;
+
+  for (i = 0; i < quantilesArray.length; i++) {
+    p = quantilesArray[i];
+    m = alphap + p * (1 - alphap - betap);
+    aleph = n * p + m;
+    k = Math.floor(clip(aleph, 1, n - 1));
+    gamma = clip(aleph - k, 0, 1);
+    quantileVals[i] = (1 - gamma) * sortedArray[k - 1] + gamma * sortedArray[k];
+  }
+
+  return quantileVals;
+};
+
+// The percentile rank of score in a given array. Returns the percentage
+// of all values in the input array that are less than (kind='strict') or
+// less or equal than (kind='weak') score. Default is weak.
+jStat.percentileOfScore = function percentileOfScore(arr, score, kind) {
+  var counter = 0;
+  var len = arr.length;
+  var strict = false;
+  var value, i;
+
+  if (kind === 'strict')
+    strict = true;
+
+  for (i = 0; i < len; i++) {
+    value = arr[i];
+    if ((strict && value < score) ||
+        (!strict && value <= score)) {
+      counter++;
+    }
+  }
+
+  return counter / len;
+};
+
+// covariance of two arrays
+jStat.covariance = function covariance(arr1, arr2) {
+  var u = jStat.mean(arr1);
+  var v = jStat.mean(arr2);
+  var arr1Len = arr1.length;
+  var sq_dev = new Array(arr1Len);
+  var i;
+
+  for (i = 0; i < arr1Len; i++)
+    sq_dev[i] = (arr1[i] - u) * (arr2[i] - v);
+
+  return jStat.sum(sq_dev) / (arr1Len - 1);
+};
+
+
+// (pearson's) population correlation coefficient, rho
+jStat.corrcoeff = function corrcoeff(arr1, arr2) {
+  return jStat.covariance(arr1, arr2) /
+      jStat.stdev(arr1, 1) /
+      jStat.stdev(arr2, 1);
+};
+
+
+var jProto = jStat.prototype;
+
+
+// Extend jProto with method for calculating cumulative sums, as it does not
+// run again in case of true.
+// If a matrix is passed, automatically assume operation should be done on the
+// columns.
+jProto.cumsum = function(fullbool, func) {
+  var arr = [];
+  var i = 0;
+  var tmpthis = this;
+
+  // Assignment reassignation depending on how parameters were passed in.
+  if (isFunction(fullbool)) {
+    func = fullbool;
+    fullbool = false;
+  }
+
+  // Check if a callback was passed with the function.
+  if (func) {
+    setTimeout(function() {
+      func.call(tmpthis, jProto.cumsum.call(tmpthis, fullbool));
+    });
+    return this;
+  }
+
+  // Check if matrix and run calculations.
+  if (this.length > 1) {
+    tmpthis = fullbool === true ? this : this.transpose();
+    for (; i < tmpthis.length; i++)
+      arr[i] = jStat.cumsum(tmpthis[i]);
+    return arr;
+  }
+
+  return jStat.cumsum(this[0], fullbool);
+};
+
+
+// Extend jProto with methods which don't require arguments and work on columns.
+(function(funcs) {
+  for (var i = 0; i < funcs.length; i++) (function(passfunc) {
+    // If a matrix is passed, automatically assume operation should be done on
+    // the columns.
+    jProto[passfunc] = function(fullbool, func) {
+      var arr = [];
+      var i = 0;
+      var tmpthis = this;
+      // Assignment reassignation depending on how parameters were passed in.
+      if (isFunction(fullbool)) {
+        func = fullbool;
+        fullbool = false;
+      }
+      // Check if a callback was passed with the function.
+      if (func) {
+        setTimeout(function() {
+          func.call(tmpthis, jProto[passfunc].call(tmpthis, fullbool));
+        });
+        return this;
+      }
+      // Check if matrix and run calculations.
+      if (this.length > 1) {
+        tmpthis = fullbool === true ? this : this.transpose();
+        for (; i < tmpthis.length; i++)
+          arr[i] = jStat[passfunc](tmpthis[i]);
+        return fullbool === true
+            ? jStat[passfunc](jStat.utils.toVector(arr))
+            : arr;
+      }
+      // Pass fullbool if only vector, not a matrix. for variance and stdev.
+      return jStat[passfunc](this[0], fullbool);
+    };
+  })(funcs[i]);
+})(('sum sumsqrd sumsqerr product min max mean meansqerr geomean median diff ' +
+    'mode range variance stdev meandev meddev coeffvar quartiles').split(' '));
+
+
+// Extend jProto with functions that take arguments. Operations on matrices are
+// done on columns.
+(function(funcs) {
+  for (var i = 0; i < funcs.length; i++) (function(passfunc) {
+    jProto[passfunc] = function() {
+      var arr = [];
+      var i = 0;
+      var tmpthis = this;
+      var args = Array.prototype.slice.call(arguments);
+
+      // If the last argument is a function, we assume it's a callback; we
+      // strip the callback out and call the function again.
+      if (isFunction(args[args.length - 1])) {
+        var callbackFunction = args[args.length - 1];
+        var argsToPass = args.slice(0, args.length - 1);
+
+        setTimeout(function() {
+          callbackFunction.call(tmpthis,
+                                jProto[passfunc].apply(tmpthis, argsToPass));
+        });
+        return this;
+
+      // Otherwise we curry the function args and call normally.
+      } else {
+        var callbackFunction = undefined;
+        var curriedFunction = function curriedFunction(vector) {
+          return jStat[passfunc].apply(tmpthis, [vector].concat(args));
+        }
+      }
+
+      // If this is a matrix, run column-by-column.
+      if (this.length > 1) {
+        tmpthis = tmpthis.transpose();
+        for (; i < tmpthis.length; i++)
+          arr[i] = curriedFunction(tmpthis[i]);
+        return arr;
+      }
+
+      // Otherwise run on the vector.
+      return curriedFunction(this[0]);
+    };
+  })(funcs[i]);
+})('quantiles percentileOfScore'.split(' '));
+
+}(this.jStat, Math));
+// Special functions //
+(function(jStat, Math) {
+
+// Log-gamma function
+jStat.gammaln = function gammaln(x) {
+  var j = 0;
+  var cof = [
+    76.18009172947146, -86.50532032941677, 24.01409824083091,
+    -1.231739572450155, 0.1208650973866179e-2, -0.5395239384953e-5
+  ];
+  var ser = 1.000000000190015;
+  var xx, y, tmp;
+  tmp = (y = xx = x) + 5.5;
+  tmp -= (xx + 0.5) * Math.log(tmp);
+  for (; j < 6; j++)
+    ser += cof[j] / ++y;
+  return Math.log(2.5066282746310005 * ser / xx) - tmp;
+};
+
+
+// gamma of x
+jStat.gammafn = function gammafn(x) {
+  var p = [-1.716185138865495, 24.76565080557592, -379.80425647094563,
+           629.3311553128184, 866.9662027904133, -31451.272968848367,
+           -36144.413418691176, 66456.14382024054
+  ];
+  var q = [-30.8402300119739, 315.35062697960416, -1015.1563674902192,
+           -3107.771671572311, 22538.118420980151, 4755.8462775278811,
+           -134659.9598649693, -115132.2596755535];
+  var fact = false;
+  var n = 0;
+  var xden = 0;
+  var xnum = 0;
+  var y = x;
+  var i, z, yi, res, sum, ysq;
+  if (y <= 0) {
+    res = y % 1 + 3.6e-16;
+    if (res) {
+      fact = (!(y & 1) ? 1 : -1) * Math.PI / Math.sin(Math.PI * res);
+      y = 1 - y;
+    } else {
+      return Infinity;
+    }
+  }
+  yi = y;
+  if (y < 1) {
+    z = y++;
+  } else {
+    z = (y -= n = (y | 0) - 1) - 1;
+  }
+  for (i = 0; i < 8; ++i) {
+    xnum = (xnum + p[i]) * z;
+    xden = xden * z + q[i];
+  }
+  res = xnum / xden + 1;
+  if (yi < y) {
+    res /= yi;
+  } else if (yi > y) {
+    for (i = 0; i < n; ++i) {
+      res *= y;
+      y++;
+    }
+  }
+  if (fact) {
+    res = fact / res;
+  }
+  return res;
+};
+
+
+// lower incomplete gamma function P(a,x)
+jStat.gammap = function gammap(a, x) {
+  var aln = jStat.gammaln(a);
+  var ap = a;
+  var sum = 1 / a;
+  var del = sum;
+  var b = x + 1 - a;
+  var c = 1 / 1.0e-30;
+  var d = 1 / b;
+  var h = d;
+  var i = 1;
+  // calculate maximum number of itterations required for a
+  var ITMAX = -~(Math.log((a >= 1) ? a : 1 / a) * 8.5 + a * 0.4 + 17);
+  var an, endval;
+
+  if (x < 0 || a <= 0) {
+    return NaN;
+  } else if (x < a + 1) {
+    for (; i <= ITMAX; i++) {
+      sum += del *= x / ++ap;
+    }
+    return sum * Math.exp(-x + a * Math.log(x) - (aln));
+  }
+
+  for (; i <= ITMAX; i++) {
+    an = -i * (i - a);
+    b += 2;
+    d = an * d + b;
+    c = b + an / c;
+    d = 1 / d;
+    h *= d * c;
+  }
+
+  return 1 - h * Math.exp(-x + a * Math.log(x) - (aln));
+};
+
+
+// natural log factorial of n
+jStat.factorialln = function factorialln(n) {
+  return n < 0 ? NaN : jStat.gammaln(n + 1);
+};
+
+// factorial of n
+jStat.factorial = function factorial(n) {
+  return n < 0 ? NaN : jStat.gammafn(n + 1);
+};
+
+// combinations of n, m
+jStat.combination = function combination(n, m) {
+  // make sure n or m don't exceed the upper limit of usable values
+  return (n > 170 || m > 170)
+      ? Math.exp(jStat.combinationln(n, m))
+      : (jStat.factorial(n) / jStat.factorial(m)) / jStat.factorial(n - m);
+};
+
+
+jStat.combinationln = function combinationln(n, m){
+  return jStat.factorialln(n) - jStat.factorialln(m) - jStat.factorialln(n - m);
+};
+
+
+// permutations of n, m
+jStat.permutation = function permutation(n, m) {
+  return jStat.factorial(n) / jStat.factorial(n - m);
+};
+
+
+// beta function
+jStat.betafn = function betafn(x, y) {
+  // ensure arguments are positive
+  if (x <= 0 || y <= 0)
+    return undefined;
+  // make sure x + y doesn't exceed the upper limit of usable values
+  return (x + y > 170)
+      ? Math.exp(jStat.betaln(x, y))
+      : jStat.gammafn(x) * jStat.gammafn(y) / jStat.gammafn(x + y);
+};
+
+
+// natural logarithm of beta function
+jStat.betaln = function betaln(x, y) {
+  return jStat.gammaln(x) + jStat.gammaln(y) - jStat.gammaln(x + y);
+};
+
+
+// Evaluates the continued fraction for incomplete beta function by modified
+// Lentz's method.
+jStat.betacf = function betacf(x, a, b) {
+  var fpmin = 1e-30;
+  var m = 1;
+  var qab = a + b;
+  var qap = a + 1;
+  var qam = a - 1;
+  var c = 1;
+  var d = 1 - qab * x / qap;
+  var m2, aa, del, h;
+
+  // These q's will be used in factors that occur in the coefficients
+  if (Math.abs(d) < fpmin)
+    d = fpmin;
+  d = 1 / d;
+  h = d;
+
+  for (; m <= 100; m++) {
+    m2 = 2 * m;
+    aa = m * (b - m) * x / ((qam + m2) * (a + m2));
+    // One step (the even one) of the recurrence
+    d = 1 + aa * d;
+    if (Math.abs(d) < fpmin)
+      d = fpmin;
+    c = 1 + aa / c;
+    if (Math.abs(c) < fpmin)
+      c = fpmin;
+    d = 1 / d;
+    h *= d * c;
+    aa = -(a + m) * (qab + m) * x / ((a + m2) * (qap + m2));
+    // Next step of the recurrence (the odd one)
+    d = 1 + aa * d;
+    if (Math.abs(d) < fpmin)
+      d = fpmin;
+    c = 1 + aa / c;
+    if (Math.abs(c) < fpmin)
+      c = fpmin;
+    d = 1 / d;
+    del = d * c;
+    h *= del;
+    if (Math.abs(del - 1.0) < 3e-7)
+      break;
+  }
+
+  return h;
+};
+
+
+// Returns the inverse incomplte gamma function
+jStat.gammapinv = function gammapinv(p, a) {
+  var j = 0;
+  var a1 = a - 1;
+  var EPS = 1e-8;
+  var gln = jStat.gammaln(a);
+  var x, err, t, u, pp, lna1, afac;
+
+  if (p >= 1)
+    return Math.max(100, a + 100 * Math.sqrt(a));
+  if (p <= 0)
+    return 0;
+  if (a > 1) {
+    lna1 = Math.log(a1);
+    afac = Math.exp(a1 * (lna1 - 1) - gln);
+    pp = (p < 0.5) ? p : 1 - p;
+    t = Math.sqrt(-2 * Math.log(pp));
+    x = (2.30753 + t * 0.27061) / (1 + t * (0.99229 + t * 0.04481)) - t;
+    if (p < 0.5)
+      x = -x;
+    x = Math.max(1e-3,
+                 a * Math.pow(1 - 1 / (9 * a) - x / (3 * Math.sqrt(a)), 3));
+  } else {
+    t = 1 - a * (0.253 + a * 0.12);
+    if (p < t)
+      x = Math.pow(p / t, 1 / a);
+    else
+      x = 1 - Math.log(1 - (p - t) / (1 - t));
+  }
+
+  for(; j < 12; j++) {
+    if (x <= 0)
+      return 0;
+    err = jStat.gammap(a, x) - p;
+    if (a > 1)
+      t = afac * Math.exp(-(x - a1) + a1 * (Math.log(x) - lna1));
+    else
+      t = Math.exp(-x + a1 * Math.log(x) - gln);
+    u = err / t;
+    x -= (t = u / (1 - 0.5 * Math.min(1, u * ((a - 1) / x - 1))));
+    if (x <= 0)
+      x = 0.5 * (x + t);
+    if (Math.abs(t) < EPS * x)
+      break;
+  }
+
+  return x;
+};
+
+
+// Returns the error function erf(x)
+jStat.erf = function erf(x) {
+  var cof = [-1.3026537197817094, 6.4196979235649026e-1, 1.9476473204185836e-2,
+             -9.561514786808631e-3, -9.46595344482036e-4, 3.66839497852761e-4,
+             4.2523324806907e-5, -2.0278578112534e-5, -1.624290004647e-6,
+             1.303655835580e-6, 1.5626441722e-8, -8.5238095915e-8,
+             6.529054439e-9, 5.059343495e-9, -9.91364156e-10,
+             -2.27365122e-10, 9.6467911e-11, 2.394038e-12,
+             -6.886027e-12, 8.94487e-13, 3.13092e-13,
+             -1.12708e-13, 3.81e-16, 7.106e-15,
+             -1.523e-15, -9.4e-17, 1.21e-16,
+             -2.8e-17];
+  var j = cof.length - 1;
+  var isneg = false;
+  var d = 0;
+  var dd = 0;
+  var t, ty, tmp, res;
+
+  if (x < 0) {
+    x = -x;
+    isneg = true;
+  }
+
+  t = 2 / (2 + x);
+  ty = 4 * t - 2;
+
+  for(; j > 0; j--) {
+    tmp = d;
+    d = ty * d - dd + cof[j];
+    dd = tmp;
+  }
+
+  res = t * Math.exp(-x * x + 0.5 * (cof[0] + ty * d) - dd);
+  return isneg ? res - 1 : 1 - res;
+};
+
+
+// Returns the complmentary error function erfc(x)
+jStat.erfc = function erfc(x) {
+  return 1 - jStat.erf(x);
+};
+
+
+// Returns the inverse of the complementary error function
+jStat.erfcinv = function erfcinv(p) {
+  var j = 0;
+  var x, err, t, pp;
+  if (p >= 2)
+    return -100;
+  if (p <= 0)
+    return 100;
+  pp = (p < 1) ? p : 2 - p;
+  t = Math.sqrt(-2 * Math.log(pp / 2));
+  x = -0.70711 * ((2.30753 + t * 0.27061) /
+                  (1 + t * (0.99229 + t * 0.04481)) - t);
+  for (; j < 2; j++) {
+    err = jStat.erfc(x) - pp;
+    x += err / (1.12837916709551257 * Math.exp(-x * x) - x * err);
+  }
+  return (p < 1) ? x : -x;
+};
+
+
+// Returns the inverse of the incomplete beta function
+jStat.ibetainv = function ibetainv(p, a, b) {
+  var EPS = 1e-8;
+  var a1 = a - 1;
+  var b1 = b - 1;
+  var j = 0;
+  var lna, lnb, pp, t, u, err, x, al, h, w, afac;
+  if (p <= 0)
+    return 0;
+  if (p >= 1)
+    return 1;
+  if (a >= 1 && b >= 1) {
+    pp = (p < 0.5) ? p : 1 - p;
+    t = Math.sqrt(-2 * Math.log(pp));
+    x = (2.30753 + t * 0.27061) / (1 + t* (0.99229 + t * 0.04481)) - t;
+    if (p < 0.5)
+      x = -x;
+    al = (x * x - 3) / 6;
+    h = 2 / (1 / (2 * a - 1)  + 1 / (2 * b - 1));
+    w = (x * Math.sqrt(al + h) / h) - (1 / (2 * b - 1) - 1 / (2 * a - 1)) *
+        (al + 5 / 6 - 2 / (3 * h));
+    x = a / (a + b * Math.exp(2 * w));
+  } else {
+    lna = Math.log(a / (a + b));
+    lnb = Math.log(b / (a + b));
+    t = Math.exp(a * lna) / a;
+    u = Math.exp(b * lnb) / b;
+    w = t + u;
+    if (p < t / w)
+      x = Math.pow(a * w * p, 1 / a);
+    else
+      x = 1 - Math.pow(b * w * (1 - p), 1 / b);
+  }
+  afac = -jStat.gammaln(a) - jStat.gammaln(b) + jStat.gammaln(a + b);
+  for(; j < 10; j++) {
+    if (x === 0 || x === 1)
+      return x;
+    err = jStat.ibeta(x, a, b) - p;
+    t = Math.exp(a1 * Math.log(x) + b1 * Math.log(1 - x) + afac);
+    u = err / t;
+    x -= (t = u / (1 - 0.5 * Math.min(1, u * (a1 / x - b1 / (1 - x)))));
+    if (x <= 0)
+      x = 0.5 * (x + t);
+    if (x >= 1)
+      x = 0.5 * (x + t + 1);
+    if (Math.abs(t) < EPS * x && j > 0)
+      break;
+  }
+  return x;
+};
+
+
+// Returns the incomplete beta function I_x(a,b)
+jStat.ibeta = function ibeta(x, a, b) {
+  // Factors in front of the continued fraction.
+  var bt = (x === 0 || x === 1) ?  0 :
+    Math.exp(jStat.gammaln(a + b) - jStat.gammaln(a) -
+             jStat.gammaln(b) + a * Math.log(x) + b *
+             Math.log(1 - x));
+  if (x < 0 || x > 1)
+    return false;
+  if (x < (a + 1) / (a + b + 2))
+    // Use continued fraction directly.
+    return bt * jStat.betacf(x, a, b) / a;
+  // else use continued fraction after making the symmetry transformation.
+  return 1 - bt * jStat.betacf(1 - x, b, a) / b;
+};
+
+
+// Returns a normal deviate (mu=0, sigma=1).
+// If n and m are specified it returns a object of normal deviates.
+jStat.randn = function randn(n, m) {
+  var u, v, x, y, q, mat;
+  if (!m)
+    m = n;
+  if (n)
+    return jStat.create(n, m, function() { return jStat.randn(); });
+  do {
+    u = Math.random();
+    v = 1.7156 * (Math.random() - 0.5);
+    x = u - 0.449871;
+    y = Math.abs(v) + 0.386595;
+    q = x * x + y * (0.19600 * y - 0.25472 * x);
+  } while (q > 0.27597 && (q > 0.27846 || v * v > -4 * Math.log(u) * u * u));
+  return v / u;
+};
+
+
+// Returns a gamma deviate by the method of Marsaglia and Tsang.
+jStat.randg = function randg(shape, n, m) {
+  var oalph = shape;
+  var a1, a2, u, v, x, mat;
+  if (!m)
+    m = n;
+  if (!shape)
+    shape = 1;
+  if (n) {
+    mat = jStat.zeros(n,m);
+    mat.alter(function() { return jStat.randg(shape); });
+    return mat;
+  }
+  if (shape < 1)
+    shape += 1;
+  a1 = shape - 1 / 3;
+  a2 = 1 / Math.sqrt(9 * a1);
+  do {
+    do {
+      x = jStat.randn();
+      v = 1 + a2 * x;
+    } while(v <= 0);
+    v = v * v * v;
+    u = Math.random();
+  } while(u > 1 - 0.331 * Math.pow(x, 4) &&
+          Math.log(u) > 0.5 * x*x + a1 * (1 - v + Math.log(v)));
+  // alpha > 1
+  if (shape == oalph)
+    return a1 * v;
+  // alpha < 1
+  do {
+    u = Math.random();
+  } while(u === 0);
+  return Math.pow(u, 1 / oalph) * a1 * v;
+};
+
+
+// making use of static methods on the instance
+(function(funcs) {
+  for (var i = 0; i < funcs.length; i++) (function(passfunc) {
+    jStat.fn[passfunc] = function() {
+      return jStat(
+          jStat.map(this, function(value) { return jStat[passfunc](value); }));
+    }
+  })(funcs[i]);
+})('gammaln gammafn factorial factorialln'.split(' '));
+
+
+(function(funcs) {
+  for (var i = 0; i < funcs.length; i++) (function(passfunc) {
+    jStat.fn[passfunc] = function() {
+      return jStat(jStat[passfunc].apply(null, arguments));
+    };
+  })(funcs[i]);
+})('randn'.split(' '));
+
+}(this.jStat, Math));
+(function(jStat, Math) {
+
+// generate all distribution instance methods
+(function(list) {
+  for (var i = 0; i < list.length; i++) (function(func) {
+    // distribution instance method
+    jStat[func] = function(a, b, c) {
+      if (!(this instanceof arguments.callee))
+        return new arguments.callee(a, b, c);
+      this._a = a;
+      this._b = b;
+      this._c = c;
+      return this;
+    };
+    // distribution method to be used on a jStat instance
+    jStat.fn[func] = function(a, b, c) {
+      var newthis = jStat[func](a, b, c);
+      newthis.data = this;
+      return newthis;
+    };
+    // sample instance method
+    jStat[func].prototype.sample = function(arr) {
+      var a = this._a;
+      var b = this._b;
+      var c = this._c;
+      if (arr)
+        return jStat.alter(arr, function() {
+          return jStat[func].sample(a, b, c);
+        });
+      else
+        return jStat[func].sample(a, b, c);
+    };
+    // generate the pdf, cdf and inv instance methods
+    (function(vals) {
+      for (var i = 0; i < vals.length; i++) (function(fnfunc) {
+        jStat[func].prototype[fnfunc] = function(x) {
+          var a = this._a;
+          var b = this._b;
+          var c = this._c;
+          if (!x && x !== 0)
+            x = this.data;
+          if (typeof x !== 'number') {
+            return jStat.fn.map.call(x, function(x) {
+              return jStat[func][fnfunc](x, a, b, c);
+            });
+          }
+          return jStat[func][fnfunc](x, a, b, c);
+        };
+      })(vals[i]);
+    })('pdf cdf inv'.split(' '));
+    // generate the mean, median, mode and variance instance methods
+    (function(vals) {
+      for (var i = 0; i < vals.length; i++) (function(fnfunc) {
+        jStat[func].prototype[fnfunc] = function() {
+          return jStat[func][fnfunc](this._a, this._b, this._c);
+        };
+      })(vals[i]);
+    })('mean median mode variance'.split(' '));
+  })(list[i]);
+})((
+  'beta centralF cauchy chisquare exponential gamma invgamma kumaraswamy ' +
+  'lognormal normal pareto studentt weibull uniform  binomial negbin hypgeom ' +
+  'poisson triangular'
+).split(' '));
+
+
+
+// extend beta function with static methods
+jStat.extend(jStat.beta, {
+  pdf: function pdf(x, alpha, beta) {
+    // PDF is zero outside the support
+    if (x > 1 || x < 0)
+      return 0;
+    // PDF is one for the uniform case
+    if (alpha == 1 && beta == 1)
+      return 1;
+
+    if (alpha < 512 || beta < 512) {
+      return (Math.pow(x, alpha - 1) * Math.pow(1 - x, beta - 1)) /
+          jStat.betafn(alpha, beta);
+    } else {
+      return Math.exp((alpha - 1) * Math.log(x) +
+                      (beta - 1) * Math.log(1 - x) -
+                      jStat.betaln(alpha, beta));
+    }
+  },
+
+  cdf: function cdf(x, alpha, beta) {
+    return (x > 1 || x < 0) ? (x > 1) * 1 : jStat.ibeta(x, alpha, beta);
+  },
+
+  inv: function inv(x, alpha, beta) {
+    return jStat.ibetainv(x, alpha, beta);
+  },
+
+  mean: function mean(alpha, beta) {
+    return alpha / (alpha + beta);
+  },
+
+  median: function median(alpha, beta) {
+    throw new Error('median not yet implemented');
+  },
+
+  mode: function mode(alpha, beta) {
+    return (alpha * beta) / (Math.pow(alpha + beta, 2) * (alpha + beta + 1));
+  },
+
+  // return a random sample
+  sample: function sample(alpha, beta) {
+    var u = jStat.randg(alpha);
+    return u / (u + jStat.randg(beta));
+  },
+
+  variance: function variance(alpha, beta) {
+    return (alpha * beta) / (Math.pow(alpha + beta, 2) * (alpha + beta + 1));
+  }
+});
+
+// extend F function with static methods
+jStat.extend(jStat.centralF, {
+  pdf: function pdf(x, df1, df2) {
+    if (x < 0)
+      return undefined;
+    return Math.sqrt((Math.pow(df1 * x, df1) * Math.pow(df2, df2)) /
+                     (Math.pow(df1 * x + df2, df1 + df2))) /
+                     (x * jStat.betafn(df1/2, df2/2));
+
+  },
+
+  cdf: function cdf(x, df1, df2) {
+    return jStat.ibeta((df1 * x) / (df1 * x + df2), df1 / 2, df2 / 2);
+  },
+
+  inv: function inv(x, df1, df2) {
+    return df2 / (df1 * (1 / jStat.ibetainv(x, df1 / 2, df2 / 2) - 1));
+  },
+
+  mean: function mean(df1, df2) {
+    return (df2 > 2) ? df2 / (df2 - 2) : undefined;
+  },
+
+  mode: function mode(df1, df2) {
+    return (df1 > 2) ? (df2 * (df1 - 2)) / (df1 * (df2 + 2)) : undefined;
+  },
+
+  // return a random sample
+  sample: function sample(df1, df2) {
+    var x1 = jStat.randg(df1 / 2) * 2;
+    var x2 = jStat.randg(df2 / 2) * 2;
+    return (x1 / df1) / (x2 / df2);
+  },
+
+  variance: function variance(df1, df2) {
+    if (df2 <= 4)
+      return undefined;
+    return 2 * df2 * df2 * (df1 + df2 - 2) /
+        (df1 * (df2 - 2) * (df2 - 2) * (df2 - 4));
+  }
+});
+
+
+// extend cauchy function with static methods
+jStat.extend(jStat.cauchy, {
+  pdf: function pdf(x, local, scale) {
+    return (scale / (Math.pow(x - local, 2) + Math.pow(scale, 2))) / Math.PI;
+  },
+
+  cdf: function cdf(x, local, scale) {
+    return Math.atan((x - local) / scale) / Math.PI + 0.5;
+  },
+
+  inv: function(p, local, scale) {
+    return local + scale * Math.tan(Math.PI * (p - 0.5));
+  },
+
+  median: function median(local, scale) {
+    return local;
+  },
+
+  mode: function mode(local, scale) {
+    return local;
+  },
+
+  sample: function sample(local, scale) {
+    return jStat.randn() *
+        Math.sqrt(1 / (2 * jStat.randg(0.5))) * scale + local;
+  }
+});
+
+
+
+// extend chisquare function with static methods
+jStat.extend(jStat.chisquare, {
+  pdf: function pdf(x, dof) {
+    return Math.exp((dof / 2 - 1) * Math.log(x) - x / 2 - (dof / 2) *
+                    Math.log(2) - jStat.gammaln(dof / 2));
+  },
+
+  cdf: function cdf(x, dof) {
+    return jStat.gammap(dof / 2, x / 2);
+  },
+
+  inv: function(p, dof) {
+    return 2 * jStat.gammapinv(p, 0.5 * dof);
+  },
+
+  mean : function(dof) {
+    return dof;
+  },
+
+  // TODO: this is an approximation (is there a better way?)
+  median: function median(dof) {
+    return dof * Math.pow(1 - (2 / (9 * dof)), 3);
+  },
+
+  mode: function mode(dof) {
+    return (dof - 2 > 0) ? dof - 2 : 0;
+  },
+
+  sample: function sample(dof) {
+    return jStat.randg(dof / 2) * 2;
+  },
+
+  variance: function variance(dof) {
+    return 2 * dof;
+  }
+});
+
+
+
+// extend exponential function with static methods
+jStat.extend(jStat.exponential, {
+  pdf: function pdf(x, rate) {
+    return x < 0 ? 0 : rate * Math.exp(-rate * x);
+  },
+
+  cdf: function cdf(x, rate) {
+    return x < 0 ? 0 : 1 - Math.exp(-rate * x);
+  },
+
+  inv: function(p, rate) {
+    return -Math.log(1 - p) / rate;
+  },
+
+  mean : function(rate) {
+    return 1 / rate;
+  },
+
+  median: function (rate) {
+    return (1 / rate) * Math.log(2);
+  },
+
+  mode: function mode(rate) {
+    return 0;
+  },
+
+  sample: function sample(rate) {
+    return -1 / rate * Math.log(Math.random());
+  },
+
+  variance : function(rate) {
+    return Math.pow(rate, -2);
+  }
+});
+
+
+
+// extend gamma function with static methods
+jStat.extend(jStat.gamma, {
+  pdf: function pdf(x, shape, scale) {
+    return Math.exp((shape - 1) * Math.log(x) - x / scale -
+                    jStat.gammaln(shape) - shape * Math.log(scale));
+  },
+
+  cdf: function cdf(x, shape, scale) {
+    return jStat.gammap(shape, x / scale);
+  },
+
+  inv: function(p, shape, scale) {
+    return jStat.gammapinv(p, shape) * scale;
+  },
+
+  mean : function(shape, scale) {
+    return shape * scale;
+  },
+
+  mode: function mode(shape, scale) {
+    if(shape > 1) return (shape - 1) * scale;
+    return undefined;
+  },
+
+  sample: function sample(shape, scale) {
+    return jStat.randg(shape) * scale;
+  },
+
+  variance: function variance(shape, scale) {
+    return shape * scale * scale;
+  }
+});
+
+// extend inverse gamma function with static methods
+jStat.extend(jStat.invgamma, {
+  pdf: function pdf(x, shape, scale) {
+    return Math.exp(-(shape + 1) * Math.log(x) - scale / x -
+                    jStat.gammaln(shape) + shape * Math.log(scale));
+  },
+
+  cdf: function cdf(x, shape, scale) {
+    return 1 - jStat.gammap(shape, scale / x);
+  },
+
+  inv: function(p, shape, scale) {
+    return scale / jStat.gammapinv(1 - p, shape);
+  },
+
+  mean : function(shape, scale) {
+    return (shape > 1) ? scale / (shape - 1) : undefined;
+  },
+
+  mode: function mode(shape, scale) {
+    return scale / (shape + 1);
+  },
+
+  sample: function sample(shape, scale) {
+    return scale / jStat.randg(shape);
+  },
+
+  variance: function variance(shape, scale) {
+    if (shape <= 2)
+      return undefined;
+    return scale * scale / ((shape - 1) * (shape - 1) * (shape - 2));
+  }
+});
+
+
+// extend kumaraswamy function with static methods
+jStat.extend(jStat.kumaraswamy, {
+  pdf: function pdf(x, alpha, beta) {
+    return Math.exp(Math.log(alpha) + Math.log(beta) + (alpha - 1) *
+                    Math.log(x) + (beta - 1) *
+                    Math.log(1 - Math.pow(x, alpha)));
+  },
+
+  cdf: function cdf(x, alpha, beta) {
+    return (1 - Math.pow(1 - Math.pow(x, alpha), beta));
+  },
+
+  mean : function(alpha, beta) {
+    return (beta * jStat.gammafn(1 + 1 / alpha) *
+            jStat.gammafn(beta)) / (jStat.gammafn(1 + 1 / alpha + beta));
+  },
+
+  median: function median(alpha, beta) {
+    return Math.pow(1 - Math.pow(2, -1 / beta), 1 / alpha);
+  },
+
+  mode: function mode(alpha, beta) {
+    if (!(alpha >= 1 && beta >= 1 && (alpha !== 1 && beta !== 1)))
+      return undefined;
+    return Math.pow((alpha - 1) / (alpha * beta - 1), 1 / alpha);
+  },
+
+  variance: function variance(alpha, beta) {
+    throw new Error('variance not yet implemented');
+    // TODO: complete this
+  }
+});
+
+
+
+// extend lognormal function with static methods
+jStat.extend(jStat.lognormal, {
+  pdf: function pdf(x, mu, sigma) {
+    return Math.exp(-Math.log(x) - 0.5 * Math.log(2 * Math.PI) -
+                    Math.log(sigma) - Math.pow(Math.log(x) - mu, 2) /
+                    (2 * sigma * sigma));
+  },
+
+  cdf: function cdf(x, mu, sigma) {
+    return 0.5 +
+        (0.5 * jStat.erf((Math.log(x) - mu) / Math.sqrt(2 * sigma * sigma)));
+  },
+
+  inv: function(p, mu, sigma) {
+    return Math.exp(-1.41421356237309505 * sigma * jStat.erfcinv(2 * p) + mu);
+  },
+
+  mean: function mean(mu, sigma) {
+    return Math.exp(mu + sigma * sigma / 2);
+  },
+
+  median: function median(mu, sigma) {
+    return Math.exp(mu);
+  },
+
+  mode: function mode(mu, sigma) {
+    return Math.exp(mu - sigma * sigma);
+  },
+
+  sample: function sample(mu, sigma) {
+    return Math.exp(jStat.randn() * sigma + mu);
+  },
+
+  variance: function variance(mu, sigma) {
+    return (Math.exp(sigma * sigma) - 1) * Math.exp(2 * mu + sigma * sigma);
+  }
+});
+
+
+
+// extend normal function with static methods
+jStat.extend(jStat.normal, {
+  pdf: function pdf(x, mean, std) {
+    return Math.exp(-0.5 * Math.log(2 * Math.PI) -
+                    Math.log(std) - Math.pow(x - mean, 2) / (2 * std * std));
+  },
+
+  cdf: function cdf(x, mean, std) {
+    return 0.5 * (1 + jStat.erf((x - mean) / Math.sqrt(2 * std * std)));
+  },
+
+  inv: function(p, mean, std) {
+    return -1.41421356237309505 * std * jStat.erfcinv(2 * p) + mean;
+  },
+
+  mean : function(mean, std) {
+    return mean;
+  },
+
+  median: function median(mean, std) {
+    return mean;
+  },
+
+  mode: function (mean, std) {
+    return mean;
+  },
+
+  sample: function sample(mean, std) {
+    return jStat.randn() * std + mean;
+  },
+
+  variance : function(mean, std) {
+    return std * std;
+  }
+});
+
+
+
+// extend pareto function with static methods
+jStat.extend(jStat.pareto, {
+  pdf: function pdf(x, scale, shape) {
+    if (x <= scale)
+      return undefined;
+    return (shape * Math.pow(scale, shape)) / Math.pow(x, shape + 1);
+  },
+
+  cdf: function cdf(x, scale, shape) {
+    return 1 - Math.pow(scale / x, shape);
+  },
+
+  mean: function mean(scale, shape) {
+    if (shape <= 1)
+      return undefined;
+    return (shape * Math.pow(scale, shape)) / (shape - 1);
+  },
+
+  median: function median(scale, shape) {
+    return scale * (shape * Math.SQRT2);
+  },
+
+  mode: function mode(scale, shape) {
+    return scale;
+  },
+
+  variance : function(scale, shape) {
+    if (shape <= 2)
+      return undefined;
+    return (scale*scale * shape) / (Math.pow(shape - 1, 2) * (shape - 2));
+  }
+});
+
+
+
+// extend studentt function with static methods
+jStat.extend(jStat.studentt, {
+  pdf: function pdf(x, dof) {
+    return (jStat.gammafn((dof + 1) / 2) / (Math.sqrt(dof * Math.PI) *
+        jStat.gammafn(dof / 2))) *
+        Math.pow(1 + ((x * x) / dof), -((dof + 1) / 2));
+  },
+
+  cdf: function cdf(x, dof) {
+    var dof2 = dof / 2;
+    return jStat.ibeta((x + Math.sqrt(x * x + dof)) /
+                       (2 * Math.sqrt(x * x + dof)), dof2, dof2);
+  },
+
+  inv: function(p, dof) {
+    var x = jStat.ibetainv(2 * Math.min(p, 1 - p), 0.5 * dof, 0.5);
+    x = Math.sqrt(dof * (1 - x) / x);
+    return (p > 0.5) ? x : -x;
+  },
+
+  mean: function mean(dof) {
+    return (dof > 1) ? 0 : undefined;
+  },
+
+  median: function median(dof) {
+    return 0;
+  },
+
+  mode: function mode(dof) {
+    return 0;
+  },
+
+  sample: function sample(dof) {
+    return jStat.randn() * Math.sqrt(dof / (2 * jStat.randg(dof / 2)));
+  },
+
+  variance: function variance(dof) {
+    return (dof  > 2) ? dof / (dof - 2) : (dof > 1) ? Infinity : undefined;
+  }
+});
+
+
+
+// extend weibull function with static methods
+jStat.extend(jStat.weibull, {
+  pdf: function pdf(x, scale, shape) {
+    if (x < 0)
+      return 0;
+    return (shape / scale) * Math.pow((x / scale), (shape - 1)) *
+        Math.exp(-(Math.pow((x / scale), shape)));
+  },
+
+  cdf: function cdf(x, scale, shape) {
+    return x < 0 ? 0 : 1 - Math.exp(-Math.pow((x / scale), shape));
+  },
+
+  inv: function(p, scale, shape) {
+    return scale * Math.pow(-Math.log(1 - p), 1 / shape);
+  },
+
+  mean : function(scale, shape) {
+    return scale * jStat.gammafn(1 + 1 / shape);
+  },
+
+  median: function median(scale, shape) {
+    return scale * Math.pow(Math.log(2), 1 / shape);
+  },
+
+  mode: function mode(scale, shape) {
+    if (shape <= 1)
+      return undefined;
+    return scale * Math.pow((shape - 1) / shape, 1 / shape);
+  },
+
+  sample: function sample(scale, shape) {
+    return scale * Math.pow(-Math.log(Math.random()), 1 / shape);
+  },
+
+  variance: function variance(scale, shape) {
+    return scale * scale * jStat.gammafn(1 + 2 / shape) -
+        Math.pow(this.mean(scale, shape), 2);
+  }
+});
+
+
+
+// extend uniform function with static methods
+jStat.extend(jStat.uniform, {
+  pdf: function pdf(x, a, b) {
+    return (x < a || x > b) ? 0 : 1 / (b - a);
+  },
+
+  cdf: function cdf(x, a, b) {
+    if (x < a)
+      return 0;
+    else if (x < b)
+      return (x - a) / (b - a);
+    return 1;
+  },
+
+  mean: function mean(a, b) {
+    return 0.5 * (a + b);
+  },
+
+  median: function median(a, b) {
+    return jStat.mean(a, b);
+  },
+
+  mode: function mode(a, b) {
+    throw new Error('mode is not yet implemented');
+  },
+
+  sample: function sample(a, b) {
+    return (a / 2 + b / 2) + (b / 2 - a / 2) * (2 * Math.random() - 1);
+  },
+
+  variance: function variance(a, b) {
+    return Math.pow(b - a, 2) / 12;
+  }
+});
+
+
+
+// extend uniform function with static methods
+jStat.extend(jStat.binomial, {
+  pdf: function pdf(k, n, p) {
+    return (p === 0 || p === 1) ?
+      ((n * p) === k ? 1 : 0) :
+      jStat.combination(n, k) * Math.pow(p, k) * Math.pow(1 - p, n - k);
+  },
+
+  cdf: function cdf(x, n, p) {
+    var binomarr = [],
+    k = 0;
+    if (x < 0) {
+      return 0;
+    }
+    if (x < n) {
+      for (; k <= x; k++) {
+        binomarr[ k ] = jStat.binomial.pdf(k, n, p);
+      }
+      return jStat.sum(binomarr);
+    }
+    return 1;
+  }
+});
+
+
+
+// extend uniform function with static methods
+jStat.extend(jStat.negbin, {
+  pdf: function pdf(k, r, p) {
+    return k !== k | 0
+      ? false
+      : k < 0
+        ? 0
+        : jStat.combination(k + r - 1, r - 1) * Math.pow(1 - p, k) * Math.pow(p, r);
+  },
+
+  cdf: function cdf(x, r, p) {
+    var sum = 0,
+    k = 0;
+    if (x < 0) return 0;
+    for (; k <= x; k++) {
+      sum += jStat.negbin.pdf(k, r, p);
+    }
+    return sum;
+  }
+});
+
+
+
+// extend uniform function with static methods
+jStat.extend(jStat.hypgeom, {
+  pdf: function pdf(k, N, m, n) {
+    // Hypergeometric PDF.
+
+    // A simplification of the CDF algorithm below.
+
+    // k = number of successes drawn
+    // N = population size
+    // m = number of successes in population
+    // n = number of items drawn from population
+
+    if(k !== k | 0) {
+      return false;
+    } else if(k < 0 || k < m - (N - n)) {
+      // It's impossible to have this few successes drawn.
+      return 0;
+    } else if(k > n || k > m) {
+      // It's impossible to have this many successes drawn.
+      return 0;
+    } else if (m * 2 > N) {
+      // More than half the population is successes.
+
+      if(n * 2 > N) {
+        // More than half the population is sampled.
+
+        return jStat.hypgeom.pdf(N - m - n + k, N, N - m, N - n)
+      } else {
+        // Half or less of the population is sampled.
+
+        return jStat.hypgeom.pdf(n - k, N, N - m, n);
+      }
+
+    } else if(n * 2 > N) {
+      // Half or less is successes.
+
+      return jStat.hypgeom.pdf(m - k, N, m, N - n);
+
+    } else if(m < n) {
+      // We want to have the number of things sampled to be less than the
+      // successes available. So swap the definitions of successful and sampled.
+      return jStat.hypgeom.pdf(k, N, n, m);
+    } else {
+      // If we get here, half or less of the population was sampled, half or
+      // less of it was successes, and we had fewer sampled things than
+      // successes. Now we can do this complicated iterative algorithm in an
+      // efficient way.
+
+      // The basic premise of the algorithm is that we partially normalize our
+      // intermediate product to keep it in a numerically good region, and then
+      // finish the normalization at the end.
+
+      // This variable holds the scaled probability of the current number of
+      // successes.
+      var scaledPDF = 1;
+
+      // This keeps track of how much we have normalized.
+      var samplesDone = 0;
+
+      for(var i = 0; i < k; i++) {
+        // For every possible number of successes up to that observed...
+
+        while(scaledPDF > 1 && samplesDone < n) {
+          // Intermediate result is growing too big. Apply some of the
+          // normalization to shrink everything.
+
+          scaledPDF *= 1 - (m / (N - samplesDone));
+
+          // Say we've normalized by this sample already.
+          samplesDone++;
+        }
+
+        // Work out the partially-normalized hypergeometric PDF for the next
+        // number of successes
+        scaledPDF *= (n - i) * (m - i) / ((i + 1) * (N - m - n + i + 1));
+      }
+
+      for(; samplesDone < n; samplesDone++) {
+        // Apply all the rest of the normalization
+        scaledPDF *= 1 - (m / (N - samplesDone));
+      }
+
+      // Bound answer sanely before returning.
+      return Math.min(1, Math.max(0, scaledPDF));
+    }
+  },
+
+  cdf: function cdf(x, N, m, n) {
+    // Hypergeometric CDF.
+
+    // This algorithm is due to Prof. Thomas S. Ferguson, <tom@math.ucla.edu>,
+    // and comes from his hypergeometric test calculator at
+    // <http://www.math.ucla.edu/~tom/distributions/Hypergeometric.html>.
+
+    // x = number of successes drawn
+    // N = population size
+    // m = number of successes in population
+    // n = number of items drawn from population
+
+    if(x < 0 || x < m - (N - n)) {
+      // It's impossible to have this few successes drawn or fewer.
+      return 0;
+    } else if(x >= n || x >= m) {
+      // We will always have this many successes or fewer.
+      return 1;
+    } else if (m * 2 > N) {
+      // More than half the population is successes.
+
+      if(n * 2 > N) {
+        // More than half the population is sampled.
+
+        return jStat.hypgeom.cdf(N - m - n + x, N, N - m, N - n)
+      } else {
+        // Half or less of the population is sampled.
+
+        return 1 - jStat.hypgeom.cdf(n - x - 1, N, N - m, n);
+      }
+
+    } else if(n * 2 > N) {
+      // Half or less is successes.
+
+      return 1 - jStat.hypgeom.cdf(m - x - 1, N, m, N - n);
+
+    } else if(m < n) {
+      // We want to have the number of things sampled to be less than the
+      // successes available. So swap the definitions of successful and sampled.
+      return jStat.hypgeom.cdf(x, N, n, m);
+    } else {
+      // If we get here, half or less of the population was sampled, half or
+      // less of it was successes, and we had fewer sampled things than
+      // successes. Now we can do this complicated iterative algorithm in an
+      // efficient way.
+
+      // The basic premise of the algorithm is that we partially normalize our
+      // intermediate sum to keep it in a numerically good region, and then
+      // finish the normalization at the end.
+
+      // Holds the intermediate, scaled total CDF.
+      var scaledCDF = 1;
+
+      // This variable holds the scaled probability of the current number of
+      // successes.
+      var scaledPDF = 1;
+
+      // This keeps track of how much we have normalized.
+      var samplesDone = 0;
+
+      for(var i = 0; i < x; i++) {
+        // For every possible number of successes up to that observed...
+
+        while(scaledCDF > 1 && samplesDone < n) {
+          // Intermediate result is growing too big. Apply some of the
+          // normalization to shrink everything.
+
+          var factor = 1 - (m / (N - samplesDone));
+
+          scaledPDF *= factor;
+          scaledCDF *= factor;
+
+          // Say we've normalized by this sample already.
+          samplesDone++;
+        }
+
+        // Work out the partially-normalized hypergeometric PDF for the next
+        // number of successes
+        scaledPDF *= (n - i) * (m - i) / ((i + 1) * (N - m - n + i + 1));
+
+        // Add to the CDF answer.
+        scaledCDF += scaledPDF;
+      }
+
+      for(; samplesDone < n; samplesDone++) {
+        // Apply all the rest of the normalization
+        scaledCDF *= 1 - (m / (N - samplesDone));
+      }
+
+      // Bound answer sanely before returning.
+      return Math.min(1, Math.max(0, scaledCDF));
+    }
+  }
+});
+
+
+
+// extend uniform function with static methods
+jStat.extend(jStat.poisson, {
+  pdf: function pdf(k, l) {
+    return Math.pow(l, k) * Math.exp(-l) / jStat.factorial(k);
+  },
+
+  cdf: function cdf(x, l) {
+    var sumarr = [],
+    k = 0;
+    if (x < 0) return 0;
+    for (; k <= x; k++) {
+      sumarr.push(jStat.poisson.pdf(k, l));
+    }
+    return jStat.sum(sumarr);
+  },
+
+  mean : function(l) {
+    return l;
+  },
+
+  variance : function(l) {
+    return l;
+  },
+
+  sample: function sample(l) {
+    var p = 1, k = 0, L = Math.exp(-l);
+    do {
+      k++;
+      p *= Math.random();
+    } while (p > L);
+    return k - 1;
+  }
+});
+
+// extend triangular function with static methods
+jStat.extend(jStat.triangular, {
+  pdf: function pdf(x, a, b, c) {
+    return (b <= a || c < a || c > b)
+      ? undefined
+      : (x < a || x > b)
+        ? 0
+        : (x <= c)
+          ? (2 * (x - a)) / ((b - a) * (c - a))
+          : (2 * (b - x)) / ((b - a) * (b - c));
+  },
+
+  cdf: function cdf(x, a, b, c) {
+    if (b <= a || c < a || c > b)
+      return undefined;
+    if (x < a) {
+      return 0;
+    } else {
+      if (x <= c)
+        return Math.pow(x - a, 2) / ((b - a) * (c - a));
+      return 1 - Math.pow(b - x, 2) / ((b - a) * (b - c));
+    }
+    // never reach this
+    return 1;
+  },
+
+  mean: function mean(a, b, c) {
+    return (a + b + c) / 3;
+  },
+
+  median: function median(a, b, c) {
+    if (c <= (a + b) / 2) {
+      return b - Math.sqrt((b - a) * (b - c)) / Math.sqrt(2);
+    } else if (c > (a + b) / 2) {
+      return a + Math.sqrt((b - a) * (c - a)) / Math.sqrt(2);
+    }
+  },
+
+  mode: function mode(a, b, c) {
+    return c;
+  },
+
+  sample: function sample(a, b, c) {
+    var u = Math.random();
+    if (u < ((c - a) / (b - a)))
+      return a + Math.sqrt(u * (b - a) * (c - a))
+    return b - Math.sqrt((1 - u) * (b - a) * (b - c));
+  },
+
+  variance: function variance(a, b, c) {
+    return (a * a + b * b + c * c - a * b - a * c - b * c) / 18;
+  }
+});
+
+}(this.jStat, Math));
+/* Provides functions for the solution of linear system of equations, integration, extrapolation,
+ * interpolation, eigenvalue problems, differential equations and PCA analysis. */
+
+(function(jStat, Math) {
+
+var push = Array.prototype.push;
+var isArray = jStat.utils.isArray;
+
+jStat.extend({
+
+  // add a vector/matrix to a vector/matrix or scalar
+  add: function add(arr, arg) {
+    // check if arg is a vector or scalar
+    if (isArray(arg)) {
+      if (!isArray(arg[0])) arg = [ arg ];
+      return jStat.map(arr, function(value, row, col) {
+        return value + arg[row][col];
+      });
+    }
+    return jStat.map(arr, function(value) { return value + arg; });
+  },
+
+  // subtract a vector or scalar from the vector
+  subtract: function subtract(arr, arg) {
+    // check if arg is a vector or scalar
+    if (isArray(arg)) {
+      if (!isArray(arg[0])) arg = [ arg ];
+      return jStat.map(arr, function(value, row, col) {
+        return value - arg[row][col] || 0;
+      });
+    }
+    return jStat.map(arr, function(value) { return value - arg; });
+  },
+
+  // matrix division
+  divide: function divide(arr, arg) {
+    if (isArray(arg)) {
+      if (!isArray(arg[0])) arg = [ arg ];
+      return jStat.multiply(arr, jStat.inv(arg));
+    }
+    return jStat.map(arr, function(value) { return value / arg; });
+  },
+
+  // matrix multiplication
+  multiply: function multiply(arr, arg) {
+    var row, col, nrescols, sum,
+    nrow = arr.length,
+    ncol = arr[0].length,
+    res = jStat.zeros(nrow, nrescols = (isArray(arg)) ? arg[0].length : ncol),
+    rescols = 0;
+    if (isArray(arg)) {
+      for (; rescols < nrescols; rescols++) {
+        for (row = 0; row < nrow; row++) {
+          sum = 0;
+          for (col = 0; col < ncol; col++)
+          sum += arr[row][col] * arg[col][rescols];
+          res[row][rescols] = sum;
+        }
+      }
+      return (nrow === 1 && rescols === 1) ? res[0][0] : res;
+    }
+    return jStat.map(arr, function(value) { return value * arg; });
+  },
+
+  // Returns the dot product of two matricies
+  dot: function dot(arr, arg) {
+    if (!isArray(arr[0])) arr = [ arr ];
+    if (!isArray(arg[0])) arg = [ arg ];
+    // convert column to row vector
+    var left = (arr[0].length === 1 && arr.length !== 1) ? jStat.transpose(arr) : arr,
+    right = (arg[0].length === 1 && arg.length !== 1) ? jStat.transpose(arg) : arg,
+    res = [],
+    row = 0,
+    nrow = left.length,
+    ncol = left[0].length,
+    sum, col;
+    for (; row < nrow; row++) {
+      res[row] = [];
+      sum = 0;
+      for (col = 0; col < ncol; col++)
+      sum += left[row][col] * right[row][col];
+      res[row] = sum;
+    }
+    return (res.length === 1) ? res[0] : res;
+  },
+
+  // raise every element by a scalar
+  pow: function pow(arr, arg) {
+    return jStat.map(arr, function(value) { return Math.pow(value, arg); });
+  },
+
+  // generate the absolute values of the vector
+  abs: function abs(arr) {
+    return jStat.map(arr, function(value) { return Math.abs(value); });
+  },
+
+  // computes the p-norm of the vector
+  // In the case that a matrix is passed, uses the first row as the vector
+  norm: function norm(arr, p) {
+    var nnorm = 0,
+    i = 0;
+    // check the p-value of the norm, and set for most common case
+    if (isNaN(p)) p = 2;
+    // check if multi-dimensional array, and make vector correction
+    if (isArray(arr[0])) arr = arr[0];
+    // vector norm
+    for (; i < arr.length; i++) {
+      nnorm += Math.pow(Math.abs(arr[i]), p);
+    }
+    return Math.pow(nnorm, 1 / p);
+  },
+
+  // TODO: make compatible with matrices
+  // computes the angle between two vectors in rads
+  angle: function angle(arr, arg) {
+    return Math.acos(jStat.dot(arr, arg) / (jStat.norm(arr) * jStat.norm(arg)));
+  },
+
+  // augment one matrix by another
+  aug: function aug(a, b) {
+    var newarr = a.slice(),
+    i = 0;
+    for (; i < newarr.length; i++) {
+      push.apply(newarr[i], b[i]);
+    }
+    return newarr;
+  },
+
+  inv: function inv(a) {
+    var rows = a.length,
+    cols = a[0].length,
+    b = jStat.identity(rows, cols),
+    c = jStat.gauss_jordan(a, b),
+    obj = [],
+    i = 0,
+    j;
+    for (; i < rows; i++) {
+      obj[i] = [];
+      for (j = cols - 1; j < c[0].length; j++)
+      obj[i][j - cols] = c[i][j];
+    }
+    return obj;
+  },
+
+  // calculate the determinant of a matrix
+  det: function det(a) {
+    var alen = a.length,
+    alend = alen * 2,
+    vals = new Array(alend),
+    rowshift = alen - 1,
+    colshift = alend - 1,
+    mrow = rowshift - alen + 1,
+    mcol = colshift,
+    i = 0,
+    result = 0,
+    j;
+    // check for special 2x2 case
+    if (alen === 2) {
+      return a[0][0] * a[1][1] - a[0][1] * a[1][0];
+    }
+    for (; i < alend; i++) {
+      vals[i] = 1;
+    }
+    for (i = 0; i < alen; i++) {
+      for (j = 0; j < alen; j++) {
+        vals[(mrow < 0) ? mrow + alen : mrow ] *= a[i][j];
+        vals[(mcol < alen) ? mcol + alen : mcol ] *= a[i][j];
+        mrow++;
+        mcol--;
+      }
+      mrow = --rowshift - alen + 1;
+      mcol = --colshift;
+    }
+    for (i = 0; i < alen; i++) {
+      result += vals[i];
+    }
+    for (; i < alend; i++) {
+      result -= vals[i];
+    }
+    return result;
+  },
+
+  gauss_elimination: function gauss_elimination(a, b) {
+    var i = 0,
+    j = 0,
+    n = a.length,
+    m = a[0].length,
+    factor = 1,
+    sum = 0,
+    x = [],
+    maug, pivot, temp, k;
+    a = jStat.aug(a, b);
+    maug = a[0].length;
+    for(; i < n; i++) {
+      pivot = a[i][i];
+      j = i;
+      for (k = i + 1; k < m; k++) {
+        if (pivot < Math.abs(a[k][i])) {
+          pivot = a[k][i];
+          j = k;
+        }
+      }
+      if (j != i) {
+        for(k = 0; k < maug; k++) {
+          temp = a[i][k];
+          a[i][k] = a[j][k];
+          a[j][k] = temp;
+        }
+      }
+      for (j = i + 1; j < n; j++) {
+        factor = a[j][i] / a[i][i];
+        for(k = i; k < maug; k++) {
+          a[j][k] = a[j][k] - factor * a[i][k];
+        }
+      }
+    }
+    for (i = n - 1; i >= 0; i--) {
+      sum = 0;
+      for (j = i + 1; j<= n - 1; j++) {
+        sum = x[j] * a[i][j];
+      }
+      x[i] =(a[i][maug - 1] - sum) / a[i][i];
+    }
+    return x;
+  },
+
+  gauss_jordan: function gauss_jordan(a, b) {
+    var m = jStat.aug(a, b),
+    h = m.length,
+    w = m[0].length;
+    // find max pivot
+    for (var y = 0; y < h; y++) {
+      var maxrow = y;
+      for (var y2 = y+1; y2 < h; y2++) {
+        if (Math.abs(m[y2][y]) > Math.abs(m[maxrow][y]))
+          maxrow = y2;
+      }
+      var tmp = m[y];
+      m[y] = m[maxrow];
+      m[maxrow] = tmp
+      for (var y2 = y+1; y2 < h; y2++) {
+        c = m[y2][y] / m[y][y];
+        for (var x = y; x < w; x++) {
+          m[y2][x] -= m[y][x] * c;
+        }
+      }
+    }
+    // backsubstitute
+    for (var y = h-1; y >= 0; y--) {
+      c = m[y][y];
+      for (var y2 = 0; y2 < y; y2++) {
+        for (var x = w-1; x > y-1; x--) {
+          m[y2][x] -= m[y][x] * m[y2][y] / c;
+        }
+      }
+      m[y][y] /= c;
+      for (var x = h; x < w; x++) {
+        m[y][x] /= c;
+      }
+    }
+    return m;
+  },
+
+  lu: function lu(a, b) {
+    throw new Error('lu not yet implemented');
+  },
+
+  cholesky: function cholesky(a, b) {
+    throw new Error('cholesky not yet implemented');
+  },
+
+  gauss_jacobi: function gauss_jacobi(a, b, x, r) {
+    var i = 0;
+    var j = 0;
+    var n = a.length;
+    var l = [];
+    var u = [];
+    var d = [];
+    var xv, c, h, xk;
+    for (; i < n; i++) {
+      l[i] = [];
+      u[i] = [];
+      d[i] = [];
+      for (j = 0; j < n; j++) {
+        if (i > j) {
+          l[i][j] = a[i][j];
+          u[i][j] = d[i][j] = 0;
+        } else if (i < j) {
+          u[i][j] = a[i][j];
+          l[i][j] = d[i][j] = 0;
+        } else {
+          d[i][j] = a[i][j];
+          l[i][j] = u[i][j] = 0;
+        }
+      }
+    }
+    h = jStat.multiply(jStat.multiply(jStat.inv(d), jStat.add(l, u)), -1);
+    c = jStat.multiply(jStat.inv(d), b);
+    xv = x;
+    xk = jStat.add(jStat.multiply(h, x), c);
+    i = 2;
+    while (Math.abs(jStat.norm(jStat.subtract(xk,xv))) > r) {
+      xv = xk;
+      xk = jStat.add(jStat.multiply(h, xv), c);
+      i++;
+    }
+    return xk;
+  },
+
+  gauss_seidel: function gauss_seidel(a, b, x, r) {
+    var i = 0;
+    var n = a.length;
+    var l = [];
+    var u = [];
+    var d = [];
+    var j, xv, c, h, xk;
+    for (; i < n; i++) {
+      l[i] = [];
+      u[i] = [];
+      d[i] = [];
+      for (j = 0; j < n; j++) {
+        if (i > j) {
+          l[i][j] = a[i][j];
+          u[i][j] = d[i][j] = 0;
+        } else if (i < j) {
+          u[i][j] = a[i][j];
+          l[i][j] = d[i][j] = 0;
+        } else {
+          d[i][j] = a[i][j];
+          l[i][j] = u[i][j] = 0;
+        }
+      }
+    }
+    h = jStat.multiply(jStat.multiply(jStat.inv(jStat.add(d, l)), u), -1);
+    c = jStat.multiply(jStat.inv(jStat.add(d, l)), b);
+    xv = x;
+    xk = jStat.add(jStat.multiply(h, x), c);
+    i = 2;
+    while (Math.abs(jStat.norm(jStat.subtract(xk, xv))) > r) {
+      xv = xk;
+      xk = jStat.add(jStat.multiply(h, xv), c);
+      i = i + 1;
+    }
+    return xk;
+  },
+
+  SOR: function SOR(a, b, x, r, w) {
+    var i = 0;
+    var n = a.length;
+    var l = [];
+    var u = [];
+    var d = [];
+    var j, xv, c, h, xk;
+    for (; i < n; i++) {
+      l[i] = [];
+      u[i] = [];
+      d[i] = [];
+      for (j = 0; j < n; j++) {
+        if (i > j) {
+          l[i][j] = a[i][j];
+          u[i][j] = d[i][j] = 0;
+        } else if (i < j) {
+          u[i][j] = a[i][j];
+          l[i][j] = d[i][j] = 0;
+        } else {
+          d[i][j] = a[i][j];
+          l[i][j] = u[i][j] = 0;
+        }
+      }
+    }
+    h = jStat.multiply(jStat.inv(jStat.add(d, jStat.multiply(l, w))),
+                       jStat.subtract(jStat.multiply(d, 1 - w),
+                                      jStat.multiply(u, w)));
+    c = jStat.multiply(jStat.multiply(jStat.inv(jStat.add(d,
+        jStat.multiply(l, w))), b), w);
+    xv = x;
+    xk = jStat.add(jStat.multiply(h, x), c);
+    i = 2;
+    while (Math.abs(jStat.norm(jStat.subtract(xk, xv))) > r) {
+      xv = xk;
+      xk = jStat.add(jStat.multiply(h, xv), c);
+      i++;
+    }
+    return xk;
+  },
+
+  householder: function householder(a) {
+    var m = a.length;
+    var n = a[0].length;
+    var i = 0;
+    var w = [];
+    var p = [];
+    var alpha, r, k, j, factor;
+    for (; i < m - 1; i++) {
+      alpha = 0;
+      for (j = i + 1; j < n; j++)
+      alpha += (a[j][i] * a[j][i]);
+      factor = (a[i + 1][i] > 0) ? -1 : 1;
+      alpha = factor * Math.sqrt(alpha);
+      r = Math.sqrt((((alpha * alpha) - a[i + 1][i] * alpha) / 2));
+      w = jStat.zeros(m, 1);
+      w[i + 1][0] = (a[i + 1][i] - alpha) / (2 * r);
+      for (k = i + 2; k < m; k++) w[k][0] = a[k][i] / (2 * r);
+      p = jStat.subtract(jStat.identity(m, n),
+          jStat.multiply(jStat.multiply(w, jStat.transpose(w)), 2));
+      a = jStat.multiply(p, jStat.multiply(a, p));
+    }
+    return a;
+  },
+
+  // TODO: not working properly.
+  QR: function QR(a, b) {
+    var m = a.length;
+    var n = a[0].length;
+    var i = 0;
+    var w = [];
+    var p = [];
+    var x = [];
+    var j, alpha, r, k, factor, sum;
+    for (; i < m - 1; i++) {
+      alpha = 0;
+      for (j = i + 1; j < n; j++)
+        alpha += (a[j][i] * a[j][i]);
+      factor = (a[i + 1][i] > 0) ? -1 : 1;
+      alpha = factor * Math.sqrt(alpha);
+      r = Math.sqrt((((alpha * alpha) - a[i + 1][i] * alpha) / 2));
+      w = jStat.zeros(m, 1);
+      w[i + 1][0] = (a[i + 1][i] - alpha) / (2 * r);
+      for (k = i + 2; k < m; k++)
+        w[k][0] = a[k][i] / (2 * r);
+      p = jStat.subtract(jStat.identity(m, n),
+          jStat.multiply(jStat.multiply(w, jStat.transpose(w)), 2));
+      a = jStat.multiply(p, a);
+      b = jStat.multiply(p, b);
+    }
+    for (i = m - 1; i >= 0; i--) {
+      sum = 0;
+      for (j = i + 1; j <= n - 1; j++)
+      sum = x[j] * a[i][j];
+      x[i] = b[i][0] / a[i][i];
+    }
+    return x;
+  },
+
+  jacobi: function jacobi(a) {
+    var condition = 1;
+    var count = 0;
+    var n = a.length;
+    var e = jStat.identity(n, n);
+    var ev = [];
+    var b, i, j, p, q, maxim, theta, s;
+    // condition === 1 only if tolerance is not reached
+    while (condition === 1) {
+      count++;
+      maxim = a[0][1];
+      p = 0;
+      q = 1;
+      for (i = 0; i < n; i++) {
+        for (j = 0; j < n; j++) {
+          if (i != j) {
+            if (maxim < Math.abs(a[i][j])) {
+              maxim = Math.abs(a[i][j]);
+              p = i;
+              q = j;
+            }
+          }
+        }
+      }
+      if (a[p][p] === a[q][q])
+        theta = (a[p][q] > 0) ? Math.PI / 4 : -Math.PI / 4;
+      else
+        theta = Math.atan(2 * a[p][q] / (a[p][p] - a[q][q])) / 2;
+      s = jStat.identity(n, n);
+      s[p][p] = Math.cos(theta);
+      s[p][q] = -Math.sin(theta);
+      s[q][p] = Math.sin(theta);
+      s[q][q] = Math.cos(theta);
+      // eigen vector matrix
+      e = jStat.multiply(e, s);
+      b = jStat.multiply(jStat.multiply(jStat.inv(s), a), s);
+      a = b;
+      condition = 0;
+      for (i = 1; i < n; i++) {
+        for (j = 1; j < n; j++) {
+          if (i != j && Math.abs(a[i][j]) > 0.001) {
+            condition = 1;
+          }
+        }
+      }
+    }
+    for (i = 0; i < n; i++) ev.push(a[i][i]);
+    //returns both the eigenvalue and eigenmatrix
+    return [e, ev];
+  },
+
+  rungekutta: function rungekutta(f, h, p, t_j, u_j, order) {
+    var k1, k2, u_j1, k3, k4;
+    if (order === 2) {
+      while (t_j <= p) {
+        k1 = h * f(t_j, u_j);
+        k2 = h * f(t_j + h, u_j + k1);
+        u_j1 = u_j + (k1 + k2) / 2;
+        u_j = u_j1;
+        t_j = t_j + h;
+      }
+    }
+    if (order === 4) {
+      while (t_j <= p) {
+        k1 = h * f(t_j, u_j);
+        k2 = h * f(t_j + h / 2, u_j + k1 / 2);
+        k3 = h * f(t_j + h / 2, u_j + k2 / 2);
+        k4 = h * f(t_j +h, u_j + k3);
+        u_j1 = u_j + (k1 + 2 * k2 + 2 * k3 + k4) / 6;
+        u_j = u_j1;
+        t_j = t_j + h;
+      }
+    }
+    return u_j;
+  },
+
+  romberg: function romberg(f, a, b, order) {
+    var i = 0;
+    var h = (b - a) / 2;
+    var x = [];
+    var h1 = [];
+    var g = [];
+    var m, a1, j, k, I, d;
+    while (i < order / 2) {
+      I = f(a);
+      for (j = a, k = 0; j <= b; j = j + h, k++) x[k] = j;
+      m = x.length;
+      for (j = 1; j < m - 1; j++) {
+        I += (((j % 2) !== 0) ? 4 : 2) * f(x[j]);
+      }
+      I = (h / 3) * (I + f(b));
+      g[i] = I;
+      h /= 2;
+      i++;
+    }
+    a1 = g.length;
+    m = 1;
+    while (a1 !== 1) {
+      for (j = 0; j < a1 - 1; j++)
+      h1[j] = ((Math.pow(4, m)) * g[j + 1] - g[j]) / (Math.pow(4, m) - 1);
+      a1 = h1.length;
+      g = h1;
+      h1 = [];
+      m++;
+    }
+    return g;
+  },
+
+  richardson: function richardson(X, f, x, h) {
+    function pos(X, x) {
+      var i = 0;
+      var n = X.length;
+      var p;
+      for (; i < n; i++)
+        if (X[i] === x) p = i;
+      return p;
+    }
+    var n = X.length,
+    h_min = Math.abs(x - X[pos(X, x) + 1]),
+    i = 0,
+    g = [],
+    h1 = [],
+    y1, y2, m, a, j;
+    while (h >= h_min) {
+      y1 = pos(X, x + h);
+      y2 = pos(X, x);
+      g[i] = (f[y1] - 2 * f[y2] + f[2 * y2 - y1]) / (h * h);
+      h /= 2;
+      i++;
+    }
+    a = g.length;
+    m = 1;
+    while (a != 1) {
+      for (j = 0; j < a - 1; j++)
+      h1[j] = ((Math.pow(4, m)) * g[j + 1] - g[j]) / (Math.pow(4, m) - 1);
+      a = h1.length;
+      g = h1;
+      h1 = [];
+      m++;
+    }
+    return g;
+  },
+
+  simpson: function simpson(f, a, b, n) {
+    var h = (b - a) / n;
+    var I = f(a);
+    var x = [];
+    var j = a;
+    var k = 0;
+    var i = 1;
+    var m;
+    for (; j <= b; j = j + h, k++)
+      x[k] = j;
+    m = x.length;
+    for (; i < m - 1; i++) {
+      I += ((i % 2 !== 0) ? 4 : 2) * f(x[i]);
+    }
+    return (h / 3) * (I + f(b));
+  },
+
+  hermite: function hermite(X, F, dF, value) {
+    var n = X.length;
+    var p = 0;
+    var i = 0;
+    var l = [];
+    var dl = [];
+    var A = [];
+    var B = [];
+    var j;
+    for (; i < n; i++) {
+      l[i] = 1;
+      for (j = 0; j < n; j++) {
+        if (i != j) l[i] *= (value - X[j]) / (X[i] - X[j]);
+      }
+      dl[i] = 0;
+      for (j = 0; j < n; j++) {
+        if (i != j) dl[i] += 1 / (X [i] - X[j]);
+      }
+      A[i] = (1 - 2 * (value - X[i]) * dl[i]) * (l[i] * l[i]);
+      B[i] = (value - X[i]) * (l[i] * l[i]);
+      p += (A[i] * F[i] + B[i] * dF[i]);
+    }
+    return p;
+  },
+
+  lagrange: function lagrange(X, F, value) {
+    var p = 0;
+    var i = 0;
+    var j, l;
+    var n = X.length;
+    for (; i < n; i++) {
+      l = F[i];
+      for (j = 0; j < n; j++) {
+        // calculating the lagrange polynomial L_i
+        if (i != j) l *= (value - X[j]) / (X[i] - X[j]);
+      }
+      // adding the lagrange polynomials found above
+      p += l;
+    }
+    return p;
+  },
+
+  cubic_spline: function cubic_spline(X, F, value) {
+    var n = X.length;
+    var i = 0, j;
+    var A = [];
+    var B = [];
+    var alpha = [];
+    var c = [];
+    var h = [];
+    var b = [];
+    var d = [];
+    for (; i < n - 1; i++)
+      h[i] = X[i + 1] - X[i];
+    alpha[0] = 0;
+    for (i = 1; i < n - 1; i++) {
+      alpha[i] = (3 / h[i]) * (F[i + 1] - F[i]) -
+          (3 / h[i-1]) * (F[i] - F[i-1]);
+    }
+    for (i = 1; i < n - 1; i++) {
+      A[i] = [];
+      B[i] = [];
+      A[i][i-1] = h[i-1];
+      A[i][i] = 2 * (h[i - 1] + h[i]);
+      A[i][i+1] = h[i];
+      B[i][0] = alpha[i];
+    }
+    c = jStat.multiply(jStat.inv(A), B);
+    for (j = 0; j < n - 1; j++) {
+      b[j] = (F[j + 1] - F[j]) / h[j] - h[j] * (c[j + 1][0] + 2 * c[j][0]) / 3;
+      d[j] = (c[j + 1][0] - c[j][0]) / (3 * h[j]);
+    }
+    for (j = 0; j < n; j++) {
+      if (X[j] > value) break;
+    }
+    j -= 1;
+    return F[j] + (value - X[j]) * b[j] + jStat.sq(value-X[j]) *
+        c[j] + (value - X[j]) * jStat.sq(value - X[j]) * d[j];
+  },
+
+  gauss_quadrature: function gauss_quadrature() {
+    throw new Error('gauss_quadrature not yet implemented');
+  },
+
+  PCA: function PCA(X) {
+    var m = X.length;
+    var n = X[0].length;
+    var flag = false;
+    var i = 0;
+    var j, temp1;
+    var u = [];
+    var D = [];
+    var result = [];
+    var temp2 = [];
+    var Y = [];
+    var Bt = [];
+    var B = [];
+    var C = [];
+    var V = [];
+    var Vt = [];
+    for (i = 0; i < m; i++) {
+      u[i] = jStat.sum(X[i]) / n;
+    }
+    for (i = 0; i < n; i++) {
+      B[i] = [];
+      for(j = 0; j < m; j++) {
+        B[i][j] = X[j][i] - u[j];
+      }
+    }
+    B = jStat.transpose(B);
+    for (i = 0; i < m; i++) {
+      C[i] = [];
+      for (j = 0; j < m; j++) {
+        C[i][j] = (jStat.dot([B[i]], [B[j]])) / (n - 1);
+      }
+    }
+    result = jStat.jacobi(C);
+    V = result[0];
+    D = result[1];
+    Vt = jStat.transpose(V);
+    for (i = 0; i < D.length; i++) {
+      for (j = i; j < D.length; j++) {
+        if(D[i] < D[j])  {
+          temp1 = D[i];
+          D[i] = D[j];
+          D[j] = temp1;
+          temp2 = Vt[i];
+          Vt[i] = Vt[j];
+          Vt[j] = temp2;
+        }
+      }
+    }
+    Bt = jStat.transpose(B);
+    for (i = 0; i < m; i++) {
+      Y[i] = [];
+      for (j = 0; j < Bt.length; j++) {
+        Y[i][j] = jStat.dot([Vt[i]], [Bt[j]]);
+      }
+    }
+    return [X, D, Vt, Y];
+  }
+});
+
+// extend jStat.fn with methods that require one argument
+(function(funcs) {
+  for (var i = 0; i < funcs.length; i++) (function(passfunc) {
+    jStat.fn[passfunc] = function(arg, func) {
+      var tmpthis = this;
+      // check for callback
+      if (func) {
+        setTimeout(function() {
+          func.call(tmpthis, jStat.fn[passfunc].call(tmpthis, arg));
+        }, 15);
+        return this;
+      }
+      if (typeof jStat[passfunc](this, arg) === 'number')
+        return jStat[passfunc](this, arg);
+      else
+        return jStat(jStat[passfunc](this, arg));
+    };
+  }(funcs[i]));
+}('add divide multiply subtract dot pow abs norm angle'.split(' ')));
+
+}(this.jStat, Math));
+(function(jStat, Math) {
+
+var slice = [].slice;
+var isNumber = jStat.utils.isNumber;
+
+// flag==true denotes use of sample standard deviation
+// Z Statistics
+jStat.extend({
+  // 2 different parameter lists:
+  // (value, mean, sd)
+  // (value, array, flag)
+  zscore: function zscore() {
+    var args = slice.call(arguments);
+    if (isNumber(args[1])) {
+      return (args[0] - args[1]) / args[2];
+    }
+    return (args[0] - jStat.mean(args[1])) / jStat.stdev(args[1], args[2]);
+  },
+
+  // 3 different paramter lists:
+  // (value, mean, sd, sides)
+  // (zscore, sides)
+  // (value, array, sides, flag)
+  ztest: function ztest() {
+    var args = slice.call(arguments);
+    if (args.length === 4) {
+      if(isNumber(args[1])) {
+        var z = jStat.zscore(args[0],args[1],args[2])
+        return (args[3] === 1) ?
+          (jStat.normal.cdf(-Math.abs(z),0,1)) :
+          (jStat.normal.cdf(-Math.abs(z),0,1)* 2);
+      }
+      var z = args[0]
+      return (args[2] === 1) ?
+        (jStat.normal.cdf(-Math.abs(z),0,1)) :
+        (jStat.normal.cdf(-Math.abs(z),0,1)*2);
+    }
+    var z = jStat.zscore(args[0],args[1],args[3])
+    return (args[1] === 1) ?
+      (jStat.normal.cdf(-Math.abs(z), 0, 1)) :
+      (jStat.normal.cdf(-Math.abs(z), 0, 1)*2);
+  }
+});
+
+jStat.extend(jStat.fn, {
+  zscore: function zscore(value, flag) {
+    return (value - this.mean()) / this.stdev(flag);
+  },
+
+  ztest: function ztest(value, sides, flag) {
+    var zscore = Math.abs(this.zscore(value, flag));
+    return (sides === 1) ?
+      (jStat.normal.cdf(-zscore, 0, 1)) :
+      (jStat.normal.cdf(-zscore, 0, 1) * 2);
+  }
+});
+
+// T Statistics
+jStat.extend({
+  // 2 parameter lists
+  // (value, mean, sd, n)
+  // (value, array)
+  tscore: function tscore() {
+    var args = slice.call(arguments);
+    return (args.length === 4) ?
+      ((args[0] - args[1]) / (args[2] / Math.sqrt(args[3]))) :
+      ((args[0] - jStat.mean(args[1])) /
+       (jStat.stdev(args[1], true) / Math.sqrt(args[1].length)));
+  },
+
+  // 3 different paramter lists:
+  // (value, mean, sd, n, sides)
+  // (tscore, n, sides)
+  // (value, array, sides)
+  ttest: function ttest() {
+    var args = slice.call(arguments);
+    var tscore;
+    if (args.length === 5) {
+      tscore = Math.abs(jStat.tscore(args[0], args[1], args[2], args[3]));
+      return (args[4] === 1) ?
+        (jStat.studentt.cdf(-tscore, args[3]-1)) :
+        (jStat.studentt.cdf(-tscore, args[3]-1)*2);
+    }
+    if (isNumber(args[1])) {
+      tscore = Math.abs(args[0])
+      return (args[2] == 1) ?
+        (jStat.studentt.cdf(-tscore, args[1]-1)) :
+        (jStat.studentt.cdf(-tscore, args[1]-1) * 2);
+    }
+    tscore = Math.abs(jStat.tscore(args[0], args[1]))
+    return (args[2] == 1) ?
+      (jStat.studentt.cdf(-tscore, args[1].length-1)) :
+      (jStat.studentt.cdf(-tscore, args[1].length-1) * 2);
+  }
+});
+
+jStat.extend(jStat.fn, {
+  tscore: function tscore(value) {
+    return (value - this.mean()) / (this.stdev(true) / Math.sqrt(this.cols()));
+  },
+
+  ttest: function ttest(value, sides) {
+    return (sides === 1) ?
+      (1 - jStat.studentt.cdf(Math.abs(this.tscore(value)), this.cols()-1)) :
+      (jStat.studentt.cdf(-Math.abs(this.tscore(value)), this.cols()-1)*2);
+  }
+});
+
+// F Statistics
+jStat.extend({
+  // Paramter list is as follows:
+  // (array1, array2, array3, ...)
+  // or it is an array of arrays
+  // array of arrays conversion
+  anovafscore: function anovafscore() {
+    var args = slice.call(arguments),
+    expVar, sample, sampMean, sampSampMean, tmpargs, unexpVar, i, j;
+    if (args.length === 1) {
+      tmpargs = new Array(args[0].length);
+      for (i = 0; i < args[0].length; i++) {
+        tmpargs[i] = args[0][i];
+      }
+      args = tmpargs;
+    }
+    // 2 sample case
+    if (args.length === 2) {
+      return jStat.variance(args[0]) / jStat.variance(args[1]);
+    }
+    // Builds sample array
+    sample = new Array();
+    for (i = 0; i < args.length; i++) {
+      sample = sample.concat(args[i]);
+    }
+    sampMean = jStat.mean(sample);
+    // Computes the explained variance
+    expVar = 0;
+    for (i = 0; i < args.length; i++) {
+      expVar = expVar + args[i].length * Math.pow(jStat.mean(args[i]) - sampMean, 2);
+    }
+    expVar /= (args.length - 1);
+    // Computes unexplained variance
+    unexpVar = 0;
+    for (i = 0; i < args.length; i++) {
+      sampSampMean = jStat.mean(args[i]);
+      for (j = 0; j < args[i].length; j++) {
+        unexpVar += Math.pow(args[i][j] - sampSampMean, 2);
+      }
+    }
+    unexpVar /= (sample.length - args.length);
+    return expVar / unexpVar;
+  },
+
+  // 2 different paramter setups
+  // (array1, array2, array3, ...)
+  // (anovafscore, df1, df2)
+  anovaftest: function anovaftest() {
+    var args = slice.call(arguments),
+    df1, df2, n, i;
+    if (isNumber(args[0])) {
+      return 1 - jStat.centralF.cdf(args[0], args[1], args[2]);
+    }
+    anovafscore = jStat.anovafscore(args);
+    df1 = args.length - 1;
+    n = 0;
+    for (i = 0; i < args.length; i++) {
+      n = n + args[i].length;
+    }
+    df2 = n - df1 - 1;
+    return 1 - jStat.centralF.cdf(anovafscore, df1, df2);
+  },
+
+  ftest: function ftest(fscore, df1, df2) {
+    return 1 - jStat.centralF.cdf(fscore, df1, df2);
+  }
+});
+
+jStat.extend(jStat.fn, {
+  anovafscore: function anovafscore() {
+    return jStat.anovafscore(this.toArray());
+  },
+
+  anovaftes: function anovaftes() {
+    var n = 0;
+    var i;
+    for (i = 0; i < this.length; i++) {
+      n = n + this[i].length;
+    }
+    return jStat.ftest(this.anovafscore(), this.length - 1, n - this.length);
+  }
+});
+
+// Error Bounds
+jStat.extend({
+  // 2 different parameter setups
+  // (value, alpha, sd, n)
+  // (value, alpha, array)
+  normalci: function normalci() {
+    var args = slice.call(arguments),
+    ans = new Array(2),
+    change;
+    if (args.length === 4) {
+      change = Math.abs(jStat.normal.inv(args[1] / 2, 0, 1) *
+                        args[2] / Math.sqrt(args[3]));
+    } else {
+      change = Math.abs(jStat.normal.inv(args[1] / 2, 0, 1) *
+                        jStat.stdev(args[2]) / Math.sqrt(args[2].length));
+    }
+    ans[0] = args[0] - change;
+    ans[1] = args[0] + change;
+    return ans;
+  },
+
+  // 2 different parameter setups
+  // (value, alpha, sd, n)
+  // (value, alpha, array)
+  tci: function tci() {
+    var args = slice.call(arguments),
+    ans = new Array(2),
+    change;
+    if (args.length === 4) {
+      change = Math.abs(jStat.studentt.inv(args[1] / 2, args[3] - 1) *
+                        args[2] / Math.sqrt(args[3]));
+    } else {
+      change = Math.abs(jStat.studentt.inv(args[1] / 2, args[2].length - 1) *
+                        jStat.stdev(args[2], true) / Math.sqrt(args[2].length));
+    }
+    ans[0] = args[0] - change;
+    ans[1] = args[0] + change;
+    return ans;
+  },
+
+  significant: function significant(pvalue, alpha) {
+    return pvalue < alpha;
+  }
+});
+
+jStat.extend(jStat.fn, {
+  normalci: function normalci(value, alpha) {
+    return jStat.normalci(value, alpha, this.toArray());
+  },
+
+  tci: function tci(value, alpha) {
+    return jStat.tci(value, alpha, this.toArray());
+  }
+});
+
+}(this.jStat, Math));
+
+},{}],3:[function(require,module,exports){
+/*!
+ * numeral.js
+ * version : 1.5.3
+ * author : Adam Draper
+ * license : MIT
+ * http://adamwdraper.github.com/Numeral-js/
+ */
+
+(function () {
+
+    /************************************
+        Constants
+    ************************************/
+
+    var numeral,
+        VERSION = '1.5.3',
+        // internal storage for language config files
+        languages = {},
+        currentLanguage = 'en',
+        zeroFormat = null,
+        defaultFormat = '0,0',
+        // check for nodeJS
+        hasModule = (typeof module !== 'undefined' && module.exports);
+
+
+    /************************************
+        Constructors
+    ************************************/
+
+
+    // Numeral prototype object
+    function Numeral (number) {
+        this._value = number;
+    }
+
+    /**
+     * Implementation of toFixed() that treats floats more like decimals
+     *
+     * Fixes binary rounding issues (eg. (0.615).toFixed(2) === '0.61') that present
+     * problems for accounting- and finance-related software.
+     */
+    function toFixed (value, precision, roundingFunction, optionals) {
+        var power = Math.pow(10, precision),
+            optionalsRegExp,
+            output;
+            
+        //roundingFunction = (roundingFunction !== undefined ? roundingFunction : Math.round);
+        // Multiply up by precision, round accurately, then divide and use native toFixed():
+        output = (roundingFunction(value * power) / power).toFixed(precision);
+
+        if (optionals) {
+            optionalsRegExp = new RegExp('0{1,' + optionals + '}$');
+            output = output.replace(optionalsRegExp, '');
+        }
+
+        return output;
+    }
+
+    /************************************
+        Formatting
+    ************************************/
+
+    // determine what type of formatting we need to do
+    function formatNumeral (n, format, roundingFunction) {
+        var output;
+
+        // figure out what kind of format we are dealing with
+        if (format.indexOf('$') > -1) { // currency!!!!!
+            output = formatCurrency(n, format, roundingFunction);
+        } else if (format.indexOf('%') > -1) { // percentage
+            output = formatPercentage(n, format, roundingFunction);
+        } else if (format.indexOf(':') > -1) { // time
+            output = formatTime(n, format);
+        } else { // plain ol' numbers or bytes
+            output = formatNumber(n._value, format, roundingFunction);
+        }
+
+        // return string
+        return output;
+    }
+
+    // revert to number
+    function unformatNumeral (n, string) {
+        var stringOriginal = string,
+            thousandRegExp,
+            millionRegExp,
+            billionRegExp,
+            trillionRegExp,
+            suffixes = ['KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'],
+            bytesMultiplier = false,
+            power;
+
+        if (string.indexOf(':') > -1) {
+            n._value = unformatTime(string);
+        } else {
+            if (string === zeroFormat) {
+                n._value = 0;
+            } else {
+                if (languages[currentLanguage].delimiters.decimal !== '.') {
+                    string = string.replace(/\./g,'').replace(languages[currentLanguage].delimiters.decimal, '.');
+                }
+
+                // see if abbreviations are there so that we can multiply to the correct number
+                thousandRegExp = new RegExp('[^a-zA-Z]' + languages[currentLanguage].abbreviations.thousand + '(?:\\)|(\\' + languages[currentLanguage].currency.symbol + ')?(?:\\))?)?$');
+                millionRegExp = new RegExp('[^a-zA-Z]' + languages[currentLanguage].abbreviations.million + '(?:\\)|(\\' + languages[currentLanguage].currency.symbol + ')?(?:\\))?)?$');
+                billionRegExp = new RegExp('[^a-zA-Z]' + languages[currentLanguage].abbreviations.billion + '(?:\\)|(\\' + languages[currentLanguage].currency.symbol + ')?(?:\\))?)?$');
+                trillionRegExp = new RegExp('[^a-zA-Z]' + languages[currentLanguage].abbreviations.trillion + '(?:\\)|(\\' + languages[currentLanguage].currency.symbol + ')?(?:\\))?)?$');
+
+                // see if bytes are there so that we can multiply to the correct number
+                for (power = 0; power <= suffixes.length; power++) {
+                    bytesMultiplier = (string.indexOf(suffixes[power]) > -1) ? Math.pow(1024, power + 1) : false;
+
+                    if (bytesMultiplier) {
+                        break;
+                    }
+                }
+
+                // do some math to create our number
+                n._value = ((bytesMultiplier) ? bytesMultiplier : 1) * ((stringOriginal.match(thousandRegExp)) ? Math.pow(10, 3) : 1) * ((stringOriginal.match(millionRegExp)) ? Math.pow(10, 6) : 1) * ((stringOriginal.match(billionRegExp)) ? Math.pow(10, 9) : 1) * ((stringOriginal.match(trillionRegExp)) ? Math.pow(10, 12) : 1) * ((string.indexOf('%') > -1) ? 0.01 : 1) * (((string.split('-').length + Math.min(string.split('(').length-1, string.split(')').length-1)) % 2)? 1: -1) * Number(string.replace(/[^0-9\.]+/g, ''));
+
+                // round if we are talking about bytes
+                n._value = (bytesMultiplier) ? Math.ceil(n._value) : n._value;
+            }
+        }
+        return n._value;
+    }
+
+    function formatCurrency (n, format, roundingFunction) {
+        var symbolIndex = format.indexOf('$'),
+            openParenIndex = format.indexOf('('),
+            minusSignIndex = format.indexOf('-'),
+            space = '',
+            spliceIndex,
+            output;
+
+        // check for space before or after currency
+        if (format.indexOf(' $') > -1) {
+            space = ' ';
+            format = format.replace(' $', '');
+        } else if (format.indexOf('$ ') > -1) {
+            space = ' ';
+            format = format.replace('$ ', '');
+        } else {
+            format = format.replace('$', '');
+        }
+
+        // format the number
+        output = formatNumber(n._value, format, roundingFunction);
+
+        // position the symbol
+        if (symbolIndex <= 1) {
+            if (output.indexOf('(') > -1 || output.indexOf('-') > -1) {
+                output = output.split('');
+                spliceIndex = 1;
+                if (symbolIndex < openParenIndex || symbolIndex < minusSignIndex){
+                    // the symbol appears before the "(" or "-"
+                    spliceIndex = 0;
+                }
+                output.splice(spliceIndex, 0, languages[currentLanguage].currency.symbol + space);
+                output = output.join('');
+            } else {
+                output = languages[currentLanguage].currency.symbol + space + output;
+            }
+        } else {
+            if (output.indexOf(')') > -1) {
+                output = output.split('');
+                output.splice(-1, 0, space + languages[currentLanguage].currency.symbol);
+                output = output.join('');
+            } else {
+                output = output + space + languages[currentLanguage].currency.symbol;
+            }
+        }
+
+        return output;
+    }
+
+    function formatPercentage (n, format, roundingFunction) {
+        var space = '',
+            output,
+            value = n._value * 100;
+
+        // check for space before %
+        if (format.indexOf(' %') > -1) {
+            space = ' ';
+            format = format.replace(' %', '');
+        } else {
+            format = format.replace('%', '');
+        }
+
+        output = formatNumber(value, format, roundingFunction);
+        
+        if (output.indexOf(')') > -1 ) {
+            output = output.split('');
+            output.splice(-1, 0, space + '%');
+            output = output.join('');
+        } else {
+            output = output + space + '%';
+        }
+
+        return output;
+    }
+
+    function formatTime (n) {
+        var hours = Math.floor(n._value/60/60),
+            minutes = Math.floor((n._value - (hours * 60 * 60))/60),
+            seconds = Math.round(n._value - (hours * 60 * 60) - (minutes * 60));
+        return hours + ':' + ((minutes < 10) ? '0' + minutes : minutes) + ':' + ((seconds < 10) ? '0' + seconds : seconds);
+    }
+
+    function unformatTime (string) {
+        var timeArray = string.split(':'),
+            seconds = 0;
+        // turn hours and minutes into seconds and add them all up
+        if (timeArray.length === 3) {
+            // hours
+            seconds = seconds + (Number(timeArray[0]) * 60 * 60);
+            // minutes
+            seconds = seconds + (Number(timeArray[1]) * 60);
+            // seconds
+            seconds = seconds + Number(timeArray[2]);
+        } else if (timeArray.length === 2) {
+            // minutes
+            seconds = seconds + (Number(timeArray[0]) * 60);
+            // seconds
+            seconds = seconds + Number(timeArray[1]);
+        }
+        return Number(seconds);
+    }
+
+    function formatNumber (value, format, roundingFunction) {
+        var negP = false,
+            signed = false,
+            optDec = false,
+            abbr = '',
+            abbrK = false, // force abbreviation to thousands
+            abbrM = false, // force abbreviation to millions
+            abbrB = false, // force abbreviation to billions
+            abbrT = false, // force abbreviation to trillions
+            abbrForce = false, // force abbreviation
+            bytes = '',
+            ord = '',
+            abs = Math.abs(value),
+            suffixes = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'],
+            min,
+            max,
+            power,
+            w,
+            precision,
+            thousands,
+            d = '',
+            neg = false;
+
+        // check if number is zero and a custom zero format has been set
+        if (value === 0 && zeroFormat !== null) {
+            return zeroFormat;
+        } else {
+            // see if we should use parentheses for negative number or if we should prefix with a sign
+            // if both are present we default to parentheses
+            if (format.indexOf('(') > -1) {
+                negP = true;
+                format = format.slice(1, -1);
+            } else if (format.indexOf('+') > -1) {
+                signed = true;
+                format = format.replace(/\+/g, '');
+            }
+
+            // see if abbreviation is wanted
+            if (format.indexOf('a') > -1) {
+                // check if abbreviation is specified
+                abbrK = format.indexOf('aK') >= 0;
+                abbrM = format.indexOf('aM') >= 0;
+                abbrB = format.indexOf('aB') >= 0;
+                abbrT = format.indexOf('aT') >= 0;
+                abbrForce = abbrK || abbrM || abbrB || abbrT;
+
+                // check for space before abbreviation
+                if (format.indexOf(' a') > -1) {
+                    abbr = ' ';
+                    format = format.replace(' a', '');
+                } else {
+                    format = format.replace('a', '');
+                }
+
+                if (abs >= Math.pow(10, 12) && !abbrForce || abbrT) {
+                    // trillion
+                    abbr = abbr + languages[currentLanguage].abbreviations.trillion;
+                    value = value / Math.pow(10, 12);
+                } else if (abs < Math.pow(10, 12) && abs >= Math.pow(10, 9) && !abbrForce || abbrB) {
+                    // billion
+                    abbr = abbr + languages[currentLanguage].abbreviations.billion;
+                    value = value / Math.pow(10, 9);
+                } else if (abs < Math.pow(10, 9) && abs >= Math.pow(10, 6) && !abbrForce || abbrM) {
+                    // million
+                    abbr = abbr + languages[currentLanguage].abbreviations.million;
+                    value = value / Math.pow(10, 6);
+                } else if (abs < Math.pow(10, 6) && abs >= Math.pow(10, 3) && !abbrForce || abbrK) {
+                    // thousand
+                    abbr = abbr + languages[currentLanguage].abbreviations.thousand;
+                    value = value / Math.pow(10, 3);
+                }
+            }
+
+            // see if we are formatting bytes
+            if (format.indexOf('b') > -1) {
+                // check for space before
+                if (format.indexOf(' b') > -1) {
+                    bytes = ' ';
+                    format = format.replace(' b', '');
+                } else {
+                    format = format.replace('b', '');
+                }
+
+                for (power = 0; power <= suffixes.length; power++) {
+                    min = Math.pow(1024, power);
+                    max = Math.pow(1024, power+1);
+
+                    if (value >= min && value < max) {
+                        bytes = bytes + suffixes[power];
+                        if (min > 0) {
+                            value = value / min;
+                        }
+                        break;
+                    }
+                }
+            }
+
+            // see if ordinal is wanted
+            if (format.indexOf('o') > -1) {
+                // check for space before
+                if (format.indexOf(' o') > -1) {
+                    ord = ' ';
+                    format = format.replace(' o', '');
+                } else {
+                    format = format.replace('o', '');
+                }
+
+                ord = ord + languages[currentLanguage].ordinal(value);
+            }
+
+            if (format.indexOf('[.]') > -1) {
+                optDec = true;
+                format = format.replace('[.]', '.');
+            }
+
+            w = value.toString().split('.')[0];
+            precision = format.split('.')[1];
+            thousands = format.indexOf(',');
+
+            if (precision) {
+                if (precision.indexOf('[') > -1) {
+                    precision = precision.replace(']', '');
+                    precision = precision.split('[');
+                    d = toFixed(value, (precision[0].length + precision[1].length), roundingFunction, precision[1].length);
+                } else {
+                    d = toFixed(value, precision.length, roundingFunction);
+                }
+
+                w = d.split('.')[0];
+
+                if (d.split('.')[1].length) {
+                    d = languages[currentLanguage].delimiters.decimal + d.split('.')[1];
+                } else {
+                    d = '';
+                }
+
+                if (optDec && Number(d.slice(1)) === 0) {
+                    d = '';
+                }
+            } else {
+                w = toFixed(value, null, roundingFunction);
+            }
+
+            // format number
+            if (w.indexOf('-') > -1) {
+                w = w.slice(1);
+                neg = true;
+            }
+
+            if (thousands > -1) {
+                w = w.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1' + languages[currentLanguage].delimiters.thousands);
+            }
+
+            if (format.indexOf('.') === 0) {
+                w = '';
+            }
+
+            return ((negP && neg) ? '(' : '') + ((!negP && neg) ? '-' : '') + ((!neg && signed) ? '+' : '') + w + d + ((ord) ? ord : '') + ((abbr) ? abbr : '') + ((bytes) ? bytes : '') + ((negP && neg) ? ')' : '');
+        }
+    }
+
+    /************************************
+        Top Level Functions
+    ************************************/
+
+    numeral = function (input) {
+        if (numeral.isNumeral(input)) {
+            input = input.value();
+        } else if (input === 0 || typeof input === 'undefined') {
+            input = 0;
+        } else if (!Number(input)) {
+            input = numeral.fn.unformat(input);
+        }
+
+        return new Numeral(Number(input));
+    };
+
+    // version number
+    numeral.version = VERSION;
+
+    // compare numeral object
+    numeral.isNumeral = function (obj) {
+        return obj instanceof Numeral;
+    };
+
+    // This function will load languages and then set the global language.  If
+    // no arguments are passed in, it will simply return the current global
+    // language key.
+    numeral.language = function (key, values) {
+        if (!key) {
+            return currentLanguage;
+        }
+
+        if (key && !values) {
+            if(!languages[key]) {
+                throw new Error('Unknown language : ' + key);
+            }
+            currentLanguage = key;
+        }
+
+        if (values || !languages[key]) {
+            loadLanguage(key, values);
+        }
+
+        return numeral;
+    };
+    
+    // This function provides access to the loaded language data.  If
+    // no arguments are passed in, it will simply return the current
+    // global language object.
+    numeral.languageData = function (key) {
+        if (!key) {
+            return languages[currentLanguage];
+        }
+        
+        if (!languages[key]) {
+            throw new Error('Unknown language : ' + key);
+        }
+        
+        return languages[key];
+    };
+
+    numeral.language('en', {
+        delimiters: {
+            thousands: ',',
+            decimal: '.'
+        },
+        abbreviations: {
+            thousand: 'k',
+            million: 'm',
+            billion: 'b',
+            trillion: 't'
+        },
+        ordinal: function (number) {
+            var b = number % 10;
+            return (~~ (number % 100 / 10) === 1) ? 'th' :
+                (b === 1) ? 'st' :
+                (b === 2) ? 'nd' :
+                (b === 3) ? 'rd' : 'th';
+        },
+        currency: {
+            symbol: '$'
+        }
+    });
+
+    numeral.zeroFormat = function (format) {
+        zeroFormat = typeof(format) === 'string' ? format : null;
+    };
+
+    numeral.defaultFormat = function (format) {
+        defaultFormat = typeof(format) === 'string' ? format : '0.0';
+    };
+
+    /************************************
+        Helpers
+    ************************************/
+
+    function loadLanguage(key, values) {
+        languages[key] = values;
+    }
+
+    /************************************
+        Floating-point helpers
+    ************************************/
+
+    // The floating-point helper functions and implementation
+    // borrows heavily from sinful.js: http://guipn.github.io/sinful.js/
+
+    /**
+     * Array.prototype.reduce for browsers that don't support it
+     * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce#Compatibility
+     */
+    if ('function' !== typeof Array.prototype.reduce) {
+        Array.prototype.reduce = function (callback, opt_initialValue) {
+            'use strict';
+            
+            if (null === this || 'undefined' === typeof this) {
+                // At the moment all modern browsers, that support strict mode, have
+                // native implementation of Array.prototype.reduce. For instance, IE8
+                // does not support strict mode, so this check is actually useless.
+                throw new TypeError('Array.prototype.reduce called on null or undefined');
+            }
+            
+            if ('function' !== typeof callback) {
+                throw new TypeError(callback + ' is not a function');
+            }
+
+            var index,
+                value,
+                length = this.length >>> 0,
+                isValueSet = false;
+
+            if (1 < arguments.length) {
+                value = opt_initialValue;
+                isValueSet = true;
+            }
+
+            for (index = 0; length > index; ++index) {
+                if (this.hasOwnProperty(index)) {
+                    if (isValueSet) {
+                        value = callback(value, this[index], index, this);
+                    } else {
+                        value = this[index];
+                        isValueSet = true;
+                    }
+                }
+            }
+
+            if (!isValueSet) {
+                throw new TypeError('Reduce of empty array with no initial value');
+            }
+
+            return value;
+        };
+    }
+
+    
+    /**
+     * Computes the multiplier necessary to make x >= 1,
+     * effectively eliminating miscalculations caused by
+     * finite precision.
+     */
+    function multiplier(x) {
+        var parts = x.toString().split('.');
+        if (parts.length < 2) {
+            return 1;
+        }
+        return Math.pow(10, parts[1].length);
+    }
+
+    /**
+     * Given a variable number of arguments, returns the maximum
+     * multiplier that must be used to normalize an operation involving
+     * all of them.
+     */
+    function correctionFactor() {
+        var args = Array.prototype.slice.call(arguments);
+        return args.reduce(function (prev, next) {
+            var mp = multiplier(prev),
+                mn = multiplier(next);
+        return mp > mn ? mp : mn;
+        }, -Infinity);
+    }        
+
+
+    /************************************
+        Numeral Prototype
+    ************************************/
+
+
+    numeral.fn = Numeral.prototype = {
+
+        clone : function () {
+            return numeral(this);
+        },
+
+        format : function (inputString, roundingFunction) {
+            return formatNumeral(this, 
+                  inputString ? inputString : defaultFormat, 
+                  (roundingFunction !== undefined) ? roundingFunction : Math.round
+              );
+        },
+
+        unformat : function (inputString) {
+            if (Object.prototype.toString.call(inputString) === '[object Number]') { 
+                return inputString; 
+            }
+            return unformatNumeral(this, inputString ? inputString : defaultFormat);
+        },
+
+        value : function () {
+            return this._value;
+        },
+
+        valueOf : function () {
+            return this._value;
+        },
+
+        set : function (value) {
+            this._value = Number(value);
+            return this;
+        },
+
+        add : function (value) {
+            var corrFactor = correctionFactor.call(null, this._value, value);
+            function cback(accum, curr, currI, O) {
+                return accum + corrFactor * curr;
+            }
+            this._value = [this._value, value].reduce(cback, 0) / corrFactor;
+            return this;
+        },
+
+        subtract : function (value) {
+            var corrFactor = correctionFactor.call(null, this._value, value);
+            function cback(accum, curr, currI, O) {
+                return accum - corrFactor * curr;
+            }
+            this._value = [value].reduce(cback, this._value * corrFactor) / corrFactor;            
+            return this;
+        },
+
+        multiply : function (value) {
+            function cback(accum, curr, currI, O) {
+                var corrFactor = correctionFactor(accum, curr);
+                return (accum * corrFactor) * (curr * corrFactor) /
+                    (corrFactor * corrFactor);
+            }
+            this._value = [this._value, value].reduce(cback, 1);
+            return this;
+        },
+
+        divide : function (value) {
+            function cback(accum, curr, currI, O) {
+                var corrFactor = correctionFactor(accum, curr);
+                return (accum * corrFactor) / (curr * corrFactor);
+            }
+            this._value = [this._value, value].reduce(cback);            
+            return this;
+        },
+
+        difference : function (value) {
+            return Math.abs(numeral(this._value).subtract(value).value());
+        }
+
+    };
+
+    /************************************
+        Exposing Numeral
+    ************************************/
+
+    // CommonJS module is defined
+    if (hasModule) {
+        module.exports = numeral;
+    }
+
+    /*global ender:false */
+    if (typeof ender === 'undefined') {
+        // here, `this` means `window` in the browser, or `global` on the server
+        // add `numeral` as a global object via a string identifier,
+        // for Closure Compiler 'advanced' mode
+        this['numeral'] = numeral;
+    }
+
+    /*global define:false */
+    if (typeof define === 'function' && define.amd) {
+        define([], function () {
+            return numeral;
+        });
+    }
+}).call(this);
+
+},{}],4:[function(require,module,exports){
+(function (global){
+"use strict";
+
+var numeric = (typeof exports === "undefined")?(function numeric() {}):(exports);
+if(typeof global !== "undefined") { global.numeric = numeric; }
+
+numeric.version = "1.2.6";
+
+// 1. Utility functions
+numeric.bench = function bench (f,interval) {
+    var t1,t2,n,i;
+    if(typeof interval === "undefined") { interval = 15; }
+    n = 0.5;
+    t1 = new Date();
+    while(1) {
+        n*=2;
+        for(i=n;i>3;i-=4) { f(); f(); f(); f(); }
+        while(i>0) { f(); i--; }
+        t2 = new Date();
+        if(t2-t1 > interval) break;
+    }
+    for(i=n;i>3;i-=4) { f(); f(); f(); f(); }
+    while(i>0) { f(); i--; }
+    t2 = new Date();
+    return 1000*(3*n-1)/(t2-t1);
+}
+
+numeric._myIndexOf = (function _myIndexOf(w) {
+    var n = this.length,k;
+    for(k=0;k<n;++k) if(this[k]===w) return k;
+    return -1;
+});
+numeric.myIndexOf = (Array.prototype.indexOf)?Array.prototype.indexOf:numeric._myIndexOf;
+
+numeric.Function = Function;
+numeric.precision = 4;
+numeric.largeArray = 50;
+
+numeric.prettyPrint = function prettyPrint(x) {
+    function fmtnum(x) {
+        if(x === 0) { return '0'; }
+        if(isNaN(x)) { return 'NaN'; }
+        if(x<0) { return '-'+fmtnum(-x); }
+        if(isFinite(x)) {
+            var scale = Math.floor(Math.log(x) / Math.log(10));
+            var normalized = x / Math.pow(10,scale);
+            var basic = normalized.toPrecision(numeric.precision);
+            if(parseFloat(basic) === 10) { scale++; normalized = 1; basic = normalized.toPrecision(numeric.precision); }
+            return parseFloat(basic).toString()+'e'+scale.toString();
+        }
+        return 'Infinity';
+    }
+    var ret = [];
+    function foo(x) {
+        var k;
+        if(typeof x === "undefined") { ret.push(Array(numeric.precision+8).join(' ')); return false; }
+        if(typeof x === "string") { ret.push('"'+x+'"'); return false; }
+        if(typeof x === "boolean") { ret.push(x.toString()); return false; }
+        if(typeof x === "number") {
+            var a = fmtnum(x);
+            var b = x.toPrecision(numeric.precision);
+            var c = parseFloat(x.toString()).toString();
+            var d = [a,b,c,parseFloat(b).toString(),parseFloat(c).toString()];
+            for(k=1;k<d.length;k++) { if(d[k].length < a.length) a = d[k]; }
+            ret.push(Array(numeric.precision+8-a.length).join(' ')+a);
+            return false;
+        }
+        if(x === null) { ret.push("null"); return false; }
+        if(typeof x === "function") { 
+            ret.push(x.toString());
+            var flag = false;
+            for(k in x) { if(x.hasOwnProperty(k)) { 
+                if(flag) ret.push(',\n');
+                else ret.push('\n{');
+                flag = true; 
+                ret.push(k); 
+                ret.push(': \n'); 
+                foo(x[k]); 
+            } }
+            if(flag) ret.push('}\n');
+            return true;
+        }
+        if(x instanceof Array) {
+            if(x.length > numeric.largeArray) { ret.push('...Large Array...'); return true; }
+            var flag = false;
+            ret.push('[');
+            for(k=0;k<x.length;k++) { if(k>0) { ret.push(','); if(flag) ret.push('\n '); } flag = foo(x[k]); }
+            ret.push(']');
+            return true;
+        }
+        ret.push('{');
+        var flag = false;
+        for(k in x) { if(x.hasOwnProperty(k)) { if(flag) ret.push(',\n'); flag = true; ret.push(k); ret.push(': \n'); foo(x[k]); } }
+        ret.push('}');
+        return true;
+    }
+    foo(x);
+    return ret.join('');
+}
+
+numeric.parseDate = function parseDate(d) {
+    function foo(d) {
+        if(typeof d === 'string') { return Date.parse(d.replace(/-/g,'/')); }
+        if(!(d instanceof Array)) { throw new Error("parseDate: parameter must be arrays of strings"); }
+        var ret = [],k;
+        for(k=0;k<d.length;k++) { ret[k] = foo(d[k]); }
+        return ret;
+    }
+    return foo(d);
+}
+
+numeric.parseFloat = function parseFloat_(d) {
+    function foo(d) {
+        if(typeof d === 'string') { return parseFloat(d); }
+        if(!(d instanceof Array)) { throw new Error("parseFloat: parameter must be arrays of strings"); }
+        var ret = [],k;
+        for(k=0;k<d.length;k++) { ret[k] = foo(d[k]); }
+        return ret;
+    }
+    return foo(d);
+}
+
+numeric.parseCSV = function parseCSV(t) {
+    var foo = t.split('\n');
+    var j,k;
+    var ret = [];
+    var pat = /(([^'",]*)|('[^']*')|("[^"]*")),/g;
+    var patnum = /^\s*(([+-]?[0-9]+(\.[0-9]*)?(e[+-]?[0-9]+)?)|([+-]?[0-9]*(\.[0-9]+)?(e[+-]?[0-9]+)?))\s*$/;
+    var stripper = function(n) { return n.substr(0,n.length-1); }
+    var count = 0;
+    for(k=0;k<foo.length;k++) {
+      var bar = (foo[k]+",").match(pat),baz;
+      if(bar.length>0) {
+          ret[count] = [];
+          for(j=0;j<bar.length;j++) {
+              baz = stripper(bar[j]);
+              if(patnum.test(baz)) { ret[count][j] = parseFloat(baz); }
+              else ret[count][j] = baz;
+          }
+          count++;
+      }
+    }
+    return ret;
+}
+
+numeric.toCSV = function toCSV(A) {
+    var s = numeric.dim(A);
+    var i,j,m,n,row,ret;
+    m = s[0];
+    n = s[1];
+    ret = [];
+    for(i=0;i<m;i++) {
+        row = [];
+        for(j=0;j<m;j++) { row[j] = A[i][j].toString(); }
+        ret[i] = row.join(', ');
+    }
+    return ret.join('\n')+'\n';
+}
+
+numeric.getURL = function getURL(url) {
+    var client = new XMLHttpRequest();
+    client.open("GET",url,false);
+    client.send();
+    return client;
+}
+
+numeric.imageURL = function imageURL(img) {
+    function base64(A) {
+        var n = A.length, i,x,y,z,p,q,r,s;
+        var key = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
+        var ret = "";
+        for(i=0;i<n;i+=3) {
+            x = A[i];
+            y = A[i+1];
+            z = A[i+2];
+            p = x >> 2;
+            q = ((x & 3) << 4) + (y >> 4);
+            r = ((y & 15) << 2) + (z >> 6);
+            s = z & 63;
+            if(i+1>=n) { r = s = 64; }
+            else if(i+2>=n) { s = 64; }
+            ret += key.charAt(p) + key.charAt(q) + key.charAt(r) + key.charAt(s);
+            }
+        return ret;
+    }
+    function crc32Array (a,from,to) {
+        if(typeof from === "undefined") { from = 0; }
+        if(typeof to === "undefined") { to = a.length; }
+        var table = [0x00000000, 0x77073096, 0xEE0E612C, 0x990951BA, 0x076DC419, 0x706AF48F, 0xE963A535, 0x9E6495A3,
+                     0x0EDB8832, 0x79DCB8A4, 0xE0D5E91E, 0x97D2D988, 0x09B64C2B, 0x7EB17CBD, 0xE7B82D07, 0x90BF1D91, 
+                     0x1DB71064, 0x6AB020F2, 0xF3B97148, 0x84BE41DE, 0x1ADAD47D, 0x6DDDE4EB, 0xF4D4B551, 0x83D385C7,
+                     0x136C9856, 0x646BA8C0, 0xFD62F97A, 0x8A65C9EC, 0x14015C4F, 0x63066CD9, 0xFA0F3D63, 0x8D080DF5, 
+                     0x3B6E20C8, 0x4C69105E, 0xD56041E4, 0xA2677172, 0x3C03E4D1, 0x4B04D447, 0xD20D85FD, 0xA50AB56B, 
+                     0x35B5A8FA, 0x42B2986C, 0xDBBBC9D6, 0xACBCF940, 0x32D86CE3, 0x45DF5C75, 0xDCD60DCF, 0xABD13D59, 
+                     0x26D930AC, 0x51DE003A, 0xC8D75180, 0xBFD06116, 0x21B4F4B5, 0x56B3C423, 0xCFBA9599, 0xB8BDA50F,
+                     0x2802B89E, 0x5F058808, 0xC60CD9B2, 0xB10BE924, 0x2F6F7C87, 0x58684C11, 0xC1611DAB, 0xB6662D3D,
+                     0x76DC4190, 0x01DB7106, 0x98D220BC, 0xEFD5102A, 0x71B18589, 0x06B6B51F, 0x9FBFE4A5, 0xE8B8D433,
+                     0x7807C9A2, 0x0F00F934, 0x9609A88E, 0xE10E9818, 0x7F6A0DBB, 0x086D3D2D, 0x91646C97, 0xE6635C01, 
+                     0x6B6B51F4, 0x1C6C6162, 0x856530D8, 0xF262004E, 0x6C0695ED, 0x1B01A57B, 0x8208F4C1, 0xF50FC457, 
+                     0x65B0D9C6, 0x12B7E950, 0x8BBEB8EA, 0xFCB9887C, 0x62DD1DDF, 0x15DA2D49, 0x8CD37CF3, 0xFBD44C65, 
+                     0x4DB26158, 0x3AB551CE, 0xA3BC0074, 0xD4BB30E2, 0x4ADFA541, 0x3DD895D7, 0xA4D1C46D, 0xD3D6F4FB, 
+                     0x4369E96A, 0x346ED9FC, 0xAD678846, 0xDA60B8D0, 0x44042D73, 0x33031DE5, 0xAA0A4C5F, 0xDD0D7CC9, 
+                     0x5005713C, 0x270241AA, 0xBE0B1010, 0xC90C2086, 0x5768B525, 0x206F85B3, 0xB966D409, 0xCE61E49F, 
+                     0x5EDEF90E, 0x29D9C998, 0xB0D09822, 0xC7D7A8B4, 0x59B33D17, 0x2EB40D81, 0xB7BD5C3B, 0xC0BA6CAD, 
+                     0xEDB88320, 0x9ABFB3B6, 0x03B6E20C, 0x74B1D29A, 0xEAD54739, 0x9DD277AF, 0x04DB2615, 0x73DC1683, 
+                     0xE3630B12, 0x94643B84, 0x0D6D6A3E, 0x7A6A5AA8, 0xE40ECF0B, 0x9309FF9D, 0x0A00AE27, 0x7D079EB1, 
+                     0xF00F9344, 0x8708A3D2, 0x1E01F268, 0x6906C2FE, 0xF762575D, 0x806567CB, 0x196C3671, 0x6E6B06E7, 
+                     0xFED41B76, 0x89D32BE0, 0x10DA7A5A, 0x67DD4ACC, 0xF9B9DF6F, 0x8EBEEFF9, 0x17B7BE43, 0x60B08ED5, 
+                     0xD6D6A3E8, 0xA1D1937E, 0x38D8C2C4, 0x4FDFF252, 0xD1BB67F1, 0xA6BC5767, 0x3FB506DD, 0x48B2364B, 
+                     0xD80D2BDA, 0xAF0A1B4C, 0x36034AF6, 0x41047A60, 0xDF60EFC3, 0xA867DF55, 0x316E8EEF, 0x4669BE79, 
+                     0xCB61B38C, 0xBC66831A, 0x256FD2A0, 0x5268E236, 0xCC0C7795, 0xBB0B4703, 0x220216B9, 0x5505262F, 
+                     0xC5BA3BBE, 0xB2BD0B28, 0x2BB45A92, 0x5CB36A04, 0xC2D7FFA7, 0xB5D0CF31, 0x2CD99E8B, 0x5BDEAE1D, 
+                     0x9B64C2B0, 0xEC63F226, 0x756AA39C, 0x026D930A, 0x9C0906A9, 0xEB0E363F, 0x72076785, 0x05005713, 
+                     0x95BF4A82, 0xE2B87A14, 0x7BB12BAE, 0x0CB61B38, 0x92D28E9B, 0xE5D5BE0D, 0x7CDCEFB7, 0x0BDBDF21, 
+                     0x86D3D2D4, 0xF1D4E242, 0x68DDB3F8, 0x1FDA836E, 0x81BE16CD, 0xF6B9265B, 0x6FB077E1, 0x18B74777, 
+                     0x88085AE6, 0xFF0F6A70, 0x66063BCA, 0x11010B5C, 0x8F659EFF, 0xF862AE69, 0x616BFFD3, 0x166CCF45, 
+                     0xA00AE278, 0xD70DD2EE, 0x4E048354, 0x3903B3C2, 0xA7672661, 0xD06016F7, 0x4969474D, 0x3E6E77DB, 
+                     0xAED16A4A, 0xD9D65ADC, 0x40DF0B66, 0x37D83BF0, 0xA9BCAE53, 0xDEBB9EC5, 0x47B2CF7F, 0x30B5FFE9, 
+                     0xBDBDF21C, 0xCABAC28A, 0x53B39330, 0x24B4A3A6, 0xBAD03605, 0xCDD70693, 0x54DE5729, 0x23D967BF, 
+                     0xB3667A2E, 0xC4614AB8, 0x5D681B02, 0x2A6F2B94, 0xB40BBE37, 0xC30C8EA1, 0x5A05DF1B, 0x2D02EF8D];
+     
+        var crc = -1, y = 0, n = a.length,i;
+
+        for (i = from; i < to; i++) {
+            y = (crc ^ a[i]) & 0xFF;
+            crc = (crc >>> 8) ^ table[y];
+        }
+     
+        return crc ^ (-1);
+    }
+
+    var h = img[0].length, w = img[0][0].length, s1, s2, next,k,length,a,b,i,j,adler32,crc32;
+    var stream = [
+                  137, 80, 78, 71, 13, 10, 26, 10,                           //  0: PNG signature
+                  0,0,0,13,                                                  //  8: IHDR Chunk length
+                  73, 72, 68, 82,                                            // 12: "IHDR" 
+                  (w >> 24) & 255, (w >> 16) & 255, (w >> 8) & 255, w&255,   // 16: Width
+                  (h >> 24) & 255, (h >> 16) & 255, (h >> 8) & 255, h&255,   // 20: Height
+                  8,                                                         // 24: bit depth
+                  2,                                                         // 25: RGB
+                  0,                                                         // 26: deflate
+                  0,                                                         // 27: no filter
+                  0,                                                         // 28: no interlace
+                  -1,-2,-3,-4,                                               // 29: CRC
+                  -5,-6,-7,-8,                                               // 33: IDAT Chunk length
+                  73, 68, 65, 84,                                            // 37: "IDAT"
+                  // RFC 1950 header starts here
+                  8,                                                         // 41: RFC1950 CMF
+                  29                                                         // 42: RFC1950 FLG
+                  ];
+    crc32 = crc32Array(stream,12,29);
+    stream[29] = (crc32>>24)&255;
+    stream[30] = (crc32>>16)&255;
+    stream[31] = (crc32>>8)&255;
+    stream[32] = (crc32)&255;
+    s1 = 1;
+    s2 = 0;
+    for(i=0;i<h;i++) {
+        if(i<h-1) { stream.push(0); }
+        else { stream.push(1); }
+        a = (3*w+1+(i===0))&255; b = ((3*w+1+(i===0))>>8)&255;
+        stream.push(a); stream.push(b);
+        stream.push((~a)&255); stream.push((~b)&255);
+        if(i===0) stream.push(0);
+        for(j=0;j<w;j++) {
+            for(k=0;k<3;k++) {
+                a = img[k][i][j];
+                if(a>255) a = 255;
+                else if(a<0) a=0;
+                else a = Math.round(a);
+                s1 = (s1 + a )%65521;
+                s2 = (s2 + s1)%65521;
+                stream.push(a);
+            }
+        }
+        stream.push(0);
+    }
+    adler32 = (s2<<16)+s1;
+    stream.push((adler32>>24)&255);
+    stream.push((adler32>>16)&255);
+    stream.push((adler32>>8)&255);
+    stream.push((adler32)&255);
+    length = stream.length - 41;
+    stream[33] = (length>>24)&255;
+    stream[34] = (length>>16)&255;
+    stream[35] = (length>>8)&255;
+    stream[36] = (length)&255;
+    crc32 = crc32Array(stream,37);
+    stream.push((crc32>>24)&255);
+    stream.push((crc32>>16)&255);
+    stream.push((crc32>>8)&255);
+    stream.push((crc32)&255);
+    stream.push(0);
+    stream.push(0);
+    stream.push(0);
+    stream.push(0);
+//    a = stream.length;
+    stream.push(73);  // I
+    stream.push(69);  // E
+    stream.push(78);  // N
+    stream.push(68);  // D
+    stream.push(174); // CRC1
+    stream.push(66);  // CRC2
+    stream.push(96);  // CRC3
+    stream.push(130); // CRC4
+    return 'data:image/png;base64,'+base64(stream);
+}
+
+// 2. Linear algebra with Arrays.
+numeric._dim = function _dim(x) {
+    var ret = [];
+    while(typeof x === "object") { ret.push(x.length); x = x[0]; }
+    return ret;
+}
+
+numeric.dim = function dim(x) {
+    var y,z;
+    if(typeof x === "object") {
+        y = x[0];
+        if(typeof y === "object") {
+            z = y[0];
+            if(typeof z === "object") {
+                return numeric._dim(x);
+            }
+            return [x.length,y.length];
+        }
+        return [x.length];
+    }
+    return [];
+}
+
+numeric.mapreduce = function mapreduce(body,init) {
+    return Function('x','accum','_s','_k',
+            'if(typeof accum === "undefined") accum = '+init+';\n'+
+            'if(typeof x === "number") { var xi = x; '+body+'; return accum; }\n'+
+            'if(typeof _s === "undefined") _s = numeric.dim(x);\n'+
+            'if(typeof _k === "undefined") _k = 0;\n'+
+            'var _n = _s[_k];\n'+
+            'var i,xi;\n'+
+            'if(_k < _s.length-1) {\n'+
+            '    for(i=_n-1;i>=0;i--) {\n'+
+            '        accum = arguments.callee(x[i],accum,_s,_k+1);\n'+
+            '    }'+
+            '    return accum;\n'+
+            '}\n'+
+            'for(i=_n-1;i>=1;i-=2) { \n'+
+            '    xi = x[i];\n'+
+            '    '+body+';\n'+
+            '    xi = x[i-1];\n'+
+            '    '+body+';\n'+
+            '}\n'+
+            'if(i === 0) {\n'+
+            '    xi = x[i];\n'+
+            '    '+body+'\n'+
+            '}\n'+
+            'return accum;'
+            );
+}
+numeric.mapreduce2 = function mapreduce2(body,setup) {
+    return Function('x',
+            'var n = x.length;\n'+
+            'var i,xi;\n'+setup+';\n'+
+            'for(i=n-1;i!==-1;--i) { \n'+
+            '    xi = x[i];\n'+
+            '    '+body+';\n'+
+            '}\n'+
+            'return accum;'
+            );
+}
+
+
+numeric.same = function same(x,y) {
+    var i,n;
+    if(!(x instanceof Array) || !(y instanceof Array)) { return false; }
+    n = x.length;
+    if(n !== y.length) { return false; }
+    for(i=0;i<n;i++) {
+        if(x[i] === y[i]) { continue; }
+        if(typeof x[i] === "object") { if(!same(x[i],y[i])) return false; }
+        else { return false; }
+    }
+    return true;
+}
+
+numeric.rep = function rep(s,v,k) {
+    if(typeof k === "undefined") { k=0; }
+    var n = s[k], ret = Array(n), i;
+    if(k === s.length-1) {
+        for(i=n-2;i>=0;i-=2) { ret[i+1] = v; ret[i] = v; }
+        if(i===-1) { ret[0] = v; }
+        return ret;
+    }
+    for(i=n-1;i>=0;i--) { ret[i] = numeric.rep(s,v,k+1); }
+    return ret;
+}
+
+
+numeric.dotMMsmall = function dotMMsmall(x,y) {
+    var i,j,k,p,q,r,ret,foo,bar,woo,i0,k0,p0,r0;
+    p = x.length; q = y.length; r = y[0].length;
+    ret = Array(p);
+    for(i=p-1;i>=0;i--) {
+        foo = Array(r);
+        bar = x[i];
+        for(k=r-1;k>=0;k--) {
+            woo = bar[q-1]*y[q-1][k];
+            for(j=q-2;j>=1;j-=2) {
+                i0 = j-1;
+                woo += bar[j]*y[j][k] + bar[i0]*y[i0][k];
+            }
+            if(j===0) { woo += bar[0]*y[0][k]; }
+            foo[k] = woo;
+        }
+        ret[i] = foo;
+    }
+    return ret;
+}
+numeric._getCol = function _getCol(A,j,x) {
+    var n = A.length, i;
+    for(i=n-1;i>0;--i) {
+        x[i] = A[i][j];
+        --i;
+        x[i] = A[i][j];
+    }
+    if(i===0) x[0] = A[0][j];
+}
+numeric.dotMMbig = function dotMMbig(x,y){
+    var gc = numeric._getCol, p = y.length, v = Array(p);
+    var m = x.length, n = y[0].length, A = new Array(m), xj;
+    var VV = numeric.dotVV;
+    var i,j,k,z;
+    --p;
+    --m;
+    for(i=m;i!==-1;--i) A[i] = Array(n);
+    --n;
+    for(i=n;i!==-1;--i) {
+        gc(y,i,v);
+        for(j=m;j!==-1;--j) {
+            z=0;
+            xj = x[j];
+            A[j][i] = VV(xj,v);
+        }
+    }
+    return A;
+}
+
+numeric.dotMV = function dotMV(x,y) {
+    var p = x.length, q = y.length,i;
+    var ret = Array(p), dotVV = numeric.dotVV;
+    for(i=p-1;i>=0;i--) { ret[i] = dotVV(x[i],y); }
+    return ret;
+}
+
+numeric.dotVM = function dotVM(x,y) {
+    var i,j,k,p,q,r,ret,foo,bar,woo,i0,k0,p0,r0,s1,s2,s3,baz,accum;
+    p = x.length; q = y[0].length;
+    ret = Array(q);
+    for(k=q-1;k>=0;k--) {
+        woo = x[p-1]*y[p-1][k];
+        for(j=p-2;j>=1;j-=2) {
+            i0 = j-1;
+            woo += x[j]*y[j][k] + x[i0]*y[i0][k];
+        }
+        if(j===0) { woo += x[0]*y[0][k]; }
+        ret[k] = woo;
+    }
+    return ret;
+}
+
+numeric.dotVV = function dotVV(x,y) {
+    var i,n=x.length,i1,ret = x[n-1]*y[n-1];
+    for(i=n-2;i>=1;i-=2) {
+        i1 = i-1;
+        ret += x[i]*y[i] + x[i1]*y[i1];
+    }
+    if(i===0) { ret += x[0]*y[0]; }
+    return ret;
+}
+
+numeric.dot = function dot(x,y) {
+    var d = numeric.dim;
+    switch(d(x).length*1000+d(y).length) {
+    case 2002:
+        if(y.length < 10) return numeric.dotMMsmall(x,y);
+        else return numeric.dotMMbig(x,y);
+    case 2001: return numeric.dotMV(x,y);
+    case 1002: return numeric.dotVM(x,y);
+    case 1001: return numeric.dotVV(x,y);
+    case 1000: return numeric.mulVS(x,y);
+    case 1: return numeric.mulSV(x,y);
+    case 0: return x*y;
+    default: throw new Error('numeric.dot only works on vectors and matrices');
+    }
+}
+
+numeric.diag = function diag(d) {
+    var i,i1,j,n = d.length, A = Array(n), Ai;
+    for(i=n-1;i>=0;i--) {
+        Ai = Array(n);
+        i1 = i+2;
+        for(j=n-1;j>=i1;j-=2) {
+            Ai[j] = 0;
+            Ai[j-1] = 0;
+        }
+        if(j>i) { Ai[j] = 0; }
+        Ai[i] = d[i];
+        for(j=i-1;j>=1;j-=2) {
+            Ai[j] = 0;
+            Ai[j-1] = 0;
+        }
+        if(j===0) { Ai[0] = 0; }
+        A[i] = Ai;
+    }
+    return A;
+}
+numeric.getDiag = function(A) {
+    var n = Math.min(A.length,A[0].length),i,ret = Array(n);
+    for(i=n-1;i>=1;--i) {
+        ret[i] = A[i][i];
+        --i;
+        ret[i] = A[i][i];
+    }
+    if(i===0) {
+        ret[0] = A[0][0];
+    }
+    return ret;
+}
+
+numeric.identity = function identity(n) { return numeric.diag(numeric.rep([n],1)); }
+numeric.pointwise = function pointwise(params,body,setup) {
+    if(typeof setup === "undefined") { setup = ""; }
+    var fun = [];
+    var k;
+    var avec = /\[i\]$/,p,thevec = '';
+    var haveret = false;
+    for(k=0;k<params.length;k++) {
+        if(avec.test(params[k])) {
+            p = params[k].substring(0,params[k].length-3);
+            thevec = p;
+        } else { p = params[k]; }
+        if(p==='ret') haveret = true;
+        fun.push(p);
+    }
+    fun[params.length] = '_s';
+    fun[params.length+1] = '_k';
+    fun[params.length+2] = (
+            'if(typeof _s === "undefined") _s = numeric.dim('+thevec+');\n'+
+            'if(typeof _k === "undefined") _k = 0;\n'+
+            'var _n = _s[_k];\n'+
+            'var i'+(haveret?'':', ret = Array(_n)')+';\n'+
+            'if(_k < _s.length-1) {\n'+
+            '    for(i=_n-1;i>=0;i--) ret[i] = arguments.callee('+params.join(',')+',_s,_k+1);\n'+
+            '    return ret;\n'+
+            '}\n'+
+            setup+'\n'+
+            'for(i=_n-1;i!==-1;--i) {\n'+
+            '    '+body+'\n'+
+            '}\n'+
+            'return ret;'
+            );
+    return Function.apply(null,fun);
+}
+numeric.pointwise2 = function pointwise2(params,body,setup) {
+    if(typeof setup === "undefined") { setup = ""; }
+    var fun = [];
+    var k;
+    var avec = /\[i\]$/,p,thevec = '';
+    var haveret = false;
+    for(k=0;k<params.length;k++) {
+        if(avec.test(params[k])) {
+            p = params[k].substring(0,params[k].length-3);
+            thevec = p;
+        } else { p = params[k]; }
+        if(p==='ret') haveret = true;
+        fun.push(p);
+    }
+    fun[params.length] = (
+            'var _n = '+thevec+'.length;\n'+
+            'var i'+(haveret?'':', ret = Array(_n)')+';\n'+
+            setup+'\n'+
+            'for(i=_n-1;i!==-1;--i) {\n'+
+            body+'\n'+
+            '}\n'+
+            'return ret;'
+            );
+    return Function.apply(null,fun);
+}
+numeric._biforeach = (function _biforeach(x,y,s,k,f) {
+    if(k === s.length-1) { f(x,y); return; }
+    var i,n=s[k];
+    for(i=n-1;i>=0;i--) { _biforeach(typeof x==="object"?x[i]:x,typeof y==="object"?y[i]:y,s,k+1,f); }
+});
+numeric._biforeach2 = (function _biforeach2(x,y,s,k,f) {
+    if(k === s.length-1) { return f(x,y); }
+    var i,n=s[k],ret = Array(n);
+    for(i=n-1;i>=0;--i) { ret[i] = _biforeach2(typeof x==="object"?x[i]:x,typeof y==="object"?y[i]:y,s,k+1,f); }
+    return ret;
+});
+numeric._foreach = (function _foreach(x,s,k,f) {
+    if(k === s.length-1) { f(x); return; }
+    var i,n=s[k];
+    for(i=n-1;i>=0;i--) { _foreach(x[i],s,k+1,f); }
+});
+numeric._foreach2 = (function _foreach2(x,s,k,f) {
+    if(k === s.length-1) { return f(x); }
+    var i,n=s[k], ret = Array(n);
+    for(i=n-1;i>=0;i--) { ret[i] = _foreach2(x[i],s,k+1,f); }
+    return ret;
+});
+
+/*numeric.anyV = numeric.mapreduce('if(xi) return true;','false');
+numeric.allV = numeric.mapreduce('if(!xi) return false;','true');
+numeric.any = function(x) { if(typeof x.length === "undefined") return x; return numeric.anyV(x); }
+numeric.all = function(x) { if(typeof x.length === "undefined") return x; return numeric.allV(x); }*/
+
+numeric.ops2 = {
+        add: '+',
+        sub: '-',
+        mul: '*',
+        div: '/',
+        mod: '%',
+        and: '&&',
+        or:  '||',
+        eq:  '===',
+        neq: '!==',
+        lt:  '<',
+        gt:  '>',
+        leq: '<=',
+        geq: '>=',
+        band: '&',
+        bor: '|',
+        bxor: '^',
+        lshift: '<<',
+        rshift: '>>',
+        rrshift: '>>>'
+};
+numeric.opseq = {
+        addeq: '+=',
+        subeq: '-=',
+        muleq: '*=',
+        diveq: '/=',
+        modeq: '%=',
+        lshifteq: '<<=',
+        rshifteq: '>>=',
+        rrshifteq: '>>>=',
+        bandeq: '&=',
+        boreq: '|=',
+        bxoreq: '^='
+};
+numeric.mathfuns = ['abs','acos','asin','atan','ceil','cos',
+                    'exp','floor','log','round','sin','sqrt','tan',
+                    'isNaN','isFinite'];
+numeric.mathfuns2 = ['atan2','pow','max','min'];
+numeric.ops1 = {
+        neg: '-',
+        not: '!',
+        bnot: '~',
+        clone: ''
+};
+numeric.mapreducers = {
+        any: ['if(xi) return true;','var accum = false;'],
+        all: ['if(!xi) return false;','var accum = true;'],
+        sum: ['accum += xi;','var accum = 0;'],
+        prod: ['accum *= xi;','var accum = 1;'],
+        norm2Squared: ['accum += xi*xi;','var accum = 0;'],
+        norminf: ['accum = max(accum,abs(xi));','var accum = 0, max = Math.max, abs = Math.abs;'],
+        norm1: ['accum += abs(xi)','var accum = 0, abs = Math.abs;'],
+        sup: ['accum = max(accum,xi);','var accum = -Infinity, max = Math.max;'],
+        inf: ['accum = min(accum,xi);','var accum = Infinity, min = Math.min;']
+};
+
+(function () {
+    var i,o;
+    for(i=0;i<numeric.mathfuns2.length;++i) {
+        o = numeric.mathfuns2[i];
+        numeric.ops2[o] = o;
+    }
+    for(i in numeric.ops2) {
+        if(numeric.ops2.hasOwnProperty(i)) {
+            o = numeric.ops2[i];
+            var code, codeeq, setup = '';
+            if(numeric.myIndexOf.call(numeric.mathfuns2,i)!==-1) {
+                setup = 'var '+o+' = Math.'+o+';\n';
+                code = function(r,x,y) { return r+' = '+o+'('+x+','+y+')'; };
+                codeeq = function(x,y) { return x+' = '+o+'('+x+','+y+')'; };
+            } else {
+                code = function(r,x,y) { return r+' = '+x+' '+o+' '+y; };
+                if(numeric.opseq.hasOwnProperty(i+'eq')) {
+                    codeeq = function(x,y) { return x+' '+o+'= '+y; };
+                } else {
+                    codeeq = function(x,y) { return x+' = '+x+' '+o+' '+y; };                    
+                }
+            }
+            numeric[i+'VV'] = numeric.pointwise2(['x[i]','y[i]'],code('ret[i]','x[i]','y[i]'),setup);
+            numeric[i+'SV'] = numeric.pointwise2(['x','y[i]'],code('ret[i]','x','y[i]'),setup);
+            numeric[i+'VS'] = numeric.pointwise2(['x[i]','y'],code('ret[i]','x[i]','y'),setup);
+            numeric[i] = Function(
+                    'var n = arguments.length, i, x = arguments[0], y;\n'+
+                    'var VV = numeric.'+i+'VV, VS = numeric.'+i+'VS, SV = numeric.'+i+'SV;\n'+
+                    'var dim = numeric.dim;\n'+
+                    'for(i=1;i!==n;++i) { \n'+
+                    '  y = arguments[i];\n'+
+                    '  if(typeof x === "object") {\n'+
+                    '      if(typeof y === "object") x = numeric._biforeach2(x,y,dim(x),0,VV);\n'+
+                    '      else x = numeric._biforeach2(x,y,dim(x),0,VS);\n'+
+                    '  } else if(typeof y === "object") x = numeric._biforeach2(x,y,dim(y),0,SV);\n'+
+                    '  else '+codeeq('x','y')+'\n'+
+                    '}\nreturn x;\n');
+            numeric[o] = numeric[i];
+            numeric[i+'eqV'] = numeric.pointwise2(['ret[i]','x[i]'], codeeq('ret[i]','x[i]'),setup);
+            numeric[i+'eqS'] = numeric.pointwise2(['ret[i]','x'], codeeq('ret[i]','x'),setup);
+            numeric[i+'eq'] = Function(
+                    'var n = arguments.length, i, x = arguments[0], y;\n'+
+                    'var V = numeric.'+i+'eqV, S = numeric.'+i+'eqS\n'+
+                    'var s = numeric.dim(x);\n'+
+                    'for(i=1;i!==n;++i) { \n'+
+                    '  y = arguments[i];\n'+
+                    '  if(typeof y === "object") numeric._biforeach(x,y,s,0,V);\n'+
+                    '  else numeric._biforeach(x,y,s,0,S);\n'+
+                    '}\nreturn x;\n');
+        }
+    }
+    for(i=0;i<numeric.mathfuns2.length;++i) {
+        o = numeric.mathfuns2[i];
+        delete numeric.ops2[o];
+    }
+    for(i=0;i<numeric.mathfuns.length;++i) {
+        o = numeric.mathfuns[i];
+        numeric.ops1[o] = o;
+    }
+    for(i in numeric.ops1) {
+        if(numeric.ops1.hasOwnProperty(i)) {
+            setup = '';
+            o = numeric.ops1[i];
+            if(numeric.myIndexOf.call(numeric.mathfuns,i)!==-1) {
+                if(Math.hasOwnProperty(o)) setup = 'var '+o+' = Math.'+o+';\n';
+            }
+            numeric[i+'eqV'] = numeric.pointwise2(['ret[i]'],'ret[i] = '+o+'(ret[i]);',setup);
+            numeric[i+'eq'] = Function('x',
+                    'if(typeof x !== "object") return '+o+'x\n'+
+                    'var i;\n'+
+                    'var V = numeric.'+i+'eqV;\n'+
+                    'var s = numeric.dim(x);\n'+
+                    'numeric._foreach(x,s,0,V);\n'+
+                    'return x;\n');
+            numeric[i+'V'] = numeric.pointwise2(['x[i]'],'ret[i] = '+o+'(x[i]);',setup);
+            numeric[i] = Function('x',
+                    'if(typeof x !== "object") return '+o+'(x)\n'+
+                    'var i;\n'+
+                    'var V = numeric.'+i+'V;\n'+
+                    'var s = numeric.dim(x);\n'+
+                    'return numeric._foreach2(x,s,0,V);\n');
+        }
+    }
+    for(i=0;i<numeric.mathfuns.length;++i) {
+        o = numeric.mathfuns[i];
+        delete numeric.ops1[o];
+    }
+    for(i in numeric.mapreducers) {
+        if(numeric.mapreducers.hasOwnProperty(i)) {
+            o = numeric.mapreducers[i];
+            numeric[i+'V'] = numeric.mapreduce2(o[0],o[1]);
+            numeric[i] = Function('x','s','k',
+                    o[1]+
+                    'if(typeof x !== "object") {'+
+                    '    xi = x;\n'+
+                    o[0]+';\n'+
+                    '    return accum;\n'+
+                    '}'+
+                    'if(typeof s === "undefined") s = numeric.dim(x);\n'+
+                    'if(typeof k === "undefined") k = 0;\n'+
+                    'if(k === s.length-1) return numeric.'+i+'V(x);\n'+
+                    'var xi;\n'+
+                    'var n = x.length, i;\n'+
+                    'for(i=n-1;i!==-1;--i) {\n'+
+                    '   xi = arguments.callee(x[i]);\n'+
+                    o[0]+';\n'+
+                    '}\n'+
+                    'return accum;\n');
+        }
+    }
+}());
+
+numeric.truncVV = numeric.pointwise(['x[i]','y[i]'],'ret[i] = round(x[i]/y[i])*y[i];','var round = Math.round;');
+numeric.truncVS = numeric.pointwise(['x[i]','y'],'ret[i] = round(x[i]/y)*y;','var round = Math.round;');
+numeric.truncSV = numeric.pointwise(['x','y[i]'],'ret[i] = round(x/y[i])*y[i];','var round = Math.round;');
+numeric.trunc = function trunc(x,y) {
+    if(typeof x === "object") {
+        if(typeof y === "object") return numeric.truncVV(x,y);
+        return numeric.truncVS(x,y);
+    }
+    if (typeof y === "object") return numeric.truncSV(x,y);
+    return Math.round(x/y)*y;
+}
+
+numeric.inv = function inv(x) {
+    var s = numeric.dim(x), abs = Math.abs, m = s[0], n = s[1];
+    var A = numeric.clone(x), Ai, Aj;
+    var I = numeric.identity(m), Ii, Ij;
+    var i,j,k,x;
+    for(j=0;j<n;++j) {
+        var i0 = -1;
+        var v0 = -1;
+        for(i=j;i!==m;++i) { k = abs(A[i][j]); if(k>v0) { i0 = i; v0 = k; } }
+        Aj = A[i0]; A[i0] = A[j]; A[j] = Aj;
+        Ij = I[i0]; I[i0] = I[j]; I[j] = Ij;
+        x = Aj[j];
+        for(k=j;k!==n;++k)    Aj[k] /= x; 
+        for(k=n-1;k!==-1;--k) Ij[k] /= x;
+        for(i=m-1;i!==-1;--i) {
+            if(i!==j) {
+                Ai = A[i];
+                Ii = I[i];
+                x = Ai[j];
+                for(k=j+1;k!==n;++k)  Ai[k] -= Aj[k]*x;
+                for(k=n-1;k>0;--k) { Ii[k] -= Ij[k]*x; --k; Ii[k] -= Ij[k]*x; }
+                if(k===0) Ii[0] -= Ij[0]*x;
+            }
+        }
+    }
+    return I;
+}
+
+numeric.det = function det(x) {
+    var s = numeric.dim(x);
+    if(s.length !== 2 || s[0] !== s[1]) { throw new Error('numeric: det() only works on square matrices'); }
+    var n = s[0], ret = 1,i,j,k,A = numeric.clone(x),Aj,Ai,alpha,temp,k1,k2,k3;
+    for(j=0;j<n-1;j++) {
+        k=j;
+        for(i=j+1;i<n;i++) { if(Math.abs(A[i][j]) > Math.abs(A[k][j])) { k = i; } }
+        if(k !== j) {
+            temp = A[k]; A[k] = A[j]; A[j] = temp;
+            ret *= -1;
+        }
+        Aj = A[j];
+        for(i=j+1;i<n;i++) {
+            Ai = A[i];
+            alpha = Ai[j]/Aj[j];
+            for(k=j+1;k<n-1;k+=2) {
+                k1 = k+1;
+                Ai[k] -= Aj[k]*alpha;
+                Ai[k1] -= Aj[k1]*alpha;
+            }
+            if(k!==n) { Ai[k] -= Aj[k]*alpha; }
+        }
+        if(Aj[j] === 0) { return 0; }
+        ret *= Aj[j];
+    }
+    return ret*A[j][j];
+}
+
+numeric.transpose = function transpose(x) {
+    var i,j,m = x.length,n = x[0].length, ret=Array(n),A0,A1,Bj;
+    for(j=0;j<n;j++) ret[j] = Array(m);
+    for(i=m-1;i>=1;i-=2) {
+        A1 = x[i];
+        A0 = x[i-1];
+        for(j=n-1;j>=1;--j) {
+            Bj = ret[j]; Bj[i] = A1[j]; Bj[i-1] = A0[j];
+            --j;
+            Bj = ret[j]; Bj[i] = A1[j]; Bj[i-1] = A0[j];
+        }
+        if(j===0) {
+            Bj = ret[0]; Bj[i] = A1[0]; Bj[i-1] = A0[0];
+        }
+    }
+    if(i===0) {
+        A0 = x[0];
+        for(j=n-1;j>=1;--j) {
+            ret[j][0] = A0[j];
+            --j;
+            ret[j][0] = A0[j];
+        }
+        if(j===0) { ret[0][0] = A0[0]; }
+    }
+    return ret;
+}
+numeric.negtranspose = function negtranspose(x) {
+    var i,j,m = x.length,n = x[0].length, ret=Array(n),A0,A1,Bj;
+    for(j=0;j<n;j++) ret[j] = Array(m);
+    for(i=m-1;i>=1;i-=2) {
+        A1 = x[i];
+        A0 = x[i-1];
+        for(j=n-1;j>=1;--j) {
+            Bj = ret[j]; Bj[i] = -A1[j]; Bj[i-1] = -A0[j];
+            --j;
+            Bj = ret[j]; Bj[i] = -A1[j]; Bj[i-1] = -A0[j];
+        }
+        if(j===0) {
+            Bj = ret[0]; Bj[i] = -A1[0]; Bj[i-1] = -A0[0];
+        }
+    }
+    if(i===0) {
+        A0 = x[0];
+        for(j=n-1;j>=1;--j) {
+            ret[j][0] = -A0[j];
+            --j;
+            ret[j][0] = -A0[j];
+        }
+        if(j===0) { ret[0][0] = -A0[0]; }
+    }
+    return ret;
+}
+
+numeric._random = function _random(s,k) {
+    var i,n=s[k],ret=Array(n), rnd;
+    if(k === s.length-1) {
+        rnd = Math.random;
+        for(i=n-1;i>=1;i-=2) {
+            ret[i] = rnd();
+            ret[i-1] = rnd();
+        }
+        if(i===0) { ret[0] = rnd(); }
+        return ret;
+    }
+    for(i=n-1;i>=0;i--) ret[i] = _random(s,k+1);
+    return ret;
+}
+numeric.random = function random(s) { return numeric._random(s,0); }
+
+numeric.norm2 = function norm2(x) { return Math.sqrt(numeric.norm2Squared(x)); }
+
+numeric.linspace = function linspace(a,b,n) {
+    if(typeof n === "undefined") n = Math.max(Math.round(b-a)+1,1);
+    if(n<2) { return n===1?[a]:[]; }
+    var i,ret = Array(n);
+    n--;
+    for(i=n;i>=0;i--) { ret[i] = (i*b+(n-i)*a)/n; }
+    return ret;
+}
+
+numeric.getBlock = function getBlock(x,from,to) {
+    var s = numeric.dim(x);
+    function foo(x,k) {
+        var i,a = from[k], n = to[k]-a, ret = Array(n);
+        if(k === s.length-1) {
+            for(i=n;i>=0;i--) { ret[i] = x[i+a]; }
+            return ret;
+        }
+        for(i=n;i>=0;i--) { ret[i] = foo(x[i+a],k+1); }
+        return ret;
+    }
+    return foo(x,0);
+}
+
+numeric.setBlock = function setBlock(x,from,to,B) {
+    var s = numeric.dim(x);
+    function foo(x,y,k) {
+        var i,a = from[k], n = to[k]-a;
+        if(k === s.length-1) { for(i=n;i>=0;i--) { x[i+a] = y[i]; } }
+        for(i=n;i>=0;i--) { foo(x[i+a],y[i],k+1); }
+    }
+    foo(x,B,0);
+    return x;
+}
+
+numeric.getRange = function getRange(A,I,J) {
+    var m = I.length, n = J.length;
+    var i,j;
+    var B = Array(m), Bi, AI;
+    for(i=m-1;i!==-1;--i) {
+        B[i] = Array(n);
+        Bi = B[i];
+        AI = A[I[i]];
+        for(j=n-1;j!==-1;--j) Bi[j] = AI[J[j]];
+    }
+    return B;
+}
+
+numeric.blockMatrix = function blockMatrix(X) {
+    var s = numeric.dim(X);
+    if(s.length<4) return numeric.blockMatrix([X]);
+    var m=s[0],n=s[1],M,N,i,j,Xij;
+    M = 0; N = 0;
+    for(i=0;i<m;++i) M+=X[i][0].length;
+    for(j=0;j<n;++j) N+=X[0][j][0].length;
+    var Z = Array(M);
+    for(i=0;i<M;++i) Z[i] = Array(N);
+    var I=0,J,ZI,k,l,Xijk;
+    for(i=0;i<m;++i) {
+        J=N;
+        for(j=n-1;j!==-1;--j) {
+            Xij = X[i][j];
+            J -= Xij[0].length;
+            for(k=Xij.length-1;k!==-1;--k) {
+                Xijk = Xij[k];
+                ZI = Z[I+k];
+                for(l = Xijk.length-1;l!==-1;--l) ZI[J+l] = Xijk[l];
+            }
+        }
+        I += X[i][0].length;
+    }
+    return Z;
+}
+
+numeric.tensor = function tensor(x,y) {
+    if(typeof x === "number" || typeof y === "number") return numeric.mul(x,y);
+    var s1 = numeric.dim(x), s2 = numeric.dim(y);
+    if(s1.length !== 1 || s2.length !== 1) {
+        throw new Error('numeric: tensor product is only defined for vectors');
+    }
+    var m = s1[0], n = s2[0], A = Array(m), Ai, i,j,xi;
+    for(i=m-1;i>=0;i--) {
+        Ai = Array(n);
+        xi = x[i];
+        for(j=n-1;j>=3;--j) {
+            Ai[j] = xi * y[j];
+            --j;
+            Ai[j] = xi * y[j];
+            --j;
+            Ai[j] = xi * y[j];
+            --j;
+            Ai[j] = xi * y[j];
+        }
+        while(j>=0) { Ai[j] = xi * y[j]; --j; }
+        A[i] = Ai;
+    }
+    return A;
+}
+
+// 3. The Tensor type T
+numeric.T = function T(x,y) { this.x = x; this.y = y; }
+numeric.t = function t(x,y) { return new numeric.T(x,y); }
+
+numeric.Tbinop = function Tbinop(rr,rc,cr,cc,setup) {
+    var io = numeric.indexOf;
+    if(typeof setup !== "string") {
+        var k;
+        setup = '';
+        for(k in numeric) {
+            if(numeric.hasOwnProperty(k) && (rr.indexOf(k)>=0 || rc.indexOf(k)>=0 || cr.indexOf(k)>=0 || cc.indexOf(k)>=0) && k.length>1) {
+                setup += 'var '+k+' = numeric.'+k+';\n';
+            }
+        }
+    }
+    return Function(['y'],
+            'var x = this;\n'+
+            'if(!(y instanceof numeric.T)) { y = new numeric.T(y); }\n'+
+            setup+'\n'+
+            'if(x.y) {'+
+            '  if(y.y) {'+
+            '    return new numeric.T('+cc+');\n'+
+            '  }\n'+
+            '  return new numeric.T('+cr+');\n'+
+            '}\n'+
+            'if(y.y) {\n'+
+            '  return new numeric.T('+rc+');\n'+
+            '}\n'+
+            'return new numeric.T('+rr+');\n'
+    );
+}
+
+numeric.T.prototype.add = numeric.Tbinop(
+        'add(x.x,y.x)',
+        'add(x.x,y.x),y.y',
+        'add(x.x,y.x),x.y',
+        'add(x.x,y.x),add(x.y,y.y)');
+numeric.T.prototype.sub = numeric.Tbinop(
+        'sub(x.x,y.x)',
+        'sub(x.x,y.x),neg(y.y)',
+        'sub(x.x,y.x),x.y',
+        'sub(x.x,y.x),sub(x.y,y.y)');
+numeric.T.prototype.mul = numeric.Tbinop(
+        'mul(x.x,y.x)',
+        'mul(x.x,y.x),mul(x.x,y.y)',
+        'mul(x.x,y.x),mul(x.y,y.x)',
+        'sub(mul(x.x,y.x),mul(x.y,y.y)),add(mul(x.x,y.y),mul(x.y,y.x))');
+
+numeric.T.prototype.reciprocal = function reciprocal() {
+    var mul = numeric.mul, div = numeric.div;
+    if(this.y) {
+        var d = numeric.add(mul(this.x,this.x),mul(this.y,this.y));
+        return new numeric.T(div(this.x,d),div(numeric.neg(this.y),d));
+    }
+    return new T(div(1,this.x));
+}
+numeric.T.prototype.div = function div(y) {
+    if(!(y instanceof numeric.T)) y = new numeric.T(y);
+    if(y.y) { return this.mul(y.reciprocal()); }
+    var div = numeric.div;
+    if(this.y) { return new numeric.T(div(this.x,y.x),div(this.y,y.x)); }
+    return new numeric.T(div(this.x,y.x));
+}
+numeric.T.prototype.dot = numeric.Tbinop(
+        'dot(x.x,y.x)',
+        'dot(x.x,y.x),dot(x.x,y.y)',
+        'dot(x.x,y.x),dot(x.y,y.x)',
+        'sub(dot(x.x,y.x),dot(x.y,y.y)),add(dot(x.x,y.y),dot(x.y,y.x))'
+        );
+numeric.T.prototype.transpose = function transpose() {
+    var t = numeric.transpose, x = this.x, y = this.y;
+    if(y) { return new numeric.T(t(x),t(y)); }
+    return new numeric.T(t(x));
+}
+numeric.T.prototype.transjugate = function transjugate() {
+    var t = numeric.transpose, x = this.x, y = this.y;
+    if(y) { return new numeric.T(t(x),numeric.negtranspose(y)); }
+    return new numeric.T(t(x));
+}
+numeric.Tunop = function Tunop(r,c,s) {
+    if(typeof s !== "string") { s = ''; }
+    return Function(
+            'var x = this;\n'+
+            s+'\n'+
+            'if(x.y) {'+
+            '  '+c+';\n'+
+            '}\n'+
+            r+';\n'
+    );
+}
+
+numeric.T.prototype.exp = numeric.Tunop(
+        'return new numeric.T(ex)',
+        'return new numeric.T(mul(cos(x.y),ex),mul(sin(x.y),ex))',
+        'var ex = numeric.exp(x.x), cos = numeric.cos, sin = numeric.sin, mul = numeric.mul;');
+numeric.T.prototype.conj = numeric.Tunop(
+        'return new numeric.T(x.x);',
+        'return new numeric.T(x.x,numeric.neg(x.y));');
+numeric.T.prototype.neg = numeric.Tunop(
+        'return new numeric.T(neg(x.x));',
+        'return new numeric.T(neg(x.x),neg(x.y));',
+        'var neg = numeric.neg;');
+numeric.T.prototype.sin = numeric.Tunop(
+        'return new numeric.T(numeric.sin(x.x))',
+        'return x.exp().sub(x.neg().exp()).div(new numeric.T(0,2));');
+numeric.T.prototype.cos = numeric.Tunop(
+        'return new numeric.T(numeric.cos(x.x))',
+        'return x.exp().add(x.neg().exp()).div(2);');
+numeric.T.prototype.abs = numeric.Tunop(
+        'return new numeric.T(numeric.abs(x.x));',
+        'return new numeric.T(numeric.sqrt(numeric.add(mul(x.x,x.x),mul(x.y,x.y))));',
+        'var mul = numeric.mul;');
+numeric.T.prototype.log = numeric.Tunop(
+        'return new numeric.T(numeric.log(x.x));',
+        'var theta = new numeric.T(numeric.atan2(x.y,x.x)), r = x.abs();\n'+
+        'return new numeric.T(numeric.log(r.x),theta.x);');
+numeric.T.prototype.norm2 = numeric.Tunop(
+        'return numeric.norm2(x.x);',
+        'var f = numeric.norm2Squared;\n'+
+        'return Math.sqrt(f(x.x)+f(x.y));');
+numeric.T.prototype.inv = function inv() {
+    var A = this;
+    if(typeof A.y === "undefined") { return new numeric.T(numeric.inv(A.x)); }
+    var n = A.x.length, i, j, k;
+    var Rx = numeric.identity(n),Ry = numeric.rep([n,n],0);
+    var Ax = numeric.clone(A.x), Ay = numeric.clone(A.y);
+    var Aix, Aiy, Ajx, Ajy, Rix, Riy, Rjx, Rjy;
+    var i,j,k,d,d1,ax,ay,bx,by,temp;
+    for(i=0;i<n;i++) {
+        ax = Ax[i][i]; ay = Ay[i][i];
+        d = ax*ax+ay*ay;
+        k = i;
+        for(j=i+1;j<n;j++) {
+            ax = Ax[j][i]; ay = Ay[j][i];
+            d1 = ax*ax+ay*ay;
+            if(d1 > d) { k=j; d = d1; }
+        }
+        if(k!==i) {
+            temp = Ax[i]; Ax[i] = Ax[k]; Ax[k] = temp;
+            temp = Ay[i]; Ay[i] = Ay[k]; Ay[k] = temp;
+            temp = Rx[i]; Rx[i] = Rx[k]; Rx[k] = temp;
+            temp = Ry[i]; Ry[i] = Ry[k]; Ry[k] = temp;
+        }
+        Aix = Ax[i]; Aiy = Ay[i];
+        Rix = Rx[i]; Riy = Ry[i];
+        ax = Aix[i]; ay = Aiy[i];
+        for(j=i+1;j<n;j++) {
+            bx = Aix[j]; by = Aiy[j];
+            Aix[j] = (bx*ax+by*ay)/d;
+            Aiy[j] = (by*ax-bx*ay)/d;
+        }
+        for(j=0;j<n;j++) {
+            bx = Rix[j]; by = Riy[j];
+            Rix[j] = (bx*ax+by*ay)/d;
+            Riy[j] = (by*ax-bx*ay)/d;
+        }
+        for(j=i+1;j<n;j++) {
+            Ajx = Ax[j]; Ajy = Ay[j];
+            Rjx = Rx[j]; Rjy = Ry[j];
+            ax = Ajx[i]; ay = Ajy[i];
+            for(k=i+1;k<n;k++) {
+                bx = Aix[k]; by = Aiy[k];
+                Ajx[k] -= bx*ax-by*ay;
+                Ajy[k] -= by*ax+bx*ay;
+            }
+            for(k=0;k<n;k++) {
+                bx = Rix[k]; by = Riy[k];
+                Rjx[k] -= bx*ax-by*ay;
+                Rjy[k] -= by*ax+bx*ay;
+            }
+        }
+    }
+    for(i=n-1;i>0;i--) {
+        Rix = Rx[i]; Riy = Ry[i];
+        for(j=i-1;j>=0;j--) {
+            Rjx = Rx[j]; Rjy = Ry[j];
+            ax = Ax[j][i]; ay = Ay[j][i];
+            for(k=n-1;k>=0;k--) {
+                bx = Rix[k]; by = Riy[k];
+                Rjx[k] -= ax*bx - ay*by;
+                Rjy[k] -= ax*by + ay*bx;
+            }
+        }
+    }
+    return new numeric.T(Rx,Ry);
+}
+numeric.T.prototype.get = function get(i) {
+    var x = this.x, y = this.y, k = 0, ik, n = i.length;
+    if(y) {
+        while(k<n) {
+            ik = i[k];
+            x = x[ik];
+            y = y[ik];
+            k++;
+        }
+        return new numeric.T(x,y);
+    }
+    while(k<n) {
+        ik = i[k];
+        x = x[ik];
+        k++;
+    }
+    return new numeric.T(x);
+}
+numeric.T.prototype.set = function set(i,v) {
+    var x = this.x, y = this.y, k = 0, ik, n = i.length, vx = v.x, vy = v.y;
+    if(n===0) {
+        if(vy) { this.y = vy; }
+        else if(y) { this.y = undefined; }
+        this.x = x;
+        return this;
+    }
+    if(vy) {
+        if(y) { /* ok */ }
+        else {
+            y = numeric.rep(numeric.dim(x),0);
+            this.y = y;
+        }
+        while(k<n-1) {
+            ik = i[k];
+            x = x[ik];
+            y = y[ik];
+            k++;
+        }
+        ik = i[k];
+        x[ik] = vx;
+        y[ik] = vy;
+        return this;
+    }
+    if(y) {
+        while(k<n-1) {
+            ik = i[k];
+            x = x[ik];
+            y = y[ik];
+            k++;
+        }
+        ik = i[k];
+        x[ik] = vx;
+        if(vx instanceof Array) y[ik] = numeric.rep(numeric.dim(vx),0);
+        else y[ik] = 0;
+        return this;
+    }
+    while(k<n-1) {
+        ik = i[k];
+        x = x[ik];
+        k++;
+    }
+    ik = i[k];
+    x[ik] = vx;
+    return this;
+}
+numeric.T.prototype.getRows = function getRows(i0,i1) {
+    var n = i1-i0+1, j;
+    var rx = Array(n), ry, x = this.x, y = this.y;
+    for(j=i0;j<=i1;j++) { rx[j-i0] = x[j]; }
+    if(y) {
+        ry = Array(n);
+        for(j=i0;j<=i1;j++) { ry[j-i0] = y[j]; }
+        return new numeric.T(rx,ry);
+    }
+    return new numeric.T(rx);
+}
+numeric.T.prototype.setRows = function setRows(i0,i1,A) {
+    var j;
+    var rx = this.x, ry = this.y, x = A.x, y = A.y;
+    for(j=i0;j<=i1;j++) { rx[j] = x[j-i0]; }
+    if(y) {
+        if(!ry) { ry = numeric.rep(numeric.dim(rx),0); this.y = ry; }
+        for(j=i0;j<=i1;j++) { ry[j] = y[j-i0]; }
+    } else if(ry) {
+        for(j=i0;j<=i1;j++) { ry[j] = numeric.rep([x[j-i0].length],0); }
+    }
+    return this;
+}
+numeric.T.prototype.getRow = function getRow(k) {
+    var x = this.x, y = this.y;
+    if(y) { return new numeric.T(x[k],y[k]); }
+    return new numeric.T(x[k]);
+}
+numeric.T.prototype.setRow = function setRow(i,v) {
+    var rx = this.x, ry = this.y, x = v.x, y = v.y;
+    rx[i] = x;
+    if(y) {
+        if(!ry) { ry = numeric.rep(numeric.dim(rx),0); this.y = ry; }
+        ry[i] = y;
+    } else if(ry) {
+        ry = numeric.rep([x.length],0);
+    }
+    return this;
+}
+
+numeric.T.prototype.getBlock = function getBlock(from,to) {
+    var x = this.x, y = this.y, b = numeric.getBlock;
+    if(y) { return new numeric.T(b(x,from,to),b(y,from,to)); }
+    return new numeric.T(b(x,from,to));
+}
+numeric.T.prototype.setBlock = function setBlock(from,to,A) {
+    if(!(A instanceof numeric.T)) A = new numeric.T(A);
+    var x = this.x, y = this.y, b = numeric.setBlock, Ax = A.x, Ay = A.y;
+    if(Ay) {
+        if(!y) { this.y = numeric.rep(numeric.dim(this),0); y = this.y; }
+        b(x,from,to,Ax);
+        b(y,from,to,Ay);
+        return this;
+    }
+    b(x,from,to,Ax);
+    if(y) b(y,from,to,numeric.rep(numeric.dim(Ax),0));
+}
+numeric.T.rep = function rep(s,v) {
+    var T = numeric.T;
+    if(!(v instanceof T)) v = new T(v);
+    var x = v.x, y = v.y, r = numeric.rep;
+    if(y) return new T(r(s,x),r(s,y));
+    return new T(r(s,x));
+}
+numeric.T.diag = function diag(d) {
+    if(!(d instanceof numeric.T)) d = new numeric.T(d);
+    var x = d.x, y = d.y, diag = numeric.diag;
+    if(y) return new numeric.T(diag(x),diag(y));
+    return new numeric.T(diag(x));
+}
+numeric.T.eig = function eig() {
+    if(this.y) { throw new Error('eig: not implemented for complex matrices.'); }
+    return numeric.eig(this.x);
+}
+numeric.T.identity = function identity(n) { return new numeric.T(numeric.identity(n)); }
+numeric.T.prototype.getDiag = function getDiag() {
+    var n = numeric;
+    var x = this.x, y = this.y;
+    if(y) { return new n.T(n.getDiag(x),n.getDiag(y)); }
+    return new n.T(n.getDiag(x));
+}
+
+// 4. Eigenvalues of real matrices
+
+numeric.house = function house(x) {
+    var v = numeric.clone(x);
+    var s = x[0] >= 0 ? 1 : -1;
+    var alpha = s*numeric.norm2(x);
+    v[0] += alpha;
+    var foo = numeric.norm2(v);
+    if(foo === 0) { /* this should not happen */ throw new Error('eig: internal error'); }
+    return numeric.div(v,foo);
+}
+
+numeric.toUpperHessenberg = function toUpperHessenberg(me) {
+    var s = numeric.dim(me);
+    if(s.length !== 2 || s[0] !== s[1]) { throw new Error('numeric: toUpperHessenberg() only works on square matrices'); }
+    var m = s[0], i,j,k,x,v,A = numeric.clone(me),B,C,Ai,Ci,Q = numeric.identity(m),Qi;
+    for(j=0;j<m-2;j++) {
+        x = Array(m-j-1);
+        for(i=j+1;i<m;i++) { x[i-j-1] = A[i][j]; }
+        if(numeric.norm2(x)>0) {
+            v = numeric.house(x);
+            B = numeric.getBlock(A,[j+1,j],[m-1,m-1]);
+            C = numeric.tensor(v,numeric.dot(v,B));
+            for(i=j+1;i<m;i++) { Ai = A[i]; Ci = C[i-j-1]; for(k=j;k<m;k++) Ai[k] -= 2*Ci[k-j]; }
+            B = numeric.getBlock(A,[0,j+1],[m-1,m-1]);
+            C = numeric.tensor(numeric.dot(B,v),v);
+            for(i=0;i<m;i++) { Ai = A[i]; Ci = C[i]; for(k=j+1;k<m;k++) Ai[k] -= 2*Ci[k-j-1]; }
+            B = Array(m-j-1);
+            for(i=j+1;i<m;i++) B[i-j-1] = Q[i];
+            C = numeric.tensor(v,numeric.dot(v,B));
+            for(i=j+1;i<m;i++) { Qi = Q[i]; Ci = C[i-j-1]; for(k=0;k<m;k++) Qi[k] -= 2*Ci[k]; }
+        }
+    }
+    return {H:A, Q:Q};
+}
+
+numeric.epsilon = 2.220446049250313e-16;
+
+numeric.QRFrancis = function(H,maxiter) {
+    if(typeof maxiter === "undefined") { maxiter = 10000; }
+    H = numeric.clone(H);
+    var H0 = numeric.clone(H);
+    var s = numeric.dim(H),m=s[0],x,v,a,b,c,d,det,tr, Hloc, Q = numeric.identity(m), Qi, Hi, B, C, Ci,i,j,k,iter;
+    if(m<3) { return {Q:Q, B:[ [0,m-1] ]}; }
+    var epsilon = numeric.epsilon;
+    for(iter=0;iter<maxiter;iter++) {
+        for(j=0;j<m-1;j++) {
+            if(Math.abs(H[j+1][j]) < epsilon*(Math.abs(H[j][j])+Math.abs(H[j+1][j+1]))) {
+                var QH1 = numeric.QRFrancis(numeric.getBlock(H,[0,0],[j,j]),maxiter);
+                var QH2 = numeric.QRFrancis(numeric.getBlock(H,[j+1,j+1],[m-1,m-1]),maxiter);
+                B = Array(j+1);
+                for(i=0;i<=j;i++) { B[i] = Q[i]; }
+                C = numeric.dot(QH1.Q,B);
+                for(i=0;i<=j;i++) { Q[i] = C[i]; }
+                B = Array(m-j-1);
+                for(i=j+1;i<m;i++) { B[i-j-1] = Q[i]; }
+                C = numeric.dot(QH2.Q,B);
+                for(i=j+1;i<m;i++) { Q[i] = C[i-j-1]; }
+                return {Q:Q,B:QH1.B.concat(numeric.add(QH2.B,j+1))};
+            }
+        }
+        a = H[m-2][m-2]; b = H[m-2][m-1];
+        c = H[m-1][m-2]; d = H[m-1][m-1];
+        tr = a+d;
+        det = (a*d-b*c);
+        Hloc = numeric.getBlock(H, [0,0], [2,2]);
+        if(tr*tr>=4*det) {
+            var s1,s2;
+            s1 = 0.5*(tr+Math.sqrt(tr*tr-4*det));
+            s2 = 0.5*(tr-Math.sqrt(tr*tr-4*det));
+            Hloc = numeric.add(numeric.sub(numeric.dot(Hloc,Hloc),
+                                           numeric.mul(Hloc,s1+s2)),
+                               numeric.diag(numeric.rep([3],s1*s2)));
+        } else {
+            Hloc = numeric.add(numeric.sub(numeric.dot(Hloc,Hloc),
+                                           numeric.mul(Hloc,tr)),
+                               numeric.diag(numeric.rep([3],det)));
+        }
+        x = [Hloc[0][0],Hloc[1][0],Hloc[2][0]];
+        v = numeric.house(x);
+        B = [H[0],H[1],H[2]];
+        C = numeric.tensor(v,numeric.dot(v,B));
+        for(i=0;i<3;i++) { Hi = H[i]; Ci = C[i]; for(k=0;k<m;k++) Hi[k] -= 2*Ci[k]; }
+        B = numeric.getBlock(H, [0,0],[m-1,2]);
+        C = numeric.tensor(numeric.dot(B,v),v);
+        for(i=0;i<m;i++) { Hi = H[i]; Ci = C[i]; for(k=0;k<3;k++) Hi[k] -= 2*Ci[k]; }
+        B = [Q[0],Q[1],Q[2]];
+        C = numeric.tensor(v,numeric.dot(v,B));
+        for(i=0;i<3;i++) { Qi = Q[i]; Ci = C[i]; for(k=0;k<m;k++) Qi[k] -= 2*Ci[k]; }
+        var J;
+        for(j=0;j<m-2;j++) {
+            for(k=j;k<=j+1;k++) {
+                if(Math.abs(H[k+1][k]) < epsilon*(Math.abs(H[k][k])+Math.abs(H[k+1][k+1]))) {
+                    var QH1 = numeric.QRFrancis(numeric.getBlock(H,[0,0],[k,k]),maxiter);
+                    var QH2 = numeric.QRFrancis(numeric.getBlock(H,[k+1,k+1],[m-1,m-1]),maxiter);
+                    B = Array(k+1);
+                    for(i=0;i<=k;i++) { B[i] = Q[i]; }
+                    C = numeric.dot(QH1.Q,B);
+                    for(i=0;i<=k;i++) { Q[i] = C[i]; }
+                    B = Array(m-k-1);
+                    for(i=k+1;i<m;i++) { B[i-k-1] = Q[i]; }
+                    C = numeric.dot(QH2.Q,B);
+                    for(i=k+1;i<m;i++) { Q[i] = C[i-k-1]; }
+                    return {Q:Q,B:QH1.B.concat(numeric.add(QH2.B,k+1))};
+                }
+            }
+            J = Math.min(m-1,j+3);
+            x = Array(J-j);
+            for(i=j+1;i<=J;i++) { x[i-j-1] = H[i][j]; }
+            v = numeric.house(x);
+            B = numeric.getBlock(H, [j+1,j],[J,m-1]);
+            C = numeric.tensor(v,numeric.dot(v,B));
+            for(i=j+1;i<=J;i++) { Hi = H[i]; Ci = C[i-j-1]; for(k=j;k<m;k++) Hi[k] -= 2*Ci[k-j]; }
+            B = numeric.getBlock(H, [0,j+1],[m-1,J]);
+            C = numeric.tensor(numeric.dot(B,v),v);
+            for(i=0;i<m;i++) { Hi = H[i]; Ci = C[i]; for(k=j+1;k<=J;k++) Hi[k] -= 2*Ci[k-j-1]; }
+            B = Array(J-j);
+            for(i=j+1;i<=J;i++) B[i-j-1] = Q[i];
+            C = numeric.tensor(v,numeric.dot(v,B));
+            for(i=j+1;i<=J;i++) { Qi = Q[i]; Ci = C[i-j-1]; for(k=0;k<m;k++) Qi[k] -= 2*Ci[k]; }
+        }
+    }
+    throw new Error('numeric: eigenvalue iteration does not converge -- increase maxiter?');
+}
+
+numeric.eig = function eig(A,maxiter) {
+    var QH = numeric.toUpperHessenberg(A);
+    var QB = numeric.QRFrancis(QH.H,maxiter);
+    var T = numeric.T;
+    var n = A.length,i,k,flag = false,B = QB.B,H = numeric.dot(QB.Q,numeric.dot(QH.H,numeric.transpose(QB.Q)));
+    var Q = new T(numeric.dot(QB.Q,QH.Q)),Q0;
+    var m = B.length,j;
+    var a,b,c,d,p1,p2,disc,x,y,p,q,n1,n2;
+    var sqrt = Math.sqrt;
+    for(k=0;k<m;k++) {
+        i = B[k][0];
+        if(i === B[k][1]) {
+            // nothing
+        } else {
+            j = i+1;
+            a = H[i][i];
+            b = H[i][j];
+            c = H[j][i];
+            d = H[j][j];
+            if(b === 0 && c === 0) continue;
+            p1 = -a-d;
+            p2 = a*d-b*c;
+            disc = p1*p1-4*p2;
+            if(disc>=0) {
+                if(p1<0) x = -0.5*(p1-sqrt(disc));
+                else     x = -0.5*(p1+sqrt(disc));
+                n1 = (a-x)*(a-x)+b*b;
+                n2 = c*c+(d-x)*(d-x);
+                if(n1>n2) {
+                    n1 = sqrt(n1);
+                    p = (a-x)/n1;
+                    q = b/n1;
+                } else {
+                    n2 = sqrt(n2);
+                    p = c/n2;
+                    q = (d-x)/n2;
+                }
+                Q0 = new T([[q,-p],[p,q]]);
+                Q.setRows(i,j,Q0.dot(Q.getRows(i,j)));
+            } else {
+                x = -0.5*p1;
+                y = 0.5*sqrt(-disc);
+                n1 = (a-x)*(a-x)+b*b;
+                n2 = c*c+(d-x)*(d-x);
+                if(n1>n2) {
+                    n1 = sqrt(n1+y*y);
+                    p = (a-x)/n1;
+                    q = b/n1;
+                    x = 0;
+                    y /= n1;
+                } else {
+                    n2 = sqrt(n2+y*y);
+                    p = c/n2;
+                    q = (d-x)/n2;
+                    x = y/n2;
+                    y = 0;
+                }
+                Q0 = new T([[q,-p],[p,q]],[[x,y],[y,-x]]);
+                Q.setRows(i,j,Q0.dot(Q.getRows(i,j)));
+            }
+        }
+    }
+    var R = Q.dot(A).dot(Q.transjugate()), n = A.length, E = numeric.T.identity(n);
+    for(j=0;j<n;j++) {
+        if(j>0) {
+            for(k=j-1;k>=0;k--) {
+                var Rk = R.get([k,k]), Rj = R.get([j,j]);
+                if(numeric.neq(Rk.x,Rj.x) || numeric.neq(Rk.y,Rj.y)) {
+                    x = R.getRow(k).getBlock([k],[j-1]);
+                    y = E.getRow(j).getBlock([k],[j-1]);
+                    E.set([j,k],(R.get([k,j]).neg().sub(x.dot(y))).div(Rk.sub(Rj)));
+                } else {
+                    E.setRow(j,E.getRow(k));
+                    continue;
+                }
+            }
+        }
+    }
+    for(j=0;j<n;j++) {
+        x = E.getRow(j);
+        E.setRow(j,x.div(x.norm2()));
+    }
+    E = E.transpose();
+    E = Q.transjugate().dot(E);
+    return { lambda:R.getDiag(), E:E };
+};
+
+// 5. Compressed Column Storage matrices
+numeric.ccsSparse = function ccsSparse(A) {
+    var m = A.length,n,foo, i,j, counts = [];
+    for(i=m-1;i!==-1;--i) {
+        foo = A[i];
+        for(j in foo) {
+            j = parseInt(j);
+            while(j>=counts.length) counts[counts.length] = 0;
+            if(foo[j]!==0) counts[j]++;
+        }
+    }
+    var n = counts.length;
+    var Ai = Array(n+1);
+    Ai[0] = 0;
+    for(i=0;i<n;++i) Ai[i+1] = Ai[i] + counts[i];
+    var Aj = Array(Ai[n]), Av = Array(Ai[n]);
+    for(i=m-1;i!==-1;--i) {
+        foo = A[i];
+        for(j in foo) {
+            if(foo[j]!==0) {
+                counts[j]--;
+                Aj[Ai[j]+counts[j]] = i;
+                Av[Ai[j]+counts[j]] = foo[j];
+            }
+        }
+    }
+    return [Ai,Aj,Av];
+}
+numeric.ccsFull = function ccsFull(A) {
+    var Ai = A[0], Aj = A[1], Av = A[2], s = numeric.ccsDim(A), m = s[0], n = s[1], i,j,j0,j1,k;
+    var B = numeric.rep([m,n],0);
+    for(i=0;i<n;i++) {
+        j0 = Ai[i];
+        j1 = Ai[i+1];
+        for(j=j0;j<j1;++j) { B[Aj[j]][i] = Av[j]; }
+    }
+    return B;
+}
+numeric.ccsTSolve = function ccsTSolve(A,b,x,bj,xj) {
+    var Ai = A[0], Aj = A[1], Av = A[2],m = Ai.length-1, max = Math.max,n=0;
+    if(typeof bj === "undefined") x = numeric.rep([m],0);
+    if(typeof bj === "undefined") bj = numeric.linspace(0,x.length-1);
+    if(typeof xj === "undefined") xj = [];
+    function dfs(j) {
+        var k;
+        if(x[j] !== 0) return;
+        x[j] = 1;
+        for(k=Ai[j];k<Ai[j+1];++k) dfs(Aj[k]);
+        xj[n] = j;
+        ++n;
+    }
+    var i,j,j0,j1,k,l,l0,l1,a;
+    for(i=bj.length-1;i!==-1;--i) { dfs(bj[i]); }
+    xj.length = n;
+    for(i=xj.length-1;i!==-1;--i) { x[xj[i]] = 0; }
+    for(i=bj.length-1;i!==-1;--i) { j = bj[i]; x[j] = b[j]; }
+    for(i=xj.length-1;i!==-1;--i) {
+        j = xj[i];
+        j0 = Ai[j];
+        j1 = max(Ai[j+1],j0);
+        for(k=j0;k!==j1;++k) { if(Aj[k] === j) { x[j] /= Av[k]; break; } }
+        a = x[j];
+        for(k=j0;k!==j1;++k) {
+            l = Aj[k];
+            if(l !== j) x[l] -= a*Av[k];
+        }
+    }
+    return x;
+}
+numeric.ccsDFS = function ccsDFS(n) {
+    this.k = Array(n);
+    this.k1 = Array(n);
+    this.j = Array(n);
+}
+numeric.ccsDFS.prototype.dfs = function dfs(J,Ai,Aj,x,xj,Pinv) {
+    var m = 0,foo,n=xj.length;
+    var k = this.k, k1 = this.k1, j = this.j,km,k11;
+    if(x[J]!==0) return;
+    x[J] = 1;
+    j[0] = J;
+    k[0] = km = Ai[J];
+    k1[0] = k11 = Ai[J+1];
+    while(1) {
+        if(km >= k11) {
+            xj[n] = j[m];
+            if(m===0) return;
+            ++n;
+            --m;
+            km = k[m];
+            k11 = k1[m];
+        } else {
+            foo = Pinv[Aj[km]];
+            if(x[foo] === 0) {
+                x[foo] = 1;
+                k[m] = km;
+                ++m;
+                j[m] = foo;
+                km = Ai[foo];
+                k1[m] = k11 = Ai[foo+1];
+            } else ++km;
+        }
+    }
+}
+numeric.ccsLPSolve = function ccsLPSolve(A,B,x,xj,I,Pinv,dfs) {
+    var Ai = A[0], Aj = A[1], Av = A[2],m = Ai.length-1, n=0;
+    var Bi = B[0], Bj = B[1], Bv = B[2];
+    
+    var i,i0,i1,j,J,j0,j1,k,l,l0,l1,a;
+    i0 = Bi[I];
+    i1 = Bi[I+1];
+    xj.length = 0;
+    for(i=i0;i<i1;++i) { dfs.dfs(Pinv[Bj[i]],Ai,Aj,x,xj,Pinv); }
+    for(i=xj.length-1;i!==-1;--i) { x[xj[i]] = 0; }
+    for(i=i0;i!==i1;++i) { j = Pinv[Bj[i]]; x[j] = Bv[i]; }
+    for(i=xj.length-1;i!==-1;--i) {
+        j = xj[i];
+        j0 = Ai[j];
+        j1 = Ai[j+1];
+        for(k=j0;k<j1;++k) { if(Pinv[Aj[k]] === j) { x[j] /= Av[k]; break; } }
+        a = x[j];
+        for(k=j0;k<j1;++k) {
+            l = Pinv[Aj[k]];
+            if(l !== j) x[l] -= a*Av[k];
+        }
+    }
+    return x;
+}
+numeric.ccsLUP1 = function ccsLUP1(A,threshold) {
+    var m = A[0].length-1;
+    var L = [numeric.rep([m+1],0),[],[]], U = [numeric.rep([m+1], 0),[],[]];
+    var Li = L[0], Lj = L[1], Lv = L[2], Ui = U[0], Uj = U[1], Uv = U[2];
+    var x = numeric.rep([m],0), xj = numeric.rep([m],0);
+    var i,j,k,j0,j1,a,e,c,d,K;
+    var sol = numeric.ccsLPSolve, max = Math.max, abs = Math.abs;
+    var P = numeric.linspace(0,m-1),Pinv = numeric.linspace(0,m-1);
+    var dfs = new numeric.ccsDFS(m);
+    if(typeof threshold === "undefined") { threshold = 1; }
+    for(i=0;i<m;++i) {
+        sol(L,A,x,xj,i,Pinv,dfs);
+        a = -1;
+        e = -1;
+        for(j=xj.length-1;j!==-1;--j) {
+            k = xj[j];
+            if(k <= i) continue;
+            c = abs(x[k]);
+            if(c > a) { e = k; a = c; }
+        }
+        if(abs(x[i])<threshold*a) {
+            j = P[i];
+            a = P[e];
+            P[i] = a; Pinv[a] = i;
+            P[e] = j; Pinv[j] = e;
+            a = x[i]; x[i] = x[e]; x[e] = a;
+        }
+        a = Li[i];
+        e = Ui[i];
+        d = x[i];
+        Lj[a] = P[i];
+        Lv[a] = 1;
+        ++a;
+        for(j=xj.length-1;j!==-1;--j) {
+            k = xj[j];
+            c = x[k];
+            xj[j] = 0;
+            x[k] = 0;
+            if(k<=i) { Uj[e] = k; Uv[e] = c;   ++e; }
+            else     { Lj[a] = P[k]; Lv[a] = c/d; ++a; }
+        }
+        Li[i+1] = a;
+        Ui[i+1] = e;
+    }
+    for(j=Lj.length-1;j!==-1;--j) { Lj[j] = Pinv[Lj[j]]; }
+    return {L:L, U:U, P:P, Pinv:Pinv};
+}
+numeric.ccsDFS0 = function ccsDFS0(n) {
+    this.k = Array(n);
+    this.k1 = Array(n);
+    this.j = Array(n);
+}
+numeric.ccsDFS0.prototype.dfs = function dfs(J,Ai,Aj,x,xj,Pinv,P) {
+    var m = 0,foo,n=xj.length;
+    var k = this.k, k1 = this.k1, j = this.j,km,k11;
+    if(x[J]!==0) return;
+    x[J] = 1;
+    j[0] = J;
+    k[0] = km = Ai[Pinv[J]];
+    k1[0] = k11 = Ai[Pinv[J]+1];
+    while(1) {
+        if(isNaN(km)) throw new Error("Ow!");
+        if(km >= k11) {
+            xj[n] = Pinv[j[m]];
+            if(m===0) return;
+            ++n;
+            --m;
+            km = k[m];
+            k11 = k1[m];
+        } else {
+            foo = Aj[km];
+            if(x[foo] === 0) {
+                x[foo] = 1;
+                k[m] = km;
+                ++m;
+                j[m] = foo;
+                foo = Pinv[foo];
+                km = Ai[foo];
+                k1[m] = k11 = Ai[foo+1];
+            } else ++km;
+        }
+    }
+}
+numeric.ccsLPSolve0 = function ccsLPSolve0(A,B,y,xj,I,Pinv,P,dfs) {
+    var Ai = A[0], Aj = A[1], Av = A[2],m = Ai.length-1, n=0;
+    var Bi = B[0], Bj = B[1], Bv = B[2];
+    
+    var i,i0,i1,j,J,j0,j1,k,l,l0,l1,a;
+    i0 = Bi[I];
+    i1 = Bi[I+1];
+    xj.length = 0;
+    for(i=i0;i<i1;++i) { dfs.dfs(Bj[i],Ai,Aj,y,xj,Pinv,P); }
+    for(i=xj.length-1;i!==-1;--i) { j = xj[i]; y[P[j]] = 0; }
+    for(i=i0;i!==i1;++i) { j = Bj[i]; y[j] = Bv[i]; }
+    for(i=xj.length-1;i!==-1;--i) {
+        j = xj[i];
+        l = P[j];
+        j0 = Ai[j];
+        j1 = Ai[j+1];
+        for(k=j0;k<j1;++k) { if(Aj[k] === l) { y[l] /= Av[k]; break; } }
+        a = y[l];
+        for(k=j0;k<j1;++k) y[Aj[k]] -= a*Av[k];
+        y[l] = a;
+    }
+}
+numeric.ccsLUP0 = function ccsLUP0(A,threshold) {
+    var m = A[0].length-1;
+    var L = [numeric.rep([m+1],0),[],[]], U = [numeric.rep([m+1], 0),[],[]];
+    var Li = L[0], Lj = L[1], Lv = L[2], Ui = U[0], Uj = U[1], Uv = U[2];
+    var y = numeric.rep([m],0), xj = numeric.rep([m],0);
+    var i,j,k,j0,j1,a,e,c,d,K;
+    var sol = numeric.ccsLPSolve0, max = Math.max, abs = Math.abs;
+    var P = numeric.linspace(0,m-1),Pinv = numeric.linspace(0,m-1);
+    var dfs = new numeric.ccsDFS0(m);
+    if(typeof threshold === "undefined") { threshold = 1; }
+    for(i=0;i<m;++i) {
+        sol(L,A,y,xj,i,Pinv,P,dfs);
+        a = -1;
+        e = -1;
+        for(j=xj.length-1;j!==-1;--j) {
+            k = xj[j];
+            if(k <= i) continue;
+            c = abs(y[P[k]]);
+            if(c > a) { e = k; a = c; }
+        }
+        if(abs(y[P[i]])<threshold*a) {
+            j = P[i];
+            a = P[e];
+            P[i] = a; Pinv[a] = i;
+            P[e] = j; Pinv[j] = e;
+        }
+        a = Li[i];
+        e = Ui[i];
+        d = y[P[i]];
+        Lj[a] = P[i];
+        Lv[a] = 1;
+        ++a;
+        for(j=xj.length-1;j!==-1;--j) {
+            k = xj[j];
+            c = y[P[k]];
+            xj[j] = 0;
+            y[P[k]] = 0;
+            if(k<=i) { Uj[e] = k; Uv[e] = c;   ++e; }
+            else     { Lj[a] = P[k]; Lv[a] = c/d; ++a; }
+        }
+        Li[i+1] = a;
+        Ui[i+1] = e;
+    }
+    for(j=Lj.length-1;j!==-1;--j) { Lj[j] = Pinv[Lj[j]]; }
+    return {L:L, U:U, P:P, Pinv:Pinv};
+}
+numeric.ccsLUP = numeric.ccsLUP0;
+
+numeric.ccsDim = function ccsDim(A) { return [numeric.sup(A[1])+1,A[0].length-1]; }
+numeric.ccsGetBlock = function ccsGetBlock(A,i,j) {
+    var s = numeric.ccsDim(A),m=s[0],n=s[1];
+    if(typeof i === "undefined") { i = numeric.linspace(0,m-1); }
+    else if(typeof i === "number") { i = [i]; }
+    if(typeof j === "undefined") { j = numeric.linspace(0,n-1); }
+    else if(typeof j === "number") { j = [j]; }
+    var p,p0,p1,P = i.length,q,Q = j.length,r,jq,ip;
+    var Bi = numeric.rep([n],0), Bj=[], Bv=[], B = [Bi,Bj,Bv];
+    var Ai = A[0], Aj = A[1], Av = A[2];
+    var x = numeric.rep([m],0),count=0,flags = numeric.rep([m],0);
+    for(q=0;q<Q;++q) {
+        jq = j[q];
+        var q0 = Ai[jq];
+        var q1 = Ai[jq+1];
+        for(p=q0;p<q1;++p) {
+            r = Aj[p];
+            flags[r] = 1;
+            x[r] = Av[p];
+        }
+        for(p=0;p<P;++p) {
+            ip = i[p];
+            if(flags[ip]) {
+                Bj[count] = p;
+                Bv[count] = x[i[p]];
+                ++count;
+            }
+        }
+        for(p=q0;p<q1;++p) {
+            r = Aj[p];
+            flags[r] = 0;
+        }
+        Bi[q+1] = count;
+    }
+    return B;
+}
+
+numeric.ccsDot = function ccsDot(A,B) {
+    var Ai = A[0], Aj = A[1], Av = A[2];
+    var Bi = B[0], Bj = B[1], Bv = B[2];
+    var sA = numeric.ccsDim(A), sB = numeric.ccsDim(B);
+    var m = sA[0], n = sA[1], o = sB[1];
+    var x = numeric.rep([m],0), flags = numeric.rep([m],0), xj = Array(m);
+    var Ci = numeric.rep([o],0), Cj = [], Cv = [], C = [Ci,Cj,Cv];
+    var i,j,k,j0,j1,i0,i1,l,p,a,b;
+    for(k=0;k!==o;++k) {
+        j0 = Bi[k];
+        j1 = Bi[k+1];
+        p = 0;
+        for(j=j0;j<j1;++j) {
+            a = Bj[j];
+            b = Bv[j];
+            i0 = Ai[a];
+            i1 = Ai[a+1];
+            for(i=i0;i<i1;++i) {
+                l = Aj[i];
+                if(flags[l]===0) {
+                    xj[p] = l;
+                    flags[l] = 1;
+                    p = p+1;
+                }
+                x[l] = x[l] + Av[i]*b;
+            }
+        }
+        j0 = Ci[k];
+        j1 = j0+p;
+        Ci[k+1] = j1;
+        for(j=p-1;j!==-1;--j) {
+            b = j0+j;
+            i = xj[j];
+            Cj[b] = i;
+            Cv[b] = x[i];
+            flags[i] = 0;
+            x[i] = 0;
+        }
+        Ci[k+1] = Ci[k]+p;
+    }
+    return C;
+}
+
+numeric.ccsLUPSolve = function ccsLUPSolve(LUP,B) {
+    var L = LUP.L, U = LUP.U, P = LUP.P;
+    var Bi = B[0];
+    var flag = false;
+    if(typeof Bi !== "object") { B = [[0,B.length],numeric.linspace(0,B.length-1),B]; Bi = B[0]; flag = true; }
+    var Bj = B[1], Bv = B[2];
+    var n = L[0].length-1, m = Bi.length-1;
+    var x = numeric.rep([n],0), xj = Array(n);
+    var b = numeric.rep([n],0), bj = Array(n);
+    var Xi = numeric.rep([m+1],0), Xj = [], Xv = [];
+    var sol = numeric.ccsTSolve;
+    var i,j,j0,j1,k,J,N=0;
+    for(i=0;i<m;++i) {
+        k = 0;
+        j0 = Bi[i];
+        j1 = Bi[i+1];
+        for(j=j0;j<j1;++j) { 
+            J = LUP.Pinv[Bj[j]];
+            bj[k] = J;
+            b[J] = Bv[j];
+            ++k;
+        }
+        bj.length = k;
+        sol(L,b,x,bj,xj);
+        for(j=bj.length-1;j!==-1;--j) b[bj[j]] = 0;
+        sol(U,x,b,xj,bj);
+        if(flag) return b;
+        for(j=xj.length-1;j!==-1;--j) x[xj[j]] = 0;
+        for(j=bj.length-1;j!==-1;--j) {
+            J = bj[j];
+            Xj[N] = J;
+            Xv[N] = b[J];
+            b[J] = 0;
+            ++N;
+        }
+        Xi[i+1] = N;
+    }
+    return [Xi,Xj,Xv];
+}
+
+numeric.ccsbinop = function ccsbinop(body,setup) {
+    if(typeof setup === "undefined") setup='';
+    return Function('X','Y',
+            'var Xi = X[0], Xj = X[1], Xv = X[2];\n'+
+            'var Yi = Y[0], Yj = Y[1], Yv = Y[2];\n'+
+            'var n = Xi.length-1,m = Math.max(numeric.sup(Xj),numeric.sup(Yj))+1;\n'+
+            'var Zi = numeric.rep([n+1],0), Zj = [], Zv = [];\n'+
+            'var x = numeric.rep([m],0),y = numeric.rep([m],0);\n'+
+            'var xk,yk,zk;\n'+
+            'var i,j,j0,j1,k,p=0;\n'+
+            setup+
+            'for(i=0;i<n;++i) {\n'+
+            '  j0 = Xi[i]; j1 = Xi[i+1];\n'+
+            '  for(j=j0;j!==j1;++j) {\n'+
+            '    k = Xj[j];\n'+
+            '    x[k] = 1;\n'+
+            '    Zj[p] = k;\n'+
+            '    ++p;\n'+
+            '  }\n'+
+            '  j0 = Yi[i]; j1 = Yi[i+1];\n'+
+            '  for(j=j0;j!==j1;++j) {\n'+
+            '    k = Yj[j];\n'+
+            '    y[k] = Yv[j];\n'+
+            '    if(x[k] === 0) {\n'+
+            '      Zj[p] = k;\n'+
+            '      ++p;\n'+
+            '    }\n'+
+            '  }\n'+
+            '  Zi[i+1] = p;\n'+
+            '  j0 = Xi[i]; j1 = Xi[i+1];\n'+
+            '  for(j=j0;j!==j1;++j) x[Xj[j]] = Xv[j];\n'+
+            '  j0 = Zi[i]; j1 = Zi[i+1];\n'+
+            '  for(j=j0;j!==j1;++j) {\n'+
+            '    k = Zj[j];\n'+
+            '    xk = x[k];\n'+
+            '    yk = y[k];\n'+
+            body+'\n'+
+            '    Zv[j] = zk;\n'+
+            '  }\n'+
+            '  j0 = Xi[i]; j1 = Xi[i+1];\n'+
+            '  for(j=j0;j!==j1;++j) x[Xj[j]] = 0;\n'+
+            '  j0 = Yi[i]; j1 = Yi[i+1];\n'+
+            '  for(j=j0;j!==j1;++j) y[Yj[j]] = 0;\n'+
+            '}\n'+
+            'return [Zi,Zj,Zv];'
+            );
+};
+
+(function() {
+    var k,A,B,C;
+    for(k in numeric.ops2) {
+        if(isFinite(eval('1'+numeric.ops2[k]+'0'))) A = '[Y[0],Y[1],numeric.'+k+'(X,Y[2])]';
+        else A = 'NaN';
+        if(isFinite(eval('0'+numeric.ops2[k]+'1'))) B = '[X[0],X[1],numeric.'+k+'(X[2],Y)]';
+        else B = 'NaN';
+        if(isFinite(eval('1'+numeric.ops2[k]+'0')) && isFinite(eval('0'+numeric.ops2[k]+'1'))) C = 'numeric.ccs'+k+'MM(X,Y)';
+        else C = 'NaN';
+        numeric['ccs'+k+'MM'] = numeric.ccsbinop('zk = xk '+numeric.ops2[k]+'yk;');
+        numeric['ccs'+k] = Function('X','Y',
+                'if(typeof X === "number") return '+A+';\n'+
+                'if(typeof Y === "number") return '+B+';\n'+
+                'return '+C+';\n'
+                );
+    }
+}());
+
+numeric.ccsScatter = function ccsScatter(A) {
+    var Ai = A[0], Aj = A[1], Av = A[2];
+    var n = numeric.sup(Aj)+1,m=Ai.length;
+    var Ri = numeric.rep([n],0),Rj=Array(m), Rv = Array(m);
+    var counts = numeric.rep([n],0),i;
+    for(i=0;i<m;++i) counts[Aj[i]]++;
+    for(i=0;i<n;++i) Ri[i+1] = Ri[i] + counts[i];
+    var ptr = Ri.slice(0),k,Aii;
+    for(i=0;i<m;++i) {
+        Aii = Aj[i];
+        k = ptr[Aii];
+        Rj[k] = Ai[i];
+        Rv[k] = Av[i];
+        ptr[Aii]=ptr[Aii]+1;
+    }
+    return [Ri,Rj,Rv];
+}
+
+numeric.ccsGather = function ccsGather(A) {
+    var Ai = A[0], Aj = A[1], Av = A[2];
+    var n = Ai.length-1,m = Aj.length;
+    var Ri = Array(m), Rj = Array(m), Rv = Array(m);
+    var i,j,j0,j1,p;
+    p=0;
+    for(i=0;i<n;++i) {
+        j0 = Ai[i];
+        j1 = Ai[i+1];
+        for(j=j0;j!==j1;++j) {
+            Rj[p] = i;
+            Ri[p] = Aj[j];
+            Rv[p] = Av[j];
+            ++p;
+        }
+    }
+    return [Ri,Rj,Rv];
+}
+
+// The following sparse linear algebra routines are deprecated.
+
+numeric.sdim = function dim(A,ret,k) {
+    if(typeof ret === "undefined") { ret = []; }
+    if(typeof A !== "object") return ret;
+    if(typeof k === "undefined") { k=0; }
+    if(!(k in ret)) { ret[k] = 0; }
+    if(A.length > ret[k]) ret[k] = A.length;
+    var i;
+    for(i in A) {
+        if(A.hasOwnProperty(i)) dim(A[i],ret,k+1);
+    }
+    return ret;
+};
+
+numeric.sclone = function clone(A,k,n) {
+    if(typeof k === "undefined") { k=0; }
+    if(typeof n === "undefined") { n = numeric.sdim(A).length; }
+    var i,ret = Array(A.length);
+    if(k === n-1) {
+        for(i in A) { if(A.hasOwnProperty(i)) ret[i] = A[i]; }
+        return ret;
+    }
+    for(i in A) {
+        if(A.hasOwnProperty(i)) ret[i] = clone(A[i],k+1,n);
+    }
+    return ret;
+}
+
+numeric.sdiag = function diag(d) {
+    var n = d.length,i,ret = Array(n),i1,i2,i3;
+    for(i=n-1;i>=1;i-=2) {
+        i1 = i-1;
+        ret[i] = []; ret[i][i] = d[i];
+        ret[i1] = []; ret[i1][i1] = d[i1];
+    }
+    if(i===0) { ret[0] = []; ret[0][0] = d[i]; }
+    return ret;
+}
+
+numeric.sidentity = function identity(n) { return numeric.sdiag(numeric.rep([n],1)); }
+
+numeric.stranspose = function transpose(A) {
+    var ret = [], n = A.length, i,j,Ai;
+    for(i in A) {
+        if(!(A.hasOwnProperty(i))) continue;
+        Ai = A[i];
+        for(j in Ai) {
+            if(!(Ai.hasOwnProperty(j))) continue;
+            if(typeof ret[j] !== "object") { ret[j] = []; }
+            ret[j][i] = Ai[j];
+        }
+    }
+    return ret;
+}
+
+numeric.sLUP = function LUP(A,tol) {
+    throw new Error("The function numeric.sLUP had a bug in it and has been removed. Please use the new numeric.ccsLUP function instead.");
+};
+
+numeric.sdotMM = function dotMM(A,B) {
+    var p = A.length, q = B.length, BT = numeric.stranspose(B), r = BT.length, Ai, BTk;
+    var i,j,k,accum;
+    var ret = Array(p),reti;
+    for(i=p-1;i>=0;i--) {
+        reti = [];
+        Ai = A[i];
+        for(k=r-1;k>=0;k--) {
+            accum = 0;
+            BTk = BT[k];
+            for(j in Ai) {
+                if(!(Ai.hasOwnProperty(j))) continue;
+                if(j in BTk) { accum += Ai[j]*BTk[j]; }
+            }
+            if(accum) reti[k] = accum;
+        }
+        ret[i] = reti;
+    }
+    return ret;
+}
+
+numeric.sdotMV = function dotMV(A,x) {
+    var p = A.length, Ai, i,j;
+    var ret = Array(p), accum;
+    for(i=p-1;i>=0;i--) {
+        Ai = A[i];
+        accum = 0;
+        for(j in Ai) {
+            if(!(Ai.hasOwnProperty(j))) continue;
+            if(x[j]) accum += Ai[j]*x[j];
+        }
+        if(accum) ret[i] = accum;
+    }
+    return ret;
+}
+
+numeric.sdotVM = function dotMV(x,A) {
+    var i,j,Ai,alpha;
+    var ret = [], accum;
+    for(i in x) {
+        if(!x.hasOwnProperty(i)) continue;
+        Ai = A[i];
+        alpha = x[i];
+        for(j in Ai) {
+            if(!Ai.hasOwnProperty(j)) continue;
+            if(!ret[j]) { ret[j] = 0; }
+            ret[j] += alpha*Ai[j];
+        }
+    }
+    return ret;
+}
+
+numeric.sdotVV = function dotVV(x,y) {
+    var i,ret=0;
+    for(i in x) { if(x[i] && y[i]) ret+= x[i]*y[i]; }
+    return ret;
+}
+
+numeric.sdot = function dot(A,B) {
+    var m = numeric.sdim(A).length, n = numeric.sdim(B).length;
+    var k = m*1000+n;
+    switch(k) {
+    case 0: return A*B;
+    case 1001: return numeric.sdotVV(A,B);
+    case 2001: return numeric.sdotMV(A,B);
+    case 1002: return numeric.sdotVM(A,B);
+    case 2002: return numeric.sdotMM(A,B);
+    default: throw new Error('numeric.sdot not implemented for tensors of order '+m+' and '+n);
+    }
+}
+
+numeric.sscatter = function scatter(V) {
+    var n = V[0].length, Vij, i, j, m = V.length, A = [], Aj;
+    for(i=n-1;i>=0;--i) {
+        if(!V[m-1][i]) continue;
+        Aj = A;
+        for(j=0;j<m-2;j++) {
+            Vij = V[j][i];
+            if(!Aj[Vij]) Aj[Vij] = [];
+            Aj = Aj[Vij];
+        }
+        Aj[V[j][i]] = V[j+1][i];
+    }
+    return A;
+}
+
+numeric.sgather = function gather(A,ret,k) {
+    if(typeof ret === "undefined") ret = [];
+    if(typeof k === "undefined") k = [];
+    var n,i,Ai;
+    n = k.length;
+    for(i in A) {
+        if(A.hasOwnProperty(i)) {
+            k[n] = parseInt(i);
+            Ai = A[i];
+            if(typeof Ai === "number") {
+                if(Ai) {
+                    if(ret.length === 0) {
+                        for(i=n+1;i>=0;--i) ret[i] = [];
+                    }
+                    for(i=n;i>=0;--i) ret[i].push(k[i]);
+                    ret[n+1].push(Ai);
+                }
+            } else gather(Ai,ret,k);
+        }
+    }
+    if(k.length>n) k.pop();
+    return ret;
+}
+
+// 6. Coordinate matrices
+numeric.cLU = function LU(A) {
+    var I = A[0], J = A[1], V = A[2];
+    var p = I.length, m=0, i,j,k,a,b,c;
+    for(i=0;i<p;i++) if(I[i]>m) m=I[i];
+    m++;
+    var L = Array(m), U = Array(m), left = numeric.rep([m],Infinity), right = numeric.rep([m],-Infinity);
+    var Ui, Uj,alpha;
+    for(k=0;k<p;k++) {
+        i = I[k];
+        j = J[k];
+        if(j<left[i]) left[i] = j;
+        if(j>right[i]) right[i] = j;
+    }
+    for(i=0;i<m-1;i++) { if(right[i] > right[i+1]) right[i+1] = right[i]; }
+    for(i=m-1;i>=1;i--) { if(left[i]<left[i-1]) left[i-1] = left[i]; }
+    var countL = 0, countU = 0;
+    for(i=0;i<m;i++) {
+        U[i] = numeric.rep([right[i]-left[i]+1],0);
+        L[i] = numeric.rep([i-left[i]],0);
+        countL += i-left[i]+1;
+        countU += right[i]-i+1;
+    }
+    for(k=0;k<p;k++) { i = I[k]; U[i][J[k]-left[i]] = V[k]; }
+    for(i=0;i<m-1;i++) {
+        a = i-left[i];
+        Ui = U[i];
+        for(j=i+1;left[j]<=i && j<m;j++) {
+            b = i-left[j];
+            c = right[i]-i;
+            Uj = U[j];
+            alpha = Uj[b]/Ui[a];
+            if(alpha) {
+                for(k=1;k<=c;k++) { Uj[k+b] -= alpha*Ui[k+a]; }
+                L[j][i-left[j]] = alpha;
+            }
+        }
+    }
+    var Ui = [], Uj = [], Uv = [], Li = [], Lj = [], Lv = [];
+    var p,q,foo;
+    p=0; q=0;
+    for(i=0;i<m;i++) {
+        a = left[i];
+        b = right[i];
+        foo = U[i];
+        for(j=i;j<=b;j++) {
+            if(foo[j-a]) {
+                Ui[p] = i;
+                Uj[p] = j;
+                Uv[p] = foo[j-a];
+                p++;
+            }
+        }
+        foo = L[i];
+        for(j=a;j<i;j++) {
+            if(foo[j-a]) {
+                Li[q] = i;
+                Lj[q] = j;
+                Lv[q] = foo[j-a];
+                q++;
+            }
+        }
+        Li[q] = i;
+        Lj[q] = i;
+        Lv[q] = 1;
+        q++;
+    }
+    return {U:[Ui,Uj,Uv], L:[Li,Lj,Lv]};
+};
+
+numeric.cLUsolve = function LUsolve(lu,b) {
+    var L = lu.L, U = lu.U, ret = numeric.clone(b);
+    var Li = L[0], Lj = L[1], Lv = L[2];
+    var Ui = U[0], Uj = U[1], Uv = U[2];
+    var p = Ui.length, q = Li.length;
+    var m = ret.length,i,j,k;
+    k = 0;
+    for(i=0;i<m;i++) {
+        while(Lj[k] < i) {
+            ret[i] -= Lv[k]*ret[Lj[k]];
+            k++;
+        }
+        k++;
+    }
+    k = p-1;
+    for(i=m-1;i>=0;i--) {
+        while(Uj[k] > i) {
+            ret[i] -= Uv[k]*ret[Uj[k]];
+            k--;
+        }
+        ret[i] /= Uv[k];
+        k--;
+    }
+    return ret;
+};
+
+numeric.cgrid = function grid(n,shape) {
+    if(typeof n === "number") n = [n,n];
+    var ret = numeric.rep(n,-1);
+    var i,j,count;
+    if(typeof shape !== "function") {
+        switch(shape) {
+        case 'L':
+            shape = function(i,j) { return (i>=n[0]/2 || j<n[1]/2); }
+            break;
+        default:
+            shape = function(i,j) { return true; };
+            break;
+        }
+    }
+    count=0;
+    for(i=1;i<n[0]-1;i++) for(j=1;j<n[1]-1;j++) 
+        if(shape(i,j)) {
+            ret[i][j] = count;
+            count++;
+        }
+    return ret;
+}
+
+numeric.cdelsq = function delsq(g) {
+    var dir = [[-1,0],[0,-1],[0,1],[1,0]];
+    var s = numeric.dim(g), m = s[0], n = s[1], i,j,k,p,q;
+    var Li = [], Lj = [], Lv = [];
+    for(i=1;i<m-1;i++) for(j=1;j<n-1;j++) {
+        if(g[i][j]<0) continue;
+        for(k=0;k<4;k++) {
+            p = i+dir[k][0];
+            q = j+dir[k][1];
+            if(g[p][q]<0) continue;
+            Li.push(g[i][j]);
+            Lj.push(g[p][q]);
+            Lv.push(-1);
+        }
+        Li.push(g[i][j]);
+        Lj.push(g[i][j]);
+        Lv.push(4);
+    }
+    return [Li,Lj,Lv];
+}
+
+numeric.cdotMV = function dotMV(A,x) {
+    var ret, Ai = A[0], Aj = A[1], Av = A[2],k,p=Ai.length,N;
+    N=0;
+    for(k=0;k<p;k++) { if(Ai[k]>N) N = Ai[k]; }
+    N++;
+    ret = numeric.rep([N],0);
+    for(k=0;k<p;k++) { ret[Ai[k]]+=Av[k]*x[Aj[k]]; }
+    return ret;
+}
+
+// 7. Splines
+
+numeric.Spline = function Spline(x,yl,yr,kl,kr) { this.x = x; this.yl = yl; this.yr = yr; this.kl = kl; this.kr = kr; }
+numeric.Spline.prototype._at = function _at(x1,p) {
+    var x = this.x;
+    var yl = this.yl;
+    var yr = this.yr;
+    var kl = this.kl;
+    var kr = this.kr;
+    var x1,a,b,t;
+    var add = numeric.add, sub = numeric.sub, mul = numeric.mul;
+    a = sub(mul(kl[p],x[p+1]-x[p]),sub(yr[p+1],yl[p]));
+    b = add(mul(kr[p+1],x[p]-x[p+1]),sub(yr[p+1],yl[p]));
+    t = (x1-x[p])/(x[p+1]-x[p]);
+    var s = t*(1-t);
+    return add(add(add(mul(1-t,yl[p]),mul(t,yr[p+1])),mul(a,s*(1-t))),mul(b,s*t));
+}
+numeric.Spline.prototype.at = function at(x0) {
+    if(typeof x0 === "number") {
+        var x = this.x;
+        var n = x.length;
+        var p,q,mid,floor = Math.floor,a,b,t;
+        p = 0;
+        q = n-1;
+        while(q-p>1) {
+            mid = floor((p+q)/2);
+            if(x[mid] <= x0) p = mid;
+            else q = mid;
+        }
+        return this._at(x0,p);
+    }
+    var n = x0.length, i, ret = Array(n);
+    for(i=n-1;i!==-1;--i) ret[i] = this.at(x0[i]);
+    return ret;
+}
+numeric.Spline.prototype.diff = function diff() {
+    var x = this.x;
+    var yl = this.yl;
+    var yr = this.yr;
+    var kl = this.kl;
+    var kr = this.kr;
+    var n = yl.length;
+    var i,dx,dy;
+    var zl = kl, zr = kr, pl = Array(n), pr = Array(n);
+    var add = numeric.add, mul = numeric.mul, div = numeric.div, sub = numeric.sub;
+    for(i=n-1;i!==-1;--i) {
+        dx = x[i+1]-x[i];
+        dy = sub(yr[i+1],yl[i]);
+        pl[i] = div(add(mul(dy, 6),mul(kl[i],-4*dx),mul(kr[i+1],-2*dx)),dx*dx);
+        pr[i+1] = div(add(mul(dy,-6),mul(kl[i], 2*dx),mul(kr[i+1], 4*dx)),dx*dx);
+    }
+    return new numeric.Spline(x,zl,zr,pl,pr);
+}
+numeric.Spline.prototype.roots = function roots() {
+    function sqr(x) { return x*x; }
+    function heval(y0,y1,k0,k1,x) {
+        var A = k0*2-(y1-y0);
+        var B = -k1*2+(y1-y0);
+        var t = (x+1)*0.5;
+        var s = t*(1-t);
+        return (1-t)*y0+t*y1+A*s*(1-t)+B*s*t;
+    }
+    var ret = [];
+    var x = this.x, yl = this.yl, yr = this.yr, kl = this.kl, kr = this.kr;
+    if(typeof yl[0] === "number") {
+        yl = [yl];
+        yr = [yr];
+        kl = [kl];
+        kr = [kr];
+    }
+    var m = yl.length,n=x.length-1,i,j,k,y,s,t;
+    var ai,bi,ci,di, ret = Array(m),ri,k0,k1,y0,y1,A,B,D,dx,cx,stops,z0,z1,zm,t0,t1,tm;
+    var sqrt = Math.sqrt;
+    for(i=0;i!==m;++i) {
+        ai = yl[i];
+        bi = yr[i];
+        ci = kl[i];
+        di = kr[i];
+        ri = [];
+        for(j=0;j!==n;j++) {
+            if(j>0 && bi[j]*ai[j]<0) ri.push(x[j]);
+            dx = (x[j+1]-x[j]);
+            cx = x[j];
+            y0 = ai[j];
+            y1 = bi[j+1];
+            k0 = ci[j]/dx;
+            k1 = di[j+1]/dx;
+            D = sqr(k0-k1+3*(y0-y1)) + 12*k1*y0;
+            A = k1+3*y0+2*k0-3*y1;
+            B = 3*(k1+k0+2*(y0-y1));
+            if(D<=0) {
+                z0 = A/B;
+                if(z0>x[j] && z0<x[j+1]) stops = [x[j],z0,x[j+1]];
+                else stops = [x[j],x[j+1]];
+            } else {
+                z0 = (A-sqrt(D))/B;
+                z1 = (A+sqrt(D))/B;
+                stops = [x[j]];
+                if(z0>x[j] && z0<x[j+1]) stops.push(z0);
+                if(z1>x[j] && z1<x[j+1]) stops.push(z1);
+                stops.push(x[j+1]);
+            }
+            t0 = stops[0];
+            z0 = this._at(t0,j);
+            for(k=0;k<stops.length-1;k++) {
+                t1 = stops[k+1];
+                z1 = this._at(t1,j);
+                if(z0 === 0) {
+                    ri.push(t0); 
+                    t0 = t1;
+                    z0 = z1;
+                    continue;
+                }
+                if(z1 === 0 || z0*z1>0) {
+                    t0 = t1;
+                    z0 = z1;
+                    continue;
+                }
+                var side = 0;
+                while(1) {
+                    tm = (z0*t1-z1*t0)/(z0-z1);
+                    if(tm <= t0 || tm >= t1) { break; }
+                    zm = this._at(tm,j);
+                    if(zm*z1>0) {
+                        t1 = tm;
+                        z1 = zm;
+                        if(side === -1) z0*=0.5;
+                        side = -1;
+                    } else if(zm*z0>0) {
+                        t0 = tm;
+                        z0 = zm;
+                        if(side === 1) z1*=0.5;
+                        side = 1;
+                    } else break;
+                }
+                ri.push(tm);
+                t0 = stops[k+1];
+                z0 = this._at(t0, j);
+            }
+            if(z1 === 0) ri.push(t1);
+        }
+        ret[i] = ri;
+    }
+    if(typeof this.yl[0] === "number") return ret[0];
+    return ret;
+}
+numeric.spline = function spline(x,y,k1,kn) {
+    var n = x.length, b = [], dx = [], dy = [];
+    var i;
+    var sub = numeric.sub,mul = numeric.mul,add = numeric.add;
+    for(i=n-2;i>=0;i--) { dx[i] = x[i+1]-x[i]; dy[i] = sub(y[i+1],y[i]); }
+    if(typeof k1 === "string" || typeof kn === "string") { 
+        k1 = kn = "periodic";
+    }
+    // Build sparse tridiagonal system
+    var T = [[],[],[]];
+    switch(typeof k1) {
+    case "undefined":
+        b[0] = mul(3/(dx[0]*dx[0]),dy[0]);
+        T[0].push(0,0);
+        T[1].push(0,1);
+        T[2].push(2/dx[0],1/dx[0]);
+        break;
+    case "string":
+        b[0] = add(mul(3/(dx[n-2]*dx[n-2]),dy[n-2]),mul(3/(dx[0]*dx[0]),dy[0]));
+        T[0].push(0,0,0);
+        T[1].push(n-2,0,1);
+        T[2].push(1/dx[n-2],2/dx[n-2]+2/dx[0],1/dx[0]);
+        break;
+    default:
+        b[0] = k1;
+        T[0].push(0);
+        T[1].push(0);
+        T[2].push(1);
+        break;
+    }
+    for(i=1;i<n-1;i++) {
+        b[i] = add(mul(3/(dx[i-1]*dx[i-1]),dy[i-1]),mul(3/(dx[i]*dx[i]),dy[i]));
+        T[0].push(i,i,i);
+        T[1].push(i-1,i,i+1);
+        T[2].push(1/dx[i-1],2/dx[i-1]+2/dx[i],1/dx[i]);
+    }
+    switch(typeof kn) {
+    case "undefined":
+        b[n-1] = mul(3/(dx[n-2]*dx[n-2]),dy[n-2]);
+        T[0].push(n-1,n-1);
+        T[1].push(n-2,n-1);
+        T[2].push(1/dx[n-2],2/dx[n-2]);
+        break;
+    case "string":
+        T[1][T[1].length-1] = 0;
+        break;
+    default:
+        b[n-1] = kn;
+        T[0].push(n-1);
+        T[1].push(n-1);
+        T[2].push(1);
+        break;
+    }
+    if(typeof b[0] !== "number") b = numeric.transpose(b);
+    else b = [b];
+    var k = Array(b.length);
+    if(typeof k1 === "string") {
+        for(i=k.length-1;i!==-1;--i) {
+            k[i] = numeric.ccsLUPSolve(numeric.ccsLUP(numeric.ccsScatter(T)),b[i]);
+            k[i][n-1] = k[i][0];
+        }
+    } else {
+        for(i=k.length-1;i!==-1;--i) {
+            k[i] = numeric.cLUsolve(numeric.cLU(T),b[i]);
+        }
+    }
+    if(typeof y[0] === "number") k = k[0];
+    else k = numeric.transpose(k);
+    return new numeric.Spline(x,y,y,k,k);
+}
+
+// 8. FFT
+numeric.fftpow2 = function fftpow2(x,y) {
+    var n = x.length;
+    if(n === 1) return;
+    var cos = Math.cos, sin = Math.sin, i,j;
+    var xe = Array(n/2), ye = Array(n/2), xo = Array(n/2), yo = Array(n/2);
+    j = n/2;
+    for(i=n-1;i!==-1;--i) {
+        --j;
+        xo[j] = x[i];
+        yo[j] = y[i];
+        --i;
+        xe[j] = x[i];
+        ye[j] = y[i];
+    }
+    fftpow2(xe,ye);
+    fftpow2(xo,yo);
+    j = n/2;
+    var t,k = (-6.2831853071795864769252867665590057683943387987502116419/n),ci,si;
+    for(i=n-1;i!==-1;--i) {
+        --j;
+        if(j === -1) j = n/2-1;
+        t = k*i;
+        ci = cos(t);
+        si = sin(t);
+        x[i] = xe[j] + ci*xo[j] - si*yo[j];
+        y[i] = ye[j] + ci*yo[j] + si*xo[j];
+    }
+}
+numeric._ifftpow2 = function _ifftpow2(x,y) {
+    var n = x.length;
+    if(n === 1) return;
+    var cos = Math.cos, sin = Math.sin, i,j;
+    var xe = Array(n/2), ye = Array(n/2), xo = Array(n/2), yo = Array(n/2);
+    j = n/2;
+    for(i=n-1;i!==-1;--i) {
+        --j;
+        xo[j] = x[i];
+        yo[j] = y[i];
+        --i;
+        xe[j] = x[i];
+        ye[j] = y[i];
+    }
+    _ifftpow2(xe,ye);
+    _ifftpow2(xo,yo);
+    j = n/2;
+    var t,k = (6.2831853071795864769252867665590057683943387987502116419/n),ci,si;
+    for(i=n-1;i!==-1;--i) {
+        --j;
+        if(j === -1) j = n/2-1;
+        t = k*i;
+        ci = cos(t);
+        si = sin(t);
+        x[i] = xe[j] + ci*xo[j] - si*yo[j];
+        y[i] = ye[j] + ci*yo[j] + si*xo[j];
+    }
+}
+numeric.ifftpow2 = function ifftpow2(x,y) {
+    numeric._ifftpow2(x,y);
+    numeric.diveq(x,x.length);
+    numeric.diveq(y,y.length);
+}
+numeric.convpow2 = function convpow2(ax,ay,bx,by) {
+    numeric.fftpow2(ax,ay);
+    numeric.fftpow2(bx,by);
+    var i,n = ax.length,axi,bxi,ayi,byi;
+    for(i=n-1;i!==-1;--i) {
+        axi = ax[i]; ayi = ay[i]; bxi = bx[i]; byi = by[i];
+        ax[i] = axi*bxi-ayi*byi;
+        ay[i] = axi*byi+ayi*bxi;
+    }
+    numeric.ifftpow2(ax,ay);
+}
+numeric.T.prototype.fft = function fft() {
+    var x = this.x, y = this.y;
+    var n = x.length, log = Math.log, log2 = log(2),
+        p = Math.ceil(log(2*n-1)/log2), m = Math.pow(2,p);
+    var cx = numeric.rep([m],0), cy = numeric.rep([m],0), cos = Math.cos, sin = Math.sin;
+    var k, c = (-3.141592653589793238462643383279502884197169399375105820/n),t;
+    var a = numeric.rep([m],0), b = numeric.rep([m],0),nhalf = Math.floor(n/2);
+    for(k=0;k<n;k++) a[k] = x[k];
+    if(typeof y !== "undefined") for(k=0;k<n;k++) b[k] = y[k];
+    cx[0] = 1;
+    for(k=1;k<=m/2;k++) {
+        t = c*k*k;
+        cx[k] = cos(t);
+        cy[k] = sin(t);
+        cx[m-k] = cos(t);
+        cy[m-k] = sin(t)
+    }
+    var X = new numeric.T(a,b), Y = new numeric.T(cx,cy);
+    X = X.mul(Y);
+    numeric.convpow2(X.x,X.y,numeric.clone(Y.x),numeric.neg(Y.y));
+    X = X.mul(Y);
+    X.x.length = n;
+    X.y.length = n;
+    return X;
+}
+numeric.T.prototype.ifft = function ifft() {
+    var x = this.x, y = this.y;
+    var n = x.length, log = Math.log, log2 = log(2),
+        p = Math.ceil(log(2*n-1)/log2), m = Math.pow(2,p);
+    var cx = numeric.rep([m],0), cy = numeric.rep([m],0), cos = Math.cos, sin = Math.sin;
+    var k, c = (3.141592653589793238462643383279502884197169399375105820/n),t;
+    var a = numeric.rep([m],0), b = numeric.rep([m],0),nhalf = Math.floor(n/2);
+    for(k=0;k<n;k++) a[k] = x[k];
+    if(typeof y !== "undefined") for(k=0;k<n;k++) b[k] = y[k];
+    cx[0] = 1;
+    for(k=1;k<=m/2;k++) {
+        t = c*k*k;
+        cx[k] = cos(t);
+        cy[k] = sin(t);
+        cx[m-k] = cos(t);
+        cy[m-k] = sin(t)
+    }
+    var X = new numeric.T(a,b), Y = new numeric.T(cx,cy);
+    X = X.mul(Y);
+    numeric.convpow2(X.x,X.y,numeric.clone(Y.x),numeric.neg(Y.y));
+    X = X.mul(Y);
+    X.x.length = n;
+    X.y.length = n;
+    return X.div(n);
+}
+
+//9. Unconstrained optimization
+numeric.gradient = function gradient(f,x) {
+    var n = x.length;
+    var f0 = f(x);
+    if(isNaN(f0)) throw new Error('gradient: f(x) is a NaN!');
+    var max = Math.max;
+    var i,x0 = numeric.clone(x),f1,f2, J = Array(n);
+    var div = numeric.div, sub = numeric.sub,errest,roundoff,max = Math.max,eps = 1e-3,abs = Math.abs, min = Math.min;
+    var t0,t1,t2,it=0,d1,d2,N;
+    for(i=0;i<n;i++) {
+        var h = max(1e-6*f0,1e-8);
+        while(1) {
+            ++it;
+            if(it>20) { throw new Error("Numerical gradient fails"); }
+            x0[i] = x[i]+h;
+            f1 = f(x0);
+            x0[i] = x[i]-h;
+            f2 = f(x0);
+            x0[i] = x[i];
+            if(isNaN(f1) || isNaN(f2)) { h/=16; continue; }
+            J[i] = (f1-f2)/(2*h);
+            t0 = x[i]-h;
+            t1 = x[i];
+            t2 = x[i]+h;
+            d1 = (f1-f0)/h;
+            d2 = (f0-f2)/h;
+            N = max(abs(J[i]),abs(f0),abs(f1),abs(f2),abs(t0),abs(t1),abs(t2),1e-8);
+            errest = min(max(abs(d1-J[i]),abs(d2-J[i]),abs(d1-d2))/N,h/N);
+            if(errest>eps) { h/=16; }
+            else break;
+            }
+    }
+    return J;
+}
+
+numeric.uncmin = function uncmin(f,x0,tol,gradient,maxit,callback,options) {
+    var grad = numeric.gradient;
+    if(typeof options === "undefined") { options = {}; }
+    if(typeof tol === "undefined") { tol = 1e-8; }
+    if(typeof gradient === "undefined") { gradient = function(x) { return grad(f,x); }; }
+    if(typeof maxit === "undefined") maxit = 1000;
+    x0 = numeric.clone(x0);
+    var n = x0.length;
+    var f0 = f(x0),f1,df0;
+    if(isNaN(f0)) throw new Error('uncmin: f(x0) is a NaN!');
+    var max = Math.max, norm2 = numeric.norm2;
+    tol = max(tol,numeric.epsilon);
+    var step,g0,g1,H1 = options.Hinv || numeric.identity(n);
+    var dot = numeric.dot, inv = numeric.inv, sub = numeric.sub, add = numeric.add, ten = numeric.tensor, div = numeric.div, mul = numeric.mul;
+    var all = numeric.all, isfinite = numeric.isFinite, neg = numeric.neg;
+    var it=0,i,s,x1,y,Hy,Hs,ys,i0,t,nstep,t1,t2;
+    var msg = "";
+    g0 = gradient(x0);
+    while(it<maxit) {
+        if(typeof callback === "function") { if(callback(it,x0,f0,g0,H1)) { msg = "Callback returned true"; break; } }
+        if(!all(isfinite(g0))) { msg = "Gradient has Infinity or NaN"; break; }
+        step = neg(dot(H1,g0));
+        if(!all(isfinite(step))) { msg = "Search direction has Infinity or NaN"; break; }
+        nstep = norm2(step);
+        if(nstep < tol) { msg="Newton step smaller than tol"; break; }
+        t = 1;
+        df0 = dot(g0,step);
+        // line search
+        x1 = x0;
+        while(it < maxit) {
+            if(t*nstep < tol) { break; }
+            s = mul(step,t);
+            x1 = add(x0,s);
+            f1 = f(x1);
+            if(f1-f0 >= 0.1*t*df0 || isNaN(f1)) {
+                t *= 0.5;
+                ++it;
+                continue;
+            }
+            break;
+        }
+        if(t*nstep < tol) { msg = "Line search step size smaller than tol"; break; }
+        if(it === maxit) { msg = "maxit reached during line search"; break; }
+        g1 = gradient(x1);
+        y = sub(g1,g0);
+        ys = dot(y,s);
+        Hy = dot(H1,y);
+        H1 = sub(add(H1,
+                mul(
+                        (ys+dot(y,Hy))/(ys*ys),
+                        ten(s,s)    )),
+                div(add(ten(Hy,s),ten(s,Hy)),ys));
+        x0 = x1;
+        f0 = f1;
+        g0 = g1;
+        ++it;
+    }
+    return {solution: x0, f: f0, gradient: g0, invHessian: H1, iterations:it, message: msg};
+}
+
+// 10. Ode solver (Dormand-Prince)
+numeric.Dopri = function Dopri(x,y,f,ymid,iterations,msg,events) {
+    this.x = x;
+    this.y = y;
+    this.f = f;
+    this.ymid = ymid;
+    this.iterations = iterations;
+    this.events = events;
+    this.message = msg;
+}
+numeric.Dopri.prototype._at = function _at(xi,j) {
+    function sqr(x) { return x*x; }
+    var sol = this;
+    var xs = sol.x;
+    var ys = sol.y;
+    var k1 = sol.f;
+    var ymid = sol.ymid;
+    var n = xs.length;
+    var x0,x1,xh,y0,y1,yh,xi;
+    var floor = Math.floor,h;
+    var c = 0.5;
+    var add = numeric.add, mul = numeric.mul,sub = numeric.sub, p,q,w;
+    x0 = xs[j];
+    x1 = xs[j+1];
+    y0 = ys[j];
+    y1 = ys[j+1];
+    h  = x1-x0;
+    xh = x0+c*h;
+    yh = ymid[j];
+    p = sub(k1[j  ],mul(y0,1/(x0-xh)+2/(x0-x1)));
+    q = sub(k1[j+1],mul(y1,1/(x1-xh)+2/(x1-x0)));
+    w = [sqr(xi - x1) * (xi - xh) / sqr(x0 - x1) / (x0 - xh),
+         sqr(xi - x0) * sqr(xi - x1) / sqr(x0 - xh) / sqr(x1 - xh),
+         sqr(xi - x0) * (xi - xh) / sqr(x1 - x0) / (x1 - xh),
+         (xi - x0) * sqr(xi - x1) * (xi - xh) / sqr(x0-x1) / (x0 - xh),
+         (xi - x1) * sqr(xi - x0) * (xi - xh) / sqr(x0-x1) / (x1 - xh)];
+    return add(add(add(add(mul(y0,w[0]),
+                           mul(yh,w[1])),
+                           mul(y1,w[2])),
+                           mul( p,w[3])),
+                           mul( q,w[4]));
+}
+numeric.Dopri.prototype.at = function at(x) {
+    var i,j,k,floor = Math.floor;
+    if(typeof x !== "number") {
+        var n = x.length, ret = Array(n);
+        for(i=n-1;i!==-1;--i) {
+            ret[i] = this.at(x[i]);
+        }
+        return ret;
+    }
+    var x0 = this.x;
+    i = 0; j = x0.length-1;
+    while(j-i>1) {
+        k = floor(0.5*(i+j));
+        if(x0[k] <= x) i = k;
+        else j = k;
+    }
+    return this._at(x,i);
+}
+
+numeric.dopri = function dopri(x0,x1,y0,f,tol,maxit,event) {
+    if(typeof tol === "undefined") { tol = 1e-6; }
+    if(typeof maxit === "undefined") { maxit = 1000; }
+    var xs = [x0], ys = [y0], k1 = [f(x0,y0)], k2,k3,k4,k5,k6,k7, ymid = [];
+    var A2 = 1/5;
+    var A3 = [3/40,9/40];
+    var A4 = [44/45,-56/15,32/9];
+    var A5 = [19372/6561,-25360/2187,64448/6561,-212/729];
+    var A6 = [9017/3168,-355/33,46732/5247,49/176,-5103/18656];
+    var b = [35/384,0,500/1113,125/192,-2187/6784,11/84];
+    var bm = [0.5*6025192743/30085553152,
+              0,
+              0.5*51252292925/65400821598,
+              0.5*-2691868925/45128329728,
+              0.5*187940372067/1594534317056,
+              0.5*-1776094331/19743644256,
+              0.5*11237099/235043384];
+    var c = [1/5,3/10,4/5,8/9,1,1];
+    var e = [-71/57600,0,71/16695,-71/1920,17253/339200,-22/525,1/40];
+    var i = 0,er,j;
+    var h = (x1-x0)/10;
+    var it = 0;
+    var add = numeric.add, mul = numeric.mul, y1,erinf;
+    var max = Math.max, min = Math.min, abs = Math.abs, norminf = numeric.norminf,pow = Math.pow;
+    var any = numeric.any, lt = numeric.lt, and = numeric.and, sub = numeric.sub;
+    var e0, e1, ev;
+    var ret = new numeric.Dopri(xs,ys,k1,ymid,-1,"");
+    if(typeof event === "function") e0 = event(x0,y0);
+    while(x0<x1 && it<maxit) {
+        ++it;
+        if(x0+h>x1) h = x1-x0;
+        k2 = f(x0+c[0]*h,                add(y0,mul(   A2*h,k1[i])));
+        k3 = f(x0+c[1]*h,            add(add(y0,mul(A3[0]*h,k1[i])),mul(A3[1]*h,k2)));
+        k4 = f(x0+c[2]*h,        add(add(add(y0,mul(A4[0]*h,k1[i])),mul(A4[1]*h,k2)),mul(A4[2]*h,k3)));
+        k5 = f(x0+c[3]*h,    add(add(add(add(y0,mul(A5[0]*h,k1[i])),mul(A5[1]*h,k2)),mul(A5[2]*h,k3)),mul(A5[3]*h,k4)));
+        k6 = f(x0+c[4]*h,add(add(add(add(add(y0,mul(A6[0]*h,k1[i])),mul(A6[1]*h,k2)),mul(A6[2]*h,k3)),mul(A6[3]*h,k4)),mul(A6[4]*h,k5)));
+        y1 = add(add(add(add(add(y0,mul(k1[i],h*b[0])),mul(k3,h*b[2])),mul(k4,h*b[3])),mul(k5,h*b[4])),mul(k6,h*b[5]));
+        k7 = f(x0+h,y1);
+        er = add(add(add(add(add(mul(k1[i],h*e[0]),mul(k3,h*e[2])),mul(k4,h*e[3])),mul(k5,h*e[4])),mul(k6,h*e[5])),mul(k7,h*e[6]));
+        if(typeof er === "number") erinf = abs(er);
+        else erinf = norminf(er);
+        if(erinf > tol) { // reject
+            h = 0.2*h*pow(tol/erinf,0.25);
+            if(x0+h === x0) {
+                ret.msg = "Step size became too small";
+                break;
+            }
+            continue;
+        }
+        ymid[i] = add(add(add(add(add(add(y0,
+                mul(k1[i],h*bm[0])),
+                mul(k3   ,h*bm[2])),
+                mul(k4   ,h*bm[3])),
+                mul(k5   ,h*bm[4])),
+                mul(k6   ,h*bm[5])),
+                mul(k7   ,h*bm[6]));
+        ++i;
+        xs[i] = x0+h;
+        ys[i] = y1;
+        k1[i] = k7;
+        if(typeof event === "function") {
+            var yi,xl = x0,xr = x0+0.5*h,xi;
+            e1 = event(xr,ymid[i-1]);
+            ev = and(lt(e0,0),lt(0,e1));
+            if(!any(ev)) { xl = xr; xr = x0+h; e0 = e1; e1 = event(xr,y1); ev = and(lt(e0,0),lt(0,e1)); }
+            if(any(ev)) {
+                var xc, yc, en,ei;
+                var side=0, sl = 1.0, sr = 1.0;
+                while(1) {
+                    if(typeof e0 === "number") xi = (sr*e1*xl-sl*e0*xr)/(sr*e1-sl*e0);
+                    else {
+                        xi = xr;
+                        for(j=e0.length-1;j!==-1;--j) {
+                            if(e0[j]<0 && e1[j]>0) xi = min(xi,(sr*e1[j]*xl-sl*e0[j]*xr)/(sr*e1[j]-sl*e0[j]));
+                        }
+                    }
+                    if(xi <= xl || xi >= xr) break;
+                    yi = ret._at(xi, i-1);
+                    ei = event(xi,yi);
+                    en = and(lt(e0,0),lt(0,ei));
+                    if(any(en)) {
+                        xr = xi;
+                        e1 = ei;
+                        ev = en;
+                        sr = 1.0;
+                        if(side === -1) sl *= 0.5;
+                        else sl = 1.0;
+                        side = -1;
+                    } else {
+                        xl = xi;
+                        e0 = ei;
+                        sl = 1.0;
+                        if(side === 1) sr *= 0.5;
+                        else sr = 1.0;
+                        side = 1;
+                    }
+                }
+                y1 = ret._at(0.5*(x0+xi),i-1);
+                ret.f[i] = f(xi,yi);
+                ret.x[i] = xi;
+                ret.y[i] = yi;
+                ret.ymid[i-1] = y1;
+                ret.events = ev;
+                ret.iterations = it;
+                return ret;
+            }
+        }
+        x0 += h;
+        y0 = y1;
+        e0 = e1;
+        h = min(0.8*h*pow(tol/erinf,0.25),4*h);
+    }
+    ret.iterations = it;
+    return ret;
+}
+
+// 11. Ax = b
+numeric.LU = function(A, fast) {
+  fast = fast || false;
+
+  var abs = Math.abs;
+  var i, j, k, absAjk, Akk, Ak, Pk, Ai;
+  var max;
+  var n = A.length, n1 = n-1;
+  var P = new Array(n);
+  if(!fast) A = numeric.clone(A);
+
+  for (k = 0; k < n; ++k) {
+    Pk = k;
+    Ak = A[k];
+    max = abs(Ak[k]);
+    for (j = k + 1; j < n; ++j) {
+      absAjk = abs(A[j][k]);
+      if (max < absAjk) {
+        max = absAjk;
+        Pk = j;
+      }
+    }
+    P[k] = Pk;
+
+    if (Pk != k) {
+      A[k] = A[Pk];
+      A[Pk] = Ak;
+      Ak = A[k];
+    }
+
+    Akk = Ak[k];
+
+    for (i = k + 1; i < n; ++i) {
+      A[i][k] /= Akk;
+    }
+
+    for (i = k + 1; i < n; ++i) {
+      Ai = A[i];
+      for (j = k + 1; j < n1; ++j) {
+        Ai[j] -= Ai[k] * Ak[j];
+        ++j;
+        Ai[j] -= Ai[k] * Ak[j];
+      }
+      if(j===n1) Ai[j] -= Ai[k] * Ak[j];
+    }
+  }
+
+  return {
+    LU: A,
+    P:  P
+  };
+}
+
+numeric.LUsolve = function LUsolve(LUP, b) {
+  var i, j;
+  var LU = LUP.LU;
+  var n   = LU.length;
+  var x = numeric.clone(b);
+  var P   = LUP.P;
+  var Pi, LUi, LUii, tmp;
+
+  for (i=n-1;i!==-1;--i) x[i] = b[i];
+  for (i = 0; i < n; ++i) {
+    Pi = P[i];
+    if (P[i] !== i) {
+      tmp = x[i];
+      x[i] = x[Pi];
+      x[Pi] = tmp;
+    }
+
+    LUi = LU[i];
+    for (j = 0; j < i; ++j) {
+      x[i] -= x[j] * LUi[j];
+    }
+  }
+
+  for (i = n - 1; i >= 0; --i) {
+    LUi = LU[i];
+    for (j = i + 1; j < n; ++j) {
+      x[i] -= x[j] * LUi[j];
+    }
+
+    x[i] /= LUi[i];
+  }
+
+  return x;
+}
+
+numeric.solve = function solve(A,b,fast) { return numeric.LUsolve(numeric.LU(A,fast), b); }
+
+// 12. Linear programming
+numeric.echelonize = function echelonize(A) {
+    var s = numeric.dim(A), m = s[0], n = s[1];
+    var I = numeric.identity(m);
+    var P = Array(m);
+    var i,j,k,l,Ai,Ii,Z,a;
+    var abs = Math.abs;
+    var diveq = numeric.diveq;
+    A = numeric.clone(A);
+    for(i=0;i<m;++i) {
+        k = 0;
+        Ai = A[i];
+        Ii = I[i];
+        for(j=1;j<n;++j) if(abs(Ai[k])<abs(Ai[j])) k=j;
+        P[i] = k;
+        diveq(Ii,Ai[k]);
+        diveq(Ai,Ai[k]);
+        for(j=0;j<m;++j) if(j!==i) {
+            Z = A[j]; a = Z[k];
+            for(l=n-1;l!==-1;--l) Z[l] -= Ai[l]*a;
+            Z = I[j];
+            for(l=m-1;l!==-1;--l) Z[l] -= Ii[l]*a;
+        }
+    }
+    return {I:I, A:A, P:P};
+}
+
+numeric.__solveLP = function __solveLP(c,A,b,tol,maxit,x,flag) {
+    var sum = numeric.sum, log = numeric.log, mul = numeric.mul, sub = numeric.sub, dot = numeric.dot, div = numeric.div, add = numeric.add;
+    var m = c.length, n = b.length,y;
+    var unbounded = false, cb,i0=0;
+    var alpha = 1.0;
+    var f0,df0,AT = numeric.transpose(A), svd = numeric.svd,transpose = numeric.transpose,leq = numeric.leq, sqrt = Math.sqrt, abs = Math.abs;
+    var muleq = numeric.muleq;
+    var norm = numeric.norminf, any = numeric.any,min = Math.min;
+    var all = numeric.all, gt = numeric.gt;
+    var p = Array(m), A0 = Array(n),e=numeric.rep([n],1), H;
+    var solve = numeric.solve, z = sub(b,dot(A,x)),count;
+    var dotcc = dot(c,c);
+    var g;
+    for(count=i0;count<maxit;++count) {
+        var i,j,d;
+        for(i=n-1;i!==-1;--i) A0[i] = div(A[i],z[i]);
+        var A1 = transpose(A0);
+        for(i=m-1;i!==-1;--i) p[i] = (/*x[i]+*/sum(A1[i]));
+        alpha = 0.25*abs(dotcc/dot(c,p));
+        var a1 = 100*sqrt(dotcc/dot(p,p));
+        if(!isFinite(alpha) || alpha>a1) alpha = a1;
+        g = add(c,mul(alpha,p));
+        H = dot(A1,A0);
+        for(i=m-1;i!==-1;--i) H[i][i] += 1;
+        d = solve(H,div(g,alpha),true);
+        var t0 = div(z,dot(A,d));
+        var t = 1.0;
+        for(i=n-1;i!==-1;--i) if(t0[i]<0) t = min(t,-0.999*t0[i]);
+        y = sub(x,mul(d,t));
+        z = sub(b,dot(A,y));
+        if(!all(gt(z,0))) return { solution: x, message: "", iterations: count };
+        x = y;
+        if(alpha<tol) return { solution: y, message: "", iterations: count };
+        if(flag) {
+            var s = dot(c,g), Ag = dot(A,g);
+            unbounded = true;
+            for(i=n-1;i!==-1;--i) if(s*Ag[i]<0) { unbounded = false; break; }
+        } else {
+            if(x[m-1]>=0) unbounded = false;
+            else unbounded = true;
+        }
+        if(unbounded) return { solution: y, message: "Unbounded", iterations: count };
+    }
+    return { solution: x, message: "maximum iteration count exceeded", iterations:count };
+}
+
+numeric._solveLP = function _solveLP(c,A,b,tol,maxit) {
+    var m = c.length, n = b.length,y;
+    var sum = numeric.sum, log = numeric.log, mul = numeric.mul, sub = numeric.sub, dot = numeric.dot, div = numeric.div, add = numeric.add;
+    var c0 = numeric.rep([m],0).concat([1]);
+    var J = numeric.rep([n,1],-1);
+    var A0 = numeric.blockMatrix([[A                   ,   J  ]]);
+    var b0 = b;
+    var y = numeric.rep([m],0).concat(Math.max(0,numeric.sup(numeric.neg(b)))+1);
+    var x0 = numeric.__solveLP(c0,A0,b0,tol,maxit,y,false);
+    var x = numeric.clone(x0.solution);
+    x.length = m;
+    var foo = numeric.inf(sub(b,dot(A,x)));
+    if(foo<0) { return { solution: NaN, message: "Infeasible", iterations: x0.iterations }; }
+    var ret = numeric.__solveLP(c, A, b, tol, maxit-x0.iterations, x, true);
+    ret.iterations += x0.iterations;
+    return ret;
+};
+
+numeric.solveLP = function solveLP(c,A,b,Aeq,beq,tol,maxit) {
+    if(typeof maxit === "undefined") maxit = 1000;
+    if(typeof tol === "undefined") tol = numeric.epsilon;
+    if(typeof Aeq === "undefined") return numeric._solveLP(c,A,b,tol,maxit);
+    var m = Aeq.length, n = Aeq[0].length, o = A.length;
+    var B = numeric.echelonize(Aeq);
+    var flags = numeric.rep([n],0);
+    var P = B.P;
+    var Q = [];
+    var i;
+    for(i=P.length-1;i!==-1;--i) flags[P[i]] = 1;
+    for(i=n-1;i!==-1;--i) if(flags[i]===0) Q.push(i);
+    var g = numeric.getRange;
+    var I = numeric.linspace(0,m-1), J = numeric.linspace(0,o-1);
+    var Aeq2 = g(Aeq,I,Q), A1 = g(A,J,P), A2 = g(A,J,Q), dot = numeric.dot, sub = numeric.sub;
+    var A3 = dot(A1,B.I);
+    var A4 = sub(A2,dot(A3,Aeq2)), b4 = sub(b,dot(A3,beq));
+    var c1 = Array(P.length), c2 = Array(Q.length);
+    for(i=P.length-1;i!==-1;--i) c1[i] = c[P[i]];
+    for(i=Q.length-1;i!==-1;--i) c2[i] = c[Q[i]];
+    var c4 = sub(c2,dot(c1,dot(B.I,Aeq2)));
+    var S = numeric._solveLP(c4,A4,b4,tol,maxit);
+    var x2 = S.solution;
+    if(x2!==x2) return S;
+    var x1 = dot(B.I,sub(beq,dot(Aeq2,x2)));
+    var x = Array(c.length);
+    for(i=P.length-1;i!==-1;--i) x[P[i]] = x1[i];
+    for(i=Q.length-1;i!==-1;--i) x[Q[i]] = x2[i];
+    return { solution: x, message:S.message, iterations: S.iterations };
+}
+
+numeric.MPStoLP = function MPStoLP(MPS) {
+    if(MPS instanceof String) { MPS.split('\n'); }
+    var state = 0;
+    var states = ['Initial state','NAME','ROWS','COLUMNS','RHS','BOUNDS','ENDATA'];
+    var n = MPS.length;
+    var i,j,z,N=0,rows = {}, sign = [], rl = 0, vars = {}, nv = 0;
+    var name;
+    var c = [], A = [], b = [];
+    function err(e) { throw new Error('MPStoLP: '+e+'\nLine '+i+': '+MPS[i]+'\nCurrent state: '+states[state]+'\n'); }
+    for(i=0;i<n;++i) {
+        z = MPS[i];
+        var w0 = z.match(/\S*/g);
+        var w = [];
+        for(j=0;j<w0.length;++j) if(w0[j]!=="") w.push(w0[j]);
+        if(w.length === 0) continue;
+        for(j=0;j<states.length;++j) if(z.substr(0,states[j].length) === states[j]) break;
+        if(j<states.length) {
+            state = j;
+            if(j===1) { name = w[1]; }
+            if(j===6) return { name:name, c:c, A:numeric.transpose(A), b:b, rows:rows, vars:vars };
+            continue;
+        }
+        switch(state) {
+        case 0: case 1: err('Unexpected line');
+        case 2: 
+            switch(w[0]) {
+            case 'N': if(N===0) N = w[1]; else err('Two or more N rows'); break;
+            case 'L': rows[w[1]] = rl; sign[rl] = 1; b[rl] = 0; ++rl; break;
+            case 'G': rows[w[1]] = rl; sign[rl] = -1;b[rl] = 0; ++rl; break;
+            case 'E': rows[w[1]] = rl; sign[rl] = 0;b[rl] = 0; ++rl; break;
+            default: err('Parse error '+numeric.prettyPrint(w));
+            }
+            break;
+        case 3:
+            if(!vars.hasOwnProperty(w[0])) { vars[w[0]] = nv; c[nv] = 0; A[nv] = numeric.rep([rl],0); ++nv; }
+            var p = vars[w[0]];
+            for(j=1;j<w.length;j+=2) {
+                if(w[j] === N) { c[p] = parseFloat(w[j+1]); continue; }
+                var q = rows[w[j]];
+                A[p][q] = (sign[q]<0?-1:1)*parseFloat(w[j+1]);
+            }
+            break;
+        case 4:
+            for(j=1;j<w.length;j+=2) b[rows[w[j]]] = (sign[rows[w[j]]]<0?-1:1)*parseFloat(w[j+1]);
+            break;
+        case 5: /*FIXME*/ break;
+        case 6: err('Internal error');
+        }
+    }
+    err('Reached end of file without ENDATA');
+}
+// seedrandom.js version 2.0.
+// Author: David Bau 4/2/2011
+//
+// Defines a method Math.seedrandom() that, when called, substitutes
+// an explicitly seeded RC4-based algorithm for Math.random().  Also
+// supports automatic seeding from local or network sources of entropy.
+//
+// Usage:
+//
+//   <script src=http://davidbau.com/encode/seedrandom-min.js></script>
+//
+//   Math.seedrandom('yipee'); Sets Math.random to a function that is
+//                             initialized using the given explicit seed.
+//
+//   Math.seedrandom();        Sets Math.random to a function that is
+//                             seeded using the current time, dom state,
+//                             and other accumulated local entropy.
+//                             The generated seed string is returned.
+//
+//   Math.seedrandom('yowza', true);
+//                             Seeds using the given explicit seed mixed
+//                             together with accumulated entropy.
+//
+//   <script src="http://bit.ly/srandom-512"></script>
+//                             Seeds using physical random bits downloaded
+//                             from random.org.
+//
+//   <script src="https://jsonlib.appspot.com/urandom?callback=Math.seedrandom">
+//   </script>                 Seeds using urandom bits from call.jsonlib.com,
+//                             which is faster than random.org.
+//
+// Examples:
+//
+//   Math.seedrandom("hello");            // Use "hello" as the seed.
+//   document.write(Math.random());       // Always 0.5463663768140734
+//   document.write(Math.random());       // Always 0.43973793770592234
+//   var rng1 = Math.random;              // Remember the current prng.
+//
+//   var autoseed = Math.seedrandom();    // New prng with an automatic seed.
+//   document.write(Math.random());       // Pretty much unpredictable.
+//
+//   Math.random = rng1;                  // Continue "hello" prng sequence.
+//   document.write(Math.random());       // Always 0.554769432473455
+//
+//   Math.seedrandom(autoseed);           // Restart at the previous seed.
+//   document.write(Math.random());       // Repeat the 'unpredictable' value.
+//
+// Notes:
+//
+// Each time seedrandom('arg') is called, entropy from the passed seed
+// is accumulated in a pool to help generate future seeds for the
+// zero-argument form of Math.seedrandom, so entropy can be injected over
+// time by calling seedrandom with explicit data repeatedly.
+//
+// On speed - This javascript implementation of Math.random() is about
+// 3-10x slower than the built-in Math.random() because it is not native
+// code, but this is typically fast enough anyway.  Seeding is more expensive,
+// especially if you use auto-seeding.  Some details (timings on Chrome 4):
+//
+// Our Math.random()            - avg less than 0.002 milliseconds per call
+// seedrandom('explicit')       - avg less than 0.5 milliseconds per call
+// seedrandom('explicit', true) - avg less than 2 milliseconds per call
+// seedrandom()                 - avg about 38 milliseconds per call
+//
+// LICENSE (BSD):
+//
+// Copyright 2010 David Bau, all rights reserved.
+//
+// Redistribution and use in source and binary forms, with or without
+// modification, are permitted provided that the following conditions are met:
+// 
+//   1. Redistributions of source code must retain the above copyright
+//      notice, this list of conditions and the following disclaimer.
+//
+//   2. Redistributions in binary form must reproduce the above copyright
+//      notice, this list of conditions and the following disclaimer in the
+//      documentation and/or other materials provided with the distribution.
+// 
+//   3. Neither the name of this module nor the names of its contributors may
+//      be used to endorse or promote products derived from this software
+//      without specific prior written permission.
+// 
+// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+// "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+// LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+// A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+// OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+// SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+// LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+// DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+// THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+// (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+// OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+//
+/**
+ * All code is in an anonymous closure to keep the global namespace clean.
+ *
+ * @param {number=} overflow 
+ * @param {number=} startdenom
+ */
+
+// Patched by Seb so that seedrandom.js does not pollute the Math object.
+// My tests suggest that doing Math.trouble = 1 makes Math lookups about 5%
+// slower.
+numeric.seedrandom = { pow:Math.pow, random:Math.random };
+
+(function (pool, math, width, chunks, significance, overflow, startdenom) {
+
+
+//
+// seedrandom()
+// This is the seedrandom function described above.
+//
+math['seedrandom'] = function seedrandom(seed, use_entropy) {
+  var key = [];
+  var arc4;
+
+  // Flatten the seed string or build one from local entropy if needed.
+  seed = mixkey(flatten(
+    use_entropy ? [seed, pool] :
+    arguments.length ? seed :
+    [new Date().getTime(), pool, window], 3), key);
+
+  // Use the seed to initialize an ARC4 generator.
+  arc4 = new ARC4(key);
+
+  // Mix the randomness into accumulated entropy.
+  mixkey(arc4.S, pool);
+
+  // Override Math.random
+
+  // This function returns a random double in [0, 1) that contains
+  // randomness in every bit of the mantissa of the IEEE 754 value.
+
+  math['random'] = function random() {  // Closure to return a random double:
+    var n = arc4.g(chunks);             // Start with a numerator n < 2 ^ 48
+    var d = startdenom;                 //   and denominator d = 2 ^ 48.
+    var x = 0;                          //   and no 'extra last byte'.
+    while (n < significance) {          // Fill up all significant digits by
+      n = (n + x) * width;              //   shifting numerator and
+      d *= width;                       //   denominator and generating a
+      x = arc4.g(1);                    //   new least-significant-byte.
+    }
+    while (n >= overflow) {             // To avoid rounding up, before adding
+      n /= 2;                           //   last byte, shift everything
+      d /= 2;                           //   right using integer math until
+      x >>>= 1;                         //   we have exactly the desired bits.
+    }
+    return (n + x) / d;                 // Form the number within [0, 1).
+  };
+
+  // Return the seed that was used
+  return seed;
+};
+
+//
+// ARC4
+//
+// An ARC4 implementation.  The constructor takes a key in the form of
+// an array of at most (width) integers that should be 0 <= x < (width).
+//
+// The g(count) method returns a pseudorandom integer that concatenates
+// the next (count) outputs from ARC4.  Its return value is a number x
+// that is in the range 0 <= x < (width ^ count).
+//
+/** @constructor */
+function ARC4(key) {
+  var t, u, me = this, keylen = key.length;
+  var i = 0, j = me.i = me.j = me.m = 0;
+  me.S = [];
+  me.c = [];
+
+  // The empty key [] is treated as [0].
+  if (!keylen) { key = [keylen++]; }
+
+  // Set up S using the standard key scheduling algorithm.
+  while (i < width) { me.S[i] = i++; }
+  for (i = 0; i < width; i++) {
+    t = me.S[i];
+    j = lowbits(j + t + key[i % keylen]);
+    u = me.S[j];
+    me.S[i] = u;
+    me.S[j] = t;
+  }
+
+  // The "g" method returns the next (count) outputs as one number.
+  me.g = function getnext(count) {
+    var s = me.S;
+    var i = lowbits(me.i + 1); var t = s[i];
+    var j = lowbits(me.j + t); var u = s[j];
+    s[i] = u;
+    s[j] = t;
+    var r = s[lowbits(t + u)];
+    while (--count) {
+      i = lowbits(i + 1); t = s[i];
+      j = lowbits(j + t); u = s[j];
+      s[i] = u;
+      s[j] = t;
+      r = r * width + s[lowbits(t + u)];
+    }
+    me.i = i;
+    me.j = j;
+    return r;
+  };
+  // For robust unpredictability discard an initial batch of values.
+  // See http://www.rsa.com/rsalabs/node.asp?id=2009
+  me.g(width);
+}
+
+//
+// flatten()
+// Converts an object tree to nested arrays of strings.
+//
+/** @param {Object=} result 
+  * @param {string=} prop
+  * @param {string=} typ */
+function flatten(obj, depth, result, prop, typ) {
+  result = [];
+  typ = typeof(obj);
+  if (depth && typ == 'object') {
+    for (prop in obj) {
+      if (prop.indexOf('S') < 5) {    // Avoid FF3 bug (local/sessionStorage)
+        try { result.push(flatten(obj[prop], depth - 1)); } catch (e) {}
+      }
+    }
+  }
+  return (result.length ? result : obj + (typ != 'string' ? '\0' : ''));
+}
+
+//
+// mixkey()
+// Mixes a string seed into a key that is an array of integers, and
+// returns a shortened string seed that is equivalent to the result key.
+//
+/** @param {number=} smear 
+  * @param {number=} j */
+function mixkey(seed, key, smear, j) {
+  seed += '';                         // Ensure the seed is a string
+  smear = 0;
+  for (j = 0; j < seed.length; j++) {
+    key[lowbits(j)] =
+      lowbits((smear ^= key[lowbits(j)] * 19) + seed.charCodeAt(j));
+  }
+  seed = '';
+  for (j in key) { seed += String.fromCharCode(key[j]); }
+  return seed;
+}
+
+//
+// lowbits()
+// A quick "n mod width" for width a power of 2.
+//
+function lowbits(n) { return n & (width - 1); }
+
+//
+// The following constants are related to IEEE 754 limits.
+//
+startdenom = math.pow(width, chunks);
+significance = math.pow(2, significance);
+overflow = significance * 2;
+
+//
+// When seedrandom.js is loaded, we immediately mix a few bits
+// from the built-in RNG into the entropy pool.  Because we do
+// not want to intefere with determinstic PRNG state later,
+// seedrandom will not call math.random on its own again after
+// initialization.
+//
+mixkey(math.random(), pool);
+
+// End anonymous scope, and pass initial values.
+}(
+  [],   // pool: entropy pool starts empty
+  numeric.seedrandom, // math: package containing random, pow, and seedrandom
+  256,  // width: each RC4 output is 0 <= x < 256
+  6,    // chunks: at least six RC4 outputs for each double
+  52    // significance: there are 52 significant digits in a double
+  ));
+/* This file is a slightly modified version of quadprog.js from Alberto Santini.
+ * It has been slightly modified by Sébastien Loisel to make sure that it handles
+ * 0-based Arrays instead of 1-based Arrays.
+ * License is in resources/LICENSE.quadprog */
+(function(exports) {
+
+function base0to1(A) {
+    if(typeof A !== "object") { return A; }
+    var ret = [], i,n=A.length;
+    for(i=0;i<n;i++) ret[i+1] = base0to1(A[i]);
+    return ret;
+}
+function base1to0(A) {
+    if(typeof A !== "object") { return A; }
+    var ret = [], i,n=A.length;
+    for(i=1;i<n;i++) ret[i-1] = base1to0(A[i]);
+    return ret;
+}
+
+function dpori(a, lda, n) {
+    var i, j, k, kp1, t;
+
+    for (k = 1; k <= n; k = k + 1) {
+        a[k][k] = 1 / a[k][k];
+        t = -a[k][k];
+        //~ dscal(k - 1, t, a[1][k], 1);
+        for (i = 1; i < k; i = i + 1) {
+            a[i][k] = t * a[i][k];
+        }
+
+        kp1 = k + 1;
+        if (n < kp1) {
+            break;
+        }
+        for (j = kp1; j <= n; j = j + 1) {
+            t = a[k][j];
+            a[k][j] = 0;
+            //~ daxpy(k, t, a[1][k], 1, a[1][j], 1);
+            for (i = 1; i <= k; i = i + 1) {
+                a[i][j] = a[i][j] + (t * a[i][k]);
+            }
+        }
+    }
+
+}
+
+function dposl(a, lda, n, b) {
+    var i, k, kb, t;
+
+    for (k = 1; k <= n; k = k + 1) {
+        //~ t = ddot(k - 1, a[1][k], 1, b[1], 1);
+        t = 0;
+        for (i = 1; i < k; i = i + 1) {
+            t = t + (a[i][k] * b[i]);
+        }
+
+        b[k] = (b[k] - t) / a[k][k];
+    }
+
+    for (kb = 1; kb <= n; kb = kb + 1) {
+        k = n + 1 - kb;
+        b[k] = b[k] / a[k][k];
+        t = -b[k];
+        //~ daxpy(k - 1, t, a[1][k], 1, b[1], 1);
+        for (i = 1; i < k; i = i + 1) {
+            b[i] = b[i] + (t * a[i][k]);
+        }
+    }
+}
+
+function dpofa(a, lda, n, info) {
+    var i, j, jm1, k, t, s;
+
+    for (j = 1; j <= n; j = j + 1) {
+        info[1] = j;
+        s = 0;
+        jm1 = j - 1;
+        if (jm1 < 1) {
+            s = a[j][j] - s;
+            if (s <= 0) {
+                break;
+            }
+            a[j][j] = Math.sqrt(s);
+        } else {
+            for (k = 1; k <= jm1; k = k + 1) {
+                //~ t = a[k][j] - ddot(k - 1, a[1][k], 1, a[1][j], 1);
+                t = a[k][j];
+                for (i = 1; i < k; i = i + 1) {
+                    t = t - (a[i][j] * a[i][k]);
+                }
+                t = t / a[k][k];
+                a[k][j] = t;
+                s = s + t * t;
+            }
+            s = a[j][j] - s;
+            if (s <= 0) {
+                break;
+            }
+            a[j][j] = Math.sqrt(s);
+        }
+        info[1] = 0;
+    }
+}
+
+function qpgen2(dmat, dvec, fddmat, n, sol, crval, amat,
+    bvec, fdamat, q, meq, iact, nact, iter, work, ierr) {
+
+    var i, j, l, l1, info, it1, iwzv, iwrv, iwrm, iwsv, iwuv, nvl, r, iwnbv,
+        temp, sum, t1, tt, gc, gs, nu,
+        t1inf, t2min,
+        vsmall, tmpa, tmpb,
+        go;
+
+    r = Math.min(n, q);
+    l = 2 * n + (r * (r + 5)) / 2 + 2 * q + 1;
+
+    vsmall = 1.0e-60;
+    do {
+        vsmall = vsmall + vsmall;
+        tmpa = 1 + 0.1 * vsmall;
+        tmpb = 1 + 0.2 * vsmall;
+    } while (tmpa <= 1 || tmpb <= 1);
+
+    for (i = 1; i <= n; i = i + 1) {
+        work[i] = dvec[i];
+    }
+    for (i = n + 1; i <= l; i = i + 1) {
+        work[i] = 0;
+    }
+    for (i = 1; i <= q; i = i + 1) {
+        iact[i] = 0;
+    }
+
+    info = [];
+
+    if (ierr[1] === 0) {
+        dpofa(dmat, fddmat, n, info);
+        if (info[1] !== 0) {
+            ierr[1] = 2;
+            return;
+        }
+        dposl(dmat, fddmat, n, dvec);
+        dpori(dmat, fddmat, n);
+    } else {
+        for (j = 1; j <= n; j = j + 1) {
+            sol[j] = 0;
+            for (i = 1; i <= j; i = i + 1) {
+                sol[j] = sol[j] + dmat[i][j] * dvec[i];
+            }
+        }
+        for (j = 1; j <= n; j = j + 1) {
+            dvec[j] = 0;
+            for (i = j; i <= n; i = i + 1) {
+                dvec[j] = dvec[j] + dmat[j][i] * sol[i];
+            }
+        }
+    }
+
+    crval[1] = 0;
+    for (j = 1; j <= n; j = j + 1) {
+        sol[j] = dvec[j];
+        crval[1] = crval[1] + work[j] * sol[j];
+        work[j] = 0;
+        for (i = j + 1; i <= n; i = i + 1) {
+            dmat[i][j] = 0;
+        }
+    }
+    crval[1] = -crval[1] / 2;
+    ierr[1] = 0;
+
+    iwzv = n;
+    iwrv = iwzv + n;
+    iwuv = iwrv + r;
+    iwrm = iwuv + r + 1;
+    iwsv = iwrm + (r * (r + 1)) / 2;
+    iwnbv = iwsv + q;
+
+    for (i = 1; i <= q; i = i + 1) {
+        sum = 0;
+        for (j = 1; j <= n; j = j + 1) {
+            sum = sum + amat[j][i] * amat[j][i];
+        }
+        work[iwnbv + i] = Math.sqrt(sum);
+    }
+    nact = 0;
+    iter[1] = 0;
+    iter[2] = 0;
+
+    function fn_goto_50() {
+        iter[1] = iter[1] + 1;
+
+        l = iwsv;
+        for (i = 1; i <= q; i = i + 1) {
+            l = l + 1;
+            sum = -bvec[i];
+            for (j = 1; j <= n; j = j + 1) {
+                sum = sum + amat[j][i] * sol[j];
+            }
+            if (Math.abs(sum) < vsmall) {
+                sum = 0;
+            }
+            if (i > meq) {
+                work[l] = sum;
+            } else {
+                work[l] = -Math.abs(sum);
+                if (sum > 0) {
+                    for (j = 1; j <= n; j = j + 1) {
+                        amat[j][i] = -amat[j][i];
+                    }
+                    bvec[i] = -bvec[i];
+                }
+            }
+        }
+
+        for (i = 1; i <= nact; i = i + 1) {
+            work[iwsv + iact[i]] = 0;
+        }
+
+        nvl = 0;
+        temp = 0;
+        for (i = 1; i <= q; i = i + 1) {
+            if (work[iwsv + i] < temp * work[iwnbv + i]) {
+                nvl = i;
+                temp = work[iwsv + i] / work[iwnbv + i];
+            }
+        }
+        if (nvl === 0) {
+            return 999;
+        }
+
+        return 0;
+    }
+
+    function fn_goto_55() {
+        for (i = 1; i <= n; i = i + 1) {
+            sum = 0;
+            for (j = 1; j <= n; j = j + 1) {
+                sum = sum + dmat[j][i] * amat[j][nvl];
+            }
+            work[i] = sum;
+        }
+
+        l1 = iwzv;
+        for (i = 1; i <= n; i = i + 1) {
+            work[l1 + i] = 0;
+        }
+        for (j = nact + 1; j <= n; j = j + 1) {
+            for (i = 1; i <= n; i = i + 1) {
+                work[l1 + i] = work[l1 + i] + dmat[i][j] * work[j];
+            }
+        }
+
+        t1inf = true;
+        for (i = nact; i >= 1; i = i - 1) {
+            sum = work[i];
+            l = iwrm + (i * (i + 3)) / 2;
+            l1 = l - i;
+            for (j = i + 1; j <= nact; j = j + 1) {
+                sum = sum - work[l] * work[iwrv + j];
+                l = l + j;
+            }
+            sum = sum / work[l1];
+            work[iwrv + i] = sum;
+            if (iact[i] < meq) {
+                // continue;
+                break;
+            }
+            if (sum < 0) {
+                // continue;
+                break;
+            }
+            t1inf = false;
+            it1 = i;
+        }
+
+        if (!t1inf) {
+            t1 = work[iwuv + it1] / work[iwrv + it1];
+            for (i = 1; i <= nact; i = i + 1) {
+                if (iact[i] < meq) {
+                    // continue;
+                    break;
+                }
+                if (work[iwrv + i] < 0) {
+                    // continue;
+                    break;
+                }
+                temp = work[iwuv + i] / work[iwrv + i];
+                if (temp < t1) {
+                    t1 = temp;
+                    it1 = i;
+                }
+            }
+        }
+
+        sum = 0;
+        for (i = iwzv + 1; i <= iwzv + n; i = i + 1) {
+            sum = sum + work[i] * work[i];
+        }
+        if (Math.abs(sum) <= vsmall) {
+            if (t1inf) {
+                ierr[1] = 1;
+                // GOTO 999
+                return 999;
+            } else {
+                for (i = 1; i <= nact; i = i + 1) {
+                    work[iwuv + i] = work[iwuv + i] - t1 * work[iwrv + i];
+                }
+                work[iwuv + nact + 1] = work[iwuv + nact + 1] + t1;
+                // GOTO 700
+                return 700;
+            }
+        } else {
+            sum = 0;
+            for (i = 1; i <= n; i = i + 1) {
+                sum = sum + work[iwzv + i] * amat[i][nvl];
+            }
+            tt = -work[iwsv + nvl] / sum;
+            t2min = true;
+            if (!t1inf) {
+                if (t1 < tt) {
+                    tt = t1;
+                    t2min = false;
+                }
+            }
+
+            for (i = 1; i <= n; i = i + 1) {
+                sol[i] = sol[i] + tt * work[iwzv + i];
+                if (Math.abs(sol[i]) < vsmall) {
+                    sol[i] = 0;
+                }
+            }
+
+            crval[1] = crval[1] + tt * sum * (tt / 2 + work[iwuv + nact + 1]);
+            for (i = 1; i <= nact; i = i + 1) {
+                work[iwuv + i] = work[iwuv + i] - tt * work[iwrv + i];
+            }
+            work[iwuv + nact + 1] = work[iwuv + nact + 1] + tt;
+
+            if (t2min) {
+                nact = nact + 1;
+                iact[nact] = nvl;
+
+                l = iwrm + ((nact - 1) * nact) / 2 + 1;
+                for (i = 1; i <= nact - 1; i = i + 1) {
+                    work[l] = work[i];
+                    l = l + 1;
+                }
+
+                if (nact === n) {
+                    work[l] = work[n];
+                } else {
+                    for (i = n; i >= nact + 1; i = i - 1) {
+                        if (work[i] === 0) {
+                            // continue;
+                            break;
+                        }
+                        gc = Math.max(Math.abs(work[i - 1]), Math.abs(work[i]));
+                        gs = Math.min(Math.abs(work[i - 1]), Math.abs(work[i]));
+                        if (work[i - 1] >= 0) {
+                            temp = Math.abs(gc * Math.sqrt(1 + gs * gs / (gc * gc)));
+                        } else {
+                            temp = -Math.abs(gc * Math.sqrt(1 + gs * gs / (gc * gc)));
+                        }
+                        gc = work[i - 1] / temp;
+                        gs = work[i] / temp;
+
+                        if (gc === 1) {
+                            // continue;
+                            break;
+                        }
+                        if (gc === 0) {
+                            work[i - 1] = gs * temp;
+                            for (j = 1; j <= n; j = j + 1) {
+                                temp = dmat[j][i - 1];
+                                dmat[j][i - 1] = dmat[j][i];
+                                dmat[j][i] = temp;
+                            }
+                        } else {
+                            work[i - 1] = temp;
+                            nu = gs / (1 + gc);
+                            for (j = 1; j <= n; j = j + 1) {
+                                temp = gc * dmat[j][i - 1] + gs * dmat[j][i];
+                                dmat[j][i] = nu * (dmat[j][i - 1] + temp) - dmat[j][i];
+                                dmat[j][i - 1] = temp;
+
+                            }
+                        }
+                    }
+                    work[l] = work[nact];
+                }
+            } else {
+                sum = -bvec[nvl];
+                for (j = 1; j <= n; j = j + 1) {
+                    sum = sum + sol[j] * amat[j][nvl];
+                }
+                if (nvl > meq) {
+                    work[iwsv + nvl] = sum;
+                } else {
+                    work[iwsv + nvl] = -Math.abs(sum);
+                    if (sum > 0) {
+                        for (j = 1; j <= n; j = j + 1) {
+                            amat[j][nvl] = -amat[j][nvl];
+                        }
+                        bvec[nvl] = -bvec[nvl];
+                    }
+                }
+                // GOTO 700
+                return 700;
+            }
+        }
+
+        return 0;
+    }
+
+    function fn_goto_797() {
+        l = iwrm + (it1 * (it1 + 1)) / 2 + 1;
+        l1 = l + it1;
+        if (work[l1] === 0) {
+            // GOTO 798
+            return 798;
+        }
+        gc = Math.max(Math.abs(work[l1 - 1]), Math.abs(work[l1]));
+        gs = Math.min(Math.abs(work[l1 - 1]), Math.abs(work[l1]));
+        if (work[l1 - 1] >= 0) {
+            temp = Math.abs(gc * Math.sqrt(1 + gs * gs / (gc * gc)));
+        } else {
+            temp = -Math.abs(gc * Math.sqrt(1 + gs * gs / (gc * gc)));
+        }
+        gc = work[l1 - 1] / temp;
+        gs = work[l1] / temp;
+
+        if (gc === 1) {
+            // GOTO 798
+            return 798;
+        }
+        if (gc === 0) {
+            for (i = it1 + 1; i <= nact; i = i + 1) {
+                temp = work[l1 - 1];
+                work[l1 - 1] = work[l1];
+                work[l1] = temp;
+                l1 = l1 + i;
+            }
+            for (i = 1; i <= n; i = i + 1) {
+                temp = dmat[i][it1];
+                dmat[i][it1] = dmat[i][it1 + 1];
+                dmat[i][it1 + 1] = temp;
+            }
+        } else {
+            nu = gs / (1 + gc);
+            for (i = it1 + 1; i <= nact; i = i + 1) {
+                temp = gc * work[l1 - 1] + gs * work[l1];
+                work[l1] = nu * (work[l1 - 1] + temp) - work[l1];
+                work[l1 - 1] = temp;
+                l1 = l1 + i;
+            }
+            for (i = 1; i <= n; i = i + 1) {
+                temp = gc * dmat[i][it1] + gs * dmat[i][it1 + 1];
+                dmat[i][it1 + 1] = nu * (dmat[i][it1] + temp) - dmat[i][it1 + 1];
+                dmat[i][it1] = temp;
+            }
+        }
+
+        return 0;
+    }
+
+    function fn_goto_798() {
+        l1 = l - it1;
+        for (i = 1; i <= it1; i = i + 1) {
+            work[l1] = work[l];
+            l = l + 1;
+            l1 = l1 + 1;
+        }
+
+        work[iwuv + it1] = work[iwuv + it1 + 1];
+        iact[it1] = iact[it1 + 1];
+        it1 = it1 + 1;
+        if (it1 < nact) {
+            // GOTO 797
+            return 797;
+        }
+
+        return 0;
+    }
+
+    function fn_goto_799() {
+        work[iwuv + nact] = work[iwuv + nact + 1];
+        work[iwuv + nact + 1] = 0;
+        iact[nact] = 0;
+        nact = nact - 1;
+        iter[2] = iter[2] + 1;
+
+        return 0;
+    }
+
+    go = 0;
+    while (true) {
+        go = fn_goto_50();
+        if (go === 999) {
+            return;
+        }
+        while (true) {
+            go = fn_goto_55();
+            if (go === 0) {
+                break;
+            }
+            if (go === 999) {
+                return;
+            }
+            if (go === 700) {
+                if (it1 === nact) {
+                    fn_goto_799();
+                } else {
+                    while (true) {
+                        fn_goto_797();
+                        go = fn_goto_798();
+                        if (go !== 797) {
+                            break;
+                        }
+                    }
+                    fn_goto_799();
+                }
+            }
+        }
+    }
+
+}
+
+function solveQP(Dmat, dvec, Amat, bvec, meq, factorized) {
+    Dmat = base0to1(Dmat);
+    dvec = base0to1(dvec);
+    Amat = base0to1(Amat);
+    var i, n, q,
+        nact, r,
+        crval = [], iact = [], sol = [], work = [], iter = [],
+        message;
+
+    meq = meq || 0;
+    factorized = factorized ? base0to1(factorized) : [undefined, 0];
+    bvec = bvec ? base0to1(bvec) : [];
+
+    // In Fortran the array index starts from 1
+    n = Dmat.length - 1;
+    q = Amat[1].length - 1;
+
+    if (!bvec) {
+        for (i = 1; i <= q; i = i + 1) {
+            bvec[i] = 0;
+        }
+    }
+    for (i = 1; i <= q; i = i + 1) {
+        iact[i] = 0;
+    }
+    nact = 0;
+    r = Math.min(n, q);
+    for (i = 1; i <= n; i = i + 1) {
+        sol[i] = 0;
+    }
+    crval[1] = 0;
+    for (i = 1; i <= (2 * n + (r * (r + 5)) / 2 + 2 * q + 1); i = i + 1) {
+        work[i] = 0;
+    }
+    for (i = 1; i <= 2; i = i + 1) {
+        iter[i] = 0;
+    }
+
+    qpgen2(Dmat, dvec, n, n, sol, crval, Amat,
+        bvec, n, q, meq, iact, nact, iter, work, factorized);
+
+    message = "";
+    if (factorized[1] === 1) {
+        message = "constraints are inconsistent, no solution!";
+    }
+    if (factorized[1] === 2) {
+        message = "matrix D in quadratic function is not positive definite!";
+    }
+
+    return {
+        solution: base1to0(sol),
+        value: base1to0(crval),
+        unconstrained_solution: base1to0(dvec),
+        iterations: base1to0(iter),
+        iact: base1to0(iact),
+        message: message
+    };
+}
+exports.solveQP = solveQP;
+}(numeric));
+/*
+Shanti Rao sent me this routine by private email. I had to modify it
+slightly to work on Arrays instead of using a Matrix object.
+It is apparently translated from http://stitchpanorama.sourceforge.net/Python/svd.py
+*/
+
+numeric.svd= function svd(A) {
+    var temp;
+//Compute the thin SVD from G. H. Golub and C. Reinsch, Numer. Math. 14, 403-420 (1970)
+	var prec= numeric.epsilon; //Math.pow(2,-52) // assumes double prec
+	var tolerance= 1.e-64/prec;
+	var itmax= 50;
+	var c=0;
+	var i=0;
+	var j=0;
+	var k=0;
+	var l=0;
+	
+	var u= numeric.clone(A);
+	var m= u.length;
+	
+	var n= u[0].length;
+	
+	if (m < n) throw "Need more rows than columns"
+	
+	var e = new Array(n);
+	var q = new Array(n);
+	for (i=0; i<n; i++) e[i] = q[i] = 0.0;
+	var v = numeric.rep([n,n],0);
+//	v.zero();
+	
+ 	function pythag(a,b)
+ 	{
+		a = Math.abs(a)
+		b = Math.abs(b)
+		if (a > b)
+			return a*Math.sqrt(1.0+(b*b/a/a))
+		else if (b == 0.0) 
+			return a
+		return b*Math.sqrt(1.0+(a*a/b/b))
+	}
+
+	//Householder's reduction to bidiagonal form
+
+	var f= 0.0;
+	var g= 0.0;
+	var h= 0.0;
+	var x= 0.0;
+	var y= 0.0;
+	var z= 0.0;
+	var s= 0.0;
+	
+	for (i=0; i < n; i++)
+	{	
+		e[i]= g;
+		s= 0.0;
+		l= i+1;
+		for (j=i; j < m; j++) 
+			s += (u[j][i]*u[j][i]);
+		if (s <= tolerance)
+			g= 0.0;
+		else
+		{	
+			f= u[i][i];
+			g= Math.sqrt(s);
+			if (f >= 0.0) g= -g;
+			h= f*g-s
+			u[i][i]=f-g;
+			for (j=l; j < n; j++)
+			{
+				s= 0.0
+				for (k=i; k < m; k++) 
+					s += u[k][i]*u[k][j]
+				f= s/h
+				for (k=i; k < m; k++) 
+					u[k][j]+=f*u[k][i]
+			}
+		}
+		q[i]= g
+		s= 0.0
+		for (j=l; j < n; j++) 
+			s= s + u[i][j]*u[i][j]
+		if (s <= tolerance)
+			g= 0.0
+		else
+		{	
+			f= u[i][i+1]
+			g= Math.sqrt(s)
+			if (f >= 0.0) g= -g
+			h= f*g - s
+			u[i][i+1] = f-g;
+			for (j=l; j < n; j++) e[j]= u[i][j]/h
+			for (j=l; j < m; j++)
+			{	
+				s=0.0
+				for (k=l; k < n; k++) 
+					s += (u[j][k]*u[i][k])
+				for (k=l; k < n; k++) 
+					u[j][k]+=s*e[k]
+			}	
+		}
+		y= Math.abs(q[i])+Math.abs(e[i])
+		if (y>x) 
+			x=y
+	}
+	
+	// accumulation of right hand gtransformations
+	for (i=n-1; i != -1; i+= -1)
+	{	
+		if (g != 0.0)
+		{
+		 	h= g*u[i][i+1]
+			for (j=l; j < n; j++) 
+				v[j][i]=u[i][j]/h
+			for (j=l; j < n; j++)
+			{	
+				s=0.0
+				for (k=l; k < n; k++) 
+					s += u[i][k]*v[k][j]
+				for (k=l; k < n; k++) 
+					v[k][j]+=(s*v[k][i])
+			}	
+		}
+		for (j=l; j < n; j++)
+		{
+			v[i][j] = 0;
+			v[j][i] = 0;
+		}
+		v[i][i] = 1;
+		g= e[i]
+		l= i
+	}
+	
+	// accumulation of left hand transformations
+	for (i=n-1; i != -1; i+= -1)
+	{	
+		l= i+1
+		g= q[i]
+		for (j=l; j < n; j++) 
+			u[i][j] = 0;
+		if (g != 0.0)
+		{
+			h= u[i][i]*g
+			for (j=l; j < n; j++)
+			{
+				s=0.0
+				for (k=l; k < m; k++) s += u[k][i]*u[k][j];
+				f= s/h
+				for (k=i; k < m; k++) u[k][j]+=f*u[k][i];
+			}
+			for (j=i; j < m; j++) u[j][i] = u[j][i]/g;
+		}
+		else
+			for (j=i; j < m; j++) u[j][i] = 0;
+		u[i][i] += 1;
+	}
+	
+	// diagonalization of the bidiagonal form
+	prec= prec*x
+	for (k=n-1; k != -1; k+= -1)
+	{
+		for (var iteration=0; iteration < itmax; iteration++)
+		{	// test f splitting
+			var test_convergence = false
+			for (l=k; l != -1; l+= -1)
+			{	
+				if (Math.abs(e[l]) <= prec)
+				{	test_convergence= true
+					break 
+				}
+				if (Math.abs(q[l-1]) <= prec)
+					break 
+			}
+			if (!test_convergence)
+			{	// cancellation of e[l] if l>0
+				c= 0.0
+				s= 1.0
+				var l1= l-1
+				for (i =l; i<k+1; i++)
+				{	
+					f= s*e[i]
+					e[i]= c*e[i]
+					if (Math.abs(f) <= prec)
+						break
+					g= q[i]
+					h= pythag(f,g)
+					q[i]= h
+					c= g/h
+					s= -f/h
+					for (j=0; j < m; j++)
+					{	
+						y= u[j][l1]
+						z= u[j][i]
+						u[j][l1] =  y*c+(z*s)
+						u[j][i] = -y*s+(z*c)
+					} 
+				}	
+			}
+			// test f convergence
+			z= q[k]
+			if (l== k)
+			{	//convergence
+				if (z<0.0)
+				{	//q[k] is made non-negative
+					q[k]= -z
+					for (j=0; j < n; j++)
+						v[j][k] = -v[j][k]
+				}
+				break  //break out of iteration loop and move on to next k value
+			}
+			if (iteration >= itmax-1)
+				throw 'Error: no convergence.'
+			// shift from bottom 2x2 minor
+			x= q[l]
+			y= q[k-1]
+			g= e[k-1]
+			h= e[k]
+			f= ((y-z)*(y+z)+(g-h)*(g+h))/(2.0*h*y)
+			g= pythag(f,1.0)
+			if (f < 0.0)
+				f= ((x-z)*(x+z)+h*(y/(f-g)-h))/x
+			else
+				f= ((x-z)*(x+z)+h*(y/(f+g)-h))/x
+			// next QR transformation
+			c= 1.0
+			s= 1.0
+			for (i=l+1; i< k+1; i++)
+			{	
+				g= e[i]
+				y= q[i]
+				h= s*g
+				g= c*g
+				z= pythag(f,h)
+				e[i-1]= z
+				c= f/z
+				s= h/z
+				f= x*c+g*s
+				g= -x*s+g*c
+				h= y*s
+				y= y*c
+				for (j=0; j < n; j++)
+				{	
+					x= v[j][i-1]
+					z= v[j][i]
+					v[j][i-1] = x*c+z*s
+					v[j][i] = -x*s+z*c
+				}
+				z= pythag(f,h)
+				q[i-1]= z
+				c= f/z
+				s= h/z
+				f= c*g+s*y
+				x= -s*g+c*y
+				for (j=0; j < m; j++)
+				{
+					y= u[j][i-1]
+					z= u[j][i]
+					u[j][i-1] = y*c+z*s
+					u[j][i] = -y*s+z*c
+				}
+			}
+			e[l]= 0.0
+			e[k]= f
+			q[k]= x
+		} 
+	}
+		
+	//vt= transpose(v)
+	//return (u,q,vt)
+	for (i=0;i<q.length; i++) 
+	  if (q[i] < prec) q[i] = 0
+	  
+	//sort eigenvalues	
+	for (i=0; i< n; i++)
+	{	 
+	//writeln(q)
+	 for (j=i-1; j >= 0; j--)
+	 {
+	  if (q[j] < q[i])
+	  {
+	//  writeln(i,'-',j)
+	   c = q[j]
+	   q[j] = q[i]
+	   q[i] = c
+	   for(k=0;k<u.length;k++) { temp = u[k][i]; u[k][i] = u[k][j]; u[k][j] = temp; }
+	   for(k=0;k<v.length;k++) { temp = v[k][i]; v[k][i] = v[k][j]; v[k][j] = temp; }
+//	   u.swapCols(i,j)
+//	   v.swapCols(i,j)
+	   i = j	   
+	  }
+	 }	
+	}
+	
+	return {U:u,S:q,V:v}
+};
+
+
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{}],5:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -34810,7 +50885,7 @@ SpreadSheetError.prototype.toString = function () {
 
 exports.SpreadSheetError = SpreadSheetError;
 
-},{}],2:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 'use strict';
 
 var _settings = require('./settings');
@@ -34823,7 +50898,13 @@ var _polyfill = require('./polyfill');
 
 var _polyfill2 = _interopRequireDefault(_polyfill);
 
+var _XFormulas = require('./plugins/xformulas/XFormulas');
+
 var _Plugin = require('./plugins/Plugin');
+
+var _Persistent = require('./plugins/persistent/Persistent');
+
+var _Persistent2 = _interopRequireDefault(_Persistent);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -34836,13 +50917,16 @@ _core2.default.plugins = {
     registerPlugin: _Plugin.registerPlugin
 };
 
+// 内置插件
+(0, _Plugin.registerPlugin)('persistent', _Persistent2.default);
+
 // 浏览器环境下的全局变量名。
 window.BrickSpreadSheet = _core2.default;
 (0, _polyfill2.default)(window);
 
 // TODO 提供更改全局变量名的方法，以防止全局变量冲突。
 
-},{"./core":3,"./plugins/Plugin":13,"./polyfill":15,"./settings":16}],3:[function(require,module,exports){
+},{"./core":7,"./plugins/Plugin":17,"./plugins/persistent/Persistent":19,"./plugins/xformulas/XFormulas":29,"./polyfill":51,"./settings":52}],7:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -34980,7 +51064,7 @@ SpreadSheet.prototype._enablePlugin = function () {
     });
 };
 
-},{"./designer/Frame":5,"./designer/Workbook":9,"./plugins/Plugin":13,"./utils/common":18}],4:[function(require,module,exports){
+},{"./designer/Frame":9,"./designer/Workbook":13,"./plugins/Plugin":17,"./utils/common":54}],8:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -35188,7 +51272,7 @@ var ConfigTranslator = function () {
 
 exports.default = ConfigTranslator;
 
-},{"../utils/common":18}],5:[function(require,module,exports){
+},{"../utils/common":54}],9:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -35231,12 +51315,16 @@ var Frame = function () {
 
 exports.default = Frame;
 
-},{"./frame/ContextMenu":10}],6:[function(require,module,exports){
+},{"./frame/ContextMenu":14}],10:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
 var _common = require('../utils/common.js');
 
@@ -35298,6 +51386,14 @@ var HotTableAdaptor = function (_Handsontable) {
         return _this;
     }
 
+    _createClass(HotTableAdaptor, [{
+        key: 'destroy',
+        value: function destroy() {
+            _get(HotTableAdaptor.prototype.__proto__ || Object.getPrototypeOf(HotTableAdaptor.prototype), 'destroy', this).call(this);
+            delete this._translator;
+        }
+    }]);
+
     return HotTableAdaptor;
 }(Handsontable);
 
@@ -35324,7 +51420,7 @@ HotTableAdaptor._preference = {
 
 exports.default = HotTableAdaptor;
 
-},{"../utils/common.js":18,"./ConfigTranslator.js":4}],7:[function(require,module,exports){
+},{"../utils/common.js":54,"./ConfigTranslator.js":8}],11:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -35468,25 +51564,32 @@ var Sheet = function (_Emitter) {
         }
 
         /**
-         * TODO 销毁 sheet 页
+         * 关闭 sheet 页
          */
 
     }, {
+        key: 'close',
+        value: function close() {
+            this.workbook.closeSheet(this.getName());
+        }
+    }, {
         key: 'destroy',
-        value: function destroy() {}
-        // 检查是不是最后一个
-
+        value: function destroy() {
+            this.handsontable.destroy();
+            this.workbook.sheets.delete(this.getName());
+            delete this.workbook;
+            delete this.$$view;
+        }
 
         /**
          * 给 sheet 页重命名
          * @param name - 新名字
-         * @returns {boolean} - 是否成功
          */
 
     }, {
         key: 'rename',
         value: function rename(name) {
-            return this.workbook.renameSheet(this.getName(), name);
+            this.workbook.renameSheet(this.getName(), name);
         }
 
         /**
@@ -35689,7 +51792,7 @@ var Sheet = function (_Emitter) {
             return { data: data, cells: cells };
         }
 
-        // TODO
+        // TODO _getBorders
 
     }, {
         key: '_getBorders',
@@ -35719,7 +51822,7 @@ exports.default = Sheet;
  * @type {string}
  */
 
-},{"../utils/Emitter":17,"../utils/common":18,"./HotTableAdaptor":6,"./SheetError":8,"./views/Tabs":11}],8:[function(require,module,exports){
+},{"../utils/Emitter":53,"../utils/common":54,"./HotTableAdaptor":10,"./SheetError":12,"./views/Tabs":15}],12:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -35736,7 +51839,7 @@ function SheetError(value) {
 SheetError.prototype = new _SpreadSheetError.SpreadSheetError();
 SheetError.prototype.constructor = SheetError;
 
-},{"../SpreadSheetError":1}],9:[function(require,module,exports){
+},{"../SpreadSheetError":5}],13:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -35786,7 +51889,6 @@ var Workbook = function () {
         _classCallCheck(this, Workbook);
 
         /**
-         *
          * @type {SpreadSheet}
          */
         this.spreadSheet = instance;
@@ -35877,7 +51979,7 @@ var Workbook = function () {
 
         /**
          * 获取所有 sheet 的名字
-         * @returns {Iterator.<K>}
+         * @returns {Iterator.<string>}
          */
 
     }, {
@@ -36014,6 +52116,55 @@ var Workbook = function () {
         }
 
         /**
+         * 关闭指定 sheet 页
+         */
+
+    }, {
+        key: 'closeSheet',
+        value: function closeSheet(name) {
+            var sheet = this.getSheet(name);
+            if (!sheet) {
+                throw new _SheetError.SheetError('\u65E0\u6CD5\u5173\u95ED\u4E0D\u5B58\u5728\u7684\u5DE5\u4F5C\u8868 "' + name + '" \u3002');
+            }
+            if (this.sheets.size() === 1) {
+                throw new _SheetError.SheetError('\u65E0\u6CD5\u5173\u95ED\u4EC5\u6709\u7684\u4E00\u4E2A\u5DE5\u4F5C\u8868 "' + name + '" \u3002');
+            }
+            if (sheet.isActive()) {
+                var _iteratorNormalCompletion = true;
+                var _didIteratorError = false;
+                var _iteratorError = undefined;
+
+                try {
+                    for (var _iterator = this.sheets.keys()[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                        var k = _step.value;
+
+                        if (k && k !== name) {
+                            this.activeSheet = k;
+                            this.getSheet(k).active();
+                            break;
+                        }
+                    }
+                } catch (err) {
+                    _didIteratorError = true;
+                    _iteratorError = err;
+                } finally {
+                    try {
+                        if (!_iteratorNormalCompletion && _iterator.return) {
+                            _iterator.return();
+                        }
+                    } finally {
+                        if (_didIteratorError) {
+                            throw _iteratorError;
+                        }
+                    }
+                }
+            }
+            this.sheets.delete(name);
+            this.$$view.removeTab(name);
+            destroySheet(sheet);
+        }
+
+        /**
          * 验证 sheet 名是否合法
          * @param {string} name
          * @param {boolean} exactly
@@ -36038,28 +52189,28 @@ var Workbook = function () {
         key: '_getExchange',
         value: function _getExchange() {
             var sheets = [];
-            var _iteratorNormalCompletion = true;
-            var _didIteratorError = false;
-            var _iteratorError = undefined;
+            var _iteratorNormalCompletion2 = true;
+            var _didIteratorError2 = false;
+            var _iteratorError2 = undefined;
 
             try {
-                for (var _iterator = this.getSheets().toMap()[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-                    var _step$value = _slicedToArray(_step.value, 2),
-                        sheet = _step$value[1];
+                for (var _iterator2 = this.getSheets().toMap()[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+                    var _step2$value = _slicedToArray(_step2.value, 2),
+                        sheet = _step2$value[1];
 
                     sheet && sheets.push(sheet._getExchange());
                 }
             } catch (err) {
-                _didIteratorError = true;
-                _iteratorError = err;
+                _didIteratorError2 = true;
+                _iteratorError2 = err;
             } finally {
                 try {
-                    if (!_iteratorNormalCompletion && _iterator.return) {
-                        _iterator.return();
+                    if (!_iteratorNormalCompletion2 && _iterator2.return) {
+                        _iterator2.return();
                     }
                 } finally {
-                    if (_didIteratorError) {
-                        throw _iteratorError;
+                    if (_didIteratorError2) {
+                        throw _iteratorError2;
                     }
                 }
             }
@@ -36076,7 +52227,7 @@ var Workbook = function () {
 
 exports.default = Workbook;
 
-},{"../settings":16,"../utils/common":18,"../utils/dataStructure":19,"./Sheet":7,"./SheetError":8,"./views/Tabs":11}],10:[function(require,module,exports){
+},{"../settings":52,"../utils/common":54,"../utils/dataStructure":55,"./Sheet":11,"./SheetError":12,"./views/Tabs":15}],14:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -36230,7 +52381,7 @@ ContextMenu.prototype._init = function () {
     });
 };
 
-},{"../../utils/common":18}],11:[function(require,module,exports){
+},{"../../utils/common":54}],15:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -36248,6 +52399,8 @@ var _eventHelper = require('../../utils/eventHelper.js');
 var _settings = require('../../settings.js');
 
 var _i18n = require('../../i18n');
+
+var _SheetError = require('.././SheetError');
 
 var CLASS_CURRENT = 'current';
 var CLASS_TABS = 'ssd-tabs';
@@ -36269,6 +52422,9 @@ var regExp = _settings.globalSettings.sheet.sheetName;
  */
 function Tabs(workbook) {
     this.workbook = workbook;
+    /**
+     * @type {CaseInsensitiveMap}
+     */
     this.liItems = new _dataStructure.CaseInsensitiveMap();
     this.sectionItems = new _dataStructure.CaseInsensitiveMap();
     this._hotTables = new Map();
@@ -36326,7 +52482,7 @@ Tabs.prototype.appendTab = function (sheetName) {
     var that = this;
     var li = document.createElement('li');
 
-    li.innerHTML = '<a href="javascript:;"><span>' + sheetName + '</span></a>';
+    li.innerHTML = '\n        <a href="javascript:;">\n            <span>' + sheetName + '</span>\n            <span class="close hairline"></span>\n        </a>\n    ';
     li.classList.add(CLASS_LI);
     li.setAttribute('data-sheet', sheetName);
 
@@ -36338,19 +52494,43 @@ Tabs.prototype.appendTab = function (sheetName) {
     }
     this.liItems.set(sheetName, li);
 
-    li.addEventListener('click', function (event) {
+    li.addEventListener('click', function (e) {
         var sheetName = this.dataset.sheet;
         var sheet = that.workbook.getSheet(sheetName);
         sheet.active();
-        (0, _eventHelper.stopImmediatePropagation)(event);
+        (0, _eventHelper.stopImmediatePropagation)(e);
     });
 
-    li.addEventListener('dblclick', function (event) {
+    li.addEventListener('dblclick', function (e) {
         that._onTabDblclick.call(that, this);
-        (0, _eventHelper.stopImmediatePropagation)(event);
+        (0, _eventHelper.stopImmediatePropagation)(e);
+    });
+
+    li.querySelector('.close').addEventListener('click', function (e) {
+        var sheetName = li.dataset.sheet;
+        try {
+            that.workbook.closeSheet(sheetName);
+        } catch (e) {
+            if (e instanceof _SheetError.SheetError) {
+                alert(e.message); // TODO
+            }
+        }
+        (0, _eventHelper.stopImmediatePropagation)(e);
     });
 
     this.appendContent(sheetName);
+};
+
+/**
+ * 增加一个 tab 页
+ * @param {string} sheetName - sheet 名， 即 tab 页的标题
+ */
+Tabs.prototype.removeTab = function (sheetName) {
+    var li = this.liItems.get(sheetName);
+    this.UL.removeChild(li);
+    this.liItems.delete(sheetName);
+
+    this.removeContent(sheetName);
 };
 
 Tabs.prototype.appendAddButton = function () {
@@ -36363,7 +52543,7 @@ Tabs.prototype.appendAddButton = function () {
 
     this.UL.appendChild(li);
 
-    li.addEventListener('click', function (event) {
+    li.addEventListener('click', function () {
         // TODO 可增加的sheet数上限限制
         var newSheet = that.workbook.createSheet();
         newSheet.active();
@@ -36467,6 +52647,12 @@ Tabs.prototype.appendContent = function (sheetName) {
     this.appendTable(hot, sheetName);
 };
 
+Tabs.prototype.removeContent = function (sheetName) {
+    var section = this.sectionItems.get(sheetName);
+    this.CONTENT.removeChild(section);
+    this.sectionItems.delete(section);
+};
+
 /**
  *
  * @param {string} sheetName
@@ -36539,7 +52725,7 @@ Tabs.prototype.activeContent = function (sheetName) {
 
 exports.default = Tabs;
 
-},{"../../i18n":12,"../../settings.js":16,"../../utils/common.js":18,"../../utils/dataStructure.js":19,"../../utils/domHelper.js":20,"../../utils/eventHelper.js":21}],12:[function(require,module,exports){
+},{"../../i18n":16,"../../settings.js":52,"../../utils/common.js":54,"../../utils/dataStructure.js":55,"../../utils/domHelper.js":56,"../../utils/eventHelper.js":57,".././SheetError":12}],16:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -36553,7 +52739,7 @@ var WARNS = exports.WARNS = {
 
 };
 
-},{}],13:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -36654,7 +52840,7 @@ function getAllPlugins() {
     return _plugins;
 }
 
-},{"./PluginError":14}],14:[function(require,module,exports){
+},{"./PluginError":18}],18:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -36671,26 +52857,3892 @@ function PluginError(value) {
 PluginError.prototype = new _SpreadSheetError.SpreadSheetError();
 PluginError.prototype.constructor = PluginError;
 
-},{"../SpreadSheetError":1}],15:[function(require,module,exports){
+},{"../SpreadSheetError":5}],19:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+var _Plugin2 = require('../Plugin');
+
+var _Storage = require('./Storage');
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Persistent = function (_Plugin) {
+    _inherits(Persistent, _Plugin);
+
+    function Persistent(ssd) {
+        _classCallCheck(this, Persistent);
+
+        var _this = _possibleConstructorReturn(this, (Persistent.__proto__ || Object.getPrototypeOf(Persistent)).call(this, ssd));
+
+        var settings = _this.spreadsheet.settings;
+
+        if (settings.persistent === true) {
+            // persistent 为 `true` 时，使用默认方案
+            /**
+             * 电子表格本地持久化时使用的 key
+             */
+            _this.persistentKey = ssd.getId();
+        } else {
+            // TODO persistent 为对象时，提供 localStorage、session 等方案及超时时间等相关配置
+            _this.persistentKey = settings.persistent.key;
+        }
+
+        _this.spreadsheet.settings = _Storage.Storage.load(_this.persistentKey) || settings;
+
+        _this._registerMethod('saveState');
+        return _this;
+    }
+
+    _createClass(Persistent, [{
+        key: 'isEnable',
+        value: function isEnable() {
+            return !!this.spreadsheet.getSettings().persistent;
+        }
+    }, {
+        key: 'enable',
+        value: function enable() {
+            _get(Persistent.prototype.__proto__ || Object.getPrototypeOf(Persistent.prototype), 'enable', this).call(this);
+        }
+    }, {
+        key: 'destroy',
+        value: function destroy() {
+            _get(Persistent.prototype.__proto__ || Object.getPrototypeOf(Persistent.prototype), 'destroy', this).call(this);
+        }
+    }, {
+        key: 'saveState',
+        value: function saveState() {
+            var data = this.spreadsheet.getExchangeData();
+            _Storage.Storage.save(this.persistentKey, data);
+        }
+    }]);
+
+    return Persistent;
+}(_Plugin2.Plugin);
+
+exports.default = Persistent;
+
+},{"../Plugin":17,"./Storage":20}],20:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/**
+ * 存储方案
+ */
+var Storage = function () {
+    function Storage() {
+        _classCallCheck(this, Storage);
+    }
+
+    _createClass(Storage, null, [{
+        key: 'save',
+        value: function save(key, value) {
+            if (typeof value !== 'string') {
+                value = JSON.stringify(value);
+            }
+            window.localStorage.setItem(Storage.PREFIX + key, value);
+        }
+    }, {
+        key: 'load',
+        value: function load(key) {
+            var val = window.localStorage.getItem(Storage.PREFIX + key);
+            try {
+                return JSON.parse(val);
+            } catch (e) {
+                return val;
+            }
+        }
+    }, {
+        key: 'remove',
+        value: function remove(key) {
+            if (window.localStorage[Storage.PREFIX + key]) {
+                window.localStorage.removeItem(Storage.PREFIX + key);
+            }
+        }
+    }, {
+        key: 'clear',
+        value: function clear() {
+            window.localStorage.clear();
+        }
+    }]);
+
+    return Storage;
+}();
+
+Storage.PREFIX = '$$brick!storage-';
+
+exports.Storage = Storage;
+
+},{}],21:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.AlterManager = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _CellValue = require('./CellValue');
+
+var _utils = require('./utils');
+
+var _expressionModifier = require('./expressionModifier');
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var arrayEach = Handsontable.helper.arrayEach;
+var mixin = Handsontable.helper.mixin;
+var localHooks = Handsontable.utils.localHooks; // private
+
+
+var AlterManager = function () {
+    function AlterManager(sheet) {
+        _classCallCheck(this, AlterManager);
+
+        this.sheet = sheet;
+
+        this.dataProvider = sheet.dataProvider;
+
+        this.matrix = sheet.matrix;
+    }
+
+    _createClass(AlterManager, [{
+        key: 'insertRow',
+        value: function insertRow(row, amount, modifyFormula) {
+            this._alter('insert', 'row', row, amount, modifyFormula);
+        }
+    }, {
+        key: 'removeRow',
+        value: function removeRow(row, amount, modifyFormula) {
+            this._alter('remove', 'row', row, -amount, modifyFormula);
+        }
+    }, {
+        key: 'insertColumn',
+        value: function insertColumn(column, amount, modifyFormula) {
+            this._alter('insert', 'column', column, amount, modifyFormula);
+        }
+    }, {
+        key: 'removeColumn',
+        value: function removeColumn(column, amount, modifyFormula) {
+            this._alter('remove', 'column', column, -amount, modifyFormula);
+        }
+    }, {
+        key: '_alter',
+        value: function _alter(action, axis, start, amount) {
+            var _this = this;
+
+            var modifyFormula = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : true;
+
+            var startCoord = function startCoord(cell) {
+                return {
+                    row: axis === 'row' ? start : cell.row,
+                    column: axis === 'column' ? start : cell.column
+                };
+            };
+            var translateCellRefs = function translateCellRefs(row, column) {
+                arrayEach(_this.matrix.cellReferences, function (cell) {
+                    if (cell[axis] >= start) {
+                        cell.translateTo(row, column);
+                    }
+                });
+            };
+
+            var translate = [];
+            var indexOffset = Math.abs(amount) - 1;
+
+            if (axis === 'row') {
+                translate.push(amount, 0);
+            } else if (axis === 'column') {
+                translate.push(0, amount);
+            }
+
+            if (action === 'remove') {
+                (function () {
+                    var removedCellRef = _this.matrix.removeCellRefsAtRange(_defineProperty({}, axis, start), _defineProperty({}, axis, start + indexOffset));
+                    var toRemove = [];
+
+                    arrayEach(_this.matrix.data, function (cell) {
+                        arrayEach(removedCellRef, function (cellRef) {
+                            if (!cell.hasPrecedent(cellRef)) {
+                                return;
+                            }
+
+                            cell.removePrecedent(cellRef);
+                            cell.setState(_CellValue.CellValue.STATE_OUT_OFF_DATE);
+
+                            arrayEach(_this.sheet.getCellDependencies(cell.row, cell.column), function (cellValue) {
+                                cellValue.setState(_CellValue.CellValue.STATE_OUT_OFF_DATE);
+                            });
+                        });
+
+                        if (cell[axis] >= start && cell[axis] <= start + indexOffset) {
+                            toRemove.push(cell);
+                        }
+                    });
+
+                    _this.matrix.remove(toRemove);
+                })();
+            }
+
+            translateCellRefs.apply(undefined, translate);
+
+            arrayEach(this.matrix.data, function (cell) {
+                var origRow = cell.row;
+                var origColumn = cell.column;
+
+                if (cell[axis] >= start) {
+                    cell.translateTo.apply(cell, translate);
+                    cell.setState(_CellValue.CellValue.STATE_OUT_OFF_DATE);
+                }
+
+                if (modifyFormula) {
+                    var row = cell.row;
+                    var column = cell.column;
+                    var value = _this.dataProvider.getSourceDataAtCell(row, column);
+
+                    if ((0, _utils.isFormulaExpression)(value)) {
+                        var expModifier = new _expressionModifier.ExpressionModifier(value);
+
+                        expModifier.translate(startCoord({ row: origRow, column: origColumn }), _defineProperty({}, axis, amount));
+
+                        _this.dataProvider.updateSourceData(row, column, expModifier.toString());
+                    }
+                }
+            });
+            this.runLocalHooks('afterAlter', action, axis, start, amount);
+        }
+    }, {
+        key: 'destroy',
+        value: function destroy() {
+            this.sheet = null;
+            this.dataProvider = null;
+            this.matrix = null;
+        }
+    }]);
+
+    return AlterManager;
+}();
+
+mixin(AlterManager, localHooks);
+
+exports.AlterManager = AlterManager;
+
+},{"./CellValue":24,"./expressionModifier":30,"./utils":50}],22:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _utils = require('./parser/utils');
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var isObject = Handsontable.helper.isObject;
+
+var BaseCell = function () {
+    function BaseCell(row, column) {
+        _classCallCheck(this, BaseCell);
+
+        var rowObject = isObject(row);
+        var columnObject = isObject(column);
+
+        this._row = rowObject ? row.index : row;
+        this.rowAbsolute = rowObject ? row.isAbsolute : false;
+        this._column = columnObject ? column.index : column;
+        this.columnAbsolute = columnObject ? column.isAbsolute : false;
+        this.rowOffset = 0;
+        this.columnOffset = 0;
+
+        Object.defineProperty(this, 'row', {
+            get: function get() {
+                return this.rowOffset + this._row;
+            },
+            set: function set(row) {
+                this._row = row;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(this, 'column', {
+            get: function get() {
+                return this.columnOffset + this._column;
+            },
+            set: function set(column) {
+                this._column = column;
+            },
+            enumerable: true,
+            configurable: true
+        });
+    }
+
+    _createClass(BaseCell, [{
+        key: 'translateTo',
+        value: function translateTo(rowOffset, columnOffset) {
+            this.row = this.row + rowOffset;
+            this.column = this.column + columnOffset;
+        }
+    }, {
+        key: 'isEqual',
+        value: function isEqual(cell) {
+            return cell.row === this.row && cell.column === this.column;
+        }
+    }, {
+        key: 'toString',
+        value: function toString() {
+            return (0, _utils.toLabel)({ index: this.row, isAbsolute: this.rowAbsolute }, { index: this.column, isAbsolute: this.columnAbsolute });
+        }
+    }]);
+
+    return BaseCell;
+}();
+
+exports.default = BaseCell;
+
+},{"./parser/utils":49}],23:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.CellReference = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _BaseCell2 = require('./BaseCell');
+
+var _BaseCell3 = _interopRequireDefault(_BaseCell2);
+
+var _utils = require('./parser/utils');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var CellReference = function (_BaseCell) {
+    _inherits(CellReference, _BaseCell);
+
+    function CellReference(row, column) {
+        _classCallCheck(this, CellReference);
+
+        return _possibleConstructorReturn(this, (CellReference.__proto__ || Object.getPrototypeOf(CellReference)).call(this, row, column));
+    }
+
+    _createClass(CellReference, [{
+        key: 'toString',
+        value: function toString() {
+            return (0, _utils.toLabel)({ index: this.row, isAbsolute: false }, { index: this.column, isAbsolute: false });
+        }
+    }]);
+
+    return CellReference;
+}(_BaseCell3.default);
+
+exports.CellReference = CellReference;
+
+},{"./BaseCell":22,"./parser/utils":49}],24:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.CellValue = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _BaseCell2 = require('./BaseCell');
+
+var _BaseCell3 = _interopRequireDefault(_BaseCell2);
+
+var _error = require('./parser/error');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var STATE_OUT_OFF_DATE = 1;
+var STATE_COMPUTING = 2;
+var STATE_UP_TO_DATE = 3;
+var states = [STATE_OUT_OFF_DATE, STATE_COMPUTING, STATE_UP_TO_DATE];
+
+var arrayFilter = Handsontable.helper.arrayFilter;
+
+var CellValue = function (_BaseCell) {
+    _inherits(CellValue, _BaseCell);
+
+    _createClass(CellValue, null, [{
+        key: 'STATE_OUT_OFF_DATE',
+        get: function get() {
+            return 1;
+        }
+    }, {
+        key: 'STATE_COMPUTING',
+        get: function get() {
+            return 2;
+        }
+    }, {
+        key: 'STATE_UP_TO_DATE',
+        get: function get() {
+            return 3;
+        }
+    }]);
+
+    function CellValue(row, column) {
+        _classCallCheck(this, CellValue);
+
+        var _this = _possibleConstructorReturn(this, (CellValue.__proto__ || Object.getPrototypeOf(CellValue)).call(this, row, column));
+
+        _this.precedents = [];
+        _this.value = null;
+        _this.error = null;
+        _this.state = CellValue.STATE_UP_TO_DATE;
+        return _this;
+    }
+
+    _createClass(CellValue, [{
+        key: 'setValue',
+        value: function setValue(value) {
+            this.value = value;
+        }
+    }, {
+        key: 'getValue',
+        value: function getValue() {
+            return this.value;
+        }
+    }, {
+        key: 'setError',
+        value: function setError(error) {
+            this.error = error;
+        }
+    }, {
+        key: 'getError',
+        value: function getError() {
+            return this.error;
+        }
+    }, {
+        key: 'hasError',
+        value: function hasError() {
+            return this.error !== null;
+        }
+    }, {
+        key: 'setState',
+        value: function setState(state) {
+            if (states.indexOf(state) === -1) {
+                throw '\u672A\u77E5\u72B6\u6001: ' + state;
+            }
+            this.state = state;
+        }
+    }, {
+        key: 'isState',
+        value: function isState(state) {
+            return this.state === state;
+        }
+    }, {
+        key: 'addPrecedent',
+        value: function addPrecedent(cellReference) {
+            if (this.isEqual(cellReference)) {
+                throw Error(_error.ERROR_REF);
+            }
+            if (!this.hasPrecedent(cellReference)) {
+                this.precedents.push(cellReference);
+            }
+        }
+    }, {
+        key: 'removePrecedent',
+        value: function removePrecedent(cellReference) {
+            if (this.isEqual(cellReference)) {
+                throw Error(_error.ERROR_REF);
+            }
+            this.precedents = arrayFilter(this.precedents, function (cell) {
+                return !cell.isEqual(cellReference);
+            });
+        }
+    }, {
+        key: 'getPrecedents',
+        value: function getPrecedents() {
+            return this.precedents;
+        }
+    }, {
+        key: 'hasPrecedents',
+        value: function hasPrecedents() {
+            return this.precedents.length > 0;
+        }
+    }, {
+        key: 'hasPrecedent',
+        value: function hasPrecedent(cellReference) {
+            return arrayFilter(this.precedents, function (cell) {
+                return cell.isEqual(cellReference);
+            }).length ? true : false;
+        }
+    }]);
+
+    return CellValue;
+}(_BaseCell3.default);
+
+exports.CellValue = CellValue;
+
+},{"./BaseCell":22,"./parser/error":31}],25:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.DataProvider = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _utils = require('./utils');
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var arrayEach = Handsontable.helper.arrayEach;
+var rangeEach = Handsontable.helper.rangeEach;
+
+var DataProvider = function () {
+    function DataProvider(hot) {
+        _classCallCheck(this, DataProvider);
+
+        this.hot = hot;
+        this.changes = {};
+    }
+
+    _createClass(DataProvider, [{
+        key: 'collectChanges',
+        value: function collectChanges(row, column, value) {
+            if (!(0, _utils.isFormulaExpression)(value)) {
+                this.changes[DataProvider._coordId(row, column)] = value;
+            }
+        }
+    }, {
+        key: 'clearChanges',
+        value: function clearChanges() {
+            this.changes = {};
+        }
+    }, {
+        key: 'isInDataRange',
+        value: function isInDataRange(row, column) {
+            return row >= 0 && row < this.hot.countRows() && column >= 0 && column < this.hot.countCols();
+        }
+    }, {
+        key: 'getDataAtCell',
+        value: function getDataAtCell(row, column) {
+            var id = DataProvider._coordId(row, column);
+            var result = void 0;
+
+            if (this.changes.hasOwnProperty(id)) {
+                result = this.changes[id];
+            } else {
+                result = this.hot.getDataAtCell(row, column);
+            }
+            return result;
+        }
+    }, {
+        key: 'getDataAtCellInSheet',
+        value: function getDataAtCellInSheet(sheetName, row, column) {
+            var sheet = this.workbook.getSheet(sheetName);
+            var formulas = sheet.handsontable.getPlugin('XFormulas');
+            return formulas.sheet.dataProvider.getDataAtCell(row, column);
+        }
+    }, {
+        key: 'getDataByRange',
+        value: function getDataByRange(row1, column1, row2, column2) {
+            var _this = this;
+
+            var result = this.hot.getData(row1, column1, row2, column2);
+
+            arrayEach(result, function (rowData, rowIndex) {
+                arrayEach(rowData, function (value, columnIndex) {
+                    var id = DataProvider._coordId(rowIndex + row1, columnIndex + column1);
+
+                    if (_this.changes.hasOwnProperty(id)) {
+                        result[rowIndex][columnIndex] = _this.changes[id];
+                    }
+                });
+            });
+
+            return result;
+        }
+    }, {
+        key: 'getSourceDataAtCell',
+        value: function getSourceDataAtCell(row, column) {
+            return this.hot.getSourceDataAtCell(row, column);
+        }
+    }, {
+        key: 'getSourceDataByRange',
+        value: function getSourceDataByRange(row1, column1, row2, column2) {
+            return this.hot.getSourceDataArray(row1, column1, row2, column2);
+        }
+    }, {
+        key: 'updateSourceData',
+        value: function updateSourceData(row, column, value) {
+            this.hot.getSourceData()[row][this.hot.colToProp(column)] = value;
+        }
+    }, {
+        key: 'destroy',
+        value: function destroy() {
+            this.hot = null;
+            this.changes = null;
+        }
+    }], [{
+        key: '_coordId',
+        value: function _coordId(row, column) {
+            return row + ':' + column;
+        }
+    }]);
+
+    return DataProvider;
+}();
+
+exports.DataProvider = DataProvider;
+
+},{"./utils":50}],26:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.Matrix = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _CellValue = require('./CellValue');
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var arrayEach = Handsontable.helper.arrayEach;
+var arrayFilter = Handsontable.helper.arrayFilter;
+var arrayReduce = Handsontable.helper.arrayReduce;
+
+var Matrix = function () {
+    function Matrix() {
+        _classCallCheck(this, Matrix);
+
+        this.data = [];
+        this.cellReferences = [];
+    }
+
+    _createClass(Matrix, [{
+        key: 'getCellAt',
+        value: function getCellAt(row, column) {
+            var result = null;
+
+            arrayEach(this.data, function (cell) {
+                if (cell.row === row && cell.column === column) {
+                    result = cell;
+
+                    return false;
+                }
+            });
+
+            return result;
+        }
+    }, {
+        key: 'getOutOfDateCells',
+        value: function getOutOfDateCells() {
+            return arrayFilter(this.data, function (cell) {
+                return cell.isState(_CellValue.CellValue.STATE_OUT_OFF_DATE);
+            });
+        }
+    }, {
+        key: 'add',
+        value: function add(cellValue) {
+            if (!arrayFilter(this.data, function (cell) {
+                return cell.isEqual(cellValue);
+            }).length) {
+                this.data.push(cellValue);
+            }
+        }
+    }, {
+        key: 'remove',
+        value: function remove(cellValue) {
+            var isArray = Array.isArray(cellValue);
+            var isEqual = function isEqual(cell, cellValue) {
+                var result = false;
+
+                if (isArray) {
+                    arrayEach(cellValue, function (value) {
+                        if (cell.isEqual(value)) {
+                            result = true;
+
+                            return false;
+                        }
+                    });
+                } else {
+                    result = cell.isEqual(cellValue);
+                }
+
+                return result;
+            };
+            this.data = arrayFilter(this.data, function (cell) {
+                return !isEqual(cell, cellValue);
+            });
+        }
+    }, {
+        key: 'getDependencies',
+        value: function getDependencies(cellValue) {
+            var _this = this;
+
+            var getDependencies = function getDependencies(cell) {
+                return arrayReduce(_this.data, function (acc, cellValue) {
+                    if (cellValue.hasPrecedent(cell) && acc.indexOf(cellValue) === -1) {
+                        acc.push(cellValue);
+                    }
+
+                    return acc;
+                }, []);
+            };
+
+            var getTotalDependencies = function getTotalDependencies(cell) {
+                var deps = getDependencies(cell);
+
+                if (deps.length) {
+                    arrayEach(deps, function (cellValue) {
+                        if (cellValue.hasPrecedents()) {
+                            deps = deps.concat(getTotalDependencies(cellValue));
+                        }
+                    });
+                }
+
+                return deps;
+            };
+
+            return getTotalDependencies(cellValue);
+        }
+    }, {
+        key: 'registerCellRef',
+        value: function registerCellRef(cellReference) {
+            if (!arrayFilter(this.cellReferences, function (cell) {
+                return cell.isEqual(cellReference);
+            }).length) {
+                this.cellReferences.push(cellReference);
+            }
+        }
+    }, {
+        key: 'removeCellRefsAtRange',
+        value: function removeCellRefsAtRange(_ref, _ref2) {
+            var startRow = _ref.row,
+                startColumn = _ref.column;
+            var endRow = _ref2.row,
+                endColumn = _ref2.column;
+
+            var removed = [];
+
+            var rowMatch = function rowMatch(cell) {
+                return startRow === void 0 ? true : cell.row >= startRow && cell.row <= endRow;
+            };
+            var colMatch = function colMatch(cell) {
+                return startColumn === void 0 ? true : cell.column >= startColumn && cell.column <= endColumn;
+            };
+
+            this.cellReferences = arrayFilter(this.cellReferences, function (cell) {
+                if (rowMatch(cell) && colMatch(cell)) {
+                    removed.push(cell);
+
+                    return false;
+                }
+
+                return true;
+            });
+
+            return removed;
+        }
+    }, {
+        key: 'reset',
+        value: function reset() {
+            this.data.length = 0;
+            this.cellReferences.length = 0;
+        }
+    }]);
+
+    return Matrix;
+}();
+
+exports.Matrix = Matrix;
+
+},{"./CellValue":24}],27:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.Sheet = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _CellValue = require('./CellValue');
+
+var _CellReference = require('./CellReference');
+
+var _utils = require('./utils');
+
+var _Matrix = require('./Matrix');
+
+var _AlterManager = require('./AlterManager');
+
+var _parser = require('./parser/parser');
+
+var _error = require('./parser/error');
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var STATE_UP_TO_DATE = 1;
+var STATE_NEED_REBUILD = 2;
+var STATE_NEED_FULL_REBUILD = 3;
+
+var arrayEach = Handsontable.helper.arrayEach;
+var arrayMap = Handsontable.helper.arrayMap;
+var rangeEach = Handsontable.helper.rangeEach;
+var objectEach = Handsontable.helper.objectEach;
+var mixin = Handsontable.helper.mixin;
+var localHooks = Handsontable.utils.localHooks; // private
+
+
+var Sheet = function () {
+    function Sheet(dataProvider) {
+        var _this = this;
+
+        _classCallCheck(this, Sheet);
+
+        this.dataProvider = dataProvider;
+        this.parser = new _parser.Parser();
+        this.matrix = new _Matrix.Matrix();
+        this.alterManager = new _AlterManager.AlterManager(this);
+
+        this._processingCell = null;
+        this._state = STATE_NEED_FULL_REBUILD;
+
+        this.parser.on('callCellValue', function () {
+            return _this._onCallCellValue.apply(_this, arguments);
+        });
+        this.parser.on('callRangeValue', function () {
+            return _this._onCallRangeValue.apply(_this, arguments);
+        });
+        this.parser.on('callCellValueInSheet', function () {
+            return _this._onCallCellValueInSheet.apply(_this, arguments);
+        });
+        this.parser.on('callRangeValueInSheet', function () {
+            return _this._onCallRangeValueInSheet.apply(_this, arguments);
+        });
+        this.alterManager.addLocalHook('afterAlter', function () {
+            return _this._onAfterAlter.apply(_this, arguments);
+        });
+    }
+
+    _createClass(Sheet, [{
+        key: 'recalculate',
+        value: function recalculate() {
+            switch (this._state) {
+                case STATE_NEED_FULL_REBUILD:
+                    this.recalculateFull();
+                    break;
+                case STATE_NEED_REBUILD:
+                    this.recalculateOptimized();
+                    break;
+            }
+        }
+    }, {
+        key: 'recalculateOptimized',
+        value: function recalculateOptimized() {
+            var _this2 = this;
+
+            var cells = this.matrix.getOutOfDateCells();
+
+            arrayEach(cells, function (cellValue) {
+                var value = _this2.dataProvider.getSourceDataAtCell(cellValue.row, cellValue.column);
+
+                if ((0, _utils.isFormulaExpression)(value)) {
+                    _this2.parseExpression(cellValue, value.substr(1));
+                }
+            });
+
+            this._state = STATE_UP_TO_DATE;
+            this.runLocalHooks('afterRecalculate', cells, 'optimized');
+        }
+    }, {
+        key: 'recalculateFull',
+        value: function recalculateFull() {
+            var _this3 = this;
+
+            var cells = this.dataProvider.getSourceDataByRange();
+            this.matrix.reset();
+
+            arrayEach(cells, function (rowData, row) {
+                arrayEach(rowData, function (value, column) {
+                    if ((0, _utils.isFormulaExpression)(value)) {
+                        _this3.parseExpression(new _CellValue.CellValue(row, column), value.substr(1));
+                    }
+                });
+            });
+
+            this._state = STATE_UP_TO_DATE;
+            this.runLocalHooks('afterRecalculate', cells, 'full');
+        }
+    }, {
+        key: 'setVariable',
+        value: function setVariable(name, value) {
+            this.parser.setVariable(name, value);
+        }
+    }, {
+        key: 'getVariable',
+        value: function getVariable(name) {
+            return this.parser.getVariable(name);
+        }
+    }, {
+        key: 'applyChanges',
+        value: function applyChanges(row, column, newValue) {
+            // TODO: Move this to recalculate()
+            this.matrix.remove({ row: row, column: column });
+
+            // TODO: Move this to recalculate()
+            if ((0, _utils.isFormulaExpression)(newValue)) {
+                this.parseExpression(new _CellValue.CellValue(row, column), newValue.substr(1));
+            }
+
+            var deps = this.getCellDependencies(row, column);
+
+            arrayEach(deps, function (cellValue) {
+                cellValue.setState(_CellValue.CellValue.STATE_OUT_OFF_DATE);
+            });
+
+            this._state = STATE_NEED_REBUILD;
+        }
+    }, {
+        key: 'parseExpression',
+        value: function parseExpression(cellValue, formula) {
+            cellValue.setState(_CellValue.CellValue.STATE_COMPUTING);
+            this._processingCell = cellValue;
+
+            // TODO  wrapper formula
+            // var sheetNames = this.dataProvider.workbook.getSheetNames();
+
+            var _parser$parse = this.parser.parse((0, _utils.toUpperCaseFormula)(formula)),
+                error = _parser$parse.error,
+                result = _parser$parse.result;
+
+            cellValue.setValue(result);
+            cellValue.setError(error);
+            cellValue.setState(_CellValue.CellValue.STATE_UP_TO_DATE);
+
+            this.matrix.add(cellValue);
+            this._processingCell = null;
+        }
+    }, {
+        key: 'getCellAt',
+        value: function getCellAt(row, column) {
+            return this.matrix.getCellAt(row, column);
+        }
+    }, {
+        key: 'getCellDependencies',
+        value: function getCellDependencies(row, column) {
+            return this.matrix.getDependencies({ row: row, column: column });
+        }
+    }, {
+        key: '_onCallCellValue',
+        value: function _onCallCellValue(_ref, done) {
+            var row = _ref.row,
+                column = _ref.column;
+
+            var cell = new _CellReference.CellReference(row, column);
+
+            if (!this.dataProvider.isInDataRange(cell.row, cell.column)) {
+                throw Error(_error.ERROR_REF);
+            }
+
+            this.matrix.registerCellRef(cell);
+            this._processingCell.addPrecedent(cell);
+
+            done(this.dataProvider.getDataAtCell(cell.row, cell.column));
+        }
+    }, {
+        key: '_onCallCellValueInSheet',
+        value: function _onCallCellValueInSheet(_ref2, done) {
+            var sheetName = _ref2.sheetName,
+                row = _ref2.row,
+                column = _ref2.column;
+
+            var cell = new _CellReference.CellReference(row, column);
+
+            // TODO 更改数据时，公式引用的数据级联更新
+
+            done(this.dataProvider.getDataAtCellInSheet(sheetName, cell.row, cell.column));
+        }
+    }, {
+        key: '_onCallRangeValue',
+        value: function _onCallRangeValue(_ref3, _ref4, done) {
+            var startRow = _ref3.row,
+                startColumn = _ref3.column;
+
+            var _this4 = this;
+
+            var endRow = _ref4.row,
+                endColumn = _ref4.column;
+
+            rangeEach(startRow.index, endRow.index, function (row) {
+                rangeEach(startColumn.index, endColumn.index, function (column) {
+                    var cell = new _CellReference.CellReference(row, column);
+
+                    _this4.matrix.registerCellRef(cell);
+                    _this4._processingCell.addPrecedent(cell);
+                });
+            });
+            done(this.dataProvider.getDataByRange(startRow.index, startColumn.index, endRow.index, endColumn.index));
+        }
+
+        // TODO 调用范围公式
+
+    }, {
+        key: '_onCallRangeValueInSheet',
+        value: function _onCallRangeValueInSheet(sheetName, _ref5, _ref6, done) {
+            var startRow = _ref5.row,
+                startColumn = _ref5.column;
+            var endRow = _ref6.row,
+                endColumn = _ref6.column;
+
+
+            done('_onCallRangeValueInSheet');
+        }
+    }, {
+        key: '_onAfterAlter',
+        value: function _onAfterAlter() {
+            this.recalculateOptimized();
+        }
+    }, {
+        key: 'destroy',
+        value: function destroy() {
+            this.dataProvider.destroy();
+            this.dataProvider = null;
+            this.alterManager.destroy();
+            this.alterManager = null;
+            this.parser = null;
+            this.matrix.reset();
+            this.matrix = null;
+        }
+    }]);
+
+    return Sheet;
+}();
+
+mixin(Sheet, localHooks);
+
+exports.Sheet = Sheet;
+
+},{"./AlterManager":21,"./CellReference":23,"./CellValue":24,"./Matrix":26,"./parser/error":31,"./parser/parser":47,"./utils":50}],28:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.UndoRedoSnapshot = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _CellValue = require('./CellValue');
+
+var _dataStructure = require('../../utils/dataStructure');
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var arrayEach = Handsontable.helper.arrayEach;
+var rangeEach = Handsontable.helper.rangeEach;
+
+var UndoRedoSnapshot = function () {
+    function UndoRedoSnapshot(sheet) {
+        _classCallCheck(this, UndoRedoSnapshot);
+
+        this.sheet = sheet;
+        this.stack = new _dataStructure.Stack();
+    }
+
+    _createClass(UndoRedoSnapshot, [{
+        key: 'save',
+        value: function save(axis, index, amount) {
+            var _sheet = this.sheet,
+                matrix = _sheet.matrix,
+                dataProvider = _sheet.dataProvider;
+
+            var changes = [];
+
+            arrayEach(matrix.data, function (cellValue) {
+                var row = cellValue.row,
+                    column = cellValue.column;
+
+
+                if (cellValue[axis] < index || cellValue[axis] > index + (amount - 1)) {
+                    var value = dataProvider.getSourceDataAtCell(row, column);
+
+                    changes.push({ row: row, column: column, value: value });
+                }
+            });
+
+            this.stack.push({ axis: axis, index: index, amount: amount, changes: changes });
+        }
+    }, {
+        key: 'restore',
+        value: function restore() {
+            var _sheet2 = this.sheet,
+                matrix = _sheet2.matrix,
+                dataProvider = _sheet2.dataProvider;
+
+            var _stack$pop = this.stack.pop(),
+                axis = _stack$pop.axis,
+                index = _stack$pop.index,
+                amount = _stack$pop.amount,
+                changes = _stack$pop.changes;
+
+            if (changes) {
+                arrayEach(changes, function (change) {
+                    if (change[axis] > index + (amount - 1)) {
+                        change[axis] -= amount;
+                    }
+                    var row = change.row,
+                        column = change.column,
+                        value = change.value;
+
+                    var rawValue = dataProvider.getSourceDataAtCell(row, column);
+
+                    if (rawValue !== value) {
+                        dataProvider.updateSourceData(row, column, value);
+                        matrix.getCellAt(row, column).setState(_CellValue.CellValue.STATE_OUT_OFF_DATE);
+                    }
+                });
+            }
+        }
+    }, {
+        key: 'destroy',
+        value: function destroy() {
+            this.sheet = null;
+            this.stack = null;
+        }
+    }]);
+
+    return UndoRedoSnapshot;
+}();
+
+exports.UndoRedoSnapshot = UndoRedoSnapshot;
+
+},{"../../utils/dataStructure":55,"./CellValue":24}],29:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.XFormulas = undefined;
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }(); /**
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          * 扩展公式：支持跨工作表的公式。
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          * 示例：
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          * + worksheet2中某单元格值为 `=worksheet1!A2+B2`
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          * + 工作表3中某单元格值为 `=工作表1!A1+工作表2B1`
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          * + sheet5中某单元格值为`=SUM(sheet3!B1:B5, sheet4!B6)`
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          *
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          * TODO 目前仅支持“相对引用”的坐标形式，但没有公式填充的效果；
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          * 目前不支持“绝对引用”和“混合引用”方式。
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          *
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          * 此插件需要绕开 hansontable 一个插件对应一个实例的设计思路，而同时管理多个实例。
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          * 实例的管理工作交给 Workbook 来做，因此，此插件不可作为独立的 hansontable 插件
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          * 使用，只能依托于该电子表格设计器。
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          *
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          * @plugin External plugin XFormulas.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          * @param hotInstance
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          * @constructor
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          *
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          */
+
+// TODO 禁止公式循环引用 A1=B1, B1=A1
+
+var _utils = require('./utils');
+
+var _Sheet = require('./Sheet');
+
+var _DataProvider = require('./DataProvider');
+
+var _UndoRedoSnapshot = require('./UndoRedoSnapshot');
+
+var arrayEach = Handsontable.helper.arrayEach;
+var isObject = Handsontable.helper.isObject;
+var objectEach = Handsontable.helper.objectEach;
+
+function XFormulas(hotInstance) {
+
+    Handsontable.plugins.BasePlugin.call(this, hotInstance);
+    this._superClass = Handsontable.plugins.BasePlugin;
+
+    this.eventManager = Handsontable.eventManager();
+    this.dataProvider = new _DataProvider.DataProvider(this.hot);
+    this.sheet = new _Sheet.Sheet(this.dataProvider);
+    this.undoRedoSnapshot = new _UndoRedoSnapshot.UndoRedoSnapshot(this.sheet);
+
+    this._skipRendering = false;
+}
+
+XFormulas.prototype = Object.create(Handsontable.plugins.BasePlugin.prototype, {
+    constructor: {
+        writable: true,
+        configurable: true,
+        value: XFormulas
+    }
+});
+
+XFormulas.prototype.isEnabled = function () {
+    return !!this.hot.getSettings().xFormulas;
+};
+
+/**
+ * 插件初始化过程。
+ * PS: enablePlugin 方法会在 beforeInit hook 中触发，
+ *     仅当 isEnabled 方法返回 true 时执行。
+ */
+XFormulas.prototype.enablePlugin = function () {
+    var _this = this;
+
+    if (this.enabled) {
+        return;
+    }
+
+    var settings = this.hot.getSettings();
+    if (!settings._isHotTableAdaptor) {
+        throw 'XFormulas 插件启用失败';
+    }
+
+    var formulasSettings = settings.formulas;
+    if (isObject(formulasSettings)) {
+        if (isObject(formulasSettings.variables)) {
+            objectEach(formulasSettings.variables, function (value, name) {
+                return _this.setVariable(name, value);
+            });
+        }
+    }
+
+    // TODO move to DataProvider
+    var worksheet = this.dataProvider.worksheet = this.hot.getSettings()._sheet;
+    this.dataProvider.workbook = worksheet.workbook;
+
+    this.addHook('afterCreateCol', function () {
+        return _this.onAfterCreateCol.apply(_this, arguments);
+    });
+    this.addHook('afterCreateRow', function () {
+        return _this.onAfterCreateRow.apply(_this, arguments);
+    });
+    this.addHook('afterLoadData', function () {
+        return _this.onAfterLoadData();
+    });
+    this.addHook('afterRemoveCol', function () {
+        return _this.onAfterRemoveCol.apply(_this, arguments);
+    });
+    this.addHook('afterRemoveRow', function () {
+        return _this.onAfterRemoveRow.apply(_this, arguments);
+    });
+    this.addHook('afterSetDataAtCell', function () {
+        return _this.onAfterSetDataAtCell.apply(_this, arguments);
+    });
+    this.addHook('afterSetDataAtRowProp', function () {
+        return _this.onAfterSetDataAtCell.apply(_this, arguments);
+    });
+    this.addHook('beforeCreateCol', function () {
+        return _this.onBeforeCreateCol.apply(_this, arguments);
+    });
+    this.addHook('beforeCreateRow', function () {
+        return _this.onBeforeCreateRow.apply(_this, arguments);
+    });
+    this.addHook('beforeRemoveCol', function () {
+        return _this.onBeforeRemoveCol.apply(_this, arguments);
+    });
+    this.addHook('beforeRemoveRow', function () {
+        return _this.onBeforeRemoveRow.apply(_this, arguments);
+    });
+    this.addHook('beforeValidate', function () {
+        return _this.onBeforeValidate.apply(_this, arguments);
+    });
+    this.addHook('beforeValueRender', function () {
+        return _this.onBeforeValueRender.apply(_this, arguments);
+    });
+    this.addHook('modifyData', function () {
+        return _this.onModifyData.apply(_this, arguments);
+    });
+
+    this.sheet.addLocalHook('afterRecalculate', function () {
+        return _this.onSheetAfterRecalculate.apply(_this, arguments);
+    });
+
+    this._superClass.prototype.enablePlugin.call(this);
+};
+
+/**
+ * 禁用插件。
+ * PS: 注意将所有属性重置为默认值
+ */
+XFormulas.prototype.disablePlugin = function () {
+    this._superClass.prototype.disablePlugin.call(this);
+};
+
+/**
+ * 重置 Handsontable 的 settings 时，用来重置 XFormulas 插件的属性。
+ * PS: 在 afterUpdateSettings hook 中调用。
+ */
+XFormulas.prototype.updatePlugin = function () {
+    this.disablePlugin();
+    this.enablePlugin();
+    this._superClass.prototype.updatePlugin.call(this);
+};
+
+/**
+ * 销毁插件
+ */
+XFormulas.prototype.destroy = function () {
+    this.dataProvider.destroy();
+    this.dataProvider = null;
+    this.sheet.destroy();
+    this.sheet = null;
+    this._superClass.prototype.destroy.call(this);
+};
+
+// ---------------------------------------[start] Hooks
+
+// TODO 工作表改名时，其它工作表关联到它的公式值要改
+XFormulas.prototype.onSheetRename = function (sheet, name1, name2) {};
+
+XFormulas.prototype.onSheetAfterRecalculate = function (cells) {
+    if (this._skipRendering) {
+        this._skipRendering = false;
+        return;
+    }
+    var hot = this.hot;
+
+    arrayEach(cells, function (_ref) {
+        var row = _ref.row,
+            column = _ref.column;
+
+        hot.validateCell(hot.getDataAtCell(row, column), hot.getCellMeta(row, column), function () {});
+    });
+    hot.render();
+};
+
+XFormulas.prototype.onModifyData = function (row, column, valueHolder, ioMode) {
+    if (ioMode === 'get' && this.hasComputedCellValue(row, column)) {
+        valueHolder.value = this.getCellValue(row, column);
+    } else if (ioMode === 'set' && (0, _utils.isFormulaExpression)(valueHolder.value)) {
+        valueHolder.value = (0, _utils.toUpperCaseFormula)(valueHolder.value);
+    }
+};
+
+XFormulas.prototype.onBeforeValueRender = function (value) {
+    if ((0, _utils.isFormulaExpressionEscaped)(value)) {
+        value = (0, _utils.unescapeFormulaExpression)(value);
+    }
+    return value;
+};
+
+XFormulas.prototype.onBeforeValidate = function (value, row, prop) {
+    var column = this.hot.propToCol(prop);
+
+    if (this.hasComputedCellValue(row, column)) {
+        value = this.getCellValue(row, column);
+    }
+
+    return value;
+};
+
+XFormulas.prototype.onAfterSetDataAtCell = function (changes, source) {
+    var _this2 = this;
+
+    if (source === 'loadData') {
+        return;
+    }
+
+    this.dataProvider.clearChanges();
+    arrayEach(changes, function (_ref2) {
+        var _ref3 = _slicedToArray(_ref2, 4),
+            row = _ref3[0],
+            column = _ref3[1],
+            oldValue = _ref3[2],
+            newValue = _ref3[3];
+
+        column = _this2.hot.propToCol(column);
+        if ((0, _utils.isFormulaExpression)(newValue)) {
+            newValue = (0, _utils.toUpperCaseFormula)(newValue);
+        }
+        _this2.dataProvider.collectChanges(row, column, newValue);
+        if (oldValue !== newValue) {
+            _this2.sheet.applyChanges(row, column, newValue);
+        }
+    });
+    this.recalculate();
+};
+
+XFormulas.prototype.onBeforeCreateRow = function (row, amount, source) {
+    if (source === 'undo') {
+        this.undoRedoSnapshot.restore();
+    }
+};
+
+XFormulas.prototype.onAfterCreateRow = function (row, amount, source) {
+    this.sheet.alterManager.insertRow(row, amount, source !== 'undo');
+};
+
+XFormulas.prototype.onBeforeRemoveRow = function (row, amount) {
+    Storage.save('row', row, amount);
+};
+
+XFormulas.prototype.onAfterRemoveRow = function (row, amount) {
+    this.sheet.alterManager.removeRow(row, amount);
+};
+
+XFormulas.prototype.onBeforeCreateCol = function (column, amount, source) {
+    if (source === 'undo') {
+        this.undoRedoSnapshot.restore();
+    }
+};
+
+XFormulas.prototype.onAfterCreateCol = function (column, amount, source) {
+    this.sheet.alterManager.insertColumn(column, amount, source !== 'undo');
+};
+
+XFormulas.prototype.onBeforeRemoveCol = function (column, amount) {
+    Storage.save('column', column, amount);
+};
+
+XFormulas.prototype.onAfterRemoveCol = function (column, amount) {
+    this.sheet.alterManager.removeColumn(column, amount);
+};
+
+XFormulas.prototype.onAfterLoadData = function () {
+    this._skipRendering = true;
+    this.recalculateFull();
+};
+
+// ---------------------------------------[end] Hooks
+
+XFormulas.prototype.getCellValue = function (row, column) {
+    var cell = this.sheet.getCellAt(row, column);
+    return cell ? cell.getError() || cell.getValue() : void 0;
+};
+
+XFormulas.prototype.hasComputedCellValue = function (row, column) {
+    return this.sheet.getCellAt(row, column) ? true : false;
+};
+
+XFormulas.prototype.recalculate = function () {
+    this.sheet.recalculate();
+};
+
+XFormulas.prototype.recalculateFull = function () {
+    this.sheet.recalculateFull();
+};
+
+XFormulas.prototype.recalculateOptimized = function () {
+    this.sheet.recalculateOptimized();
+};
+
+XFormulas.prototype.setVariable = function (name, value) {
+    this.sheet.setVariable(name, value);
+};
+
+XFormulas.prototype.getVariable = function (name) {
+    return this.sheet.getVariable(name);
+};
+
+Handsontable.plugins.registerPlugin('xFormulas', XFormulas);
+
+exports.XFormulas = XFormulas;
+
+},{"./DataProvider":25,"./Sheet":27,"./UndoRedoSnapshot":28,"./utils":50}],30:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.ExpressionModifier = undefined;
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _utils = require('./utils');
+
+var _utils2 = require('./parser/utils');
+
+var _error = require('./parser/error');
+
+var _error2 = _interopRequireDefault(_error);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var arrayEach = Handsontable.helper.arrayEach;
+var arrayFilter = Handsontable.helper.arrayFilter;
+var startsWith = Handsontable.helper.startsWith;
+var mixin = Handsontable.helper.mixin;
+var localHooks = Handsontable.utils.localHooks; // private
+
+var BARE_CELL_STRICT_REGEX = /^\$?[A-Z]+\$?\d+$/;
+var BARE_CELL_REGEX = /\$?[A-Z]+\$?\d+/;
+var CELL_REGEX = /(?:[^0-9A-Z$: ]|^)\s*(\$?[A-Z]+\$?\d+)\s*(?![0-9A-Z_: ])/g;
+var RANGE_REGEX = /\$?[A-Z]+\$?\d+\s*:\s*\$?[A-Z]+\$?\d+/g;
+var CELL_AND_RANGE_REGEX = /((?:[^0-9A-Z$: ]|^)\s*(\$?[A-Z]+\$?\d+)\s*(?![0-9A-Z_: ]))|(\$?[A-Z]+\$?\d+\s*:\s*\$?[A-Z]+\$?\d+)/g;
+
+var ExpressionModifier = function () {
+    function ExpressionModifier(expression) {
+        _classCallCheck(this, ExpressionModifier);
+
+        /**
+         * 待修改的表达式
+         * @type {String}
+         */
+        this.expression = '';
+
+        this.cells = [];
+
+        if (typeof expression === 'string') {
+            this.setExpression(expression);
+        }
+    }
+
+    _createClass(ExpressionModifier, [{
+        key: 'setExpression',
+        value: function setExpression(expression) {
+            this.cells.length = 0;
+            this.expression = (0, _utils.toUpperCaseFormula)(expression);
+
+            this._extractCells();
+            this._extractCellsRange();
+
+            return this;
+        }
+    }, {
+        key: 'translate',
+        value: function translate(_ref, _ref2) {
+            var baseRow = _ref.row,
+                baseColumn = _ref.column;
+            var deltaRow = _ref2.row,
+                deltaColumn = _ref2.column;
+
+            arrayEach(this.cells, function (cell) {
+                if (deltaRow != null) {
+                    ExpressionModifier._translateCell(cell, 'row', baseRow, deltaRow);
+                }
+                if (deltaColumn != null) {
+                    ExpressionModifier._translateCell(cell, 'column', baseColumn, deltaColumn);
+                }
+            });
+
+            return this;
+        }
+    }, {
+        key: 'toString',
+        value: function toString() {
+            var _this = this;
+
+            var expression = this.expression.replace(CELL_AND_RANGE_REGEX, function (match, p1, p2) {
+                var isSingleCell = match.indexOf(':') === -1;
+                var result = match;
+                var cellLabel = match;
+                var translatedCellLabel = null;
+
+                if (isSingleCell) {
+                    cellLabel = BARE_CELL_STRICT_REGEX.test(p1) ? p1 : p2;
+                }
+                var cell = _this._searchCell(cellLabel);
+
+                if (cell) {
+                    translatedCellLabel = cell.refError ? (0, _error2.default)(_error.ERROR_REF) : cell.toLabel();
+
+                    if (isSingleCell) {
+                        result = match.replace(cellLabel, translatedCellLabel);
+                    } else {
+                        result = translatedCellLabel;
+                    }
+                }
+
+                return result;
+            });
+
+            if (!startsWith(expression, '=')) {
+                expression = '=' + expression;
+            }
+
+            return expression;
+        }
+    }, {
+        key: '_extractCells',
+        value: function _extractCells() {
+            var _this2 = this;
+
+            var matches = this.expression.match(CELL_REGEX);
+
+            if (!matches) {
+                return;
+            }
+            arrayEach(matches, function (coord) {
+                coord = coord.match(BARE_CELL_REGEX);
+
+                if (!coord) {
+                    return;
+                }
+
+                var _extractLabel = (0, _utils2.extractLabel)(coord[0]),
+                    _extractLabel2 = _slicedToArray(_extractLabel, 2),
+                    row = _extractLabel2[0],
+                    column = _extractLabel2[1];
+
+                _this2.cells.push(_this2._createCell({ row: row, column: column }, { row: row, column: column }, coord[0]));
+            });
+        }
+    }, {
+        key: '_extractCellsRange',
+        value: function _extractCellsRange() {
+            var _this3 = this;
+
+            var matches = this.expression.match(RANGE_REGEX);
+
+            if (!matches) {
+                return;
+            }
+            arrayEach(matches, function (match) {
+                var _match$split = match.split(':'),
+                    _match$split2 = _slicedToArray(_match$split, 2),
+                    start = _match$split2[0],
+                    end = _match$split2[1];
+
+                var _extractLabel3 = (0, _utils2.extractLabel)(start),
+                    _extractLabel4 = _slicedToArray(_extractLabel3, 2),
+                    startRow = _extractLabel4[0],
+                    startColumn = _extractLabel4[1];
+
+                var _extractLabel5 = (0, _utils2.extractLabel)(end),
+                    _extractLabel6 = _slicedToArray(_extractLabel5, 2),
+                    endRow = _extractLabel6[0],
+                    endColumn = _extractLabel6[1];
+
+                var startCell = {
+                    row: startRow,
+                    column: startColumn
+                };
+                var endCell = {
+                    row: endRow,
+                    column: endColumn
+                };
+
+                _this3.cells.push(_this3._createCell(startCell, endCell, match));
+            });
+        }
+    }, {
+        key: '_searchCell',
+        value: function _searchCell(label) {
+            var _arrayFilter = arrayFilter(this.cells, function (cell) {
+                return cell.origLabel === label;
+            }),
+                _arrayFilter2 = _slicedToArray(_arrayFilter, 1),
+                cell = _arrayFilter2[0];
+
+            return cell || null;
+        }
+    }, {
+        key: '_createCell',
+        value: function _createCell(start, end, label) {
+            return {
+                start: start,
+                end: end,
+                origLabel: label,
+                type: label.indexOf(':') === -1 ? 'cell' : 'range',
+                refError: false,
+                toLabel: function toLabel() {
+                    var label = (0, _utils2.toLabel)(this.start.row, this.start.column);
+
+                    if (this.type === 'range') {
+                        label += ':' + (0, _utils2.toLabel)(this.end.row, this.end.column);
+                    }
+
+                    return label;
+                }
+            };
+        }
+    }], [{
+        key: '_translateCell',
+        value: function _translateCell(cell, property) {
+            var baseIndex = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+            var delta = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 0;
+            var type = cell.type,
+                start = cell.start,
+                end = cell.end;
+
+            var startIndex = start[property].index;
+            var endIndex = end[property].index;
+            var deltaStart = delta;
+            var deltaEnd = delta;
+            var refError = false;
+            var indexOffset = Math.abs(delta) - 1;
+
+            // 增加
+            if (delta > 0) {
+                if (baseIndex > startIndex) {
+                    deltaStart = 0;
+                }
+                if (baseIndex > endIndex) {
+                    deltaEnd = 0;
+                }
+            } else {
+                // 删除
+                if (startIndex >= baseIndex && endIndex <= baseIndex + indexOffset) {
+                    refError = true;
+                }
+                if (!refError && type === 'cell') {
+                    if (baseIndex >= startIndex) {
+                        deltaStart = 0;
+                        deltaEnd = 0;
+                    }
+                }
+                if (!refError && type === 'range') {
+                    if (baseIndex >= startIndex) {
+                        deltaStart = 0;
+                    }
+                    if (baseIndex > endIndex) {
+                        deltaEnd = 0;
+                    } else if (endIndex <= baseIndex + indexOffset) {
+                        deltaEnd -= Math.min(endIndex - (baseIndex + indexOffset), 0);
+                    }
+                }
+            }
+
+            if (deltaStart && !refError) {
+                start[property].index = Math.max(startIndex + deltaStart, 0);
+            }
+            if (deltaEnd && !refError) {
+                end[property].index = Math.max(endIndex + deltaEnd, 0);
+            }
+            if (refError) {
+                cell.refError = true;
+            }
+        }
+    }]);
+
+    return ExpressionModifier;
+}();
+
+mixin(ExpressionModifier, localHooks);
+
+exports.ExpressionModifier = ExpressionModifier;
+
+},{"./parser/error":31,"./parser/utils":49,"./utils":50}],31:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _errors;
+
+exports.default = error;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var ERROR = exports.ERROR = 'ERROR';
+var ERROR_DIV_ZERO = exports.ERROR_DIV_ZERO = 'DIV/0';
+var ERROR_NAME = exports.ERROR_NAME = 'NAME';
+var ERROR_NEED_UPDATE = exports.ERROR_NEED_UPDATE = 'NEED_UPDATE';
+var ERROR_NOT_AVAILABLE = exports.ERROR_NOT_AVAILABLE = 'N/A';
+var ERROR_NULL = exports.ERROR_NULL = 'NULL';
+var ERROR_NUM = exports.ERROR_NUM = 'NUM';
+var ERROR_REF = exports.ERROR_REF = 'REF';
+var ERROR_VALUE = exports.ERROR_VALUE = 'VALUE';
+
+var errors = (_errors = {}, _defineProperty(_errors, ERROR, '#ERROR!'), _defineProperty(_errors, ERROR_DIV_ZERO, '#DIV/0!'), _defineProperty(_errors, ERROR_NAME, '#NAME?'), _defineProperty(_errors, ERROR_NEED_UPDATE, '#NEED_UPDATE!'), _defineProperty(_errors, ERROR_NOT_AVAILABLE, '#N/A'), _defineProperty(_errors, ERROR_NULL, '#NULL!'), _defineProperty(_errors, ERROR_NUM, '#NUM!'), _defineProperty(_errors, ERROR_REF, '#REF!'), _defineProperty(_errors, ERROR_VALUE, '#VALUE!'), _errors);
+
+function error(type) {
+  var error = void 0;
+  type = (type + '').replace(/#|!|\?/g, '');
+
+  if (errors[type]) {
+    error = errors[type];
+  }
+  return error ? error : null;
+}
+
+},{}],32:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+/* parser generated by jison 0.4.17 */
+/*
+  Returns a Parser object of the following structure:
+
+  Parser: {
+    yy: {}
+  }
+
+  Parser.prototype: {
+    yy: {},
+    trace: function(),
+    symbols_: {associative list: name ==> number},
+    terminals_: {associative list: number ==> name},
+    productions_: [...],
+    performAction: function anonymous(yytext, yyleng, yylineno, yy, yystate, $$, _$),
+    table: [...],
+    defaultActions: {...},
+    parseError: function(str, hash),
+    parse: function(input),
+
+    lexer: {
+        EOF: 1,
+        parseError: function(str, hash),
+        setInput: function(input),
+        input: function(),
+        unput: function(str),
+        more: function(),
+        less: function(n),
+        pastInput: function(),
+        upcomingInput: function(),
+        showPosition: function(),
+        test_match: function(regex_match_array, rule_index),
+        next: function(),
+        lex: function(),
+        begin: function(condition),
+        popState: function(),
+        _currentRules: function(),
+        topState: function(),
+        pushState: function(condition),
+
+        options: {
+            ranges: boolean           (optional: true ==> token location info will include a .range[] member)
+            flex: boolean             (optional: true ==> flex-like lexing behaviour where the rules are tested exhaustively to find the longest match)
+            backtrack_lexer: boolean  (optional: true ==> lexer regexes are tested in order and for each matching regex the action code is invoked; the lexer terminates the scan when a token is returned by the action code)
+        },
+
+        performAction: function(yy, yy_, $avoiding_name_collisions, YY_START),
+        rules: [...],
+        conditions: {associative list: name ==> set},
+    }
+  }
+
+
+  token location info (@$, _$, etc.): {
+    first_line: n,
+    last_line: n,
+    first_column: n,
+    last_column: n,
+    range: [start_number, end_number]       (where the numbers are indexes into the input string, regular zero-based)
+  }
+
+
+  the parseError function receives a 'hash' object with these members for lexer and parser errors: {
+    text:        (matched text)
+    token:       (the produced terminal token, if any)
+    line:        (yylineno)
+  }
+  while parser (grammar) errors will also provide these members, i.e. parser errors deliver a superset of attributes: {
+    loc:         (yylloc)
+    expected:    (string describing the set of expected tokens)
+    recoverable: (boolean: TRUE when the parser has a error recovery rule available for this particular error)
+  }
+*/
+var grammar = function () {
+    var o = function o(k, v, _o, l) {
+        for (_o = _o || {}, l = k.length; l--; _o[k[l]] = v) {}return _o;
+    },
+        $V0 = [1, 5],
+        $V1 = [1, 8],
+        $V2 = [1, 6],
+        $V3 = [1, 7],
+        $V4 = [1, 9],
+        $V5 = [1, 15],
+        $V6 = [1, 16],
+        $V7 = [1, 17],
+        $V8 = [1, 18],
+        $V9 = [1, 13],
+        $Va = [1, 14],
+        $Vb = [1, 19],
+        $Vc = [1, 21],
+        $Vd = [1, 22],
+        $Ve = [1, 23],
+        $Vf = [1, 24],
+        $Vg = [1, 25],
+        $Vh = [1, 26],
+        $Vi = [1, 27],
+        $Vj = [1, 28],
+        $Vk = [1, 29],
+        $Vl = [1, 30],
+        $Vm = [5, 9, 10, 11, 13, 14, 15, 16, 17, 18, 19, 20, 32, 33],
+        $Vn = [5, 9, 10, 11, 13, 14, 15, 16, 17, 18, 19, 20, 32, 33, 35],
+        $Vo = [1, 39],
+        $Vp = [5, 9, 10, 11, 13, 14, 15, 16, 17, 18, 19, 20, 32, 33, 37],
+        $Vq = [5, 10, 11, 13, 14, 15, 16, 17, 32, 33],
+        $Vr = [5, 10, 13, 14, 15, 16, 32, 33],
+        $Vs = [5, 10, 11, 13, 14, 15, 16, 17, 18, 19, 32, 33],
+        $Vt = [13, 32, 33],
+        $Vu = [5, 9, 10, 11, 13, 14, 15, 16, 17, 18, 19, 20, 32, 33, 34, 38];
+    var parser = { trace: function trace() {},
+        yy: {},
+        symbols_: { "error": 2, "expressions": 3, "expression": 4, "EOF": 5, "variableSequence": 6, "number": 7, "STRING": 8, "&": 9, "=": 10, "+": 11, "(": 12, ")": 13, "<": 14, ">": 15, "NOT": 16, "-": 17, "*": 18, "/": 19, "^": 20, "FUNCTION": 21, "expseq": 22, "sheet": 23, "cell": 24, "SHEET_NAME": 25, "!": 26, "ABSOLUTE_CELL": 27, "RELATIVE_CELL": 28, "MIXED_CELL": 29, ":": 30, "ARRAY": 31, ";": 32, ",": 33, "VARIABLE": 34, "DECIMAL": 35, "NUMBER": 36, "%": 37, "#": 38, "$accept": 0, "$end": 1 },
+        terminals_: { 5: "EOF", 8: "STRING", 9: "&", 10: "=", 11: "+", 12: "(", 13: ")", 14: "<", 15: ">", 16: "NOT", 17: "-", 18: "*", 19: "/", 20: "^", 21: "FUNCTION", 25: "SHEET_NAME", 26: "!", 27: "ABSOLUTE_CELL", 28: "RELATIVE_CELL", 29: "MIXED_CELL", 30: ":", 31: "ARRAY", 32: ";", 33: ",", 34: "VARIABLE", 35: "DECIMAL", 36: "NUMBER", 37: "%", 38: "#" },
+        productions_: [0, [3, 2], [4, 1], [4, 1], [4, 1], [4, 3], [4, 3], [4, 3], [4, 3], [4, 4], [4, 4], [4, 4], [4, 3], [4, 3], [4, 3], [4, 3], [4, 3], [4, 3], [4, 3], [4, 2], [4, 2], [4, 3], [4, 4], [4, 1], [4, 1], [4, 1], [4, 2], [23, 3], [23, 3], [23, 3], [23, 5], [23, 5], [23, 5], [23, 5], [23, 5], [23, 5], [23, 5], [23, 5], [23, 5], [24, 1], [24, 1], [24, 1], [24, 3], [24, 3], [24, 3], [24, 3], [24, 3], [24, 3], [24, 3], [24, 3], [24, 3], [22, 1], [22, 1], [22, 3], [22, 3], [6, 1], [6, 3], [7, 1], [7, 3], [7, 2], [2, 3], [2, 4]],
+        performAction: function anonymous(yytext, yyleng, yylineno, yy, yystate /* action[1] */, $$ /* vstack */, _$ /* lstack */) {
+            /* this == yyval */
+
+            var $0 = $$.length - 1;
+            switch (yystate) {
+                case 1:
+
+                    return $$[$0 - 1];
+
+                    break;
+                case 2:
+
+                    this.$ = yy.callVariable($$[$0][0]);
+
+                    break;
+                case 3:
+
+                    this.$ = yy.toNumber($$[$0]);
+
+                    break;
+                case 4:
+
+                    this.$ = yy.trimEdges($$[$0]);
+
+                    break;
+                case 5:
+
+                    this.$ = yy.evaluateByOperator('&', [$$[$0 - 2], $$[$0]]);
+
+                    break;
+                case 6:
+
+                    this.$ = yy.evaluateByOperator('=', [$$[$0 - 2], $$[$0]]);
+
+                    break;
+                case 7:
+
+                    this.$ = yy.evaluateByOperator('+', [$$[$0 - 2], $$[$0]]);
+
+                    break;
+                case 8:
+
+                    this.$ = yy.toNumber($$[$0 - 1]);
+
+                    break;
+                case 9:
+
+                    this.$ = yy.evaluateByOperator('<=', [$$[$0 - 3], $$[$0]]);
+
+                    break;
+                case 10:
+
+                    this.$ = yy.evaluateByOperator('>=', [$$[$0 - 3], $$[$0]]);
+
+                    break;
+                case 11:
+
+                    this.$ = yy.evaluateByOperator('<>', [$$[$0 - 3], $$[$0]]);
+
+                    break;
+                case 12:
+
+                    this.$ = yy.evaluateByOperator('NOT', [$$[$0 - 2], $$[$0]]);
+
+                    break;
+                case 13:
+
+                    this.$ = yy.evaluateByOperator('>', [$$[$0 - 2], $$[$0]]);
+
+                    break;
+                case 14:
+
+                    this.$ = yy.evaluateByOperator('<', [$$[$0 - 2], $$[$0]]);
+
+                    break;
+                case 15:
+
+                    this.$ = yy.evaluateByOperator('-', [$$[$0 - 2], $$[$0]]);
+
+                    break;
+                case 16:
+
+                    this.$ = yy.evaluateByOperator('*', [$$[$0 - 2], $$[$0]]);
+
+                    break;
+                case 17:
+
+                    this.$ = yy.evaluateByOperator('/', [$$[$0 - 2], $$[$0]]);
+
+                    break;
+                case 18:
+
+                    this.$ = yy.evaluateByOperator('^', [$$[$0 - 2], $$[$0]]);
+
+                    break;
+                case 19:
+
+                    var n1 = yy.invertNumber($$[$0]);
+                    this.$ = n1;
+                    if (isNaN(this.$)) {
+                        this.$ = 0;
+                    }
+
+                    break;
+                case 20:
+
+                    var n1 = yy.toNumber($$[$0]);
+                    this.$ = n1;
+                    if (isNaN(this.$)) {
+                        this.$ = 0;
+                    }
+
+                    break;
+                case 21:
+
+                    this.$ = yy.callFunction($$[$0 - 2]);
+
+                    break;
+                case 22:
+
+                    this.$ = yy.callFunction($$[$0 - 3], $$[$0 - 1]);
+
+                    break;
+                case 27:case 28:case 29:
+
+                    this.$ = yy.cellValueInSheet($$[$0 - 2], $$[$0]);
+
+                    break;
+                case 30:case 31:case 32:case 33:case 34:case 35:case 36:case 37:case 38:
+
+                    this.$ = yy.rangeValueInSheet($$[$0 - 4], $$[$0 - 2], $$[$0]);
+
+                    break;
+                case 39:case 40:case 41:
+
+                    this.$ = yy.cellValue($$[$0]);
+
+                    break;
+                case 42:case 43:case 44:case 45:case 46:case 47:case 48:case 49:case 50:
+
+                    this.$ = yy.rangeValue($$[$0 - 2], $$[$0]);
+
+                    break;
+                case 51:case 55:
+
+                    this.$ = [$$[$0]];
+
+                    break;
+                case 52:
+
+                    var result = [];
+                    var arr = eval("[" + yytext + "]");
+
+                    arr.forEach(function (item) {
+                        result.push(item);
+                    });
+
+                    this.$ = result;
+
+                    break;
+                case 53:case 54:
+
+                    $$[$0 - 2].push($$[$0]);
+                    this.$ = $$[$0 - 2];
+
+                    break;
+                case 56:
+
+                    this.$ = Array.isArray($$[$0 - 2]) ? $$[$0 - 2] : [$$[$0 - 2]];
+                    this.$.push($$[$0]);
+
+                    break;
+                case 57:
+
+                    this.$ = $$[$0];
+
+                    break;
+                case 58:
+
+                    this.$ = ($$[$0 - 2] + '.' + $$[$0]) * 1;
+
+                    break;
+                case 59:
+
+                    this.$ = $$[$0 - 1] * 0.01;
+
+                    break;
+                case 60:case 61:
+
+                    this.$ = yy.throwError($$[$0 - 2] + $$[$0 - 1] + $$[$0]);
+
+                    break;
+            }
+        },
+        table: [{ 2: 12, 3: 1, 4: 2, 6: 3, 7: 4, 8: $V0, 11: $V1, 12: $V2, 17: $V3, 21: $V4, 23: 10, 24: 11, 25: $V5, 27: $V6, 28: $V7, 29: $V8, 34: $V9, 36: $Va, 38: $Vb }, { 1: [3] }, { 5: [1, 20], 9: $Vc, 10: $Vd, 11: $Ve, 14: $Vf, 15: $Vg, 16: $Vh, 17: $Vi, 18: $Vj, 19: $Vk, 20: $Vl }, o($Vm, [2, 2], { 35: [1, 31] }), o($Vm, [2, 3], { 37: [1, 32] }), o($Vm, [2, 4]), { 2: 12, 4: 33, 6: 3, 7: 4, 8: $V0, 11: $V1, 12: $V2, 17: $V3, 21: $V4, 23: 10, 24: 11, 25: $V5, 27: $V6, 28: $V7, 29: $V8, 34: $V9, 36: $Va, 38: $Vb }, { 2: 12, 4: 34, 6: 3, 7: 4, 8: $V0, 11: $V1, 12: $V2, 17: $V3, 21: $V4, 23: 10, 24: 11, 25: $V5, 27: $V6, 28: $V7, 29: $V8, 34: $V9, 36: $Va, 38: $Vb }, { 2: 12, 4: 35, 6: 3, 7: 4, 8: $V0, 11: $V1, 12: $V2, 17: $V3, 21: $V4, 23: 10, 24: 11, 25: $V5, 27: $V6, 28: $V7, 29: $V8, 34: $V9, 36: $Va, 38: $Vb }, { 12: [1, 36] }, o($Vm, [2, 23]), o($Vm, [2, 24]), o($Vm, [2, 25], { 2: 37, 34: [1, 38], 38: $Vb }), o($Vn, [2, 55], { 38: $Vo }), o($Vp, [2, 57], { 35: [1, 40] }), { 26: [1, 41] }, o($Vm, [2, 39], { 30: [1, 42] }), o($Vm, [2, 40], { 30: [1, 43] }), o($Vm, [2, 41], { 30: [1, 44] }), { 34: [1, 45] }, { 1: [2, 1] }, { 2: 12, 4: 46, 6: 3, 7: 4, 8: $V0, 11: $V1, 12: $V2, 17: $V3, 21: $V4, 23: 10, 24: 11, 25: $V5, 27: $V6, 28: $V7, 29: $V8, 34: $V9, 36: $Va, 38: $Vb }, { 2: 12, 4: 47, 6: 3, 7: 4, 8: $V0, 11: $V1, 12: $V2, 17: $V3, 21: $V4, 23: 10, 24: 11, 25: $V5, 27: $V6, 28: $V7, 29: $V8, 34: $V9, 36: $Va, 38: $Vb }, { 2: 12, 4: 48, 6: 3, 7: 4, 8: $V0, 11: $V1, 12: $V2, 17: $V3, 21: $V4, 23: 10, 24: 11, 25: $V5, 27: $V6, 28: $V7, 29: $V8, 34: $V9, 36: $Va, 38: $Vb }, { 2: 12, 4: 51, 6: 3, 7: 4, 8: $V0, 10: [1, 49], 11: $V1, 12: $V2, 15: [1, 50], 17: $V3, 21: $V4, 23: 10, 24: 11, 25: $V5, 27: $V6, 28: $V7, 29: $V8, 34: $V9, 36: $Va, 38: $Vb }, { 2: 12, 4: 53, 6: 3, 7: 4, 8: $V0, 10: [1, 52], 11: $V1, 12: $V2, 17: $V3, 21: $V4, 23: 10, 24: 11, 25: $V5, 27: $V6, 28: $V7, 29: $V8, 34: $V9, 36: $Va, 38: $Vb }, { 2: 12, 4: 54, 6: 3, 7: 4, 8: $V0, 11: $V1, 12: $V2, 17: $V3, 21: $V4, 23: 10, 24: 11, 25: $V5, 27: $V6, 28: $V7, 29: $V8, 34: $V9, 36: $Va, 38: $Vb }, { 2: 12, 4: 55, 6: 3, 7: 4, 8: $V0, 11: $V1, 12: $V2, 17: $V3, 21: $V4, 23: 10, 24: 11, 25: $V5, 27: $V6, 28: $V7, 29: $V8, 34: $V9, 36: $Va, 38: $Vb }, { 2: 12, 4: 56, 6: 3, 7: 4, 8: $V0, 11: $V1, 12: $V2, 17: $V3, 21: $V4, 23: 10, 24: 11, 25: $V5, 27: $V6, 28: $V7, 29: $V8, 34: $V9, 36: $Va, 38: $Vb }, { 2: 12, 4: 57, 6: 3, 7: 4, 8: $V0, 11: $V1, 12: $V2, 17: $V3, 21: $V4, 23: 10, 24: 11, 25: $V5, 27: $V6, 28: $V7, 29: $V8, 34: $V9, 36: $Va, 38: $Vb }, { 2: 12, 4: 58, 6: 3, 7: 4, 8: $V0, 11: $V1, 12: $V2, 17: $V3, 21: $V4, 23: 10, 24: 11, 25: $V5, 27: $V6, 28: $V7, 29: $V8, 34: $V9, 36: $Va, 38: $Vb }, { 34: [1, 59] }, o($Vp, [2, 59]), { 9: $Vc, 10: $Vd, 11: $Ve, 13: [1, 60], 14: $Vf, 15: $Vg, 16: $Vh, 17: $Vi, 18: $Vj, 19: $Vk, 20: $Vl }, o($Vq, [2, 19], { 9: $Vc, 18: $Vj, 19: $Vk, 20: $Vl }), o($Vq, [2, 20], { 9: $Vc, 18: $Vj, 19: $Vk, 20: $Vl }), { 2: 12, 4: 63, 6: 3, 7: 4, 8: $V0, 11: $V1, 12: $V2, 13: [1, 61], 17: $V3, 21: $V4, 22: 62, 23: 10, 24: 11, 25: $V5, 27: $V6, 28: $V7, 29: $V8, 31: [1, 64], 34: $V9, 36: $Va, 38: $Vb }, o($Vm, [2, 26]), { 38: $Vo }, { 34: [1, 65] }, { 36: [1, 66] }, { 27: [1, 67], 28: [1, 68], 29: [1, 69] }, { 27: [1, 70], 28: [1, 71], 29: [1, 72] }, { 27: [1, 73], 28: [1, 74], 29: [1, 75] }, { 27: [1, 76], 28: [1, 77], 29: [1, 78] }, { 26: [1, 79] }, o($Vm, [2, 5]), o([5, 10, 13, 32, 33], [2, 6], { 9: $Vc, 11: $Ve, 14: $Vf, 15: $Vg, 16: $Vh, 17: $Vi, 18: $Vj, 19: $Vk, 20: $Vl }), o($Vq, [2, 7], { 9: $Vc, 18: $Vj, 19: $Vk, 20: $Vl }), { 2: 12, 4: 80, 6: 3, 7: 4, 8: $V0, 11: $V1, 12: $V2, 17: $V3, 21: $V4, 23: 10, 24: 11, 25: $V5, 27: $V6, 28: $V7, 29: $V8, 34: $V9, 36: $Va, 38: $Vb }, { 2: 12, 4: 81, 6: 3, 7: 4, 8: $V0, 11: $V1, 12: $V2, 17: $V3, 21: $V4, 23: 10, 24: 11, 25: $V5, 27: $V6, 28: $V7, 29: $V8, 34: $V9, 36: $Va, 38: $Vb }, o($Vr, [2, 14], { 9: $Vc, 11: $Ve, 17: $Vi, 18: $Vj, 19: $Vk, 20: $Vl }), { 2: 12, 4: 82, 6: 3, 7: 4, 8: $V0, 11: $V1, 12: $V2, 17: $V3, 21: $V4, 23: 10, 24: 11, 25: $V5, 27: $V6, 28: $V7, 29: $V8, 34: $V9, 36: $Va, 38: $Vb }, o($Vr, [2, 13], { 9: $Vc, 11: $Ve, 17: $Vi, 18: $Vj, 19: $Vk, 20: $Vl }), o([5, 10, 13, 16, 32, 33], [2, 12], { 9: $Vc, 11: $Ve, 14: $Vf, 15: $Vg, 17: $Vi, 18: $Vj, 19: $Vk, 20: $Vl }), o($Vq, [2, 15], { 9: $Vc, 18: $Vj, 19: $Vk, 20: $Vl }), o($Vs, [2, 16], { 9: $Vc, 20: $Vl }), o($Vs, [2, 17], { 9: $Vc, 20: $Vl }), o([5, 10, 11, 13, 14, 15, 16, 17, 18, 19, 20, 32, 33], [2, 18], { 9: $Vc }), o($Vn, [2, 56]), o($Vm, [2, 8]), o($Vm, [2, 21]), { 13: [1, 83], 32: [1, 84], 33: [1, 85] }, o($Vt, [2, 51], { 9: $Vc, 10: $Vd, 11: $Ve, 14: $Vf, 15: $Vg, 16: $Vh, 17: $Vi, 18: $Vj, 19: $Vk, 20: $Vl }), o($Vt, [2, 52]), { 26: [1, 86] }, o($Vp, [2, 58]), o($Vm, [2, 27], { 30: [1, 87] }), o($Vm, [2, 28], { 30: [1, 88] }), o($Vm, [2, 29], { 30: [1, 89] }), o($Vm, [2, 42]), o($Vm, [2, 43]), o($Vm, [2, 44]), o($Vm, [2, 45]), o($Vm, [2, 46]), o($Vm, [2, 47]), o($Vm, [2, 48]), o($Vm, [2, 49]), o($Vm, [2, 50]), o($Vu, [2, 60]), o($Vr, [2, 9], { 9: $Vc, 11: $Ve, 17: $Vi, 18: $Vj, 19: $Vk, 20: $Vl }), o($Vr, [2, 11], { 9: $Vc, 11: $Ve, 17: $Vi, 18: $Vj, 19: $Vk, 20: $Vl }), o($Vr, [2, 10], { 9: $Vc, 11: $Ve, 17: $Vi, 18: $Vj, 19: $Vk, 20: $Vl }), o($Vm, [2, 22]), { 2: 12, 4: 90, 6: 3, 7: 4, 8: $V0, 11: $V1, 12: $V2, 17: $V3, 21: $V4, 23: 10, 24: 11, 25: $V5, 27: $V6, 28: $V7, 29: $V8, 34: $V9, 36: $Va, 38: $Vb }, { 2: 12, 4: 91, 6: 3, 7: 4, 8: $V0, 11: $V1, 12: $V2, 17: $V3, 21: $V4, 23: 10, 24: 11, 25: $V5, 27: $V6, 28: $V7, 29: $V8, 34: $V9, 36: $Va, 38: $Vb }, o($Vu, [2, 61]), { 27: [1, 92], 28: [1, 93], 29: [1, 94] }, { 27: [1, 95], 28: [1, 96], 29: [1, 97] }, { 27: [1, 98], 28: [1, 99], 29: [1, 100] }, o($Vt, [2, 53], { 9: $Vc, 10: $Vd, 11: $Ve, 14: $Vf, 15: $Vg, 16: $Vh, 17: $Vi, 18: $Vj, 19: $Vk, 20: $Vl }), o($Vt, [2, 54], { 9: $Vc, 10: $Vd, 11: $Ve, 14: $Vf, 15: $Vg, 16: $Vh, 17: $Vi, 18: $Vj, 19: $Vk, 20: $Vl }), o($Vm, [2, 30]), o($Vm, [2, 31]), o($Vm, [2, 32]), o($Vm, [2, 33]), o($Vm, [2, 34]), o($Vm, [2, 35]), o($Vm, [2, 36]), o($Vm, [2, 37]), o($Vm, [2, 38])],
+        defaultActions: { 20: [2, 1] },
+        parseError: function parseError(str, hash) {
+            if (hash.recoverable) {
+                this.trace(str);
+            } else {
+                var _parseError = function _parseError(msg, hash) {
+                    this.message = msg;
+                    this.hash = hash;
+                };
+
+                _parseError.prototype = Error;
+
+                throw new _parseError(str, hash);
+            }
+        },
+        parse: function parse(input) {
+            var self = this,
+                stack = [0],
+                tstack = [],
+                // token stack
+            vstack = [null],
+                // semantic value stack
+            lstack = [],
+                // location stack
+            table = this.table,
+                yytext = '',
+                yylineno = 0,
+                yyleng = 0,
+                recovering = 0,
+                TERROR = 2,
+                EOF = 1;
+
+            var args = lstack.slice.call(arguments, 1);
+
+            //this.reductionCount = this.shiftCount = 0;
+
+            var lexer = Object.create(this.lexer);
+            var sharedState = { yy: {} };
+            // copy state
+            for (var k in this.yy) {
+                if (Object.prototype.hasOwnProperty.call(this.yy, k)) {
+                    sharedState.yy[k] = this.yy[k];
+                }
+            }
+
+            lexer.setInput(input, sharedState.yy);
+            sharedState.yy.lexer = lexer;
+            sharedState.yy.parser = this;
+            if (typeof lexer.yylloc == 'undefined') {
+                lexer.yylloc = {};
+            }
+            var yyloc = lexer.yylloc;
+            lstack.push(yyloc);
+
+            var ranges = lexer.options && lexer.options.ranges;
+
+            if (typeof sharedState.yy.parseError === 'function') {
+                this.parseError = sharedState.yy.parseError;
+            } else {
+                this.parseError = Object.getPrototypeOf(this).parseError;
+            }
+
+            function popStack(n) {
+                stack.length = stack.length - 2 * n;
+                vstack.length = vstack.length - n;
+                lstack.length = lstack.length - n;
+            }
+
+            _token_stack: var lex = function lex() {
+                var token;
+                token = lexer.lex() || EOF;
+                // if token isn't its numeric value, convert
+                if (typeof token !== 'number') {
+                    token = self.symbols_[token] || token;
+                }
+                return token;
+            };
+
+            var symbol,
+                preErrorSymbol,
+                state,
+                action,
+                a,
+                r,
+                yyval = {},
+                p,
+                len,
+                newState,
+                expected;
+            while (true) {
+                // retreive state number from top of stack
+                state = stack[stack.length - 1];
+
+                // use default actions if available
+                if (this.defaultActions[state]) {
+                    action = this.defaultActions[state];
+                } else {
+                    if (symbol === null || typeof symbol == 'undefined') {
+                        symbol = lex();
+                    }
+                    // read action for current state and first input
+                    action = table[state] && table[state][symbol];
+                }
+
+                _handle_error:
+                // handle parse error
+                if (typeof action === 'undefined' || !action.length || !action[0]) {
+
+                    // Return the rule stack depth where the nearest error rule can be found.
+                    // Return FALSE when no error recovery rule was found.
+                    var locateNearestErrorRecoveryRule = function locateNearestErrorRecoveryRule(state) {
+                        var stack_probe = stack.length - 1;
+                        var depth = 0;
+
+                        // try to recover from error
+                        for (;;) {
+                            // check for error recovery rule in this state
+                            if (TERROR.toString() in table[state]) {
+                                return depth;
+                            }
+                            if (state === 0 || stack_probe < 2) {
+                                return false; // No suitable error recovery rule available.
+                            }
+                            stack_probe -= 2; // popStack(1): [symbol, action]
+                            state = stack[stack_probe];
+                            ++depth;
+                        }
+                    };
+
+                    var error_rule_depth;
+                    var errStr = '';
+
+                    if (!recovering) {
+                        // first see if there's any chance at hitting an error recovery rule:
+                        error_rule_depth = locateNearestErrorRecoveryRule(state);
+
+                        // Report error
+                        expected = [];
+                        for (p in table[state]) {
+                            if (this.terminals_[p] && p > TERROR) {
+                                expected.push("'" + this.terminals_[p] + "'");
+                            }
+                        }
+                        if (lexer.showPosition) {
+                            errStr = 'Parse error on line ' + (yylineno + 1) + ":\n" + lexer.showPosition() + "\nExpecting " + expected.join(', ') + ", got '" + (this.terminals_[symbol] || symbol) + "'";
+                        } else {
+                            errStr = 'Parse error on line ' + (yylineno + 1) + ": Unexpected " + (symbol == EOF ? "end of input" : "'" + (this.terminals_[symbol] || symbol) + "'");
+                        }
+                        this.parseError(errStr, {
+                            text: lexer.match,
+                            token: this.terminals_[symbol] || symbol,
+                            line: lexer.yylineno,
+                            loc: yyloc,
+                            expected: expected,
+                            recoverable: error_rule_depth !== false
+                        });
+                    } else if (preErrorSymbol !== EOF) {
+                        error_rule_depth = locateNearestErrorRecoveryRule(state);
+                    }
+
+                    // just recovered from another error
+                    if (recovering == 3) {
+                        if (symbol === EOF || preErrorSymbol === EOF) {
+                            throw new Error(errStr || 'Parsing halted while starting to recover from another error.');
+                        }
+
+                        // discard current lookahead and grab another
+                        yyleng = lexer.yyleng;
+                        yytext = lexer.yytext;
+                        yylineno = lexer.yylineno;
+                        yyloc = lexer.yylloc;
+                        symbol = lex();
+                    }
+
+                    // try to recover from error
+                    if (error_rule_depth === false) {
+                        throw new Error(errStr || 'Parsing halted. No suitable error recovery rule available.');
+                    }
+                    popStack(error_rule_depth);
+
+                    preErrorSymbol = symbol == TERROR ? null : symbol; // save the lookahead token
+                    symbol = TERROR; // insert generic error symbol as new lookahead
+                    state = stack[stack.length - 1];
+                    action = table[state] && table[state][TERROR];
+                    recovering = 3; // allow 3 real symbols to be shifted before reporting a new error
+                }
+
+                // this shouldn't happen, unless resolve defaults are off
+                if (action[0] instanceof Array && action.length > 1) {
+                    throw new Error('Parse Error: multiple actions possible at state: ' + state + ', token: ' + symbol);
+                }
+
+                switch (action[0]) {
+                    case 1:
+                        // shift
+                        //this.shiftCount++;
+
+                        stack.push(symbol);
+                        vstack.push(lexer.yytext);
+                        lstack.push(lexer.yylloc);
+                        stack.push(action[1]); // push state
+                        symbol = null;
+                        if (!preErrorSymbol) {
+                            // normal execution/no error
+                            yyleng = lexer.yyleng;
+                            yytext = lexer.yytext;
+                            yylineno = lexer.yylineno;
+                            yyloc = lexer.yylloc;
+                            if (recovering > 0) {
+                                recovering--;
+                            }
+                        } else {
+                            // error just occurred, resume old lookahead f/ before error
+                            symbol = preErrorSymbol;
+                            preErrorSymbol = null;
+                        }
+                        break;
+
+                    case 2:
+                        // reduce
+                        //this.reductionCount++;
+
+                        len = this.productions_[action[1]][1];
+
+                        // perform semantic action
+                        yyval.$ = vstack[vstack.length - len]; // default to $$ = $1
+                        // default location, uses first token for firsts, last for lasts
+                        yyval._$ = {
+                            first_line: lstack[lstack.length - (len || 1)].first_line,
+                            last_line: lstack[lstack.length - 1].last_line,
+                            first_column: lstack[lstack.length - (len || 1)].first_column,
+                            last_column: lstack[lstack.length - 1].last_column
+                        };
+                        if (ranges) {
+                            yyval._$.range = [lstack[lstack.length - (len || 1)].range[0], lstack[lstack.length - 1].range[1]];
+                        }
+                        r = this.performAction.apply(yyval, [yytext, yyleng, yylineno, sharedState.yy, action[1], vstack, lstack].concat(args));
+
+                        if (typeof r !== 'undefined') {
+                            return r;
+                        }
+
+                        // pop off stack
+                        if (len) {
+                            stack = stack.slice(0, -1 * len * 2);
+                            vstack = vstack.slice(0, -1 * len);
+                            lstack = lstack.slice(0, -1 * len);
+                        }
+
+                        stack.push(this.productions_[action[1]][0]); // push nonterminal (reduce)
+                        vstack.push(yyval.$);
+                        lstack.push(yyval._$);
+                        // goto new state = table[STATE][NONTERMINAL]
+                        newState = table[stack[stack.length - 2]][stack[stack.length - 1]];
+                        stack.push(newState);
+                        break;
+
+                    case 3:
+                        // accept
+                        return true;
+                }
+            }
+
+            return true;
+        } };
+
+    /* generated by jison-lex 0.3.4 */
+    var lexer = function () {
+        var lexer = {
+
+            EOF: 1,
+
+            parseError: function parseError(str, hash) {
+                if (this.yy.parser) {
+                    this.yy.parser.parseError(str, hash);
+                } else {
+                    throw new Error(str);
+                }
+            },
+
+            // resets the lexer, sets new input
+            setInput: function setInput(input, yy) {
+                this.yy = yy || this.yy || {};
+                this._input = input;
+                this._more = this._backtrack = this.done = false;
+                this.yylineno = this.yyleng = 0;
+                this.yytext = this.matched = this.match = '';
+                this.conditionStack = ['INITIAL'];
+                this.yylloc = {
+                    first_line: 1,
+                    first_column: 0,
+                    last_line: 1,
+                    last_column: 0
+                };
+                if (this.options.ranges) {
+                    this.yylloc.range = [0, 0];
+                }
+                this.offset = 0;
+                return this;
+            },
+
+            // consumes and returns one char from the input
+            input: function input() {
+                var ch = this._input[0];
+                this.yytext += ch;
+                this.yyleng++;
+                this.offset++;
+                this.match += ch;
+                this.matched += ch;
+                var lines = ch.match(/(?:\r\n?|\n).*/g);
+                if (lines) {
+                    this.yylineno++;
+                    this.yylloc.last_line++;
+                } else {
+                    this.yylloc.last_column++;
+                }
+                if (this.options.ranges) {
+                    this.yylloc.range[1]++;
+                }
+
+                this._input = this._input.slice(1);
+                return ch;
+            },
+
+            // unshifts one char (or a string) into the input
+            unput: function unput(ch) {
+                var len = ch.length;
+                var lines = ch.split(/(?:\r\n?|\n)/g);
+
+                this._input = ch + this._input;
+                this.yytext = this.yytext.substr(0, this.yytext.length - len);
+                //this.yyleng -= len;
+                this.offset -= len;
+                var oldLines = this.match.split(/(?:\r\n?|\n)/g);
+                this.match = this.match.substr(0, this.match.length - 1);
+                this.matched = this.matched.substr(0, this.matched.length - 1);
+
+                if (lines.length - 1) {
+                    this.yylineno -= lines.length - 1;
+                }
+                var r = this.yylloc.range;
+
+                this.yylloc = {
+                    first_line: this.yylloc.first_line,
+                    last_line: this.yylineno + 1,
+                    first_column: this.yylloc.first_column,
+                    last_column: lines ? (lines.length === oldLines.length ? this.yylloc.first_column : 0) + oldLines[oldLines.length - lines.length].length - lines[0].length : this.yylloc.first_column - len
+                };
+
+                if (this.options.ranges) {
+                    this.yylloc.range = [r[0], r[0] + this.yyleng - len];
+                }
+                this.yyleng = this.yytext.length;
+                return this;
+            },
+
+            // When called from action, caches matched text and appends it on next action
+            more: function more() {
+                this._more = true;
+                return this;
+            },
+
+            // When called from action, signals the lexer that this rule fails to match the input, so the next matching rule (regex) should be tested instead.
+            reject: function reject() {
+                if (this.options.backtrack_lexer) {
+                    this._backtrack = true;
+                } else {
+                    return this.parseError('Lexical error on line ' + (this.yylineno + 1) + '. You can only invoke reject() in the lexer when the lexer is of the backtracking persuasion (options.backtrack_lexer = true).\n' + this.showPosition(), {
+                        text: "",
+                        token: null,
+                        line: this.yylineno
+                    });
+                }
+                return this;
+            },
+
+            // retain first n characters of the match
+            less: function less(n) {
+                this.unput(this.match.slice(n));
+            },
+
+            // displays already matched input, i.e. for error messages
+            pastInput: function pastInput() {
+                var past = this.matched.substr(0, this.matched.length - this.match.length);
+                return (past.length > 20 ? '...' : '') + past.substr(-20).replace(/\n/g, "");
+            },
+
+            // displays upcoming input, i.e. for error messages
+            upcomingInput: function upcomingInput() {
+                var next = this.match;
+                if (next.length < 20) {
+                    next += this._input.substr(0, 20 - next.length);
+                }
+                return (next.substr(0, 20) + (next.length > 20 ? '...' : '')).replace(/\n/g, "");
+            },
+
+            // displays the character position where the lexing error occurred, i.e. for error messages
+            showPosition: function showPosition() {
+                var pre = this.pastInput();
+                var c = new Array(pre.length + 1).join("-");
+                return pre + this.upcomingInput() + "\n" + c + "^";
+            },
+
+            // test the lexed token: return FALSE when not a match, otherwise return token
+            test_match: function test_match(match, indexed_rule) {
+                var token, lines, backup;
+
+                if (this.options.backtrack_lexer) {
+                    // save context
+                    backup = {
+                        yylineno: this.yylineno,
+                        yylloc: {
+                            first_line: this.yylloc.first_line,
+                            last_line: this.last_line,
+                            first_column: this.yylloc.first_column,
+                            last_column: this.yylloc.last_column
+                        },
+                        yytext: this.yytext,
+                        match: this.match,
+                        matches: this.matches,
+                        matched: this.matched,
+                        yyleng: this.yyleng,
+                        offset: this.offset,
+                        _more: this._more,
+                        _input: this._input,
+                        yy: this.yy,
+                        conditionStack: this.conditionStack.slice(0),
+                        done: this.done
+                    };
+                    if (this.options.ranges) {
+                        backup.yylloc.range = this.yylloc.range.slice(0);
+                    }
+                }
+
+                lines = match[0].match(/(?:\r\n?|\n).*/g);
+                if (lines) {
+                    this.yylineno += lines.length;
+                }
+                this.yylloc = {
+                    first_line: this.yylloc.last_line,
+                    last_line: this.yylineno + 1,
+                    first_column: this.yylloc.last_column,
+                    last_column: lines ? lines[lines.length - 1].length - lines[lines.length - 1].match(/\r?\n?/)[0].length : this.yylloc.last_column + match[0].length
+                };
+                this.yytext += match[0];
+                this.match += match[0];
+                this.matches = match;
+                this.yyleng = this.yytext.length;
+                if (this.options.ranges) {
+                    this.yylloc.range = [this.offset, this.offset += this.yyleng];
+                }
+                this._more = false;
+                this._backtrack = false;
+                this._input = this._input.slice(match[0].length);
+                this.matched += match[0];
+                token = this.performAction.call(this, this.yy, this, indexed_rule, this.conditionStack[this.conditionStack.length - 1]);
+                if (this.done && this._input) {
+                    this.done = false;
+                }
+                if (token) {
+                    return token;
+                } else if (this._backtrack) {
+                    // recover context
+                    for (var k in backup) {
+                        this[k] = backup[k];
+                    }
+                    return false; // rule action called reject() implying the next rule should be tested instead.
+                }
+                return false;
+            },
+
+            // return next match in input
+            next: function next() {
+                if (this.done) {
+                    return this.EOF;
+                }
+                if (!this._input) {
+                    this.done = true;
+                }
+
+                var token, match, tempMatch, index;
+                if (!this._more) {
+                    this.yytext = '';
+                    this.match = '';
+                }
+                var rules = this._currentRules();
+                for (var i = 0; i < rules.length; i++) {
+                    tempMatch = this._input.match(this.rules[rules[i]]);
+                    if (tempMatch && (!match || tempMatch[0].length > match[0].length)) {
+                        match = tempMatch;
+                        index = i;
+                        if (this.options.backtrack_lexer) {
+                            token = this.test_match(tempMatch, rules[i]);
+                            if (token !== false) {
+                                return token;
+                            } else if (this._backtrack) {
+                                match = false;
+                                continue; // rule action called reject() implying a rule MISmatch.
+                            } else {
+                                // else: this is a lexer rule which consumes input without producing a token (e.g. whitespace)
+                                return false;
+                            }
+                        } else if (!this.options.flex) {
+                            break;
+                        }
+                    }
+                }
+                if (match) {
+                    token = this.test_match(match, rules[index]);
+                    if (token !== false) {
+                        return token;
+                    }
+                    // else: this is a lexer rule which consumes input without producing a token (e.g. whitespace)
+                    return false;
+                }
+                if (this._input === "") {
+                    return this.EOF;
+                } else {
+                    return this.parseError('Lexical error on line ' + (this.yylineno + 1) + '. Unrecognized text.\n' + this.showPosition(), {
+                        text: "",
+                        token: null,
+                        line: this.yylineno
+                    });
+                }
+            },
+
+            // return next match that has a token
+            lex: function lex() {
+                var r = this.next();
+                if (r) {
+                    return r;
+                } else {
+                    return this.lex();
+                }
+            },
+
+            // activates a new lexer condition state (pushes the new lexer condition state onto the condition stack)
+            begin: function begin(condition) {
+                this.conditionStack.push(condition);
+            },
+
+            // pop the previously active lexer condition state off the condition stack
+            popState: function popState() {
+                var n = this.conditionStack.length - 1;
+                if (n > 0) {
+                    return this.conditionStack.pop();
+                } else {
+                    return this.conditionStack[0];
+                }
+            },
+
+            // produce the lexer rule set which is active for the currently active lexer condition state
+            _currentRules: function _currentRules() {
+                if (this.conditionStack.length && this.conditionStack[this.conditionStack.length - 1]) {
+                    return this.conditions[this.conditionStack[this.conditionStack.length - 1]].rules;
+                } else {
+                    return this.conditions["INITIAL"].rules;
+                }
+            },
+
+            // return the currently active lexer condition state; when an index argument is provided it produces the N-th previous condition state, if available
+            topState: function topState(n) {
+                n = this.conditionStack.length - 1 - Math.abs(n || 0);
+                if (n >= 0) {
+                    return this.conditionStack[n];
+                } else {
+                    return "INITIAL";
+                }
+            },
+
+            // alias for begin(condition)
+            pushState: function pushState(condition) {
+                this.begin(condition);
+            },
+
+            // return the number of states currently on the stack
+            stateStackSize: function stateStackSize() {
+                return this.conditionStack.length;
+            },
+            options: {},
+            performAction: function anonymous(yy, yy_, $avoiding_name_collisions, YY_START) {
+                var YYSTATE = YY_START;
+                switch ($avoiding_name_collisions) {
+                    case 0:
+                        /* 跳过空白符 */
+                        break;
+                    case 1:
+                        return 25;
+                        break;
+                    case 2:
+                        return 8;
+                        break;
+                    case 3:
+                        return 8;
+                        break;
+                    case 4:
+                        return 21;
+                        break;
+                    case 5:
+                        return 25;
+                        break;
+                    case 6:
+                        return 27;
+                        break;
+                    case 7:
+                        return 29;
+                        break;
+                    case 8:
+                        return 29;
+                        break;
+                    case 9:
+                        return 28;
+                        break;
+                    case 10:
+                        return 21;
+                        break;
+                    case 11:
+                        return 34;
+                        break;
+                    case 12:
+                        return 34;
+                        break;
+                    case 13:
+                        return 36;
+                        break;
+                    case 14:
+                        return 31;
+                        break;
+                    case 15:
+                        break;
+                    case 16:
+                        return 9;
+                        break;
+                    case 17:
+                        return ' ';
+                        break;
+                    case 18:
+                        return 35;
+                        break;
+                    case 19:
+                        return 30;
+                        break;
+                    case 20:
+                        return 32;
+                        break;
+                    case 21:
+                        return 33;
+                        break;
+                    case 22:
+                        return 18;
+                        break;
+                    case 23:
+                        return 19;
+                        break;
+                    case 24:
+                        return 17;
+                        break;
+                    case 25:
+                        return 11;
+                        break;
+                    case 26:
+                        return 20;
+                        break;
+                    case 27:
+                        return 12;
+                        break;
+                    case 28:
+                        return 13;
+                        break;
+                    case 29:
+                        return 15;
+                        break;
+                    case 30:
+                        return 14;
+                        break;
+                    case 31:
+                        return 16;
+                        break;
+                    case 32:
+                        return '"';
+                        break;
+                    case 33:
+                        return "'";
+                        break;
+                    case 34:
+                        return "!";
+                        break;
+                    case 35:
+                        return 10;
+                        break;
+                    case 36:
+                        return 37;
+                        break;
+                    case 37:
+                        return 38;
+                        break;
+                    case 38:
+                        return 5;
+                        break;
+                }
+            },
+            rules: [/^(?:\s+)/, /^(?:'([^\\/\?\*\[\]\!'"]+)'(?=[!]))/, /^(?:"(\\["]|[^"])*")/, /^(?:'(\\[']|[^'])*')/, /^(?:[A-Za-z]{1,}[A-Za-z_0-9\.]+(?=[(]))/, /^(?:[^\\/\?\*\[\]'"\!,\)]+(?=[!]))/, /^(?:\$[A-Za-z]+\$[0-9]+)/, /^(?:\$[A-Za-z]+[0-9]+)/, /^(?:[A-Za-z]+\$[0-9]+)/, /^(?:[A-Za-z]+[0-9]+)/, /^(?:[A-Za-z\.]+(?=[(]))/, /^(?:[A-Za-z]{1,}[A-Za-z_0-9]+)/, /^(?:[A-Za-z_]+)/, /^(?:[0-9]+)/, /^(?:\[(.*)?\])/, /^(?:\$)/, /^(?:&)/, /^(?: )/, /^(?:[.])/, /^(?::)/, /^(?:;)/, /^(?:,)/, /^(?:\*)/, /^(?:\/)/, /^(?:-)/, /^(?:\+)/, /^(?:\^)/, /^(?:\()/, /^(?:\))/, /^(?:>)/, /^(?:<)/, /^(?:NOT\b)/, /^(?:")/, /^(?:')/, /^(?:!)/, /^(?:=)/, /^(?:%)/, /^(?:[#])/, /^(?:$)/],
+            conditions: { "INITIAL": { "rules": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38], "inclusive": true } }
+        };
+        return lexer;
+    }();
+    parser.lexer = lexer;
+    function Parser() {
+        this.yy = {};
+    }
+    Parser.prototype = parser;parser.Parser = Parser;
+    return new Parser();
+}();
+
+var Parser = exports.Parser = grammar.Parser;
+
+},{}],33:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.SYMBOL = undefined;
+exports.default = func;
+
+var _utils = require('./../utils');
+
+var _error = require('./../error');
+
+var SYMBOL = exports.SYMBOL = '+';
+
+function func(first) {
+  for (var _len = arguments.length, rest = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+    rest[_key - 1] = arguments[_key];
+  }
+
+  var result = rest.reduce(function (acc, value) {
+    return acc + (0, _utils.toNumber)(value);
+  }, (0, _utils.toNumber)(first));
+
+  if (Number.isNaN(result)) {
+    throw Error(_error.ERROR_VALUE);
+  }
+
+  return result;
+};
+
+func.SYMBOL = SYMBOL;
+
+},{"./../error":31,"./../utils":49}],34:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = func;
+var SYMBOL = exports.SYMBOL = '&';
+
+function func() {
+  for (var _len = arguments.length, params = Array(_len), _key = 0; _key < _len; _key++) {
+    params[_key] = arguments[_key];
+  }
+
+  return params.reduce(function (acc, value) {
+    return acc + value.toString();
+  }, '');
+};
+
+func.SYMBOL = SYMBOL;
+
+},{}],35:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.SYMBOL = undefined;
+exports.default = func;
+
+var _utils = require('./../utils');
+
+var _error = require('./../error');
+
+var SYMBOL = exports.SYMBOL = '/';
+
+function func(first) {
+  for (var _len = arguments.length, rest = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+    rest[_key - 1] = arguments[_key];
+  }
+
+  var result = rest.reduce(function (acc, value) {
+    return acc / (0, _utils.toNumber)(value);
+  }, (0, _utils.toNumber)(first));
+
+  if (result === Infinity) {
+    throw Error(_error.ERROR_DIV_ZERO);
+  }
+  if (Number.isNaN(result)) {
+    throw Error(_error.ERROR_VALUE);
+  }
+
+  return result;
+};
+
+func.SYMBOL = SYMBOL;
+
+},{"./../error":31,"./../utils":49}],36:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = func;
+var SYMBOL = exports.SYMBOL = '=';
+
+function func(exp1, exp2) {
+  return exp1 === exp2;
+};
+
+func.SYMBOL = SYMBOL;
+
+},{}],37:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.SYMBOL = undefined;
+exports.default = func;
+
+var _supportedFormulas = require('./../supported-formulas');
+
+var _supportedFormulas2 = _interopRequireDefault(_supportedFormulas);
+
+var _error = require('./../error');
+
+var _formulajs = require('formulajs');
+
+var formulajs = _interopRequireWildcard(_formulajs);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var SYMBOL = exports.SYMBOL = _supportedFormulas2.default; /**
+                                                            * Excel 公式中的函数，由 formulajs 实现。
+                                                            *
+                                                            */
+
+function func(symbol) {
+    return function () {
+        symbol = symbol.toUpperCase();
+
+        var symbolParts = symbol.split('.');
+        var foundFormula = false;
+        var result = void 0;
+
+        if (symbolParts.length === 1) {
+            if (formulajs[symbolParts[0]]) {
+                foundFormula = true;
+                result = formulajs[symbolParts[0]].apply(formulajs, arguments);
+            }
+        } else {
+            var length = symbolParts.length;
+            var index = 0;
+            var nestedFormula = formulajs;
+
+            while (index < length) {
+                nestedFormula = nestedFormula[symbolParts[index]];
+                index++;
+
+                if (!nestedFormula) {
+                    nestedFormula = null;
+                    break;
+                }
+            }
+            if (nestedFormula) {
+                foundFormula = true;
+                result = nestedFormula.apply(undefined, arguments);
+            }
+        }
+
+        if (!foundFormula) {
+            throw Error(_error.ERROR_NAME);
+        }
+
+        return result;
+    };
+};
+
+func.isFactory = true;
+func.SYMBOL = SYMBOL;
+
+},{"./../error":31,"./../supported-formulas":48,"formulajs":1}],38:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = func;
+var SYMBOL = exports.SYMBOL = '>=';
+
+function func(exp1, exp2) {
+  return exp1 >= exp2;
+};
+
+func.SYMBOL = SYMBOL;
+
+},{}],39:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = func;
+var SYMBOL = exports.SYMBOL = '>';
+
+function func(exp1, exp2) {
+  return exp1 > exp2;
+};
+
+func.SYMBOL = SYMBOL;
+
+},{}],40:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = func;
+var SYMBOL = exports.SYMBOL = '<=';
+
+function func(exp1, exp2) {
+  return exp1 <= exp2;
+};
+
+func.SYMBOL = SYMBOL;
+
+},{}],41:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = func;
+var SYMBOL = exports.SYMBOL = '<';
+
+function func(exp1, exp2) {
+  return exp1 < exp2;
+};
+
+func.SYMBOL = SYMBOL;
+
+},{}],42:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.SYMBOL = undefined;
+exports.default = func;
+
+var _utils = require('./../utils');
+
+var _error = require('./../error');
+
+var SYMBOL = exports.SYMBOL = '-';
+
+function func(first) {
+  for (var _len = arguments.length, rest = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+    rest[_key - 1] = arguments[_key];
+  }
+
+  var result = rest.reduce(function (acc, value) {
+    return acc - (0, _utils.toNumber)(value);
+  }, (0, _utils.toNumber)(first));
+
+  if (isNaN(result)) {
+    throw Error(_error.ERROR_VALUE);
+  }
+
+  return result;
+};
+
+func.SYMBOL = SYMBOL;
+
+},{"./../error":31,"./../utils":49}],43:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.SYMBOL = undefined;
+exports.default = func;
+
+var _utils = require('./../utils');
+
+var _error = require('./../error');
+
+var SYMBOL = exports.SYMBOL = '*';
+
+function func(first) {
+  for (var _len = arguments.length, rest = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+    rest[_key - 1] = arguments[_key];
+  }
+
+  var result = rest.reduce(function (acc, value) {
+    return acc * (0, _utils.toNumber)(value);
+  }, (0, _utils.toNumber)(first));
+
+  if (isNaN(result)) {
+    throw Error(_error.ERROR_VALUE);
+  }
+
+  return result;
+};
+
+func.SYMBOL = SYMBOL;
+
+},{"./../error":31,"./../utils":49}],44:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = func;
+var SYMBOL = exports.SYMBOL = '<>';
+
+function func(exp1, exp2) {
+  return exp1 !== exp2;
+};
+
+func.SYMBOL = SYMBOL;
+
+},{}],45:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.SYMBOL = undefined;
+exports.default = func;
+
+var _utils = require('./../utils');
+
+var _error = require('./../error');
+
+var SYMBOL = exports.SYMBOL = '^';
+
+function func(exp1, exp2) {
+  var result = Math.pow((0, _utils.toNumber)(exp1), (0, _utils.toNumber)(exp2));
+
+  if (Number.isNaN(result)) {
+    throw Error(_error.ERROR_VALUE);
+  }
+
+  return result;
+};
+
+func.SYMBOL = SYMBOL;
+
+},{"./../error":31,"./../utils":49}],46:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = evaluateByOperator;
+exports.registerOperation = registerOperation;
+
+var _add = require('./operator/add');
+
+var _add2 = _interopRequireDefault(_add);
+
+var _ampersand = require('./operator/ampersand');
+
+var _ampersand2 = _interopRequireDefault(_ampersand);
+
+var _divide = require('./operator/divide');
+
+var _divide2 = _interopRequireDefault(_divide);
+
+var _equal = require('./operator/equal');
+
+var _equal2 = _interopRequireDefault(_equal);
+
+var _formulaFunction = require('./operator/formula-function');
+
+var _formulaFunction2 = _interopRequireDefault(_formulaFunction);
+
+var _greaterThan = require('./operator/greater-than');
+
+var _greaterThan2 = _interopRequireDefault(_greaterThan);
+
+var _greaterThanOrEqual = require('./operator/greater-than-or-equal');
+
+var _greaterThanOrEqual2 = _interopRequireDefault(_greaterThanOrEqual);
+
+var _lessThan = require('./operator/less-than');
+
+var _lessThan2 = _interopRequireDefault(_lessThan);
+
+var _lessThanOrEqual = require('./operator/less-than-or-equal');
+
+var _lessThanOrEqual2 = _interopRequireDefault(_lessThanOrEqual);
+
+var _minus = require('./operator/minus');
+
+var _minus2 = _interopRequireDefault(_minus);
+
+var _multiply = require('./operator/multiply');
+
+var _multiply2 = _interopRequireDefault(_multiply);
+
+var _notEqual = require('./operator/not-equal');
+
+var _notEqual2 = _interopRequireDefault(_notEqual);
+
+var _power = require('./operator/power');
+
+var _power2 = _interopRequireDefault(_power);
+
+var _error = require('./error');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+// import {default as crossSheet} from './operator/cross-sheet';
+
+
+var availableOperators = Object.create(null);
+
+registerOperation(_add2.default.SYMBOL, _add2.default);
+registerOperation(_ampersand2.default.SYMBOL, _ampersand2.default);
+// registerOperation(crossSheet.SYMBOL, crossSheet);
+registerOperation(_divide2.default.SYMBOL, _divide2.default);
+registerOperation(_equal2.default.SYMBOL, _equal2.default);
+registerOperation(_power2.default.SYMBOL, _power2.default);
+registerOperation(_formulaFunction2.default.SYMBOL, _formulaFunction2.default);
+registerOperation(_greaterThan2.default.SYMBOL, _greaterThan2.default);
+registerOperation(_greaterThanOrEqual2.default.SYMBOL, _greaterThanOrEqual2.default);
+registerOperation(_lessThan2.default.SYMBOL, _lessThan2.default);
+registerOperation(_lessThanOrEqual2.default.SYMBOL, _lessThanOrEqual2.default);
+registerOperation(_multiply2.default.SYMBOL, _multiply2.default);
+registerOperation(_notEqual2.default.SYMBOL, _notEqual2.default);
+registerOperation(_minus2.default.SYMBOL, _minus2.default);
+
+function evaluateByOperator(operator) {
+    var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
+
+    operator = operator.toUpperCase();
+
+    if (!availableOperators[operator]) {
+        throw Error(_error.ERROR_NAME);
+    }
+    return availableOperators[operator].apply(availableOperators, _toConsumableArray(params));
+}
+
+/**
+ * 注册
+ * @param symbol
+ * @param func
+ */
+function registerOperation(symbol, func) {
+    if (!Array.isArray(symbol)) {
+        symbol = [symbol.toUpperCase()];
+    }
+    symbol.forEach(function (s) {
+        if (func.isFactory) {
+            availableOperators[s] = func(s);
+        } else {
+            availableOperators[s] = func;
+        }
+    });
+}
+
+},{"./error":31,"./operator/add":33,"./operator/ampersand":34,"./operator/divide":35,"./operator/equal":36,"./operator/formula-function":37,"./operator/greater-than":39,"./operator/greater-than-or-equal":38,"./operator/less-than":41,"./operator/less-than-or-equal":40,"./operator/minus":42,"./operator/multiply":43,"./operator/not-equal":44,"./operator/power":45}],47:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.Parser = exports.SUPPORTED_FORMULAS = undefined;
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _supportedFormulas = require('./supported-formulas');
+
+Object.defineProperty(exports, 'SUPPORTED_FORMULAS', {
+    enumerable: true,
+    get: function get() {
+        return _interopRequireDefault(_supportedFormulas).default;
+    }
+});
+
+var _Emitter2 = require('../../../utils/Emitter');
+
+var _Emitter3 = _interopRequireDefault(_Emitter2);
+
+var _operators = require('./operators');
+
+var _operators2 = _interopRequireDefault(_operators);
+
+var _grammar = require('./grammar');
+
+var _utils = require('./utils');
+
+var _error = require('./error');
+
+var _error2 = _interopRequireDefault(_error);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * 公式解析器。
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * 底层的语法解析器使用 jison 生成，参见 http://zaa.ch/jison/
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * 注意: jison 生成的代码使用 AMD 方式导出变量，重新生成后记得改成 ES6 的方式:
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *      `export var Parser = grammar.Parser;`
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @class Parser
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @fires Parser#callVariable
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @fires Parser#callCellValue
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @fires Parser#callRangeValue
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+
+var Parser = function (_Emitter) {
+    _inherits(Parser, _Emitter);
+
+    function Parser() {
+        _classCallCheck(this, Parser);
+
+        var _this = _possibleConstructorReturn(this, (Parser.__proto__ || Object.getPrototypeOf(Parser)).call(this));
+
+        _this.parser = new _grammar.Parser();
+        _this.parser.yy = {
+            toNumber: _utils.toNumber,
+            trimEdges: _utils.trimEdges,
+            invertNumber: _utils.invertNumber,
+            throwError: function throwError(errorName) {
+                return _this._throwError(errorName);
+            },
+            callVariable: function callVariable(variable) {
+                return _this._callVariable(variable);
+            },
+            evaluateByOperator: _operators2.default,
+            callFunction: _operators2.default,
+            cellValue: function cellValue(value) {
+                return _this._callCellValue(value);
+            },
+            rangeValue: function rangeValue(start, end) {
+                return _this._callRangeValue(start, end);
+            },
+            cellValueInSheet: function cellValueInSheet(sheetName, value) {
+                return _this._callCellValueInSheet(sheetName, value);
+            },
+            rangeValueInSheet: function rangeValueInSheet(sheetName, start, end) {
+                return _this._callRangeValueInSheet(sheetName, start, end);
+            },
+            parseError: function parseError() {
+                return _this._parseError.apply(_this, arguments);
+            }
+        };
+        _this.variables = Object.create(null);
+
+        _this.setVariable('TRUE', true).setVariable('FALSE', false).setVariable('NULL', null);
+        return _this;
+    }
+
+    /**
+     * 解析表达式
+     * @param expression
+     * @returns {{error: *, result: *}}
+     */
+
+
+    _createClass(Parser, [{
+        key: 'parse',
+        value: function parse(expression) {
+            var result = null;
+            var error = null;
+
+            try {
+                result = this.parser.parse(expression);
+            } catch (ex) {
+                var message = (0, _error2.default)(ex.message);
+                if (message) {
+                    error = message;
+                } else {
+                    error = (0, _error2.default)(_error.ERROR);
+                }
+            }
+
+            if (result instanceof Error) {
+                error = (0, _error2.default)(result.message) || (0, _error2.default)(_error.ERROR);
+                result = null;
+            }
+
+            return {
+                error: error,
+                result: result
+            };
+        }
+
+        /**
+         * 设置变量
+         * @param name
+         * @param value
+         * @returns {Parser}
+         */
+
+    }, {
+        key: 'setVariable',
+        value: function setVariable(name, value) {
+            this.variables[name] = value;
+            return this;
+        }
+    }, {
+        key: 'getVariable',
+        value: function getVariable(name) {
+            return this.variables[name];
+        }
+
+        /**
+         * 调用变量值
+         * @param name
+         * @returns {*}
+         * @private
+         */
+
+    }, {
+        key: '_callVariable',
+        value: function _callVariable(name) {
+            var value = this.getVariable(name);
+
+            this.emit('callVariable', name, function (newValue) {
+                if (newValue !== void 0) {
+                    value = newValue;
+                }
+            });
+
+            if (value === void 0) {
+                throw Error(_error.ERROR_NAME);
+            }
+
+            return value;
+        }
+
+        /**
+         * 调用单元格的值
+         * @param {string} label - 例如 `B3`, `B$3`, `B$3`, `$B$3`
+         * @returns {*}
+         * @private
+         */
+
+    }, {
+        key: '_callCellValue',
+        value: function _callCellValue(label) {
+            var _extractLabel = (0, _utils.extractLabel)(label),
+                _extractLabel2 = _slicedToArray(_extractLabel, 2),
+                row = _extractLabel2[0],
+                column = _extractLabel2[1];
+
+            var value = void 0;
+
+            this.emit('callCellValue', { label: label, row: row, column: column }, function (_value) {
+                value = _value;
+            });
+
+            return value;
+        }
+
+        /**
+         * 调用指定 sheet 中单元格的值
+         * @param sheetName
+         * @param label
+         * @returns {*}
+         * @private
+         */
+
+    }, {
+        key: '_callCellValueInSheet',
+        value: function _callCellValueInSheet(sheetName, label) {
+            var _extractLabel3 = (0, _utils.extractLabel)(label),
+                _extractLabel4 = _slicedToArray(_extractLabel3, 2),
+                row = _extractLabel4[0],
+                column = _extractLabel4[1];
+
+            var value = void 0;
+
+            this.emit('callCellValueInSheet', { sheetName: sheetName, label: label, row: row, column: column }, function (_value) {
+                value = _value;
+            });
+            return value;
+        }
+    }, {
+        key: '_callRangeValue',
+
+
+        /**
+         * 调用某范围的单元格值，如 `B3:A1`
+         * @param {string} startLabel - 起始标签，如 `B3`
+         * @param {string} endLabel - 结束标签，如 `A1`
+         * @returns {Array}
+         * @private
+         */
+        value: function _callRangeValue(startLabel, endLabel) {
+            var _Parser$_explainCell = Parser._explainCell(startLabel, endLabel),
+                startCell = _Parser$_explainCell.startCell,
+                endCell = _Parser$_explainCell.endCell;
+
+            var value = [];
+            this.emit('callRangeValue', startCell, endCell, function () {
+                var _value = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+                value = _value;
+            });
+            return value;
+        }
+
+        /**
+         * 调用指定 sheet 中某范围的单元格值，如 `工作表1!B3:A1`
+         * @param sheetName
+         * @param startLabel
+         * @param endLabel
+         * @returns {Array}
+         * @private
+         */
+
+    }, {
+        key: '_callRangeValueInSheet',
+        value: function _callRangeValueInSheet(sheetName, startLabel, endLabel) {
+            var _Parser$_explainCell2 = Parser._explainCell(startLabel, endLabel),
+                startCell = _Parser$_explainCell2.startCell,
+                endCell = _Parser$_explainCell2.endCell;
+
+            var value = [];
+            this.emit('callRangeValueInSheet', sheetName, startCell, endCell, function () {
+                var _value = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+                value = _value;
+            });
+            return value;
+        }
+
+        /**
+         *
+         * @param errorName
+         * @returns {*}
+         * @private
+         */
+
+    }, {
+        key: '_throwError',
+        value: function _throwError(errorName) {
+            var parsedError = (0, _error2.default)(errorName);
+            if (parsedError) {
+                throw Error(parsedError);
+            }
+            return errorName;
+        }
+
+        // TODO 解析失败时，给用户提供合适的错误信息。
+
+    }, {
+        key: '_parseError',
+        value: function _parseError() {
+            for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+                args[_key] = arguments[_key];
+            }
+
+            console.log(args);
+        }
+    }], [{
+        key: '_explainCell',
+        value: function _explainCell(startLabel, endLabel) {
+            var _extractLabel5 = (0, _utils.extractLabel)(startLabel),
+                _extractLabel6 = _slicedToArray(_extractLabel5, 2),
+                startRow = _extractLabel6[0],
+                startColumn = _extractLabel6[1];
+
+            var _extractLabel7 = (0, _utils.extractLabel)(endLabel),
+                _extractLabel8 = _slicedToArray(_extractLabel7, 2),
+                endRow = _extractLabel8[0],
+                endColumn = _extractLabel8[1];
+
+            var startCell = {};
+            var endCell = {};
+
+            if (startRow.index <= endRow.index) {
+                startCell.row = startRow;
+                endCell.row = endRow;
+            } else {
+                startCell.row = endRow;
+                endCell.row = startRow;
+            }
+
+            if (startColumn.index <= endColumn.index) {
+                startCell.column = startColumn;
+                endCell.column = endColumn;
+            } else {
+                startCell.column = endColumn;
+                endCell.column = startColumn;
+            }
+
+            startCell.label = (0, _utils.toLabel)(startCell.row, startCell.column);
+            endCell.label = (0, _utils.toLabel)(endCell.row, endCell.column);
+            return { startCell: startCell, endCell: endCell };
+        }
+    }]);
+
+    return Parser;
+}(_Emitter3.default);
+
+exports.Parser = Parser;
+
+},{"../../../utils/Emitter":53,"./error":31,"./grammar":32,"./operators":46,"./supported-formulas":48,"./utils":49}],48:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var SUPPORTED_FORMULAS = ['ABS', 'ACCRINT', 'ACOS', 'ACOSH', 'ACOT', 'ACOTH', 'ADD', 'AGGREGATE', 'AND', 'ARABIC', 'ARGS2ARRAY', 'ASIN', 'ASINH', 'ATAN', 'ATAN2', 'ATANH', 'AVEDEV', 'AVERAGE', 'AVERAGEA', 'AVERAGEIF', 'AVERAGEIFS', 'BASE', 'BESSELI', 'BESSELJ', 'BESSELK', 'BESSELY', 'BETA.DIST', 'BETA.INV', 'BETADIST', 'BETAINV', 'BIN2DEC', 'BIN2HEX', 'BIN2OCT', 'BINOM.DIST', 'BINOM.DIST.RANGE', 'BINOM.INV', 'BINOMDIST', 'BITAND', 'BITLSHIFT', 'BITOR', 'BITRSHIFT', 'BITXOR', 'CEILING', 'CEILINGMATH', 'CEILINGPRECISE', 'CHAR', 'CHISQ.DIST', 'CHISQ.DIST.RT', 'CHISQ.INV', 'CHISQ.INV.RT', 'CHOOSE', 'CHOOSE', 'CLEAN', 'CODE', 'COLUMN', 'COLUMNS', 'COMBIN', 'COMBINA', 'COMPLEX', 'CONCATENATE', 'CONFIDENCE', 'CONFIDENCE.NORM', 'CONFIDENCE.T', 'CONVERT', 'CORREL', 'COS', 'COSH', 'COT', 'COTH', 'COUNT', 'COUNTA', 'COUNTBLANK', 'COUNTIF', 'COUNTIFS', 'COUNTIN', 'COUNTUNIQUE', 'COVARIANCE.P', 'COVARIANCE.S', 'CSC', 'CSCH', 'CUMIPMT', 'CUMPRINC', 'DATE', 'DATEVALUE', 'DAY', 'DAYS', 'DAYS360', 'DB', 'DDB', 'DEC2BIN', 'DEC2HEX', 'DEC2OCT', 'DECIMAL', 'DEGREES', 'DELTA', 'DEVSQ', 'DIVIDE', 'DOLLAR', 'DOLLARDE', 'DOLLARFR', 'E', 'EDATE', 'EFFECT', 'EOMONTH', 'EQ', 'ERF', 'ERFC', 'EVEN', 'EXACT', 'EXPON.DIST', 'EXPONDIST', 'F.DIST', 'F.DIST.RT', 'F.INV', 'F.INV.RT', 'FACT', 'FACTDOUBLE', 'FALSE', 'FDIST', 'FDISTRT', 'FIND', 'FINV', 'FINVRT', 'FISHER', 'FISHERINV', 'FIXED', 'FLATTEN', 'FLOOR', 'FORECAST', 'FREQUENCY', 'FV', 'FVSCHEDULE', 'GAMMA', 'GAMMA.DIST', 'GAMMA.INV', 'GAMMADIST', 'GAMMAINV', 'GAMMALN', 'GAMMALN.PRECISE', 'GAUSS', 'GCD', 'GEOMEAN', 'GESTEP', 'GROWTH', 'GTE', 'HARMEAN', 'HEX2BIN', 'HEX2DEC', 'HEX2OCT', 'HOUR', 'HTML2TEXT', 'HYPGEOM.DIST', 'HYPGEOMDIST', 'IF', 'IMABS', 'IMAGINARY', 'IMARGUMENT', 'IMCONJUGATE', 'IMCOS', 'IMCOSH', 'IMCOT', 'IMCSC', 'IMCSCH', 'IMDIV', 'IMEXP', 'IMLN', 'IMLOG10', 'IMLOG2', 'IMPOWER', 'IMPRODUCT', 'IMREAL', 'IMSEC', 'IMSECH', 'IMSIN', 'IMSINH', 'IMSQRT', 'IMSUB', 'IMSUM', 'IMTAN', 'INT', 'INTERCEPT', 'INTERVAL', 'IPMT', 'IRR', 'ISBINARY', 'ISBLANK', 'ISEVEN', 'ISLOGICAL', 'ISNONTEXT', 'ISNUMBER', 'ISODD', 'ISODD', 'ISOWEEKNUM', 'ISPMT', 'ISTEXT', 'JOIN', 'KURT', 'LARGE', 'LCM', 'LEFT', 'LEN', 'LINEST', 'LN', 'LOG', 'LOG10', 'LOGEST', 'LOGNORM.DIST', 'LOGNORM.INV', 'LOGNORMDIST', 'LOGNORMINV', 'LOWER', 'LT', 'LTE', 'MATCH', 'MAX', 'MAXA', 'MEDIAN', 'MID', 'MIN', 'MINA', 'MINUS', 'MINUTE', 'MIRR', 'MOD', 'MODE.MULT', 'MODE.SNGL', 'MODEMULT', 'MODESNGL', 'MONTH', 'MROUND', 'MULTINOMIAL', 'MULTIPLY', 'NE', 'NEGBINOM.DIST', 'NEGBINOMDIST', 'NETWORKDAYS', 'NOMINAL', 'NORM.DIST', 'NORM.INV', 'NORM.S.DIST', 'NORM.S.INV', 'NORMDIST', 'NORMINV', 'NORMSDIST', 'NORMSINV', 'NOT', 'NOW', 'NPER', 'NPV', 'NUMBERS', 'NUMERAL', 'OCT2BIN', 'OCT2DEC', 'OCT2HEX', 'ODD', 'OR', 'PDURATION', 'PEARSON', 'PERCENTILEEXC', 'PERCENTILEINC', 'PERCENTRANKEXC', 'PERCENTRANKINC', 'PERMUT', 'PERMUTATIONA', 'PHI', 'PI', 'PMT', 'POISSON.DIST', 'POISSONDIST', 'POW', 'POWER', 'PPMT', 'PROB', 'PRODUCT', 'PROPER', 'PV', 'QUARTILE.EXC', 'QUARTILE.INC', 'QUARTILEEXC', 'QUARTILEINC', 'QUOTIENT', 'RADIANS', 'RAND', 'RANDBETWEEN', 'RANK.AVG', 'RANK.EQ', 'RANKAVG', 'RANKEQ', 'RATE', 'REFERENCE', 'REGEXEXTRACT', 'REGEXMATCH', 'REGEXREPLACE', 'REPLACE', 'REPT', 'RIGHT', 'ROMAN', 'ROUND', 'ROUNDDOWN', 'ROUNDUP', 'ROW', 'ROWS', 'RRI', 'RSQ', 'SEARCH', 'SEC', 'SECH', 'SECOND', 'SERIESSUM', 'SIGN', 'SIN', 'SINH', 'SKEW', 'SKEW.P', 'SKEWP', 'SLN', 'SLOPE', 'SMALL', 'SPLIT', 'SPLIT', 'SQRT', 'SQRTPI', 'STANDARDIZE', 'STDEV.P', 'STDEV.S', 'STDEVA', 'STDEVP', 'STDEVPA', 'STDEVS', 'STEYX', 'SUBSTITUTE', 'SUBTOTAL', 'SUM', 'SUMIF', 'SUMIFS', 'SUMPRODUCT', 'SUMSQ', 'SUMX2MY2', 'SUMX2PY2', 'SUMXMY2', 'SWITCH', 'SYD', 'T', 'T.DIST', 'T.DIST.2T', 'T.DIST.RT', 'T.INV', 'T.INV.2T', 'TAN', 'TANH', 'TBILLEQ', 'TBILLPRICE', 'TBILLYIELD', 'TDIST', 'TDIST2T', 'TDISTRT', 'TEXT', 'TIME', 'TIMEVALUE', 'TINV', 'TINV2T', 'TODAY', 'TRANSPOSE', 'TREND', 'TRIM', 'TRIMMEAN', 'TRUE', 'TRUNC', 'UNICHAR', 'UNICODE', 'UNIQUE', 'UPPER', 'VALUE', 'VAR.P', 'VAR.S', 'VARA', 'VARP', 'VARPA', 'VARS', 'WEEKDAY', 'WEEKNUM', 'WEIBULL.DIST', 'WEIBULLDIST', 'WORKDAY', 'XIRR', 'XNPV', 'XOR', 'YEAR', 'YEARFRAC'];
+
+exports.default = SUPPORTED_FORMULAS;
+
+},{}],49:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+exports.extractLabel = extractLabel;
+exports.toLabel = toLabel;
+exports.columnLabelToIndex = columnLabelToIndex;
+exports.columnIndexToLabel = columnIndexToLabel;
+exports.rowLabelToIndex = rowLabelToIndex;
+exports.rowIndexToLabel = rowIndexToLabel;
+exports.toNumber = toNumber;
+exports.invertNumber = invertNumber;
+exports.trimEdges = trimEdges;
+/* ****************************************** *\
+ *                  单元格相关
+ * ****************************************** */
+
+var LABEL_EXTRACT_REGEXP = /^([$])?([A-Za-z]+)([$])?([0-9]+)$/;
+
+function extractLabel(label) {
+    if (!LABEL_EXTRACT_REGEXP.test(label)) {
+        return [];
+    }
+
+    var _label$match = label.match(LABEL_EXTRACT_REGEXP),
+        _label$match2 = _slicedToArray(_label$match, 5),
+        columnAbs = _label$match2[1],
+        column = _label$match2[2],
+        rowAbs = _label$match2[3],
+        row = _label$match2[4];
+
+    return [{
+        index: rowLabelToIndex(row),
+        label: row,
+        isAbsolute: rowAbs === '$'
+    }, {
+        index: columnLabelToIndex(column),
+        label: column,
+        isAbsolute: columnAbs === '$'
+    }];
+}
+
+function toLabel(row, column) {
+    var rowLabel = (row.isAbsolute ? '$' : '') + rowIndexToLabel(row.index);
+    var columnLabel = (column.isAbsolute ? '$' : '') + columnIndexToLabel(column.index);
+    return columnLabel + rowLabel;
+}
+
+var COLUMN_LABEL_BASE = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+var COLUMN_LABEL_BASE_LENGTH = COLUMN_LABEL_BASE.length;
+
+function columnLabelToIndex(label) {
+    var result = 0;
+
+    if (label) {
+        for (var i = 0, j = label.length - 1; i < label.length; i += 1, j -= 1) {
+            result += Math.pow(COLUMN_LABEL_BASE_LENGTH, j) * (COLUMN_LABEL_BASE.indexOf(label[i]) + 1);
+        }
+    }
+    --result;
+
+    return result;
+}
+
+function columnIndexToLabel(column) {
+    var result = '';
+
+    while (column >= 0) {
+        result = String.fromCharCode(column % COLUMN_LABEL_BASE_LENGTH + 97) + result;
+        column = Math.floor(column / COLUMN_LABEL_BASE_LENGTH) - 1;
+    }
+
+    return result.toUpperCase();
+}
+
+function rowLabelToIndex(label) {
+    var result = parseInt(label, 10);
+
+    if (Number.isNaN(result)) {
+        result = -1;
+    } else {
+        result = Math.max(result - 1, -1);
+    }
+    return result;
+}
+
+function rowIndexToLabel(row) {
+    return row >= 0 ? '' + (row + 1) : '';
+}
+
+/* ****************************************** *\
+ *                  number
+ * ****************************************** */
+
+function toNumber(number) {
+    var result = void 0;
+    if (typeof number === 'number') {
+        result = number;
+    } else if (typeof number === 'string') {
+        result = number.indexOf('.') > -1 ? parseFloat(number) : parseInt(number, 10);
+    }
+    return result;
+}
+
+/**
+ * 取负数
+ * @param {Number} number
+ * @returns {Number}
+ */
+function invertNumber(number) {
+    return -1 * toNumber(number);
+}
+
+/* ****************************************** *\
+ *                  string
+ * ****************************************** */
+
+function trimEdges(string) {
+    var margin = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+
+    string = string.substring(margin, string.length - margin);
+    return string;
+}
+
+},{}],50:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.isFormulaExpression = isFormulaExpression;
+exports.isFormulaExpressionEscaped = isFormulaExpressionEscaped;
+exports.unescapeFormulaExpression = unescapeFormulaExpression;
+exports.toUpperCaseFormula = toUpperCaseFormula;
+
+/**
+ * Check if provided expression is valid formula expression.
+ *
+ * @param {*} expression Expression to check.
+ * @returns {Boolean}
+ */
+function isFormulaExpression(expression) {
+    return expression && (expression + '').charAt(0) === '=' ? true : false;
+}
+
+/**
+ * Check if provided formula expression is escaped.
+ *
+ * @param {*} expression Expression to check.
+ * @returns {Boolean}
+ */
+function isFormulaExpressionEscaped(expression) {
+    return expression && (expression + '').charAt(0) === '\'' && (expression + '').charAt(1) === '=' ? true : false;
+}
+
+/**
+ * Replace escaped formula expression into valid string.
+ *
+ * @param {String} expression Expression to process.
+ * @returns {String}
+ */
+function unescapeFormulaExpression(expression) {
+    return isFormulaExpressionEscaped(expression) ? expression.substr(1) : expression;
+}
+
+/**
+ * Upper case formula expression.
+ *
+ * @param {String} expression Formula expression.
+ * @returns {String}
+ */
+function toUpperCaseFormula(expression) {
+    var PATTERN = /(\\"|"(?:\\"|[^"])*"|(\+))|(\\'|'(?:\\'|[^'])*'|(\+))/g;
+    var strings = expression.match(PATTERN) || [];
+    var index = -1;
+
+    return expression.toUpperCase().replace(PATTERN, function () {
+        ++index;
+
+        return strings[index];
+    });
+}
+
+},{}],51:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
 exports.default = polyfill;
-function polyfill(_window) {
+function polyfill(_g) {
 
     // --------------------------------------------- Number
 
-    if (!_window.Number.isNaN) {
+    if (!_g.Number.isNaN) {
         //noinspection JSPrimitiveTypeWrapperUsage
-        _window.Number.isNaN = function (x) {
+        _g.Number.isNaN = function (x) {
             return x !== x;
         };
     }
 }
 
-},{}],16:[function(require,module,exports){
+},{}],52:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -36752,7 +56804,7 @@ var defaultSettings = {
 exports.globalSettings = globalSettings;
 exports.defaultSettings = defaultSettings;
 
-},{}],17:[function(require,module,exports){
+},{}],53:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -36869,7 +56921,7 @@ exports.default = Emitter;
 
 var GlobalEmitter = exports.GlobalEmitter = Emitter.prototype.getGlobalEmitter();
 
-},{}],18:[function(require,module,exports){
+},{}],54:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -37019,7 +57071,7 @@ var Coordinate = exports.Coordinate = {
 
 // -------------------------------------
 
-},{}],19:[function(require,module,exports){
+},{}],55:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -37089,6 +57141,12 @@ var CaseInsensitiveMap = function () {
         value: function forEach(callbackfn, thisArg) {
             return this._map.forEach(callbackfn, thisArg);
         }
+
+        /**
+         *
+         * @returns {Iterator.<string>}
+         */
+
     }, {
         key: 'keys',
         value: function keys() {
@@ -37103,6 +57161,11 @@ var CaseInsensitiveMap = function () {
         key: 'toMap',
         value: function toMap() {
             return this._map;
+        }
+    }, {
+        key: 'size',
+        value: function size() {
+            return this._map.size;
         }
     }]);
 
@@ -37158,7 +57221,7 @@ var Stack = function () {
 exports.CaseInsensitiveMap = CaseInsensitiveMap;
 exports.Stack = Stack;
 
-},{"./common.js":18}],20:[function(require,module,exports){
+},{"./common.js":54}],56:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -37166,6 +57229,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.innerHTML = innerHTML;
 exports.insertAfter = insertAfter;
+exports.closest = closest;
 exports.empty = empty;
 exports.outerHeight = outerHeight;
 exports.outerWidth = outerWidth;
@@ -37216,6 +57280,18 @@ function insertAfter(element, content) {
             // TODO
         }
     }
+}
+
+function closest(element, selector) {
+    var ret;
+    do {
+        element = element.parentNode;
+        if (!element || !element.ownerDocument || (ret = element.querySelector(selector))) {
+            break;
+        }
+    } while (element);
+
+    return ret;
 }
 
 /**
@@ -37274,7 +57350,7 @@ function outerWidth(el) {
     return width;
 }
 
-},{}],21:[function(require,module,exports){
+},{}],57:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -37303,5 +57379,4 @@ function stopPropagation(event) {
     }
 }
 
-},{}]},{},[2])
-//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm5vZGVfbW9kdWxlcy9icm93c2VyaWZ5L25vZGVfbW9kdWxlcy9icm93c2VyLXBhY2svX3ByZWx1ZGUuanMiLCJzcmMvU3ByZWFkU2hlZXRFcnJvci5qcyIsInNyYy9icm93c2VyLmpzIiwic3JjL2NvcmUuanMiLCJzcmMvZGVzaWduZXIvQ29uZmlnVHJhbnNsYXRvci5qcyIsInNyYy9kZXNpZ25lci9GcmFtZS5qcyIsInNyYy9kZXNpZ25lci9Ib3RUYWJsZUFkYXB0b3IuanMiLCJzcmMvZGVzaWduZXIvU2hlZXQuanMiLCJzcmMvZGVzaWduZXIvU2hlZXRFcnJvci5qcyIsInNyYy9kZXNpZ25lci9Xb3JrYm9vay5qcyIsInNyYy9kZXNpZ25lci9mcmFtZS9Db250ZXh0TWVudS5qcyIsInNyYy9kZXNpZ25lci92aWV3cy9UYWJzLmpzIiwic3JjL2kxOG4uanMiLCJzcmMvcGx1Z2lucy9QbHVnaW4uanMiLCJzcmMvcGx1Z2lucy9QbHVnaW5FcnJvci5qcyIsInNyYy9wb2x5ZmlsbC5qcyIsInNyYy9zZXR0aW5ncy5qcyIsInNyYy91dGlscy9FbWl0dGVyLmpzIiwic3JjL3V0aWxzL2NvbW1vbi5qcyIsInNyYy91dGlscy9kYXRhU3RydWN0dXJlLmpzIiwic3JjL3V0aWxzL2RvbUhlbHBlci5qcyIsInNyYy91dGlscy9ldmVudEhlbHBlci5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTs7Ozs7O0FDQUEsU0FBUyxnQkFBVCxHQUE0QjtBQUN4QixTQUFLLElBQUwsR0FBWSxrQkFBWjtBQUNBLFNBQUssT0FBTCxHQUFlLE9BQWY7QUFDSDs7QUFFRCxpQkFBaUIsU0FBakIsR0FBNkIsSUFBSSxLQUFKLEVBQTdCO0FBQ0EsaUJBQWlCLFNBQWpCLENBQTJCLFdBQTNCLEdBQXlDLGdCQUF6QztBQUNBLGlCQUFpQixTQUFqQixDQUEyQixRQUEzQixHQUFzQyxZQUFZO0FBQzlDLFdBQU8sS0FBSyxJQUFMLEdBQVksTUFBWixHQUFxQixLQUFLLE9BQWpDO0FBQ0gsQ0FGRDs7UUFJUSxnQixHQUFBLGdCOzs7OztBQ1hSOztBQUNBOzs7O0FBQ0E7Ozs7QUFDQTs7OztBQUVBLGVBQVksY0FBWjtBQUNBLGVBQVksZUFBWjtBQUNBLGVBQVksT0FBWixHQUFzQixlQUF0Qjs7QUFFQSxlQUFZLE9BQVosR0FBc0I7QUFDbEIsMEJBRGtCO0FBRWxCO0FBRmtCLENBQXRCOztBQUtBO0FBQ0EsT0FBTyxnQkFBUDtBQUNBLHdCQUFTLE1BQVQ7O0FBRUE7Ozs7Ozs7OztBQ2xCQTs7OztBQUNBOzs7O0FBQ0E7O0FBQ0E7Ozs7QUFFQSxJQUFJLFVBQVUsQ0FBZDs7QUFFQTs7Ozs7Ozs7O0FBU0EsU0FBUyxXQUFULENBQXFCLFdBQXJCLEVBQWtDLFlBQWxDLEVBQWdEO0FBQzVDLFNBQUssV0FBTCxHQUFtQixXQUFuQjtBQUNBLFNBQUssZUFBTCxDQUFxQixZQUFyQjs7QUFFQSxTQUFLLFFBQUwsR0FBZ0IsRUFBaEI7QUFDQSx3QkFBTyxLQUFLLFFBQVosRUFBc0IsWUFBWSxlQUFsQztBQUNBLHdCQUFPLEtBQUssUUFBWixFQUFzQixLQUFLLFlBQTNCOztBQUVBLFNBQUssRUFBTCxHQUFVLEtBQUssUUFBTCxDQUFjLEVBQWQsSUFBb0IsS0FBSyxLQUFMLEVBQTlCOztBQUVBLFNBQUssV0FBTDtBQUNBLFNBQUssS0FBTCxHQUFhLG9CQUFVLElBQVYsRUFBZ0IsS0FBSyxRQUFMLENBQWMsS0FBOUIsQ0FBYjtBQUNBLFNBQUssUUFBTCxHQUFnQix1QkFBYSxJQUFiLEVBQW1CLEtBQUssUUFBTCxDQUFjLFFBQWpDLENBQWhCO0FBQ0EsU0FBSyxhQUFMO0FBQ0g7O2tCQUVjLFc7OztBQUdmLFlBQVksU0FBWixDQUFzQixjQUF0QixHQUF1QyxZQUFZO0FBQy9DLFdBQU8sS0FBSyxXQUFaO0FBQ0gsQ0FGRDs7QUFJQTs7Ozs7QUFLQSxZQUFZLFNBQVosQ0FBc0IsZUFBdEIsR0FBd0MsVUFBVSxDQUFWLEVBQWE7QUFDakQsUUFBSSxLQUFLLFlBQVQsRUFBdUI7QUFDbkIsZUFBTyxLQUFLLFlBQVo7QUFDSDtBQUNELFFBQUksS0FBSyxPQUFPLENBQVAsS0FBYSxRQUF0QixFQUFnQztBQUM1QixhQUFLLFlBQUwsR0FBb0IsS0FBSyxLQUFMLENBQVcsQ0FBWCxDQUFwQjtBQUNILEtBRkQsTUFFTztBQUNILGFBQUssWUFBTCxHQUFvQixDQUFwQjtBQUNIO0FBQ0QsV0FBTyxLQUFLLFlBQVo7QUFDSCxDQVZEOztBQWFBOzs7O0FBSUEsWUFBWSxTQUFaLENBQXNCLFdBQXRCLEdBQW9DLFlBQVk7QUFDNUMsV0FBTyxLQUFLLFFBQVo7QUFDSCxDQUZEOztBQUlBLFlBQVksU0FBWixDQUFzQixLQUF0QixHQUE4QixZQUFZO0FBQ3RDO0FBQ0EsV0FBTyxLQUFLLEVBQUwsSUFBVyxZQUFZLGNBQVosQ0FBMkIsUUFBM0IsR0FBdUMsU0FBdkMsR0FBb0QsR0FBcEQsR0FBMEQsMkJBQTVFO0FBQ0gsQ0FIRDs7QUFNQTs7Ozs7QUFLQSxZQUFZLFNBQVosQ0FBc0IsZUFBdEIsR0FBd0MsWUFBMEI7QUFBQSxRQUFoQixNQUFnQix1RUFBUCxLQUFPOztBQUM5RCxRQUFJLElBQUksS0FBSyxRQUFMLENBQWMsWUFBZCxFQUFSO0FBQ0EsUUFBSSxJQUFJLEtBQUssS0FBTCxDQUFXLFlBQVgsRUFBUixDQUY4RCxDQUUzQjtBQUNuQyxRQUFJLElBQUk7QUFDSixrQkFBVSxDQUROO0FBRUosZUFBTyxDQUZIO0FBR0osWUFBSSxLQUFLLEtBQUw7QUFIQSxLQUFSO0FBS0EsV0FBTyxTQUFTLENBQVQsR0FBYSxLQUFLLFNBQUwsQ0FBZSxDQUFmLENBQXBCO0FBQ0gsQ0FURDs7QUFZQTs7OztBQUlBLFlBQVksU0FBWixDQUFzQixtQkFBdEIsR0FBNEMsWUFBWTtBQUNwRCxXQUFPLEtBQUssUUFBWjtBQUNILENBRkQ7O0FBS0E7Ozs7QUFJQSxZQUFZLFNBQVosQ0FBc0IsZ0JBQXRCLEdBQXlDLFlBQVk7QUFDakQsV0FBTyxLQUFLLEtBQVo7QUFDSCxDQUZEOztBQUtBLFlBQVksU0FBWixDQUFzQixXQUF0QixHQUFvQyxZQUFZO0FBQUE7O0FBQzVDLFNBQUssT0FBTCxHQUFlLElBQUksR0FBSixFQUFmO0FBQ0EsaUNBQWdCLE9BQWhCLENBQXdCLGFBQUs7QUFDekIsWUFBSSxJQUFJLElBQUksQ0FBSixPQUFSO0FBQ0Esb0NBQWUsQ0FBZjtBQUNBLGNBQUssT0FBTCxDQUFhLEdBQWIsQ0FBaUIsRUFBRSxRQUFuQixFQUE2QixDQUE3QjtBQUNILEtBSkQ7QUFLSCxDQVBEOztBQVNBLFlBQVksU0FBWixDQUFzQixhQUF0QixHQUFzQyxZQUFZO0FBQzlDLFNBQUssT0FBTCxDQUFhLE9BQWIsQ0FBcUIsYUFBSztBQUN0QixZQUFJLEVBQUUsUUFBRixFQUFKLEVBQWtCO0FBQ2QsY0FBRSxNQUFGO0FBQ0g7QUFDSixLQUpEO0FBS0gsQ0FORDs7Ozs7Ozs7Ozs7QUNuSEE7Ozs7QUFFQTs7Ozs7O0lBTU0sZ0I7O0FBRUY7Ozs7O0FBS0EsOEJBQVksTUFBWixFQUFvQixLQUFwQixFQUEyQjtBQUFBOztBQUN2QixhQUFLLGFBQUwsR0FBcUIsTUFBckI7QUFDQSxhQUFLLEtBQUwsR0FBYSxLQUFiO0FBQ0g7O0FBRUQ7Ozs7Ozs7Ozs7b0NBTVk7QUFDUixnQkFBSSxXQUFXLEVBQWY7QUFDQSxnQkFBSSxRQUFRLE9BQU8sY0FBUCxDQUFzQixJQUF0QixDQUFaO0FBQ0EsZ0JBQUksV0FBVyxPQUFPLG1CQUFQLENBQTJCLEtBQTNCLENBQWY7O0FBRUEsaUJBQUssSUFBSSxJQUFJLENBQWIsRUFBZ0IsSUFBSSxTQUFTLE1BQTdCLEVBQXFDLEVBQUUsQ0FBdkMsRUFBMEM7QUFDdEMsb0JBQUksU0FBUyxDQUFULEVBQVksVUFBWixDQUF1QixRQUF2QixDQUFKLEVBQXNDO0FBQ2xDLHlCQUFLLFNBQVMsQ0FBVCxDQUFMLEVBQWtCLElBQWxCLENBQXVCLElBQXZCLEVBQTZCLFFBQTdCO0FBQ0g7QUFDSjtBQUNEO0FBQ0EsbUJBQU8sUUFBUDtBQUNIOztBQUVEOzs7Ozs7Ozt5Q0FLaUI7QUFDYixnQkFBSSxRQUFRLE9BQU8sY0FBUCxDQUFzQixJQUF0QixDQUFaO0FBQ0EsZ0JBQUksV0FBVyxPQUFPLG1CQUFQLENBQTJCLEtBQTNCLENBQWY7O0FBRUEsaUJBQUssSUFBSSxJQUFJLENBQWIsRUFBZ0IsSUFBSSxTQUFTLE1BQTdCLEVBQXFDLEVBQUUsQ0FBdkMsRUFBMEM7QUFDdEMsb0JBQUksU0FBUyxDQUFULEVBQVksVUFBWixDQUF1QixPQUF2QixDQUFKLEVBQXFDO0FBQ2pDLHlCQUFLLFNBQVMsQ0FBVCxDQUFMLEVBQWtCLElBQWxCLENBQXVCLElBQXZCO0FBQ0g7QUFDSjtBQUNKOztBQUVEOzs7O21DQUVXLFEsRUFBVTtBQUNqQixnQkFBSSxJQUFJLEtBQUssYUFBTCxDQUFtQixTQUEzQjtBQUNBLGdCQUFJLENBQUosRUFBTztBQUNILHlCQUFTLElBQVQsR0FBZ0IsRUFBaEI7QUFDQSxxQkFBSyxJQUFJLElBQUksQ0FBYixFQUFnQixJQUFJLEVBQUUsTUFBdEIsRUFBOEIsRUFBRSxDQUFoQyxFQUFtQztBQUMvQix3QkFBSSxNQUFNLEVBQUUsQ0FBRixDQUFWO0FBQ0EseUJBQUssSUFBSSxJQUFJLENBQWIsRUFBZ0IsSUFBSSxJQUFJLE1BQXhCLEVBQWdDLEVBQUUsQ0FBbEMsRUFBcUM7QUFDakMsNEJBQUksV0FBVyxJQUFJLENBQUosQ0FBZjtBQUNBLDRCQUFJLFFBQUosRUFBYztBQUNWLGdDQUFJLE9BQU8sRUFBWDtBQUNBLGlDQUFLLEdBQUwsR0FBVyxTQUFTLEdBQXBCO0FBQ0EsaUNBQUssR0FBTCxHQUFXLFNBQVMsR0FBcEI7O0FBRUEsZ0NBQUksU0FBUyxRQUFiLEVBQXVCO0FBQ25CLHFDQUFLLElBQUksRUFBVCxJQUFlLFNBQVMsUUFBeEIsRUFBa0M7QUFDOUIsd0NBQUksU0FBUyxRQUFULENBQWtCLGNBQWxCLENBQWlDLEVBQWpDLENBQUosRUFBMEM7QUFDdEMsNkNBQUssRUFBTCxJQUFXLFNBQVMsUUFBVCxDQUFrQixFQUFsQixDQUFYO0FBQ0g7QUFDSjtBQUNELHFDQUFLLElBQUwsR0FBWSxTQUFTLFFBQVQsQ0FBa0IsUUFBOUI7QUFDQSx1Q0FBTyxLQUFLLFFBQVo7QUFDSDs7QUFFRCxnQ0FBSSxTQUFTLE1BQWIsRUFBcUI7QUFDakIsb0NBQUksU0FBUyxNQUFULENBQWdCLFVBQXBCLEVBQWdDO0FBQzVCLHdDQUFJLElBQUksU0FBUyxNQUFULENBQWdCLFVBQWhCLENBQTJCLElBQTNCLENBQWdDLEtBQWhDLENBQVI7QUFDQSx5Q0FBSyxTQUFMLEdBQWlCLEtBQUssU0FBTCxHQUFrQixLQUFLLFNBQUwsSUFBa0IsUUFBUSxDQUE1QyxHQUFpRCxPQUFPLENBQXpFO0FBQ0g7QUFDSjs7QUFFRCxxQ0FBUyxJQUFULENBQWMsSUFBZCxDQUFtQixJQUFuQjtBQUNIO0FBQ0o7QUFDSjtBQUNKO0FBQ0o7OzttQ0FFVSxRLEVBQVU7QUFDakIsZ0JBQUksSUFBSSxLQUFLLGFBQUwsQ0FBbUIsSUFBM0I7QUFDQSxnQkFBSSxDQUFKLEVBQU87QUFDSDtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQSx5QkFBUyxPQUFULEdBQW1CLEtBQUssS0FBTCxDQUFXLFFBQTlCO0FBQ0EseUJBQVMsT0FBVCxHQUFtQixLQUFLLEtBQUwsQ0FBVyxRQUE5Qjs7QUFFQSx5QkFBUyxJQUFULEdBQWdCLENBQWhCO0FBQ0g7QUFDSjs7QUFFRDs7Ozt3Q0FDZ0IsUSxFQUFVO0FBQ3RCLGdCQUFJLElBQUksS0FBSyxhQUFMLENBQW1CLFNBQTNCO0FBQ0EsZ0JBQUksQ0FBSixFQUFPO0FBQ0gseUJBQVMsU0FBVCxHQUFxQixDQUFyQjtBQUNIO0FBQ0o7O0FBRUQ7Ozs7eUNBQ2lCLFEsRUFBVTtBQUN2QixnQkFBSSxJQUFJLEtBQUssYUFBTCxDQUFtQixVQUEzQjtBQUNBLGdCQUFJLENBQUosRUFBTztBQUNILHlCQUFTLFVBQVQsR0FBc0IsQ0FBdEI7QUFDSDtBQUNKOztBQUVEOzs7O3NDQUNjLFEsRUFBVTtBQUNwQixnQkFBSSxJQUFJLEtBQUssYUFBTCxDQUFtQixPQUEzQjtBQUNBLGdCQUFJLENBQUosRUFBTztBQUNILHlCQUFTLGFBQVQsR0FBeUIsQ0FBekI7QUFDSDtBQUNKOztBQUVEOzs7O3lDQUNpQixRLEVBQVU7QUFDdkIsZ0JBQUksSUFBSSxLQUFLLGFBQUwsQ0FBbUIsVUFBM0I7QUFDQSxnQkFBSSxDQUFKLEVBQU87QUFDSCx5QkFBUyxVQUFULEdBQXNCLENBQXRCO0FBQ0g7QUFDSjs7QUFFRDs7QUFFQTs7Ozt5Q0FDaUI7QUFDYixnQkFBSSxJQUFJLEtBQUssYUFBTCxDQUFtQixTQUEzQjtBQUNBLGdCQUFJLENBQUosRUFBTztBQUNILHFCQUFLLEtBQUwsQ0FBVyxNQUFYLENBQWtCLEVBQUUsR0FBcEIsRUFBeUIsRUFBRSxHQUEzQixFQUFnQyxFQUFFLE1BQWxDLEVBQTBDLEVBQUUsTUFBNUM7QUFDSCxhQUZELE1BRU87QUFDSCxxQkFBSyxLQUFMLENBQVcsTUFBWCxDQUFrQixDQUFsQixFQUFxQixDQUFyQjtBQUNIO0FBQ0o7Ozs7OztrQkFJVSxnQjs7Ozs7Ozs7Ozs7QUN0S2Y7Ozs7Ozs7O0FBRUE7Ozs7SUFJTSxLO0FBRUYsaUJBQVksUUFBWixFQUFzQixNQUF0QixFQUE4QjtBQUFBOztBQUMxQixTQUFLLFdBQUwsR0FBbUIsUUFBbkI7QUFDQTs7OztBQUlBLFNBQUssV0FBTCxHQUFtQiwwQkFBZ0IsUUFBaEIsQ0FBbkI7QUFDSDs7OzttQ0FFYyxDQUVkOzs7Ozs7a0JBSVUsSzs7Ozs7Ozs7O0FDdkJmOztBQUNBOzs7Ozs7Ozs7Ozs7QUFHQTs7O0lBR00sZTs7O0FBRUY7Ozs7Ozs7QUFPQSw2QkFBWSxXQUFaLEVBQXlCLE1BQXpCLEVBQWlDLFNBQWpDLEVBQTRDLEtBQTVDLEVBQW1EO0FBQUE7O0FBQy9DLFlBQUksY0FBYyxFQUFsQjtBQUNBLFlBQUksYUFBYSwrQkFBcUIsTUFBckIsRUFBNkIsS0FBN0IsQ0FBakI7QUFDQSxZQUFJLFdBQVcsV0FBVyxTQUFYLEVBQWY7O0FBRUEsWUFBSSxRQUFRLE1BQU0sUUFBTixDQUFlLFdBQWYsQ0FBMkIsZ0JBQTNCLEVBQVo7QUFDQSxZQUFJLFlBQVksTUFBTSxXQUFOLENBQWtCLFNBQWxDO0FBQ0EsWUFBSSxjQUFjLEVBQWxCO0FBQ0Esb0JBQVksS0FBWixHQUFvQixNQUFNLFdBQU4sQ0FBa0IscUJBQWxCLEVBQXBCO0FBQ0Esb0JBQVksUUFBWixHQUF3QixVQUFVLEtBQVYsRUFBaUI7QUFDckMsbUJBQU8sVUFBVSxHQUFWLEVBQWUsT0FBZixFQUF3QjtBQUMzQixvQkFBSSxVQUFVLEdBQVYsQ0FBYyxHQUFkLENBQUosRUFBd0I7QUFDcEIsd0JBQUksT0FBTyxVQUFVLEdBQVYsQ0FBYyxHQUFkLENBQVg7QUFDQSx3QkFBSSxLQUFLLE9BQVQsRUFBa0I7QUFDZCw2QkFBSyxPQUFMLENBQWEsSUFBYixDQUFrQixJQUFsQixFQUF3QixLQUF4QixFQUErQixRQUFRLEtBQXZDLEVBQThDLFFBQVEsR0FBdEQsRUFBMkQsT0FBM0Q7QUFDSDtBQUNKO0FBQ0osYUFQRDtBQVFILFNBVHVCLENBU3RCLEtBVHNCLENBQXhCO0FBVUEsd0JBQWdCLFdBQWhCLENBQTRCLFdBQTVCLEdBQTBDLFdBQTFDOztBQUVBLDRCQUFPLFdBQVAsRUFBb0IsZ0JBQWdCLFdBQXBDO0FBQ0EsNEJBQU8sV0FBUCxFQUFvQixRQUFwQjtBQUNBLDRCQUFPLFdBQVAsRUFBb0IsU0FBcEI7O0FBdkIrQyxzSUF3QnpDLFdBeEJ5QyxFQXdCNUIsV0F4QjRCOztBQTBCL0MsY0FBSyxXQUFMLEdBQW1CLFVBQW5CO0FBMUIrQztBQTJCbEQ7OztFQXBDeUIsWTs7QUF5QzlCOzs7Ozs7QUFJQSxnQkFBZ0IsV0FBaEIsR0FBOEI7QUFDMUIsMkJBQXVCLEtBREc7O0FBRzFCLGdCQUFZLElBSGM7QUFJMUIsZ0JBQVksSUFKYzs7QUFNMUIsd0JBQW9CLElBTk07QUFPMUIscUJBQWlCLElBUFM7QUFRMUIsZUFBVyxrQkFSZTs7QUFVMUIsZUFBVyxJQVZlOztBQVkxQixpQkFBYTtBQVphLENBQTlCOztrQkFlZSxlOzs7Ozs7Ozs7OztBQ25FZjs7OztBQUNBOzs7O0FBQ0E7O0FBQ0E7O0FBQ0E7Ozs7Ozs7Ozs7OztBQUVBLElBQU0sWUFBWSxHQUFsQixDLENBQXVCO0FBQ3ZCLElBQU0sWUFBWSxFQUFsQixDLENBQXVCOzs7QUFHdkI7Ozs7Ozs7SUFNTSxLOzs7QUFFRjs7Ozs7Ozs7QUFRQSxtQkFBWSxRQUFaLEVBQXNCLE1BQXRCLEVBQThCO0FBQUE7O0FBRTFCOzs7O0FBRjBCOztBQU0xQixjQUFLLFFBQUwsR0FBZ0IsUUFBaEI7QUFDQSxjQUFLLE1BQUwsR0FBYyxTQUFTLE1BQXZCO0FBQ0EsY0FBSyxRQUFMLEdBQWdCLE1BQWhCO0FBQ0EsY0FBSyxTQUFMLEdBQWlCLE9BQU8sSUFBeEI7O0FBRUEsY0FBSyxRQUFMLEdBQWdCLFNBQWhCO0FBQ0EsY0FBSyxRQUFMLEdBQWdCLFNBQWhCOztBQUVBLGNBQUssRUFBTCxHQUFVLEVBQVYsQ0FkMEIsQ0FjWjs7QUFFZCxjQUFLLE9BQUw7QUFoQjBCO0FBaUI3Qjs7QUFFRDs7Ozs7OztrQ0FHVTtBQUNOLGlCQUFLLE1BQUwsQ0FBWSxTQUFaLENBQXNCLEtBQUssU0FBM0I7O0FBRE0sd0NBRTJCLEtBQUssTUFBTCxDQUFZLFVBQVosQ0FBdUIsR0FBdkIsQ0FBMkIsS0FBSyxTQUFoQyxDQUYzQjtBQUFBLGdCQUVELFNBRkMseUJBRUQsU0FGQztBQUFBLGdCQUVVLEtBRlYseUJBRVUsS0FGVjtBQUFBLGdCQUVpQixNQUZqQix5QkFFaUIsTUFGakI7QUFHTjs7Ozs7QUFHQSxpQkFBSyxZQUFMLEdBQW9CLDhCQUFpQixTQUFqQixFQUE0QixLQUFLLFFBQWpDLEVBQTJDO0FBQzNELHVCQUFPLEtBRG9EO0FBRTNELHdCQUFRLE1BRm1EO0FBRzNELDJCQUFXLEtBQUssUUFIMkM7QUFJM0QsMkJBQVcsS0FBSyxRQUoyQztBQUszRCxvQ0FBb0IsSUFMdUM7QUFNM0Qsd0JBQVE7QUFObUQsYUFBM0MsRUFPakIsSUFQaUIsQ0FBcEI7QUFRQSxpQkFBSyxZQUFMLENBQWtCLFdBQWxCLENBQThCLGNBQTlCO0FBQ0EsaUJBQUssTUFBTCxDQUFZLFdBQVosQ0FBd0IsS0FBSyxPQUFMLEVBQXhCO0FBQ0g7O0FBRUQ7Ozs7Ozs7a0NBSVU7QUFDTixtQkFBTyxLQUFLLFNBQVo7QUFDSDs7QUFFRDs7Ozs7O2lDQUdTO0FBQ0wsaUJBQUssUUFBTCxDQUFjLFdBQWQsR0FBNEIsS0FBSyxPQUFMLEVBQTVCO0FBQ0EsaUJBQUssTUFBTCxDQUFZLFNBQVosQ0FBc0IsS0FBSyxPQUFMLEVBQXRCO0FBQ0EsaUJBQUssWUFBTCxDQUFrQixNQUFsQjtBQUNIOztBQUVEOzs7Ozs7O21DQUlXO0FBQ1AsbUJBQU8sS0FBSyxRQUFMLENBQWMsV0FBZCxLQUE4QixLQUFLLE9BQUwsRUFBckM7QUFDSDs7QUFFRDs7Ozs7O2tDQUdVLENBRVQ7QUFERzs7O0FBR0o7Ozs7Ozs7OytCQUtPLEksRUFBTTtBQUNULG1CQUFPLEtBQUssUUFBTCxDQUFjLFdBQWQsQ0FBMEIsS0FBSyxPQUFMLEVBQTFCLEVBQTBDLElBQTFDLENBQVA7QUFDSDs7QUFFRDs7Ozs7Ozs7Ozs7K0JBUU8sTyxFQUFTLE8sRUFBUyxLLEVBQU8sSyxFQUFPO0FBQ25DLG9CQUFRLFNBQVMsT0FBakI7QUFDQSxvQkFBUSxTQUFTLE9BQWpCO0FBQ0EsaUJBQUssWUFBTCxDQUFrQixVQUFsQixDQUE2QixPQUE3QixFQUFzQyxPQUF0QyxFQUErQyxLQUEvQyxFQUFzRCxLQUF0RCxFQUE2RCxLQUE3RDtBQUNIOzs7dUNBRWM7QUFDWCxnQkFBSSxZQUFZLEtBQUssWUFBTCxDQUFrQixXQUFsQixFQUFoQjtBQUNBLG1CQUFPO0FBQ0gscUJBQUssVUFBVSxDQUFWLENBREY7QUFFSCxxQkFBSyxVQUFVLENBQVYsQ0FGRjtBQUdILHdCQUFRLFVBQVUsQ0FBVixDQUhMO0FBSUgsd0JBQVEsVUFBVSxDQUFWO0FBSkwsYUFBUDtBQU1IOztBQUVEOzs7Ozs7OztBQVFBOzs7O21DQUNXLEcsRUFBSyxHLEVBQUssTyxFQUFTLE8sRUFBUztBQUNuQyxnQkFBSSxJQUFJLENBQVI7QUFDQSxnQkFBSSxRQUFRLEVBQVo7QUFDQSxnQkFBSSxhQUFhLEtBQUssWUFBTCxDQUFrQixXQUFsQixHQUFnQyxVQUFqRDs7QUFFQSxnQkFBSSxLQUFLLENBQUMsR0FBRCxFQUFNLEdBQU4sRUFBVyxNQUFNLE9BQU4sR0FBZ0IsQ0FBM0IsRUFBOEIsTUFBTSxPQUFOLEdBQWdCLENBQTlDLENBQVQ7O0FBRUEsaUJBQUssSUFBSSxJQUFJLFdBQVcsTUFBeEIsRUFBZ0MsQ0FBaEMsRUFBbUMsRUFBRSxDQUFyQyxFQUF3QztBQUNwQyxvQkFBSSxJQUFJLFdBQVcsSUFBSSxDQUFmLENBQVI7QUFDQSxvQkFBSSxLQUFLLENBQUMsRUFBRSxHQUFILEVBQVEsRUFBRSxHQUFWLEVBQWUsRUFBRSxHQUFGLEdBQVEsRUFBRSxPQUFWLEdBQW9CLENBQW5DLEVBQXNDLEVBQUUsR0FBRixHQUFRLEVBQUUsT0FBVixHQUFvQixDQUExRCxDQUFUOztBQUVBO0FBQ0Esb0JBQUksbUJBQVcsT0FBWCxDQUFtQixFQUFuQixFQUF1QixFQUF2QixDQUFKLEVBQWdDO0FBQzVCLHdCQUFJLENBQUo7QUFDQTtBQUNIO0FBQ0Q7QUFDQSxvQkFBSSxtQkFBVyxRQUFYLENBQW9CLEVBQXBCLEVBQXdCLEVBQXhCLENBQUosRUFBaUM7QUFDN0Isd0JBQUksQ0FBSjtBQUNBO0FBQ0g7QUFDRDtBQUNBLG9CQUFJLG1CQUFXLFVBQVgsQ0FBc0IsRUFBdEIsRUFBMEIsRUFBMUIsQ0FBSixFQUFtQztBQUMvQiwwQkFBTSxJQUFOLENBQVcsSUFBSSxDQUFmO0FBQ0Esd0JBQUksQ0FBSjtBQUNBO0FBQ0g7QUFDRDtBQUNBLG9CQUFJLG1CQUFXLFlBQVgsQ0FBd0IsRUFBeEIsRUFBNEIsRUFBNUIsQ0FBSixFQUFxQztBQUNqQyx3QkFBSSxDQUFKO0FBQ0g7QUFDSjs7QUFFRCxnQkFBSSxNQUFNLENBQU4sSUFBVyxNQUFNLENBQXJCLEVBQXdCO0FBQ3BCLG9CQUFJLE1BQU0sQ0FBVixFQUFhO0FBQUU7QUFDWCx5QkFBSyxJQUFJLEtBQUksQ0FBYixFQUFnQixLQUFJLE1BQU0sTUFBMUIsRUFBa0MsRUFBRSxFQUFwQyxFQUF1QztBQUNuQyxtQ0FBVyxNQUFYLENBQWtCLE1BQU0sRUFBTixDQUFsQixFQUE0QixDQUE1QjtBQUNIO0FBQ0o7QUFDRCw2QkFBYSxjQUFjLEVBQTNCO0FBQ0EsMkJBQVcsSUFBWCxDQUFnQjtBQUNaLHlCQUFLLEdBRE87QUFFWix5QkFBSyxHQUZPO0FBR1osNkJBQVMsT0FIRztBQUlaLDZCQUFTO0FBSkcsaUJBQWhCO0FBTUEscUJBQUssWUFBTCxDQUFrQixjQUFsQixDQUFpQztBQUM3QixnQ0FBWTtBQURpQixpQkFBakM7QUFLSCxhQWxCRCxNQWtCTyxJQUFJLE1BQU0sQ0FBTixJQUFXLE1BQU0sQ0FBckIsRUFBd0I7QUFDM0Isc0JBQU0sK0ZBQStCLEdBQS9CLFVBQXVDLEdBQXZDLFVBQStDLE9BQS9DLFVBQTJELE9BQTNELE9BQU47QUFDSDtBQUNKOztBQUdEOzs7Ozs7Ozs7O3FDQU9hLEcsRUFBSyxHLEVBQUssTyxFQUFTLE8sRUFBUztBQUNyQyxnQkFBSSxTQUFTLEtBQUssWUFBTCxDQUFrQixXQUFsQixHQUFnQyxVQUE3QztBQUNBLGdCQUFJLGFBQWEsRUFBakI7QUFDQSxnQkFBSSxVQUFVLE9BQU8sTUFBckIsRUFBNkI7QUFDekIscUJBQUssSUFBSSxJQUFJLENBQWIsRUFBZ0IsSUFBSSxPQUFPLE1BQTNCLEVBQW1DLEVBQUUsQ0FBckMsRUFBd0M7QUFDcEMsd0JBQUksbUJBQVcsUUFBWCxDQUFvQixDQUNoQixPQUFPLENBQVAsRUFBVSxHQURNLEVBRWhCLE9BQU8sQ0FBUCxFQUFVLEdBRk0sRUFHaEIsT0FBTyxDQUFQLEVBQVUsR0FBVixHQUFnQixPQUFPLENBQVAsRUFBVSxPQUExQixHQUFvQyxDQUhwQixFQUloQixPQUFPLENBQVAsRUFBVSxHQUFWLEdBQWdCLE9BQU8sQ0FBUCxFQUFVLE9BQTFCLEdBQW9DLENBSnBCLENBQXBCLEVBS0csQ0FBQyxHQUFELEVBQU0sR0FBTixFQUFXLE1BQU0sT0FBTixHQUFnQixDQUEzQixFQUE4QixNQUFNLE9BQU4sR0FBZ0IsQ0FBOUMsQ0FMSCxDQUFKLEVBSzBEO0FBQ3REO0FBQ0g7QUFDRCwrQkFBVyxJQUFYLENBQWdCLE9BQU8sQ0FBUCxDQUFoQjtBQUNIO0FBQ0o7QUFDRCxpQkFBSyxZQUFMLENBQWtCLGNBQWxCLENBQWlDO0FBQzdCLDRCQUFZLFdBQVcsTUFBWCxLQUFzQixDQUF0QixHQUEwQixLQUExQixHQUFrQztBQURqQixhQUFqQztBQUdIOzs7dUNBR2M7QUFBQSxnQ0FDUyxLQUFLLFlBQUwsRUFEVDtBQUFBLGdCQUNOLElBRE0saUJBQ04sSUFETTtBQUFBLGdCQUNBLEtBREEsaUJBQ0EsS0FEQTs7QUFBQSw0QkFFYSxLQUFLLFFBQUwsRUFGYjtBQUFBLGdCQUVOLE9BRk0sYUFFTixPQUZNO0FBQUEsZ0JBRUcsTUFGSCxhQUVHLE1BRkg7O0FBR1gsZ0JBQUksYUFBYSxLQUFLLFlBQUwsQ0FBa0IsV0FBbEIsR0FBZ0MsVUFBakQ7O0FBRUEsbUJBQU87QUFDSCxzQkFBTSxLQUFLLE9BQUwsRUFESDtBQUVILDJCQUFXLEtBQUssWUFBTCxFQUZSO0FBR0gsc0JBQU0sS0FBSyxNQUFMLEdBQWMsSUFBZCxHQUFxQixHQUFHLENBSDNCO0FBSUgsNEJBQVksT0FKVDtBQUtILDJCQUFXLE1BTFI7QUFNSCw0QkFBWSxVQU5UO0FBT0gsMkJBQVc7QUFQUixhQUFQO0FBU0g7OzttQ0FFVTtBQUNQLGdCQUFJLE1BQU0sS0FBSyxZQUFmO0FBQ0EsZ0JBQUksT0FBTyxLQUFLLEdBQUwsQ0FBUyxJQUFJLFNBQUosS0FBa0IsSUFBSSxjQUFKLENBQW1CLElBQW5CLENBQTNCLEVBQXFELEVBQXJELENBQVg7QUFDQSxnQkFBSSxPQUFPLEtBQUssR0FBTCxDQUFTLElBQUksU0FBSixLQUFrQixJQUFJLGNBQUosQ0FBbUIsSUFBbkIsQ0FBM0IsRUFBcUQsRUFBckQsQ0FBWDtBQUNBLGdCQUFJLFVBQVUsRUFBZDtBQUNBLGdCQUFJLFNBQVMsRUFBYjs7QUFFQSxpQkFBSyxJQUFJLElBQUksQ0FBYixFQUFnQixJQUFJLElBQXBCLEVBQTBCLEVBQUUsQ0FBNUIsRUFBK0I7QUFDM0Isb0JBQUksSUFBSSxJQUFJLFlBQUosQ0FBaUIsQ0FBakIsQ0FBUjtBQUNBLG9CQUFJLE1BQU0sQ0FBTixJQUFXLENBQUMsQ0FBaEIsRUFBbUI7QUFBRTtBQUNqQix3QkFBSSxFQUFKO0FBQ0g7QUFDRCx3QkFBUSxJQUFSLENBQWEsQ0FBYjtBQUNIO0FBQ0QsaUJBQUssSUFBSSxNQUFJLENBQWIsRUFBZ0IsTUFBSSxJQUFwQixFQUEwQixFQUFFLEdBQTVCLEVBQStCO0FBQzNCLHVCQUFPLElBQVAsQ0FBWSxJQUFJLFdBQUosQ0FBZ0IsR0FBaEIsQ0FBWjtBQUNIO0FBQ0QsbUJBQU8sRUFBQyxnQkFBRCxFQUFVLGNBQVYsRUFBUDtBQUNIOzs7dUNBRWM7QUFDWCxnQkFBSSxNQUFNLEtBQUssWUFBZjtBQUNBLGdCQUFJLE9BQU8sSUFBSSxTQUFKLEtBQWtCLElBQUksY0FBSixDQUFtQixJQUFuQixDQUE3QjtBQUNBLGdCQUFJLE9BQU8sSUFBSSxTQUFKLEtBQWtCLElBQUksY0FBSixDQUFtQixJQUFuQixDQUE3QjtBQUNBLGdCQUFJLE9BQU8sRUFBWDtBQUNBLGdCQUFJLFFBQVEsRUFBWjs7QUFFQSxpQkFBSyxJQUFJLElBQUksQ0FBYixFQUFnQixJQUFJLElBQXBCLEVBQTBCLEVBQUUsQ0FBNUIsRUFBK0I7QUFDM0Isb0JBQUksWUFBWSxFQUFoQjtBQUNBLG9CQUFJLGNBQWMsRUFBbEI7O0FBRUEscUJBQUssSUFBSSxJQUFJLENBQWIsRUFBZ0IsSUFBSSxJQUFwQixFQUEwQixFQUFFLENBQTVCLEVBQStCO0FBQzNCLHdCQUFJLGNBQWMsSUFBSSxtQkFBSixDQUF3QixDQUF4QixFQUEyQixDQUEzQixDQUFsQjtBQUNBLHdCQUFJLFFBQVEsSUFBSSxXQUFKLENBQWdCLENBQWhCLEVBQW1CLENBQW5CLENBQVosQ0FGMkIsQ0FFUTtBQUNuQyx3QkFBSSxRQUFRLElBQUksYUFBSixDQUFrQixDQUFsQixFQUFxQixDQUFyQixDQUFaO0FBQ0Esd0JBQUksWUFBWSxFQUFoQjs7QUFFQSw4QkFBVSxHQUFWLEdBQWdCLENBQWhCO0FBQ0EsOEJBQVUsR0FBVixHQUFnQixDQUFoQjtBQUNBLDhCQUFVLFNBQVYsR0FBc0IsQ0FBQyxFQUFFLGVBQWUsQ0FBQyxjQUFjLEVBQWYsRUFBbUIsTUFBbkIsQ0FBMEIsQ0FBMUIsTUFBaUMsR0FBbEQsQ0FBdkI7QUFDQSw4QkFBVSxXQUFWLEdBQXdCLFdBQXhCO0FBQ0EsOEJBQVUsS0FBVixHQUFrQixLQUFsQjs7QUFFQTtBQUNBLDhCQUFVLElBQVYsQ0FBZSxXQUFmO0FBQ0EsZ0NBQVksSUFBWixDQUFpQixTQUFqQjtBQUNIO0FBQ0QscUJBQUssSUFBTCxDQUFVLFNBQVY7QUFDQSxzQkFBTSxJQUFOLENBQVcsV0FBWDtBQUNIO0FBQ0QsbUJBQU8sRUFBQyxVQUFELEVBQU8sWUFBUCxFQUFQO0FBQ0g7O0FBRUQ7Ozs7c0NBQ2MsQ0FFYjs7Ozs7O2tCQUlVLEs7O0FBR2Y7Ozs7Ozs7OztBQVNBOzs7Ozs7Ozs7Ozs7Ozs7UUN4VGdCLFUsR0FBQSxVOztBQUZoQjs7QUFFTyxTQUFTLFVBQVQsQ0FBb0IsS0FBcEIsRUFBMkI7QUFDOUIsU0FBSyxJQUFMLEdBQVksWUFBWjtBQUNBLFNBQUssT0FBTCxHQUFlLEtBQWY7QUFDSDtBQUNELFdBQVcsU0FBWCxHQUF1Qix3Q0FBdkI7QUFDQSxXQUFXLFNBQVgsQ0FBcUIsV0FBckIsR0FBbUMsVUFBbkM7Ozs7Ozs7Ozs7Ozs7QUNQQTs7OztBQUNBOzs7O0FBQ0E7O0FBQ0E7O0FBQ0E7O0FBQ0E7Ozs7OztBQUdBLElBQU0sU0FBUyx5QkFBZSxLQUFmLENBQXFCLFNBQXBDOztBQUVBOzs7O0lBR00sUTs7QUFFRjs7Ozs7QUFLQSxzQkFBWSxRQUFaLEVBQXNCLE1BQXRCLEVBQThCO0FBQUE7O0FBQUE7O0FBQzFCOzs7O0FBSUEsYUFBSyxXQUFMLEdBQW1CLFFBQW5CO0FBQ0E7OztBQUdBLGFBQUssTUFBTCxHQUFjLHVDQUFkO0FBQ0EsYUFBSyxRQUFMLEdBQWdCLE1BQWhCOztBQUVBLGFBQUssYUFBTCxDQUFtQixNQUFuQjtBQUNBLGFBQUssTUFBTCxHQUFjLG1CQUFTLElBQVQsQ0FBZDs7QUFFQSxlQUFPLE1BQVAsQ0FBYyxPQUFkLENBQXNCO0FBQUEsbUJBQUssTUFBSyxXQUFMLENBQWlCLENBQWpCLENBQUw7QUFBQSxTQUF0Qjs7QUFFQTtBQUNBLFlBQUksV0FBVyxLQUFLLFFBQUwsQ0FBYyxLQUFLLFdBQW5CLENBQWY7QUFDQSxZQUFJLENBQUMsUUFBTCxFQUFlO0FBQ1gsa0JBQU0sbUZBQXVDLEtBQUssV0FBNUMsQ0FBTjtBQUNIO0FBQ0QsaUJBQVMsTUFBVDtBQUNIOztBQUVEOzs7Ozs7Ozs7c0NBS2MsUSxFQUFVO0FBQ3BCLGdCQUFJLE9BQU8sT0FBTyxJQUFQLENBQVksUUFBWixDQUFYO0FBQ0EsaUJBQUssSUFBSSxJQUFJLENBQVIsRUFBVyxNQUFNLEtBQUssTUFBM0IsRUFBbUMsSUFBSSxHQUF2QyxFQUE0QyxFQUFFLENBQTlDLEVBQWlEO0FBQzdDLG9CQUFJLEtBQUssQ0FBTCxNQUFZLFFBQWhCLEVBQTBCO0FBQ3RCO0FBQ0g7QUFDRCxxQkFBSyxLQUFLLENBQUwsQ0FBTCxJQUFnQixTQUFTLEtBQUssQ0FBTCxDQUFULENBQWhCO0FBQ0g7QUFDSjs7QUFFRDs7Ozs7OztzQ0FJYztBQUNWLG1CQUFPLEtBQUssV0FBTCxDQUFpQixXQUFqQixFQUFQO0FBQ0g7O0FBRUQ7Ozs7Ozs7Z0NBSVE7QUFDSixtQkFBTyxLQUFLLEVBQUwsS0FBWSxLQUFLLEVBQUwsR0FBVSxLQUFLLFdBQUwsQ0FBaUIsS0FBakIsS0FBMkIseUJBQWUsaUJBQWhFLENBQVA7QUFDSDs7QUFFRDs7Ozs7Ozs7aUNBS1MsSSxFQUFNO0FBQ1gsbUJBQU8sS0FBSyxNQUFMLENBQVksR0FBWixDQUFnQixJQUFoQixDQUFQO0FBQ0g7O0FBRUQ7Ozs7Ozs7b0NBSVk7QUFDUixtQkFBTyxLQUFLLE1BQVo7QUFDSDs7QUFFRDs7Ozs7Ozt3Q0FJZ0I7QUFDWixtQkFBTyxLQUFLLE1BQUwsQ0FBWSxJQUFaLEVBQVA7QUFDSDs7QUFFRDs7Ozs7Ozs7O3FDQU1hLEksRUFBTSxPLEVBQVM7QUFDeEIsZ0JBQUksT0FBSixFQUFhO0FBQ1QsdUJBQU8sS0FBSyxNQUFMLENBQVksUUFBWixDQUFxQixJQUFyQixDQUFQO0FBQ0g7QUFDRDtBQUNBLG1CQUFPLEtBQUssTUFBTCxDQUFZLEdBQVosQ0FBZ0IsSUFBaEIsQ0FBUDtBQUNIOztBQUVEOzs7Ozs7Ozs2Q0FLcUI7QUFDakIsZ0JBQUksQ0FBQyxLQUFLLGdCQUFWLEVBQTRCO0FBQ3hCLHFCQUFLLGdCQUFMLEdBQXdCLENBQXhCO0FBQ0g7QUFDRCxtQkFBTyxFQUFFLEtBQUssZ0JBQWQsQ0FKaUIsQ0FJZTtBQUNuQzs7QUFFRDs7Ozs7Ozs7NENBS29CO0FBQ2hCLGdCQUFNLFNBQVMseUJBQWUsS0FBZixDQUFxQixVQUFyQixHQUFrQyxFQUFqRCxDQURnQixDQUNxQztBQUNyRCxnQkFBSSxPQUFPLFNBQVMsS0FBSyxrQkFBTCxFQUFwQjtBQUNBLGdCQUFJLEtBQUssWUFBTCxDQUFrQixJQUFsQixDQUFKLEVBQTZCO0FBQ3pCLHVCQUFPLEtBQUssaUJBQUwsRUFBUDtBQUNIO0FBQ0QsbUJBQU8sSUFBUDtBQUNIOztBQUVEOzs7Ozs7O3lDQUlpQjtBQUNiLG1CQUFPLEtBQUssTUFBTCxDQUFZLEdBQVosQ0FBZ0IsS0FBSyxXQUFyQixDQUFQO0FBQ0g7O0FBRUQ7Ozs7Ozs7O29DQUtZLE0sRUFBUTtBQUNoQixnQkFBSSxNQUFKLEVBQVk7QUFBRztBQUNYLHFCQUFLLGtCQUFMLENBQXdCLE9BQU8sSUFBL0I7QUFDSCxhQUZELE1BRU87QUFBRTtBQUNMLHlCQUFTLEVBQVQ7QUFDQSx1QkFBTyxJQUFQLEdBQWMsS0FBSyxpQkFBTCxFQUFkO0FBQ0g7QUFDRCxnQkFBSSxTQUFTLG9CQUFVLElBQVYsRUFBZ0IsTUFBaEIsQ0FBYjtBQUNBLGlCQUFLLE1BQUwsQ0FBWSxHQUFaLENBQWdCLE9BQU8sSUFBdkIsRUFBNkIsTUFBN0I7QUFDQSxtQkFBTyxNQUFQO0FBQ0g7O0FBRUQ7Ozs7Ozs7cUNBSWEsSyxFQUFPO0FBQ2hCLGdCQUFJLE9BQU8sS0FBUCxLQUFpQixRQUFyQixFQUErQjtBQUMzQix3QkFBUSxLQUFLLFFBQUwsQ0FBYyxLQUFkLENBQVI7QUFDSDtBQUNELGtCQUFNLE9BQU47QUFDSDs7QUFFRDs7Ozs7QUFLQTtBQUNBO0FBQ0E7QUFDQTs7OztvQ0FDWSxLLEVBQU8sSyxFQUFPO0FBQ3RCLGdCQUFJLFFBQVEsS0FBSyxRQUFMLENBQWMsS0FBZCxDQUFaO0FBQ0EsZ0JBQUksQ0FBQyxLQUFMLEVBQVk7QUFDUixzQkFBTSxvREFBdUIsS0FBdkIsMEJBQU47QUFDSDtBQUNELGdCQUFJLFVBQVUsS0FBZCxFQUFxQjtBQUNqQixxQkFBSyxrQkFBTCxDQUF3QixLQUF4QixFQUErQix1QkFBVSxLQUFWLE1BQXFCLHVCQUFVLEtBQVYsQ0FBcEQ7QUFDQSxzQkFBTSxTQUFOLEdBQWtCLEtBQWxCO0FBQ0Esb0JBQUksS0FBSyxXQUFMLEtBQXFCLEtBQXpCLEVBQWdDO0FBQzVCLHlCQUFLLFdBQUwsR0FBbUIsS0FBbkI7QUFDSDtBQUNELHFCQUFLLFNBQUwsR0FBaUIsTUFBakIsQ0FBd0IsS0FBeEI7QUFDQSxxQkFBSyxTQUFMLEdBQWlCLEdBQWpCLENBQXFCLEtBQXJCLEVBQTRCLEtBQTVCO0FBQ0EscUJBQUssTUFBTCxDQUFZLFNBQVosQ0FBc0IsS0FBdEIsRUFBNkIsS0FBN0I7QUFDSCxhQVRELE1BU087QUFDSCxxQkFBSyxNQUFMLENBQVksZUFBWixDQUE0QixLQUE1QixFQUFtQyxLQUFuQztBQUNIO0FBQ0o7O0FBRUQ7Ozs7Ozs7OzsyQ0FNbUIsSSxFQUFNLE8sRUFBUztBQUM5QixnQkFBSSxDQUFDLElBQUwsRUFBVztBQUNQLHNCQUFNLDJCQUFlLFlBQWYsQ0FBTjtBQUNIO0FBQ0Q7QUFDQSxnQkFBSSxPQUFPLElBQVAsQ0FBWSxJQUFaLENBQUosRUFBdUI7QUFDbkIsc0JBQU0sb0RBQXVCLElBQXZCLDRDQUFOO0FBQ0g7QUFDRCxnQkFBSSxLQUFLLFlBQUwsQ0FBa0IsSUFBbEIsRUFBd0IsT0FBeEIsQ0FBSixFQUFzQztBQUNsQyxzQkFBTSxvREFBdUIsSUFBdkIsMEJBQU47QUFDSDtBQUNKOzs7dUNBRWM7QUFDWCxnQkFBSSxTQUFTLEVBQWI7QUFEVztBQUFBO0FBQUE7O0FBQUE7QUFFWCxxQ0FBcUIsS0FBSyxTQUFMLEdBQWlCLEtBQWpCLEVBQXJCLDhIQUErQztBQUFBO0FBQUEsd0JBQXBDLEtBQW9DOztBQUMzQyw2QkFBUyxPQUFPLElBQVAsQ0FBWSxNQUFNLFlBQU4sRUFBWixDQUFUO0FBQ0g7QUFKVTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBOztBQUtYLG1CQUFPO0FBQ0gsNkJBQWEsS0FBSyxXQURmO0FBRUgsd0JBQVE7QUFGTCxhQUFQO0FBSUg7Ozs7OztrQkFJVSxROzs7Ozs7Ozs7OztBQzdPZjs7QUFFQTs7O0FBR0EsU0FBUyxXQUFULENBQXFCLFdBQXJCLEVBQWtDO0FBQzlCLFNBQUssV0FBTCxHQUFtQixXQUFuQjtBQUNBOzs7O0FBSUEsU0FBSyxTQUFMLEdBQWlCLElBQUksR0FBSixFQUFqQjtBQUNBLFNBQUssS0FBTDtBQUNIOztrQkFFYyxXOzs7QUFFZixZQUFZLFNBQVosQ0FBc0IsUUFBdEIsR0FBaUMsVUFBVSxHQUFWLEVBQWUsTUFBZixFQUF1QixPQUF2QixFQUFnQztBQUM3RCxTQUFLLFNBQUwsQ0FBZSxHQUFmLENBQW1CLEdBQW5CLEVBQXdCO0FBQ3BCLGdCQUFRLE1BRFk7QUFFcEIsaUJBQVM7QUFGVyxLQUF4QjtBQUlILENBTEQ7O0FBT0E7OztBQUdBLFlBQVksU0FBWixDQUFzQixxQkFBdEIsR0FBOEMsWUFBWTtBQUFBOztBQUN0RCxRQUFJLENBQUMsS0FBSyxjQUFWLEVBQTBCO0FBQ3RCLGFBQUssY0FBTCxHQUFzQixFQUF0QjtBQUNBLGFBQUssU0FBTCxDQUFlLE9BQWYsQ0FBdUIsZ0JBQVcsR0FBWDtBQUFBLGdCQUFFLE1BQUYsUUFBRSxNQUFGO0FBQUEsbUJBQW1CLE1BQUssY0FBTCxDQUFvQixHQUFwQixJQUEyQixNQUE5QztBQUFBLFNBQXZCO0FBQ0g7QUFDRCxXQUFPLEtBQUssY0FBWjtBQUNILENBTkQ7O0FBU0E7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBaUJBLFlBQVksU0FBWixDQUFzQixLQUF0QixHQUE4QixZQUFZO0FBQ3RDLFNBQUssUUFBTCxDQUFjLFdBQWQsRUFBMkI7QUFDdkIsY0FBTSxRQURpQjtBQUV2QixrQkFBVSxvQkFBWTtBQUNsQjtBQUNBO0FBQ0EsbUJBQU8sS0FBUDtBQUNIO0FBTnNCLEtBQTNCOztBQVNBLFNBQUssUUFBTCxDQUFjLFdBQWQsRUFBMkI7QUFDdkIsY0FBTTtBQURpQixLQUEzQjs7QUFJQSxTQUFLLFFBQUwsQ0FBYyxPQUFkLEVBQXVCLFdBQXZCOztBQUVBLFNBQUssUUFBTCxDQUFjLFVBQWQsRUFBMEI7QUFDdEIsY0FBTTtBQURnQixLQUExQjs7QUFJQSxTQUFLLFFBQUwsQ0FBYyxXQUFkLEVBQTJCO0FBQ3ZCLGNBQU07QUFEaUIsS0FBM0I7O0FBSUEsU0FBSyxRQUFMLENBQWMsT0FBZCxFQUF1QixXQUF2Qjs7QUFFQTtBQUNBLFNBQUssUUFBTCxDQUFjLFlBQWQsRUFBNEI7QUFDeEIsY0FBTSxPQURrQjtBQUV4QixrQkFBVSxvQkFBWTtBQUNsQjtBQUNBLG1CQUFPLEtBQVA7QUFDSDtBQUx1QixLQUE1QjtBQU9BLFNBQUssUUFBTCxDQUFjLFlBQWQsRUFBNEI7QUFDeEIsY0FBTTtBQURrQixLQUE1Qjs7QUFJQSxTQUFLLFFBQUwsQ0FBYyxPQUFkLEVBQXVCLFdBQXZCOztBQUdBLFFBQUksZUFBZSxTQUFmLFlBQWUsQ0FBVSxJQUFWLEVBQWdCO0FBQy9CLFlBQUksU0FBUyxLQUFLLFdBQUwsR0FBbUIsVUFBaEM7QUFDQSxZQUFJLFVBQVUsT0FBTyxNQUFyQixFQUE2QjtBQUN6QixpQkFBSyxJQUFJLElBQUksQ0FBYixFQUFnQixJQUFJLE9BQU8sTUFBM0IsRUFBbUMsRUFBRSxDQUFyQyxFQUF3QztBQUFBLGdDQUNELE9BQU8sQ0FBUCxDQURDO0FBQUEsb0JBQy9CLEdBRCtCLGFBQy9CLEdBRCtCO0FBQUEsb0JBQzFCLEdBRDBCLGFBQzFCLEdBRDBCO0FBQUEsb0JBQ3JCLE9BRHFCLGFBQ3JCLE9BRHFCO0FBQUEsb0JBQ1osT0FEWSxhQUNaLE9BRFk7O0FBRXBDLG9CQUFJLG1CQUFXLElBQVgsRUFDSSxDQUFDLEdBQUQsRUFBTSxHQUFOLEVBQVcsTUFBTSxPQUFOLEdBQWdCLENBQTNCLEVBQThCLE1BQU0sT0FBTixHQUFnQixDQUE5QyxDQURKLEVBRUksS0FBSyxXQUFMLEVBRkosQ0FBSixFQUU2QjtBQUN6QiwyQkFBTyxLQUFQO0FBQ0g7QUFDSjtBQUNKO0FBQ0QsZUFBTyxJQUFQO0FBQ0gsS0FiRDs7QUFlQSxTQUFLLFFBQUwsQ0FBYyxlQUFkLEVBQStCO0FBQzNCLGNBQU0sT0FEcUI7QUFFM0Isa0JBQVUsb0JBQVk7QUFBQSwrQkFDSyxLQUFLLFdBQUwsRUFETDtBQUFBO0FBQUEsZ0JBQ2IsRUFEYTtBQUFBLGdCQUNULEVBRFM7QUFBQSxnQkFDTCxFQURLO0FBQUEsZ0JBQ0QsRUFEQzs7QUFFbEIsZ0JBQUksT0FBTyxFQUFQLElBQWEsT0FBTyxFQUF4QixFQUE0QjtBQUN4Qix1QkFBTyxJQUFQO0FBQ0g7QUFDRCxtQkFBTyxDQUFDLGFBQWEsSUFBYixDQUFrQixJQUFsQixFQUF3QixTQUF4QixDQUFSO0FBQ0g7QUFSMEIsS0FBL0IsRUFTRyxVQUFVLEtBQVYsRUFBaUIsS0FBakIsRUFBd0IsR0FBeEIsRUFBNkI7QUFDNUIsY0FBTSxVQUFOLENBQ0ksTUFBTSxHQURWLEVBRUksTUFBTSxHQUZWLEVBR0ksSUFBSSxHQUFKLEdBQVUsTUFBTSxHQUFoQixHQUFzQixDQUgxQixFQUlJLElBQUksR0FBSixHQUFVLE1BQU0sR0FBaEIsR0FBc0IsQ0FKMUI7QUFNSCxLQWhCRDs7QUFtQkEsU0FBSyxRQUFMLENBQWMsc0JBQWQsRUFBc0M7QUFDbEMsY0FBTSxTQUQ0QjtBQUVsQyxrQkFBVSxvQkFBWTtBQUNsQixtQkFBTyxhQUFhLElBQWIsQ0FBa0IsSUFBbEIsRUFBd0IsVUFBeEIsQ0FBUDtBQUNIO0FBSmlDLEtBQXRDLEVBS0csVUFBVSxLQUFWLEVBQWlCLEtBQWpCLEVBQXdCLEdBQXhCLEVBQTZCO0FBQzVCLGNBQU0sWUFBTixDQUNJLE1BQU0sR0FEVixFQUVJLE1BQU0sR0FGVixFQUdJLElBQUksR0FBSixHQUFVLE1BQU0sR0FBaEIsR0FBc0IsQ0FIMUIsRUFJSSxJQUFJLEdBQUosR0FBVSxNQUFNLEdBQWhCLEdBQXNCLENBSjFCO0FBTUgsS0FaRDtBQWNILENBekZEOzs7Ozs7Ozs7QUNyREE7O0FBQ0E7O0FBQ0E7O0FBQ0E7O0FBQ0E7O0FBQ0E7O0FBRUEsSUFBTSxnQkFBZ0IsU0FBdEI7QUFDQSxJQUFNLGFBQWEsVUFBbkI7QUFDQSxJQUFNLGdCQUFnQixrQkFBdEI7QUFDQSxJQUFNLGdCQUFnQixrQkFBdEI7QUFDQSxJQUFNLFlBQVksY0FBbEI7QUFDQSxJQUFNLFdBQVcsYUFBakI7QUFDQSxJQUFNLFdBQVcsYUFBakI7QUFDQSxJQUFNLFdBQVcsYUFBakI7O0FBRUEsSUFBTSxXQUFXLHlCQUFlLEtBQWYsQ0FBcUIsUUFBdEM7QUFDQSxJQUFNLFNBQVMseUJBQWUsS0FBZixDQUFxQixTQUFwQzs7QUFFQTs7Ozs7O0FBTUEsU0FBUyxJQUFULENBQWMsUUFBZCxFQUF3QjtBQUNwQixTQUFLLFFBQUwsR0FBZ0IsUUFBaEI7QUFDQSxTQUFLLE9BQUwsR0FBZSx1Q0FBZjtBQUNBLFNBQUssWUFBTCxHQUFvQix1Q0FBcEI7QUFDQSxTQUFLLFVBQUwsR0FBa0IsSUFBSSxHQUFKLEVBQWxCO0FBQ0EsU0FBSyxXQUFMLEdBQW1CLFNBQVMsV0FBVCxDQUFxQixjQUFyQixFQUFuQjs7QUFFQSxTQUFLLE9BQUw7QUFDQSxTQUFLLE9BQUw7QUFDQSxTQUFLLE1BQUw7QUFDSDs7QUFFRCxLQUFLLFNBQUwsQ0FBZSxNQUFmLEdBQXdCLFlBQVk7QUFDaEMsU0FBSyxXQUFMLENBQWlCLFdBQWpCLENBQTZCLEtBQUssSUFBbEM7QUFDSCxDQUZEOztBQUlBOzs7QUFHQSxLQUFLLFNBQUwsQ0FBZSxPQUFmLEdBQXlCLFlBQVk7QUFDakMsU0FBSyxJQUFMLEdBQVksU0FBUyxhQUFULENBQXVCLEtBQXZCLENBQVo7QUFDQSxTQUFLLE9BQUwsR0FBZSxTQUFTLGFBQVQsQ0FBdUIsS0FBdkIsQ0FBZjtBQUNBLFNBQUssR0FBTCxHQUFXLFNBQVMsYUFBVCxDQUF1QixLQUF2QixDQUFYO0FBQ0EsU0FBSyxFQUFMLEdBQVUsU0FBUyxhQUFULENBQXVCLElBQXZCLENBQVY7O0FBRUEsU0FBSyxJQUFMLENBQVUsU0FBVixDQUFvQixHQUFwQixDQUF3QixVQUF4QjtBQUNBLFNBQUssSUFBTCxDQUFVLEVBQVYsR0FBZSxLQUFLLFFBQUwsQ0FBYyxLQUFkLEVBQWY7QUFDQSxTQUFLLE9BQUwsQ0FBYSxTQUFiLENBQXVCLEdBQXZCLENBQTJCLGFBQTNCO0FBQ0EsU0FBSyxHQUFMLENBQVMsU0FBVCxDQUFtQixHQUFuQixDQUF1QixTQUF2QjtBQUNBLFNBQUssRUFBTCxDQUFRLFNBQVIsQ0FBa0IsR0FBbEIsQ0FBc0IsUUFBdEI7O0FBRUEsU0FBSyxJQUFMLENBQVUsV0FBVixDQUFzQixLQUFLLE9BQTNCO0FBQ0EsU0FBSyxJQUFMLENBQVUsV0FBVixDQUFzQixLQUFLLEdBQTNCO0FBQ0EsU0FBSyxHQUFMLENBQVMsV0FBVCxDQUFxQixLQUFLLEVBQTFCOztBQUVBO0FBQ0EsU0FBSyxlQUFMO0FBQ0gsQ0FsQkQ7O0FBb0JBOzs7QUFHQSxLQUFLLFNBQUwsQ0FBZSxPQUFmLEdBQXlCLFlBQVk7QUFDakMsUUFBSSxTQUFTLEtBQUssUUFBTCxDQUFjLFdBQWQsQ0FBMEIsY0FBMUIsRUFBYjtBQUNBLFNBQUssS0FBTCxHQUFhLEtBQUssUUFBTCxDQUFjLEtBQWQsSUFBdUIsMkJBQVcsTUFBWCxFQUFtQixLQUFuQixDQUFwQztBQUNBLFNBQUssTUFBTCxHQUFjLEtBQUssUUFBTCxDQUFjLE1BQWQsSUFBd0IsNEJBQVksTUFBWixFQUFvQixLQUFwQixDQUF0Qzs7QUFFQSxTQUFLLElBQUwsQ0FBVSxLQUFWLENBQWdCLEtBQWhCLEdBQXdCLEtBQUssS0FBTCxHQUFhLElBQXJDO0FBQ0EsU0FBSyxJQUFMLENBQVUsS0FBVixDQUFnQixNQUFoQixHQUF5QixLQUFLLE1BQUwsR0FBYyxJQUF2QztBQUNILENBUEQ7O0FBVUE7Ozs7QUFJQSxLQUFLLFNBQUwsQ0FBZSxTQUFmLEdBQTJCLFVBQVUsU0FBVixFQUFxQjtBQUM1QyxRQUFJLE9BQU8sSUFBWDtBQUNBLFFBQUksS0FBSyxTQUFTLGFBQVQsQ0FBdUIsSUFBdkIsQ0FBVDs7QUFFQSxPQUFHLFNBQUgscUNBQStDLFNBQS9DO0FBQ0EsT0FBRyxTQUFILENBQWEsR0FBYixDQUFpQixRQUFqQjtBQUNBLE9BQUcsWUFBSCxDQUFnQixZQUFoQixFQUE4QixTQUE5Qjs7QUFFQSxRQUFJLFlBQVksS0FBSyxJQUFMLENBQVUsYUFBVixPQUE0QixhQUE1QixTQUE2QyxRQUE3QyxDQUFoQjtBQUNBLFFBQUksU0FBSixFQUFlO0FBQ1gsb0NBQVksU0FBWixFQUF1QixFQUF2QjtBQUNILEtBRkQsTUFFTztBQUNILGFBQUssRUFBTCxDQUFRLFdBQVIsQ0FBb0IsRUFBcEI7QUFDSDtBQUNELFNBQUssT0FBTCxDQUFhLEdBQWIsQ0FBaUIsU0FBakIsRUFBNEIsRUFBNUI7O0FBRUEsT0FBRyxnQkFBSCxDQUFvQixPQUFwQixFQUE2QixVQUFVLEtBQVYsRUFBaUI7QUFDMUMsWUFBSSxZQUFZLEtBQUssT0FBTCxDQUFhLEtBQTdCO0FBQ0EsWUFBSSxRQUFRLEtBQUssUUFBTCxDQUFjLFFBQWQsQ0FBdUIsU0FBdkIsQ0FBWjtBQUNBLGNBQU0sTUFBTjtBQUNBLG1EQUF5QixLQUF6QjtBQUNILEtBTEQ7O0FBT0EsT0FBRyxnQkFBSCxDQUFvQixVQUFwQixFQUFnQyxVQUFVLEtBQVYsRUFBaUI7QUFDN0MsYUFBSyxjQUFMLENBQW9CLElBQXBCLENBQXlCLElBQXpCLEVBQStCLElBQS9CO0FBQ0EsbURBQXlCLEtBQXpCO0FBQ0gsS0FIRDs7QUFLQSxTQUFLLGFBQUwsQ0FBbUIsU0FBbkI7QUFDSCxDQTdCRDs7QUFnQ0EsS0FBSyxTQUFMLENBQWUsZUFBZixHQUFpQyxZQUFZO0FBQ3pDLFFBQUksT0FBTyxJQUFYO0FBQ0EsUUFBSSxLQUFLLFNBQVMsYUFBVCxDQUF1QixJQUF2QixDQUFUOztBQUVBLE9BQUcsU0FBSDtBQUNBLE9BQUcsU0FBSCxDQUFhLEdBQWIsQ0FBaUIsUUFBakI7QUFDQSxPQUFHLFNBQUgsQ0FBYSxHQUFiLENBQWlCLFNBQWpCOztBQUVBLFNBQUssRUFBTCxDQUFRLFdBQVIsQ0FBb0IsRUFBcEI7O0FBRUEsT0FBRyxnQkFBSCxDQUFvQixPQUFwQixFQUE2QixVQUFVLEtBQVYsRUFBaUI7QUFDMUM7QUFDQSxZQUFJLFdBQVcsS0FBSyxRQUFMLENBQWMsV0FBZCxFQUFmO0FBQ0EsaUJBQVMsTUFBVDtBQUNILEtBSkQ7QUFLSCxDQWZEOztBQWlCQTs7OztBQUlBLEtBQUssU0FBTCxDQUFlLGNBQWYsR0FBZ0MsVUFBVSxFQUFWLEVBQWM7QUFDMUMsUUFBSSxPQUFPLElBQVg7QUFDQSxRQUFJLFlBQVksR0FBRyxPQUFILENBQVcsS0FBM0I7QUFDQSxRQUFJLE9BQU8sR0FBRyxvQkFBSCxDQUF3QixNQUF4QixFQUFnQyxDQUFoQyxDQUFYO0FBQ0EsUUFBSSxRQUFRLFNBQVMsYUFBVCxDQUF1QixPQUF2QixDQUFaOztBQUVBLFVBQU0sWUFBTixDQUFtQixNQUFuQixFQUEyQixNQUEzQjtBQUNBLFVBQU0sS0FBTixHQUFjLFNBQWQ7QUFDQSxVQUFNLFNBQU4sQ0FBZ0IsR0FBaEIsQ0FBb0IsV0FBcEI7QUFDQSxVQUFNLEtBQU4sQ0FBWSxLQUFaLEdBQW9CLDJCQUFXLElBQVgsSUFBbUIsRUFBbkIsR0FBd0IsSUFBNUMsQ0FUMEMsQ0FTUTs7QUFFbEQsVUFBTSxnQkFBTixDQUF1QixNQUF2QixFQUErQixZQUFZO0FBQ3ZDLFlBQUksUUFBUSxLQUFLLGFBQUwsQ0FBbUIsU0FBbkIsRUFBOEIsS0FBSyxLQUFuQyxDQUFaO0FBQ0EsWUFBSSxVQUFVLElBQWQsRUFBb0I7QUFDaEIsaUJBQUssUUFBTCxDQUFjLFdBQWQsQ0FBMEIsU0FBMUIsRUFBcUMsS0FBSyxLQUExQztBQUNILFNBRkQsTUFFTztBQUNILGtCQUFNLEtBQU4sRUFERyxDQUNXO0FBQ2QsaUJBQUssZUFBTCxDQUFxQixTQUFyQixFQUFnQyxLQUFLLEtBQXJDO0FBQ0g7QUFDSixLQVJEO0FBU0EsVUFBTSxnQkFBTixDQUF1QixVQUF2QixFQUFtQyxVQUFVLEtBQVYsRUFBaUI7QUFDaEQsWUFBSSxNQUFNLE9BQU4sS0FBa0IsRUFBdEIsRUFBMEI7QUFDdEIsaUJBQUssSUFBTDtBQUNIO0FBQ0osS0FKRDs7QUFNQSwwQkFBTSxJQUFOO0FBQ0EsU0FBSyxXQUFMLENBQWlCLEtBQWpCO0FBQ0EsVUFBTSxNQUFOO0FBQ0gsQ0E3QkQ7O0FBK0JBLEtBQUssU0FBTCxDQUFlLGFBQWYsR0FBK0IsVUFBVSxLQUFWLEVBQWlCLEtBQWpCLEVBQXdCO0FBQ25ELFFBQUksMEJBQWEsS0FBYixDQUFKLEVBQXlCO0FBQ3JCLGVBQU8sWUFBTSxFQUFiO0FBQ0g7QUFDRCxRQUFJLE9BQU8sSUFBUCxDQUFZLEtBQVosQ0FBSixFQUF3QjtBQUNwQixlQUFPLFlBQU0sRUFBYjtBQUNIO0FBQ0Q7QUFDQSxRQUFJLHVCQUFVLEtBQVYsTUFBcUIsdUJBQVUsS0FBVixDQUFyQixJQUF5QyxLQUFLLFFBQUwsQ0FBYyxZQUFkLENBQTJCLEtBQTNCLENBQTdDLEVBQWdGO0FBQzVFLGVBQU8sWUFBTSxFQUFiO0FBQ0g7QUFDRCxXQUFPLElBQVA7QUFDSCxDQVpEOztBQWNBO0FBQ0EsS0FBSyxTQUFMLENBQWUsU0FBZixHQUEyQixVQUFVLEtBQVYsRUFBaUIsS0FBakIsRUFBd0I7QUFDL0MsUUFBSSxLQUFLLEtBQUssT0FBTCxDQUFhLEdBQWIsQ0FBaUIsS0FBakIsQ0FBVDtBQUNBLFFBQUksT0FBTyxHQUFHLG9CQUFILENBQXdCLE1BQXhCLEVBQWdDLENBQWhDLENBQVg7QUFDQSw4QkFBVSxJQUFWLEVBQWdCLEtBQWhCO0FBQ0EsT0FBRyxPQUFILENBQVcsS0FBWCxHQUFtQixLQUFuQjtBQUNBLFNBQUssT0FBTCxDQUFhLEdBQWIsQ0FBaUIsS0FBakIsRUFBd0IsRUFBeEI7QUFDQSxRQUFJLFVBQVUsS0FBSyxZQUFMLENBQWtCLEdBQWxCLENBQXNCLEtBQXRCLENBQWQ7QUFDQSxZQUFRLE9BQVIsQ0FBZ0IsS0FBaEIsR0FBd0IsS0FBeEI7QUFDQSxTQUFLLFlBQUwsQ0FBa0IsTUFBbEIsQ0FBeUIsS0FBekI7QUFDQSxTQUFLLFlBQUwsQ0FBa0IsR0FBbEIsQ0FBc0IsS0FBdEIsRUFBNkIsT0FBN0I7O0FBRUEsUUFBSSxXQUFXLEtBQUssUUFBTCxDQUFjLFFBQWQsQ0FBdUIsS0FBdkIsQ0FBZjtBQUNBLGFBQVMsSUFBVCxDQUFjLGFBQWQsRUFBNkIsUUFBN0IsRUFBdUMsS0FBdkMsRUFBOEMsS0FBOUM7QUFDSCxDQWJEOztBQWVBO0FBQ0EsS0FBSyxTQUFMLENBQWUsZUFBZixHQUFpQyxVQUFVLEtBQVYsRUFBaUIsS0FBakIsRUFBd0I7QUFDckQsUUFBSSxLQUFLLEtBQUssT0FBTCxDQUFhLEdBQWIsQ0FBaUIsS0FBakIsQ0FBVDtBQUNBLFFBQUksT0FBTyxHQUFHLG9CQUFILENBQXdCLE1BQXhCLEVBQWdDLENBQWhDLENBQVg7QUFDQSw4QkFBVSxJQUFWLEVBQWdCLEtBQWhCOztBQUVBLFFBQUksV0FBVyxLQUFLLFFBQUwsQ0FBYyxRQUFkLENBQXVCLEtBQXZCLENBQWY7QUFDQSxhQUFTLElBQVQsQ0FBYyxtQkFBZCxFQUFtQyxRQUFuQyxFQUE2QyxLQUE3QyxFQUFvRCxLQUFwRDtBQUNILENBUEQ7O0FBVUE7Ozs7QUFJQSxLQUFLLFNBQUwsQ0FBZSxhQUFmLEdBQStCLFVBQVUsU0FBVixFQUFxQjtBQUNoRCxRQUFJLFVBQVUsU0FBUyxhQUFULENBQXVCLFNBQXZCLENBQWQ7QUFDQSxRQUFJLEtBQUssU0FBUyxhQUFULENBQXVCLEtBQXZCLENBQVQ7QUFDQSxRQUFJLE1BQU0sU0FBUyxhQUFULENBQXVCLEtBQXZCLENBQVY7O0FBRUEsWUFBUSxZQUFSLENBQXFCLFlBQXJCLEVBQW1DLFNBQW5DO0FBQ0EsWUFBUSxXQUFSLENBQW9CLEVBQXBCO0FBQ0EsWUFBUSxXQUFSLENBQW9CLEdBQXBCO0FBQ0EsWUFBUSxTQUFSLENBQWtCLEdBQWxCLENBQXNCLGFBQXRCO0FBQ0EsZ0JBQVksUUFBUSxTQUFSLENBQWtCLEdBQWxCLENBQXNCLG1CQUF0QixDQUFaOztBQUVBLFNBQUssT0FBTCxDQUFhLFdBQWIsQ0FBeUIsT0FBekI7QUFDQSxTQUFLLFlBQUwsQ0FBa0IsR0FBbEIsQ0FBc0IsU0FBdEIsRUFBaUMsT0FBakM7O0FBRUEsU0FBSyxRQUFMLENBQWMsRUFBZCxFQUFrQixTQUFsQjtBQUNBLFNBQUssV0FBTCxDQUFpQixHQUFqQixFQUFzQixTQUF0QjtBQUNILENBaEJEOztBQWtCQTs7OztBQUlBLEtBQUssU0FBTCxDQUFlLFdBQWYsR0FBNkIsVUFBVSxTQUFWLEVBQXFCO0FBQzlDLFFBQUksVUFBVSxLQUFLLFlBQUwsQ0FBa0IsR0FBbEIsQ0FBc0IsU0FBdEIsQ0FBZDtBQUNBLFlBQVEsS0FBUixDQUFjLE9BQWQsR0FBd0IsTUFBeEI7QUFDSCxDQUhEOztBQU1BOzs7Ozs7QUFNQSxLQUFLLFNBQUwsQ0FBZSxRQUFmLEdBQTBCLFVBQVUsRUFBVixFQUFjLFNBQWQsRUFBeUI7QUFDL0MsT0FBRyxTQUFILENBQWEsR0FBYixDQUFpQixRQUFqQjtBQUNBLE9BQUcsU0FBSCxDQUFhLEdBQWIsQ0FBb0IsUUFBcEIsU0FBZ0MsU0FBaEM7QUFDSCxDQUhEOztBQUtBOzs7Ozs7Ozs7QUFTQSxLQUFLLFNBQUwsQ0FBZSxXQUFmLEdBQTZCLFVBQVUsR0FBVixFQUFlLFNBQWYsRUFBMEI7QUFBQTs7QUFDbkQsU0FBSyxVQUFMLENBQWdCLEdBQWhCLENBQW9CLFNBQXBCLEVBQStCO0FBQzNCLG1CQUFXLEdBRGdCO0FBRTNCLGVBQU8sS0FBSyxLQUZlO0FBRzNCLGdCQUFRO0FBQUEsbUJBQU0sTUFBSyxNQUFMLEdBQWMsNEJBQVksTUFBSyxHQUFqQixDQUFwQjtBQUFBO0FBSG1CLEtBQS9CO0FBS0gsQ0FORDs7QUFRQTs7OztBQUlBLEtBQUssU0FBTCxDQUFlLFNBQWYsR0FBMkIsVUFBVSxTQUFWLEVBQXFCO0FBQzVDLFFBQUksU0FBUyxLQUFLLElBQUwsQ0FBVSxhQUFWLE9BQTRCLGFBQTVCLFNBQTZDLFFBQTdDLENBQWI7QUFDQSxjQUFVLE9BQU8sU0FBUCxDQUFpQixNQUFqQixDQUF3QixhQUF4QixDQUFWO0FBQ0EsUUFBSSxLQUFLLEtBQUssT0FBTCxDQUFhLEdBQWIsQ0FBaUIsU0FBakIsQ0FBVDtBQUNBLE9BQUcsU0FBSCxDQUFhLEdBQWIsQ0FBaUIsYUFBakI7QUFDQSxTQUFLLGFBQUwsQ0FBbUIsU0FBbkI7QUFDSCxDQU5EOztBQVNBOzs7O0FBSUEsS0FBSyxTQUFMLENBQWUsYUFBZixHQUErQixVQUFVLFNBQVYsRUFBcUI7QUFDaEQsUUFBSSxVQUFVLEtBQUssWUFBTCxDQUFrQixHQUFsQixDQUFzQixTQUF0QixDQUFkO0FBQ0EsUUFBSSxTQUFTLEtBQUssb0JBQWxCO0FBQ0EsUUFBSSxNQUFKLEVBQVk7QUFDUixvQkFBWSxPQUFPLFNBQVAsQ0FBaUIsTUFBakIsQ0FBd0IsUUFBeEIsQ0FBWjtBQUNBLGVBQU8sS0FBUCxDQUFhLE9BQWIsR0FBdUIsTUFBdkI7QUFDSDtBQUNELFlBQVEsS0FBUixDQUFjLE9BQWQsR0FBd0IsT0FBeEI7QUFDQSxnQkFBWSxRQUFRLFNBQVIsQ0FBa0IsR0FBbEIsQ0FBc0IsUUFBdEIsQ0FBWjs7QUFFQSxTQUFLLG9CQUFMLEdBQTRCLE9BQTVCO0FBQ0gsQ0FYRDs7a0JBY2UsSTs7Ozs7Ozs7QUN2U1IsSUFBTSx3QkFBUTs7QUFFakIsc0VBRmlCO0FBR2pCLGdHQUhpQjtBQUlqQjs7QUFKaUIsQ0FBZDs7Ozs7Ozs7Ozs7O1FDeUNTLGMsR0FBQSxjO1FBU0EsYyxHQUFBLGM7UUFLQSxTLEdBQUEsUztRQVlBLGEsR0FBQSxhOztBQXJFaEI7Ozs7QUFFQSxJQUFJLFdBQVcsSUFBSSxHQUFKLEVBQWY7O0FBRUE7Ozs7SUFHTSxNOztBQUVGOzs7O0FBSUEsb0JBQVksV0FBWixFQUF5QjtBQUFBOztBQUNyQjs7O0FBR0EsYUFBSyxXQUFMLEdBQW1CLFdBQW5CO0FBQ0EsYUFBSyxPQUFMLEdBQWUsS0FBZjtBQUNIOztBQUVEOzs7Ozt3Q0FDZ0IsSSxFQUFNO0FBQUE7O0FBQ2xCLGdCQUFJLFFBQVEsS0FBSyxXQUFMLENBQWlCLFdBQWpCLENBQTZCLFNBQXpDO0FBQ0Esa0JBQU0sSUFBTixJQUFjO0FBQUEsdUJBQU0sTUFBSyxJQUFMLEdBQU47QUFBQSxhQUFkO0FBQ0g7OzttQ0FFVTtBQUNQLG1CQUFPLEtBQVA7QUFDSDs7O2lDQUVRLENBRVI7OztrQ0FFUyxDQUVUOzs7Ozs7UUFJRyxNLEdBQUEsTTtBQUVELFNBQVMsY0FBVCxDQUF3QixDQUF4QixFQUEyQjtBQUM5QixRQUFJLENBQUMsRUFBRSxNQUFQLEVBQWU7QUFDWCxjQUFNLDZCQUFnQixtQkFBaEIsQ0FBTjtBQUNIO0FBQ0QsUUFBSSxDQUFDLEVBQUUsT0FBUCxFQUFnQjtBQUNaLGNBQU0sNkJBQWdCLG9CQUFoQixDQUFOO0FBQ0g7QUFDSjs7QUFFTSxTQUFTLGNBQVQsQ0FBd0IsSUFBeEIsRUFBOEIsTUFBOUIsRUFBc0M7QUFDekMsYUFBUyxHQUFULENBQWEsSUFBYixFQUFtQixNQUFuQjtBQUNBLFdBQU8sU0FBUCxDQUFpQixRQUFqQixHQUE0QixJQUE1QjtBQUNIOztBQUVNLFNBQVMsU0FBVCxDQUFtQixJQUFuQixFQUF5QjtBQUM1QixRQUFJLElBQUksU0FBUyxHQUFULENBQWEsSUFBYixDQUFSO0FBQ0EsUUFBSSxDQUFDLENBQUwsRUFBUTtBQUNKLGNBQU0sNkJBQWdCLFdBQVcsSUFBM0IsQ0FBTjtBQUNIO0FBQ0QsV0FBTyxDQUFQO0FBQ0g7O0FBRUQ7Ozs7QUFJTyxTQUFTLGFBQVQsR0FBeUI7QUFDNUIsV0FBTyxRQUFQO0FBQ0g7Ozs7Ozs7O1FDckVlLFcsR0FBQSxXOztBQUZoQjs7QUFFTyxTQUFTLFdBQVQsQ0FBcUIsS0FBckIsRUFBNEI7QUFDL0IsU0FBSyxJQUFMLEdBQVksYUFBWjtBQUNBLFNBQUssT0FBTCxHQUFlLEtBQWY7QUFDSDtBQUNELFlBQVksU0FBWixHQUF3Qix3Q0FBeEI7QUFDQSxZQUFZLFNBQVosQ0FBc0IsV0FBdEIsR0FBb0MsV0FBcEM7Ozs7Ozs7O2tCQ1B3QixRO0FBQVQsU0FBUyxRQUFULENBQWtCLE9BQWxCLEVBQTJCOztBQUV0Qzs7QUFFQSxRQUFJLENBQUMsUUFBUSxNQUFSLENBQWUsS0FBcEIsRUFBMkI7QUFDdkI7QUFDQSxnQkFBUSxNQUFSLENBQWUsS0FBZixHQUF1QixVQUFVLENBQVYsRUFBYTtBQUNoQyxtQkFBTyxNQUFNLENBQWI7QUFDSCxTQUZEO0FBR0g7QUFHSjs7Ozs7Ozs7QUNaRDs7O0FBR0EsSUFBSSxpQkFBaUI7QUFDakIsY0FBVSxZQURPO0FBRWpCLHVCQUFtQixXQUZGOztBQUlqQixXQUFPOztBQUVIOzs7QUFHQSxvQkFBWSxLQUxUOztBQU9IOzs7Ozs7Ozs7Ozs7Ozs7O0FBZ0JBLG1CQUFXLGtCQXZCUjs7QUF5Qkgsa0JBQVU7QUF6QlA7O0FBSlUsQ0FBckI7O0FBbUNBOzs7QUFHQSxJQUFJLGtCQUFrQjs7QUFFbEIsY0FBVTtBQUNOLHFCQUFhLE1BRFA7QUFFTixnQkFBUSxDQUFDO0FBQ0wsa0JBQU07QUFERCxTQUFEO0FBRkYsS0FGUTs7QUFTbEIsZ0JBQVk7O0FBVE0sQ0FBdEI7O1FBYVEsYyxHQUFBLGM7UUFBZ0IsZSxHQUFBLGU7Ozs7Ozs7O0FDdER4Qjs7Ozs7O0FBTUEsU0FBUyxPQUFULEdBQW1CO0FBQ2Y7QUFDSDs7QUFFRCxRQUFRLFNBQVIsR0FBb0I7O0FBRWhCOzs7Ozs7O0FBT0EsUUFBSSxZQUFVLElBQVYsRUFBZ0IsUUFBaEIsRUFBMEIsR0FBMUIsRUFBK0I7QUFDL0IsWUFBSSxJQUFJLEtBQUssQ0FBTCxLQUFXLEtBQUssQ0FBTCxHQUFTLEVBQXBCLENBQVI7O0FBRUEsU0FBQyxFQUFFLElBQUYsTUFBWSxFQUFFLElBQUYsSUFBVSxFQUF0QixDQUFELEVBQTRCLElBQTVCLENBQWlDO0FBQzdCLGdCQUFJLFFBRHlCO0FBRTdCLGlCQUFLO0FBRndCLFNBQWpDOztBQUtBLGVBQU8sSUFBUDtBQUNILEtBbEJlOztBQW9CaEI7Ozs7Ozs7QUFPQSxVQUFNLGNBQVUsSUFBVixFQUFnQixRQUFoQixFQUEwQixHQUExQixFQUErQjtBQUNqQyxZQUFJLE9BQU8sSUFBWDs7QUFFQSxpQkFBUyxRQUFULEdBQW9CO0FBQ2hCLGlCQUFLLEdBQUwsQ0FBUyxJQUFULEVBQWUsUUFBZjtBQUNBLHFCQUFTLEtBQVQsQ0FBZSxHQUFmLEVBQW9CLFNBQXBCO0FBQ0g7O0FBRUQsaUJBQVMsQ0FBVCxHQUFhLFFBQWI7QUFDQSxlQUFPLEtBQUssRUFBTCxDQUFRLElBQVIsRUFBYyxRQUFkLEVBQXdCLEdBQXhCLENBQVA7QUFDSCxLQXJDZTs7QUF1Q2hCOzs7OztBQUtBLFVBQU0sY0FBVSxJQUFWLEVBQWdCO0FBQ2xCLFlBQUksT0FBTyxHQUFHLEtBQUgsQ0FBUyxJQUFULENBQWMsU0FBZCxFQUF5QixDQUF6QixDQUFYO0FBQ0EsWUFBSSxTQUFTLENBQUMsQ0FBQyxLQUFLLENBQUwsS0FBVyxLQUFLLENBQUwsR0FBUyxFQUFwQixDQUFELEVBQTBCLElBQTFCLEtBQW1DLEVBQXBDLEVBQXdDLEtBQXhDLEVBQWI7QUFDQSxZQUFJLElBQUksQ0FBUjtBQUNBLFlBQUksTUFBTSxPQUFPLE1BQWpCOztBQUVBLGFBQUssQ0FBTCxFQUFRLElBQUksR0FBWixFQUFpQixHQUFqQixFQUFzQjtBQUNsQixtQkFBTyxDQUFQLEVBQVUsRUFBVixDQUFhLEtBQWIsQ0FBbUIsT0FBTyxDQUFQLEVBQVUsR0FBN0IsRUFBa0MsSUFBbEM7QUFDSDs7QUFFRCxlQUFPLElBQVA7QUFDSCxLQXZEZTs7QUF5RGhCOzs7Ozs7QUFNQSxTQUFLLGFBQVUsSUFBVixFQUFnQixRQUFoQixFQUEwQjtBQUMzQixZQUFJLElBQUksS0FBSyxDQUFMLEtBQVcsS0FBSyxDQUFMLEdBQVMsRUFBcEIsQ0FBUjtBQUNBLFlBQUksT0FBTyxFQUFFLElBQUYsQ0FBWDtBQUNBLFlBQUksYUFBYSxFQUFqQjs7QUFFQSxZQUFJLFFBQVEsUUFBWixFQUFzQjtBQUNsQixpQkFBSyxJQUFJLElBQUksQ0FBUixFQUFXLE1BQU0sS0FBSyxNQUEzQixFQUFtQyxJQUFJLEdBQXZDLEVBQTRDLEdBQTVDLEVBQWlEO0FBQzdDLG9CQUFJLEtBQUssQ0FBTCxFQUFRLEVBQVIsS0FBZSxRQUFmLElBQTJCLEtBQUssQ0FBTCxFQUFRLEVBQVIsQ0FBVyxDQUFYLEtBQWlCLFFBQWhELEVBQTBEO0FBQ3RELCtCQUFXLElBQVgsQ0FBZ0IsS0FBSyxDQUFMLENBQWhCO0FBQ0g7QUFDSjtBQUNKOztBQUVEO0FBQ0MsbUJBQVcsTUFBWixHQUNNLEVBQUUsSUFBRixJQUFVLFVBRGhCLEdBRU0sT0FBTyxFQUFFLElBQUYsQ0FGYjs7QUFJQSxlQUFPLElBQVA7QUFDSCxLQWxGZTs7QUFvRmhCOzs7QUFHQSxzQkFBb0IsWUFBWTtBQUM1QixZQUFJLFdBQVcsSUFBSSxPQUFKLEVBQWY7QUFDQSxlQUFPO0FBQUEsbUJBQU0sUUFBTjtBQUFBLFNBQVA7QUFDSCxLQUhtQjtBQXZGSixDQUFwQjs7a0JBNkZlLE87O0FBRWY7Ozs7QUFHTyxJQUFNLHdDQUFnQixRQUFRLFNBQVIsQ0FBa0IsZ0JBQWxCLEVBQXRCOzs7Ozs7OztRQ3hHUyxNLEdBQUEsTTtRQU9BLFUsR0FBQSxVO1FBcUJBLGEsR0FBQSxhO1FBWUEsUyxHQUFBLFM7UUFTQSxZLEdBQUEsWTtRQWtCQSxZLEdBQUEsWTs7O0FBckVoQjs7QUFFTyxTQUFTLE1BQVQsQ0FBZ0IsTUFBaEIsRUFBd0IsU0FBeEIsRUFBbUM7QUFDdEMsZUFBVyxTQUFYLEVBQXNCLFVBQUMsS0FBRCxFQUFRLEdBQVIsRUFBZ0I7QUFDbEMsZUFBTyxHQUFQLElBQWMsS0FBZDtBQUNILEtBRkQ7QUFHQSxXQUFPLE1BQVA7QUFDSDs7QUFFTSxTQUFTLFVBQVQsQ0FBb0IsTUFBcEIsRUFBNEIsUUFBNUIsRUFBc0M7QUFDekMsU0FBSyxJQUFJLEdBQVQsSUFBZ0IsTUFBaEIsRUFBd0I7QUFDcEIsWUFBSSxDQUFDLE9BQU8sY0FBUixJQUEyQixPQUFPLGNBQVAsSUFBeUIsT0FBTyxjQUFQLENBQXNCLEdBQXRCLENBQXhELEVBQXFGO0FBQ2pGLGdCQUFJLFNBQVMsT0FBTyxHQUFQLENBQVQsRUFBc0IsR0FBdEIsRUFBMkIsTUFBM0IsTUFBdUMsS0FBM0MsRUFBa0Q7QUFDOUM7QUFDSDtBQUNKO0FBQ0o7QUFDRCxXQUFPLE1BQVA7QUFDSDs7QUFFRDs7QUFFQSxJQUFJLFdBQVcsU0FBWCxRQUFXLEdBQVksQ0FDMUIsQ0FERDs7QUFHQTs7Ozs7QUFLTyxTQUFTLGFBQVQsR0FBdUM7QUFBQSxRQUFoQixNQUFnQix1RUFBUCxLQUFPOztBQUMxQyxRQUFJLE1BQUosRUFBWTtBQUNSLGVBQU8sWUFBWSxDQUNsQixDQUREO0FBRUg7QUFDRCxXQUFPLFFBQVA7QUFDSDs7QUFHRDs7O0FBR08sU0FBUyxTQUFULENBQW1CLEdBQW5CLEVBQXdCO0FBQzNCLFdBQU8sSUFBSSxpQkFBSixFQUFQO0FBQ0g7O0FBR0Q7Ozs7QUFJTyxTQUFTLFlBQVQsR0FBd0I7QUFDM0IsYUFBUyxFQUFULEdBQWM7QUFDVixlQUFPLEtBQUssS0FBTCxDQUFXLENBQUMsSUFBSSxLQUFLLE1BQUwsRUFBTCxJQUFzQixPQUFqQyxFQUNGLFFBREUsQ0FDTyxFQURQLEVBRUYsU0FGRSxDQUVRLENBRlIsQ0FBUDtBQUdIO0FBQ0QsV0FBTyxPQUFPLElBQVAsR0FBYyxJQUFkLEdBQXFCLElBQTVCO0FBQ0g7O0FBR0Q7O0FBRUE7Ozs7OztBQU1PLFNBQVMsWUFBVCxDQUFzQixLQUF0QixFQUE2QjtBQUNoQyxXQUFPLENBQUMsRUFBRSxVQUFVLEVBQVYsSUFBZ0IsVUFBVSxJQUExQixJQUFrQyxPQUFPLEtBQVAsS0FBaUIsV0FBckQsQ0FBUjtBQUNIOztBQUdEOzs7QUFHQSxJQUFJLFlBQVksU0FBWixTQUFZLENBQVUsRUFBVixFQUFjLEVBQWQsRUFBa0I7QUFDOUIsV0FBTyxHQUFHLENBQUgsTUFBVSxHQUFHLENBQUgsQ0FBVixJQUFtQixHQUFHLENBQUgsTUFBVSxHQUFHLENBQUgsQ0FBN0IsSUFBc0MsR0FBRyxDQUFILE1BQVUsR0FBRyxDQUFILENBQWhELElBQXlELEdBQUcsQ0FBSCxNQUFVLEdBQUcsQ0FBSCxDQUExRTtBQUNILENBRkQ7O0FBSUEsSUFBSSxpQkFBaUIsU0FBakIsY0FBaUIsQ0FBVSxFQUFWLEVBQWMsRUFBZCxFQUFrQjtBQUNuQyxRQUFJLEtBQUssS0FBSyxHQUFMLENBQVMsR0FBRyxDQUFILENBQVQsRUFBZ0IsR0FBRyxDQUFILENBQWhCLENBQVQ7QUFDQSxRQUFJLEtBQUssS0FBSyxHQUFMLENBQVMsR0FBRyxDQUFILENBQVQsRUFBZ0IsR0FBRyxDQUFILENBQWhCLENBQVQ7QUFDQSxRQUFJLEtBQUssS0FBSyxHQUFMLENBQVMsR0FBRyxDQUFILENBQVQsRUFBZ0IsR0FBRyxDQUFILENBQWhCLENBQVQ7QUFDQSxRQUFJLEtBQUssS0FBSyxHQUFMLENBQVMsR0FBRyxDQUFILENBQVQsRUFBZ0IsR0FBRyxDQUFILENBQWhCLENBQVQ7O0FBRUEsUUFBSSxNQUFNLEVBQU4sSUFBWSxNQUFNLEVBQXRCLEVBQTBCO0FBQ3RCLGVBQU8sQ0FBQyxFQUFELEVBQUssRUFBTCxFQUFTLEVBQVQsRUFBYSxFQUFiLENBQVA7QUFDSDtBQUNELFdBQU8sS0FBUDtBQUNILENBVkQ7O0FBWUEsSUFBSSxRQUFRLFNBQVIsS0FBUSxDQUFVLENBQVYsRUFBYTtBQUNyQixXQUFPLFVBQVUsRUFBVixFQUFjLEVBQWQsRUFBa0I7QUFDckIsWUFBSSxNQUFNLGVBQWUsRUFBZixFQUFtQixFQUFuQixDQUFWO0FBQ0EsWUFBSSxHQUFKLEVBQVM7QUFDTCxtQkFBTyxVQUFVLEdBQVYsRUFBZSxNQUFNLEtBQU4sR0FBYyxFQUFkLEdBQW1CLEVBQWxDLENBQVA7QUFDSDtBQUNELGVBQU8sS0FBUDtBQUNILEtBTkQ7QUFPSCxDQVJEOztBQVVPLElBQUksa0NBQWE7O0FBRXBCOzs7Ozs7Ozs7Ozs7OztBQWNBLGFBQVMsU0FoQlc7O0FBa0JwQjs7OztBQUlBLGtCQUFjLGNBdEJNOztBQXdCcEI7Ozs7QUFJQSxjQUFVLE1BQU0sS0FBTixDQTVCVTs7QUE4QnBCOzs7O0FBSUEsZ0JBQVksTUFBTSxLQUFOO0FBbENRLENBQWpCOztBQXFDUDs7Ozs7Ozs7Ozs7O0FDOUlBOzs7O0FBRUE7OztJQUdNLGtCO0FBRUYsZ0NBQVksUUFBWixFQUFzQjtBQUFBOztBQUNsQixhQUFLLElBQUwsR0FBWSxJQUFJLEdBQUosQ0FBUSxRQUFSLENBQVo7QUFDQSxhQUFLLEtBQUwsR0FBYSxFQUFiO0FBQ0g7Ozs7NEJBRUcsRyxFQUFLO0FBQ0wsZ0JBQUksUUFBUSxLQUFLLEtBQUwsQ0FBVyx1QkFBVSxHQUFWLENBQVgsQ0FBWjtBQUNBLG1CQUFPLEtBQUssSUFBTCxDQUFVLEdBQVYsQ0FBYyxLQUFkLENBQVA7QUFDSDs7OzRCQUVHLEcsRUFBSyxLLEVBQU87QUFDWixpQkFBSyxLQUFMLENBQVcsdUJBQVUsR0FBVixDQUFYLElBQTZCLEdBQTdCO0FBQ0EsbUJBQU8sS0FBSyxJQUFMLENBQVUsR0FBVixDQUFjLEdBQWQsRUFBbUIsS0FBbkIsQ0FBUDtBQUNIOzs7NEJBRUcsRyxFQUFLO0FBQ0wsbUJBQU8sS0FBSyxLQUFMLENBQVcsdUJBQVUsR0FBVixDQUFYLENBQVA7QUFDSDs7O2lDQUVRLEcsRUFBSztBQUNWLG1CQUFPLEtBQUssSUFBTCxDQUFVLEdBQVYsQ0FBYyxHQUFkLENBQVA7QUFDSDs7O2dDQUVPO0FBQ0osaUJBQUssS0FBTCxHQUFhLEVBQWI7QUFDQSxtQkFBTyxLQUFLLElBQUwsQ0FBVSxLQUFWLEVBQVA7QUFDSDs7O2dDQUVNLEcsRUFBSztBQUNSLGdCQUFJLFFBQVEsS0FBSyxLQUFMLENBQVcsdUJBQVUsR0FBVixDQUFYLENBQVo7QUFDQSxtQkFBTyxLQUFLLEtBQUwsQ0FBVyx1QkFBVSxHQUFWLENBQVgsQ0FBUDtBQUNBLG1CQUFPLEtBQUssSUFBTCxDQUFVLE1BQVYsQ0FBaUIsS0FBakIsQ0FBUDtBQUNIOzs7a0NBRVM7QUFDTixtQkFBTyxLQUFLLElBQUwsQ0FBVSxPQUFWLEVBQVA7QUFDSDs7O2dDQUVPLFUsRUFBWSxPLEVBQVM7QUFDekIsbUJBQU8sS0FBSyxJQUFMLENBQVUsT0FBVixDQUFrQixVQUFsQixFQUE4QixPQUE5QixDQUFQO0FBQ0g7OzsrQkFFTTtBQUNILG1CQUFPLEtBQUssSUFBTCxDQUFVLElBQVYsRUFBUDtBQUNIOzs7aUNBRVE7QUFDTCxtQkFBTyxLQUFLLElBQUwsQ0FBVSxNQUFWLEVBQVA7QUFDSDs7O2dDQUVPO0FBQ0osbUJBQU8sS0FBSyxJQUFaO0FBQ0g7Ozs7OztBQUlMOzs7OztJQUdNLEs7QUFDRixxQkFBMEI7QUFBQSxZQUFkLE9BQWMsdUVBQUosRUFBSTs7QUFBQTs7QUFDdEIsYUFBSyxLQUFMLEdBQWEsT0FBYjtBQUNIOzs7OytCQUVjO0FBQUE7O0FBQ1gsMkJBQUssS0FBTCxFQUFXLElBQVg7QUFDSDs7OzhCQUVLO0FBQ0YsbUJBQU8sS0FBSyxLQUFMLENBQVcsR0FBWCxFQUFQO0FBQ0g7OzsrQkFFTTtBQUNILG1CQUFPLEtBQUssT0FBTCxLQUFpQixLQUFLLENBQXRCLEdBQTBCLEtBQUssS0FBTCxDQUFXLEtBQUssS0FBTCxDQUFXLE1BQVgsR0FBb0IsQ0FBL0IsQ0FBakM7QUFDSDs7O2tDQUVTO0FBQ04sbUJBQU8sQ0FBQyxLQUFLLElBQUwsRUFBUjtBQUNIOzs7K0JBRU07QUFDSCxtQkFBTyxLQUFLLEtBQUwsQ0FBVyxNQUFsQjtBQUNIOzs7Ozs7UUFJRyxrQixHQUFBLGtCO1FBQW9CLEssR0FBQSxLOzs7Ozs7OztRQ25GWixTLEdBQUEsUztRQXVCQSxXLEdBQUEsVztRQXNCQSxLLEdBQUEsSztRQWNBLFcsR0FBQSxXO1FBb0JBLFUsR0FBQSxVO0FBekZoQixJQUFJLHFCQUFxQixTQUFTLGNBQVQsQ0FBd0IsTUFBeEIsRUFBZ0MsV0FBaEMsR0FBOEMsSUFBOUMsR0FBcUQsS0FBOUU7QUFDQSxJQUFJLG1CQUFtQixTQUFTLGVBQVQsQ0FBeUIsU0FBekIsR0FBcUMsSUFBckMsR0FBNEMsS0FBbkU7O0FBRUEsSUFBSSxzQkFBc0IsaUJBQTFCOztBQUVBOzs7OztBQUtPLFNBQVMsU0FBVCxDQUFtQixPQUFuQixFQUE0QixPQUE1QixFQUFxQztBQUN4QyxRQUFJLG9CQUFvQixJQUFwQixDQUF5QixPQUF6QixDQUFKLEVBQXVDO0FBQ25DLGdCQUFRLFNBQVIsR0FBb0IsT0FBcEI7QUFDSCxLQUZELE1BRU87QUFDSCxZQUFJLFFBQVEsUUFBUSxVQUFwQjtBQUNBLFlBQUksU0FBUyxNQUFNLFFBQU4sS0FBbUIsQ0FBNUIsSUFBaUMsTUFBTSxXQUFOLEtBQXNCLElBQTNELEVBQWlFO0FBQzdELGdCQUFJLGtCQUFKLEVBQXdCO0FBQ3BCLHNCQUFNLFdBQU4sR0FBb0IsT0FBcEI7QUFDSCxhQUZELE1BRU87QUFDSCxzQkFBTSxJQUFOLEdBQWEsT0FBYjtBQUNIO0FBQ0osU0FORCxNQU1PO0FBQ0gsa0JBQU0sT0FBTjtBQUNBLG9CQUFRLFdBQVIsQ0FBb0IsU0FBUyxjQUFULENBQXdCLE9BQXhCLENBQXBCO0FBQ0g7QUFDSjtBQUNKOztBQUVEOzs7OztBQUtPLFNBQVMsV0FBVCxDQUFxQixPQUFyQixFQUE4QixPQUE5QixFQUF1QztBQUMxQyxRQUFJLG9CQUFvQixJQUFwQixDQUF5QixPQUF6QixDQUFKLEVBQXVDO0FBQ25DLGdCQUFRLGtCQUFSLENBQTJCLFVBQTNCLEVBQXVDLE9BQXZDO0FBQ0gsS0FGRCxNQUVPO0FBQ0gsWUFBSSxRQUFRLFFBQVIsS0FBcUIsQ0FBekIsRUFBNEI7QUFDeEIsZ0JBQUksUUFBUSxXQUFaLEVBQXlCO0FBQ3JCLHdCQUFRLFVBQVIsQ0FBbUIsWUFBbkIsQ0FBZ0MsT0FBaEMsRUFBeUMsUUFBUSxXQUFqRDtBQUNILGFBRkQsTUFFTztBQUNILHdCQUFRLFVBQVIsQ0FBbUIsV0FBbkIsQ0FBK0IsT0FBL0I7QUFDSDtBQUNKLFNBTkQsTUFNTztBQUNIO0FBQ0g7QUFDSjtBQUNKOztBQUVEOzs7Ozs7QUFNTyxTQUFTLEtBQVQsQ0FBZSxPQUFmLEVBQXdCO0FBQzNCLFFBQUksS0FBSjtBQUNBLFdBQU8sUUFBUSxRQUFRLFNBQXZCLEVBQWtDO0FBQUU7QUFDaEMsZ0JBQVEsV0FBUixDQUFvQixLQUFwQjtBQUNIO0FBQ0o7O0FBRUQ7Ozs7Ozs7QUFPTyxTQUFTLFdBQVQsQ0FBcUIsRUFBckIsRUFBNEM7QUFBQSxRQUFuQixVQUFtQix1RUFBTixJQUFNOztBQUMvQyxRQUFJLFNBQVMsR0FBRyxZQUFoQjtBQUNBLFFBQUksS0FBSjs7QUFFQSxRQUFJLGVBQWUsS0FBbkIsRUFBMEI7QUFDdEIsZUFBTyxNQUFQO0FBQ0g7QUFDRCxZQUFRLGlCQUFpQixFQUFqQixDQUFSO0FBQ0EsY0FBVSxTQUFTLE1BQU0sU0FBZixJQUE0QixTQUFTLE1BQU0sWUFBZixDQUF0QztBQUNBLFdBQU8sTUFBUDtBQUNIOztBQUdEOzs7Ozs7O0FBT08sU0FBUyxVQUFULENBQW9CLEVBQXBCLEVBQTJDO0FBQUEsUUFBbkIsVUFBbUIsdUVBQU4sSUFBTTs7QUFDOUMsUUFBSSxRQUFRLEdBQUcsV0FBZjtBQUNBLFFBQUksS0FBSjs7QUFFQSxRQUFJLGVBQWUsS0FBbkIsRUFBMEI7QUFDdEIsZUFBTyxLQUFQO0FBQ0g7QUFDRCxZQUFRLGlCQUFpQixFQUFqQixDQUFSO0FBQ0EsYUFBUyxTQUFTLE1BQU0sVUFBZixJQUE2QixTQUFTLE1BQU0sV0FBZixDQUF0QztBQUNBLFdBQU8sS0FBUDtBQUNIOzs7Ozs7OztRQy9GZSx3QixHQUFBLHdCO1FBU0EsZSxHQUFBLGU7QUFiaEI7Ozs7QUFJTyxTQUFTLHdCQUFULENBQWtDLEtBQWxDLEVBQXlDO0FBQzVDLFVBQU0sNkJBQU4sR0FBc0MsS0FBdEM7QUFDQSxVQUFNLFlBQU4sR0FBcUIsSUFBckI7QUFDSDs7QUFFRDs7OztBQUlPLFNBQVMsZUFBVCxDQUF5QixLQUF6QixFQUFnQztBQUNuQyxRQUFJLE9BQU8sTUFBTSxlQUFiLEtBQWlDLFVBQXJDLEVBQWlEO0FBQzdDLGNBQU0sZUFBTjtBQUNILEtBRkQsTUFFTztBQUNILGNBQU0sWUFBTixHQUFxQixJQUFyQjtBQUNIO0FBQ0oiLCJmaWxlIjoiZ2VuZXJhdGVkLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXNDb250ZW50IjpbIihmdW5jdGlvbiBlKHQsbixyKXtmdW5jdGlvbiBzKG8sdSl7aWYoIW5bb10pe2lmKCF0W29dKXt2YXIgYT10eXBlb2YgcmVxdWlyZT09XCJmdW5jdGlvblwiJiZyZXF1aXJlO2lmKCF1JiZhKXJldHVybiBhKG8sITApO2lmKGkpcmV0dXJuIGkobywhMCk7dmFyIGY9bmV3IEVycm9yKFwiQ2Fubm90IGZpbmQgbW9kdWxlICdcIitvK1wiJ1wiKTt0aHJvdyBmLmNvZGU9XCJNT0RVTEVfTk9UX0ZPVU5EXCIsZn12YXIgbD1uW29dPXtleHBvcnRzOnt9fTt0W29dWzBdLmNhbGwobC5leHBvcnRzLGZ1bmN0aW9uKGUpe3ZhciBuPXRbb11bMV1bZV07cmV0dXJuIHMobj9uOmUpfSxsLGwuZXhwb3J0cyxlLHQsbixyKX1yZXR1cm4gbltvXS5leHBvcnRzfXZhciBpPXR5cGVvZiByZXF1aXJlPT1cImZ1bmN0aW9uXCImJnJlcXVpcmU7Zm9yKHZhciBvPTA7bzxyLmxlbmd0aDtvKyspcyhyW29dKTtyZXR1cm4gc30pIiwiZnVuY3Rpb24gU3ByZWFkU2hlZXRFcnJvcigpIHtcbiAgICB0aGlzLm5hbWUgPSAnU3ByZWFkU2hlZXRFcnJvcic7XG4gICAgdGhpcy5tZXNzYWdlID0gJ+WPkeeUn+S6humUmeivryc7XG59XG5cblNwcmVhZFNoZWV0RXJyb3IucHJvdG90eXBlID0gbmV3IEVycm9yKCk7XG5TcHJlYWRTaGVldEVycm9yLnByb3RvdHlwZS5jb25zdHJ1Y3RvciA9IFNwcmVhZFNoZWV0RXJyb3I7XG5TcHJlYWRTaGVldEVycm9yLnByb3RvdHlwZS50b1N0cmluZyA9IGZ1bmN0aW9uICgpIHtcbiAgICByZXR1cm4gdGhpcy5uYW1lICsgJyA9PiAnICsgdGhpcy5tZXNzYWdlO1xufTtcblxuZXhwb3J0IHtTcHJlYWRTaGVldEVycm9yfVxuXG4iLCJpbXBvcnQge2dsb2JhbFNldHRpbmdzLCBkZWZhdWx0U2V0dGluZ3N9IGZyb20gJy4vc2V0dGluZ3MnO1xuaW1wb3J0IFNwcmVhZFNoZWV0IGZyb20gJy4vY29yZSc7XG5pbXBvcnQgcG9seWZpbGwgZnJvbSAnLi9wb2x5ZmlsbCc7XG5pbXBvcnQge1BsdWdpbiwgcmVnaXN0ZXJQbHVnaW59IGZyb20gJy4vcGx1Z2lucy9QbHVnaW4nO1xuXG5TcHJlYWRTaGVldC5nbG9iYWxTZXR0aW5ncyA9IGdsb2JhbFNldHRpbmdzO1xuU3ByZWFkU2hlZXQuZGVmYXVsdFNldHRpbmdzID0gZGVmYXVsdFNldHRpbmdzO1xuU3ByZWFkU2hlZXQudmVyc2lvbiA9ICdAQF92ZXJzaW9uX0BAJztcblxuU3ByZWFkU2hlZXQucGx1Z2lucyA9IHtcbiAgICBQbHVnaW46IFBsdWdpbixcbiAgICByZWdpc3RlclBsdWdpbjogcmVnaXN0ZXJQbHVnaW5cbn07XG5cbi8vIOa1j+iniOWZqOeOr+Wig+S4i+eahOWFqOWxgOWPmOmHj+WQjeOAglxud2luZG93LkJyaWNrU3ByZWFkU2hlZXQgPSBTcHJlYWRTaGVldDtcbnBvbHlmaWxsKHdpbmRvdyk7XG5cbi8vIFRPRE8g5o+Q5L6b5pu05pS55YWo5bGA5Y+Y6YeP5ZCN55qE5pa55rOV77yM5Lul6Ziy5q2i5YWo5bGA5Y+Y6YeP5Yay56qB44CCXG5cbiIsImltcG9ydCBGcmFtZSBmcm9tICcuL2Rlc2lnbmVyL0ZyYW1lJztcbmltcG9ydCBXb3JrYm9vayBmcm9tICcuL2Rlc2lnbmVyL1dvcmtib29rJztcbmltcG9ydCB7ZXh0ZW5kLCBlbXB0eUZ1bmN0aW9uLCByYW5kb21TdHJpbmd9IGZyb20gJy4vdXRpbHMvY29tbW9uJztcbmltcG9ydCB7Z2V0QWxsUGx1Z2lucywgdmFsaWRhdGVQbHVnaW59IGZyb20gJy4vcGx1Z2lucy9QbHVnaW4nO1xuXG52YXIgQVVUT19JRCA9IDE7XG5cbi8qKlxuICog57G75Ly8IEV4Y2VsIOeahOeUteWtkOihqOagvOOAglxuICpcbiAqIEBwYXJhbSByb290RWxlbWVudFxuICogQHBhcmFtIHtvYmplY3R9IHVzZXJTZXR0aW5ncyAtIOeUteWtkOihqOagvOeahOeUqOaIt+mFjee9ruS/oeaBr1xuICogQHBhcmFtIHtvYmplY3R9IHVzZXJTZXR0aW5ncy53b3JrYm9vayAtIFdvcmtib29rIOeahOmFjee9rlxuICogQHBhcmFtIHtvYmplY3RbXX0gdXNlclNldHRpbmdzLnNoZWV0cyAtIOmFjee9ruaJgOacieWIneWniyBTaGVldCDpobXnmoTmlbDnu4RcbiAqIEBjb25zdHJ1Y3RvclxuICovXG5mdW5jdGlvbiBTcHJlYWRTaGVldChyb290RWxlbWVudCwgdXNlclNldHRpbmdzKSB7XG4gICAgdGhpcy5yb290RWxlbWVudCA9IHJvb3RFbGVtZW50O1xuICAgIHRoaXMuZ2V0VXNlclNldHRpbmdzKHVzZXJTZXR0aW5ncyk7XG5cbiAgICB0aGlzLnNldHRpbmdzID0ge307XG4gICAgZXh0ZW5kKHRoaXMuc2V0dGluZ3MsIFNwcmVhZFNoZWV0LmRlZmF1bHRTZXR0aW5ncyk7XG4gICAgZXh0ZW5kKHRoaXMuc2V0dGluZ3MsIHRoaXMudXNlclNldHRpbmdzKTtcblxuICAgIHRoaXMuaWQgPSB0aGlzLnNldHRpbmdzLmlkIHx8IHRoaXMuZ2V0SWQoKTtcblxuICAgIHRoaXMuX2luaXRQbHVnaW4oKTtcbiAgICB0aGlzLmZyYW1lID0gbmV3IEZyYW1lKHRoaXMsIHRoaXMuc2V0dGluZ3MuZnJhbWUpO1xuICAgIHRoaXMud29ya2Jvb2sgPSBuZXcgV29ya2Jvb2sodGhpcywgdGhpcy5zZXR0aW5ncy53b3JrYm9vayk7XG4gICAgdGhpcy5fZW5hYmxlUGx1Z2luKCk7XG59XG5cbmV4cG9ydCBkZWZhdWx0IFNwcmVhZFNoZWV0O1xuXG5cblNwcmVhZFNoZWV0LnByb3RvdHlwZS5nZXRSb290RWxlbWVudCA9IGZ1bmN0aW9uICgpIHtcbiAgICByZXR1cm4gdGhpcy5yb290RWxlbWVudDtcbn07XG5cbi8qKlxuICog6I635Y+W55So5oi35Lyg5YWl55qE5Yid5aeL6YWN572u44CCXG4gKiBAcGFyYW0ge3N0cmluZz19IHMgLSDooajnpLrnlKjmiLfphY3nva7nmoQgSlNPTiDlrZfnrKbkuLJcbiAqIEByZXR1cm5zIHtPYmplY3R9XG4gKi9cblNwcmVhZFNoZWV0LnByb3RvdHlwZS5nZXRVc2VyU2V0dGluZ3MgPSBmdW5jdGlvbiAocykge1xuICAgIGlmICh0aGlzLnVzZXJTZXR0aW5ncykge1xuICAgICAgICByZXR1cm4gdGhpcy51c2VyU2V0dGluZ3M7XG4gICAgfVxuICAgIGlmIChzICYmIHR5cGVvZiBzID09PSAnc3RyaW5nJykge1xuICAgICAgICB0aGlzLnVzZXJTZXR0aW5ncyA9IEpTT04ucGFyc2Uocyk7XG4gICAgfSBlbHNlIHtcbiAgICAgICAgdGhpcy51c2VyU2V0dGluZ3MgPSBzO1xuICAgIH1cbiAgICByZXR1cm4gdGhpcy51c2VyU2V0dGluZ3M7XG59O1xuXG5cbi8qKlxuICog6I635Y+WIFNwcmVhZFNoZWV0IOWunumZheeUn+aViOeahOmFjee9ruS/oeaBr+OAglxuICogQHJldHVybnMge09iamVjdH1cbiAqL1xuU3ByZWFkU2hlZXQucHJvdG90eXBlLmdldFNldHRpbmdzID0gZnVuY3Rpb24gKCkge1xuICAgIHJldHVybiB0aGlzLnNldHRpbmdzO1xufTtcblxuU3ByZWFkU2hlZXQucHJvdG90eXBlLmdldElkID0gZnVuY3Rpb24gKCkge1xuICAgIC8vIOS4jeaMh+WumiBpZCDml7bvvIzlsL3ph4/nlJ/miJDkuI3lj6/ph43lpI3nmoQgaWTvvIjkvb/nlKjlvZPliY0gaWZyYW1lIOiHquWinuWPmOmHj+mFjeWQiOmaj+acuuWtl+espuS4sueahOaWueW8j++8iVxuICAgIHJldHVybiB0aGlzLmlkIHx8IFNwcmVhZFNoZWV0Lmdsb2JhbFNldHRpbmdzLmlkUHJlZml4ICsgKEFVVE9fSUQrKykgKyAnLScgKyByYW5kb21TdHJpbmcoKTtcbn07XG5cblxuLyoqXG4gKiDojrflj5blj6/kuqTmjaLnmoTkuK3pl7TmlbDmja7vvIznlKjkuo7mlbDmja7mj5DkuqTjgIHop6PmnpDovazmjaLnrYnjgIJcbiAqIEBwYXJhbSB7Ym9vbGVhbn0gW29yYWdpbj1mYWxzZV0gLSDkuLogYHRydWVgIOaXtuiOt+WPluWOn+WniyBKYXZhU2NyaXB0IOWvueixoVxuICogQHJldHVybnNcbiAqL1xuU3ByZWFkU2hlZXQucHJvdG90eXBlLmdldEV4Y2hhbmdlRGF0YSA9IGZ1bmN0aW9uIChvcmFnaW4gPSBmYWxzZSkge1xuICAgIHZhciB3ID0gdGhpcy53b3JrYm9vay5fZ2V0RXhjaGFuZ2UoKTtcbiAgICB2YXIgZiA9IHRoaXMuZnJhbWUuX2dldEV4Y2hhbmdlKCk7IC8vIFRPRE8gZnJhbWVcbiAgICB2YXIgbyA9IHtcbiAgICAgICAgd29ya2Jvb2s6IHcsXG4gICAgICAgIGZyYW1lOiBmLFxuICAgICAgICBpZDogdGhpcy5nZXRJZCgpXG4gICAgfTtcbiAgICByZXR1cm4gb3JhZ2luID8gbyA6IEpTT04uc3RyaW5naWZ5KG8pO1xufTtcblxuXG4vKipcbiAqIOiOt+WPluW9k+WJjSBTcHJlYWRTaGVldCDlr7nlupTnmoQgV29ya2Jvb2sg5a6e5L6L44CCXG4gKiBAcmV0dXJucyB7V29ya2Jvb2t9XG4gKi9cblNwcmVhZFNoZWV0LnByb3RvdHlwZS5nZXRXb3JrYm9va0luc3RhbmNlID0gZnVuY3Rpb24gKCkge1xuICAgIHJldHVybiB0aGlzLndvcmtib29rO1xufTtcblxuXG4vKipcbiAqIOiOt+WPluW9k+WJjSBTcHJlYWRTaGVldCDlr7nlupTnmoQgRnJhbWUg5a6e5L6L44CCXG4gKiBAcmV0dXJucyB7RnJhbWV9XG4gKi9cblNwcmVhZFNoZWV0LnByb3RvdHlwZS5nZXRGcmFtZUluc3RhbmNlID0gZnVuY3Rpb24gKCkge1xuICAgIHJldHVybiB0aGlzLmZyYW1lO1xufTtcblxuXG5TcHJlYWRTaGVldC5wcm90b3R5cGUuX2luaXRQbHVnaW4gPSBmdW5jdGlvbiAoKSB7XG4gICAgdGhpcy5wbHVnaW5zID0gbmV3IE1hcCgpO1xuICAgIGdldEFsbFBsdWdpbnMoKS5mb3JFYWNoKFAgPT4ge1xuICAgICAgICB2YXIgcCA9IG5ldyBQKHRoaXMpO1xuICAgICAgICB2YWxpZGF0ZVBsdWdpbihwKTtcbiAgICAgICAgdGhpcy5wbHVnaW5zLnNldChwLl9fbmFtZV9fLCBwKTtcbiAgICB9KTtcbn07XG5cblNwcmVhZFNoZWV0LnByb3RvdHlwZS5fZW5hYmxlUGx1Z2luID0gZnVuY3Rpb24gKCkge1xuICAgIHRoaXMucGx1Z2lucy5mb3JFYWNoKHAgPT4ge1xuICAgICAgICBpZiAocC5pc0VuYWJsZSgpKSB7XG4gICAgICAgICAgICBwLmVuYWJsZSgpO1xuICAgICAgICB9XG4gICAgfSk7XG59O1xuIiwiaW1wb3J0IHtpc0VtcHR5VmFsdWV9IGZyb20gJy4uL3V0aWxzL2NvbW1vbidcblxuLyoqXG4gKiDphY3nva7nv7vor5HnsbvjgIJcbiAqIOahhuaetuWGhemDqOS9v+eUqO+8jOeUqOaIt+S7o+eggeS4jeW6lOivpeiwg+eUqOWug+OAglxuICpcbiAqIEBwcml2YXRlXG4gKi9cbmNsYXNzIENvbmZpZ1RyYW5zbGF0b3Ige1xuXG4gICAgLyoqXG4gICAgICpcbiAgICAgKiBAcGFyYW0ge29iamVjdH0gY29uZmlnXG4gICAgICogQHBhcmFtIHtTaGVldH0gc2hlZXRcbiAgICAgKi9cbiAgICBjb25zdHJ1Y3Rvcihjb25maWcsIHNoZWV0KSB7XG4gICAgICAgIHRoaXMuaW5pdGlhbENvbmZpZyA9IGNvbmZpZztcbiAgICAgICAgdGhpcy5zaGVldCA9IHNoZWV0O1xuICAgIH1cblxuICAgIC8qKlxuICAgICAqIOS4remXtOaVsOaNruagvOW8j+eahOiuvuiuoeS8muWwvemHj+WQjOaXtuS/neivgeWcqCBFeGNlbCDlj4ogV2ViIOmhtemdouS4reWdh+S+v+S6juWkhOeQhu+8jFxuICAgICAqIOS9huS4jeWFjeWtmOWcqOS4gOS6myBXZWIg5Lit6Zq+5Lul55u05o6l5L2/55So55qE5pWw5o2u5qC85byP77yM6K+l5pa55rOV5Y2z5piv5a6M5oiQ5q2k57G75pWw5o2u5qC85byPXG4gICAgICog55qE6YCC6YWN6L2s5o2i5bel5L2c44CCXG4gICAgICogQHJldHVybnMge29iamVjdH1cbiAgICAgKi9cbiAgICB0cmFuc2xhdGUoKSB7XG4gICAgICAgIHZhciBzZXR0aW5ncyA9IHt9O1xuICAgICAgICB2YXIgcHJvdG8gPSBPYmplY3QuZ2V0UHJvdG90eXBlT2YodGhpcyk7XG4gICAgICAgIHZhciBwcm9wZXJ0eSA9IE9iamVjdC5nZXRPd25Qcm9wZXJ0eU5hbWVzKHByb3RvKTtcblxuICAgICAgICBmb3IgKGxldCBpID0gMDsgaSA8IHByb3BlcnR5Lmxlbmd0aDsgKytpKSB7XG4gICAgICAgICAgICBpZiAocHJvcGVydHlbaV0uc3RhcnRzV2l0aCgnX3RyYW5zJykpIHtcbiAgICAgICAgICAgICAgICB0aGlzW3Byb3BlcnR5W2ldXS5jYWxsKHRoaXMsIHNldHRpbmdzKTtcbiAgICAgICAgICAgIH1cbiAgICAgICAgfVxuICAgICAgICAvLyBjb25zb2xlLmluZm8odGhpcy5zaGVldC5nZXROYW1lKCkgKyAnW0NvbmZpZ1RyYW5zbGF0b3IudHJhbnNsYXRlXSBzZXR0aW5ncyAtPicsIHNldHRpbmdzKTtcbiAgICAgICAgcmV0dXJuIHNldHRpbmdzO1xuICAgIH1cblxuICAgIC8qKlxuICAgICAqIGhhbmRzb250YWJsZSDkuK3nmoTkuIDkupvnirbmgIHml6Dms5XpgJrov4fliJ3lp4vphY3nva7lj4LmlbDmjqfliLbvvIxcbiAgICAgKiDlj6rog73lnKjlrp7kvovljJbkuYvlkI7osIPnlKjnm7jlupTnmoTmlrnms5XmnaXmgaLlpI3nm7jlupTnmoTnirbmgIHvvIzmraTmlrnms5VcbiAgICAgKiDljbPmmK/lrozmiJDor6Xlip/og73jgIJcbiAgICAgKi9cbiAgICBpbml0U2hlZXRTdGF0ZSgpIHtcbiAgICAgICAgdmFyIHByb3RvID0gT2JqZWN0LmdldFByb3RvdHlwZU9mKHRoaXMpO1xuICAgICAgICB2YXIgcHJvcGVydHkgPSBPYmplY3QuZ2V0T3duUHJvcGVydHlOYW1lcyhwcm90byk7XG5cbiAgICAgICAgZm9yIChsZXQgaSA9IDA7IGkgPCBwcm9wZXJ0eS5sZW5ndGg7ICsraSkge1xuICAgICAgICAgICAgaWYgKHByb3BlcnR5W2ldLnN0YXJ0c1dpdGgoJ19pbml0JykpIHtcbiAgICAgICAgICAgICAgICB0aGlzW3Byb3BlcnR5W2ldXS5jYWxsKHRoaXMpO1xuICAgICAgICAgICAgfVxuICAgICAgICB9XG4gICAgfVxuXG4gICAgLy8gLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tIHRyYW5zbGF0ZSAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS1cblxuICAgIF90cmFuc0NlbGwoc2V0dGluZ3MpIHtcbiAgICAgICAgdmFyIG0gPSB0aGlzLmluaXRpYWxDb25maWcuY2VsbE1ldGFzO1xuICAgICAgICBpZiAobSkge1xuICAgICAgICAgICAgc2V0dGluZ3MuY2VsbCA9IFtdO1xuICAgICAgICAgICAgZm9yIChsZXQgaSA9IDA7IGkgPCBtLmxlbmd0aDsgKytpKSB7XG4gICAgICAgICAgICAgICAgbGV0IHJvdyA9IG1baV07XG4gICAgICAgICAgICAgICAgZm9yIChsZXQgaiA9IDA7IGogPCByb3cubGVuZ3RoOyArK2opIHtcbiAgICAgICAgICAgICAgICAgICAgbGV0IGNlbGxNZXRhID0gcm93W2pdO1xuICAgICAgICAgICAgICAgICAgICBpZiAoY2VsbE1ldGEpIHtcbiAgICAgICAgICAgICAgICAgICAgICAgIGxldCBjZWxsID0ge307XG4gICAgICAgICAgICAgICAgICAgICAgICBjZWxsLnJvdyA9IGNlbGxNZXRhLnJvdztcbiAgICAgICAgICAgICAgICAgICAgICAgIGNlbGwuY29sID0gY2VsbE1ldGEuY29sO1xuXG4gICAgICAgICAgICAgICAgICAgICAgICBpZiAoY2VsbE1ldGEuZGF0YVR5cGUpIHtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICBmb3IgKHZhciBkdCBpbiBjZWxsTWV0YS5kYXRhVHlwZSkge1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBpZiAoY2VsbE1ldGEuZGF0YVR5cGUuaGFzT3duUHJvcGVydHkoZHQpKSB7XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBjZWxsW2R0XSA9IGNlbGxNZXRhLmRhdGFUeXBlW2R0XTtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIH1cbiAgICAgICAgICAgICAgICAgICAgICAgICAgICBjZWxsLnR5cGUgPSBjZWxsTWV0YS5kYXRhVHlwZS50eXBlTmFtZTtcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICBkZWxldGUgY2VsbC50eXBlTmFtZTtcbiAgICAgICAgICAgICAgICAgICAgICAgIH1cblxuICAgICAgICAgICAgICAgICAgICAgICAgaWYgKGNlbGxNZXRhLnN0eWxlcykge1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgIGlmIChjZWxsTWV0YS5zdHlsZXMuYWxpZ25tZW50cykge1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBsZXQgYyA9IGNlbGxNZXRhLnN0eWxlcy5hbGlnbm1lbnRzLmpvaW4oJyBodCcpO1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBjZWxsLmNsYXNzTmFtZSA9IGNlbGwuY2xhc3NOYW1lID8gKGNlbGwuY2xhc3NOYW1lICs9ICcgaHQnICsgYykgOiAnaHQnICsgYztcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICAgICAgICAgICAgICB9XG5cbiAgICAgICAgICAgICAgICAgICAgICAgIHNldHRpbmdzLmNlbGwucHVzaChjZWxsKTtcbiAgICAgICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgICAgIH1cbiAgICAgICAgICAgIH1cbiAgICAgICAgfVxuICAgIH1cblxuICAgIF90cmFuc0RhdGEoc2V0dGluZ3MpIHtcbiAgICAgICAgdmFyIHMgPSB0aGlzLmluaXRpYWxDb25maWcuZGF0YTtcbiAgICAgICAgaWYgKHMpIHtcbiAgICAgICAgICAgIC8vIGhvdFRhYmxlIOWcqOaciSBkYXRhIOeahOaDheWGteS4i+WPquiDveaYvuekuuacieaVsOaNrueahOihjOWIl++8jOi/meWvueS6juiuvuiuoeWZqOadpeivtOW5tuS4jeaWueS+v+S9v+eUqO+8jFxuICAgICAgICAgICAgLy8g5pWF5aGr5YWF56m65pWw5o2u5Lul5pKR6LW36KGo5qC86IezIGluaXRSb3dzICogaW5pdENvbHMg55qE5aSn5bCP44CCXG4gICAgICAgICAgICAvLyAgICBpZiAocy5sZW5ndGggPCB0aGlzLnNoZWV0LmluaXRSb3dzKSB7XG4gICAgICAgICAgICAvLyAgICAgICAgbGV0IGZvcm1lckNvbCA9IHMubGVuZ3RoO1xuICAgICAgICAgICAgLy8gICAgICAgIHMubGVuZ3RoID0gdGhpcy5zaGVldC5pbml0Um93cztcbiAgICAgICAgICAgIC8vICAgICAgICBzLmZpbGwoW10sIGZvcm1lckNvbCk7XG4gICAgICAgICAgICAvLyAgICB9XG4gICAgICAgICAgICAvLyAgICBmb3IgKGxldCBpID0gMDsgaSA8IHMubGVuZ3RoOyArK2kpIHtcbiAgICAgICAgICAgIC8vICAgICAgICBsZXQgcm93ID0gc1tpXTtcbiAgICAgICAgICAgIC8vICAgICAgICBpZiAocm93Lmxlbmd0aCA8IHRoaXMuc2hlZXQuaW5pdENvbHMpIHtcbiAgICAgICAgICAgIC8vICAgICAgICAgICAgbGV0IGZvcm1lclJvdyA9IHJvdy5sZW5ndGg7XG4gICAgICAgICAgICAvLyAgICAgICAgICAgIHJvdy5sZW5ndGggPSB0aGlzLnNoZWV0LmluaXRDb2xzO1xuICAgICAgICAgICAgLy8gICAgICAgICAgICByb3cuZmlsbCgnJywgZm9ybWVyUm93KTtcbiAgICAgICAgICAgIC8vICAgICAgICB9XG4gICAgICAgICAgICAvLyAgICB9XG4gICAgICAgICAgICBzZXR0aW5ncy5taW5Sb3dzID0gdGhpcy5zaGVldC5pbml0Um93cztcbiAgICAgICAgICAgIHNldHRpbmdzLm1pbkNvbHMgPSB0aGlzLnNoZWV0LmluaXRDb2xzO1xuXG4gICAgICAgICAgICBzZXR0aW5ncy5kYXRhID0gcztcbiAgICAgICAgfVxuICAgIH1cblxuICAgIC8vIOWIl+WuvVxuICAgIF90cmFuc0NvbFdpZHRocyhzZXR0aW5ncykge1xuICAgICAgICB2YXIgdyA9IHRoaXMuaW5pdGlhbENvbmZpZy5jb2xXaWR0aHM7XG4gICAgICAgIGlmICh3KSB7XG4gICAgICAgICAgICBzZXR0aW5ncy5jb2xXaWR0aHMgPSB3O1xuICAgICAgICB9XG4gICAgfVxuXG4gICAgLy8g6KGM6auYXG4gICAgX3RyYW5zUm93SGVpZ2h0cyhzZXR0aW5ncykge1xuICAgICAgICB2YXIgaCA9IHRoaXMuaW5pdGlhbENvbmZpZy5yb3dIZWlnaHRzO1xuICAgICAgICBpZiAoaCkge1xuICAgICAgICAgICAgc2V0dGluZ3Mucm93SGVpZ2h0cyA9IGg7XG4gICAgICAgIH1cbiAgICB9XG5cbiAgICAvLyDovrnmoYZcbiAgICBfdHJhbnNCb3JkZXJzKHNldHRpbmdzKSB7XG4gICAgICAgIHZhciBzID0gdGhpcy5pbml0aWFsQ29uZmlnLmJvcmRlcnM7XG4gICAgICAgIGlmIChzKSB7XG4gICAgICAgICAgICBzZXR0aW5ncy5jdXN0b21Cb3JkZXJzID0gcztcbiAgICAgICAgfVxuICAgIH1cblxuICAgIC8vIOWQiOW5tuWNleWFg+agvFxuICAgIF90cmFuc01lcmdlQ2VsbHMoc2V0dGluZ3MpIHtcbiAgICAgICAgdmFyIHMgPSB0aGlzLmluaXRpYWxDb25maWcubWVyZ2VDZWxscztcbiAgICAgICAgaWYgKHMpIHtcbiAgICAgICAgICAgIHNldHRpbmdzLm1lcmdlQ2VsbHMgPSBzO1xuICAgICAgICB9XG4gICAgfVxuXG4gICAgLy8gLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tIGluaXRTdGF0ZSAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS1cblxuICAgIC8vIOmAieWMulxuICAgIF9pbml0U2VsZWN0aW9uKCkge1xuICAgICAgICB2YXIgcyA9IHRoaXMuaW5pdGlhbENvbmZpZy5zZWxlY3Rpb247XG4gICAgICAgIGlmIChzKSB7XG4gICAgICAgICAgICB0aGlzLnNoZWV0LnNlbGVjdChzLnJvdywgcy5jb2wsIHMuZW5kUm93LCBzLmVuZENvbCk7XG4gICAgICAgIH0gZWxzZSB7XG4gICAgICAgICAgICB0aGlzLnNoZWV0LnNlbGVjdCgwLCAwKTtcbiAgICAgICAgfVxuICAgIH1cblxufVxuXG5leHBvcnQgZGVmYXVsdCBDb25maWdUcmFuc2xhdG9yOyIsImltcG9ydCBDb250ZXh0TWVudSBmcm9tICcuL2ZyYW1lL0NvbnRleHRNZW51J1xuXG4vKipcbiAqIOeUteWtkOihqOagvOiuvuiuoeWZqOS4re+8jOmZpOS6hiBXb3JrYm9vayDlpJbnmoTnu4Tku7bnrqHnkIblmajvvIxcbiAqIOWMheWQq+iPnOWNleagj+OAgeW3peWFt+agj+OAgeS+p+i+ueagj+OAgeWPs+mUruiPnOWNleetieetieOAglxuICovXG5jbGFzcyBGcmFtZSB7XG5cbiAgICBjb25zdHJ1Y3RvcihpbnN0YW5jZSwgY29uZmlnKSB7XG4gICAgICAgIHRoaXMuc3ByZWFkU2hlZXQgPSBpbnN0YW5jZTtcbiAgICAgICAgLyoqXG4gICAgICAgICAqXG4gICAgICAgICAqIEB0eXBlIHtDb250ZXh0TWVudX1cbiAgICAgICAgICovXG4gICAgICAgIHRoaXMuY29udGV4dE1lbnUgPSBuZXcgQ29udGV4dE1lbnUoaW5zdGFuY2UpO1xuICAgIH1cblxuICAgIF9nZXRFeGNoYW5nZSgpIHtcblxuICAgIH1cblxufVxuXG5leHBvcnQgZGVmYXVsdCBGcmFtZTsiLCJpbXBvcnQge2V4dGVuZH0gZnJvbSAnLi4vdXRpbHMvY29tbW9uLmpzJ1xuaW1wb3J0IENvbmZpZ1RyYW5zbGF0b3IgZnJvbSAnLi9Db25maWdUcmFuc2xhdG9yLmpzJ1xuXG5cbi8qKlxuICogSGFuZHNvbnRhYmxlIOe7hOS7tueahOmAgumFjeexu1xuICovXG5jbGFzcyBIb3RUYWJsZUFkYXB0b3IgZXh0ZW5kcyBIYW5kc29udGFibGUge1xuXG4gICAgLyoqXG4gICAgICpcbiAgICAgKiBAcGFyYW0ge0hUTUxFbGVtZW50fSByb290RWxlbWVudFxuICAgICAqIEBwYXJhbSB7b2JqZWN0fSBjb25maWcgLSDljp/lp4vphY3nva7kv6Hmga9cbiAgICAgKiBAcGFyYW0ge29iamVjdH0gZXh0Q29uZmlnIC0g6ZmE5Yqg55qE6YWN572u5L+h5oGvXG4gICAgICogQHBhcmFtIHtTaGVldH0gc2hlZXQgLSDlr7nlupTnmoQgc2hlZXQg5a6e5L6LXG4gICAgICovXG4gICAgY29uc3RydWN0b3Iocm9vdEVsZW1lbnQsIGNvbmZpZywgZXh0Q29uZmlnLCBzaGVldCkge1xuICAgICAgICB2YXIgaG90U2V0dGluZ3MgPSB7fTtcbiAgICAgICAgdmFyIHRyYW5zbGF0b3IgPSBuZXcgQ29uZmlnVHJhbnNsYXRvcihjb25maWcsIHNoZWV0KTtcbiAgICAgICAgdmFyIHNldHRpbmdzID0gdHJhbnNsYXRvci50cmFuc2xhdGUoKTtcblxuICAgICAgICB2YXIgZnJhbWUgPSBzaGVldC53b3JrYm9vay5zcHJlYWRTaGVldC5nZXRGcmFtZUluc3RhbmNlKCk7XG4gICAgICAgIHZhciBtZW51SXRlbXMgPSBmcmFtZS5jb250ZXh0TWVudS5tZW51SXRlbXM7XG4gICAgICAgIHZhciBjb250ZXh0TWVudSA9IHt9O1xuICAgICAgICBjb250ZXh0TWVudS5pdGVtcyA9IGZyYW1lLmNvbnRleHRNZW51LmdldE1lbnVJdGVtczRIb3RUYWJsZSgpO1xuICAgICAgICBjb250ZXh0TWVudS5jYWxsYmFjayA9IChmdW5jdGlvbiAoc2hlZXQpIHtcbiAgICAgICAgICAgIHJldHVybiBmdW5jdGlvbiAoa2V5LCBvcHRpb25zKSB7XG4gICAgICAgICAgICAgICAgaWYgKG1lbnVJdGVtcy5oYXMoa2V5KSkge1xuICAgICAgICAgICAgICAgICAgICBsZXQgaXRlbSA9IG1lbnVJdGVtcy5nZXQoa2V5KTtcbiAgICAgICAgICAgICAgICAgICAgaWYgKGl0ZW0uaGFuZGxlcikge1xuICAgICAgICAgICAgICAgICAgICAgICAgaXRlbS5oYW5kbGVyLmNhbGwodGhpcywgc2hlZXQsIG9wdGlvbnMuc3RhcnQsIG9wdGlvbnMuZW5kLCBvcHRpb25zKTtcbiAgICAgICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgICAgIH1cbiAgICAgICAgICAgIH07XG4gICAgICAgIH0oc2hlZXQpKTtcbiAgICAgICAgSG90VGFibGVBZGFwdG9yLl9wcmVmZXJlbmNlLmNvbnRleHRNZW51ID0gY29udGV4dE1lbnU7XG5cbiAgICAgICAgZXh0ZW5kKGhvdFNldHRpbmdzLCBIb3RUYWJsZUFkYXB0b3IuX3ByZWZlcmVuY2UpO1xuICAgICAgICBleHRlbmQoaG90U2V0dGluZ3MsIHNldHRpbmdzKTtcbiAgICAgICAgZXh0ZW5kKGhvdFNldHRpbmdzLCBleHRDb25maWcpO1xuICAgICAgICBzdXBlcihyb290RWxlbWVudCwgaG90U2V0dGluZ3MpO1xuXG4gICAgICAgIHRoaXMuX3RyYW5zbGF0b3IgPSB0cmFuc2xhdG9yO1xuICAgIH1cblxufVxuXG5cbi8qKlxuICog6aKE6K6+6YWN572u44CCXG4gKiBAcHJpdmF0ZVxuICovXG5Ib3RUYWJsZUFkYXB0b3IuX3ByZWZlcmVuY2UgPSB7XG4gICAgb3V0c2lkZUNsaWNrRGVzZWxlY3RzOiBmYWxzZSxcblxuICAgIHJvd0hlYWRlcnM6IHRydWUsXG4gICAgY29sSGVhZGVyczogdHJ1ZSxcblxuICAgIG1hbnVhbENvbHVtblJlc2l6ZTogdHJ1ZSxcbiAgICBtYW51YWxSb3dSZXNpemU6IHRydWUsXG4gICAgY2xhc3NOYW1lOiAnc3NkLWhhbmRzb250YWJsZScsXG5cbiAgICB4Rm9ybXVsYXM6IHRydWUsXG5cbiAgICBjb250ZXh0TWVudToge31cbn07XG5cbmV4cG9ydCBkZWZhdWx0IEhvdFRhYmxlQWRhcHRvcjsiLCJpbXBvcnQgVGFicyBmcm9tICAnLi92aWV3cy9UYWJzJztcbmltcG9ydCBIYW5kc29udGFibGUgZnJvbSAnLi9Ib3RUYWJsZUFkYXB0b3InO1xuaW1wb3J0IHtTaGVldEVycm9yfSBmcm9tICcuL1NoZWV0RXJyb3InXG5pbXBvcnQge0Nvb3JkaW5hdGV9IGZyb20gJy4uL3V0aWxzL2NvbW1vbic7XG5pbXBvcnQgRW1pdHRlciBmcm9tICcuLi91dGlscy9FbWl0dGVyJ1xuXG5jb25zdCBJTklUX1JPV1MgPSAxNTA7IC8vIFNoZWV0IOWIneWni+WPr+aYvuekuueahOihjOaVsFxuY29uc3QgSU5JVF9DT0xTID0gNTA7ICAvLyBTaGVldCDliJ3lp4vlj6/mmL7npLrnmoTliJfmlbBcblxuXG4vKipcbiAqIOW3peS9nOihqFxuICpcbiAqIEBmaXJlcyBTaGVldCNhZnRlclJlbmFtZVxuICogQGZpcmVzIFNoZWV0I2FmdGVyUmVuYW1lQ2FuY2VsXG4gKi9cbmNsYXNzIFNoZWV0IGV4dGVuZHMgRW1pdHRlciB7XG5cbiAgICAvKipcbiAgICAgKiDmnoTpgKAgU2hlZXQg5a6e5L6L77yM55So5oi35Luj56CB5LiN5bqU6K+l55u05o6l6LCD55So5a6D77yMXG4gICAgICog6ICM5piv5L2/55SoIFdvcmtib29rLmNyZWF0ZVNoZWV0KCkg5pa55rOV5p6E6YCg44CCXG4gICAgICpcbiAgICAgKiBAcGFyYW0ge1dvcmtib29rfSB3b3JrYm9va1xuICAgICAqIEBwYXJhbSB7b2JqZWN0fSBjb25maWdcbiAgICAgKiBAcHJpdmF0ZVxuICAgICAqL1xuICAgIGNvbnN0cnVjdG9yKHdvcmtib29rLCBjb25maWcpIHtcbiAgICAgICAgc3VwZXIoKTtcbiAgICAgICAgLyoqXG4gICAgICAgICAqIHNoZWV0IOaJgOWcqOeahOW3peS9nOihqFxuICAgICAgICAgKiBAdHlwZSB7V29ya2Jvb2t9XG4gICAgICAgICAqL1xuICAgICAgICB0aGlzLndvcmtib29rID0gd29ya2Jvb2s7XG4gICAgICAgIHRoaXMuJCR2aWV3ID0gd29ya2Jvb2suJCR2aWV3O1xuICAgICAgICB0aGlzLnNldHRpbmdzID0gY29uZmlnO1xuICAgICAgICB0aGlzLnNoZWV0TmFtZSA9IGNvbmZpZy5uYW1lO1xuXG4gICAgICAgIHRoaXMuaW5pdFJvd3MgPSBJTklUX1JPV1M7XG4gICAgICAgIHRoaXMuaW5pdENvbHMgPSBJTklUX0NPTFM7XG5cbiAgICAgICAgdGhpcy5meCA9IHt9OyAvLyBUT0RPXG5cbiAgICAgICAgdGhpcy5fcmVuZGVyKCk7XG4gICAgfVxuXG4gICAgLyoqXG4gICAgICogQHByaXZhdGVcbiAgICAgKi9cbiAgICBfcmVuZGVyKCkge1xuICAgICAgICB0aGlzLiQkdmlldy5hcHBlbmRUYWIodGhpcy5zaGVldE5hbWUpO1xuICAgICAgICB2YXIge2NvbnRhaW5lciwgd2lkdGgsIGhlaWdodH0gPSB0aGlzLiQkdmlldy5faG90VGFibGVzLmdldCh0aGlzLnNoZWV0TmFtZSk7XG4gICAgICAgIC8qKlxuICAgICAgICAgKiBAdHlwZSB7SGFuZHNvbnRhYmxlfVxuICAgICAgICAgKi9cbiAgICAgICAgdGhpcy5oYW5kc29udGFibGUgPSBuZXcgSGFuZHNvbnRhYmxlKGNvbnRhaW5lciwgdGhpcy5zZXR0aW5ncywge1xuICAgICAgICAgICAgd2lkdGg6IHdpZHRoLFxuICAgICAgICAgICAgaGVpZ2h0OiBoZWlnaHQsXG4gICAgICAgICAgICBzdGFydFJvd3M6IHRoaXMuaW5pdFJvd3MsXG4gICAgICAgICAgICBzdGFydENvbHM6IHRoaXMuaW5pdENvbHMsXG4gICAgICAgICAgICBfaXNIb3RUYWJsZUFkYXB0b3I6IHRydWUsXG4gICAgICAgICAgICBfc2hlZXQ6IHRoaXNcbiAgICAgICAgfSwgdGhpcyk7XG4gICAgICAgIHRoaXMuaGFuZHNvbnRhYmxlLl90cmFuc2xhdG9yLmluaXRTaGVldFN0YXRlKCk7XG4gICAgICAgIHRoaXMuJCR2aWV3LmhpZGVDb250ZW50KHRoaXMuZ2V0TmFtZSgpKTtcbiAgICB9XG5cbiAgICAvKipcbiAgICAgKiDojrflj5blvZPliY0gc2hlZXQg55qE5ZCN5a2XXG4gICAgICogQHJldHVybnMge3N0cmluZ31cbiAgICAgKi9cbiAgICBnZXROYW1lKCkge1xuICAgICAgICByZXR1cm4gdGhpcy5zaGVldE5hbWU7XG4gICAgfVxuXG4gICAgLyoqXG4gICAgICog5r+A5rS75b2T5YmNIHNoZWV0IOmhtVxuICAgICAqL1xuICAgIGFjdGl2ZSgpIHtcbiAgICAgICAgdGhpcy53b3JrYm9vay5hY3RpdmVTaGVldCA9IHRoaXMuZ2V0TmFtZSgpO1xuICAgICAgICB0aGlzLiQkdmlldy5hY3RpdmVUYWIodGhpcy5nZXROYW1lKCkpO1xuICAgICAgICB0aGlzLmhhbmRzb250YWJsZS5yZW5kZXIoKTtcbiAgICB9XG5cbiAgICAvKipcbiAgICAgKiDmo4DmtYvlvZPliY0gc2hlZXQg5piv5ZCm6KKr5r+A5rS7XG4gICAgICogQHJldHVybnMge2Jvb2xlYW59XG4gICAgICovXG4gICAgaXNBY3RpdmUoKSB7XG4gICAgICAgIHJldHVybiB0aGlzLndvcmtib29rLmFjdGl2ZVNoZWV0ID09PSB0aGlzLmdldE5hbWUoKTtcbiAgICB9XG5cbiAgICAvKipcbiAgICAgKiBUT0RPIOmUgOavgSBzaGVldCDpobVcbiAgICAgKi9cbiAgICBkZXN0cm95KCkge1xuICAgICAgICAvLyDmo4Dmn6XmmK/kuI3mmK/mnIDlkI7kuIDkuKpcbiAgICB9XG5cbiAgICAvKipcbiAgICAgKiDnu5kgc2hlZXQg6aG16YeN5ZG95ZCNXG4gICAgICogQHBhcmFtIG5hbWUgLSDmlrDlkI3lrZdcbiAgICAgKiBAcmV0dXJucyB7Ym9vbGVhbn0gLSDmmK/lkKbmiJDlip9cbiAgICAgKi9cbiAgICByZW5hbWUobmFtZSkge1xuICAgICAgICByZXR1cm4gdGhpcy53b3JrYm9vay5yZW5hbWVTaGVldCh0aGlzLmdldE5hbWUoKSwgbmFtZSk7XG4gICAgfVxuXG4gICAgLyoqXG4gICAgICog6YCJ5LitIHNoZWV0IOS4reeahOafkOWMuuWfn+OAglxuICAgICAqIOS4jeaMh+WumiB0b1JvdyDjgIF0b0NvbCDml7bliJnpgInkuK3lr7nlupTnmoTljZXlhYPmoLzjgIJcbiAgICAgKiBAcGFyYW0ge2ludH0gZnJvbVJvdyAtIOi1t+Wni+ihjFxuICAgICAqIEBwYXJhbSB7aW50fSBmcm9tQ29sIC0g6LW35aeL5YiXXG4gICAgICogQHBhcmFtIHtpbnR9IFt0b1Jvd10gLSDnu4jmraLooYxcbiAgICAgKiBAcGFyYW0ge2ludH0gW3RvQ29sXSAtIOe7iOatouWIl1xuICAgICAqL1xuICAgIHNlbGVjdChmcm9tUm93LCBmcm9tQ29sLCB0b1JvdywgdG9Db2wpIHtcbiAgICAgICAgdG9Sb3cgPSB0b1JvdyB8fCBmcm9tUm93O1xuICAgICAgICB0b0NvbCA9IHRvQ29sIHx8IGZyb21Db2w7XG4gICAgICAgIHRoaXMuaGFuZHNvbnRhYmxlLnNlbGVjdENlbGwoZnJvbVJvdywgZnJvbUNvbCwgdG9Sb3csIHRvQ29sLCBmYWxzZSk7XG4gICAgfVxuXG4gICAgZ2V0U2VsZWN0aW9uKCkge1xuICAgICAgICB2YXIgc2VsZWN0aW9uID0gdGhpcy5oYW5kc29udGFibGUuZ2V0U2VsZWN0ZWQoKTtcbiAgICAgICAgcmV0dXJuIHtcbiAgICAgICAgICAgIHJvdzogc2VsZWN0aW9uWzBdLFxuICAgICAgICAgICAgY29sOiBzZWxlY3Rpb25bMV0sXG4gICAgICAgICAgICBlbmRSb3c6IHNlbGVjdGlvblsyXSxcbiAgICAgICAgICAgIGVuZENvbDogc2VsZWN0aW9uWzNdXG4gICAgICAgIH1cbiAgICB9XG5cbiAgICAvKipcbiAgICAgKiDlkIjlubbljZXlhYPmoLxcbiAgICAgKiBUSVA6IGhhbmRzb250YWJsZSDlrpjmlrnlkIjlubblip/og73kuI3og73mraPnoa7lpITnkIblt7LmnInnmoTlkIjlubbljLrln5/vvIzmlYXlgZrph43mlrDorqHnrpfjgIJcbiAgICAgKiBAcGFyYW0ge2ludH0gcm93IC0g6LW35aeL6KGMXG4gICAgICogQHBhcmFtIHtpbnR9IGNvbCAtIOi1t+Wni+WIl1xuICAgICAqIEBwYXJhbSB7aW50fSByb3dzcGFuIC0g5b6F5ZCI5bm255qE6KGM5pWwXG4gICAgICogQHBhcmFtIHtpbnR9IGNvbHNwYW4gLSDlvoXlkIjlubbnmoTliJfmlbBcbiAgICAgKi9cbiAgICAvLyBUT0RPIOacgOWkp+ihjOWIl+aVsOmZkOWItlxuICAgIG1lcmdlQ2VsbHMocm93LCBjb2wsIHJvd3NwYW4sIGNvbHNwYW4pIHtcbiAgICAgICAgdmFyIHIgPSAwO1xuICAgICAgICB2YXIgY292ZXIgPSBbXTtcbiAgICAgICAgdmFyIG1lcmdlQ2VsbHMgPSB0aGlzLmhhbmRzb250YWJsZS5nZXRTZXR0aW5ncygpLm1lcmdlQ2VsbHM7XG5cbiAgICAgICAgdmFyIHIxID0gW3JvdywgY29sLCByb3cgKyByb3dzcGFuIC0gMSwgY29sICsgY29sc3BhbiAtIDFdO1xuXG4gICAgICAgIGZvciAobGV0IGkgPSBtZXJnZUNlbGxzLmxlbmd0aDsgaTsgLS1pKSB7XG4gICAgICAgICAgICBsZXQgZiA9IG1lcmdlQ2VsbHNbaSAtIDFdO1xuICAgICAgICAgICAgbGV0IHIyID0gW2Yucm93LCBmLmNvbCwgZi5yb3cgKyBmLnJvd3NwYW4gLSAxLCBmLmNvbCArIGYuY29sc3BhbiAtIDFdO1xuXG4gICAgICAgICAgICAvLyDkuI7ljp/ljLrln5/lrZjlnKjlrozlhajph43lj6BcbiAgICAgICAgICAgIGlmIChDb29yZGluYXRlLmlzRXF1YWwocjEsIHIyKSkge1xuICAgICAgICAgICAgICAgIHIgPSAxO1xuICAgICAgICAgICAgICAgIGJyZWFrO1xuICAgICAgICAgICAgfVxuICAgICAgICAgICAgLy8g5piv5Y6f5Yy65Z+f55qE5a2Q6ZuGXG4gICAgICAgICAgICBpZiAoQ29vcmRpbmF0ZS5pc1N1YnNldChyMSwgcjIpKSB7XG4gICAgICAgICAgICAgICAgciA9IDI7XG4gICAgICAgICAgICAgICAgYnJlYWs7XG4gICAgICAgICAgICB9XG4gICAgICAgICAgICAvLyDopobnm5bljp/ljLrln5/vvIjmraTml7blj6/og73kuI7lj6bkuIDkuKrljp/ljLrln5/kuqTpm4bmiJblrozlhajopobnm5bvvIlcbiAgICAgICAgICAgIGlmIChDb29yZGluYXRlLmlzU3VwZXJzZXQocjEsIHIyKSkge1xuICAgICAgICAgICAgICAgIGNvdmVyLnB1c2goaSAtIDEpO1xuICAgICAgICAgICAgICAgIHIgPSAzO1xuICAgICAgICAgICAgICAgIGNvbnRpbnVlO1xuICAgICAgICAgICAgfVxuICAgICAgICAgICAgLy8g5LiO5Y6f5Yy65Z+f5a2Y5Zyo5Lqk6ZuGKOS4jeWQq+WtkOmbhuOAgei2hembhuaDheWGtSlcbiAgICAgICAgICAgIGlmIChDb29yZGluYXRlLmludGVyc2VjdGlvbihyMSwgcjIpKSB7XG4gICAgICAgICAgICAgICAgciA9IDQ7XG4gICAgICAgICAgICB9XG4gICAgICAgIH1cblxuICAgICAgICBpZiAociA9PT0gMCB8fCByID09PSAzKSB7XG4gICAgICAgICAgICBpZiAociA9PT0gMykgeyAvLyDov5nnp43mg4XlhrXkuIvkuIDlrprlrZjlnKjlt7Lnu4/lkIjlubbov4fnmoTljZXlhYPmoLxcbiAgICAgICAgICAgICAgICBmb3IgKGxldCBpID0gMDsgaSA8IGNvdmVyLmxlbmd0aDsgKytpKSB7XG4gICAgICAgICAgICAgICAgICAgIG1lcmdlQ2VsbHMuc3BsaWNlKGNvdmVyW2ldLCAxKTtcbiAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICB9XG4gICAgICAgICAgICBtZXJnZUNlbGxzID0gbWVyZ2VDZWxscyB8fCBbXTtcbiAgICAgICAgICAgIG1lcmdlQ2VsbHMucHVzaCh7XG4gICAgICAgICAgICAgICAgcm93OiByb3csXG4gICAgICAgICAgICAgICAgY29sOiBjb2wsXG4gICAgICAgICAgICAgICAgcm93c3Bhbjogcm93c3BhbixcbiAgICAgICAgICAgICAgICBjb2xzcGFuOiBjb2xzcGFuXG4gICAgICAgICAgICB9KTtcbiAgICAgICAgICAgIHRoaXMuaGFuZHNvbnRhYmxlLnVwZGF0ZVNldHRpbmdzKHtcbiAgICAgICAgICAgICAgICBtZXJnZUNlbGxzOiBtZXJnZUNlbGxzXG4gICAgICAgICAgICB9KTtcblxuXG4gICAgICAgIH0gZWxzZSBpZiAociA9PT0gMiB8fCByID09PSA0KSB7XG4gICAgICAgICAgICB0aHJvdyBuZXcgU2hlZXRFcnJvcihg57uZ5a6a55qE5ZCI5bm25Yy65Z+f5LiN5ZCI5rOVOiBbJHtyb3d9LCAke2NvbH0sICR7cm93c3Bhbn0sICR7Y29sc3Bhbn1dYClcbiAgICAgICAgfVxuICAgIH1cblxuXG4gICAgLyoqXG4gICAgICog5Y+W5raI5Y2V5YWD5qC85ZCI5bm2XG4gICAgICogQHBhcmFtIHtpbnR9IHJvdyAtIOi1t+Wni+ihjFxuICAgICAqIEBwYXJhbSB7aW50fSBjb2wgLSDotbflp4vliJdcbiAgICAgKiBAcGFyYW0ge2ludH0gcm93c3BhbiAtIOW+heWQiOW5tueahOihjOaVsFxuICAgICAqIEBwYXJhbSB7aW50fSBjb2xzcGFuIC0g5b6F5ZCI5bm255qE5YiX5pWwXG4gICAgICovXG4gICAgdW5NZXJnZUNlbGxzKHJvdywgY29sLCByb3dzcGFuLCBjb2xzcGFuKSB7XG4gICAgICAgIHZhciBtZXJnZWQgPSB0aGlzLmhhbmRzb250YWJsZS5nZXRTZXR0aW5ncygpLm1lcmdlQ2VsbHM7XG4gICAgICAgIHZhciBtZXJnZUNlbGxzID0gW107XG4gICAgICAgIGlmIChtZXJnZWQgJiYgbWVyZ2VkLmxlbmd0aCkge1xuICAgICAgICAgICAgZm9yIChsZXQgaSA9IDA7IGkgPCBtZXJnZWQubGVuZ3RoOyArK2kpIHtcbiAgICAgICAgICAgICAgICBpZiAoQ29vcmRpbmF0ZS5pc1N1YnNldChbXG4gICAgICAgICAgICAgICAgICAgICAgICBtZXJnZWRbaV0ucm93LFxuICAgICAgICAgICAgICAgICAgICAgICAgbWVyZ2VkW2ldLmNvbCxcbiAgICAgICAgICAgICAgICAgICAgICAgIG1lcmdlZFtpXS5yb3cgKyBtZXJnZWRbaV0ucm93c3BhbiAtIDEsXG4gICAgICAgICAgICAgICAgICAgICAgICBtZXJnZWRbaV0uY29sICsgbWVyZ2VkW2ldLmNvbHNwYW4gLSAxXG4gICAgICAgICAgICAgICAgICAgIF0sIFtyb3csIGNvbCwgcm93ICsgcm93c3BhbiAtIDEsIGNvbCArIGNvbHNwYW4gLSAxXSkpIHtcbiAgICAgICAgICAgICAgICAgICAgY29udGludWU7XG4gICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgICAgIG1lcmdlQ2VsbHMucHVzaChtZXJnZWRbaV0pO1xuICAgICAgICAgICAgfVxuICAgICAgICB9XG4gICAgICAgIHRoaXMuaGFuZHNvbnRhYmxlLnVwZGF0ZVNldHRpbmdzKHtcbiAgICAgICAgICAgIG1lcmdlQ2VsbHM6IG1lcmdlQ2VsbHMubGVuZ3RoID09PSAwID8gZmFsc2UgOiBtZXJnZUNlbGxzXG4gICAgICAgIH0pO1xuICAgIH1cblxuXG4gICAgX2dldEV4Y2hhbmdlKCkge1xuICAgICAgICB2YXIge2RhdGEsIGNlbGxzfSA9IHRoaXMuX2dldERhdGFNZXRhKCk7XG4gICAgICAgIHZhciB7aGVpZ2h0cywgd2lkdGhzfSA9IHRoaXMuX2dldFNpemUoKTtcbiAgICAgICAgdmFyIG1lcmdlQ2VsbHMgPSB0aGlzLmhhbmRzb250YWJsZS5nZXRTZXR0aW5ncygpLm1lcmdlQ2VsbHM7XG5cbiAgICAgICAgcmV0dXJuIHtcbiAgICAgICAgICAgIG5hbWU6IHRoaXMuZ2V0TmFtZSgpLFxuICAgICAgICAgICAgc2VsZWN0aW9uOiB0aGlzLmdldFNlbGVjdGlvbigpLFxuICAgICAgICAgICAgZGF0YTogZGF0YS5sZW5ndGggPyBkYXRhIDogW10uXyxcbiAgICAgICAgICAgIHJvd0hlaWdodHM6IGhlaWdodHMsXG4gICAgICAgICAgICBjb2xXaWR0aHM6IHdpZHRocyxcbiAgICAgICAgICAgIG1lcmdlQ2VsbHM6IG1lcmdlQ2VsbHMsXG4gICAgICAgICAgICBjZWxsTWV0YXM6IGNlbGxzXG4gICAgICAgIH1cbiAgICB9XG5cbiAgICBfZ2V0U2l6ZSgpIHtcbiAgICAgICAgdmFyIGhvdCA9IHRoaXMuaGFuZHNvbnRhYmxlO1xuICAgICAgICB2YXIgY29scyA9IE1hdGgubWF4KGhvdC5jb3VudENvbHMoKSAtIGhvdC5jb3VudEVtcHR5Q29scyh0cnVlKSwgMjApO1xuICAgICAgICB2YXIgcm93cyA9IE1hdGgubWF4KGhvdC5jb3VudFJvd3MoKSAtIGhvdC5jb3VudEVtcHR5Um93cyh0cnVlKSwgNTApO1xuICAgICAgICB2YXIgaGVpZ2h0cyA9IFtdO1xuICAgICAgICB2YXIgd2lkdGhzID0gW107XG5cbiAgICAgICAgZm9yIChsZXQgaSA9IDA7IGkgPCByb3dzOyArK2kpIHtcbiAgICAgICAgICAgIGxldCBoID0gaG90LmdldFJvd0hlaWdodChpKTtcbiAgICAgICAgICAgIGlmIChpID09PSAwICYmICFoKSB7IC8vIGhhbmRzb250YWJsZSBidWdcbiAgICAgICAgICAgICAgICBoID0gMjQ7XG4gICAgICAgICAgICB9XG4gICAgICAgICAgICBoZWlnaHRzLnB1c2goaCk7XG4gICAgICAgIH1cbiAgICAgICAgZm9yIChsZXQgaSA9IDA7IGkgPCBjb2xzOyArK2kpIHtcbiAgICAgICAgICAgIHdpZHRocy5wdXNoKGhvdC5nZXRDb2xXaWR0aChpKSk7XG4gICAgICAgIH1cbiAgICAgICAgcmV0dXJuIHtoZWlnaHRzLCB3aWR0aHN9O1xuICAgIH1cblxuICAgIF9nZXREYXRhTWV0YSgpIHtcbiAgICAgICAgdmFyIGhvdCA9IHRoaXMuaGFuZHNvbnRhYmxlO1xuICAgICAgICB2YXIgY29scyA9IGhvdC5jb3VudENvbHMoKSAtIGhvdC5jb3VudEVtcHR5Q29scyh0cnVlKTtcbiAgICAgICAgdmFyIHJvd3MgPSBob3QuY291bnRSb3dzKCkgLSBob3QuY291bnRFbXB0eVJvd3ModHJ1ZSk7XG4gICAgICAgIHZhciBkYXRhID0gW107XG4gICAgICAgIHZhciBjZWxscyA9IFtdO1xuXG4gICAgICAgIGZvciAobGV0IGkgPSAwOyBpIDwgcm93czsgKytpKSB7XG4gICAgICAgICAgICBsZXQgcm93UmVzdWx0ID0gW107XG4gICAgICAgICAgICBsZXQgcm93Q2VsbE1ldGEgPSBbXTtcblxuICAgICAgICAgICAgZm9yIChsZXQgaiA9IDA7IGogPCBjb2xzOyArK2opIHtcbiAgICAgICAgICAgICAgICBsZXQgX3NvdXJjZURhdGEgPSBob3QuZ2V0U291cmNlRGF0YUF0Q2VsbChpLCBqKTtcbiAgICAgICAgICAgICAgICBsZXQgX21ldGEgPSBob3QuZ2V0Q2VsbE1ldGEoaSwgaik7IC8vIFRPRE8gbWV0YVxuICAgICAgICAgICAgICAgIGxldCBfZGF0YSA9IGhvdC5nZXREYXRhQXRDZWxsKGksIGopO1xuICAgICAgICAgICAgICAgIGxldCBfY2VsbE1hdGEgPSB7fTtcblxuICAgICAgICAgICAgICAgIF9jZWxsTWF0YS5yb3cgPSBpO1xuICAgICAgICAgICAgICAgIF9jZWxsTWF0YS5jb2wgPSBqO1xuICAgICAgICAgICAgICAgIF9jZWxsTWF0YS5pc0Zvcm11bGEgPSAhIShfc291cmNlRGF0YSAmJiAoX3NvdXJjZURhdGEgKyAnJykuY2hhckF0KDApID09PSAnPScpO1xuICAgICAgICAgICAgICAgIF9jZWxsTWF0YS5zb3VyY2VWYWx1ZSA9IF9zb3VyY2VEYXRhO1xuICAgICAgICAgICAgICAgIF9jZWxsTWF0YS52YWx1ZSA9IF9kYXRhO1xuXG4gICAgICAgICAgICAgICAgLy8gVE9ETyBkYXRhVHlwZSwgc3R5bGVzXG4gICAgICAgICAgICAgICAgcm93UmVzdWx0LnB1c2goX3NvdXJjZURhdGEpO1xuICAgICAgICAgICAgICAgIHJvd0NlbGxNZXRhLnB1c2goX2NlbGxNYXRhKTtcbiAgICAgICAgICAgIH1cbiAgICAgICAgICAgIGRhdGEucHVzaChyb3dSZXN1bHQpO1xuICAgICAgICAgICAgY2VsbHMucHVzaChyb3dDZWxsTWV0YSk7XG4gICAgICAgIH1cbiAgICAgICAgcmV0dXJuIHtkYXRhLCBjZWxsc307XG4gICAgfVxuXG4gICAgLy8gVE9ET1xuICAgIF9nZXRCb3JkZXJzKCkge1xuXG4gICAgfVxuXG59XG5cbmV4cG9ydCBkZWZhdWx0IFNoZWV0O1xuXG5cbi8qKlxuICogYWZ0ZXJSZW5hbWUg5LqL5Lu244CCXG4gKlxuICogQGV2ZW50IFNoZWV0I2FmdGVyUmVuYW1lXG4gKiBAdHlwZSB7U2hlZXR9XG4gKiBAdHlwZSB7c3RyaW5nfVxuICogQHR5cGUge3N0cmluZ31cbiAqL1xuXG4vKipcbiAqIGFmdGVyUmVuYW1lQ2FuY2VsIOS6i+S7tuOAglxuICpcbiAqIEBldmVudCBTaGVldCNhZnRlclJlbmFtZUNhbmNlbFxuICogQHR5cGUge1NoZWV0fVxuICogQHR5cGUge3N0cmluZ31cbiAqIEB0eXBlIHtzdHJpbmd9XG4gKi9cblxuIiwiaW1wb3J0IHtTcHJlYWRTaGVldEVycm9yfSBmcm9tICcuLi9TcHJlYWRTaGVldEVycm9yJ1xuXG5leHBvcnQgZnVuY3Rpb24gU2hlZXRFcnJvcih2YWx1ZSkge1xuICAgIHRoaXMubmFtZSA9ICdTaGVldEVycm9yJztcbiAgICB0aGlzLm1lc3NhZ2UgPSB2YWx1ZTtcbn1cblNoZWV0RXJyb3IucHJvdG90eXBlID0gbmV3IFNwcmVhZFNoZWV0RXJyb3IoKTtcblNoZWV0RXJyb3IucHJvdG90eXBlLmNvbnN0cnVjdG9yID0gU2hlZXRFcnJvcjsiLCJpbXBvcnQgVGFicyBmcm9tICAnLi92aWV3cy9UYWJzJ1xuaW1wb3J0IFNoZWV0IGZyb20gJy4vU2hlZXQnXG5pbXBvcnQge1NoZWV0RXJyb3J9IGZyb20gJy4vU2hlZXRFcnJvcidcbmltcG9ydCB7Q2FzZUluc2Vuc2l0aXZlTWFwfSBmcm9tICcuLi91dGlscy9kYXRhU3RydWN0dXJlJ1xuaW1wb3J0IHt1cHBlckNhc2V9IGZyb20gJy4uL3V0aWxzL2NvbW1vbidcbmltcG9ydCB7Z2xvYmFsU2V0dGluZ3N9IGZyb20gJy4uL3NldHRpbmdzJ1xuXG5cbmNvbnN0IHJlZ0V4cCA9IGdsb2JhbFNldHRpbmdzLnNoZWV0LnNoZWV0TmFtZTtcblxuLyoqXG4gKiDlt6XkvZznsL/jgILkuIDkuKogV29ya2Jvb2sg5YyF5ZCr5LiA5Liq5oiW5aSa5LiqIFNoZWV0IC5cbiAqL1xuY2xhc3MgV29ya2Jvb2sge1xuXG4gICAgLyoqXG4gICAgICogV29ya2Jvb2sg5p6E6YCg5ZmoXG4gICAgICogQHBhcmFtIHtTcHJlYWRTaGVldH0gaW5zdGFuY2VcbiAgICAgKiBAcGFyYW0ge29iamVjdH0gY29uZmlnXG4gICAgICovXG4gICAgY29uc3RydWN0b3IoaW5zdGFuY2UsIGNvbmZpZykge1xuICAgICAgICAvKipcbiAgICAgICAgICpcbiAgICAgICAgICogQHR5cGUge1NwcmVhZFNoZWV0fVxuICAgICAgICAgKi9cbiAgICAgICAgdGhpcy5zcHJlYWRTaGVldCA9IGluc3RhbmNlO1xuICAgICAgICAvKipcbiAgICAgICAgICogQHR5cGUge0Nhc2VJbnNlbnNpdGl2ZU1hcH1cbiAgICAgICAgICovXG4gICAgICAgIHRoaXMuc2hlZXRzID0gbmV3IENhc2VJbnNlbnNpdGl2ZU1hcCgpO1xuICAgICAgICB0aGlzLnNldHRpbmdzID0gY29uZmlnO1xuXG4gICAgICAgIHRoaXMuX2luaXRTZXR0aW5ncyhjb25maWcpO1xuICAgICAgICB0aGlzLiQkdmlldyA9IG5ldyBUYWJzKHRoaXMpO1xuXG4gICAgICAgIGNvbmZpZy5zaGVldHMuZm9yRWFjaCh2ID0+IHRoaXMuY3JlYXRlU2hlZXQodikpO1xuXG4gICAgICAgIC8vIOagueaNruWIneWni+WMluaVsOaNrua/gOa0uyBzaGVldCDpobVcbiAgICAgICAgdmFyIHRvQWN0aXZlID0gdGhpcy5nZXRTaGVldCh0aGlzLmFjdGl2ZVNoZWV0KTtcbiAgICAgICAgaWYgKCF0b0FjdGl2ZSkge1xuICAgICAgICAgICAgdGhyb3cgbmV3IFNoZWV0RXJyb3IoYOaMh+WumueahCBhY3RpdmVTaGVldCDkuI3lrZjlnKg6ICR7dGhpcy5hY3RpdmVTaGVldH1gKTtcbiAgICAgICAgfVxuICAgICAgICB0b0FjdGl2ZS5hY3RpdmUoKTtcbiAgICB9XG5cbiAgICAvKipcbiAgICAgKlxuICAgICAqIEBwYXJhbSBzZXR0aW5nc1xuICAgICAqIEBwcml2YXRlXG4gICAgICovXG4gICAgX2luaXRTZXR0aW5ncyhzZXR0aW5ncykge1xuICAgICAgICB2YXIga2V5cyA9IE9iamVjdC5rZXlzKHNldHRpbmdzKTtcbiAgICAgICAgZm9yIChsZXQgaSA9IDAsIGxlbiA9IGtleXMubGVuZ3RoOyBpIDwgbGVuOyArK2kpIHtcbiAgICAgICAgICAgIGlmIChrZXlzW2ldID09PSAnc2hlZXRzJykge1xuICAgICAgICAgICAgICAgIGNvbnRpbnVlO1xuICAgICAgICAgICAgfVxuICAgICAgICAgICAgdGhpc1trZXlzW2ldXSA9IHNldHRpbmdzW2tleXNbaV1dO1xuICAgICAgICB9XG4gICAgfVxuXG4gICAgLyoqXG4gICAgICog6I635Y+WIFdvcmtib29rIOaJgOWxnueahOeUteWtkOihqOagvOeahOeUqOaIt+WIneWni+mFjee9ruOAglxuICAgICAqIEByZXR1cm5zIHtPYmplY3R9XG4gICAgICovXG4gICAgZ2V0U2V0dGluZ3MoKSB7XG4gICAgICAgIHJldHVybiB0aGlzLnNwcmVhZFNoZWV0LmdldFNldHRpbmdzKCk7XG4gICAgfVxuXG4gICAgLyoqXG4gICAgICog6I635Y+W5b2T5YmNIFdvcmtib29rIOeahCBpZFxuICAgICAqIEByZXR1cm5zIHtzdHJpbmd9XG4gICAgICovXG4gICAgZ2V0SWQoKSB7XG4gICAgICAgIHJldHVybiB0aGlzLmlkIHx8ICh0aGlzLmlkID0gdGhpcy5zcHJlYWRTaGVldC5nZXRJZCgpICsgZ2xvYmFsU2V0dGluZ3MuaWRTdWZmaXg0V29ya2Jvb2spO1xuICAgIH1cblxuICAgIC8qKlxuICAgICAqIOagueaNruaMh+WumiBzaGVldCDlkI3ojrflj5Ygc2hlZXQg5a6e5L6LXG4gICAgICogQHBhcmFtIG5hbWVcbiAgICAgKiBAcmV0dXJucyB7U2hlZXR9XG4gICAgICovXG4gICAgZ2V0U2hlZXQobmFtZSkge1xuICAgICAgICByZXR1cm4gdGhpcy5zaGVldHMuZ2V0KG5hbWUpO1xuICAgIH1cblxuICAgIC8qKlxuICAgICAqIOiOt+WPluW9k+WJjSBXb3JrYm9vayDkuIvnmoTmiYDmnIkgc2hlZXQg5a6e5L6LXG4gICAgICogQHJldHVybnMge0Nhc2VJbnNlbnNpdGl2ZU1hcH1cbiAgICAgKi9cbiAgICBnZXRTaGVldHMoKSB7XG4gICAgICAgIHJldHVybiB0aGlzLnNoZWV0cztcbiAgICB9XG5cbiAgICAvKipcbiAgICAgKiDojrflj5bmiYDmnIkgc2hlZXQg55qE5ZCN5a2XXG4gICAgICogQHJldHVybnMge0l0ZXJhdG9yLjxLPn1cbiAgICAgKi9cbiAgICBnZXRTaGVldE5hbWVzKCkge1xuICAgICAgICByZXR1cm4gdGhpcy5zaGVldHMua2V5cygpO1xuICAgIH1cblxuICAgIC8qKlxuICAgICAqIOajgOmqjCBzaGVldCDmmK/lkKblt7LlrZjlnKhcbiAgICAgKiBAcGFyYW0gbmFtZVxuICAgICAqIEBwYXJhbSB7Ym9vbGVhbn0gW2V4YWN0bHk9ZmFsc2VdIC0g5piv5ZCm5L2/55So57K+56Gu5aSn5bCP5YaZ55qEIG5hbWVcbiAgICAgKiBAcmV0dXJucyB7Ym9vbGVhbn1cbiAgICAgKi9cbiAgICBpc1NoZWV0RXhpc3QobmFtZSwgZXhhY3RseSkge1xuICAgICAgICBpZiAoZXhhY3RseSkge1xuICAgICAgICAgICAgcmV0dXJuIHRoaXMuc2hlZXRzLmhhc0V4YWN0KG5hbWUpO1xuICAgICAgICB9XG4gICAgICAgIC8vIHJldHVybiAhIXRoaXMuZ2V0U2hlZXQobmFtZSk7XG4gICAgICAgIHJldHVybiB0aGlzLnNoZWV0cy5oYXMobmFtZSk7XG4gICAgfVxuXG4gICAgLyoqXG4gICAgICog55Sf5oiQIHNoZWV0IOe0ouW8lVxuICAgICAqIEBwcml2YXRlXG4gICAgICogQHJldHVybnMge251bWJlcn1cbiAgICAgKi9cbiAgICBfZ2V0QXV0b1NoZWV0SW5kZXgoKSB7XG4gICAgICAgIGlmICghdGhpcy4kJGF1dG9TaGVldEluZGV4KSB7XG4gICAgICAgICAgICB0aGlzLiQkYXV0b1NoZWV0SW5kZXggPSAwO1xuICAgICAgICB9XG4gICAgICAgIHJldHVybiArK3RoaXMuJCRhdXRvU2hlZXRJbmRleDsgLy8g5LuOIDEg5byA5aeLXG4gICAgfVxuXG4gICAgLyoqXG4gICAgICog6Ieq5Yqo55Sf5oiQIHNoZWV0IOWQjVxuICAgICAqIEByZXR1cm5zIHtzdHJpbmd9XG4gICAgICogQHByaXZhdGVcbiAgICAgKi9cbiAgICBfZ2V0QXV0b1NoZWV0TmFtZSgpIHtcbiAgICAgICAgY29uc3QgcHJlZml4ID0gZ2xvYmFsU2V0dGluZ3Muc2hlZXQuYXV0b1ByZWZpeCArICcnOyAvLyDpmLLmraLlh7rnjrDmlbDlrZfnm7jliqBcbiAgICAgICAgdmFyIG5hbWUgPSBwcmVmaXggKyB0aGlzLl9nZXRBdXRvU2hlZXRJbmRleCgpO1xuICAgICAgICBpZiAodGhpcy5pc1NoZWV0RXhpc3QobmFtZSkpIHtcbiAgICAgICAgICAgIHJldHVybiB0aGlzLl9nZXRBdXRvU2hlZXROYW1lKCk7XG4gICAgICAgIH1cbiAgICAgICAgcmV0dXJuIG5hbWU7XG4gICAgfVxuXG4gICAgLyoqXG4gICAgICog6I635Y+W5b2T5YmN5r+A5rS755qEIHNoZWV0IOmhtVxuICAgICAqIEByZXR1cm5zIHtTaGVldH1cbiAgICAgKi9cbiAgICBnZXRBY3RpdmVTaGVldCgpIHtcbiAgICAgICAgcmV0dXJuIHRoaXMuc2hlZXRzLmdldCh0aGlzLmFjdGl2ZVNoZWV0KTtcbiAgICB9XG5cbiAgICAvKipcbiAgICAgKiDliJvlu7rmlrDnmoQgc2hlZXQg6aG1XG4gICAgICogQHBhcmFtIHtvYmplY3R9IFtjb25maWddIC0gc2hlZXQg6aG155qE6YWN572u5L+h5oGvXG4gICAgICogQHJldHVybnMge1NoZWV0fSDmlrDliJvlu7rnmoTlt6XkvZzooahcbiAgICAgKi9cbiAgICBjcmVhdGVTaGVldChjb25maWcpIHtcbiAgICAgICAgaWYgKGNvbmZpZykgeyAgLy8g5qC55o2u5Yid5aeL6YWN572u5Yib5bu677yMbmFtZSDkuI3og73kuLrnqbpcbiAgICAgICAgICAgIHRoaXMuX3ZhbGlkYXRlU2hlZXROYW1lKGNvbmZpZy5uYW1lKTtcbiAgICAgICAgfSBlbHNlIHsgLy8g55So5oi35pON5L2c5Yib5bu677yM5Yqo5oCB55Sf5oiQIG5hbWVcbiAgICAgICAgICAgIGNvbmZpZyA9IHt9O1xuICAgICAgICAgICAgY29uZmlnLm5hbWUgPSB0aGlzLl9nZXRBdXRvU2hlZXROYW1lKCk7XG4gICAgICAgIH1cbiAgICAgICAgdmFyIG5ld09uZSA9IG5ldyBTaGVldCh0aGlzLCBjb25maWcpO1xuICAgICAgICB0aGlzLnNoZWV0cy5zZXQoY29uZmlnLm5hbWUsIG5ld09uZSk7XG4gICAgICAgIHJldHVybiBuZXdPbmU7XG4gICAgfVxuXG4gICAgLyoqXG4gICAgICog6ZSA5q+B5oyH5a6aIHNoZWV0IOmhtVxuICAgICAqIEBwYXJhbSB7c3RyaW5nIHwgU2hlZXR9IHNoZWV0IC0gc2hlZXQg5ZCN56ew5oiW5a6e5L6LXG4gICAgICovXG4gICAgZGVzdHJveVNoZWV0KHNoZWV0KSB7XG4gICAgICAgIGlmICh0eXBlb2Ygc2hlZXQgPT09ICdzdHJpbmcnKSB7XG4gICAgICAgICAgICBzaGVldCA9IHRoaXMuZ2V0U2hlZXQoc2hlZXQpO1xuICAgICAgICB9XG4gICAgICAgIHNoZWV0LmRlc3Ryb3koKTtcbiAgICB9XG5cbiAgICAvKipcbiAgICAgKiDnu5nmjIflrprnmoQgc2hlZXQg6aG16YeN5ZG95ZCNXG4gICAgICogQHBhcmFtIHtzdHJpbmd9IG5hbWUxIC0g5b6F6YeN5ZG95ZCN55qEIHNoZWV0IOmhteWQjeWtl1xuICAgICAqIEBwYXJhbSB7c3RyaW5nfSBuYW1lMiAtIOaWsOWQjeWtl1xuICAgICAqL1xuICAgIC8vIEZJWE1FIOe8lui+kemUmeS9je+8mlxuICAgIC8vIGhhbmRzb250YWJsZSDlnKjpgInkuK3mn5DljZXlhYPmoLzkvYbmsqHov5vlhaXnvJbovpHml7bvvIzkvJrnm5HlkKwgZG9jdW1lbnQg5LiK55qEIGtleWRvd24g5LqL5Lu277yMXG4gICAgLy8g6YCg5oiQ5L+u5pS5IHNoZWV0IOWQjeaXtueahOaWh+acrOahhuaXoOazleato+ehruWkhOeQhu+8iOS8mui+k+WFpeWIsOihqOagvOS4re+8iVxuICAgIC8vIOaaguaXtuS9v+eUqCBpbnB1dCDnmoQgc2VsZWN0IOS7o+abvyBmb2N1c++8jOi/q+S9v+eUqOaIt+WGjeasoeeCueWHu3NoZWV05ZCN5pe25omN6IO95L+u5pS544CCXG4gICAgcmVuYW1lU2hlZXQobmFtZTEsIG5hbWUyKSB7XG4gICAgICAgIHZhciBzaGVldCA9IHRoaXMuZ2V0U2hlZXQobmFtZTEpO1xuICAgICAgICBpZiAoIXNoZWV0KSB7XG4gICAgICAgICAgICB0aHJvdyBuZXcgU2hlZXRFcnJvcihg5bel5L2c6KGoIFwiJHtuYW1lMX1cIiDkuI3lrZjlnKhgKTtcbiAgICAgICAgfVxuICAgICAgICBpZiAobmFtZTEgIT09IG5hbWUyKSB7XG4gICAgICAgICAgICB0aGlzLl92YWxpZGF0ZVNoZWV0TmFtZShuYW1lMiwgdXBwZXJDYXNlKG5hbWUxKSA9PT0gdXBwZXJDYXNlKG5hbWUyKSk7XG4gICAgICAgICAgICBzaGVldC5zaGVldE5hbWUgPSBuYW1lMjtcbiAgICAgICAgICAgIGlmICh0aGlzLmFjdGl2ZVNoZWV0ID09PSBuYW1lMSkge1xuICAgICAgICAgICAgICAgIHRoaXMuYWN0aXZlU2hlZXQgPSBuYW1lMjtcbiAgICAgICAgICAgIH1cbiAgICAgICAgICAgIHRoaXMuZ2V0U2hlZXRzKCkuZGVsZXRlKG5hbWUxKTtcbiAgICAgICAgICAgIHRoaXMuZ2V0U2hlZXRzKCkuc2V0KG5hbWUyLCBzaGVldCk7XG4gICAgICAgICAgICB0aGlzLiQkdmlldy50YWJSZW5hbWUobmFtZTEsIG5hbWUyKTtcbiAgICAgICAgfSBlbHNlIHtcbiAgICAgICAgICAgIHRoaXMuJCR2aWV3LnRhYlJlbmFtZUNhbmNlbChuYW1lMSwgbmFtZTIpO1xuICAgICAgICB9XG4gICAgfVxuXG4gICAgLyoqXG4gICAgICog6aqM6K+BIHNoZWV0IOWQjeaYr+WQpuWQiOazlVxuICAgICAqIEBwYXJhbSB7c3RyaW5nfSBuYW1lXG4gICAgICogQHBhcmFtIHtib29sZWFufSBleGFjdGx5XG4gICAgICogQHByaXZhdGVcbiAgICAgKi9cbiAgICBfdmFsaWRhdGVTaGVldE5hbWUobmFtZSwgZXhhY3RseSkge1xuICAgICAgICBpZiAoIW5hbWUpIHtcbiAgICAgICAgICAgIHRocm93IG5ldyBTaGVldEVycm9yKCflt6XkvZzooajnmoTlkI3np7DkuI3og73kuLrnqbonKTtcbiAgICAgICAgfVxuICAgICAgICAvLyAg56aB5q2i5LiA5Lqb54m55q6K5a2X56ymXG4gICAgICAgIGlmIChyZWdFeHAudGVzdChuYW1lKSkge1xuICAgICAgICAgICAgdGhyb3cgbmV3IFNoZWV0RXJyb3IoYOW3peS9nOihqCBcIiR7bmFtZX1cIiDljIXlkKvpnZ7ms5XlrZfnrKZgKTtcbiAgICAgICAgfVxuICAgICAgICBpZiAodGhpcy5pc1NoZWV0RXhpc3QobmFtZSwgZXhhY3RseSkpIHtcbiAgICAgICAgICAgIHRocm93IG5ldyBTaGVldEVycm9yKGDlt6XkvZzooaggXCIke25hbWV9XCIg5bey5a2Y5ZyoYCk7XG4gICAgICAgIH1cbiAgICB9XG5cbiAgICBfZ2V0RXhjaGFuZ2UoKSB7XG4gICAgICAgIHZhciBzaGVldHMgPSBbXTtcbiAgICAgICAgZm9yIChsZXQgWyxzaGVldF0gb2YgdGhpcy5nZXRTaGVldHMoKS50b01hcCgpKSB7XG4gICAgICAgICAgICBzaGVldCAmJiBzaGVldHMucHVzaChzaGVldC5fZ2V0RXhjaGFuZ2UoKSk7XG4gICAgICAgIH1cbiAgICAgICAgcmV0dXJuIHtcbiAgICAgICAgICAgIGFjdGl2ZVNoZWV0OiB0aGlzLmFjdGl2ZVNoZWV0LFxuICAgICAgICAgICAgc2hlZXRzOiBzaGVldHNcbiAgICAgICAgfVxuICAgIH1cblxufVxuXG5leHBvcnQgZGVmYXVsdCBXb3JrYm9vazsiLCJpbXBvcnQge0Nvb3JkaW5hdGV9IGZyb20gJy4uLy4uL3V0aWxzL2NvbW1vbidcblxuLyoqXG4gKiDnlLXlrZDooajmoLzlj7PplK7oj5zljZXjgIJcbiAqL1xuZnVuY3Rpb24gQ29udGV4dE1lbnUoc3ByZWFkU2hlZXQpIHtcbiAgICB0aGlzLnNwcmVhZFNoZWV0ID0gc3ByZWFkU2hlZXQ7XG4gICAgLyoqXG4gICAgICpcbiAgICAgKiBAdHlwZSB7TWFwfVxuICAgICAqL1xuICAgIHRoaXMubWVudUl0ZW1zID0gbmV3IE1hcCgpO1xuICAgIHRoaXMuX2luaXQoKTtcbn1cblxuZXhwb3J0IGRlZmF1bHQgQ29udGV4dE1lbnU7XG5cbkNvbnRleHRNZW51LnByb3RvdHlwZS5yZWdpc3RlciA9IGZ1bmN0aW9uIChrZXksIGNvbmZpZywgaGFuZGxlcikge1xuICAgIHRoaXMubWVudUl0ZW1zLnNldChrZXksIHtcbiAgICAgICAgY29uZmlnOiBjb25maWcsXG4gICAgICAgIGhhbmRsZXI6IGhhbmRsZXJcbiAgICB9KTtcbn07XG5cbi8qKlxuICog6I635Y+WIGhhbmRzb250YWJsZSDpnIDopoHnmoToj5zljZXphY3nva7poblcbiAqL1xuQ29udGV4dE1lbnUucHJvdG90eXBlLmdldE1lbnVJdGVtczRIb3RUYWJsZSA9IGZ1bmN0aW9uICgpIHtcbiAgICBpZiAoIXRoaXMuX2hvdFRhYmxlSXRlbXMpIHtcbiAgICAgICAgdGhpcy5faG90VGFibGVJdGVtcyA9IHt9O1xuICAgICAgICB0aGlzLm1lbnVJdGVtcy5mb3JFYWNoKCh7Y29uZmlnfSwga2V5KSA9PiB0aGlzLl9ob3RUYWJsZUl0ZW1zW2tleV0gPSBjb25maWcpO1xuICAgIH1cbiAgICByZXR1cm4gdGhpcy5faG90VGFibGVJdGVtcztcbn07XG5cblxuLypcbiAjIyMgaGFuZHNvbnRhYmxlIOiHquW4puWPs+mUruWKn+iDve+8miMjI1xuIHJvd19hYm92ZVxuIHJvd19iZWxvd1xuIGhzZXAxXG4gY29sX2xlZnRcbiBjb2xfcmlnaHRcbiBoc2VwMlxuIHJlbW92ZV9yb3dcbiByZW1vdmVfY29sXG4gaHNlcDNcbiB1bmRvXG4gcmVkb1xuIG1ha2VfcmVhZF9vbmx5XG4gYWxpZ25tZW50XG4gYm9yZGVyc1xuICovXG5Db250ZXh0TWVudS5wcm90b3R5cGUuX2luaXQgPSBmdW5jdGlvbiAoKSB7XG4gICAgdGhpcy5yZWdpc3Rlcigncm93X2Fib3ZlJywge1xuICAgICAgICBuYW1lOiAn5LiK5pa55o+S5YWl5LiA6KGMJyxcbiAgICAgICAgZGlzYWJsZWQ6IGZ1bmN0aW9uICgpIHtcbiAgICAgICAgICAgIC8vIOiwg+eUqOiAheimgeehruS/neatpOWkhCB0aGlzICDkuLrlvZPliY0gaG90VGFibGUg5a6e5L6LXG4gICAgICAgICAgICAvLyBUT0RPIOmZkOWItuacgOWkp+ihjOaVsFxuICAgICAgICAgICAgcmV0dXJuIGZhbHNlO1xuICAgICAgICB9XG4gICAgfSk7XG5cbiAgICB0aGlzLnJlZ2lzdGVyKCdyb3dfYmVsb3cnLCB7XG4gICAgICAgIG5hbWU6ICfkuIvmlrnmj5LlhaXkuIDooYwnXG4gICAgfSk7XG5cbiAgICB0aGlzLnJlZ2lzdGVyKCdoc2VwMScsICctLS0tLS0tLS0nKTtcblxuICAgIHRoaXMucmVnaXN0ZXIoJ2NvbF9sZWZ0Jywge1xuICAgICAgICBuYW1lOiAn5bem5L6n5o+S5YWl5LiA5YiXJ1xuICAgIH0pO1xuXG4gICAgdGhpcy5yZWdpc3RlcignY29sX3JpZ2h0Jywge1xuICAgICAgICBuYW1lOiAn5Y+z5L6n5o+S5YWl5LiA5YiXJ1xuICAgIH0pO1xuXG4gICAgdGhpcy5yZWdpc3RlcignaHNlcDInLCAnLS0tLS0tLS0tJyk7XG5cbiAgICAvLyBGSVhNRSBoYW5kc29udGFibGUg6Ieq5bim55qE5Yig6Zmk5Yqf6IO977yM5Zyo5a2Y5Zyo5Y2V5YWD5qC85ZCI5bm25pe25pyJQlVH77yM5pS55oiQ6Ieq5a6a5LmJ6YC76L6R44CCXG4gICAgdGhpcy5yZWdpc3RlcigncmVtb3ZlX3JvdycsIHtcbiAgICAgICAgbmFtZTogJ+WIoOmZpOmAieS4reihjCcsXG4gICAgICAgIGRpc2FibGVkOiBmdW5jdGlvbiAoKSB7XG4gICAgICAgICAgICAvLyBUT0RPIOmZkOWItuacgOWwj+ihjOaVsFxuICAgICAgICAgICAgcmV0dXJuIGZhbHNlO1xuICAgICAgICB9XG4gICAgfSk7XG4gICAgdGhpcy5yZWdpc3RlcigncmVtb3ZlX2NvbCcsIHtcbiAgICAgICAgbmFtZTogJ+WIoOmZpOmAieS4reWIlydcbiAgICB9KTtcblxuICAgIHRoaXMucmVnaXN0ZXIoJ2hzZXAzJywgJy0tLS0tLS0tLScpO1xuXG5cbiAgICBsZXQgbWVyZ2VDb21wYXJlID0gZnVuY3Rpb24gKHR5cGUpIHtcbiAgICAgICAgdmFyIG1lcmdlZCA9IHRoaXMuZ2V0U2V0dGluZ3MoKS5tZXJnZUNlbGxzO1xuICAgICAgICBpZiAobWVyZ2VkICYmIG1lcmdlZC5sZW5ndGgpIHtcbiAgICAgICAgICAgIGZvciAobGV0IGkgPSAwOyBpIDwgbWVyZ2VkLmxlbmd0aDsgKytpKSB7XG4gICAgICAgICAgICAgICAgbGV0IHtyb3csIGNvbCwgcm93c3BhbiwgY29sc3Bhbn0gPSBtZXJnZWRbaV07XG4gICAgICAgICAgICAgICAgaWYgKENvb3JkaW5hdGVbdHlwZV0oXG4gICAgICAgICAgICAgICAgICAgICAgICBbcm93LCBjb2wsIHJvdyArIHJvd3NwYW4gLSAxLCBjb2wgKyBjb2xzcGFuIC0gMV0sXG4gICAgICAgICAgICAgICAgICAgICAgICB0aGlzLmdldFNlbGVjdGVkKCkpKSB7XG4gICAgICAgICAgICAgICAgICAgIHJldHVybiBmYWxzZTtcbiAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICB9XG4gICAgICAgIH1cbiAgICAgICAgcmV0dXJuIHRydWU7XG4gICAgfTtcblxuICAgIHRoaXMucmVnaXN0ZXIoJ3FfbWVyZ2VfY2VsbHMnLCB7XG4gICAgICAgIG5hbWU6ICfljZXlhYPmoLzlkIjlubYnLFxuICAgICAgICBkaXNhYmxlZDogZnVuY3Rpb24gKCkge1xuICAgICAgICAgICAgdmFyIFtyMSwgYzEsIHIyLCBjMl0gPSB0aGlzLmdldFNlbGVjdGVkKCk7XG4gICAgICAgICAgICBpZiAocjEgPT09IHIyICYmIGMxID09PSBjMikge1xuICAgICAgICAgICAgICAgIHJldHVybiB0cnVlO1xuICAgICAgICAgICAgfVxuICAgICAgICAgICAgcmV0dXJuICFtZXJnZUNvbXBhcmUuY2FsbCh0aGlzLCAnaXNFcXVhbCcpO1xuICAgICAgICB9XG4gICAgfSwgZnVuY3Rpb24gKHNoZWV0LCBzdGFydCwgZW5kKSB7XG4gICAgICAgIHNoZWV0Lm1lcmdlQ2VsbHMoXG4gICAgICAgICAgICBzdGFydC5yb3csXG4gICAgICAgICAgICBzdGFydC5jb2wsXG4gICAgICAgICAgICBlbmQucm93IC0gc3RhcnQucm93ICsgMSxcbiAgICAgICAgICAgIGVuZC5jb2wgLSBzdGFydC5jb2wgKyAxXG4gICAgICAgICk7XG4gICAgfSk7XG5cblxuICAgIHRoaXMucmVnaXN0ZXIoJ3FfY2FuY2VsX21lcmdlX2NlbGxzJywge1xuICAgICAgICBuYW1lOiAn5Y+W5raI5Y2V5YWD5qC85ZCI5bm2JyxcbiAgICAgICAgZGlzYWJsZWQ6IGZ1bmN0aW9uICgpIHtcbiAgICAgICAgICAgIHJldHVybiBtZXJnZUNvbXBhcmUuY2FsbCh0aGlzLCAnaXNTdWJzZXQnKTtcbiAgICAgICAgfVxuICAgIH0sIGZ1bmN0aW9uIChzaGVldCwgc3RhcnQsIGVuZCkge1xuICAgICAgICBzaGVldC51bk1lcmdlQ2VsbHMoXG4gICAgICAgICAgICBzdGFydC5yb3csXG4gICAgICAgICAgICBzdGFydC5jb2wsXG4gICAgICAgICAgICBlbmQucm93IC0gc3RhcnQucm93ICsgMSxcbiAgICAgICAgICAgIGVuZC5jb2wgLSBzdGFydC5jb2wgKyAxXG4gICAgICAgICk7XG4gICAgfSk7XG5cbn07XG5cbiIsImltcG9ydCB7aW5uZXJIVE1MLCBvdXRlckhlaWdodCwgb3V0ZXJXaWR0aCwgZW1wdHksIGluc2VydEFmdGVyfSBmcm9tICcuLi8uLi91dGlscy9kb21IZWxwZXIuanMnO1xuaW1wb3J0IHtpc0VtcHR5VmFsdWUsIHVwcGVyQ2FzZX0gZnJvbSAnLi4vLi4vdXRpbHMvY29tbW9uLmpzJztcbmltcG9ydCB7Q2FzZUluc2Vuc2l0aXZlTWFwfSBmcm9tICcuLi8uLi91dGlscy9kYXRhU3RydWN0dXJlLmpzJztcbmltcG9ydCB7c3RvcEltbWVkaWF0ZVByb3BhZ2F0aW9ufSBmcm9tICcuLi8uLi91dGlscy9ldmVudEhlbHBlci5qcyc7XG5pbXBvcnQge2dsb2JhbFNldHRpbmdzfSBmcm9tICcuLi8uLi9zZXR0aW5ncy5qcyc7XG5pbXBvcnQge1dBUk5TfSBmcm9tICcuLi8uLi9pMThuJztcblxuY29uc3QgQ0xBU1NfQ1VSUkVOVCA9ICdjdXJyZW50JztcbmNvbnN0IENMQVNTX1RBQlMgPSAnc3NkLXRhYnMnO1xuY29uc3QgQ0xBU1NfQ09OVEVOVCA9ICdzc2QtdGFicy1jb250ZW50JztcbmNvbnN0IENMQVNTX1NFQ1RJT04gPSAnc3NkLXRhYnMtc2VjdGlvbic7XG5jb25zdCBDTEFTU19OQVYgPSAnc3NkLXRhYnMtbmF2JztcbmNvbnN0IENMQVNTX1VMID0gJ3NzZC10YWJzLXVsJztcbmNvbnN0IENMQVNTX0xJID0gJ3NzZC10YWJzLWxpJztcbmNvbnN0IENMQVNTX0ZYID0gJ3NzZC10YWJzLWZ4JztcblxuY29uc3QgYW5pbWF0ZWQgPSBnbG9iYWxTZXR0aW5ncy5zaGVldC5hbmltYXRlZDtcbmNvbnN0IHJlZ0V4cCA9IGdsb2JhbFNldHRpbmdzLnNoZWV0LnNoZWV0TmFtZTtcblxuLyoqXG4gKiB3b3JrYm9vayDlr7nlupTnmoTop4blm77vvIzlrp7pmYXnmoQgRE9NIOaehOaIkOOAglxuICogQHByaXZhdGVcbiAqIEBwYXJhbSB7V29ya2Jvb2t9IHdvcmtib29rXG4gKiBAY29uc3RydWN0b3JcbiAqL1xuZnVuY3Rpb24gVGFicyh3b3JrYm9vaykge1xuICAgIHRoaXMud29ya2Jvb2sgPSB3b3JrYm9vaztcbiAgICB0aGlzLmxpSXRlbXMgPSBuZXcgQ2FzZUluc2Vuc2l0aXZlTWFwKCk7XG4gICAgdGhpcy5zZWN0aW9uSXRlbXMgPSBuZXcgQ2FzZUluc2Vuc2l0aXZlTWFwKCk7XG4gICAgdGhpcy5faG90VGFibGVzID0gbmV3IE1hcCgpO1xuICAgIHRoaXMucm9vdEVsZW1lbnQgPSB3b3JrYm9vay5zcHJlYWRTaGVldC5nZXRSb290RWxlbWVudCgpO1xuXG4gICAgdGhpcy5pbml0RE9NKCk7XG4gICAgdGhpcy5pbml0Qm94KCk7XG4gICAgdGhpcy5yZW5kZXIoKTtcbn1cblxuVGFicy5wcm90b3R5cGUucmVuZGVyID0gZnVuY3Rpb24gKCkge1xuICAgIHRoaXMucm9vdEVsZW1lbnQuYXBwZW5kQ2hpbGQodGhpcy5UQUJTKTtcbn07XG5cbi8qKlxuICogQHByaXZhdGVcbiAqL1xuVGFicy5wcm90b3R5cGUuaW5pdERPTSA9IGZ1bmN0aW9uICgpIHtcbiAgICB0aGlzLlRBQlMgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KCdkaXYnKTtcbiAgICB0aGlzLkNPTlRFTlQgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KCdkaXYnKTtcbiAgICB0aGlzLk5BViA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoJ25hdicpO1xuICAgIHRoaXMuVUwgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KCd1bCcpO1xuXG4gICAgdGhpcy5UQUJTLmNsYXNzTGlzdC5hZGQoQ0xBU1NfVEFCUyk7XG4gICAgdGhpcy5UQUJTLmlkID0gdGhpcy53b3JrYm9vay5nZXRJZCgpO1xuICAgIHRoaXMuQ09OVEVOVC5jbGFzc0xpc3QuYWRkKENMQVNTX0NPTlRFTlQpO1xuICAgIHRoaXMuTkFWLmNsYXNzTGlzdC5hZGQoQ0xBU1NfTkFWKTtcbiAgICB0aGlzLlVMLmNsYXNzTGlzdC5hZGQoQ0xBU1NfVUwpO1xuXG4gICAgdGhpcy5UQUJTLmFwcGVuZENoaWxkKHRoaXMuQ09OVEVOVCk7XG4gICAgdGhpcy5UQUJTLmFwcGVuZENoaWxkKHRoaXMuTkFWKTtcbiAgICB0aGlzLk5BVi5hcHBlbmRDaGlsZCh0aGlzLlVMKTtcblxuICAgIC8vIOWinuWKoCBzaGVldCDpobXnmoQgYnV0dG9uXG4gICAgdGhpcy5hcHBlbmRBZGRCdXR0b24oKTtcbn07XG5cbi8qKlxuICogQHByaXZhdGVcbiAqL1xuVGFicy5wcm90b3R5cGUuaW5pdEJveCA9IGZ1bmN0aW9uICgpIHtcbiAgICB2YXIgcm9vdEVsID0gdGhpcy53b3JrYm9vay5zcHJlYWRTaGVldC5nZXRSb290RWxlbWVudCgpO1xuICAgIHRoaXMud2lkdGggPSB0aGlzLndvcmtib29rLndpZHRoIHx8IG91dGVyV2lkdGgocm9vdEVsLCBmYWxzZSk7XG4gICAgdGhpcy5oZWlnaHQgPSB0aGlzLndvcmtib29rLmhlaWdodCB8fCBvdXRlckhlaWdodChyb290RWwsIGZhbHNlKTtcblxuICAgIHRoaXMuVEFCUy5zdHlsZS53aWR0aCA9IHRoaXMud2lkdGggKyAncHgnO1xuICAgIHRoaXMuVEFCUy5zdHlsZS5oZWlnaHQgPSB0aGlzLmhlaWdodCArICdweCc7XG59O1xuXG5cbi8qKlxuICog5aKe5Yqg5LiA5LiqIHRhYiDpobVcbiAqIEBwYXJhbSB7c3RyaW5nfSBzaGVldE5hbWUgLSBzaGVldCDlkI3vvIwg5Y2zIHRhYiDpobXnmoTmoIfpophcbiAqL1xuVGFicy5wcm90b3R5cGUuYXBwZW5kVGFiID0gZnVuY3Rpb24gKHNoZWV0TmFtZSkge1xuICAgIHZhciB0aGF0ID0gdGhpcztcbiAgICB2YXIgbGkgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KCdsaScpO1xuXG4gICAgbGkuaW5uZXJIVE1MID0gYDxhIGhyZWY9XCJqYXZhc2NyaXB0OjtcIj48c3Bhbj4ke3NoZWV0TmFtZX08L3NwYW4+PC9hPmA7XG4gICAgbGkuY2xhc3NMaXN0LmFkZChDTEFTU19MSSk7XG4gICAgbGkuc2V0QXR0cmlidXRlKCdkYXRhLXNoZWV0Jywgc2hlZXROYW1lKTtcblxuICAgIHZhciBhY3RpdmVUYWIgPSB0aGlzLlRBQlMucXVlcnlTZWxlY3RvcihgLiR7Q0xBU1NfQ1VSUkVOVH0uJHtDTEFTU19MSX1gKTtcbiAgICBpZiAoYWN0aXZlVGFiKSB7XG4gICAgICAgIGluc2VydEFmdGVyKGFjdGl2ZVRhYiwgbGkpO1xuICAgIH0gZWxzZSB7XG4gICAgICAgIHRoaXMuVUwuYXBwZW5kQ2hpbGQobGkpO1xuICAgIH1cbiAgICB0aGlzLmxpSXRlbXMuc2V0KHNoZWV0TmFtZSwgbGkpO1xuXG4gICAgbGkuYWRkRXZlbnRMaXN0ZW5lcignY2xpY2snLCBmdW5jdGlvbiAoZXZlbnQpIHtcbiAgICAgICAgdmFyIHNoZWV0TmFtZSA9IHRoaXMuZGF0YXNldC5zaGVldDtcbiAgICAgICAgdmFyIHNoZWV0ID0gdGhhdC53b3JrYm9vay5nZXRTaGVldChzaGVldE5hbWUpO1xuICAgICAgICBzaGVldC5hY3RpdmUoKTtcbiAgICAgICAgc3RvcEltbWVkaWF0ZVByb3BhZ2F0aW9uKGV2ZW50KTtcbiAgICB9KTtcblxuICAgIGxpLmFkZEV2ZW50TGlzdGVuZXIoJ2RibGNsaWNrJywgZnVuY3Rpb24gKGV2ZW50KSB7XG4gICAgICAgIHRoYXQuX29uVGFiRGJsY2xpY2suY2FsbCh0aGF0LCB0aGlzKTtcbiAgICAgICAgc3RvcEltbWVkaWF0ZVByb3BhZ2F0aW9uKGV2ZW50KTtcbiAgICB9KTtcblxuICAgIHRoaXMuYXBwZW5kQ29udGVudChzaGVldE5hbWUpO1xufTtcblxuXG5UYWJzLnByb3RvdHlwZS5hcHBlbmRBZGRCdXR0b24gPSBmdW5jdGlvbiAoKSB7XG4gICAgdmFyIHRoYXQgPSB0aGlzO1xuICAgIHZhciBsaSA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoJ2xpJyk7XG5cbiAgICBsaS5pbm5lckhUTUwgPSBgPGEgaHJlZj1cImphdmFzY3JpcHQ6O1wiPjxzcGFuPis8L3NwYW4+PC9hPmA7XG4gICAgbGkuY2xhc3NMaXN0LmFkZChDTEFTU19MSSk7XG4gICAgbGkuY2xhc3NMaXN0LmFkZCgnYWRkLXRhYicpO1xuXG4gICAgdGhpcy5VTC5hcHBlbmRDaGlsZChsaSk7XG5cbiAgICBsaS5hZGRFdmVudExpc3RlbmVyKCdjbGljaycsIGZ1bmN0aW9uIChldmVudCkge1xuICAgICAgICAvLyBUT0RPIOWPr+WinuWKoOeahHNoZWV05pWw5LiK6ZmQ6ZmQ5Yi2XG4gICAgICAgIHZhciBuZXdTaGVldCA9IHRoYXQud29ya2Jvb2suY3JlYXRlU2hlZXQoKTtcbiAgICAgICAgbmV3U2hlZXQuYWN0aXZlKCk7XG4gICAgfSk7XG59O1xuXG4vKipcbiAqIEBwYXJhbSB7SFRNTEVsZW1lbnR9IGxpXG4gKiBAcHJpdmF0ZVxuICovXG5UYWJzLnByb3RvdHlwZS5fb25UYWJEYmxjbGljayA9IGZ1bmN0aW9uIChsaSkge1xuICAgIHZhciB0aGF0ID0gdGhpcztcbiAgICB2YXIgc2hlZXROYW1lID0gbGkuZGF0YXNldC5zaGVldDtcbiAgICB2YXIgc3BhbiA9IGxpLmdldEVsZW1lbnRzQnlUYWdOYW1lKCdzcGFuJylbMF07XG4gICAgdmFyIGlucHV0ID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgnaW5wdXQnKTtcblxuICAgIGlucHV0LnNldEF0dHJpYnV0ZSgndHlwZScsICd0ZXh0Jyk7XG4gICAgaW5wdXQudmFsdWUgPSBzaGVldE5hbWU7XG4gICAgaW5wdXQuY2xhc3NMaXN0LmFkZCgnZWRpdG9yaWFsJyk7XG4gICAgaW5wdXQuc3R5bGUud2lkdGggPSBvdXRlcldpZHRoKHNwYW4pICsgMjAgKyAncHgnOyAvLyDlkI3lrZflpKrnn63ml7bkuI3lpb3ovpPlhaXvvIzlop7ooaUyMHB4XG5cbiAgICBpbnB1dC5hZGRFdmVudExpc3RlbmVyKCdibHVyJywgZnVuY3Rpb24gKCkge1xuICAgICAgICB2YXIgY2hlY2sgPSB0aGF0Ll9jaGVja1RhYk5hbWUoc2hlZXROYW1lLCB0aGlzLnZhbHVlKTtcbiAgICAgICAgaWYgKGNoZWNrID09PSB0cnVlKSB7XG4gICAgICAgICAgICB0aGF0Lndvcmtib29rLnJlbmFtZVNoZWV0KHNoZWV0TmFtZSwgdGhpcy52YWx1ZSk7XG4gICAgICAgIH0gZWxzZSB7XG4gICAgICAgICAgICBhbGVydChjaGVjayk7IC8vIFRPRE8gYWxlcnQg5aSq5LiRXG4gICAgICAgICAgICB0aGF0LnRhYlJlbmFtZUNhbmNlbChzaGVldE5hbWUsIHRoaXMudmFsdWUpO1xuICAgICAgICB9XG4gICAgfSk7XG4gICAgaW5wdXQuYWRkRXZlbnRMaXN0ZW5lcigna2V5cHJlc3MnLCBmdW5jdGlvbiAoZXZlbnQpIHtcbiAgICAgICAgaWYgKGV2ZW50LmtleUNvZGUgPT09IDEzKSB7XG4gICAgICAgICAgICB0aGlzLmJsdXIoKTtcbiAgICAgICAgfVxuICAgIH0pO1xuXG4gICAgZW1wdHkoc3Bhbik7XG4gICAgc3Bhbi5hcHBlbmRDaGlsZChpbnB1dCk7XG4gICAgaW5wdXQuc2VsZWN0KCk7XG59O1xuXG5UYWJzLnByb3RvdHlwZS5fY2hlY2tUYWJOYW1lID0gZnVuY3Rpb24gKG5hbWUxLCBuYW1lMikge1xuICAgIGlmIChpc0VtcHR5VmFsdWUobmFtZTIpKSB7XG4gICAgICAgIHJldHVybiBXQVJOUy5TMTtcbiAgICB9XG4gICAgaWYgKHJlZ0V4cC50ZXN0KG5hbWUyKSkge1xuICAgICAgICByZXR1cm4gV0FSTlMuUzI7XG4gICAgfVxuICAgIC8vIOaUueaIkOWFtuWug+W3suacieeahHNoZWV05ZCNXG4gICAgaWYgKHVwcGVyQ2FzZShuYW1lMSkgIT09IHVwcGVyQ2FzZShuYW1lMikgJiYgdGhpcy53b3JrYm9vay5pc1NoZWV0RXhpc3QobmFtZTIpKSB7XG4gICAgICAgIHJldHVybiBXQVJOUy5TMztcbiAgICB9XG4gICAgcmV0dXJuIHRydWU7XG59O1xuXG4vLyDmlLnlkI3ml7bvvIxET03kuIrnmoTkuIDkupvmk43kvZzvvIzov5vlhaXmraTmlrnms5Xml7bku6Pooajlt7Lnu4/lgZrkuoblkIjms5Xpqozor4HjgIJcblRhYnMucHJvdG90eXBlLnRhYlJlbmFtZSA9IGZ1bmN0aW9uIChuYW1lMSwgbmFtZTIpIHtcbiAgICB2YXIgbGkgPSB0aGlzLmxpSXRlbXMuZ2V0KG5hbWUxKTtcbiAgICB2YXIgc3BhbiA9IGxpLmdldEVsZW1lbnRzQnlUYWdOYW1lKCdzcGFuJylbMF07XG4gICAgaW5uZXJIVE1MKHNwYW4sIG5hbWUyKTtcbiAgICBsaS5kYXRhc2V0LnNoZWV0ID0gbmFtZTI7XG4gICAgdGhpcy5saUl0ZW1zLnNldChuYW1lMiwgbGkpO1xuICAgIHZhciBzZWN0aW9uID0gdGhpcy5zZWN0aW9uSXRlbXMuZ2V0KG5hbWUxKTtcbiAgICBzZWN0aW9uLmRhdGFzZXQuc2hlZXQgPSBuYW1lMjtcbiAgICB0aGlzLnNlY3Rpb25JdGVtcy5kZWxldGUobmFtZTEpO1xuICAgIHRoaXMuc2VjdGlvbkl0ZW1zLnNldChuYW1lMiwgc2VjdGlvbik7XG5cbiAgICB2YXIgc2hlZXROb3cgPSB0aGlzLndvcmtib29rLmdldFNoZWV0KG5hbWUyKTtcbiAgICBzaGVldE5vdy5lbWl0KCdhZnRlclJlbmFtZScsIHNoZWV0Tm93LCBuYW1lMSwgbmFtZTIpO1xufTtcblxuLy8g5pu05ZCN5aSx6LSl77yM5bCG5ZCN5a2X6K6+5Li6IG5hbWUxLCBuYW1lMuS4uuWksei0peeahOWQjeWtl1xuVGFicy5wcm90b3R5cGUudGFiUmVuYW1lQ2FuY2VsID0gZnVuY3Rpb24gKG5hbWUxLCBuYW1lMikge1xuICAgIHZhciBsaSA9IHRoaXMubGlJdGVtcy5nZXQobmFtZTEpO1xuICAgIHZhciBzcGFuID0gbGkuZ2V0RWxlbWVudHNCeVRhZ05hbWUoJ3NwYW4nKVswXTtcbiAgICBpbm5lckhUTUwoc3BhbiwgbmFtZTEpO1xuXG4gICAgdmFyIHNoZWV0Tm93ID0gdGhpcy53b3JrYm9vay5nZXRTaGVldChuYW1lMSk7XG4gICAgc2hlZXROb3cuZW1pdCgnYWZ0ZXJSZW5hbWVDYW5jZWwnLCBzaGVldE5vdywgbmFtZTEsIG5hbWUyKTtcbn07XG5cblxuLyoqXG4gKiDlop7liqDmoIfnrb7pobXlr7nlupTnmoTlhoXlrrlcbiAqIEBwYXJhbSB7c3RyaW5nfSBzaGVldE5hbWVcbiAqL1xuVGFicy5wcm90b3R5cGUuYXBwZW5kQ29udGVudCA9IGZ1bmN0aW9uIChzaGVldE5hbWUpIHtcbiAgICB2YXIgc2VjdGlvbiA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoJ3NlY3Rpb24nKTtcbiAgICB2YXIgZnggPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KCdkaXYnKTtcbiAgICB2YXIgaG90ID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgnZGl2Jyk7XG5cbiAgICBzZWN0aW9uLnNldEF0dHJpYnV0ZSgnZGF0YS1zaGVldCcsIHNoZWV0TmFtZSk7XG4gICAgc2VjdGlvbi5hcHBlbmRDaGlsZChmeCk7XG4gICAgc2VjdGlvbi5hcHBlbmRDaGlsZChob3QpO1xuICAgIHNlY3Rpb24uY2xhc3NMaXN0LmFkZChDTEFTU19TRUNUSU9OKTtcbiAgICBhbmltYXRlZCAmJiBzZWN0aW9uLmNsYXNzTGlzdC5hZGQoJ3NzZC1hbmltYXRlZC1mYXN0Jyk7XG5cbiAgICB0aGlzLkNPTlRFTlQuYXBwZW5kQ2hpbGQoc2VjdGlvbik7XG4gICAgdGhpcy5zZWN0aW9uSXRlbXMuc2V0KHNoZWV0TmFtZSwgc2VjdGlvbik7XG5cbiAgICB0aGlzLmFwcGVuZEZ4KGZ4LCBzaGVldE5hbWUpO1xuICAgIHRoaXMuYXBwZW5kVGFibGUoaG90LCBzaGVldE5hbWUpO1xufTtcblxuLyoqXG4gKlxuICogQHBhcmFtIHtzdHJpbmd9IHNoZWV0TmFtZVxuICovXG5UYWJzLnByb3RvdHlwZS5oaWRlQ29udGVudCA9IGZ1bmN0aW9uIChzaGVldE5hbWUpIHtcbiAgICB2YXIgc2VjdGlvbiA9IHRoaXMuc2VjdGlvbkl0ZW1zLmdldChzaGVldE5hbWUpO1xuICAgIHNlY3Rpb24uc3R5bGUuZGlzcGxheSA9ICdub25lJztcbn07XG5cblxuLyoqXG4gKiBUT0RPIOWFrOW8j+i+k+WFpeahhlxuICogQHByaXZhdGVcbiAqIEBwYXJhbSB7SFRNTEVsZW1lbnR9IGZ4XG4gKiBAcGFyYW0ge3N0cmluZ30gc2hlZXROYW1lXG4gKi9cblRhYnMucHJvdG90eXBlLmFwcGVuZEZ4ID0gZnVuY3Rpb24gKGZ4LCBzaGVldE5hbWUpIHtcbiAgICBmeC5jbGFzc0xpc3QuYWRkKENMQVNTX0ZYKTtcbiAgICBmeC5jbGFzc0xpc3QuYWRkKGAke0NMQVNTX0ZYfS0ke3NoZWV0TmFtZX1gKTtcbn07XG5cbi8qKlxuICog5YGH5riy5p+TIEhhbnNvbnRhYmxlIOe7hOS7tuOAglxuICogaGFuZHNvbnRhYmxlIOeahOiuvuiuoeaXoOazleWcqERPTeS4reiuoeeul+inhuWbvu+8jOW/hemhu+a4suafk3Jvb3RFbGVtZW505LmL5ZCO5omN6IO955Sf5pWI44CCXG4gKiDlr7zoh7Tlu7bov5/muLLmn5Ppmr7ku6Xlrp7njrDvvIzmnInmuLLmn5PmgKfog73pl67popjml7blho3op6PlhrPjgIJcbiAqIOWPpuWklu+8jOa4suafk+WIsOWFiOmakOiXj+WQjuaYvuekuueahOWFg+e0oOS4reaXtu+8jOS5n+aXoOazleato+W4uOaYvuekuuOAglxuICogQHByaXZhdGVcbiAqIEBwYXJhbSBob3RcbiAqIEBwYXJhbSBzaGVldE5hbWVcbiAqL1xuVGFicy5wcm90b3R5cGUuYXBwZW5kVGFibGUgPSBmdW5jdGlvbiAoaG90LCBzaGVldE5hbWUpIHtcbiAgICB0aGlzLl9ob3RUYWJsZXMuc2V0KHNoZWV0TmFtZSwge1xuICAgICAgICBjb250YWluZXI6IGhvdCxcbiAgICAgICAgd2lkdGg6IHRoaXMud2lkdGgsXG4gICAgICAgIGhlaWdodDogKCkgPT4gdGhpcy5oZWlnaHQgLSBvdXRlckhlaWdodCh0aGlzLk5BVilcbiAgICB9KTtcbn07XG5cbi8qKlxuICog5r+A5rS75oyH5a6a55qE5qCH562+6aG1XG4gKiBAcGFyYW0ge3N0cmluZ30gc2hlZXROYW1lIC0gc2hlZXQg5ZCNXG4gKi9cblRhYnMucHJvdG90eXBlLmFjdGl2ZVRhYiA9IGZ1bmN0aW9uIChzaGVldE5hbWUpIHtcbiAgICB2YXIgZm9ybWVyID0gdGhpcy5UQUJTLnF1ZXJ5U2VsZWN0b3IoYC4ke0NMQVNTX0NVUlJFTlR9LiR7Q0xBU1NfTEl9YCk7XG4gICAgZm9ybWVyICYmIGZvcm1lci5jbGFzc0xpc3QucmVtb3ZlKENMQVNTX0NVUlJFTlQpO1xuICAgIHZhciBsaSA9IHRoaXMubGlJdGVtcy5nZXQoc2hlZXROYW1lKTtcbiAgICBsaS5jbGFzc0xpc3QuYWRkKENMQVNTX0NVUlJFTlQpO1xuICAgIHRoaXMuYWN0aXZlQ29udGVudChzaGVldE5hbWUpO1xufTtcblxuXG4vKipcbiAqIEBwcml2YXRlXG4gKiBAcGFyYW0ge3N0cmluZ30gc2hlZXROYW1lIC0gc2hlZXQg5ZCNXG4gKi9cblRhYnMucHJvdG90eXBlLmFjdGl2ZUNvbnRlbnQgPSBmdW5jdGlvbiAoc2hlZXROYW1lKSB7XG4gICAgdmFyIHNlY3Rpb24gPSB0aGlzLnNlY3Rpb25JdGVtcy5nZXQoc2hlZXROYW1lKTtcbiAgICB2YXIgZm9ybWVyID0gdGhpcy5fZm9ybWVyQWN0aXZlQ29udGVudDtcbiAgICBpZiAoZm9ybWVyKSB7XG4gICAgICAgIGFuaW1hdGVkICYmIGZvcm1lci5jbGFzc0xpc3QucmVtb3ZlKCdmYWRlSW4nKTtcbiAgICAgICAgZm9ybWVyLnN0eWxlLmRpc3BsYXkgPSAnbm9uZSc7XG4gICAgfVxuICAgIHNlY3Rpb24uc3R5bGUuZGlzcGxheSA9ICdibG9jayc7XG4gICAgYW5pbWF0ZWQgJiYgc2VjdGlvbi5jbGFzc0xpc3QuYWRkKCdmYWRlSW4nKTtcblxuICAgIHRoaXMuX2Zvcm1lckFjdGl2ZUNvbnRlbnQgPSBzZWN0aW9uO1xufTtcblxuXG5leHBvcnQgZGVmYXVsdCBUYWJzOyIsIlxuXG5leHBvcnQgY29uc3QgV0FSTlMgPSB7XG5cbiAgICBTMTogYOW3peS9nOihqOWQjeS4jeiDveS4uuepuueZveOAgmAsXG4gICAgUzI6IGDlt6XkvZzooajlkI3np7DljIXlkKvml6DmlYjlrZfnrKY6IDogXFwgLyA/ICogWyBd44CCYCxcbiAgICBTMzogYOivpeWQjeensOW3suiiq+S9v+eUqO+8jOivt+WwneivleWFtuS7luWQjeensOOAgmBcblxufTsiLCJpbXBvcnQge1BsdWdpbkVycm9yfSBmcm9tICcuL1BsdWdpbkVycm9yJ1xuXG52YXIgX3BsdWdpbnMgPSBuZXcgTWFwKCk7XG5cbi8qKlxuICog5o+S5Lu25Z+657G7XG4gKi9cbmNsYXNzIFBsdWdpbiB7XG5cbiAgICAvKipcbiAgICAgKlxuICAgICAqIEBwYXJhbSB7U3ByZWFkU2hlZXR9IHNwcmVhZFNoZWV0XG4gICAgICovXG4gICAgY29uc3RydWN0b3Ioc3ByZWFkU2hlZXQpIHtcbiAgICAgICAgLyoqXG4gICAgICAgICAqIEB0eXBlIHtTcHJlYWRTaGVldH1cbiAgICAgICAgICovXG4gICAgICAgIHRoaXMuc3ByZWFkc2hlZXQgPSBzcHJlYWRTaGVldDtcbiAgICAgICAgdGhpcy5lbmFibGVkID0gZmFsc2U7XG4gICAgfVxuXG4gICAgLy8g5pqC5pe25LiN6ICD6JmR5byA5pS+6L+Z5Liq5pa55rOV77yM55So5oi35a6a5LmJ55qE5o+S5Lu25LiN6IO95omp5bGVIFNwcmVhZFNoZWV0IOeahCBBUElcbiAgICBfcmVnaXN0ZXJNZXRob2QobmFtZSkge1xuICAgICAgICB2YXIgcHJvdG8gPSB0aGlzLnNwcmVhZHNoZWV0LmNvbnN0cnVjdG9yLnByb3RvdHlwZTtcbiAgICAgICAgcHJvdG9bbmFtZV0gPSAoKSA9PiB0aGlzW25hbWVdKCk7XG4gICAgfVxuXG4gICAgaXNFbmFibGUoKSB7XG4gICAgICAgIHJldHVybiBmYWxzZTtcbiAgICB9XG5cbiAgICBlbmFibGUoKSB7XG5cbiAgICB9XG5cbiAgICBkZXN0cm95KCkge1xuXG4gICAgfVxuXG59XG5cbmV4cG9ydCB7UGx1Z2lufVxuXG5leHBvcnQgZnVuY3Rpb24gdmFsaWRhdGVQbHVnaW4ocCkge1xuICAgIGlmICghcC5lbmFibGUpIHtcbiAgICAgICAgdGhyb3cgbmV3IFBsdWdpbkVycm9yKCfmj5Lku7blv4XpobvljIXlkKvlkK/nlKjmlrnms5XvvJplbmFibGUnKTtcbiAgICB9XG4gICAgaWYgKCFwLmRlc3Ryb3kpIHtcbiAgICAgICAgdGhyb3cgbmV3IFBsdWdpbkVycm9yKCfmj5Lku7blv4XpobvljIXlkKvplIDmr4Hmlrnms5XvvJpkZXN0cm95Jyk7XG4gICAgfVxufVxuXG5leHBvcnQgZnVuY3Rpb24gcmVnaXN0ZXJQbHVnaW4obmFtZSwgcGx1Z2luKSB7XG4gICAgX3BsdWdpbnMuc2V0KG5hbWUsIHBsdWdpbik7XG4gICAgcGx1Z2luLnByb3RvdHlwZS5fX25hbWVfXyA9IG5hbWU7XG59XG5cbmV4cG9ydCBmdW5jdGlvbiBnZXRQbHVnaW4obmFtZSkge1xuICAgIHZhciBwID0gX3BsdWdpbnMuZ2V0KG5hbWUpO1xuICAgIGlmICghcCkge1xuICAgICAgICB0aHJvdyBuZXcgUGx1Z2luRXJyb3IoJ+aPkuS7tuS4jeWtmOWcqO+8micgKyBuYW1lKTtcbiAgICB9XG4gICAgcmV0dXJuIHA7XG59XG5cbi8qKlxuICog6I635Y+W5omA5pyJ5o+S5Lu2XG4gKiBAcmV0dXJucyB7TWFwfVxuICovXG5leHBvcnQgZnVuY3Rpb24gZ2V0QWxsUGx1Z2lucygpIHtcbiAgICByZXR1cm4gX3BsdWdpbnM7XG59XG5cblxuIiwiaW1wb3J0IHtTcHJlYWRTaGVldEVycm9yfSBmcm9tICcuLi9TcHJlYWRTaGVldEVycm9yJ1xuXG5leHBvcnQgZnVuY3Rpb24gUGx1Z2luRXJyb3IodmFsdWUpIHtcbiAgICB0aGlzLm5hbWUgPSAnUGx1Z2luRXJyb3InO1xuICAgIHRoaXMubWVzc2FnZSA9IHZhbHVlO1xufVxuUGx1Z2luRXJyb3IucHJvdG90eXBlID0gbmV3IFNwcmVhZFNoZWV0RXJyb3IoKTtcblBsdWdpbkVycm9yLnByb3RvdHlwZS5jb25zdHJ1Y3RvciA9IFBsdWdpbkVycm9yOyIsImV4cG9ydCBkZWZhdWx0IGZ1bmN0aW9uIHBvbHlmaWxsKF93aW5kb3cpIHtcblxuICAgIC8vIC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSBOdW1iZXJcblxuICAgIGlmICghX3dpbmRvdy5OdW1iZXIuaXNOYU4pIHtcbiAgICAgICAgLy9ub2luc3BlY3Rpb24gSlNQcmltaXRpdmVUeXBlV3JhcHBlclVzYWdlXG4gICAgICAgIF93aW5kb3cuTnVtYmVyLmlzTmFOID0gZnVuY3Rpb24gKHgpIHtcbiAgICAgICAgICAgIHJldHVybiB4ICE9PSB4O1xuICAgICAgICB9XG4gICAgfVxuXG5cbn1cblxuXG5cblxuXG4iLCIvKipcbiAqIOWFqOWxgOmFjee9ruOAglxuICovXG52YXIgZ2xvYmFsU2V0dGluZ3MgPSB7XG4gICAgaWRQcmVmaXg6ICdicmljay1zc2QtJyxcbiAgICBpZFN1ZmZpeDRXb3JrYm9vazogJy13b3JrYm9vaycsXG5cbiAgICBzaGVldDoge1xuXG4gICAgICAgIC8qKlxuICAgICAgICAgKiDoh6rliqjnlJ/miJDlt6XkvZzooajlkI3np7Dml7bnmoTliY3nvIAo5bel5L2c6KGoMSwg5bel5L2c6KGoMi4uLilcbiAgICAgICAgICovXG4gICAgICAgIGF1dG9QcmVmaXg6ICflt6XkvZzooagnLFxuXG4gICAgICAgIC8qKlxuICAgICAgICAgKiBzaGVldCDlkI3np7DkuK3nmoTpnZ7ms5XlrZfnrKbjgILlvq7ova/msqHmnInnm7jlhbPmlofmoaPvvIzku6XkuIvmmK8gQXBhY2hlIFBPSSDnmoTor7TmmI7vvJpcbiAgICAgICAgICpcbiAgICAgICAgICogTm90ZSB0aGF0IHNoZWV0IG5hbWUgaW4gRXhjZWwgbXVzdCBub3QgZXhjZWVkIDMxIGNoYXJhY3RlcnNcbiAgICAgICAgICogYW5kIG11c3Qgbm90IGNvbnRhaW4gYW55IG9mIHRoZSBhbnkgb2YgdGhlIGZvbGxvd2luZyBjaGFyYWN0ZXJzOlxuICAgICAgICAgKiAgICAtIDB4MDAwMFxuICAgICAgICAgKiAgICAtIDB4MDAwM1xuICAgICAgICAgKiAgICAtIGNvbG9uICg6KVxuICAgICAgICAgKiAgICAtIGJhY2tzbGFzaCAoXFwpXG4gICAgICAgICAqICAgIC0gYXN0ZXJpc2sgKCopXG4gICAgICAgICAqICAgIC0gcXVlc3Rpb24gbWFyayAoPylcbiAgICAgICAgICogICAgLSBmb3J3YXJkIHNsYXNoICgvKVxuICAgICAgICAgKiAgICAtIG9wZW5pbmcgc3F1YXJlIGJyYWNrZXQgKFspXG4gICAgICAgICAqICAgIC0gY2xvc2luZyBzcXVhcmUgYnJhY2tldCAoXSlcbiAgICAgICAgICpcbiAgICAgICAgICovXG4gICAgICAgIHNoZWV0TmFtZTogL1tcXFxcL1xcP1xcKjpcXFtcXF0nXCJdLyxcblxuICAgICAgICBhbmltYXRlZDogZmFsc2VcbiAgICB9XG5cbn07XG5cblxuLyoqXG4gKiDpu5jorqTphY3nva5cbiAqL1xudmFyIGRlZmF1bHRTZXR0aW5ncyA9IHtcblxuICAgIHdvcmtib29rOiB7XG4gICAgICAgIGFjdGl2ZVNoZWV0OiAn5bel5L2c6KGoMScsXG4gICAgICAgIHNoZWV0czogW3tcbiAgICAgICAgICAgIG5hbWU6ICflt6XkvZzooagxJ1xuICAgICAgICB9XVxuICAgIH0sXG5cbiAgICBwZXJzaXN0ZW50OiB0cnVlXG5cbn07XG5cbmV4cG9ydCB7Z2xvYmFsU2V0dGluZ3MsIGRlZmF1bHRTZXR0aW5nc307IiwiLyoqXG4gKiDkuovku7blj5HlsITlmahcbiAqXG4gKiBQUzogbm9kZWpzIOeahOezu+e7n+exu+W6kyBFbWl0dGVyIOi/h+Wkp++8jOS4jemAguWQiOWcqOa1j+iniOWZqOeOr+Wig+S9v+eUqOOAguaVheW8leWFpeS4gOS4queugOaYk+WunueOsOOAglxuICogQGNvbnN0cnVjdG9yXG4gKi9cbmZ1bmN0aW9uIEVtaXR0ZXIoKSB7XG4gICAgLy8g5L+d5oyB5q2k5Ye95pWw5Li656m677yM5Lul5L6/5LqO57un5om/XG59XG5cbkVtaXR0ZXIucHJvdG90eXBlID0ge1xuXG4gICAgLyoqXG4gICAgICog6K6i6ZiF5LqL5Lu2XG4gICAgICogQHBhcmFtIHtzdHJpbmd9IG5hbWUgLSDkuovku7blkI1cbiAgICAgKiBAcGFyYW0ge2Z1bmN0aW9ufSBjYWxsYmFjayAtIOS6i+S7tuWbnuiwg+WHveaVsFxuICAgICAqIEBwYXJhbSBbY3R4XSAtIOiuvue9ruiwg+eUqCBjYWxsYmFjayDml7bnmoTkuIrkuIvmlodcbiAgICAgKiBAcmV0dXJucyB7RW1pdHRlcn1cbiAgICAgKi9cbiAgICBvbjogZnVuY3Rpb24gKG5hbWUsIGNhbGxiYWNrLCBjdHgpIHtcbiAgICAgICAgdmFyIGUgPSB0aGlzLmUgfHwgKHRoaXMuZSA9IHt9KTtcblxuICAgICAgICAoZVtuYW1lXSB8fCAoZVtuYW1lXSA9IFtdKSkucHVzaCh7XG4gICAgICAgICAgICBmbjogY2FsbGJhY2ssXG4gICAgICAgICAgICBjdHg6IGN0eFxuICAgICAgICB9KTtcblxuICAgICAgICByZXR1cm4gdGhpcztcbiAgICB9LFxuXG4gICAgLyoqXG4gICAgICog6K6i6ZiF5LiA5qyh5oCn5LqL5Lu2XG4gICAgICogQHBhcmFtIHtzdHJpbmd9IG5hbWUgLSDkuovku7blkI1cbiAgICAgKiBAcGFyYW0ge2Z1bmN0aW9ufSBjYWxsYmFjayAtIOS6i+S7tuWbnuiwg+WHveaVsFxuICAgICAqIEBwYXJhbSBjdHggLSDorr7nva7osIPnlKggY2FsbGJhY2sg5pe255qE5LiK5LiL5paHXG4gICAgICogQHJldHVybnMgeyp8RW1pdHRlcn1cbiAgICAgKi9cbiAgICBvbmNlOiBmdW5jdGlvbiAobmFtZSwgY2FsbGJhY2ssIGN0eCkge1xuICAgICAgICB2YXIgc2VsZiA9IHRoaXM7XG5cbiAgICAgICAgZnVuY3Rpb24gbGlzdGVuZXIoKSB7XG4gICAgICAgICAgICBzZWxmLm9mZihuYW1lLCBsaXN0ZW5lcik7XG4gICAgICAgICAgICBjYWxsYmFjay5hcHBseShjdHgsIGFyZ3VtZW50cyk7XG4gICAgICAgIH1cblxuICAgICAgICBsaXN0ZW5lci5fID0gY2FsbGJhY2s7XG4gICAgICAgIHJldHVybiB0aGlzLm9uKG5hbWUsIGxpc3RlbmVyLCBjdHgpO1xuICAgIH0sXG5cbiAgICAvKipcbiAgICAgKiDlj5HlsITmjIflrprkuovku7ZcbiAgICAgKiBAcGFyYW0ge3N0cmluZ30gbmFtZSAtIOS6i+S7tuWQjVxuICAgICAqIEByZXR1cm5zIHtFbWl0dGVyfVxuICAgICAqL1xuICAgIGVtaXQ6IGZ1bmN0aW9uIChuYW1lKSB7XG4gICAgICAgIHZhciBkYXRhID0gW10uc2xpY2UuY2FsbChhcmd1bWVudHMsIDEpO1xuICAgICAgICB2YXIgZXZ0QXJyID0gKCh0aGlzLmUgfHwgKHRoaXMuZSA9IHt9KSlbbmFtZV0gfHwgW10pLnNsaWNlKCk7XG4gICAgICAgIHZhciBpID0gMDtcbiAgICAgICAgdmFyIGxlbiA9IGV2dEFyci5sZW5ndGg7XG5cbiAgICAgICAgZm9yIChpOyBpIDwgbGVuOyBpKyspIHtcbiAgICAgICAgICAgIGV2dEFycltpXS5mbi5hcHBseShldnRBcnJbaV0uY3R4LCBkYXRhKTtcbiAgICAgICAgfVxuXG4gICAgICAgIHJldHVybiB0aGlzO1xuICAgIH0sXG5cbiAgICAvKipcbiAgICAgKiDms6jplIDkuovku7ZcbiAgICAgKiBAcGFyYW0ge3N0cmluZ30gbmFtZSAtIOS6i+S7tuWQjVxuICAgICAqIEBwYXJhbSB7ZnVuY3Rpb259IFtjYWxsYmFja10gLSDnu5Hlrprkuovku7bml7bnmoTlm57osIPlh73mlbDvvIzlpoLmnpzkuI3mjIflrprliJnms6jplIDmiYDmnIkgYG5hbWVgIOS6i+S7tlxuICAgICAqIEByZXR1cm5zIHtFbWl0dGVyfVxuICAgICAqL1xuICAgIG9mZjogZnVuY3Rpb24gKG5hbWUsIGNhbGxiYWNrKSB7XG4gICAgICAgIHZhciBlID0gdGhpcy5lIHx8ICh0aGlzLmUgPSB7fSk7XG4gICAgICAgIHZhciBldnRzID0gZVtuYW1lXTtcbiAgICAgICAgdmFyIGxpdmVFdmVudHMgPSBbXTtcblxuICAgICAgICBpZiAoZXZ0cyAmJiBjYWxsYmFjaykge1xuICAgICAgICAgICAgZm9yICh2YXIgaSA9IDAsIGxlbiA9IGV2dHMubGVuZ3RoOyBpIDwgbGVuOyBpKyspIHtcbiAgICAgICAgICAgICAgICBpZiAoZXZ0c1tpXS5mbiAhPT0gY2FsbGJhY2sgJiYgZXZ0c1tpXS5mbi5fICE9PSBjYWxsYmFjaykge1xuICAgICAgICAgICAgICAgICAgICBsaXZlRXZlbnRzLnB1c2goZXZ0c1tpXSk7XG4gICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgfVxuICAgICAgICB9XG5cbiAgICAgICAgLy8g6Ziy5q2i5YaF5a2Y5rqi5Ye6XG4gICAgICAgIChsaXZlRXZlbnRzLmxlbmd0aClcbiAgICAgICAgICAgID8gZVtuYW1lXSA9IGxpdmVFdmVudHNcbiAgICAgICAgICAgIDogZGVsZXRlIGVbbmFtZV07XG5cbiAgICAgICAgcmV0dXJuIHRoaXM7XG4gICAgfSxcblxuICAgIC8qKlxuICAgICAqIOiOt+WPluWFqOWxgOWUr+S4gOS6i+S7tuWPkeWwhOWZqFxuICAgICAqL1xuICAgIGdldEdsb2JhbEVtaXR0ZXI6ICAoZnVuY3Rpb24gKCkge1xuICAgICAgICB2YXIgaW5zdGFuY2UgPSBuZXcgRW1pdHRlcigpO1xuICAgICAgICByZXR1cm4gKCkgPT4gaW5zdGFuY2U7XG4gICAgfSgpKVxufTtcblxuZXhwb3J0IGRlZmF1bHQgRW1pdHRlcjtcblxuLyoqXG4gKiDlhajlsYDllK/kuIDkuovku7blj5HlsITlmahcbiAqL1xuZXhwb3J0IGNvbnN0IEdsb2JhbEVtaXR0ZXIgPSBFbWl0dGVyLnByb3RvdHlwZS5nZXRHbG9iYWxFbWl0dGVyKCk7IiwiXG5cbi8vIC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0gb2JqZWN0XG5cbmV4cG9ydCBmdW5jdGlvbiBleHRlbmQodGFyZ2V0LCBleHRlbnNpb24pIHtcbiAgICBvYmplY3RFYWNoKGV4dGVuc2lvbiwgKHZhbHVlLCBrZXkpID0+IHtcbiAgICAgICAgdGFyZ2V0W2tleV0gPSB2YWx1ZTtcbiAgICB9KTtcbiAgICByZXR1cm4gdGFyZ2V0O1xufVxuXG5leHBvcnQgZnVuY3Rpb24gb2JqZWN0RWFjaChvYmplY3QsIGl0ZXJhdGVlKSB7XG4gICAgZm9yIChsZXQga2V5IGluIG9iamVjdCkge1xuICAgICAgICBpZiAoIW9iamVjdC5oYXNPd25Qcm9wZXJ0eSB8fCAob2JqZWN0Lmhhc093blByb3BlcnR5ICYmIG9iamVjdC5oYXNPd25Qcm9wZXJ0eShrZXkpKSkge1xuICAgICAgICAgICAgaWYgKGl0ZXJhdGVlKG9iamVjdFtrZXldLCBrZXksIG9iamVjdCkgPT09IGZhbHNlKSB7XG4gICAgICAgICAgICAgICAgYnJlYWs7XG4gICAgICAgICAgICB9XG4gICAgICAgIH1cbiAgICB9XG4gICAgcmV0dXJuIG9iamVjdDtcbn1cblxuLy8gLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSBmdW5jdGlvblxuXG52YXIgX2VtcHR5Rm4gPSBmdW5jdGlvbiAoKSB7XG59O1xuXG4vKipcbiAqIOiOt+WPluepuuWHveaVsOOAglxuICogQHBhcmFtIG5ld09uZSDpu5jorqQgYGZhbHNlYO+8jOW9k+S4uiBgdHJ1ZWAg5pe25bCG6L+U5Zue5LiA5Liq5paw55qE56m65Ye95pWw44CCXG4gKiBAcmV0dXJucyB7RnVuY3Rpb259XG4gKi9cbmV4cG9ydCBmdW5jdGlvbiBlbXB0eUZ1bmN0aW9uKG5ld09uZSA9IGZhbHNlKSB7XG4gICAgaWYgKG5ld09uZSkge1xuICAgICAgICByZXR1cm4gZnVuY3Rpb24gKCkge1xuICAgICAgICB9O1xuICAgIH1cbiAgICByZXR1cm4gX2VtcHR5Rm47XG59XG5cblxuLy8gLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSBzdHJpbmdcblxuXG5leHBvcnQgZnVuY3Rpb24gdXBwZXJDYXNlKHN0cikge1xuICAgIHJldHVybiBzdHIudG9Mb2NhbGVVcHBlckNhc2UoKTtcbn1cblxuXG4vKipcbiAqIOeUn+aIkOS4gOS4qumVv+W6puS4uiAxNiDnmoTpmo/mnLrlrZfnrKbkuLJcbiAqIEByZXR1cm5zIHsqfVxuICovXG5leHBvcnQgZnVuY3Rpb24gcmFuZG9tU3RyaW5nKCkge1xuICAgIGZ1bmN0aW9uIHM0KCkge1xuICAgICAgICByZXR1cm4gTWF0aC5mbG9vcigoMSArIE1hdGgucmFuZG9tKCkpICogMHgxMDAwMClcbiAgICAgICAgICAgIC50b1N0cmluZygxNilcbiAgICAgICAgICAgIC5zdWJzdHJpbmcoMSk7XG4gICAgfVxuICAgIHJldHVybiBzNCgpICsgczQoKSArIHM0KCkgKyBzNCgpO1xufVxuXG5cbi8vIC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0gbWl4ZWRcblxuLyoqXG4gKiDliKTmlq3mmK/lkKbkuLpg56m6YOWAvOOAglxuICogUFPvvJrmraTmlrnms5XnmoTliKTmlq3pgLvovpHkvZzkuLrljZXlhYPmoLzmmK/lkKbkuLrnqbrnmoTkvp3mja7jgIJcbiAqIEBwYXJhbSB2YWx1ZVxuICogQHJldHVybnMge2Jvb2xlYW59XG4gKi9cbmV4cG9ydCBmdW5jdGlvbiBpc0VtcHR5VmFsdWUodmFsdWUpIHtcbiAgICByZXR1cm4gISEodmFsdWUgPT09ICcnIHx8IHZhbHVlID09PSBudWxsIHx8IHR5cGVvZiB2YWx1ZSA9PT0gJ3VuZGVmaW5lZCcpO1xufVxuXG5cbi8vIC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0gY29vcmRpbmF0ZVxuXG5cbnZhciBjX2lzRXF1YWwgPSBmdW5jdGlvbiAocjEsIHIyKSB7XG4gICAgcmV0dXJuIHIxWzBdID09PSByMlswXSAmJiByMVsxXSA9PT0gcjJbMV0gJiYgcjFbMl0gPT09IHIyWzJdICYmIHIxWzNdID09PSByMlszXTtcbn07XG5cbnZhciBjX2ludGVyc2VjdGlvbiA9IGZ1bmN0aW9uIChyMSwgcjIpIHtcbiAgICB2YXIgeDEgPSBNYXRoLm1heChyMVswXSwgcjJbMF0pO1xuICAgIHZhciB5MSA9IE1hdGgubWF4KHIxWzFdLCByMlsxXSk7XG4gICAgdmFyIHgyID0gTWF0aC5taW4ocjFbMl0sIHIyWzJdKTtcbiAgICB2YXIgeTIgPSBNYXRoLm1pbihyMVszXSwgcjJbM10pO1xuXG4gICAgaWYgKHgxIDw9IHgyICYmIHkxIDw9IHkyKSB7XG4gICAgICAgIHJldHVybiBbeDEsIHkxLCB4MiwgeTJdO1xuICAgIH1cbiAgICByZXR1cm4gZmFsc2U7XG59O1xuXG52YXIgY19zZXQgPSBmdW5jdGlvbiAodCkge1xuICAgIHJldHVybiBmdW5jdGlvbiAocjEsIHIyKSB7XG4gICAgICAgIHZhciBpbnMgPSBjX2ludGVyc2VjdGlvbihyMSwgcjIpO1xuICAgICAgICBpZiAoaW5zKSB7XG4gICAgICAgICAgICByZXR1cm4gY19pc0VxdWFsKGlucywgdCA9PT0gJ3N1YicgPyByMSA6IHIyKTtcbiAgICAgICAgfVxuICAgICAgICByZXR1cm4gZmFsc2U7XG4gICAgfTtcbn07XG5cbmV4cG9ydCB2YXIgQ29vcmRpbmF0ZSA9IHtcblxuICAgIC8qKlxuICAgICAqIOWIpOaWreWdkOagh+iMg+WbtCByMSDmmK/lkKbkuI4gcjIg55u4562J44CCXG4gICAgICogQHBhcmFtIHtBcnJheX0gcjFcbiAgICAgKiBAcGFyYW0ge2ludH0gcjFbMF0gLSDlnZDmoIfojIPlm7QgcjEg55qE6LW35aeL6KGM5Z2Q5qCHXG4gICAgICogQHBhcmFtIHtpbnR9IHIxWzFdIC0g5Z2Q5qCH6IyD5Zu0IHIxIOeahOi1t+Wni+WIl+WdkOagh1xuICAgICAqIEBwYXJhbSB7aW50fSByMVsyXSAtIOWdkOagh+iMg+WbtCByMSDnmoTnu4jmraLooYzlnZDmoIdcbiAgICAgKiBAcGFyYW0ge2ludH0gcjFbM10gLSDlnZDmoIfojIPlm7QgcjEg55qE57uI5q2i5YiX5Z2Q5qCHXG4gICAgICogQHBhcmFtIHtBcnJheX0gcjJcbiAgICAgKiBAcGFyYW0ge2ludH0gcjJbMF0gLSDlnZDmoIfojIPlm7QgcjIg55qE6LW35aeL6KGM5Z2Q5qCHXG4gICAgICogQHBhcmFtIHtpbnR9IHIyWzFdIC0g5Z2Q5qCH6IyD5Zu0IHIyIOeahOi1t+Wni+WIl+WdkOagh1xuICAgICAqIEBwYXJhbSB7aW50fSByMlsyXSAtIOWdkOagh+iMg+WbtCByMiDnmoTnu4jmraLooYzlnZDmoIdcbiAgICAgKiBAcGFyYW0ge2ludH0gcjJbM10gLSDlnZDmoIfojIPlm7QgcjIg55qE57uI5q2i5YiX5Z2Q5qCHXG4gICAgICogQHJldHVybnMge2Jvb2xlYW59XG4gICAgICovXG4gICAgaXNFcXVhbDogY19pc0VxdWFsLFxuXG4gICAgLyoqXG4gICAgICog5Yik5pat5Z2Q5qCH6IyD5Zu0IHIxIOaYr+WQpuS4jiByMiDlrZjlnKjkuqTpm4bjgIJcbiAgICAgKiBAcmV0dXJucyB7Ym9vbGVhbn1cbiAgICAgKi9cbiAgICBpbnRlcnNlY3Rpb246IGNfaW50ZXJzZWN0aW9uLFxuXG4gICAgLyoqXG4gICAgICog5Yik5pat5Z2Q5qCH6IyD5Zu0IHIxIOaYr+WQpuaYryByMiDnmoTlrZDpm4bjgIJcbiAgICAgKiBAcmV0dXJucyB7Ym9vbGVhbn1cbiAgICAgKi9cbiAgICBpc1N1YnNldDogY19zZXQoJ3N1YicpLFxuXG4gICAgLyoqXG4gICAgICog5Yik5pat5Z2Q5qCH6IyD5Zu0IHIxIOaYr+WQpuaYryByMiDnmoTotoXpm4bjgIJcbiAgICAgKiBAcmV0dXJucyB7Ym9vbGVhbn1cbiAgICAgKi9cbiAgICBpc1N1cGVyc2V0OiBjX3NldCgnc3VwJylcbn07XG5cbi8vIC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0iLCJpbXBvcnQge3VwcGVyQ2FzZX0gZnJvbSAnLi9jb21tb24uanMnXG5cbi8qKlxuICog5aSn5bCP5YaZ5LiN5pWP5oSf55qEIE1hcFxuICovXG5jbGFzcyBDYXNlSW5zZW5zaXRpdmVNYXAge1xuXG4gICAgY29uc3RydWN0b3IoaXRlcmFibGUpIHtcbiAgICAgICAgdGhpcy5fbWFwID0gbmV3IE1hcChpdGVyYWJsZSk7XG4gICAgICAgIHRoaXMuX2tleXMgPSB7fTtcbiAgICB9XG5cbiAgICBnZXQoa2V5KSB7XG4gICAgICAgIHZhciBhY0tleSA9IHRoaXMuX2tleXNbdXBwZXJDYXNlKGtleSldO1xuICAgICAgICByZXR1cm4gdGhpcy5fbWFwLmdldChhY0tleSk7XG4gICAgfVxuXG4gICAgc2V0KGtleSwgdmFsdWUpIHtcbiAgICAgICAgdGhpcy5fa2V5c1t1cHBlckNhc2Uoa2V5KV0gPSBrZXk7XG4gICAgICAgIHJldHVybiB0aGlzLl9tYXAuc2V0KGtleSwgdmFsdWUpO1xuICAgIH1cblxuICAgIGhhcyhrZXkpIHtcbiAgICAgICAgcmV0dXJuIHRoaXMuX2tleXNbdXBwZXJDYXNlKGtleSldO1xuICAgIH1cblxuICAgIGhhc0V4YWN0KGtleSkge1xuICAgICAgICByZXR1cm4gdGhpcy5fbWFwLmhhcyhrZXkpO1xuICAgIH1cblxuICAgIGNsZWFyKCkge1xuICAgICAgICB0aGlzLl9rZXlzID0ge307XG4gICAgICAgIHJldHVybiB0aGlzLl9tYXAuY2xlYXIoKTtcbiAgICB9XG5cbiAgICBkZWxldGUoa2V5KSB7XG4gICAgICAgIHZhciBhY0tleSA9IHRoaXMuX2tleXNbdXBwZXJDYXNlKGtleSldO1xuICAgICAgICBkZWxldGUgdGhpcy5fa2V5c1t1cHBlckNhc2Uoa2V5KV07XG4gICAgICAgIHJldHVybiB0aGlzLl9tYXAuZGVsZXRlKGFjS2V5KTtcbiAgICB9XG5cbiAgICBlbnRyaWVzKCkge1xuICAgICAgICByZXR1cm4gdGhpcy5fbWFwLmVudHJpZXMoKTtcbiAgICB9XG5cbiAgICBmb3JFYWNoKGNhbGxiYWNrZm4sIHRoaXNBcmcpIHtcbiAgICAgICAgcmV0dXJuIHRoaXMuX21hcC5mb3JFYWNoKGNhbGxiYWNrZm4sIHRoaXNBcmcpO1xuICAgIH1cblxuICAgIGtleXMoKSB7XG4gICAgICAgIHJldHVybiB0aGlzLl9tYXAua2V5cygpO1xuICAgIH1cblxuICAgIHZhbHVlcygpIHtcbiAgICAgICAgcmV0dXJuIHRoaXMuX21hcC52YWx1ZXMoKTtcbiAgICB9XG5cbiAgICB0b01hcCgpIHtcbiAgICAgICAgcmV0dXJuIHRoaXMuX21hcDtcbiAgICB9XG5cbn1cblxuLyoqXG4gKiBTdGFja1xuICovXG5jbGFzcyBTdGFjayB7XG4gICAgY29uc3RydWN0b3IoaW5pdGlhbCA9IFtdKSB7XG4gICAgICAgIHRoaXMuaXRlbXMgPSBpbml0aWFsO1xuICAgIH1cblxuICAgIHB1c2goLi4uaXRlbXMpIHtcbiAgICAgICAgdGhpcy5pdGVtcy5wdXNoKC4uLml0ZW1zKTtcbiAgICB9XG5cbiAgICBwb3AoKSB7XG4gICAgICAgIHJldHVybiB0aGlzLml0ZW1zLnBvcCgpO1xuICAgIH1cblxuICAgIHBlZWsoKSB7XG4gICAgICAgIHJldHVybiB0aGlzLmlzRW1wdHkoKSA/IHZvaWQgMCA6IHRoaXMuaXRlbXNbdGhpcy5pdGVtcy5sZW5ndGggLSAxXTtcbiAgICB9XG5cbiAgICBpc0VtcHR5KCkge1xuICAgICAgICByZXR1cm4gIXRoaXMuc2l6ZSgpO1xuICAgIH1cblxuICAgIHNpemUoKSB7XG4gICAgICAgIHJldHVybiB0aGlzLml0ZW1zLmxlbmd0aDtcbiAgICB9XG5cbn1cblxuZXhwb3J0IHtDYXNlSW5zZW5zaXRpdmVNYXAsIFN0YWNrfTtcblxuIiwidmFyIHRleHRDb250ZXh0U3VwcG9ydCA9IGRvY3VtZW50LmNyZWF0ZVRleHROb2RlKCd0ZXN0JykudGV4dENvbnRlbnQgPyB0cnVlIDogZmFsc2U7XG52YXIgY2xhc3NMaXN0U3VwcG9ydCA9IGRvY3VtZW50LmRvY3VtZW50RWxlbWVudC5jbGFzc0xpc3QgPyB0cnVlIDogZmFsc2U7XG5cbnZhciBSRUdfSFRNTF9DSEFSQUNURVJTID0gLyg8KC4qKT58JiguKik7KS87XG5cbi8qKlxuICog6IO95ZCM5pe25YW85a655paH5pys6IqC54K555qEIGlubmVySFRNTCDmlrnms5XjgIJcbiAqXG4gKiBAcmV0dXJucyB7dm9pZH1cbiAqL1xuZXhwb3J0IGZ1bmN0aW9uIGlubmVySFRNTChlbGVtZW50LCBjb250ZW50KSB7XG4gICAgaWYgKFJFR19IVE1MX0NIQVJBQ1RFUlMudGVzdChjb250ZW50KSkge1xuICAgICAgICBlbGVtZW50LmlubmVySFRNTCA9IGNvbnRlbnQ7XG4gICAgfSBlbHNlIHtcbiAgICAgICAgdmFyIGNoaWxkID0gZWxlbWVudC5maXJzdENoaWxkO1xuICAgICAgICBpZiAoY2hpbGQgJiYgY2hpbGQubm9kZVR5cGUgPT09IDMgJiYgY2hpbGQubmV4dFNpYmxpbmcgPT09IG51bGwpIHtcbiAgICAgICAgICAgIGlmICh0ZXh0Q29udGV4dFN1cHBvcnQpIHtcbiAgICAgICAgICAgICAgICBjaGlsZC50ZXh0Q29udGVudCA9IGNvbnRlbnQ7XG4gICAgICAgICAgICB9IGVsc2Uge1xuICAgICAgICAgICAgICAgIGNoaWxkLmRhdGEgPSBjb250ZW50O1xuICAgICAgICAgICAgfVxuICAgICAgICB9IGVsc2Uge1xuICAgICAgICAgICAgZW1wdHkoZWxlbWVudCk7XG4gICAgICAgICAgICBlbGVtZW50LmFwcGVuZENoaWxkKGRvY3VtZW50LmNyZWF0ZVRleHROb2RlKGNvbnRlbnQpKTtcbiAgICAgICAgfVxuICAgIH1cbn1cblxuLyoqXG4gKiDlnKjmjIflrproioLngrnlkI7mj5LlhaXoioLngrlcbiAqIEBwYXJhbSBlbGVtZW50XG4gKiBAcGFyYW0gY29udGVudFxuICovXG5leHBvcnQgZnVuY3Rpb24gaW5zZXJ0QWZ0ZXIoZWxlbWVudCwgY29udGVudCkge1xuICAgIGlmIChSRUdfSFRNTF9DSEFSQUNURVJTLnRlc3QoY29udGVudCkpIHtcbiAgICAgICAgZWxlbWVudC5pbnNlcnRBZGphY2VudEhUTUwoJ2FmdGVyZW5kJywgY29udGVudCk7XG4gICAgfSBlbHNlIHtcbiAgICAgICAgaWYgKGNvbnRlbnQubm9kZVR5cGUgPT09IDEpIHtcbiAgICAgICAgICAgIGlmIChlbGVtZW50Lm5leHRTaWJsaW5nKSB7XG4gICAgICAgICAgICAgICAgZWxlbWVudC5wYXJlbnROb2RlLmluc2VydEJlZm9yZShjb250ZW50LCBlbGVtZW50Lm5leHRTaWJsaW5nKTtcbiAgICAgICAgICAgIH0gZWxzZSB7XG4gICAgICAgICAgICAgICAgZWxlbWVudC5wYXJlbnROb2RlLmFwcGVuZENoaWxkKGNvbnRlbnQpO1xuICAgICAgICAgICAgfVxuICAgICAgICB9IGVsc2Uge1xuICAgICAgICAgICAgLy8gVE9ET1xuICAgICAgICB9XG4gICAgfVxufVxuXG4vKipcbiAqIOa4heepuuaMh+WumuWFg+e0oOeahOaJgOacieWtkOiKgueCueOAglxuICpcbiAqIEBwYXJhbSBlbGVtZW50XG4gKiBAcmV0dXJucyB7dm9pZH1cbiAqL1xuZXhwb3J0IGZ1bmN0aW9uIGVtcHR5KGVsZW1lbnQpIHtcbiAgICB2YXIgY2hpbGQ7XG4gICAgd2hpbGUgKGNoaWxkID0gZWxlbWVudC5sYXN0Q2hpbGQpIHsgLy8ganNoaW50IGlnbm9yZTpsaW5lXG4gICAgICAgIGVsZW1lbnQucmVtb3ZlQ2hpbGQoY2hpbGQpO1xuICAgIH1cbn1cblxuLyoqXG4gKiDov5Tlm57mjIflrprlhYPntKDnmoTlpJbpq5jluqbvvIjljIXmi6wgcGFkZGluZ+OAgWJvcmRlciDlj4rlj6/pgInnmoQgbWFyZ2luIOWAvO+8ieOAglxuICpcbiAqIEBwYXJhbSBlbFxuICogQHBhcmFtIHtCb29sZWFufSB3aXRoTWFyZ2luIC0g6auY5bqm5Lit5piv5ZCm5YyF5ousIG1hcmdpbiDlgLxcbiAqIEByZXR1cm5zIHtudW1iZXJ9XG4gKi9cbmV4cG9ydCBmdW5jdGlvbiBvdXRlckhlaWdodChlbCwgd2l0aE1hcmdpbiA9IHRydWUpIHtcbiAgICB2YXIgaGVpZ2h0ID0gZWwub2Zmc2V0SGVpZ2h0O1xuICAgIHZhciBzdHlsZTtcblxuICAgIGlmICh3aXRoTWFyZ2luID09PSBmYWxzZSkge1xuICAgICAgICByZXR1cm4gaGVpZ2h0O1xuICAgIH1cbiAgICBzdHlsZSA9IGdldENvbXB1dGVkU3R5bGUoZWwpO1xuICAgIGhlaWdodCArPSBwYXJzZUludChzdHlsZS5tYXJnaW5Ub3ApICsgcGFyc2VJbnQoc3R5bGUubWFyZ2luQm90dG9tKTtcbiAgICByZXR1cm4gaGVpZ2h0O1xufVxuXG5cbi8qKlxuICog6L+U5Zue5oyH5a6a5YWD57Sg55qE5aSW5a695bqm77yI5YyF5ousIHBhZGRpbmfjgIFib3JkZXIg5Y+K5Y+v6YCJ55qEIG1hcmdpbiDlgLzvvInjgIJcbiAqXG4gKiBAcGFyYW0gZWxcbiAqIEBwYXJhbSB7Qm9vbGVhbn0gd2l0aE1hcmdpbiAtIOWuveW6puS4reaYr+WQpuWMheaLrCBtYXJnaW4g5YC8XG4gKiBAcmV0dXJucyB7bnVtYmVyfVxuICovXG5leHBvcnQgZnVuY3Rpb24gb3V0ZXJXaWR0aChlbCwgd2l0aE1hcmdpbiA9IHRydWUpIHtcbiAgICB2YXIgd2lkdGggPSBlbC5vZmZzZXRXaWR0aDtcbiAgICB2YXIgc3R5bGU7XG5cbiAgICBpZiAod2l0aE1hcmdpbiA9PT0gZmFsc2UpIHtcbiAgICAgICAgcmV0dXJuIHdpZHRoO1xuICAgIH1cbiAgICBzdHlsZSA9IGdldENvbXB1dGVkU3R5bGUoZWwpO1xuICAgIHdpZHRoICs9IHBhcnNlSW50KHN0eWxlLm1hcmdpbkxlZnQpICsgcGFyc2VJbnQoc3R5bGUubWFyZ2luUmlnaHQpO1xuICAgIHJldHVybiB3aWR0aDtcbn1cblxuIiwiLyoqXG4gKiDpmLvmraLlhbblroPnm5HlkKzooqvosIPnlKjjgIJcbiAqIEBwYXJhbSB7RXZlbnR9IGV2ZW50XG4gKi9cbmV4cG9ydCBmdW5jdGlvbiBzdG9wSW1tZWRpYXRlUHJvcGFnYXRpb24oZXZlbnQpIHtcbiAgICBldmVudC5pc0ltbWVkaWF0ZVByb3BhZ2F0aW9uRW5hYmxlZCA9IGZhbHNlO1xuICAgIGV2ZW50LmNhbmNlbEJ1YmJsZSA9IHRydWU7XG59XG5cbi8qKlxuICog6Zi75q2i5LqL5Lu25YaS5rOh44CCXG4gKiBAcGFyYW0ge0V2ZW50fSBldmVudFxuICovXG5leHBvcnQgZnVuY3Rpb24gc3RvcFByb3BhZ2F0aW9uKGV2ZW50KSB7XG4gICAgaWYgKHR5cGVvZiBldmVudC5zdG9wUHJvcGFnYXRpb24gPT09ICdmdW5jdGlvbicpIHtcbiAgICAgICAgZXZlbnQuc3RvcFByb3BhZ2F0aW9uKCk7XG4gICAgfSBlbHNlIHtcbiAgICAgICAgZXZlbnQuY2FuY2VsQnViYmxlID0gdHJ1ZTtcbiAgICB9XG59Il19
+},{}]},{},[6]);

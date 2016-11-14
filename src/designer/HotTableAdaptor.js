@@ -43,6 +43,12 @@ class HotTableAdaptor extends Handsontable {
         this._translator = translator;
     }
 
+
+    destroy() {
+        super.destroy();
+        delete this._translator;
+    }
+
 }
 
 

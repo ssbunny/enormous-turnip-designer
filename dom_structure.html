@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Brick Spreedsheet Designer</title>
-    <link rel="stylesheet" media="screen" href="bower_components/handsontable-pro/dist/handsontable.full.css">
+    <link rel="stylesheet" media="screen" href="libs/handsontable.full.css">
     <link rel="stylesheet" media="screen" href="src/css/tabs.css">
     <link rel="stylesheet" media="screen" href="src/css/theme/excel2016.css">
     <style>
@@ -36,16 +36,29 @@
         </div>
         <nav class="ssd-tabs-nav">
             <ul class="ssd-tabs-ul">
-                <li class="ssd-tabs-li add-tab"><a href="javascript:;"><span>+</span></a></li>
-                <li class="ssd-tabs-li" data-sheet="1"><a href="#"><span>工作表1</span></a></li>
-                <li class="ssd-tabs-li" data-sheet="2"><a href="#"><span>Drinks</span></a></li>
+                <li class="ssd-tabs-li add-tab">
+                    <a href="javascript:;"><span>+</span></a></li>
+                <li class="ssd-tabs-li" data-sheet="1">
+                    <a href="#"><span class="close hairline"></span><span>工作表1</span></a>
+                </li>
+                <li class="ssd-tabs-li" data-sheet="2">
+                    <a href="#">
+                        <span class="close hairline"></span>
+                        <span>Drinks</span>
+                    </a>
+                </li>
                 <li class="ssd-tabs-li current" data-sheet="3">
-                    <a href="#"><span><input class="editorial" type="text" value="Test1" title="2"/></span></a>
+                    <a href="#">
+
+                        <span><input class="editorial" type="text" value="Test1" title="2"/></span>
+                        <span class="close hairline"></span>
+                    </a>
                 </li>
                 <li class="ssd-tabs-li" data-sheet="4"><a href="#"><span>Lab</span></a></li>
                 <li class="ssd-tabs-li current" data-sheet="4"><a href="#"><span>Lab</span></a></li>
                 <li class="ssd-tabs-li" data-sheet="4"><a href="#"><span>Lab</span></a></li>
-                <li class="ssd-tabs-li" data-sheet="4"><a href="#"><span>Looooooooooooooooooooooooooooooooong</span></a></li>
+                <li class="ssd-tabs-li" data-sheet="4"><a href="#"><span>Looooooooooooooooooooooooooooooooong</span></a>
+                </li>
             </ul>
         </nav>
     </div>

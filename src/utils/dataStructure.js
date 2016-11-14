@@ -47,6 +47,10 @@ class CaseInsensitiveMap {
         return this._map.forEach(callbackfn, thisArg);
     }
 
+    /**
+     *
+     * @returns {Iterator.<string>}
+     */
     keys() {
         return this._map.keys();
     }
@@ -57,6 +61,10 @@ class CaseInsensitiveMap {
 
     toMap() {
         return this._map;
+    }
+
+    size() {
+        return this._map.size;
     }
 
 }

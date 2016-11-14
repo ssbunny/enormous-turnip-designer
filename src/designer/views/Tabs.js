@@ -1,9 +1,14 @@
-import {innerHTML, outerHeight, outerWidth, empty, insertAfter} from '../../utils/domHelper.js';
+import {
+    innerHTML, insertAfter,
+    closest, empty,
+    outerHeight, outerWidth
+} from '../../utils/domHelper.js';
 import {isEmptyValue, upperCase} from '../../utils/common.js';
 import {CaseInsensitiveMap} from '../../utils/dataStructure.js';
 import {stopImmediatePropagation} from '../../utils/eventHelper.js';
 import {globalSettings} from '../../settings.js';
 import {WARNS} from '../../i18n';
+import {SheetError} from '.././SheetError'
 
 const CLASS_CURRENT = 'current';
 const CLASS_TABS = 'ssd-tabs';
@@ -25,6 +30,9 @@ const regExp = globalSettings.sheet.sheetName;
  */
 function Tabs(workbook) {
     this.workbook = workbook;
+    /**
+     * @type {CaseInsensitiveMap}
+     */
     this.liItems = new CaseInsensitiveMap();
     this.sectionItems = new CaseInsensitiveMap();
     this._hotTables = new Map();
@@ -83,9 +91,15 @@ Tabs.prototype.appendTab = function (sheetName) {
     var that = this;
     var li = document.createElement('li');
 
-    li.innerHTML = `<a href="javascript:;"><span>${sheetName}</span></a>`;
+    li.innerHTML = `
+        <a href="javascript:;">
+            <span>${sheetName}</span>
+            <span class="close hairline"></span>
+        </a>
+    `;
     li.classList.add(CLASS_LI);
     li.setAttribute('data-sheet', sheetName);
+
 
     var activeTab = this.TABS.querySelector(`.${CLASS_CURRENT}.${CLASS_LI}`);
     if (activeTab) {
@@ -95,21 +109,45 @@ Tabs.prototype.appendTab = function (sheetName) {
     }
     this.liItems.set(sheetName, li);
 
-    li.addEventListener('click', function (event) {
+    li.addEventListener('click', function (e) {
         var sheetName = this.dataset.sheet;
         var sheet = that.workbook.getSheet(sheetName);
         sheet.active();
-        stopImmediatePropagation(event);
+        stopImmediatePropagation(e);
     });
 
-    li.addEventListener('dblclick', function (event) {
+    li.addEventListener('dblclick', function (e) {
         that._onTabDblclick.call(that, this);
-        stopImmediatePropagation(event);
+        stopImmediatePropagation(e);
+    });
+
+    li.querySelector('.close').addEventListener('click', function (e) {
+        var sheetName = li.dataset.sheet;
+        try {
+            that.workbook.closeSheet(sheetName);
+        } catch (e) {
+            if (e instanceof SheetError) {
+                alert(e.message); // TODO
+            }
+        }
+        stopImmediatePropagation(e);
     });
 
     this.appendContent(sheetName);
 };
 
+
+/**
+ * 增加一个 tab 页
+ * @param {string} sheetName - sheet 名， 即 tab 页的标题
+ */
+Tabs.prototype.removeTab = function (sheetName) {
+    var li = this.liItems.get(sheetName);
+    this.UL.removeChild(li);
+    this.liItems.delete(sheetName);
+
+    this.removeContent(sheetName);
+};
 
 Tabs.prototype.appendAddButton = function () {
     var that = this;
@@ -121,7 +159,7 @@ Tabs.prototype.appendAddButton = function () {
 
     this.UL.appendChild(li);
 
-    li.addEventListener('click', function (event) {
+    li.addEventListener('click', function () {
         // TODO 可增加的sheet数上限限制
         var newSheet = that.workbook.createSheet();
         newSheet.active();
@@ -224,6 +262,13 @@ Tabs.prototype.appendContent = function (sheetName) {
 
     this.appendFx(fx, sheetName);
     this.appendTable(hot, sheetName);
+};
+
+
+Tabs.prototype.removeContent = function (sheetName) {
+    var section =  this.sectionItems.get(sheetName);
+    this.CONTENT.removeChild(section);
+    this.sectionItems.delete(section);
 };
 
 /**

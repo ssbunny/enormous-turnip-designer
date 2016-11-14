@@ -1,4 +1,5 @@
 /**
+ * 标签页
  * 样式覆写时需要注意，不能影响到 handsontable 的样子。
  */
 
@@ -18,14 +19,14 @@
     background-color: #EEE;
 }
 
-.ssd-tabs .ssd-tabs-nav:before {
+.ssd-tabs:after {
     content: '';
     position: absolute;
     bottom: 0;
     left: 0;
-    height: calc(100% + 40px);
-    height: -webkit-calc(100% + 40px);
-    height: -moz-calc(100% + 40px);
+    height: 100%;
+    /*height: -webkit-calc(100% + 40px);
+    height: -moz-calc(100% + 40px);*/
     background-color: #d3d3d3;
     width: 1px;
 }
@@ -51,7 +52,6 @@
     display: block;
     float: left;
     position: relative;
-
 }
 
 .ssd-tabs .ssd-tabs-nav .ssd-tabs-ul .ssd-tabs-li span {
@@ -110,3 +110,65 @@
     outline: none;
     color: #288ffe;
 }
+
+.ssd-tabs .close {
+    position: absolute;
+    right: 2px;
+    top: 4px;
+    display: inline-block;
+    visibility: hidden;
+    width: 8px;
+    height: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.ssd-tabs .ssd-tabs-nav .ssd-tabs-li:hover .close{
+    visibility: visible;
+}
+
+.ssd-tabs .close:hover::before,
+.ssd-tabs .close:hover::after {
+    background: #285977;
+}
+
+.ssd-tabs .close::before,
+.ssd-tabs .close::after {
+    content: '';
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    top: 50%;
+    left: 0;
+    margin-top: -1px;
+    background: #c2c2c2;
+}
+
+.ssd-tabs .close::before {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.ssd-tabs .close::after {
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+.ssd-tabs .close.hairline::before,
+.ssd-tabs .close.hairline::after {
+    height: 1px;
+}
+
+.ssd-tabs .close.thick::before,
+.ssd-tabs .close.thick::after {
+    height: 4px;
+    margin-top: -2px;
+}
+

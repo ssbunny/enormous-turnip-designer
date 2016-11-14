@@ -1,10 +1,10 @@
-export default function polyfill(_window) {
+export default function polyfill(_g) {
 
     // --------------------------------------------- Number
 
-    if (!_window.Number.isNaN) {
+    if (!_g.Number.isNaN) {
         //noinspection JSPrimitiveTypeWrapperUsage
-        _window.Number.isNaN = function (x) {
+        _g.Number.isNaN = function (x) {
             return x !== x;
         }
     }

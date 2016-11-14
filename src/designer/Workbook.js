@@ -20,7 +20,6 @@ class Workbook {
      */
     constructor(instance, config) {
         /**
-         *
          * @type {SpreadSheet}
          */
         this.spreadSheet = instance;
@@ -93,7 +92,7 @@ class Workbook {
 
     /**
      * 获取所有 sheet 的名字
-     * @returns {Iterator.<K>}
+     * @returns {Iterator.<string>}
      */
     getSheetNames() {
         return this.sheets.keys();
@@ -201,6 +200,31 @@ class Workbook {
         } else {
             this.$$view.tabRenameCancel(name1, name2);
         }
+    }
+
+    /**
+     * 关闭指定 sheet 页
+     */
+    closeSheet(name) {
+        var sheet = this.getSheet(name);
+        if (!sheet) {
+            throw new SheetError(`无法关闭不存在的工作表 "${name}" 。`);
+        }
+        if (this.sheets.size() === 1) {
+            throw new SheetError(`无法关闭仅有的一个工作表 "${name}" 。`);
+        }
+        if (sheet.isActive()) {
+            for (let k of this.sheets.keys()) {
+                if (k && k !== name) {
+                    this.activeSheet = k;
+                    this.getSheet(k).active();
+                    break;
+                }
+            }
+        }
+        this.sheets.delete(name);
+        this.$$view.removeTab(name);
+        destroySheet(sheet);
     }
 
     /**

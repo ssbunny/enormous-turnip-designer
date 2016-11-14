@@ -90,19 +90,25 @@ class Sheet extends Emitter {
     }
 
     /**
-     * TODO 销毁 sheet 页
+     * 关闭 sheet 页
      */
+    close() {
+        this.workbook.closeSheet(this.getName());
+    }
+
     destroy() {
-        // 检查是不是最后一个
+        this.handsontable.destroy();
+        this.workbook.sheets.delete(this.getName());
+        delete this.workbook;
+        delete this.$$view;
     }
 
     /**
      * 给 sheet 页重命名
      * @param name - 新名字
-     * @returns {boolean} - 是否成功
      */
     rename(name) {
-        return this.workbook.renameSheet(this.getName(), name);
+        this.workbook.renameSheet(this.getName(), name);
     }
 
     /**
@@ -293,7 +299,7 @@ class Sheet extends Emitter {
         return {data, cells};
     }
 
-    // TODO
+    // TODO _getBorders
     _getBorders() {
 
     }

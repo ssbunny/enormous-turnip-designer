@@ -3,13 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Brick Spreedsheet Designer</title>
-    <link rel="stylesheet" media="screen" href="bower_components/handsontable-pro/dist/handsontable.full.css">
+    <link rel="stylesheet" media="screen" href="libs/handsontable.full.css">
+    <link rel="stylesheet" media="screen" href="libs/layer/skin/default/layer.css">
 </head>
-<body>
+<body>&#x4FE1;&#x606F;
 <div id="designer"></div>
 <input type="button" value="Test" onclick="test();">
 
-<script src="bower_components/handsontable-pro/dist/handsontable.full.min.js"></script>
+<script src="libs/handsontable.full.min.js"></script>
+<script src="libs/jquery/jquery-3.1.1.min.js"></script>
+<script src="Popup.js"></script>
 <script>
     var container = document.getElementById('designer');
 
@@ -67,7 +70,7 @@
     function test() {
 
     }
-
+    popup.alert(2);
 
 </script>
 </body>
