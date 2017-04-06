@@ -37,6 +37,7 @@ function Tabs(workbook) {
     this.sectionItems = new CaseInsensitiveMap();
     this._hotTables = new Map();
     this.rootElement = workbook.spreadSheet.getRootElement();
+    this.displayMode = workbook.spreadSheet.getDisplayMode();
 
     this.initDOM();
     this.initBox();
@@ -68,6 +69,7 @@ Tabs.prototype.initDOM = function () {
 
     // 增加 sheet 页的 button
     this.appendAddButton();
+
 };
 
 /**
@@ -90,11 +92,12 @@ Tabs.prototype.initBox = function () {
 Tabs.prototype.appendTab = function (sheetName) {
     var that = this;
     var li = document.createElement('li');
+    var clazz = this.displayMode ? '' : 'close hairline';
 
     li.innerHTML = `
         <a href="javascript:;">
             <span>${sheetName}</span>
-            <span class="close hairline"></span>
+            <span class="${clazz}"></span>
         </a>
     `;
     li.classList.add(CLASS_LI);
@@ -116,22 +119,26 @@ Tabs.prototype.appendTab = function (sheetName) {
         stopImmediatePropagation(e);
     });
 
-    li.addEventListener('dblclick', function (e) {
-        that._onTabDblclick.call(that, this);
-        stopImmediatePropagation(e);
-    });
+    if (!this.displayMode) {
+        li.addEventListener('dblclick', function (e) {
+            that._onTabDblclick.call(that, this);
+            stopImmediatePropagation(e);
+        });
 
-    li.querySelector('.close').addEventListener('click', function (e) {
-        var sheetName = li.dataset.sheet;
-        try {
-            that.workbook.closeSheet(sheetName);
-        } catch (e) {
-            if (e instanceof SheetError) {
-                alert(e.message); // TODO
+        li.querySelector('.close').addEventListener('click', function (e) {
+            var sheetName = li.dataset.sheet;
+            try {
+                that.workbook.closeSheet(sheetName);
+            } catch (e) {
+                if (e instanceof SheetError) {
+                    alert(e.message);
+                } else {
+                    throw e;
+                }
             }
-        }
-        stopImmediatePropagation(e);
-    });
+            stopImmediatePropagation(e);
+        });
+    }
 
     this.appendContent(sheetName);
 };
@@ -152,18 +159,29 @@ Tabs.prototype.removeTab = function (sheetName) {
 Tabs.prototype.appendAddButton = function () {
     var that = this;
     var li = document.createElement('li');
+    var innerHtml = this.displayMode ? '&nbsp;' : '+';
 
-    li.innerHTML = `<a href="javascript:;"><span>+</span></a>`;
+    li.innerHTML = `<a href="javascript:;"><span>${innerHtml}</span></a>`;
     li.classList.add(CLASS_LI);
-    li.classList.add('add-tab');
-
+    if (!this.displayMode) {
+        li.classList.add('add-tab');
+    }
     this.UL.appendChild(li);
 
-    li.addEventListener('click', function () {
-        // TODO 可增加的sheet数上限限制
-        var newSheet = that.workbook.createSheet();
-        newSheet.active();
-    });
+    if (!this.displayMode) {
+        li.addEventListener('click', function () {
+            try {
+                var newSheet = that.workbook.createSheet();
+                newSheet.active();
+            } catch (e) {
+                if (e instanceof SheetError) {
+                    alert(e.message);
+                } else {
+                    throw e;
+                }
+            }
+        });
+    }
 };
 
 /**
@@ -266,9 +284,9 @@ Tabs.prototype.appendContent = function (sheetName) {
 
 
 Tabs.prototype.removeContent = function (sheetName) {
-    var section =  this.sectionItems.get(sheetName);
+    var section = this.sectionItems.get(sheetName);
     this.CONTENT.removeChild(section);
-    this.sectionItems.delete(section);
+    this.sectionItems.delete(sheetName);
 };
 
 /**

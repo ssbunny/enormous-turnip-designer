@@ -43,8 +43,15 @@ export function emptyFunction(newOne = false) {
 
 
 export function upperCase(str) {
-    return str.toLocaleUpperCase();
+    return str.toUpperCase();
 }
+
+
+export function upperCaseFirst(str) {
+    return str.replace(/^\S/g, f => upperCase(f));
+}
+
+
 
 
 /**

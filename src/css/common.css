@@ -1,4 +1,3 @@
-
 /**
  * 动画
  */
@@ -62,7 +61,6 @@
     animation-name: fadeOut;
 }
 
-
 /*****************************************\
  *
  *     以下为 JavaScript 动态控制的样式
@@ -75,3 +73,15 @@
     background-color: #F00!important;
 }
 */
+
+.ssd-font-bold {
+    font-weight: bold;
+}
+
+.ssd-font-italic {
+    font-style: italic;
+}
+
+.ssd-font-underline {
+    text-decoration: underline;
+}

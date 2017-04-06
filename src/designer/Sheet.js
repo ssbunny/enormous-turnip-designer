@@ -1,12 +1,17 @@
 import Tabs from  './views/Tabs';
 import Handsontable from './HotTableAdaptor';
-import {SheetError} from './SheetError'
+import {SheetError} from './SheetError';
+import {Exchange} from './ext/Sheet_exchange';
+import {SheetHelper} from './ext/Sheet_helper';
 import {Coordinate} from '../utils/common';
-import Emitter from '../utils/Emitter'
+import Emitter from '../utils/Emitter';
+
 
 const INIT_ROWS = 150; // Sheet 初始可显示的行数
 const INIT_COLS = 50;  // Sheet 初始可显示的列数
 
+// Webstorm IDE 的语法检查或 souremap 解析时不支持直接写到类的 extends 后。
+var Mixin = SheetHelper(Exchange(Emitter));
 
 /**
  * 工作表
@@ -14,7 +19,7 @@ const INIT_COLS = 50;  // Sheet 初始可显示的列数
  * @fires Sheet#afterRename
  * @fires Sheet#afterRenameCancel
  */
-class Sheet extends Emitter {
+class Sheet extends Mixin {
 
     /**
      * 构造 Sheet 实例，用户代码不应该直接调用它，
@@ -49,12 +54,15 @@ class Sheet extends Emitter {
     _render() {
         this.$$view.appendTab(this.sheetName);
         var {container, width, height} = this.$$view._hotTables.get(this.sheetName);
+
         /**
          * @type {Handsontable}
          */
+
         this.handsontable = new Handsontable(container, this.settings, {
             width: width,
             height: height,
+            readOnly: this.workbook.spreadSheet.getDisplayMode(),
             startRows: this.initRows,
             startCols: this.initCols,
             _isHotTableAdaptor: true,
@@ -96,6 +104,9 @@ class Sheet extends Emitter {
         this.workbook.closeSheet(this.getName());
     }
 
+    /**
+     * 销毁当前 sheet
+     */
     destroy() {
         this.handsontable.destroy();
         this.workbook.sheets.delete(this.getName());
@@ -125,6 +136,10 @@ class Sheet extends Emitter {
         this.handsontable.selectCell(fromRow, fromCol, toRow, toCol, false);
     }
 
+    /**
+     * 获得当前 sheet 的选区
+     * @returns {{row, col, endRow, endCol}}
+     */
     getSelection() {
         var selection = this.handsontable.getSelected();
         return {
@@ -193,8 +208,6 @@ class Sheet extends Emitter {
             this.handsontable.updateSettings({
                 mergeCells: mergeCells
             });
-
-
         } else if (r === 2 || r === 4) {
             throw new SheetError(`给定的合并区域不合法: [${row}, ${col}, ${rowspan}, ${colspan}]`)
         }
@@ -229,79 +242,156 @@ class Sheet extends Emitter {
         });
     }
 
-
-    _getExchange() {
-        var {data, cells} = this._getDataMeta();
-        var {heights, widths} = this._getSize();
-        var mergeCells = this.handsontable.getSettings().mergeCells;
-
-        return {
-            name: this.getName(),
-            selection: this.getSelection(),
-            data: data.length ? data : []._,
-            rowHeights: heights,
-            colWidths: widths,
-            mergeCells: mergeCells,
-            cellMetas: cells
-        }
+    spliceClass(selection, newClassName, ...classNames) {
+        this._walkonCellMetas(selection, (row, col, cellMeta) => {
+            return {
+                className: (this._removeFormerClass(
+                    cellMeta.className,
+                    classNames
+                ) + ' ' + newClassName).trim()
+            };
+        }, {className: newClassName});
     }
 
-    _getSize() {
-        var hot = this.handsontable;
-        var cols = Math.max(hot.countCols() - hot.countEmptyCols(true), 20);
-        var rows = Math.max(hot.countRows() - hot.countEmptyRows(true), 50);
-        var heights = [];
-        var widths = [];
-
-        for (let i = 0; i < rows; ++i) {
-            let h = hot.getRowHeight(i);
-            if (i === 0 && !h) { // handsontable bug
-                h = 24;
-            }
-            heights.push(h);
+    /**
+     * 设置字体加粗
+     * @param {boolean} [value=true] `true` 为加粗，`false` 取消加粗
+     * @param {object} selection - 待设置的选区
+     * @param {int} selection.row
+     * @param {int} selection.col
+     * @param {int} [selection.endRow]
+     * @param {int} [selection.endCol]
+     */
+    setFontBold(value = true, selection = this.getSelection()) {
+        if (value) {
+            this.spliceClass(selection, 'ssd-font-bold', 'ssd-font-bold');
+        } else {
+            this.spliceClass(selection, '', 'ssd-font-bold');
         }
-        for (let i = 0; i < cols; ++i) {
-            widths.push(hot.getColWidth(i));
-        }
-        return {heights, widths};
+        this.handsontable.render();
     }
 
-    _getDataMeta() {
-        var hot = this.handsontable;
-        var cols = hot.countCols() - hot.countEmptyCols(true);
-        var rows = hot.countRows() - hot.countEmptyRows(true);
-        var data = [];
-        var cells = [];
-
-        for (let i = 0; i < rows; ++i) {
-            let rowResult = [];
-            let rowCellMeta = [];
-
-            for (let j = 0; j < cols; ++j) {
-                let _sourceData = hot.getSourceDataAtCell(i, j);
-                let _meta = hot.getCellMeta(i, j); // TODO meta
-                let _data = hot.getDataAtCell(i, j);
-                let _cellMata = {};
-
-                _cellMata.row = i;
-                _cellMata.col = j;
-                _cellMata.isFormula = !!(_sourceData && (_sourceData + '').charAt(0) === '=');
-                _cellMata.sourceValue = _sourceData;
-                _cellMata.value = _data;
-
-                // TODO dataType, styles
-                rowResult.push(_sourceData);
-                rowCellMeta.push(_cellMata);
-            }
-            data.push(rowResult);
-            cells.push(rowCellMeta);
+    /**
+     * 设置斜体字
+     * @param {boolean} [value=true]
+     * @param {object} selection - 待设置的选区
+     * @param {int} selection.row
+     * @param {int} selection.col
+     * @param {int} [selection.endRow]
+     * @param {int} [selection.endCol]
+     */
+    setFontItalic(value = true, selection = this.getSelection()) {
+        if (value) {
+            this.spliceClass(selection, 'ssd-font-italic', 'ssd-font-italic');
+        } else {
+            this.spliceClass(selection, '', 'ssd-font-italic');
         }
-        return {data, cells};
+        this.handsontable.render();
     }
 
-    // TODO _getBorders
-    _getBorders() {
 
+    /**
+     * 设置字体下划线
+     * @param {boolean} [value=true]
+     * @param selection - 待设置的选区
+     * @param {int} selection.row
+     * @param {int} selection.col
+     * @param {int} [selection.endRow]
+     * @param {int} [selection.endCol]
+     */
+    setFontUnderline(value = true, selection = this.getSelection()) {
+        if (value) {
+            this.spliceClass(selection, 'ssd-font-underline', 'ssd-font-underline');
+        } else {
+            this.spliceClass(selection, '', 'ssd-font-underline');
+        }
+        this.handsontable.render();
+    }
+
+    /**
+     * 设置字体颜色
+     * TIP 如果 “handontable 直接通过 getCell 获得 TD 后设置样式”，当再次 render 时会失效。
+     * @param value
+     * @param selection
+     */
+    setFontColor(value = '', selection = this.getSelection()) {
+        this._walkonCellMetas(selection, () => {
+            return {
+                _style_color: value
+            };
+        }, {_style_color: value});
+        this.handsontable.render();
+    }
+
+    /**
+     * 字体类型
+     * @param value
+     * @param selection
+     */
+    setFontFamily(value = '', selection = this.getSelection()) {
+        this._walkonCellMetas(selection, () => {
+            return {
+                _style_fontFamily: value
+            };
+        }, {_style_fontFamily: value});
+        this.handsontable.render();
+    }
+
+    /**
+     * 字体大小
+     * @param value - 需要指定单位，如 12px
+     * @param selection
+     */
+    setFontSize(value, selection = this.getSelection()) {
+        this._walkonCellMetas(selection, () => {
+            return {
+                _style_fontSize: value
+            };
+        }, {_style_fontSize: value});
+        this.handsontable.render();
+    }
+
+    /**
+     * 设置背景色
+     * @param value
+     * @param selection
+     */
+    setBackgroundColor(value = '', selection = this.getSelection()) {
+        this._walkonCellMetas(selection, () => {
+            return {
+                _style_backgroundColor: value
+            };
+        }, {_style_backgroundColor: value});
+        this.handsontable.render();
+    }
+
+
+    /**
+     * FIXME handsontable 的 BUG 尚未处理，源码复杂，一时也不好扩展。
+     * 设置边框
+     * @param range - 边框范围，形如 `{form: {row: 1, col: 1}, to: {row: 3, col: 4}}` 的对象
+     * @param top - 上边框，形如 `{width: 2, color: '#5292F7'}` 的对象
+     * @param [right]
+     * @param [bottom]
+     * @param [left]
+     */
+    setBorder(range, top, right, bottom, left) {
+        var config = {
+            range: range,
+            top: top
+        };
+        config.right = right || top;
+        config.bottom = bottom || top;
+        config.left = left || config.right;
+
+        var formerBorders = this.handsontable.getSettings().customBorders || [];
+        formerBorders.push(config);
+
+        // TODO customBorders cannot be updated via updateSettings
+        // @see {@link https://github.com/handsontable/handsontable/issues/2002}
+        this.handsontable.updateSettings({
+            customBorders: formerBorders
+        });
     }
 
 }

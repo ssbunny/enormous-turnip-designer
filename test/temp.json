@@ -1,0 +1,274 @@
+{
+  "workbook": {
+    "activeSheet": "工作表1",
+    "sheets": [
+      {
+        "name": "工作表1",
+        "selection": {
+          "row": 2,
+          "col": 0,
+          "endRow": 2,
+          "endCol": 0
+        },
+        "data": [
+          [
+            "Test",
+            null
+          ],
+          [
+            null,
+            "磨煤机单耗"
+          ],
+          [
+            "=339/85",
+            "=130/112"
+          ],
+          [
+            null,
+            null
+          ],
+          [
+            "=262",
+            "=112"
+          ],
+          [
+            "=371",
+            null
+          ],
+          [
+            "=A5+A6",
+            null
+          ]
+        ],
+        "rowHeights": [
+          24,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "colWidths": [
+          153,
+          291,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50
+        ],
+        "mergeCells": [
+          {
+            "row": 0,
+            "col": 0,
+            "rowspan": 1,
+            "colspan": 8
+          }
+        ],
+        "cellMetas": [
+          [
+            {
+              "row": 0,
+              "col": 0,
+              "isFormula": false,
+              "sourceValue": "Test",
+              "value": "Test",
+              "styles": {
+                "alignments": [
+                  "Center"
+                ]
+              }
+            },
+            {
+              "row": 0,
+              "col": 1,
+              "isFormula": false,
+              "sourceValue": null,
+              "value": null,
+              "styles": {
+                "alignments": [
+                  "Center"
+                ]
+              }
+            }
+          ],
+          [
+            {
+              "row": 1,
+              "col": 0,
+              "isFormula": false,
+              "sourceValue": null,
+              "value": null
+            },
+            {
+              "row": 1,
+              "col": 1,
+              "isFormula": false,
+              "sourceValue": "磨煤机单耗",
+              "value": "磨煤机单耗",
+              "styles": {
+                "alignments": [
+                  "Right",
+                  "Bottom"
+                ],
+                "fontStyle": "italic",
+                "fontWeight": "bold",
+                "textDecoration": "underline"
+              }
+            }
+          ],
+          [
+            {
+              "row": 2,
+              "col": 0,
+              "isFormula": true,
+              "sourceValue": "=339/85",
+              "value": 3.988235294117647,
+              "styles": {
+                "fontFamily": "黑体",
+                "color": "red"
+              }
+            },
+            {
+              "row": 2,
+              "col": 1,
+              "isFormula": true,
+              "sourceValue": "=130/112",
+              "value": 1.1607142857142858,
+              "styles": {
+                "fontStyle": "italic",
+                "textDecoration": "underline"
+              }
+            }
+          ],
+          [
+            {
+              "row": 3,
+              "col": 0,
+              "isFormula": false,
+              "sourceValue": null,
+              "value": null
+            },
+            {
+              "row": 3,
+              "col": 1,
+              "isFormula": false,
+              "sourceValue": null,
+              "value": null
+            }
+          ],
+          [
+            {
+              "row": 4,
+              "col": 0,
+              "isFormula": true,
+              "sourceValue": "=262",
+              "value": 262,
+              "styles": {
+                "fontFamily": "黑体",
+                "color": "red"
+              }
+            },
+            {
+              "row": 4,
+              "col": 1,
+              "isFormula": true,
+              "sourceValue": "=112",
+              "value": 112
+            }
+          ],
+          [
+            {
+              "row": 5,
+              "col": 0,
+              "isFormula": true,
+              "sourceValue": "=371",
+              "value": 371
+            },
+            {
+              "row": 5,
+              "col": 1,
+              "isFormula": false,
+              "sourceValue": null,
+              "value": null
+            }
+          ],
+          [
+            {
+              "row": 6,
+              "col": 0,
+              "isFormula": true,
+              "sourceValue": "=A5+A6",
+              "value": 633
+            },
+            {
+              "row": 6,
+              "col": 1,
+              "isFormula": false,
+              "sourceValue": null,
+              "value": null
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  "id": "brick-ssd-1-523c94d39fc229f5"
+}

@@ -69,6 +69,7 @@ class ConfigTranslator {
                         cell.row = cellMeta.row;
                         cell.col = cellMeta.col;
 
+                        // dataType
                         if (cellMeta.dataType) {
                             for (var dt in cellMeta.dataType) {
                                 if (cellMeta.dataType.hasOwnProperty(dt)) {
@@ -79,13 +80,40 @@ class ConfigTranslator {
                             delete cell.typeName;
                         }
 
+                        // styles
                         if (cellMeta.styles) {
                             if (cellMeta.styles.alignments) {
                                 let c = cellMeta.styles.alignments.join(' ht');
                                 cell.className = cell.className ? (cell.className += ' ht' + c) : 'ht' + c;
                             }
+                            if (cellMeta.styles.fontFamily) {
+                                cell._style_fontFamily = cellMeta.styles.fontFamily;
+                            }
+                            if (cellMeta.styles.fontSize) {
+                                cell._style_fontSize = cellMeta.styles.fontSize;
+                            }
+                            if (cellMeta.styles.color) {
+                                cell._style_color = cellMeta.styles.color;
+                            }
+                            if (cellMeta.styles.backgroundColor) {
+                                cell._style_backgroundColor = cellMeta.styles.backgroundColor;
+                            }
+                            if (cellMeta.styles.fontStyle) {
+                                cell.className = cell.className
+                                    ? (cell.className += ' ssd-font-' + cellMeta.styles.fontStyle)
+                                    : 'ssd-font-' + cellMeta.styles.fontStyle;
+                            }
+                            if (cellMeta.styles.fontWeight) {
+                                cell.className = cell.className
+                                    ? (cell.className += ' ssd-font-bold')
+                                    : 'ssd-font-bold';
+                            }
+                            if (cellMeta.styles.textDecoration) {
+                                cell.className = cell.className
+                                    ? (cell.className += ' ssd-font-underline')
+                                    : 'ssd-font-underline';
+                            }
                         }
-
                         settings.cell.push(cell);
                     }
                 }

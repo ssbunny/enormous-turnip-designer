@@ -1,4 +1,5 @@
 import {Coordinate} from '../../utils/common'
+import {alignmentItem} from './ContextMenu_alignment'
 
 /**
  * 电子表格右键菜单。
@@ -52,6 +53,9 @@ ContextMenu.prototype.getMenuItems4HotTable = function () {
  borders
  */
 ContextMenu.prototype._init = function () {
+    const SEP = '---------';
+
+
     this.register('row_above', {
         name: '上方插入一行',
         disabled: function () {
@@ -65,7 +69,7 @@ ContextMenu.prototype._init = function () {
         name: '下方插入一行'
     });
 
-    this.register('hsep1', '---------');
+    this.register('hsep1', SEP);
 
     this.register('col_left', {
         name: '左侧插入一列'
@@ -75,7 +79,7 @@ ContextMenu.prototype._init = function () {
         name: '右侧插入一列'
     });
 
-    this.register('hsep2', '---------');
+    this.register('hsep2', SEP);
 
     // FIXME handsontable 自带的删除功能，在存在单元格合并时有BUG，改成自定义逻辑。
     this.register('remove_row', {
@@ -89,23 +93,11 @@ ContextMenu.prototype._init = function () {
         name: '删除选中列'
     });
 
-    this.register('hsep3', '---------');
 
+    this.register('hsep3', SEP);
+    this.register('alignment', alignmentItem());
+    this.register('hsep4', SEP);
 
-    let mergeCompare = function (type) {
-        var merged = this.getSettings().mergeCells;
-        if (merged && merged.length) {
-            for (let i = 0; i < merged.length; ++i) {
-                let {row, col, rowspan, colspan} = merged[i];
-                if (Coordinate[type](
-                        [row, col, row + rowspan - 1, col + colspan - 1],
-                        this.getSelected())) {
-                    return false;
-                }
-            }
-        }
-        return true;
-    };
 
     this.register('q_merge_cells', {
         name: '单元格合并',
@@ -142,3 +134,19 @@ ContextMenu.prototype._init = function () {
 
 };
 
+
+// private
+function mergeCompare(type) {
+    var merged = this.getSettings().mergeCells;
+    if (merged && merged.length) {
+        for (let i = 0; i < merged.length; ++i) {
+            let {row, col, rowspan, colspan} = merged[i];
+            if (Coordinate[type](
+                    [row, col, row + rowspan - 1, col + colspan - 1],
+                    this.getSelected())) {
+                return false;
+            }
+        }
+    }
+    return true;
+}

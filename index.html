@@ -3,10 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Brick Spreedsheet Designer</title>
-    <link rel="stylesheet" media="screen" href="libs/handsontable.full.css">
-    <link rel="stylesheet" media="screen" href="src/css/common.css">
-    <link rel="stylesheet" media="screen" href="src/css/tabs.css">
-    <link rel="stylesheet" media="screen" href="src/css/theme/excel2016.css">
+    <link rel="stylesheet" media="screen" href="dist/spreadsheet-0.1.1.css">
     <style>
         #designer {
             width: 900px;
@@ -16,10 +13,14 @@
 </head>
 <body>
 <input type="button" value="Save" onclick="save()"/>
+<input type="button" value="Bold" onclick="bold()"/>
+<input type="button" value="italic" onclick="italic()"/>
+<input type="button" value="underline" onclick="underline()"/>
+
 <div id="designer"></div>
 
-<script src="dist/separate/spreadsheet-libs.js"></script>
-<script src="dist/separate/spreadsheet-core-debug.js"></script>
+<script src="dist/spreadsheet-libs-0.3.0.js"></script>
+<script src="dist/spreadsheet-0.3.0-debug.js"></script>
 <script src="index.js"></script>
 </body>
 </html>

@@ -1,21 +1,25 @@
-var pkg = require('./package.json');
-var gulp = require('gulp');
-var header = require('gulp-header');
-var replace = require('gulp-replace');
-var uglify = require('gulp-uglify');
-var rename = require('gulp-rename');
-var minifyCss = require('gulp-minify-css');
-var babelify = require('babelify');
-var browserify = require('browserify');
-var source = require('vinyl-source-stream');
-var concat = require('gulp-concat');
+var pkg = require('./package.json')
+    , fs = require('fs')
+    , gulp = require('gulp')
+    , header = require('gulp-header')
+    , concat = require('gulp-concat')
+    , uglify = require('gulp-uglify')
+    , rename = require('gulp-rename')
+    , minifyCss = require('gulp-minify-css')
+    , inject = require('gulp-inject-string')
+    , sourcemaps = require('gulp-sourcemaps')
+    , babelify = require('babelify')
+    , exorcist = require('exorcist')
+    , browserify = require('browserify')
+    , buffer = require('vinyl-buffer')
+    , source = require('vinyl-source-stream');
 
 // ------------------------------------------
 
 var buildDate = JSON.stringify(new Date());
 
 var jsfileHeader = ['/*!',
-    ' * <%= pkg.name %>',
+    ' * Brick SpreadSheet',
     ' * <%= pkg.description %>',
     ' * ',
     ' * @version v<%= pkg.version %>',
@@ -37,27 +41,10 @@ var uglifyMangle = [
     'export', 'default'
 ];
 
+
 // ------------------------------------------
 
-gulp.task('scripts', ['scripts-libs', 'scripts-core', 'scripts-optimized'], function () {
-    gulp.src(
-        [
-            'dist/separate/spreadsheet-libs.js',
-            'dist/separate/spreadsheet-core.js'
-        ])
-        .pipe(concat('spreadsheet-all.js'))
-        .pipe(gulp.dest('dist/separate'));
-    gulp.src(
-        [
-            'dist/separate/spreadsheet-libs-debug.js',
-            'dist/separate/spreadsheet-core-debug.js'
-        ])
-        .pipe(concat('spreadsheet-all-debug.js'))
-        .pipe(gulp.dest('dist/separate'));
-});
-
-
-gulp.task('scripts-optimized', ['scripts-core-debug'], function () {
+gulp.task('scripts-libs', function () {
     gulp.src(
         [
             'libs/moment/moment.js',
@@ -66,54 +53,44 @@ gulp.task('scripts-optimized', ['scripts-core-debug'], function () {
             'libs/numbro/numbro.js',
             'libs/numbro/languages/zh-CN.min.js',
             'libs/zeroclipboard/ZeroClipboard.js',
-            'libs/handsontable.js',
-            'dist/separate/spreadsheet-core-debug.js'
+            'libs/handsontable.js'
         ])
-        .pipe(concat(`spreadsheet-${pkg.version}.js`))
-        .pipe(uglify({
+        .pipe(concat(`spreadsheet-libs-${pkg.version}.js`))
+        /*.pipe(uglify({
             mangle: {except: uglifyMangle}
-        }))
-        .pipe(replace('@@_version_@@', pkg.version))
-        .pipe(header(jsfileHeader, {pkg: pkg, date: buildDate}))
+        }))*/
         .pipe(gulp.dest('dist'));
 });
 
-
-gulp.task('scripts-libs', function () {
-    return gulp.src('libs/handsontable.full.js')
-        .pipe(rename('spreadsheet-libs-debug.js'))
-        .pipe(gulp.dest('dist/separate'))
-        .pipe(rename('spreadsheet-libs.js'))
-        .pipe(uglify({
-            mangle: {except: uglifyMangle},
-            preserveComments: 'license'
-        }))
-        .pipe(gulp.dest('dist/separate'));
-});
-
-
-gulp.task('scripts-core', ['scripts-core-debug'], function () {
-    return gulp.src('dist/separate/spreadsheet-core-debug.js')
-        .pipe(rename('spreadsheet-core.js'))
-        .pipe(uglify({
-            mangle: {except: uglifyMangle},
-            preserveComments: 'license'
-        }))
-        .pipe(gulp.dest('dist/separate'));
-});
-
-gulp.task('scripts-core-debug', function () {
-    return browserify({
+gulp.task('scripts-core', function () {
+    browserify({
         entries: 'src/browser.js',
         debug: false
     }).transform(babelify, {presets: ['es2015']})
         .bundle()
-        .pipe(source('spreadsheet-core-debug.js'))
-        .pipe(replace('@@_version_@@', pkg.version))
+        .pipe(source(`spreadsheet-${pkg.version}.js`))
+        .pipe(buffer())
+        .pipe(uglify({
+            mangle: {except: uglifyMangle}
+        }))
+        .pipe(inject.replace('@@_version_@@', pkg.version))
         .pipe(header(jsfileHeader, {pkg: pkg, date: buildDate}))
-        .pipe(gulp.dest('dist/separate'));
+        .pipe(gulp.dest('dist'));
 });
 
+gulp.task('scripts-core-debug', function () {
+    browserify({
+        entries: 'src/browser.js',
+        debug: true
+    }).transform(babelify, {presets: ['es2015']})
+        .bundle()
+        .pipe(source(`spreadsheet-${pkg.version}-debug.js`))
+        .pipe(gulp.dest('dist'));
+    /*
+     .pipe(exorcist(`dist/spreadsheet-${pkg.version}-debug.js.map`))
+     .pipe(fs.createWriteStream(`dist/spreadsheet-${pkg.version}-debug.js`, 'utf8'));
+     */
+});
 
 gulp.task('styles', function () {
     gulp.src(
@@ -127,4 +104,6 @@ gulp.task('styles', function () {
         .pipe(gulp.dest('dist'));
 });
 
+
+gulp.task('scripts', ['scripts-libs', 'scripts-core', 'scripts-core-debug']);
 gulp.task('default', ['styles', 'scripts']);

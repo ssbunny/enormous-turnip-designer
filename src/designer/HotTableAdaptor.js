@@ -38,11 +38,34 @@ class HotTableAdaptor extends Handsontable {
         extend(hotSettings, HotTableAdaptor._preference);
         extend(hotSettings, settings);
         extend(hotSettings, extConfig);
+
         super(rootElement, hotSettings);
 
         this._translator = translator;
-    }
 
+        // handontable 每次 render 的时候，不保留 td 的状态，因此通过该事件重建一些样式。
+        Handsontable.hooks.add('beforeRenderer', function (TD, row, col, prop, value, cellProperties) {
+            TD.style.color = cellProperties._style_color || '';
+            TD.style.fontFamily = cellProperties._style_fontFamily || '';
+            TD.style.fontSize = cellProperties._style_fontSize || '';
+            TD.style.backgroundColor = cellProperties._style_backgroundColor || '';
+        }, this);
+
+        /*
+         * 将 Handsontable 的所有事件都委托给 SpreadSheet 后会有些卡。
+         * 只好将 Handsontable.hooks.getRegistered() 换成 ECP 项目需要的。
+         */
+        ['afterSelectionEnd'].forEach(hook => {
+            Handsontable.hooks.add(hook, function () {
+                var args = [];
+                args.push(hook);
+                args.push(sheet);
+                args.push.apply(args, [].slice.call(arguments));
+                var cxt = sheet.workbook.spreadSheet;
+                cxt.emit.apply(cxt, args);
+            }, this);
+        });
+    }
 
     destroy() {
         super.destroy();
@@ -58,17 +81,17 @@ class HotTableAdaptor extends Handsontable {
  */
 HotTableAdaptor._preference = {
     outsideClickDeselects: false,
+    contextMenu: true,
 
     rowHeaders: true,
     colHeaders: true,
 
     manualColumnResize: true,
     manualRowResize: true,
-    className: 'ssd-handsontable',
 
-    xFormulas: true,
+    tableClassName: 'ssd-handsontable',
 
-    contextMenu: {}
+    xFormulas: true
 };
 
 export default HotTableAdaptor;

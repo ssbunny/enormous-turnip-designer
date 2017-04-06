@@ -4,15 +4,12 @@
     <meta charset="UTF-8">
     <title>Brick Spreedsheet Designer</title>
     <link rel="stylesheet" media="screen" href="libs/handsontable.full.css">
-    <link rel="stylesheet" media="screen" href="libs/layer/skin/default/layer.css">
 </head>
-<body>&#x4FE1;&#x606F;
+<body>
 <div id="designer"></div>
 <input type="button" value="Test" onclick="test();">
 
-<script src="libs/handsontable.full.min.js"></script>
-<script src="libs/jquery/jquery-3.1.1.min.js"></script>
-<script src="Popup.js"></script>
+<script src="libs/handsontable.full.js"></script>
 <script>
     var container = document.getElementById('designer');
 
@@ -36,22 +33,6 @@
 
         formulas: true,
 
-        colWidths: ['100pt'],
-/*        mergeCells: [
-            {
-                "row": 0,
-                "col": 0,
-                "rowspan": 2,
-                "colspan": 2
-            },
-            {
-                "row": 3,
-                "col": 3,
-                "rowspan": 2,
-                "colspan": 2
-            }
-        ],*/
-
         cell: [{
             col:0,
             row:0
@@ -62,15 +43,27 @@
             [, 0, 2941, 4303, 354, 5814],
             [2010, 5, 2905, 2867, '=SUM(A4,2,3)', '=$B1'],
             [2011, 4, 2517, 4822, 552, 6127],
-            [new Date(), '=SUM(A2:A5)', '=SUM(B5,E3)', '=A2/B2', 12, 4151]
+            [1, '=SUM(A2:A5)', '=SUM(B5,E3)', '=A2/B2', 12, new Date()]
         ]
     });
 
 
     function test() {
 
+        hot.updateSettings({
+            customBorders: [{
+                range: {
+                    from: {row: 0, col: 0},
+                    to: {row: 1, col: 1}
+                },
+                top: {width: 2, color: 'red'}
+            }]
+        });
+
+        hot.runHooks('afterInit');
+
+        console.log(hot.getSettings().customBorders);
     }
-    popup.alert(2);
 
 </script>
 </body>

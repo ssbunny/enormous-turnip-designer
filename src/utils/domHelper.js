@@ -69,7 +69,11 @@ export function closest(element, selector) {
 export function empty(element) {
     var child;
     while (child = element.lastChild) { // jshint ignore:line
-        element.removeChild(child);
+        try {
+            element.removeChild(child);
+        } catch (e) {
+            // TODO 暂时这样处理 https://bugzilla.mozilla.org/show_bug.cgi?id=559561
+        }
     }
 }
 

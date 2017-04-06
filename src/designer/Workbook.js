@@ -152,6 +152,7 @@ class Workbook {
      * @returns {Sheet} 新创建的工作表
      */
     createSheet(config) {
+
         if (config) {  // 根据初始配置创建，name 不能为空
             this._validateSheetName(config.name);
         } else { // 用户操作创建，动态生成 name
@@ -224,7 +225,26 @@ class Workbook {
         }
         this.sheets.delete(name);
         this.$$view.removeTab(name);
-        destroySheet(sheet);
+        this.destroySheet(sheet);
+    }
+
+
+    /**
+     * 激活当前 workbook
+     */
+    active() {
+        this.getActiveSheet().active();
+    }
+
+    /**
+     * 激活指定 sheet
+     * @param {string} sheetName
+     */
+    activeSheet(sheetName) {
+        var sheet = this.getSheet(sheetName);
+        if (sheet) {
+            sheet.active();
+        }
     }
 
     /**
