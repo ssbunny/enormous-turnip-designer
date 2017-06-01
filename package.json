@@ -1,10 +1,14 @@
 {
   "name": "spreadsheet",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "description": "A JavaScript spreedsheet designer based on Handsontable.",
   "main": "gulpfile.js",
   "scripts": {
     "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:ssbunny/enormous-turnip-designer.git"
   },
   "keywords": [
     "excel",
@@ -27,6 +31,7 @@
     "gulp-replace": "^0.5.4",
     "gulp-sourcemaps": "^2.2.0",
     "gulp-uglify": "^2.0.0",
+    "jison": "^0.4.17",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0"
   },
@@ -34,10 +39,10 @@
     "formulajs": "1.0.8"
   },
   "vendors": {
-    "handsontable": "0.28.3",
+    "handsontable": "0.32.0",
     "moment": "2.13.0",
-    "numbro": "1.8.0",
+    "numbro": "1.11.0",
     "pikaday": "1.4.0",
-    "zeroclipboard": "2.2.0"
+    "zeroclipboard": "2.3.0"
   }
 }

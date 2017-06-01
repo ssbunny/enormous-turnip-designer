@@ -41,22 +41,24 @@ var uglifyMangle = [
     'export', 'default'
 ];
 
+var libsPath = 'bower_components/handsontable/dist';
+
 
 // ------------------------------------------
 
 gulp.task('scripts-libs', function () {
     gulp.src(
         [
-            'libs/moment/moment.js',
-            'libs/moment/locale/zh-cn.js',
-            'libs/pikaday/pikaday.js',
-            'libs/numbro/numbro.js',
-            'libs/numbro/languages/zh-CN.min.js',
-            'libs/zeroclipboard/ZeroClipboard.js',
-            'libs/handsontable.js'
+            libsPath + '/moment/moment.js',
+            libsPath + '/moment/locale/zh-cn.js',
+            libsPath + '/pikaday/pikaday.js',
+            libsPath + '/numbro/numbro.js',
+            libsPath + '/numbro/languages/zh-CN.min.js',
+            libsPath + '/zeroclipboard/ZeroClipboard.js',
+            libsPath + '/handsontable.js'
         ])
         .pipe(concat(`spreadsheet-libs-${pkg.version}.js`))
-        /*.pipe(uglify({
+      /*  .pipe(uglify({
             mangle: {except: uglifyMangle}
         }))*/
         .pipe(gulp.dest('dist'));
@@ -95,7 +97,7 @@ gulp.task('scripts-core-debug', function () {
 gulp.task('styles', function () {
     gulp.src(
         [
-            'libs/handsontable.full.css',
+            libsPath + '/handsontable.full.css',
             'src/css/common.css',
             'src/css/tabs.css'
         ])
@@ -106,4 +108,5 @@ gulp.task('styles', function () {
 
 
 gulp.task('scripts', ['scripts-libs', 'scripts-core', 'scripts-core-debug']);
+gulp.task('scripts-nolibs', ['scripts-core', 'scripts-core-debug']);
 gulp.task('default', ['styles', 'scripts']);

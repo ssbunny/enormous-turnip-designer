@@ -35,11 +35,10 @@ var isObject = Handsontable.helper.isObject;
 var objectEach = Handsontable.helper.objectEach;
 
 function XFormulas(hotInstance) {
-
     Handsontable.plugins.BasePlugin.call(this, hotInstance);
     this._superClass = Handsontable.plugins.BasePlugin;
 
-    this.eventManager = Handsontable.eventManager();
+    this.eventManager = new Handsontable.EventManager();
     this.dataProvider = new DataProvider(this.hot);
     this.sheet = new Sheet(this.dataProvider);
     this.undoRedoSnapshot = new UndoRedoSnapshot(this.sheet);
@@ -209,13 +208,13 @@ XFormulas.prototype.onAfterSetDataAtCell = function (changes, source) {
 };
 
 XFormulas.prototype.onBeforeCreateRow = function (row, amount, source) {
-    if (source === 'undo') {
+    if (source === 'UndoRedo.undo') {
         this.undoRedoSnapshot.restore();
     }
 };
 
 XFormulas.prototype.onAfterCreateRow = function (row, amount, source) {
-    this.sheet.alterManager.insertRow(row, amount, source !== 'undo');
+    this.sheet.alterManager.insertRow(row, amount, source !== 'UndoRedo.undo');
 };
 
 XFormulas.prototype.onBeforeRemoveRow = function (row, amount) {
@@ -227,13 +226,13 @@ XFormulas.prototype.onAfterRemoveRow = function (row, amount) {
 };
 
 XFormulas.prototype.onBeforeCreateCol = function (column, amount, source) {
-    if (source === 'undo') {
+    if (source === 'UndoRedo.undo') {
         this.undoRedoSnapshot.restore();
     }
 };
 
 XFormulas.prototype.onAfterCreateCol = function (column, amount, source) {
-    this.sheet.alterManager.insertColumn(column, amount, source !== 'undo');
+    this.sheet.alterManager.insertColumn(column, amount, source !== 'UndoRedo.undo');
 };
 
 XFormulas.prototype.onBeforeRemoveCol = function (column, amount) {

@@ -26,7 +26,7 @@ class Parser extends Emitter {
             toNumber,
             trimEdges,
             invertNumber,
-            throwError: (errorName) => this._throwError(errorName),
+            throwError: (errorName) => Parser._throwError(errorName),
             callVariable: (variable) => this._callVariable(variable),
             evaluateByOperator,
             callFunction: evaluateByOperator,
@@ -34,7 +34,7 @@ class Parser extends Emitter {
             rangeValue: (start, end) => this._callRangeValue(start, end),
             cellValueInSheet: (sheetName, value) => this._callCellValueInSheet(sheetName, value),
             rangeValueInSheet: (sheetName, start, end) => this._callRangeValueInSheet(sheetName, start, end),
-            parseError: (...args) => this._parseError(...args)
+            parseError: (...args) => Parser._parseError(...args)
         };
         this.variables = Object.create(null);
 
@@ -211,7 +211,7 @@ class Parser extends Emitter {
      * @returns {*}
      * @private
      */
-    _throwError(errorName) {
+    static _throwError(errorName) {
         const parsedError = errorParser(errorName);
         if (parsedError) {
             throw Error(parsedError);
@@ -221,7 +221,7 @@ class Parser extends Emitter {
 
 
     // TODO 解析失败时，给用户提供合适的错误信息。
-    _parseError(...args) {
+    static _parseError(...args) {
         console.log(args);
     }
 }

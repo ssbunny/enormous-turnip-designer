@@ -1,12 +1,11 @@
 import {toUpperCaseFormula} from './utils';
 import {toLabel, extractLabel} from './parser/utils';
 import {default as error, ERROR_REF} from './parser/error';
+import localHooks from '../../utils/localHooks';
 
 var arrayEach = Handsontable.helper.arrayEach;
 var arrayFilter = Handsontable.helper.arrayFilter;
-var startsWith = Handsontable.helper.startsWith;
 var mixin = Handsontable.helper.mixin;
-var localHooks = Handsontable.utils.localHooks; // private
 
 const BARE_CELL_STRICT_REGEX = /^\$?[A-Z]+\$?\d+$/;
 const BARE_CELL_REGEX = /\$?[A-Z]+\$?\d+/;
@@ -79,7 +78,7 @@ class ExpressionModifier {
             return result;
         });
 
-        if (!startsWith(expression, '=')) {
+        if (!expression.startsWith('=')) {
             expression = '=' + expression;
         }
 
@@ -167,11 +166,11 @@ class ExpressionModifier {
             const [endRow, endColumn] = extractLabel(end);
             const startCell = {
                 row: startRow,
-                column: startColumn,
+                column: startColumn
             };
             const endCell = {
                 row: endRow,
-                column: endColumn,
+                column: endColumn
             };
 
             this.cells.push(this._createCell(startCell, endCell, match));
@@ -192,7 +191,7 @@ class ExpressionModifier {
             origLabel: label,
             type: label.indexOf(':') === -1 ? 'cell' : 'range',
             refError: false,
-            toLabel: function() {
+            toLabel: function () {
                 let label = toLabel(this.start.row, this.start.column);
 
                 if (this.type === 'range') {

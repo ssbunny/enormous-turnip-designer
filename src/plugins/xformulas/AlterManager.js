@@ -1,11 +1,10 @@
 import {CellValue} from './CellValue';
 import {isFormulaExpression} from './utils';
 import {ExpressionModifier} from './expressionModifier';
+import localHooks from '../../utils/localHooks';
 
 var arrayEach = Handsontable.helper.arrayEach;
 var mixin = Handsontable.helper.mixin;
-var localHooks = Handsontable.utils.localHooks; // private
-
 
 class AlterManager {
     constructor(sheet) {

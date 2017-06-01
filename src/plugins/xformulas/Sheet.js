@@ -5,6 +5,7 @@ import {Matrix} from './Matrix';
 import {AlterManager} from './AlterManager';
 import {Parser} from './parser/parser';
 import {ERROR_REF} from './parser/error';
+import localHooks from '../../utils/localHooks';
 
 const STATE_UP_TO_DATE = 1;
 const STATE_NEED_REBUILD = 2;
@@ -15,7 +16,6 @@ var arrayMap = Handsontable.helper.arrayMap;
 var rangeEach = Handsontable.helper.rangeEach;
 var objectEach = Handsontable.helper.objectEach;
 var mixin = Handsontable.helper.mixin;
-var localHooks = Handsontable.utils.localHooks; // private
 
 
 class Sheet {

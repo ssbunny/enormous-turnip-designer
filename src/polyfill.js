@@ -20,6 +20,7 @@ export default function polyfill(_g) {
         }
     }
 
+    // String.startsWith()
     if (!String.prototype.startsWith) {
         String.prototype.startsWith = function (searchString, position) {
             position = position || 0;
@@ -29,6 +30,8 @@ export default function polyfill(_g) {
 
 
     // --------------------------------------------- IE polyfill
+
+    // HTMLElement.classList
     if (!('classList' in document.documentElement)) {
         Object.defineProperty(HTMLElement.prototype, 'classList', {
             get: function () {
