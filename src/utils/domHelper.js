@@ -1,5 +1,4 @@
 var textContextSupport = document.createTextNode('test').textContent ? true : false;
-var classListSupport = document.documentElement.classList ? true : false;
 
 var REG_HTML_CHARACTERS = /(<(.*)>|&(.*);)/;
 

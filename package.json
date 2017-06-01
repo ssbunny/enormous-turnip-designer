@@ -1,6 +1,6 @@
 {
   "name": "spreadsheet",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "A JavaScript spreedsheet designer based on Handsontable.",
   "main": "gulpfile.js",
   "scripts": {

@@ -219,7 +219,7 @@ XFormulas.prototype.onAfterCreateRow = function (row, amount, source) {
 };
 
 XFormulas.prototype.onBeforeRemoveRow = function (row, amount) {
-    Storage.save('row', row, amount);
+    // TODO Storage.save('row', row, amount);
 };
 
 XFormulas.prototype.onAfterRemoveRow = function (row, amount) {
@@ -237,7 +237,7 @@ XFormulas.prototype.onAfterCreateCol = function (column, amount, source) {
 };
 
 XFormulas.prototype.onBeforeRemoveCol = function (column, amount) {
-    Storage.save('column', column, amount);
+    // TODO Storage.save('column', column, amount);
 };
 
 XFormulas.prototype.onAfterRemoveCol = function (column, amount) {

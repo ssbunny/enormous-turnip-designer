@@ -9,17 +9,6 @@ var wb = foo.getWorkbookInstance();
 var sheet = wb.getActiveSheet();
 var hot = sheet.handsontable;
 
-foo.on('afterSelectionEnd', function (sheet, row, col, endRow, endCol) {
-    var i, j, TD;
-    for (i = row; i <= endRow; ++i) {
-        for (j = col; j <= endCol; ++j) {
-            TD = sheet.handsontable.getCellMeta(i, j);
-            console.log(i + ',' + j, TD);
-            console.dir(TD);
-        }
-    }
-});
-
 
 function save() {
     sheet.setBackgroundColor('#EEE')

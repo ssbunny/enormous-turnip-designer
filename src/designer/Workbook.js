@@ -152,7 +152,6 @@ class Workbook {
      * @returns {Sheet} 新创建的工作表
      */
     createSheet(config) {
-
         if (config) {  // 根据初始配置创建，name 不能为空
             this._validateSheetName(config.name);
         } else { // 用户操作创建，动态生成 name
