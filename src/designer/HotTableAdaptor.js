@@ -20,6 +20,7 @@ class HotTableAdaptor extends Handsontable {
         var settings = translator.translate();
 
         var frame = sheet.workbook.spreadSheet.getFrameInstance();
+        var displayMode = sheet.workbook.spreadSheet.getDisplayMode();
         var menuItems = frame.contextMenu.menuItems;
         var contextMenu = {};
         contextMenu.items = frame.contextMenu.getMenuItems4HotTable();
@@ -38,6 +39,11 @@ class HotTableAdaptor extends Handsontable {
         extend(hotSettings, HotTableAdaptor._preference);
         extend(hotSettings, settings);
         extend(hotSettings, extConfig);
+
+        if (displayMode) {
+            hotSettings.colHeaders = false;
+            hotSettings.rowHeaders = false;
+        }
 
         super(rootElement, hotSettings);
 

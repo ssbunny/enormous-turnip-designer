@@ -92,6 +92,7 @@ XFormulas.prototype.enablePlugin = function () {
     this.addHook('afterRemoveRow', (...args) => this.onAfterRemoveRow(...args));
     this.addHook('afterSetDataAtCell', (...args) => this.onAfterSetDataAtCell(...args));
     this.addHook('afterSetDataAtRowProp', (...args) => this.onAfterSetDataAtCell(...args));
+    this.addHook('beforeKeyDown', (...args) => this.onBeforeKeyDown(...args));
     this.addHook('beforeCreateCol', (...args) => this.onBeforeCreateCol(...args));
     this.addHook('beforeCreateRow', (...args) => this.onBeforeCreateRow(...args));
     this.addHook('beforeRemoveCol', (...args) => this.onBeforeRemoveCol(...args));
@@ -160,6 +161,21 @@ XFormulas.prototype.onSheetAfterRecalculate = function (cells) {
         );
     });
     hot.render();
+};
+
+
+/**
+ * Caution - 调用 event.stopImmediatePropagation() 可以阻止默认行为。
+ * @param event
+ */
+XFormulas.prototype.onBeforeKeyDown = function (event) {
+    var ae;
+    if (event.keyCode === 187 && event.shiftKey === false) {
+        ae = this.hot.getActiveEditor();
+        console.log('onBeforeKeyDown-----', event)
+        console.log('onBeforeKeyDown', ae)
+    }
+
 };
 
 XFormulas.prototype.onModifyData = function (row, column, valueHolder, ioMode) {

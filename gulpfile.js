@@ -58,9 +58,9 @@ gulp.task('scripts-libs', function () {
             libsPath + '/handsontable.js'
         ])
         .pipe(concat(`spreadsheet-libs-${pkg.version}.js`))
-      /*  .pipe(uglify({
+        .pipe(uglify({
             mangle: {except: uglifyMangle}
-        }))*/
+        }))
         .pipe(gulp.dest('dist'));
 });
 
