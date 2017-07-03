@@ -24,7 +24,8 @@ import {
     isFormulaExpression,
     toUpperCaseFormula,
     isFormulaExpressionEscaped,
-    unescapeFormulaExpression} from './utils';
+    unescapeFormulaExpression
+} from './utils';
 import {Sheet} from './Sheet';
 import {DataProvider} from './DataProvider';
 import {UndoRedoSnapshot} from './UndoRedoSnapshot';
@@ -92,7 +93,7 @@ XFormulas.prototype.enablePlugin = function () {
     this.addHook('afterRemoveRow', (...args) => this.onAfterRemoveRow(...args));
     this.addHook('afterSetDataAtCell', (...args) => this.onAfterSetDataAtCell(...args));
     this.addHook('afterSetDataAtRowProp', (...args) => this.onAfterSetDataAtCell(...args));
-    this.addHook('beforeKeyDown', (...args) => this.onBeforeKeyDown(...args));
+    //this.addHook('beforeKeyDown', (...args) => this.onBeforeKeyDown(...args));
     this.addHook('beforeCreateCol', (...args) => this.onBeforeCreateCol(...args));
     this.addHook('beforeCreateRow', (...args) => this.onBeforeCreateRow(...args));
     this.addHook('beforeRemoveCol', (...args) => this.onBeforeRemoveCol(...args));
@@ -165,23 +166,17 @@ XFormulas.prototype.onSheetAfterRecalculate = function (cells) {
 
 
 /**
+ * TODO
  * Caution - 调用 event.stopImmediatePropagation() 可以阻止默认行为。
  * @param event
  */
 XFormulas.prototype.onBeforeKeyDown = function (event) {
-    var ae;
-    if (event.keyCode === 187 && event.shiftKey === false) {
-        ae = this.hot.getActiveEditor();
-        console.log('onBeforeKeyDown-----', event)
-        console.log('onBeforeKeyDown', ae)
-    }
 
 };
 
 XFormulas.prototype.onModifyData = function (row, column, valueHolder, ioMode) {
     if (ioMode === 'get' && this.hasComputedCellValue(row, column)) {
         valueHolder.value = this.getCellValue(row, column);
-
     } else if (ioMode === 'set' && isFormulaExpression(valueHolder.value)) {
         valueHolder.value = toUpperCaseFormula(valueHolder.value);
     }
@@ -272,7 +267,7 @@ XFormulas.prototype.getCellValue = function (row, column) {
 };
 
 XFormulas.prototype.hasComputedCellValue = function (row, column) {
-    return this.sheet.getCellAt(row, column) ? true : false;
+    return !!this.sheet.getCellAt(row, column);
 };
 
 XFormulas.prototype.recalculate = function () {

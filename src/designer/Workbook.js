@@ -35,7 +35,7 @@ class Workbook {
         config.sheets.forEach(v => this.createSheet(v));
 
         // 根据初始化数据激活 sheet 页
-        var toActive = this.getSheet(this.activeSheet);
+        let toActive = this.getSheet(this.activeSheet);
         if (!toActive) {
             throw new SheetError(`指定的 activeSheet 不存在: ${this.activeSheet}`);
         }
@@ -48,7 +48,7 @@ class Workbook {
      * @private
      */
     _initSettings(settings) {
-        var keys = Object.keys(settings);
+        let keys = Object.keys(settings);
         for (let i = 0, len = keys.length; i < len; ++i) {
             if (keys[i] === 'sheets') {
                 continue;
@@ -131,7 +131,7 @@ class Workbook {
      */
     _getAutoSheetName() {
         const prefix = globalSettings.sheet.autoPrefix + ''; // 防止出现数字相加
-        var name = prefix + this._getAutoSheetIndex();
+        let name = prefix + this._getAutoSheetIndex();
         if (this.isSheetExist(name)) {
             return this._getAutoSheetName();
         }
@@ -158,7 +158,7 @@ class Workbook {
             config = {};
             config.name = this._getAutoSheetName();
         }
-        var newOne = new Sheet(this, config);
+        let newOne = new Sheet(this, config);
         this.sheets.set(config.name, newOne);
         return newOne;
     }
@@ -184,7 +184,7 @@ class Workbook {
     // 造成修改 sheet 名时的文本框无法正确处理（会输入到表格中）
     // 暂时使用 input 的 select 代替 focus，迫使用户再次点击sheet名时才能修改。
     renameSheet(name1, name2) {
-        var sheet = this.getSheet(name1);
+        let sheet = this.getSheet(name1);
         if (!sheet) {
             throw new SheetError(`工作表 "${name1}" 不存在`);
         }
@@ -206,7 +206,7 @@ class Workbook {
      * 关闭指定 sheet 页
      */
     closeSheet(name) {
-        var sheet = this.getSheet(name);
+        let sheet = this.getSheet(name);
         if (!sheet) {
             throw new SheetError(`无法关闭不存在的工作表 "${name}" 。`);
         }
@@ -240,7 +240,7 @@ class Workbook {
      * @param {string} sheetName
      */
     activeSheet(sheetName) {
-        var sheet = this.getSheet(sheetName);
+        let sheet = this.getSheet(sheetName);
         if (sheet) {
             sheet.active();
         }
@@ -266,7 +266,7 @@ class Workbook {
     }
 
     _getExchange() {
-        var sheets = [];
+        let sheets = [];
         for (let [,sheet] of this.getSheets().toMap()) {
             sheet && sheets.push(sheet._getExchange());
         }

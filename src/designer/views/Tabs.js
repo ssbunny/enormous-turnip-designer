@@ -69,7 +69,6 @@ Tabs.prototype.initDOM = function () {
 
     // 增加 sheet 页的 button
     this.appendAddButton();
-
 };
 
 /**

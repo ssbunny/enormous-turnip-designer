@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Brick Spreedsheet Designer</title>
+    <link rel="stylesheet" media="screen" href="handsontable.full.min.css">
+    <script src="handsontable.full.js"></script>
+    <style>
+        #designer {
+            width: 900px;
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="button" onclick="buttonClick()"/>
+
+<div id="designer"></div>
+
+<script>
+    var container = document.getElementById('designer');
+
+    var hot = new Handsontable(container, {
+        data: [[1, 2], [3, 4]],
+        colHeaders: true,
+        rowHeaders: true,
+        cell: [
+            {row: 0, col: 0, type: 'numeric', format: '0.00'}
+        ]
+    });
+
+    hot.setCellMetaObject(0, 0, {
+        type: 'date',
+        dateFormat: 'YYYY/MM/DD'
+    });
+    hot.setCellMetaObject(0, 1, {
+        type: 'date',
+        dateFormat: 'YYYY/MM/DD'
+    });
+    hot.render();
+
+
+    function buttonClick() {
+
+    }
+</script>
+
+</body>
+</html>

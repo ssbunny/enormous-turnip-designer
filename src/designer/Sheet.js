@@ -1,9 +1,8 @@
-import Tabs from  './views/Tabs';
 import Handsontable from './HotTableAdaptor';
 import {SheetError} from './SheetError';
 import {Exchange} from './ext/Sheet_exchange';
 import {SheetHelper} from './ext/Sheet_helper';
-import {Coordinate} from '../utils/common';
+import {Coordinate, extend} from '../utils/common';
 import Emitter from '../utils/Emitter';
 
 
@@ -376,7 +375,7 @@ class Sheet extends Mixin {
      * @param [left]
      */
     setBorder(range, top, right, bottom, left) {
-        var config = {
+        let config = {
             range: range,
             top: top
         };
@@ -384,7 +383,10 @@ class Sheet extends Mixin {
         config.bottom = bottom || top;
         config.left = left || config.right;
 
-        var formerBorders = this.handsontable.getSettings().customBorders || [];
+        let formerBorders = this.handsontable.getSettings().customBorders;
+        if (formerBorders === true) {
+            formerBorders = [];
+        }
         formerBorders.push(config);
 
         // TODO customBorders cannot be updated via updateSettings
@@ -392,6 +394,37 @@ class Sheet extends Mixin {
         this.handsontable.updateSettings({
             customBorders: formerBorders
         });
+        //this.handsontable.runHooks('afterInit');
+    }
+
+
+    /**
+     * 设置数据格式
+     *
+     * @param type - `text` | `date` | `numeric`
+     * @param settings
+     * @param selection
+     */
+    setDataFormat(type='text', settings = {}, selection = this.getSelection()) {
+        this._walkonCellMetas(selection, (row, col, cellMeta) => {
+            let fType = cellMeta.type;
+
+            if (fType === 'date') {
+                delete cellMeta.dateFormat;
+                delete cellMeta.defaultDate;
+                delete cellMeta.correctFormat;
+            } else if (fType === 'numeric') {
+                delete cellMeta.format;
+                delete cellMeta.language;
+            }
+            cellMeta.type = type;
+
+            // https://github.com/handsontable/handsontable/issues/4360
+            delete cellMeta.renderer;
+            delete cellMeta.editor;
+            return extend(cellMeta, settings);
+        }, {type: type});
+        this.handsontable.render();
     }
 
 }

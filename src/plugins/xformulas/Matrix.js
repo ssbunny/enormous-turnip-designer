@@ -1,4 +1,5 @@
 import {CellValue} from './CellValue';
+import {ERROR_REF} from "./parser/error";
 
 var arrayEach = Handsontable.helper.arrayEach;
 var arrayFilter = Handsontable.helper.arrayFilter;
@@ -62,7 +63,6 @@ class Matrix {
                 if (cellValue.hasPrecedent(cell) && acc.indexOf(cellValue) === -1) {
                     acc.push(cellValue);
                 }
-
                 return acc;
             }, []);
         };
@@ -77,11 +77,19 @@ class Matrix {
                     }
                 });
             }
-
             return deps;
         };
 
-        return getTotalDependencies(cellValue);
+        try {
+            return getTotalDependencies(cellValue);
+        } catch (e) {
+            // TODO 增加该代码是解决以下问题的权宜之策：
+            // https://github.com/handsontable/handsontable/issues/4357
+            let errorValue = new CellValue(cellValue.row, cellValue.column);
+            errorValue.setError(ERROR_REF);
+            errorValue.setState(CellValue.STATE_UP_TO_DATE);
+            return [errorValue];
+        }
     }
 
 

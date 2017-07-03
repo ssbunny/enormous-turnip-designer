@@ -27,12 +27,12 @@ var jsfileHeader = ['/*!',
     ' * @license <%= pkg.license %>',
     ' * ',
     ' * Build on: <%= date %>',
-    ' * -  handsontable version: <%= pkg.vendors.handsontable %>',
-    ' * -     formulajs version: <%= pkg.dependencies.formulajs %>',
-    ' * -        moment version: <%= pkg.vendors.moment %>',
-    ' * -        numbro version: <%= pkg.vendors.numbro %>',
-    ' * -       pikaday version: <%= pkg.vendors.pikaday %>',
-    ' * - zeroclipboard version: <%= pkg.vendors.zeroclipboard %>',
+    ' * -  handsontable-lnsoft version: <%= pkg.vendors.handsontable %>',
+    ' * -            formulajs version: <%= pkg.dependencies.formulajs %>',
+    ' * -               moment version: <%= pkg.vendors.moment %>',
+    ' * -               numbro version: <%= pkg.vendors.numbro %>',
+    ' * -              pikaday version: <%= pkg.vendors.pikaday %>',
+    ' * -        zeroclipboard version: <%= pkg.vendors.zeroclipboard %>',
     ' */',
     ''].join('\n');
 
@@ -41,7 +41,7 @@ var uglifyMangle = [
     'export', 'default'
 ];
 
-var libsPath = 'bower_components/handsontable/dist';
+var libsPath = '/Users/ssbunny/Code/web/handsontable-lnsoft/dist';
 
 
 // ------------------------------------------
@@ -58,9 +58,9 @@ gulp.task('scripts-libs', function () {
             libsPath + '/handsontable.js'
         ])
         .pipe(concat(`spreadsheet-libs-${pkg.version}.js`))
-        .pipe(uglify({
+    /*    .pipe(uglify({
             mangle: {except: uglifyMangle}
-        }))
+        }))*/
         .pipe(gulp.dest('dist'));
 });
 

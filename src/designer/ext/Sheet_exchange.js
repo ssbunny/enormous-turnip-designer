@@ -129,7 +129,8 @@ export const Exchange = Sup => class extends Sup {
                     }
                 }(this._getStylesEx(_meta), _cellMata));
 
-                // TODO dataType
+                this._getDataType(_meta, _cellMata);
+
                 rowResult.push(_sourceData);
                 rowCellMeta.push(_cellMata);
             }
@@ -142,5 +143,21 @@ export const Exchange = Sup => class extends Sup {
     // TODO
     _getBordersEx() {
 
+    }
+
+    // 数据格式 numeric、date 等
+    _getDataType(_meta, _cellMata) {
+        let t = _meta.type;
+        _cellMata.dataType = {};
+        _cellMata.dataType.typeName = t;
+
+        if (t === 'date') {
+            _cellMata.dataType.dateFormat = _meta.dateFormat;
+            _meta.defaultDate && (_cellMata.dataType.defaultDate = _meta.defaultDate);
+            _meta.correctFormat && (_cellMata.dataType.correctFormat = _meta.correctFormat);
+        } else if (t === 'numeric') {
+            _cellMata.dataType.format = _meta.format;
+            _meta.language && (_cellMata.dataType.language = _meta.language);
+        }
     }
 };

@@ -1,5 +1,6 @@
 import {Coordinate} from '../../utils/common'
 import {alignmentItem} from './ContextMenu_alignment'
+import {formatItem} from './ContextMenu_format'
 
 /**
  * 电子表格右键菜单。
@@ -69,8 +70,6 @@ ContextMenu.prototype._init = function () {
         name: '下方插入一行'
     });
 
-    this.register('hsep1', SEP);
-
     this.register('col_left', {
         name: '左侧插入一列'
     });
@@ -79,7 +78,7 @@ ContextMenu.prototype._init = function () {
         name: '右侧插入一列'
     });
 
-    this.register('hsep2', SEP);
+    this.register('hsep_bt_insert', SEP);
 
     // FIXME handsontable 自带的删除功能，在存在单元格合并时有BUG，改成自定义逻辑。
     this.register('remove_row', {
@@ -93,16 +92,17 @@ ContextMenu.prototype._init = function () {
         name: '删除选中列'
     });
 
+    this.register('hsep_bt_remove', SEP);
 
-    this.register('hsep3', SEP);
     this.register('alignment', alignmentItem());
-    this.register('hsep4', SEP);
+    //this.register('format', formatItem());
 
+    this.register('hsep_bt_format', SEP);
 
     this.register('q_merge_cells', {
         name: '单元格合并',
         disabled: function () {
-            var [r1, c1, r2, c2] = this.getSelected();
+            let [r1, c1, r2, c2] = this.getSelected();
             if (r1 === r2 && c1 === c2) {
                 return true;
             }
@@ -137,7 +137,7 @@ ContextMenu.prototype._init = function () {
 
 // private
 function mergeCompare(type) {
-    var merged = this.getSettings().mergeCells;
+    let merged = this.getSettings().mergeCells;
     if (merged && merged.length) {
         for (let i = 0; i < merged.length; ++i) {
             let {row, col, rowspan, colspan} = merged[i];

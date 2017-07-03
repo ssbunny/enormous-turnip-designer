@@ -1,209 +1,201 @@
 // TODO 对齐操作做成 API 方法。
+// https://github.com/handsontable/handsontable/issues/3807
 export function alignmentItem() {
     return {
         name: '对齐',
         disabled: function () {
-            return this.getSelectedRange() && !this.selection.selectedHeader.corner ? false : true;
+            return !(this.getSelectedRange() && !this.selection.selectedHeader.corner);
         },
         submenu: {
-            items: [
-                {
-                    key: 'alignment:left',
-                    name: function () {
-                        let hasClass = checkSelectionConsistency(this.getSelectedRange(), (row, col) => {
-                            let className = this.getCellMeta(row, col).className;
-                            if (className && className.indexOf('htLeft') !== -1) {
-                                return true;
-                            }
-                        });
-                        return hasClass ? markLabelAsSelected('左对齐') : '左对齐';
-                    },
-                    callback: function () {
-                        let range = this.getSelectedRange();
-                        let stateBefore = getAlignmentClasses(range, (row, col) => this.getCellMeta(row, col).className);
-                        let type = 'horizontal';
-                        let alignment = 'htLeft';
-                        this.runHooks('beforeCellAlignment', stateBefore, range, type, alignment);
-                        align(range, type, alignment, (row, col) => this.getCellMeta(row, col));
-                        this.render();
-                    },
-                    disabled: false
-                },
-                {
-                    key: 'alignment:center',
-                    name: function () {
-                        let hasClass = checkSelectionConsistency(this.getSelectedRange(), (row, col) => {
-                            let className = this.getCellMeta(row, col).className;
-                            if (className && className.indexOf('htCenter') !== -1) {
-                                return true;
-                            }
-                        });
-                        return hasClass ? markLabelAsSelected('水平居中') : '水平居中';
-                    },
-                    callback: function () {
-                        let range = this.getSelectedRange();
-                        let stateBefore = getAlignmentClasses(range, (row, col) => this.getCellMeta(row, col).className);
-                        let type = 'horizontal';
-                        let alignment = 'htCenter';
-
-                        this.runHooks('beforeCellAlignment', stateBefore, range, type, alignment);
-                        align(range, type, alignment, (row, col) => this.getCellMeta(row, col));
-                        this.render();
-                    },
-                    disabled: false
-                },
-                {
-                    key: `alignment:right`,
-                    name: function () {
-                        let label = '右对齐';
-                        let hasClass = checkSelectionConsistency(this.getSelectedRange(), (row, col) => {
-                            let className = this.getCellMeta(row, col).className;
-
-                            if (className && className.indexOf('htRight') !== -1) {
-                                return true;
-                            }
-                        });
-
-                        if (hasClass) {
-                            label = markLabelAsSelected(label);
+            items: [{
+                key: 'alignment:left',
+                name: function () {
+                    let hasClass = checkSelectionConsistency(this.getSelectedRange(), (row, col) => {
+                        let className = this.getCellMeta(row, col).className;
+                        if (className && className.indexOf('htLeft') !== -1) {
+                            return true;
                         }
-
-                        return label;
-                    },
-                    callback: function () {
-                        let range = this.getSelectedRange();
-                        let stateBefore = getAlignmentClasses(range, (row, col) => this.getCellMeta(row, col).className);
-                        let type = 'horizontal';
-                        let alignment = 'htRight';
-
-                        this.runHooks('beforeCellAlignment', stateBefore, range, type, alignment);
-                        align(range, type, alignment, (row, col) => this.getCellMeta(row, col));
-                        this.render();
-                    },
-                    disabled: false
+                    });
+                    return hasClass ? markLabelAsSelected('左对齐') : '左对齐';
                 },
-                {
-                    key: `alignment:justify`,
-                    name: function () {
-                        let label = '两端对齐';
-                        let hasClass = checkSelectionConsistency(this.getSelectedRange(), (row, col) => {
-                            let className = this.getCellMeta(row, col).className;
-
-                            if (className && className.indexOf('htJustify') !== -1) {
-                                return true;
-                            }
-                        });
-
-                        if (hasClass) {
-                            label = markLabelAsSelected(label);
+                callback: function () {
+                    let range = this.getSelectedRange();
+                    let stateBefore = getAlignmentClasses(range, (row, col) => this.getCellMeta(row, col).className);
+                    let type = 'horizontal';
+                    let alignment = 'htLeft';
+                    this.runHooks('beforeCellAlignment', stateBefore, range, type, alignment);
+                    align(range, type, alignment, (row, col) => this.getCellMeta(row, col));
+                    this.render();
+                },
+                disabled: false
+            }, {
+                key: 'alignment:center',
+                name: function () {
+                    let hasClass = checkSelectionConsistency(this.getSelectedRange(), (row, col) => {
+                        let className = this.getCellMeta(row, col).className;
+                        if (className && className.indexOf('htCenter') !== -1) {
+                            return true;
                         }
-
-                        return label;
-                    },
-                    callback: function () {
-                        let range = this.getSelectedRange();
-                        let stateBefore = getAlignmentClasses(range, (row, col) => this.getCellMeta(row, col).className);
-                        let type = 'horizontal';
-                        let alignment = 'htJustify';
-
-                        this.runHooks('beforeCellAlignment', stateBefore, range, type, alignment);
-                        align(range, type, alignment, (row, col) => this.getCellMeta(row, col));
-                        this.render();
-                    },
-                    disabled: false
+                    });
+                    return hasClass ? markLabelAsSelected('水平居中') : '水平居中';
                 },
-                {
-                    name: '---------'
-                },
-                {
-                    key: `alignment:top`,
-                    name: function () {
-                        let label = '顶部对齐';
-                        let hasClass = checkSelectionConsistency(this.getSelectedRange(), (row, col) => {
-                            let className = this.getCellMeta(row, col).className;
-                            if (className && className.indexOf('htTop') !== -1) {
-                                return true;
-                            }
-                        });
+                callback: function () {
+                    let range = this.getSelectedRange();
+                    let stateBefore = getAlignmentClasses(range, (row, col) => this.getCellMeta(row, col).className);
+                    let type = 'horizontal';
+                    let alignment = 'htCenter';
 
-                        if (hasClass) {
-                            label = markLabelAsSelected(label);
+                    this.runHooks('beforeCellAlignment', stateBefore, range, type, alignment);
+                    align(range, type, alignment, (row, col) => this.getCellMeta(row, col));
+                    this.render();
+                },
+                disabled: false
+            }, {
+                key: `alignment:right`,
+                name: function () {
+                    let label = '右对齐';
+                    let hasClass = checkSelectionConsistency(this.getSelectedRange(), (row, col) => {
+                        let className = this.getCellMeta(row, col).className;
+
+                        if (className && className.indexOf('htRight') !== -1) {
+                            return true;
                         }
-                        return label;
-                    },
-                    callback: function () {
-                        let range = this.getSelectedRange();
-                        let stateBefore = getAlignmentClasses(range, (row, col) => this.getCellMeta(row, col).className);
-                        let type = 'vertical';
-                        let alignment = 'htTop';
+                    });
 
-                        this.runHooks('beforeCellAlignment', stateBefore, range, type, alignment);
-                        align(range, type, alignment, (row, col) => this.getCellMeta(row, col));
-                        this.render();
-                    },
-                    disabled: false
+                    if (hasClass) {
+                        label = markLabelAsSelected(label);
+                    }
+
+                    return label;
                 },
-                {
-                    key: `alignment:middle`,
-                    name: function () {
-                        let label = '垂直居中';
-                        let hasClass = checkSelectionConsistency(this.getSelectedRange(), (row, col) => {
-                            let className = this.getCellMeta(row, col).className;
+                callback: function () {
+                    let range = this.getSelectedRange();
+                    let stateBefore = getAlignmentClasses(range, (row, col) => this.getCellMeta(row, col).className);
+                    let type = 'horizontal';
+                    let alignment = 'htRight';
 
-                            if (className && className.indexOf('htMiddle') !== -1) {
-                                return true;
-                            }
-                        });
-
-                        if (hasClass) {
-                            label = markLabelAsSelected(label);
-                        }
-
-                        return label;
-                    },
-                    callback: function () {
-                        let range = this.getSelectedRange();
-                        let stateBefore = getAlignmentClasses(range, (row, col) => this.getCellMeta(row, col).className);
-                        let type = 'vertical';
-                        let alignment = 'htMiddle';
-
-                        this.runHooks('beforeCellAlignment', stateBefore, range, type, alignment);
-                        align(range, type, alignment, (row, col) => this.getCellMeta(row, col));
-                        this.render();
-                    },
-                    disabled: false
+                    this.runHooks('beforeCellAlignment', stateBefore, range, type, alignment);
+                    align(range, type, alignment, (row, col) => this.getCellMeta(row, col));
+                    this.render();
                 },
-                {
-                    key: `alignment:bottom`,
-                    name: function () {
-                        let label = '底部对齐';
-                        let hasClass = checkSelectionConsistency(this.getSelectedRange(), (row, col) => {
-                            let className = this.getCellMeta(row, col).className;
+                disabled: false
+            }, {
+                key: `alignment:justify`,
+                name: function () {
+                    let label = '两端对齐';
+                    let hasClass = checkSelectionConsistency(this.getSelectedRange(), (row, col) => {
+                        let className = this.getCellMeta(row, col).className;
 
-                            if (className && className.indexOf('htBottom') !== -1) {
-                                return true;
-                            }
-                        });
-
-                        if (hasClass) {
-                            label = markLabelAsSelected(label);
+                        if (className && className.indexOf('htJustify') !== -1) {
+                            return true;
                         }
+                    });
 
-                        return label;
-                    },
-                    callback: function () {
-                        let range = this.getSelectedRange();
-                        let stateBefore = getAlignmentClasses(range, (row, col) => this.getCellMeta(row, col).className);
-                        let type = 'vertical';
-                        let alignment = 'htBottom';
+                    if (hasClass) {
+                        label = markLabelAsSelected(label);
+                    }
 
-                        this.runHooks('beforeCellAlignment', stateBefore, range, type, alignment);
-                        align(range, type, alignment, (row, col) => this.getCellMeta(row, col));
-                        this.render();
-                    },
-                    disabled: false
-                }
-            ]
+                    return label;
+                },
+                callback: function () {
+                    let range = this.getSelectedRange();
+                    let stateBefore = getAlignmentClasses(range, (row, col) => this.getCellMeta(row, col).className);
+                    let type = 'horizontal';
+                    let alignment = 'htJustify';
+
+                    this.runHooks('beforeCellAlignment', stateBefore, range, type, alignment);
+                    align(range, type, alignment, (row, col) => this.getCellMeta(row, col));
+                    this.render();
+                },
+                disabled: false
+            }, {
+                name: '---------'
+            }, {
+                key: `alignment:top`,
+                name: function () {
+                    let label = '顶部对齐';
+                    let hasClass = checkSelectionConsistency(this.getSelectedRange(), (row, col) => {
+                        let className = this.getCellMeta(row, col).className;
+                        if (className && className.indexOf('htTop') !== -1) {
+                            return true;
+                        }
+                    });
+
+                    if (hasClass) {
+                        label = markLabelAsSelected(label);
+                    }
+                    return label;
+                },
+                callback: function () {
+                    let range = this.getSelectedRange();
+                    let stateBefore = getAlignmentClasses(range, (row, col) => this.getCellMeta(row, col).className);
+                    let type = 'vertical';
+                    let alignment = 'htTop';
+
+                    this.runHooks('beforeCellAlignment', stateBefore, range, type, alignment);
+                    align(range, type, alignment, (row, col) => this.getCellMeta(row, col));
+                    this.render();
+                },
+                disabled: false
+            }, {
+                key: `alignment:middle`,
+                name: function () {
+                    let label = '垂直居中';
+                    let hasClass = checkSelectionConsistency(this.getSelectedRange(), (row, col) => {
+                        let className = this.getCellMeta(row, col).className;
+
+                        if (className && className.indexOf('htMiddle') !== -1) {
+                            return true;
+                        }
+                    });
+
+                    if (hasClass) {
+                        label = markLabelAsSelected(label);
+                    }
+
+                    return label;
+                },
+                callback: function () {
+                    let range = this.getSelectedRange();
+                    let stateBefore = getAlignmentClasses(range, (row, col) => this.getCellMeta(row, col).className);
+                    let type = 'vertical';
+                    let alignment = 'htMiddle';
+
+                    this.runHooks('beforeCellAlignment', stateBefore, range, type, alignment);
+                    align(range, type, alignment, (row, col) => this.getCellMeta(row, col));
+                    this.render();
+                },
+                disabled: false
+            }, {
+                key: `alignment:bottom`,
+                name: function () {
+                    let label = '底部对齐';
+                    let hasClass = checkSelectionConsistency(this.getSelectedRange(), (row, col) => {
+                        let className = this.getCellMeta(row, col).className;
+
+                        if (className && className.indexOf('htBottom') !== -1) {
+                            return true;
+                        }
+                    });
+
+                    if (hasClass) {
+                        label = markLabelAsSelected(label);
+                    }
+
+                    return label;
+                },
+                callback: function () {
+                    let range = this.getSelectedRange();
+                    let stateBefore = getAlignmentClasses(range, (row, col) => this.getCellMeta(row, col).className);
+                    let type = 'vertical';
+                    let alignment = 'htBottom';
+
+                    this.runHooks('beforeCellAlignment', stateBefore, range, type, alignment);
+                    align(range, type, alignment, (row, col) => this.getCellMeta(row, col));
+                    this.render();
+                },
+                disabled: false
+            }]
         }
     };
 }
@@ -267,7 +259,7 @@ function applyAlignClassName(row, col, type, alignment, cellDescriptor) {
 
 
 function prepareVerticalAlignClass(className, alignment) {
-    if (className.indexOf(alignment) != -1) {
+    if (className.indexOf(alignment) !== -1) {
         return className;
     }
     className = className
@@ -281,7 +273,7 @@ function prepareVerticalAlignClass(className, alignment) {
 }
 
 function prepareHorizontalAlignClass(className, alignment) {
-    if (className.indexOf(alignment) != -1) {
+    if (className.indexOf(alignment) !== -1) {
         return className;
     }
     className = className
