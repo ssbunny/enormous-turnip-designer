@@ -77,7 +77,7 @@ export function randomString() {
  * @returns {boolean}
  */
 export function isEmptyValue(value) {
-    return !!(value === '' || value === null || typeof value === 'undefined');
+    return (value === '' || value === null || typeof value === 'undefined');
 }
 
 

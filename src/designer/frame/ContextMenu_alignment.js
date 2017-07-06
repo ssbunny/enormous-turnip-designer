@@ -1,8 +1,9 @@
-// TODO 对齐操作做成 API 方法。
+import {MENU} from '../../i18n';
+
 // https://github.com/handsontable/handsontable/issues/3807
 export function alignmentItem() {
     return {
-        name: '对齐',
+        name: MENU.S5,
         disabled: function () {
             return !(this.getSelectedRange() && !this.selection.selectedHeader.corner);
         },
@@ -16,7 +17,7 @@ export function alignmentItem() {
                             return true;
                         }
                     });
-                    return hasClass ? markLabelAsSelected('左对齐') : '左对齐';
+                    return hasClass ? markLabelAsSelected(MENU.S6) : MENU.S6;
                 },
                 callback: function () {
                     let range = this.getSelectedRange();
@@ -37,7 +38,7 @@ export function alignmentItem() {
                             return true;
                         }
                     });
-                    return hasClass ? markLabelAsSelected('水平居中') : '水平居中';
+                    return hasClass ? markLabelAsSelected(MENU.S7) : MENU.S7;
                 },
                 callback: function () {
                     let range = this.getSelectedRange();
@@ -53,7 +54,7 @@ export function alignmentItem() {
             }, {
                 key: `alignment:right`,
                 name: function () {
-                    let label = '右对齐';
+                    let label = MENU.S8;
                     let hasClass = checkSelectionConsistency(this.getSelectedRange(), (row, col) => {
                         let className = this.getCellMeta(row, col).className;
 
@@ -82,7 +83,7 @@ export function alignmentItem() {
             }, {
                 key: `alignment:justify`,
                 name: function () {
-                    let label = '两端对齐';
+                    let label = MENU.S9;
                     let hasClass = checkSelectionConsistency(this.getSelectedRange(), (row, col) => {
                         let className = this.getCellMeta(row, col).className;
 
@@ -113,7 +114,7 @@ export function alignmentItem() {
             }, {
                 key: `alignment:top`,
                 name: function () {
-                    let label = '顶部对齐';
+                    let label = MENU.S10;
                     let hasClass = checkSelectionConsistency(this.getSelectedRange(), (row, col) => {
                         let className = this.getCellMeta(row, col).className;
                         if (className && className.indexOf('htTop') !== -1) {
@@ -140,7 +141,7 @@ export function alignmentItem() {
             }, {
                 key: `alignment:middle`,
                 name: function () {
-                    let label = '垂直居中';
+                    let label = MENU.S11;
                     let hasClass = checkSelectionConsistency(this.getSelectedRange(), (row, col) => {
                         let className = this.getCellMeta(row, col).className;
 
@@ -169,7 +170,7 @@ export function alignmentItem() {
             }, {
                 key: `alignment:bottom`,
                 name: function () {
-                    let label = '底部对齐';
+                    let label = MENU.S12;
                     let hasClass = checkSelectionConsistency(this.getSelectedRange(), (row, col) => {
                         let className = this.getCellMeta(row, col).className;
 
@@ -232,7 +233,7 @@ function getAlignmentClasses(range, callback) {
 }
 
 function align(range, type, alignment, cellDescriptor) {
-    if (range.from.row == range.to.row && range.from.col == range.to.col) {
+    if (range.from.row === range.to.row && range.from.col === range.to.col) {
         applyAlignClassName(range.from.row, range.from.col, type, alignment, cellDescriptor);
     } else {
         for (let row = range.from.row; row <= range.to.row; row++) {

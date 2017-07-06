@@ -422,6 +422,7 @@ class Sheet extends Mixin {
             // https://github.com/handsontable/handsontable/issues/4360
             delete cellMeta.renderer;
             delete cellMeta.editor;
+            delete cellMeta.validator;
             return extend(cellMeta, settings);
         }, {type: type});
         this.handsontable.render();

@@ -1,12 +1,19 @@
 export const SheetHelper = Sup => {
     return class extends Sup {
 
-        _defaultSelection(selection) {
+        // 选区默认值
+        //   1. 选区可能从右下往左上选，此时 row > endRow
+        //   2. endRow 及 endCol 可能不存在
+        //（不需要关注选区方向时调用此方法进行预处理）
+        _defaultSelection(s) {
+            s.row > s.endRow && (s.row=[s.endRow, s.endRow=s.row][0]);
+            s.col > s.endCol && (s.col=[s.endCol, s.endCol=s.col][0]);
+
             return {
-                startRow: selection.row,
-                endRow: selection.endRow || selection.row,
-                startCol: selection.col,
-                endCol: selection.endCol || selection.col
+                startRow: s.row,
+                endRow: s.endRow || s.row,
+                startCol: s.col,
+                endCol: s.endCol || s.col
             };
         }
 

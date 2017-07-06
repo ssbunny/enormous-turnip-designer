@@ -1,5 +1,3 @@
-import {isEmptyValue} from '../utils/common'
-
 /**
  * 配置翻译类。
  * 框架内部使用，用户代码不应该调用它。
@@ -9,6 +7,7 @@ import {isEmptyValue} from '../utils/common'
 class ConfigTranslator {
 
     /**
+     * 构造器
      *
      * @param {object} config
      * @param {Sheet} sheet
@@ -18,10 +17,13 @@ class ConfigTranslator {
         this.sheet = sheet;
     }
 
+
     /**
+     * 翻译配置。
      * 中间数据格式的设计会尽量同时保证在 Excel 及 Web 页面中均便于处理，
      * 但不免存在一些 Web 中难以直接使用的数据格式，该方法即是完成此类数据格式
      * 的适配转换工作。
+     *
      * @returns {object}
      */
     translate() {
@@ -34,7 +36,6 @@ class ConfigTranslator {
                 this[property[i]].call(this, settings);
             }
         }
-        // console.info(this.sheet.getName() + '[ConfigTranslator.translate] settings ->', settings);
         return settings;
     }
 
@@ -139,6 +140,8 @@ class ConfigTranslator {
             //            row.fill('', formerRow);
             //        }
             //    }
+
+            // 使用 hot API 完成上述功能
             settings.minRows = this.sheet.initRows;
             settings.minCols = this.sheet.initCols;
 
