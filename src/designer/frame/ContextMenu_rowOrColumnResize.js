@@ -84,7 +84,7 @@ export function colResizeHandler(sheet, start, end) {
 
 function setRowHeights(sheet, start, end, value) {
     value = numbro().unformat(value) || 24;
-    let rowHeights = sheet.handsontable.getSettings().rowHeights;
+    let rowHeights = sheet.handsontable.getSettings().rowHeights || [];
     for (let i = start; i <= end; ++i) {
         rowHeights[i] = value;
     }
@@ -93,7 +93,7 @@ function setRowHeights(sheet, start, end, value) {
 
 function setColWidths(sheet, start, end, value) {
     value = numbro().unformat(value) || 50;
-    let colWidths = sheet.handsontable.getSettings().colWidths;
+    let colWidths = sheet.handsontable.getSettings().colWidths || [];
     for (let i = start; i <= end; ++i) {
         colWidths[i] = value;
     }
