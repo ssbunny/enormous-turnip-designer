@@ -68,6 +68,7 @@ class Sheet extends Mixin {
             _sheet: this
         }, this);
         this.handsontable._translator.initSheetState();
+        this._hack();
         this.$$view.hideContent(this.getName());
     }
 

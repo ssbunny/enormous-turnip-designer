@@ -54,6 +54,7 @@ class HotTableAdaptor extends Handsontable {
             TD.style.color = cellProperties._style_color || '';
             TD.style.fontFamily = cellProperties._style_fontFamily || '';
             TD.style.fontSize = cellProperties._style_fontSize || '';
+            cellProperties._style_fontSize && (TD.style.lineHeight = cellProperties._style_fontSize);
             TD.style.backgroundColor = cellProperties._style_backgroundColor || '';
         }, this);
 

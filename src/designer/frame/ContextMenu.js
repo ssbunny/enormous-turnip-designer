@@ -98,7 +98,6 @@ ContextMenu.prototype._init = function () {
     this.register('row_resize', rowResize, rowResizeHandler);
     this.register('col_resize', colResize, colResizeHandler);
 
-
     this.register('hsep_bt_format', SEP);
 
     this.register('q_merge_cells', mergeCells, mergeCellsHandler);

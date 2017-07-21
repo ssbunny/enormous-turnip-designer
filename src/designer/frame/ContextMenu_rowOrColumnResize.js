@@ -99,5 +99,3 @@ function setColWidths(sheet, start, end, value) {
     }
     sheet.handsontable.updateSettings({colWidths: colWidths});
 }
-
-

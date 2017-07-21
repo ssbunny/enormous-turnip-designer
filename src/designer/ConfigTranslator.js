@@ -15,6 +15,7 @@ class ConfigTranslator {
     constructor(config, sheet) {
         this.initialConfig = config;
         this.sheet = sheet;
+        this.spreadSheet = sheet.workbook.spreadSheet;
     }
 
 
@@ -144,18 +145,19 @@ class ConfigTranslator {
             // 使用 hot API 完成上述功能
             settings.minRows = this.sheet.initRows;
             settings.minCols = this.sheet.initCols;
-
             settings.data = s;
         }
     }
 
     // 列宽
-    _transColWidths(settings) {
-        var w = this.initialConfig.colWidths;
-        if (w) {
-            settings.colWidths = w;
-        }
-    }
+    // NOTE: Handsontable 的 colWidths 有 BUG，设定后将不可以手工改变列宽，
+    //       试图使用 manualColumnResize 在表格初始化之后来改宽度
+    // _transColWidths(settings) {
+    //     var w = this.initialConfig.colWidths;
+    //     if (w) {
+    //         settings.colWidths = w;
+    //     }
+    // }
 
     // 行高
     _transRowHeights(settings) {
@@ -190,6 +192,19 @@ class ConfigTranslator {
             this.sheet.select(s.row, s.col, s.endRow, s.endCol);
         } else {
             this.sheet.select(0, 0);
+        }
+    }
+
+    // 列宽
+    _initColWidths() {
+        const w = this.initialConfig.colWidths;
+        const mcr = this.sheet.handsontable.getPlugin('manualColumnResize');
+        let i, len;
+
+        if (w && w.length) {
+            for (i = 0, len = w.length; i < len; ++i) {
+                mcr.setManualSize(i, w[i]);
+            }
         }
     }
 
