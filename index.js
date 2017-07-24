@@ -5,10 +5,10 @@ var ss = {
         "activeSheet": "工作表1",
         "sheets": [{
             "name": "工作表1",
-            "selection": {"row": 0, "col": 1, "endRow": 0, "endCol": 1},
+            "selection": {"row": 1, "col": 0, "endRow": 1, "endCol": 49},
             "data": [["2", "3", null, "3"], ["1", "3", "", "3"], ["=SUM(A1:B2)", null, null, "3"]],
-            "rowHeights": [129, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
-            "colWidths": [50, 50, 50, 50, 131, 87, 97, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50],
+            "rowHeights": [83, null, null, 67, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+            "colWidths": [146, 50, 50, 50, 131, 87, 97, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50],
             "mergeCells": null,
             "cellMetas": [[{
                 "row": 0,

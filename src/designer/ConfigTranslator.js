@@ -160,12 +160,13 @@ class ConfigTranslator {
     // }
 
     // 行高
-    _transRowHeights(settings) {
-        var h = this.initialConfig.rowHeights;
-        if (h) {
-            settings.rowHeights = h;
-        }
-    }
+    // NOTE: Handsontable 的 rowHeights 有 BUG，设定后将不可以手工改变列宽
+    // _transRowHeights(settings) {
+    //     var h = this.initialConfig.rowHeights;
+    //     if (h) {
+    //         settings.rowHeights = h;
+    //     }
+    // }
 
     // 边框
     _transBorders(settings) {
@@ -204,6 +205,19 @@ class ConfigTranslator {
         if (w && w.length) {
             for (i = 0, len = w.length; i < len; ++i) {
                 mcr.setManualSize(i, w[i]);
+            }
+        }
+    }
+
+    // 行高
+    _initRowHeights() {
+        const h = this.initialConfig.rowHeights;
+        const mrr = this.sheet.handsontable.getPlugin('manualRowResize');
+        let i, len;
+
+        if (h && h.length) {
+            for (i = 0, len = h.length; i < len; ++i) {
+                mrr.setManualSize(i, h[i]);
             }
         }
     }
