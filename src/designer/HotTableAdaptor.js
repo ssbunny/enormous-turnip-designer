@@ -36,9 +36,6 @@ class HotTableAdaptor extends Handsontable {
             };
         }(sheet));
 
-        !displayMode && (HotTableAdaptor._preference.contextMenu = contextMenu);
-        displayMode && (HotTableAdaptor._preference.tableClassName += ' displaymode');
-
         extend(hotSettings, HotTableAdaptor._preference);
         extend(hotSettings, settings);
         extend(hotSettings, extConfig);
@@ -47,6 +44,9 @@ class HotTableAdaptor extends Handsontable {
             hotSettings.colHeaders = false;
             hotSettings.rowHeaders = false;
         }
+
+        !displayMode && (hotSettings.contextMenu = contextMenu);
+        displayMode && (hotSettings.tableClassName += ' displaymode');
 
         super(rootElement, hotSettings);
 
@@ -88,7 +88,8 @@ class HotTableAdaptor extends Handsontable {
 
 
 /**
- * 预设配置。
+ * 预设配置，所有页面的所有 Handsontable 会共享此配置，
+ * 因此不要在实例中修改此对象。
  * @private
  */
 HotTableAdaptor._preference = {
