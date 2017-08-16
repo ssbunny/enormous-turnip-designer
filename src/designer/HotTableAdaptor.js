@@ -1,8 +1,8 @@
 /**
  * Handsontable 组件的适配类
  */
-import {extend} from '../utils/common.js'
-import ConfigTranslator from './ConfigTranslator.js'
+import {extend} from "../utils/common.js";
+import ConfigTranslator from "./ConfigTranslator.js";
 
 class HotTableAdaptor extends Handsontable {
 
@@ -17,11 +17,13 @@ class HotTableAdaptor extends Handsontable {
         let hotSettings = {};
         let translator = new ConfigTranslator(config, sheet);
         let settings = translator.translate();
+        let ss = sheet.workbook.spreadSheet;
 
-        let frame = sheet.workbook.spreadSheet.getFrameInstance();
-        let displayMode = sheet.workbook.spreadSheet.getDisplayMode();
+        let frame = ss.getFrameInstance();
+        let displayMode = ss.getDisplayMode();
         let menuItems = frame.contextMenu.menuItems;
         let contextMenu = {};
+
         contextMenu.items = frame.contextMenu.getMenuItems4HotTable();
         contextMenu.callback = (function (sheet) {
             return function (key, options) {
@@ -33,7 +35,9 @@ class HotTableAdaptor extends Handsontable {
                 }
             };
         }(sheet));
-        HotTableAdaptor._preference.contextMenu = contextMenu;
+
+        !displayMode && (HotTableAdaptor._preference.contextMenu = contextMenu);
+        displayMode && (HotTableAdaptor._preference.tableClassName += ' displaymode');
 
         extend(hotSettings, HotTableAdaptor._preference);
         extend(hotSettings, settings);
@@ -89,7 +93,7 @@ class HotTableAdaptor extends Handsontable {
  */
 HotTableAdaptor._preference = {
     outsideClickDeselects: false,
-    contextMenu: true,
+    contextMenu: false,
 
     rowHeaders: true,
     colHeaders: true,
@@ -97,7 +101,7 @@ HotTableAdaptor._preference = {
     manualColumnResize: true,
     manualRowResize: true,
 
-    tableClassName: 'ssd-handsontable',
+    tableClassName: 'ssd-handsontable-table',
 
     customBorders: true,
 

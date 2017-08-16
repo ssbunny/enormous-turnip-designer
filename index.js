@@ -112,7 +112,9 @@ function save() {
 }
 
 function test() {
-    sheet.setFontSize('40px')
+    sheet.setFontBold(true);
+    sheet.setFontItalic(true);
+    sheet.setFontUnderline(true);
 }
 
 

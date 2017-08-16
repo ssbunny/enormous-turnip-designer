@@ -255,7 +255,10 @@ function applyAlignClassName(row, col, type, alignment, cellDescriptor) {
             className = prepareHorizontalAlignClass(cellMeta.className, alignment);
         }
     }
-    cellMeta.className = className;
+
+    // 之前的样式名拼接方式，如果存在 hot 以外自定义样式时，会产生BUG # 8/14/2017
+    // 代码是 copy Hansontable 后改的，其实用 classArray 来处理这类问题更方便一些
+    cellMeta.className = className.trim().split(/^|\s+/).join(' ');
 }
 
 
@@ -266,8 +269,7 @@ function prepareVerticalAlignClass(className, alignment) {
     className = className
         .replace('htTop', '')
         .replace('htMiddle', '')
-        .replace('htBottom', '')
-        .replace('  ', '');
+        .replace('htBottom', '');
 
     className += ' ' + alignment;
     return className;
@@ -281,10 +283,8 @@ function prepareHorizontalAlignClass(className, alignment) {
         .replace('htLeft', '')
         .replace('htCenter', '')
         .replace('htRight', '')
-        .replace('htJustify', '')
-        .replace('  ', '');
+        .replace('htJustify', '');
 
     className += ' ' + alignment;
-
     return className;
 }

@@ -18,6 +18,18 @@ export const SheetHelper = Sup => {
                     mcr.setManualSize(j, colWidths[i]);
                 }
             });
+            hot.addHook('beforeRemoveRow', (index, amount) => {
+                const mrr = hot.getPlugin('manualRowResize');
+                let rowHeights = [];
+                let i = index + amount, j;
+                let len = hot.countRows();
+                for (; i < len; ++i) {
+                    rowHeights.push(hot.getRowHeight(i));
+                }
+                for (i = 0, j = index, len = rowHeights.length; i < len; ++i, ++j) {
+                    mrr.setManualSize(j, rowHeights[i]);
+                }
+            });
         }
 
         // 选区默认值

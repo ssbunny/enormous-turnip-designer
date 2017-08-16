@@ -9,16 +9,13 @@ import Emitter from '../utils/Emitter';
 const INIT_ROWS = 150; // Sheet 初始可显示的行数
 const INIT_COLS = 50;  // Sheet 初始可显示的列数
 
-// Webstorm IDE 的语法检查或 souremap 解析时不支持直接写到类的 extends 后。
-var Mixin = SheetHelper(Exchange(Emitter));
-
 /**
  * 工作表
  *
  * @fires Sheet#afterRename
  * @fires Sheet#afterRenameCancel
  */
-class Sheet extends Mixin {
+class Sheet extends SheetHelper(Exchange(Emitter)) {
 
     /**
      * 构造 Sheet 实例，用户代码不应该直接调用它，

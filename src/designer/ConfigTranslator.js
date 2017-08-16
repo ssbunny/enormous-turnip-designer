@@ -143,8 +143,10 @@ class ConfigTranslator {
             //    }
 
             // 使用 hot API 完成上述功能
-            settings.minRows = this.sheet.initRows;
-            settings.minCols = this.sheet.initCols;
+            if (!this.spreadSheet.displayMode) {
+                settings.minRows = this.sheet.initRows;
+                settings.minCols = this.sheet.initCols;
+            }
             settings.data = s;
         }
     }
@@ -168,12 +170,12 @@ class ConfigTranslator {
     //     }
     // }
 
-    // 边框
+    // FIXME 边框 hot BUG
     _transBorders(settings) {
-        var s = this.initialConfig.borders;
-        if (s) {
-            settings.customBorders = s;
-        }
+        // var s = this.initialConfig.borders;
+        // if (s) {
+        //     settings.customBorders = s;
+        // }
     }
 
     // 合并单元格

@@ -13,7 +13,7 @@ class SpreadSheet extends Emitter {
      *
      * @constructor
      * @param rootElement
-     * @param {object} userSettings - 电子表格的用户配置信息
+     * @param {object|string} userSettings - 电子表格的用户配置信息
      * @param {object} userSettings.workbook - Workbook 的配置
      * @param {object[]} userSettings.sheets - 配置所有初始 Sheet 页的数组
      * @param {boolean=} [displayMode=false] - 展示模式，不可编辑。
