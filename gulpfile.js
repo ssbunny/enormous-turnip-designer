@@ -1,4 +1,5 @@
 var pkg = require('./package.json')
+    , settings = require('./settings')
     , fs = require('fs')
     , gulp = require('gulp')
     , header = require('gulp-header')
@@ -43,9 +44,11 @@ var uglifyMangle = [
     'export', 'default'
 ];
 
-var libsPath = '/Users/ssbunny/Code/web/handsontable-lnsoft/dist';
+var libsPath = settings.libsPath;
 
-
+if (!fs.existsSync(libsPath)) {
+    throw new Error('路径 ' + libsPath + ' 不存在，请在 settings.js 中正确配置！');
+}
 // ------------------------------------------
 
 gulp.task('scripts-libs', function () {

@@ -84,18 +84,19 @@ export function colResizeHandler(sheet, start, end) {
 
 function setRowHeights(sheet, start, end, value) {
     value = numbro().unformat(value) || 24;
-    let rowHeights = sheet.handsontable.getSettings().rowHeights || [];
+    const mrr = sheet.handsontable.getPlugin('manualRowResize');
+
     for (let i = start; i <= end; ++i) {
-        rowHeights[i] = value;
+        mrr.setManualSize(i, value);
     }
-    sheet.handsontable.updateSettings({rowHeights: rowHeights});
+    sheet.handsontable.render();
 }
 
 function setColWidths(sheet, start, end, value) {
     value = numbro().unformat(value) || 50;
-    let colWidths = sheet.handsontable.getSettings().colWidths || [];
+    const mcr = sheet.handsontable.getPlugin('manualColumnResize');
     for (let i = start; i <= end; ++i) {
-        colWidths[i] = value;
+        mcr.setManualSize(i, value);
     }
-    sheet.handsontable.updateSettings({colWidths: colWidths});
+    sheet.handsontable.render();
 }

@@ -1,3 +1,7 @@
+### v0.5.6 [8/31/2017]
+* 修复：打包时依赖本地项目，导致无法正常打包 (issues #1)[https://github.com/ssbunny/enormous-turnip-designer/issues/1];
+* 修复：通过右键菜单批量修改行高、列宽后，无法再手工调整行高、列宽。
+
 ### v0.5.5 [8/16/2017]
 * 修复：显示期间(displayMode=true)的边框效果再次切换回设计态(displayMode=false)时，边框无法消除。
 
