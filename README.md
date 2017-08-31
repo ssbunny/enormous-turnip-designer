@@ -14,8 +14,8 @@
 ## 打包说明
 
 1. 执行 `npm install` 安装依赖;
-2. 检出 (handsontable)[https://github.com/ssbunny/handsontable] 分支项目并
-配置 `settings.js` 中的 `libsPath` ，指定到相应的 `dist` 目录;
+2. 检出 [handsontable](https://github.com/ssbunny/handsontable) 分支项目并配置
+`settings.js` 中的 `libsPath` ，指定到相应的 `dist` 目录;
 3. 执行 `gulp`。
 
 注：handsontable 项目目前存在较多 BUG ，一些功能在不修改源码的前提下无法实现，故需要维护上面的分支。
